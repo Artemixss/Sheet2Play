@@ -1,0 +1,192 @@
+{
+  "version": 3,
+  "targets": {
+    "net9.0-windows7.0": {
+      "Melanchall.DryWetMidi/8.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Melanchall.DryWetMidi.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Melanchall.DryWetMidi.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/Melanchall.DryWetMidi.targets": {}
+        }
+      },
+      "Raylib-cs/7.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Raylib-cs.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Raylib-cs.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/libraylib.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx-arm64/native/libraylib.dylib": {
+            "assetType": "native",
+            "rid": "osx-arm64"
+          },
+          "runtimes/osx-x64/native/libraylib.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/win-x64/native/raylib.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/raylib.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Melanchall.DryWetMidi/8.0.3": {
+      "sha512": "U+Ubol4MhieY2xgZGqcI8H2F/4HWzWKq8/WPHd1SXS7WXaHyEWMnj56vtxKOJFM5FLbj+NOUny5+X2KAzI0YUg==",
+      "type": "package",
+      "path": "melanchall.drywetmidi/8.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "build/Melanchall.DryWetMidi.targets",
+        "build/Melanchall_DryWetMidi_Native32.dll",
+        "build/Melanchall_DryWetMidi_Native64.dll",
+        "build/Melanchall_DryWetMidi_Native64.dylib",
+        "icon.png",
+        "lib/net45/Melanchall.DryWetMidi.dll",
+        "lib/net45/Melanchall.DryWetMidi.xml",
+        "lib/netstandard2.0/Melanchall.DryWetMidi.dll",
+        "lib/netstandard2.0/Melanchall.DryWetMidi.xml",
+        "melanchall.drywetmidi.8.0.3.nupkg.sha512",
+        "melanchall.drywetmidi.nuspec"
+      ]
+    },
+    "Raylib-cs/7.0.2": {
+      "sha512": "tpisH03Z9AfdTKFTe7iIA7RNeSaQFE97A+7ApXJUaOHzg2hczBXA1J/2uF7teKHsVXSuGqoV2aHAbaeJJMqulw==",
+      "type": "package",
+      "path": "raylib-cs/7.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net6.0/Raylib-cs.dll",
+        "lib/net6.0/Raylib-cs.xml",
+        "lib/net8.0/Raylib-cs.dll",
+        "lib/net8.0/Raylib-cs.xml",
+        "raylib-cs.7.0.2.nupkg.sha512",
+        "raylib-cs.nuspec",
+        "raylib-cs_64x64.png",
+        "runtimes/linux-x64/native/libraylib.so",
+        "runtimes/osx-arm64/native/libraylib.dylib",
+        "runtimes/osx-x64/native/libraylib.dylib",
+        "runtimes/win-x64/native/raylib.dll",
+        "runtimes/win-x86/native/raylib.dll"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net9.0-windows7.0": [
+      "Melanchall.DryWetMidi >= 8.0.3",
+      "Raylib-cs >= 7.0.2"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\bur4x\\.nuget\\packages\\": {},
+    "D:\\visual studio root\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Visualization_engine\\SynthesiaClone.csproj",
+      "projectName": "SynthesiaClone",
+      "projectPath": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Visualization_engine\\SynthesiaClone.csproj",
+      "packagesPath": "C:\\Users\\bur4x\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Visualization_engine\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "D:\\visual studio root\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\bur4x\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net9.0-windows"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net9.0-windows7.0": {
+          "targetAlias": "net9.0-windows",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "9.0.300"
+    },
+    "frameworks": {
+      "net9.0-windows7.0": {
+        "targetAlias": "net9.0-windows",
+        "dependencies": {
+          "Melanchall.DryWetMidi": {
+            "target": "Package",
+            "version": "[8.0.3, )"
+          },
+          "Raylib-cs": {
+            "target": "Package",
+            "version": "[7.0.2, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App.WindowsForms": {
+            "privateAssets": "none"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
