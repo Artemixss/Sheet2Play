@@ -19,7 +19,7 @@ The ultimate goal of this project is to use a custom YOLO-based neural network t
 **Temporary Dependency:** The custom model is currently in development. To validate the C# engine right now, it uses the open-source software **Audiveris** to handle the heavy lifting of PDF-to-XML conversion. 
 
 ## Requirements & Setup Warning
-*⚠️ Note: Because the pipeline is currently substituting the custom neural network with heavy third-party software for testing, local setup is complex.*
+Note: Because the pipeline is currently substituting the custom neural network with heavy third-party software for testing, local setup is complex.*
 
 To run the full conversion pipeline locally, your machine requires:
 * **Audiveris** * **MuseScore 4** * **VirtualMIDISynth (CoolSoft)** *Future updates will completely deprecate these dependencies once the custom deep learning algorithm finishes.*
