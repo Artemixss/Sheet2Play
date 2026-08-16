@@ -84,9 +84,17 @@ internal static class Program
 		Raylib.SetWindowMinSize(960, 540);
 		Raylib.SetTargetFPS(144);
 		UiTheme.InitializeFonts();
-		using OutputDevice outputDevice = OpenSynthDevice();
-		outputDevice.PrepareForEventsSending();
-		IMidiOutput midiOutput = new DryWetMidiOutput(outputDevice);
+		using OutputDevice outputDevice = TryOpenSynthDevice(out string audioWarning);
+		IMidiOutput midiOutput;
+		if ((object)outputDevice == null)
+		{
+			midiOutput = new NullMidiOutput();
+		}
+		else
+		{
+			outputDevice.PrepareForEventsSending();
+			midiOutput = new DryWetMidiOutput(outputDevice);
+		}
 		midiOutput.AllNotesOff();
 		UiLayout layout = UiLayout.Create(Raylib.GetScreenWidth(), Raylib.GetScreenHeight());
 		Keyboard keyboard = new Keyboard(layout.Width, layout.HitLineY, layout.KeyboardHeight);
@@ -107,7 +115,7 @@ internal static class Program
 		PlaybackController playbackController = null;
 		SongLoadResult songLoadResult = null;
 		Exception exception = null;
-		string message = null;
+		string message = audioWarning;
 		IReadOnlyList<PdfLibraryEntry> pdfLibrary = SongCache.GetPdfLibrary();
 		IReadOnlyList<CachedSongEntry> cachedSongs = SongCache.GetCachedSongs();
 		int pdfScrollOffset = 0;
@@ -306,8 +314,14 @@ internal static class Program
 		Raylib.CloseWindow();
 	}
 
-	private static OutputDevice OpenSynthDevice()
+	/// <summary>
+	/// Opens a MIDI synthesiser, preferring VirtualMIDISynth and falling back to any
+	/// available device. Returns null when the machine has no MIDI output at all; the
+	/// caller then runs silently rather than failing to start.
+	/// </summary>
+	private static OutputDevice TryOpenSynthDevice(out string warning)
 	{
+		warning = null;
 		try
 		{
 			OutputDevice byName = OutputDevice.GetByName("VirtualMIDISynth #1");
@@ -316,10 +330,21 @@ internal static class Program
 		}
 		catch (Exception ex)
 		{
-			OutputDevice outputDevice = OutputDevice.GetAll().FirstOrDefault();
+			OutputDevice outputDevice;
+			try
+			{
+				outputDevice = OutputDevice.GetAll().FirstOrDefault();
+			}
+			catch (Exception discovery)
+			{
+				Console.Error.WriteLine("[AUDIO SYSTEM] Could not enumerate MIDI devices. " + discovery.Message);
+				outputDevice = null;
+			}
 			if ((object)outputDevice == null)
 			{
-				throw new InvalidOperationException("No MIDI output device is available. Install a MIDI synthesizer and restart Sheet2Play.", ex);
+				warning = "No MIDI output device found. Playback is silent; install a MIDI synthesizer such as VirtualMIDISynth for sound.";
+				Console.Error.WriteLine("[AUDIO SYSTEM] " + warning + " " + ex.Message);
+				return null;
 			}
 			Console.Error.WriteLine("[AUDIO SYSTEM] VirtualMIDISynth unavailable; using " + outputDevice.Name + ". " + ex.Message);
 			return outputDevice;
@@ -502,7 +527,7 @@ internal static class Program
 		float num4 = (num - num3) / 2f;
 		Rectangle bounds4 = new Rectangle(num2, 194f * scale, num4, 64f * scale);
 		Rectangle bounds5 = new Rectangle(num2 + num4 + num3, 194f * scale, num4, 64f * scale);
-		if (DrawEngineCard(bounds4, "Oemer GPU", "Experimental rhythm · CUDA-only", UiTheme.Sky, selectedEngine == OmrEngine.Zeus))
+		if (DrawEngineCard(bounds4, "Zeus GPU", "Experimental rhythm · CUDA-only", UiTheme.Sky, selectedEngine == OmrEngine.Zeus))
 		{
 			selectedEngine = OmrEngine.Zeus;
 			PersistEngine(selectedEngine);
@@ -989,8 +1014,7 @@ internal static class Program
 		}
 		switch (ex.ErrorCode)
 		{
-		case "OEMER_OUTPUT_INVALID":
-		case "OEMER_LAYOUT_AMBIGUOUS":
+		case "NORMALIZATION_FAILED":
 		case "MUSICXML_PARSE_FAILED":
 			break;
 		default:
@@ -1007,7 +1031,7 @@ internal static class Program
 		float num4 = (bounds.Width - 60f * scale - num3 * 2f) / 3f;
 		if (request?.InputPath != null)
 		{
-			string label = ((request.Engine == OmrEngine.Zeus) ? "Retry homr" : "Retry Oemer");
+			string label = ((request.Engine == OmrEngine.Zeus) ? "Retry homr" : "Retry Zeus");
 			Color accent = ((request.Engine == OmrEngine.Zeus) ? UiTheme.Lime : UiTheme.Sky);
 			if (UiTheme.DrawButton(new Rectangle(bounds.X + 30f * scale, y, num4, 44f * scale), label, accent))
 			{
@@ -1030,7 +1054,7 @@ internal static class Program
 		IL_018c:
 		if (flag)
 		{
-			UiTheme.DrawText("Oemer could not preserve a reliable score structure. Try homr.", (int)(bounds.X + 30f * scale), (int)(bounds.Y + 205f * scale), Math.Max(12, (int)(14f * scale)), UiTheme.Warning);
+			UiTheme.DrawText("The engine could not preserve a reliable score structure. Try the other engine.", (int)(bounds.X + 30f * scale), (int)(bounds.Y + 205f * scale), Math.Max(12, (int)(14f * scale)), UiTheme.Warning);
 		}
 		goto IL_01cc;
 	}
@@ -1349,8 +1373,7 @@ internal static class Program
 			bool flag;
 			switch (ex.ErrorCode)
 			{
-			case "OEMER_OUTPUT_INVALID":
-			case "OEMER_LAYOUT_AMBIGUOUS":
+			case "NORMALIZATION_FAILED":
 			case "MUSICXML_PARSE_FAILED":
 				flag = true;
 				break;
@@ -1362,7 +1385,7 @@ internal static class Program
 			{
 				return $"{ex.ErrorCode} ({ex.Stage ?? "unknown stage"}){text}: {ex.Message}";
 			}
-			return "Oemer produced an unreliable MusicXML structure" + text + ": " + ex.Message;
+			return "The engine produced an unreliable MusicXML structure" + text + ": " + ex.Message;
 		}
 		if (exception.Message.Length > 240)
 		{
