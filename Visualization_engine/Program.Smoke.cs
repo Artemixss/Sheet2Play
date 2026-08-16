@@ -24,6 +24,20 @@ internal static partial class Program
 		Raylib.SetTargetFPS(60);
 		UiTheme.InitializeFonts();
 
+		// Report the real library too. The screens below use synthetic data, so without
+		// this a packaged build could render perfectly while pointing at an empty folder.
+		try
+		{
+			Console.WriteLine($"[SMOKE] library   {SongCache.ApplicationDirectory}");
+			Console.WriteLine($"[SMOKE] contents  {SongCache.GetPdfLibrary().Count} pdf, " +
+				$"{SongCache.GetMidiLibrary().Count} midi, " +
+				$"{SongCache.GetCachedSongs().Count} cached");
+		}
+		catch (Exception exception)
+		{
+			Console.Error.WriteLine("[SMOKE] library scan failed: " + exception.Message);
+		}
+
 		int failures = 0;
 		try
 		{
