@@ -7,6 +7,8 @@
     <TargetFramework>net9.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <AssemblyName>Sheet2Play</AssemblyName>
+    <ApplicationIcon>assets\Sheet2Play.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,9 +17,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="assets\**\*">
+    <!-- assets/ is inside the project, so the SDK globs it in as None by default; remove
+         those so the Content rule below is the single source of truth.
+
+         ExcludeFromSingleFile is essential: PublishSingleFile embeds binary content
+         (.ttf, .ico) inside the .exe, but UiDesign loads fonts from disk relative to
+         AppContext.BaseDirectory. Without it the published app silently falls back to
+         Raylib's default font while still building and running fine. -->
+    <None Remove="assets\**\*" />
+    <Content Include="assets\**\*" Link="assets\%(RecursiveDir)%(Filename)%(Extension)">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
     </Content>
   </ItemGroup>
 
