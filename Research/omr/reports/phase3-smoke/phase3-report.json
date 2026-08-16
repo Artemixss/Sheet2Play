@@ -1,0 +1,143 @@
+{
+  "canary": {
+    "checkpoint": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\phase3-smoke\\canary.checkpoint.json",
+    "determinism": {
+      "hashes": [],
+      "passed": false,
+      "runs": 0,
+      "sample_id": null
+    },
+    "gate": {
+      "failures": [
+        "structural validity is below 0.90",
+        "catastrophic-page failure rate is above 0.10",
+        "pitch F1 is more than 0.05 below homr",
+        "onset-duration F1 is below homr"
+      ],
+      "passed": false
+    },
+    "homr": {
+      "samples": [
+        {
+          "id": "6570192/p1-s1",
+          "metrics": {
+            "aligned_voice_accuracy": 1.0,
+            "mean_offset_error": 0.3333333333333333,
+            "onset_duration_f1": 0.03508771929824562,
+            "onset_f1": 0.10526315789473684,
+            "pitch_f1": 0.9473684210526316,
+            "staff_accuracy": 1.0
+          },
+          "peak_vram_bytes": 0,
+          "score_id": "6570192",
+          "seconds": 10.205509800001892,
+          "valid": true
+        }
+      ],
+      "summary": {
+        "beam_to_grammar_retry_rate": 0.0,
+        "catastrophic_page_failure_rate": 0.0,
+        "mean_offset_error": 0.3333333333333333,
+        "median_seconds_per_system": 10.205509800001892,
+        "onset_duration_f1": 0.03508771929824562,
+        "onset_f1": 0.10526315789473684,
+        "p95_seconds_per_system": 10.205509800001892,
+        "peak_vram_bytes": 0,
+        "pitch_f1": 0.9473684210526316,
+        "samples": 1,
+        "staff_accuracy": 1.0,
+        "structural_validity": 1.0,
+        "valid_samples": 1,
+        "voice_accuracy": 1.0
+      }
+    },
+    "manifest_sha256": "4704cbd3a9d414ef9def8ec7c4b9af9f66711786ae6d061d2b4cab7a8dfde4f8",
+    "sample_count": 1,
+    "schema_version": 1,
+    "transcoda_beam_only": {
+      "samples": [
+        {
+          "decoder": "beam",
+          "error": {
+            "code": "KERN_PARSE_FAILED",
+            "message": "converter21 rejected rhythmic or spine semantics: Error: Inconsistent rhythm analysis occurring near line 48\n    Expected durationFromStart to be: 15.5 but found it to be 16.0\n    Line: 8.r\t2EE-\t8.r",
+            "page": null,
+            "stage": "symbolic_parse"
+          },
+          "fallback_attempted": false,
+          "id": "6570192/p1-s1",
+          "peak_vram_bytes": 1952457728,
+          "score_id": "6570192",
+          "seconds": 9.803986499999155,
+          "valid": false
+        }
+      ],
+      "summary": {
+        "beam_to_grammar_retry_rate": 0.0,
+        "catastrophic_page_failure_rate": 1.0,
+        "mean_offset_error": null,
+        "median_seconds_per_system": 9.803986499999155,
+        "onset_duration_f1": 0.0,
+        "onset_f1": 0.0,
+        "p95_seconds_per_system": 9.803986499999155,
+        "peak_vram_bytes": 1952457728,
+        "pitch_f1": 0.0,
+        "samples": 1,
+        "staff_accuracy": 0.0,
+        "structural_validity": 0.0,
+        "valid_samples": 0,
+        "voice_accuracy": 0.0
+      }
+    },
+    "transcoda_beam_then_grammar": {
+      "samples": [
+        {
+          "beam_error": {
+            "code": "KERN_PARSE_FAILED",
+            "message": "converter21 rejected rhythmic or spine semantics: Error: Inconsistent rhythm analysis occurring near line 48\n    Expected durationFromStart to be: 15.5 but found it to be 16.0\n    Line: 8.r\t2EE-\t8.r",
+            "page": null,
+            "stage": "symbolic_parse"
+          },
+          "decoder": "grammar",
+          "error": {
+            "code": "KERN_PARSE_FAILED",
+            "message": "converter21 rejected rhythmic or spine semantics: Error: Inconsistent rhythm analysis occurring near line 21\n    Expected durationFromStart to be: 4.5 but found it to be 4.0\n    Line: 8r\t2EE-\t8.r",
+            "page": null,
+            "stage": "symbolic_parse"
+          },
+          "fallback_attempted": true,
+          "id": "6570192/p1-s1",
+          "peak_vram_bytes": 814224384,
+          "score_id": "6570192",
+          "seconds": 43.41060699999798,
+          "valid": false
+        }
+      ],
+      "summary": {
+        "beam_to_grammar_retry_rate": 1.0,
+        "catastrophic_page_failure_rate": 1.0,
+        "mean_offset_error": null,
+        "median_seconds_per_system": 43.41060699999798,
+        "onset_duration_f1": 0.0,
+        "onset_f1": 0.0,
+        "p95_seconds_per_system": 43.41060699999798,
+        "peak_vram_bytes": 814224384,
+        "pitch_f1": 0.0,
+        "samples": 1,
+        "staff_accuracy": 0.0,
+        "structural_validity": 0.0,
+        "valid_samples": 0,
+        "voice_accuracy": 0.0
+      }
+    }
+  },
+  "dataset": {
+    "full_manifest_sha256": "b66c91031dae9352143fe87cf3706bd3da316b337ae64731f79913c18f24a9db",
+    "root": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\olimpic\\olimpic-1.0-scanned",
+    "test_scores": 100,
+    "test_systems": 1493
+  },
+  "full_benchmark": null,
+  "schema_version": 1,
+  "status": "stopped_after_canary"
+}

@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "source": {
+    "repository": "https://github.com/btrkeks/transcoda.git",
+    "revision": "d4e2e687d5679ae96ca4aa6f01e06a5b338cd488",
+    "revision_algorithm": "git-sha1",
+    "require_clean_checkout": true,
+    "license": "AGPL-3.0-only"
+  },
+  "model": {
+    "repository": "btrkeks/transcoda-59M-zeroshot-v1",
+    "revision": "b529f8aa5d996d9224df3395b5b92d0867343c91",
+    "license": "CC-BY-4.0",
+    "required_files": {
+      "configuration_transcoda.py": {
+        "sha256": "fa0fe34093ee00dd7502654b9e6cd1ddd52c5e750e84fdd6c8dd9de545a2a101",
+        "size": 2395
+      },
+      "encoder.py": {
+        "sha256": "edcae2fd6dd0103c41e687bc45dd7e047b3a3fd668d91854c70785d89307bd27",
+        "size": 6141
+      },
+      "frontends.py": {
+        "sha256": "602fca94407302a243b5f1a5490494c12527ff61811e5182bf75f5944b422ec2",
+        "size": 4137
+      },
+      "modeling_transcoda.py": {
+        "sha256": "f6b3742017d89fab72a8cd3ebbbba7b856389a042acae92efa9c655bf9a0f9e7",
+        "size": 49539
+      },
+      "vision_frontend.py": {
+        "sha256": "46d355385b042833d8160d4a0817f0a70f89d451e5fc4e0336db7fe212822460",
+        "size": 2581
+      },
+      "config.json": {
+        "sha256": "cfc0e10ac91ce41ead4ab9c6d843c142ce267275dbef6856e467f417f5542db6",
+        "size": 114786
+      },
+      "generation_config.json": {
+        "sha256": "31385d218db2149f447eea16ae8ac500c39bd79486d76d3b6e6babdde39136ea",
+        "size": 229
+      },
+      "model.safetensors": {
+        "sha256": "c173a3b75b8a7558fa8670e9161b995c14ae879a5ea5ede91759dd9f403ee52a",
+        "size": 235254320
+      },
+      "special_tokens_map.json": {
+        "sha256": "1ecac9ec78cf97057d231453f726132712ed3360b71d39869b23f7c205cf67b4",
+        "size": 99
+      },
+      "tokenizer.json": {
+        "sha256": "dafc66b515c111d8ee5825c4a038f9f9eaa58875333c10542ac9a6bf16e53aa9",
+        "size": 192351
+      },
+      "tokenizer_config.json": {
+        "sha256": "4a04860cc35542a5e184dfaced21318459ff3696642f8b09889e3b5be4bf1d62",
+        "size": 973
+      }
+    }
+  },
+  "base_model": {
+    "repository": "facebook/convnextv2-tiny-22k-224",
+    "revision": "9cba4896e97bb86b1eb609e482a2149d84f345bc",
+    "license": "Apache-2.0",
+    "required_files": {
+      "config.json": {
+        "sha256": "f7674180aaa6ff41308f448cc06a252e7f95a959b4f93d2b57c721d473e64069",
+        "size": 69724
+      },
+      "model.safetensors": {
+        "sha256": "b33653bb8c060f6dee6438f18c559dcf3258bf86cc906490daaca89bc0c39fb7",
+        "size": 114565784
+      },
+      "preprocessor_config.json": {
+        "sha256": "9ef34d18dbf7909143a91f05ad23457180fcfed05034bf94843f300e32a9b968",
+        "size": 352
+      }
+    }
+  },
+  "inference": {
+    "height": 1485,
+    "width": 1050,
+    "max_tokens": 2048,
+    "beam_width": 3,
+    "repetition_penalty": 1.1,
+    "cuda_only": true
+  }
+}

@@ -1,500 +1,1373 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
-using Raylib_cs;
-using Melanchall.DryWetMidi.Common;
-using Melanchall.DryWetMidi.Multimedia;
-using Melanchall.DryWetMidi.Core;
-using Melanchall.DryWetMidi.Interaction;
+using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Melanchall.DryWetMidi.Multimedia;
+using Raylib_cs;
+using Rectangle = Raylib_cs.Rectangle;
 using Color = Raylib_cs.Color;
 
-namespace SynthesiaClone
+
+namespace SynthesiaClone;
+
+public enum GameState
 {
-    public enum GameState
-    {
-        WaitingForFile,
-        Processing,
-        Playing
-    }
+	WaitingForFile,
+	ConfirmReuse,
+	Processing,
+	Cancelling,
+	Error,
+	Playing,
+	Completed
+}
 
-    class Program
-    {
-        private sealed class Win32Window : System.Windows.Forms.IWin32Window
-        {
-            public Win32Window(IntPtr handle) => Handle = handle;
-            public IntPtr Handle { get; }
-        }
+internal static class Program
+{
+	private sealed class Win32Window : IWin32Window
+	{
+		public nint Handle { get; }
 
-        static void Main(string[] args)
-        {
-            System.Windows.Forms.Application.EnableVisualStyles();
-            System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
+		public Win32Window(nint handle)
+		{
+			Handle = handle;
+			
+		}
+	}
 
-            const int screenWidth = 1280;
-            const int screenHeight = 720;
-            bool isPaused = false;
-            double current_time = 0;
-            double totalSongDuration = 1.0;
+	private sealed class DialogState
+	{
+		public int IsOpen;
+	}
 
-            const double audio_offset = 0.055;
-            const int fall_speed = 200;
-            const int hit_line_y = screenHeight - 150;
+	private sealed record LoadRequest(string? InputPath, OmrEngine Engine, bool BypassKnownFailure, RecentSongEntry? RecentSong, bool ForceReprocess = false, bool ReuseConfirmed = false)
+	{
+		public string DisplayName => RecentSong?.DisplayName ?? Path.GetFileName(InputPath ?? "Sheet music");
+	}
 
-            Raylib.InitWindow(screenWidth, screenHeight, "Phase 1: Synthesia Clone");
-            Raylib.InitAudioDevice();
+	private enum ReuseAction
+	{
+		None,
+		UseCached,
+		Reprocess,
+		Cancel
+	}
 
-            string? pickedPath = null;
-            object pickedPathLock = new object();
-            int dialogOpen = 0;
+	private enum ErrorAction
+	{
+		None,
+		RetrySame,
+		RetryAlternate,
+		ChooseFile,
+		Back
+	}
 
-            OutputDevice synthDevice;
-            try 
-            {
-                synthDevice = OutputDevice.GetByName("VirtualMIDISynth #1");
-                Console.WriteLine("\n[AUDIO SYSTEM] SUCCESS: Connected to VirtualMIDISynth!");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"\n[AUDIO SYSTEM] WARNING: Failed to find CoolSoft. Error: {ex.Message}");
-                Console.WriteLine("[AUDIO SYSTEM] Falling back to Default Windows Synth.");
-                synthDevice = OutputDevice.GetAll().First(); 
-            }
-            synthDevice.PrepareForEventsSending();
-            synthDevice.PrepareForEventsSending();
-            Raylib.SetTargetFPS(144);
+	private const int InitialWidth = 1280;
 
-            Keyboard myPiano = new Keyboard(screenWidth, hit_line_y);
-            List<Note> dummySong = new List<Note>();
-            int[] activePCounts = new int[88];
-            Array.Clear(activePCounts, 0, activePCounts.Length);
-            for (int i = 0; i < 88; i++)
-            {
-                synthDevice.SendEvent(new NoteOffEvent((SevenBitNumber)(byte)(i + 21), (SevenBitNumber)(byte)0));
-            }
+	private const int InitialHeight = 720;
 
-            GameState currentState = GameState.WaitingForFile;
+	private const int MinimumWidth = 960;
 
-            while (!Raylib.WindowShouldClose())
-            {
-                if (currentState == GameState.WaitingForFile
-                    && Raylib.IsKeyPressed(KeyboardKey.O)
-                    && Interlocked.CompareExchange(ref dialogOpen, 1, 0) == 0)
-                {
-                    IntPtr ownerHwnd;
-                    unsafe { ownerHwnd = (IntPtr)Raylib.GetWindowHandle(); }
+	private const int MinimumHeight = 540;
 
-                    Thread fileThread = new Thread(() =>
-                    {
-                        try
-                        {
-                            using (System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog())
-                            {
-                                openFileDialog.Filter = "Sheet Music & MIDI|*.png;*.jpg;*.pdf;*.xml;*.mxl;*.mid;*.midi";
+	public static void Main()
+	{
+		Application.EnableVisualStyles();
+		Application.SetCompatibleTextRenderingDefault(defaultValue: false);
+		Raylib.SetConfigFlags(ConfigFlags.ResizableWindow);
+		Raylib.InitWindow(1280, 720, "Sheet2Play");
+		Raylib.SetWindowMinSize(960, 540);
+		Raylib.SetTargetFPS(144);
+		UiTheme.InitializeFonts();
+		using OutputDevice outputDevice = OpenSynthDevice();
+		outputDevice.PrepareForEventsSending();
+		IMidiOutput midiOutput = new DryWetMidiOutput(outputDevice);
+		midiOutput.AllNotesOff();
+		UiLayout layout = UiLayout.Create(Raylib.GetScreenWidth(), Raylib.GetScreenHeight());
+		Keyboard keyboard = new Keyboard(layout.Width, layout.HitLineY, layout.KeyboardHeight);
+		int num = layout.Width;
+		int num2 = layout.Height;
+		ConcurrentQueue<string> concurrentQueue = new ConcurrentQueue<string>();
+		ConcurrentQueue<LoadRequest> concurrentQueue2 = new ConcurrentQueue<LoadRequest>();
+		LoadResultHandoff<SongLoadResult> loadResults = new LoadResultHandoff<SongLoadResult>();
+		LoadProgressTracker progressQueue = new LoadProgressTracker();
+		LoadProgressModel loadProgressModel = new LoadProgressModel();
+		using CancellationTokenSource cancellationTokenSource2 = new CancellationTokenSource();
+		CancellationTokenSource cancellationTokenSource = null;
+		Task task = null;
+		DialogState dialogState = new DialogState();
+		GameState state = GameState.WaitingForFile;
+		OmrEngine selectedEngine = AppSettingsStore.LoadEngine();
+		LoadRequest request2 = null;
+		PlaybackController playbackController = null;
+		SongLoadResult songLoadResult = null;
+		Exception exception = null;
+		string message = null;
+		IReadOnlyList<PdfLibraryEntry> pdfLibrary = SongCache.GetPdfLibrary();
+		IReadOnlyList<CachedSongEntry> cachedSongs = SongCache.GetCachedSongs();
+		int pdfScrollOffset = 0;
+		int cacheScrollOffset = 0;
+		OmrEngine? cacheEngineFilter = null;
+		IReadOnlyList<MidiLibraryEntry> midiLibrary = SongCache.GetMidiLibrary();
+		int midiScrollOffset = 0;
+		bool sliderDragging = false;
+		bool resumeAfterSlider = false;
+		double sliderPreviewPosition = 0.0;
+		PlaybackRateEditor playbackRateEditor = new PlaybackRateEditor();
+		while (!Raylib.WindowShouldClose())
+		{
+			if ((bool)Raylib.IsKeyPressed(KeyboardKey.F11))
+			{
+				Raylib.ToggleFullscreen();
+			}
+			int screenWidth = Raylib.GetScreenWidth();
+			int screenHeight = Raylib.GetScreenHeight();
+			if (screenWidth != num || screenHeight != num2)
+			{
+				layout = UiLayout.Create(screenWidth, screenHeight);
+				keyboard.Resize(layout.Width, layout.HitLineY, layout.KeyboardHeight);
+				num = screenWidth;
+				num2 = screenHeight;
+			}
+			OmrProgress progress;
+			while (progressQueue.TryTake(out progress) && (object)progress != null)
+			{
+				loadProgressModel.Apply(progress);
+			}
+			if (loadResults.TryTake(out LoadCompletion<SongLoadResult> completion) && (object)completion != null)
+			{
+				cancellationTokenSource?.Dispose();
+				cancellationTokenSource = null;
+				task = null;
+				loadProgressModel.Stop();
+				if (completion.Error is OperationCanceledException)
+				{
+					message = "Conversion cancelled. No partial cache was saved.";
+					exception = null;
+					state = GameState.WaitingForFile;
+				}
+				else if (completion.Error != null)
+				{
+					Console.Error.WriteLine("[BACKGROUND TASK FAILED]");
+					Console.Error.WriteLine(completion.Error);
+					exception = completion.Error;
+					state = GameState.Error;
+				}
+				else
+				{
+					SongLoadResult value = completion.Value;
+					if ((object)value != null)
+					{
+						List<Note> notes = value.Notes;
+						if (notes != null && notes.Count > 0)
+						{
+							playbackController?.Stop();
+							songLoadResult = value;
+							playbackController = new PlaybackController(new PlaybackSession(value.Notes), midiOutput);
+							playbackRateEditor.Cancel();
+							sliderDragging = false;
+							exception = null;
+							message = null;
+							pdfLibrary = SongCache.GetPdfLibrary();
+							cachedSongs = SongCache.GetCachedSongs();
+							midiLibrary = SongCache.GetMidiLibrary();
+							state = GameState.Playing;
+						}
+					}
+				}
+			}
+			HandleDroppedFiles(state, concurrentQueue);
+			string result;
+			while (state == GameState.WaitingForFile && concurrentQueue.TryDequeue(out result))
+			{
+				concurrentQueue2.Enqueue(new LoadRequest(result, selectedEngine, BypassKnownFailure: false, null));
+			}
+			bool flag = ((state == GameState.WaitingForFile || state == GameState.Error) ? true : false);
+			if (flag && concurrentQueue2.TryDequeue(out var request))
+			{
+				request2 = request;
+				exception = null;
+				message = null;
+				if (NeedsReuseConfirmation(request))
+				{
+					state = GameState.ConfirmReuse;
+				}
+				else
+				{
+					loadProgressModel.Start(request.DisplayName, request.Engine);
+					cancellationTokenSource = CancellationTokenSource.CreateLinkedTokenSource(cancellationTokenSource2.Token);
+					CancellationToken token = cancellationTokenSource.Token;
+					state = GameState.Processing;
+					task = Task.Run(delegate
+					{
+						LoadSong(request, loadResults, progressQueue, token);
+					});
+				}
+			}
+			flag = playbackController != null;
+			if (flag)
+			{
+				bool flag2 = state == GameState.Playing || state == GameState.Completed;
+				flag = flag2;
+			}
+			if (flag)
+			{
+				HandlePlaybackKeyboard(playbackController, playbackRateEditor, ref state, ref sliderDragging, ref resumeAfterSlider, ref sliderPreviewPosition, layout);
+				playbackController.Update();
+				if (playbackController.IsCompleted)
+				{
+					state = GameState.Completed;
+				}
+			}
+			Raylib.BeginDrawing();
+			Raylib.ClearBackground(UiTheme.Background);
+			switch (state)
+			{
+			case GameState.WaitingForFile:
+			{
+				bool browseRequested;
+				bool refreshRequested;
+				LoadRequest loadRequest = DrawLanding(layout, ref selectedEngine, pdfLibrary, cachedSongs, midiLibrary, ref pdfScrollOffset, ref cacheScrollOffset, ref cacheEngineFilter, ref midiScrollOffset, message, out browseRequested, out refreshRequested);
+				if (browseRequested || (bool)Raylib.IsKeyPressed(KeyboardKey.B))
+				{
+					StartFilePicker(concurrentQueue, dialogState);
+				}
+				if (refreshRequested)
+				{
+					pdfLibrary = SongCache.GetPdfLibrary();
+					cachedSongs = SongCache.GetCachedSongs();
+					midiLibrary = SongCache.GetMidiLibrary();
+					pdfScrollOffset = 0;
+					cacheScrollOffset = 0;
+					midiScrollOffset = 0;
+				}
+				if ((object)loadRequest != null)
+				{
+					concurrentQueue2.Enqueue(loadRequest);
+				}
+				break;
+			}
+			case GameState.ConfirmReuse:
+			{
+				ReuseAction reuseAction = DrawConfirmReuse(layout, request2);
+				if ((bool)Raylib.IsKeyPressed(KeyboardKey.Escape))
+				{
+					reuseAction = ReuseAction.Cancel;
+				}
+				HandleReuseAction(reuseAction, request2, concurrentQueue2, ref state);
+				break;
+			}
+			case GameState.Processing:
+				if (DrawProcessing(layout, loadProgressModel, cancelling: false) || (bool)Raylib.IsKeyPressed(KeyboardKey.Escape))
+				{
+					cancellationTokenSource?.Cancel();
+					state = GameState.Cancelling;
+				}
+				break;
+			case GameState.Cancelling:
+				DrawProcessing(layout, loadProgressModel, cancelling: true);
+				break;
+			case GameState.Error:
+				HandleErrorAction(DrawError(layout, exception, request2), request2, concurrentQueue, dialogState, concurrentQueue2, ref state);
+				break;
+			case GameState.Playing:
+			case GameState.Completed:
+				if (playbackController != null && (object)songLoadResult != null && DrawPlayback(playbackController, songLoadResult, keyboard, sliderDragging, sliderPreviewPosition, playbackRateEditor, ref state, layout))
+				{
+					playbackController.Stop();
+					playbackRateEditor.Cancel();
+					state = GameState.WaitingForFile;
+				}
+				break;
+			}
+			Raylib.EndDrawing();
+		}
+		cancellationTokenSource2.Cancel();
+		cancellationTokenSource?.Cancel();
+		if (task != null)
+		{
+			try
+			{
+				task.Wait(TimeSpan.FromSeconds(5L));
+			}
+			catch (AggregateException ex) when (ex.InnerExceptions.All((Exception item) => item is OperationCanceledException))
+			{
+			}
+		}
+		cancellationTokenSource?.Dispose();
+		playbackController?.Stop();
+		midiOutput.AllNotesOff();
+		UiTheme.ShutdownFonts();
+		Raylib.CloseWindow();
+	}
 
-                                System.Windows.Forms.DialogResult result;
-                                if (ownerHwnd != IntPtr.Zero)
-                                {
-                                    result = openFileDialog.ShowDialog(new Win32Window(ownerHwnd));
-                                }
-                                else
-                                {
-                                    result = openFileDialog.ShowDialog();
-                                }
+	private static OutputDevice OpenSynthDevice()
+	{
+		try
+		{
+			OutputDevice byName = OutputDevice.GetByName("VirtualMIDISynth #1");
+			Console.WriteLine("[AUDIO SYSTEM] Connected to VirtualMIDISynth.");
+			return byName;
+		}
+		catch (Exception ex)
+		{
+			OutputDevice outputDevice = OutputDevice.GetAll().FirstOrDefault();
+			if ((object)outputDevice == null)
+			{
+				throw new InvalidOperationException("No MIDI output device is available. Install a MIDI synthesizer and restart Sheet2Play.", ex);
+			}
+			Console.Error.WriteLine("[AUDIO SYSTEM] VirtualMIDISynth unavailable; using " + outputDevice.Name + ". " + ex.Message);
+			return outputDevice;
+		}
+	}
 
-                                if (result == System.Windows.Forms.DialogResult.OK)
-                                {
-                                    lock (pickedPathLock)
-                                    {
-                                        pickedPath = openFileDialog.FileName;
-                                    }
-                                }
-                            }
-                        }
-                        finally
-                        {
-                            Interlocked.Exchange(ref dialogOpen, 0);
-                        }
-                    });
-                    fileThread.SetApartmentState(ApartmentState.STA);
-                    fileThread.Start();
-                }
+	private unsafe static void StartFilePicker(ConcurrentQueue<string> selectedFiles, DialogState dialogState)
+	{
+		ConcurrentQueue<string> selectedFiles2 = selectedFiles;
+		DialogState dialogState2 = dialogState;
+		if (Interlocked.CompareExchange(ref dialogState2.IsOpen, 1, 0) != 0)
+		{
+			return;
+		}
+		nint ownerHandle = (nint)Raylib.GetWindowHandle();
+		Thread thread = new Thread((ThreadStart)delegate
+		{
+			try
+			{
+				OpenFileDialog openFileDialog = new OpenFileDialog
+				{
+					Filter = "Sheet Music & MIDI|*.bmp;*.jpeg;*.jpg;*.pdf;*.png;*.tif;*.tiff;*.webp;*.mid;*.midi;*.mxl;*.musicxml;*.xml"
+				};
+				try
+				{
+					if (((ownerHandle == IntPtr.Zero) ? openFileDialog.ShowDialog() : openFileDialog.ShowDialog(new Win32Window(ownerHandle))) == DialogResult.OK)
+					{
+						selectedFiles2.Enqueue(openFileDialog.FileName);
+					}
+				}
+				finally
+				{
+					((IDisposable)(object)openFileDialog)?.Dispose();
+				}
+			}
+			finally
+			{
+				Interlocked.Exchange(ref dialogState2.IsOpen, 0);
+			}
+		});
+		thread.SetApartmentState(ApartmentState.STA);
+		thread.Start();
+	}
 
-                string? dialogPath = null;
-                lock (pickedPathLock)
-                {
-                    dialogPath = pickedPath;
-                    pickedPath = null;
-                }
+	private unsafe static void HandleDroppedFiles(GameState state, ConcurrentQueue<string> selectedFiles)
+	{
+		if (state != 0 || !Raylib.IsFileDropped())
+		{
+			return;
+		}
+		FilePathList files = Raylib.LoadDroppedFiles();
+		try
+		{
+			if (files.Count != 0)
+			{
+				string text = Marshal.PtrToStringUTF8((nint)(*files.Paths));
+				if (!string.IsNullOrWhiteSpace(text))
+				{
+					selectedFiles.Enqueue(text);
+				}
+			}
+		}
+		finally
+		{
+			Raylib.UnloadDroppedFiles(files);
+		}
+	}
 
-                if (!string.IsNullOrEmpty(dialogPath) && currentState == GameState.WaitingForFile)
-                {
-                    string inputImagePath = dialogPath;
-                    currentState = GameState.Processing;
-                    Task.Run(() =>
-                    {
-                        try
-                        {
-                            string audiverisPath = @"C:\Program Files\Audiveris\Audiveris.exe";
+	private static void LoadSong(LoadRequest request, LoadResultHandoff<SongLoadResult> results, LoadProgressTracker progress, CancellationToken cancellationToken)
+	{
+		try
+		{
+			SongLoadResult value = (((object)request.RecentSong != null) ? SongCache.LoadRecent(request.RecentSong) : SongCache.LoadOrCreateDetailed(request.InputPath ?? throw new InvalidOperationException("Load request has no source path."), request.Engine, cancellationToken, progress, request.BypassKnownFailure, request.ForceReprocess));
+			results.Complete(value);
+		}
+		catch (Exception error)
+		{
+			results.Fail(error);
+		}
+	}
 
-                            string fileNameNoExt = Path.GetFileNameWithoutExtension(inputImagePath)!;
-                            string parentDirectory = Path.GetDirectoryName(inputImagePath)!;
-                            string extension = Path.GetExtension(inputImagePath).ToLower();
+	/// <summary>
+	/// True when this request would silently reuse an existing cache, so the user should be
+	/// asked first. Cache-playlist replays and direct MIDI/MusicXML loads never ask, because
+	/// neither runs the OMR pipeline.
+	/// </summary>
+	private static bool NeedsReuseConfirmation(LoadRequest request)
+	{
+		if (request.ReuseConfirmed || request.ForceReprocess || (object)request.RecentSong != null)
+		{
+			return false;
+		}
+		string? inputPath = request.InputPath;
+		if (string.IsNullOrWhiteSpace(inputPath))
+		{
+			return false;
+		}
+		if (Path.GetExtension(inputPath).ToLowerInvariant() is ".mid" or ".midi" or ".mxl" or ".musicxml" or ".xml")
+		{
+			return false;
+		}
+		return SongCache.HasCachedResult(inputPath, request.Engine);
+	}
 
-                            string generatedMxlPath = Path.Combine(parentDirectory, $"{fileNameNoExt}.mxl");
-                            string finalMidiPath = Path.Combine(parentDirectory, $"{fileNameNoExt}.mid");
-                            string pythonScriptPath = @"C:\Users\bur4x\Desktop\lecture\big_projects\SynthesiaClone\mxl_to_midi.py";
+	private static ReuseAction DrawConfirmReuse(UiLayout layout, LoadRequest? request)
+	{
+		if ((object)request == null)
+		{
+			return ReuseAction.Cancel;
+		}
+		float scale = layout.Scale;
+		float width = Math.Min((float)layout.Width - 64f * scale, 760f * scale);
+		float height = 320f * scale;
+		Rectangle bounds = new Rectangle(((float)layout.Width - width) / 2f, ((float)layout.Height - height) / 2f, width, height);
+		UiTheme.DrawCard(bounds, scale);
+		string engineName = OmrPipeline.GetEngineName(request.Engine).ToUpperInvariant();
+		UiTheme.DrawText("Already converted", (int)(bounds.X + 30f * scale), (int)(bounds.Y + 26f * scale), Math.Max(24, (int)(30f * scale)), UiTheme.Warning);
+		DrawWrappedText($"\"{request.DisplayName}\" already has a validated {engineName} cache, so it would load instantly. Re-running replaces that cache and takes the full {engineName} conversion time.", new Rectangle(bounds.X + 30f * scale, bounds.Y + 84f * scale, bounds.Width - 60f * scale, 120f * scale), Math.Max(14, (int)(17f * scale)), UiTheme.Text);
+		float y = bounds.Y + bounds.Height - 74f * scale;
+		float gap = 10f * scale;
+		float buttonWidth = (bounds.Width - 60f * scale - gap * 2f) / 3f;
+		if (UiTheme.DrawButton(new Rectangle(bounds.X + 30f * scale, y, buttonWidth, 44f * scale), "Use cached", UiTheme.Lime))
+		{
+			return ReuseAction.UseCached;
+		}
+		if (UiTheme.DrawButton(new Rectangle(bounds.X + 30f * scale + buttonWidth + gap, y, buttonWidth, 44f * scale), "Re-run " + engineName, UiTheme.Warning))
+		{
+			return ReuseAction.Reprocess;
+		}
+		if (UiTheme.DrawButton(new Rectangle(bounds.X + 30f * scale + (buttonWidth + gap) * 2f, y, buttonWidth, 44f * scale), "Cancel", UiTheme.Sky))
+		{
+			return ReuseAction.Cancel;
+		}
+		return ReuseAction.None;
+	}
 
-                            if (extension == ".png" || extension == ".jpg" || extension == ".pdf")
-                            {
-                                Console.WriteLine("Route: Image/PDF detected. Running Audiveris...");
-                                string audiverisArgs = $"-batch -export \"{inputImagePath}\" -output \"{parentDirectory}\"";
-                                RunSilentProcess(audiverisPath, audiverisArgs);
+	private static void HandleReuseAction(ReuseAction action, LoadRequest? request, ConcurrentQueue<LoadRequest> loadRequests, ref GameState state)
+	{
+		switch (action)
+		{
+		case ReuseAction.UseCached:
+			if ((object)request != null)
+			{
+				loadRequests.Enqueue(request with { ReuseConfirmed = true });
+			}
+			state = GameState.WaitingForFile;
+			break;
+		case ReuseAction.Reprocess:
+			if ((object)request != null)
+			{
+				loadRequests.Enqueue(request with { ForceReprocess = true, ReuseConfirmed = true });
+			}
+			state = GameState.WaitingForFile;
+			break;
+		case ReuseAction.Cancel:
+			state = GameState.WaitingForFile;
+			break;
+		}
+	}
 
-                                string pythonArgs = $"\"{pythonScriptPath}\" \"{generatedMxlPath}\" \"{finalMidiPath}\"";
+	private static LoadRequest? DrawLanding(UiLayout layout, ref OmrEngine selectedEngine, IReadOnlyList<PdfLibraryEntry> pdfLibrary, IReadOnlyList<CachedSongEntry> cachedSongs, IReadOnlyList<MidiLibraryEntry> midiLibrary, ref int pdfScrollOffset, ref int cacheScrollOffset, ref OmrEngine? cacheEngineFilter, ref int midiScrollOffset, string? message, out bool browseRequested, out bool refreshRequested)
+	{
+		float scale = layout.Scale;
+		int fontSize = Math.Max(25, (int)(34f * scale));
+		UiTheme.DrawText("Sheet2Play", (int)(32f * scale), (int)(18f * scale), fontSize, UiTheme.Text);
+		UiTheme.DrawText("Turn sheet music into synchronized piano playback", (int)(34f * scale), (int)(56f * scale), Math.Max(13, (int)(16f * scale)), UiTheme.Muted);
+		UiTheme.DrawText("F11  FULLSCREEN", layout.Width - (int)(150f * scale), (int)(29f * scale), Math.Max(12, (int)(14f * scale)), UiTheme.Muted);
+		float num = Math.Min((float)layout.Width - 48f * scale, 1120f * scale);
+		float num2 = ((float)layout.Width - num) / 2f;
+		Rectangle bounds = new Rectangle(num2, 88f * scale, num, 74f * scale);
+		UiTheme.DrawCard(bounds, scale);
+		UiTheme.DrawText("Drop a PDF or score image here", (int)(bounds.X + 24f * scale), (int)(bounds.Y + 14f * scale), Math.Max(16, (int)(20f * scale)), UiTheme.Text);
+		UiTheme.DrawText("PDF, PNG, JPEG, TIFF, BMP or WebP", (int)(bounds.X + 24f * scale), (int)(bounds.Y + 43f * scale), Math.Max(12, (int)(14f * scale)), UiTheme.Muted);
+		Rectangle bounds2 = new Rectangle(bounds.X + bounds.Width - 150f * scale, bounds.Y + 16f * scale, 122f * scale, 42f * scale);
+		browseRequested = UiTheme.DrawButton(bounds2, "Browse", UiTheme.Sky);
+		Rectangle bounds3 = new Rectangle(bounds2.X - 112f * scale, bounds2.Y, 98f * scale, bounds2.Height);
+		refreshRequested = UiTheme.DrawButton(bounds3, "Refresh", UiTheme.Muted);
+		UiTheme.DrawText("OMR ENGINE", (int)num2, (int)(174f * scale), Math.Max(12, (int)(14f * scale)), UiTheme.Muted);
+		float num3 = 16f * scale;
+		float num4 = (num - num3) / 2f;
+		Rectangle bounds4 = new Rectangle(num2, 194f * scale, num4, 64f * scale);
+		Rectangle bounds5 = new Rectangle(num2 + num4 + num3, 194f * scale, num4, 64f * scale);
+		if (DrawEngineCard(bounds4, "Oemer GPU", "Experimental rhythm · CUDA-only", UiTheme.Sky, selectedEngine == OmrEngine.Zeus))
+		{
+			selectedEngine = OmrEngine.Zeus;
+			PersistEngine(selectedEngine);
+		}
+		if (DrawEngineCard(bounds5, "homr", "Faster · general sheet music", UiTheme.Lime, selectedEngine == OmrEngine.Homr))
+		{
+			selectedEngine = OmrEngine.Homr;
+			PersistEngine(selectedEngine);
+		}
+		if ((bool)Raylib.IsKeyPressed(KeyboardKey.O))
+		{
+			selectedEngine = OmrEngine.Zeus;
+			PersistEngine(selectedEngine);
+		}
+		else if ((bool)Raylib.IsKeyPressed(KeyboardKey.H))
+		{
+			selectedEngine = OmrEngine.Homr;
+			PersistEngine(selectedEngine);
+		}
+		float num5 = 274f * scale;
+		float num6 = 14f * scale;
+		float num7 = (num - 2 * num6) / 3f;
+		float height = Math.Max(170f * scale, (float)layout.Height - num5 - 24f * scale);
+		Rectangle panel = new Rectangle(num2, num5, num7, height);
+		Rectangle panel2 = new Rectangle(num2 + num7 + num6, num5, num7, height);
+		Rectangle panel3 = new Rectangle(num2 + 2 * (num7 + num6), num5, num7, height);
+		PdfLibraryEntry pdfLibraryEntry = DrawPdfLibraryPanel(panel, pdfLibrary, ref pdfScrollOffset, scale);
+		CachedSongEntry cachedSongEntry = DrawCacheLibraryPanel(panel2, cachedSongs, ref cacheScrollOffset, ref cacheEngineFilter, scale);
+		MidiLibraryEntry midiLibraryEntry = DrawMidiLibraryPanel(panel3, midiLibrary, ref midiScrollOffset, scale);
+		if (!string.IsNullOrWhiteSpace(message))
+		{
+			Rectangle rec = new Rectangle(num2 + 8f * scale, (float)layout.Height - 47f * scale, num - 16f * scale, 32f * scale);
+			Raylib.DrawRectangleRounded(rec, 0.18f, 8, UiTheme.Elevated);
+			UiTheme.DrawText(UiTheme.Ellipsize(message, 13, (int)(rec.Width - 20f * scale)), (int)(rec.X + 10f * scale), (int)(rec.Y + 8f * scale), 13, UiTheme.Warning);
+		}
+		if ((object)pdfLibraryEntry != null)
+		{
+			return new LoadRequest(pdfLibraryEntry.FullPath, selectedEngine, BypassKnownFailure: false, null);
+		}
+		if ((object)cachedSongEntry != null)
+		{
+			return new LoadRequest(null, cachedSongEntry.RecentSong.Engine, BypassKnownFailure: false, cachedSongEntry.RecentSong);
+		}
+		if ((object)midiLibraryEntry != null)
+		{
+			return new LoadRequest(midiLibraryEntry.FullPath, selectedEngine, BypassKnownFailure: false, null);
+		}
+		return null;
+	}
 
-                                Console.WriteLine("Converting to midi...");
-                                RunSilentProcess("python", pythonArgs);
-                            }
-                            else if (extension == ".xml" || extension == ".mxl")
-                            {
-                                Console.WriteLine("Route: XML/MXL detected. Skipping Audiveris, running Python...");
-                                string pythonArgs = $"\"{pythonScriptPath}\" \"{inputImagePath}\" \"{finalMidiPath}\"";
-
-                                Console.WriteLine("Converting to midi...");
-                                RunSilentProcess("python", pythonArgs);
-                            }
-                            else if (extension == ".mid" || extension == ".midi")
-                            {
-                                Console.WriteLine("Route: MIDI detected. Skipping all conversions...");
-                                finalMidiPath = inputImagePath;
-                            }
-
-                            Console.WriteLine("Parsing MIDI and launching game...");
-                            dummySong = ParseMidiFile(finalMidiPath);
-                            totalSongDuration = dummySong.Count > 0 ? dummySong.Max(n => n.StartTime + n.Duration) : 1;
-                            Array.Clear(activePCounts, 0, activePCounts.Length);
-                            for (int i = 0; i < 88; i++)
-                            {
-                                synthDevice.SendEvent(new NoteOffEvent((SevenBitNumber)(byte)(i + 21), (SevenBitNumber)(byte)0));
-                            }
-                            foreach (Note n in dummySong)
-                            {
-                                n.IsPlaying = false;
-                                n.HasPlayed = false;
-                            }
-                            current_time = 0;
-                            isPaused = false;
-                            currentState = GameState.Playing;
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine("\n[BACKGROUND TASK CRASHED]");
-                            Console.WriteLine(ex.Message);
-                        }
-                    });
-                }
-
-                if (Raylib.IsFileDropped() && currentState == GameState.WaitingForFile)
-                {
-                    FilePathList droppedFiles = Raylib.LoadDroppedFiles();
-
-                    if (droppedFiles.Count > 0)
-                    {
-                        string inputImagePath = "";
-                        unsafe
-                        {
-                            inputImagePath = Marshal.PtrToStringUTF8((IntPtr)droppedFiles.Paths[0])!;
-                        }
-                        currentState = GameState.Processing;
-                        Task.Run(() =>
-                {
-                try
-                {
-                    string audiverisPath = @"C:\Program Files\Audiveris\Audiveris.exe";
-
-                    string fileNameNoExt = Path.GetFileNameWithoutExtension(inputImagePath)!;
-                    string parentDirectory = Path.GetDirectoryName(inputImagePath)!;
-                    string extension = Path.GetExtension(inputImagePath).ToLower();
-
-                    string generatedMxlPath = Path.Combine(parentDirectory, $"{fileNameNoExt}.mxl");
-                    string finalMidiPath = Path.Combine(parentDirectory, $"{fileNameNoExt}.mid");
-                    string pythonScriptPath = @"C:\Users\bur4x\Desktop\lecture\big_projects\SynthesiaClone\mxl_to_midi.py";
-
-                    if (extension == ".png" || extension == ".jpg" || extension == ".pdf")
-                    {
-                        Console.WriteLine("Route: Image/PDF detected. Running Audiveris...");
-                        string audiverisArgs = $"-batch -export \"{inputImagePath}\" -output \"{parentDirectory}\"";
-                        RunSilentProcess(audiverisPath, audiverisArgs);
-
-                        string pythonArgs = $"\"{pythonScriptPath}\" \"{generatedMxlPath}\" \"{finalMidiPath}\"";
-
-                        Console.WriteLine("Converting to midi...");
-                        RunSilentProcess("python", pythonArgs);
-                    }
-                    else if (extension == ".xml" || extension == ".mxl")
-                    {
-                        Console.WriteLine("Route: XML/MXL detected. Skipping Audiveris, running Python...");
-                        string pythonArgs = $"\"{pythonScriptPath}\" \"{inputImagePath}\" \"{finalMidiPath}\"";
-
-                        Console.WriteLine("Converting to midi...");
-                        RunSilentProcess("python", pythonArgs);
-                    }
-                    else if (extension == ".mid" || extension == ".midi")
-                    {
-                        Console.WriteLine("Route: MIDI detected. Skipping all conversions...");
-                        finalMidiPath = inputImagePath;
-                    }
-
-                    Console.WriteLine("Parsing MIDI and launching game...");
-                    dummySong = ParseMidiFile(finalMidiPath);
-                    totalSongDuration = dummySong.Count > 0 ? dummySong.Max(n => n.StartTime + n.Duration) : 1;
-                    Array.Clear(activePCounts, 0, activePCounts.Length);
-                    for (int i = 0; i < 88; i++)
-                    {
-                        synthDevice.SendEvent(new NoteOffEvent((SevenBitNumber)(byte)(i + 21), (SevenBitNumber)(byte)0));
-                    }
-                    foreach (Note n in dummySong)
-                    {
-                        n.IsPlaying = false;
-                        n.HasPlayed = false;
-                    }
-                    current_time = 0;
-                    isPaused = false;
-                    currentState = GameState.Playing;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("\n[BACKGROUND TASK CRASHED]");
-                    Console.WriteLine(ex.Message);
-                }
-            });
-                }
-                Raylib.UnloadDroppedFiles(droppedFiles);
-                }
-                Raylib.BeginDrawing();
-                Raylib.ClearBackground(Color.Black);
+	private static PdfLibraryEntry? DrawPdfLibraryPanel(Rectangle panel, IReadOnlyList<PdfLibraryEntry> entries, ref int scrollOffset, float scale)
+	{
+		DrawLibraryHeader(panel, "PDF LIBRARY", $"{entries.Count} files", UiTheme.Sky, scale);
+		int visibleLibraryRows = GetVisibleLibraryRows(panel, scale);
+		UpdateLibraryScroll(panel, entries.Count, visibleLibraryRows, ref scrollOffset);
+		PdfLibraryEntry result = null;
+		float num = Math.Clamp(48f * scale, 40f, 58f);
+		float num2 = Math.Clamp(6f * scale, 4f, 9f);
+		float num3 = panel.Y + 50f * scale;
+		for (int i = 0; i < visibleLibraryRows && scrollOffset + i < entries.Count; i++)
+		{
+			PdfLibraryEntry pdfLibraryEntry = entries[scrollOffset + i];
+			Rectangle rec = new Rectangle(panel.X + 10f * scale, num3 + (float)i * (num + num2), panel.Width - 20f * scale, num);
+			Raylib.DrawRectangleRounded(rec, 0.12f, 8, UiTheme.Elevated);
+			int fontSize = Math.Max(12, (int)(15f * scale));
+			UiTheme.DrawText(UiTheme.Ellipsize(pdfLibraryEntry.DisplayName, fontSize, (int)(rec.Width - 94f * scale)), (int)(rec.X + 12f * scale), (int)(rec.Y + 7f * scale), fontSize, UiTheme.Text);
+			UiTheme.DrawText(FormatFileSize(pdfLibraryEntry.SizeBytes), (int)(rec.X + 12f * scale), (int)(rec.Y + 27f * scale), Math.Max(10, (int)(12f * scale)), UiTheme.Muted);
+			if (UiTheme.DrawButton(new Rectangle(rec.X + rec.Width - 72f * scale, rec.Y + 7f * scale, 62f * scale, rec.Height - 14f * scale), "Load", UiTheme.Sky))
+			{
+				result = pdfLibraryEntry;
+			}
+		}
+		if (entries.Count == 0)
+		{
+			DrawLibraryEmpty(panel, "Put PDF files in songs/pdf", scale);
+		}
+		DrawLibraryScrollbar(panel, entries.Count, visibleLibraryRows, scrollOffset, scale);
+		return result;
+	}
 
 
-                switch (currentState)
-                {
-                    case GameState.WaitingForFile:
-                        Raylib.DrawText("Drag and drop a file here", screenWidth / 2 - 170, screenHeight / 2 - 60, 24, Color.White);
-                        Raylib.DrawText("or press O to browse", screenWidth / 2 - 120, screenHeight / 2 - 25, 20, Color.White);
-                        break;
-                    
-                    
+	private static MidiLibraryEntry? DrawMidiLibraryPanel(Rectangle panel, IReadOnlyList<MidiLibraryEntry> entries, ref int scrollOffset, float scale)
+	{
+		DrawLibraryHeader(panel, "MIDI PLAYER", $"{entries.Count} tracks", UiTheme.Sky, scale);
+		int visibleLibraryRows = GetVisibleLibraryRows(panel, scale);
+		UpdateLibraryScroll(panel, entries.Count, visibleLibraryRows, ref scrollOffset);
+		MidiLibraryEntry result = null;
+		float num = Math.Clamp(48f * scale, 40f, 58f);
+		float num2 = Math.Clamp(6f * scale, 4f, 9f);
+		float num3 = panel.Y + 50f * scale;
+		for (int i = 0; i < visibleLibraryRows && scrollOffset + i < entries.Count; i++)
+		{
+			MidiLibraryEntry entry = entries[scrollOffset + i];
+			Rectangle rec = new Rectangle(panel.X + 10f * scale, num3 + (float)i * (num + num2), panel.Width - 20f * scale, num);
+			Raylib.DrawRectangleRounded(rec, 0.12f, 8, UiTheme.Elevated);
+			int fontSize = Math.Max(12, (int)(15f * scale));
+			UiTheme.DrawText(UiTheme.Ellipsize(entry.DisplayName, fontSize, (int)(rec.Width - 94f * scale)), (int)(rec.X + 12f * scale), (int)(rec.Y + 7f * scale), fontSize, UiTheme.Text);
+			UiTheme.DrawText(FormatFileSize(entry.SizeBytes), (int)(rec.X + 12f * scale), (int)(rec.Y + 27f * scale), Math.Max(10, (int)(12f * scale)), UiTheme.Muted);
+			if (UiTheme.DrawButton(new Rectangle(rec.X + rec.Width - 72f * scale, rec.Y + 7f * scale, 62f * scale, rec.Height - 14f * scale), "Play", UiTheme.Sky))
+			{
+				result = entry;
+			}
+		}
+		if (entries.Count == 0)
+		{
+			DrawLibraryEmpty(panel, "Put MIDI/MXL files in songs/midi/custom", scale);
+		}
+		DrawLibraryScrollbar(panel, entries.Count, visibleLibraryRows, scrollOffset, scale);
+		return result;
+	}
 
-                    case GameState.Processing:
-                        Raylib.DrawText("Converting via Audiveris & MuseScore... Please Wait", screenWidth / 2 - 250, screenHeight / 2, 20, Color.Yellow);
-                        break;
+	private static CachedSongEntry? DrawCacheLibraryPanel(Rectangle panel, IReadOnlyList<CachedSongEntry> entries, ref int scrollOffset, ref OmrEngine? engineFilter, float scale)
+	{
+		DrawLibraryHeader(panel, "CACHE PLAYLIST", $"{entries.Count} ready", UiTheme.Lime, scale);
+		if (entries.Count == 0)
+		{
+			DrawLibraryEmpty(panel, "Validated MIDI caches appear here", scale);
+			scrollOffset = 0;
+			engineFilter = null;
+			return null;
+		}
+		OmrEngine[] presentEngines = entries
+			.Select(static entry => entry.RecentSong.Engine)
+			.Distinct()
+			.OrderBy(static engine => (int)engine)
+			.ToArray();
+		if (engineFilter.HasValue && !presentEngines.Contains(engineFilter.Value))
+		{
+			engineFilter = null;
+			scrollOffset = 0;
+		}
+		if (DrawEngineTabs(panel, presentEngines, entries, ref engineFilter, scale))
+		{
+			scrollOffset = 0;
+		}
+		OmrEngine? activeFilter = engineFilter;
+		IReadOnlyList<CachedSongEntry> visible = activeFilter.HasValue
+			? entries.Where(entry => entry.RecentSong.Engine == activeFilter.Value).ToArray()
+			: entries;
+		float rowsTop = 78f;
+		float rowHeight = Math.Clamp(48f * scale, 40f, 58f);
+		float rowGap = Math.Clamp(6f * scale, 4f, 9f);
+		float headerHeight = Math.Clamp(22f * scale, 18f, 28f);
+		float available = panel.Height - (rowsTop + 8f) * scale;
+		List<(OmrEngine Engine, CachedSongEntry? Entry)> rows = BuildCacheRows(visible, !activeFilter.HasValue);
+		int visibleRows = CountVisibleCacheRows(rows, scrollOffset, available, rowHeight, rowGap, headerHeight);
+		UpdateLibraryScroll(panel, rows.Count, visibleRows, ref scrollOffset);
+		visibleRows = CountVisibleCacheRows(rows, scrollOffset, available, rowHeight, rowGap, headerHeight);
+		CachedSongEntry result = null;
+		float y = panel.Y + rowsTop * scale;
+		for (int i = scrollOffset; i < rows.Count && i < scrollOffset + visibleRows; i++)
+		{
+			(OmrEngine engine, CachedSongEntry? entry) = rows[i];
+			Color accent = GetEngineAccent(engine);
+			if (entry == null)
+			{
+				UiTheme.DrawText(OmrPipeline.GetEngineName(engine).ToUpperInvariant(), (int)(panel.X + 14f * scale), (int)(y + 5f * scale), Math.Max(10, (int)(11f * scale)), accent);
+				y += headerHeight + rowGap;
+				continue;
+			}
+			Rectangle rec = new Rectangle(panel.X + 10f * scale, y, panel.Width - 20f * scale, rowHeight);
+			Raylib.DrawRectangleRounded(rec, 0.12f, 8, UiTheme.Elevated);
+			int fontSize = Math.Max(12, (int)(15f * scale));
+			UiTheme.DrawText(UiTheme.Ellipsize(entry.RecentSong.DisplayName, fontSize, (int)(rec.Width - 94f * scale)), (int)(rec.X + 12f * scale), (int)(rec.Y + 7f * scale), fontSize, UiTheme.Text);
+			UiTheme.DrawText($"{entry.NoteCount:N0} notes · {PlaybackFormatting.FormatTime(entry.DurationSeconds)}", (int)(rec.X + 12f * scale), (int)(rec.Y + 27f * scale), Math.Max(10, (int)(12f * scale)), UiTheme.Muted);
+			if (UiTheme.DrawButton(new Rectangle(rec.X + rec.Width - 70f * scale, rec.Y + 7f * scale, 60f * scale, rec.Height - 14f * scale), "Play", accent))
+			{
+				result = entry;
+			}
+			y += rowHeight + rowGap;
+		}
+		DrawLibraryScrollbar(panel, rows.Count, visibleRows, scrollOffset, scale, rowsTop);
+		return result;
+	}
 
-                    case GameState.Playing:
-                        int slider_x = 100;
-                        int slider_y = 20;
-                        int slider_width = screenWidth - 200;
-                        int slider_height = 10;
+	/// <summary>
+	/// Draws the "ALL" tab plus one tab per engine that actually has cached songs, and
+	/// returns true when the selection changed. Counts are dropped automatically if the
+	/// labels would overflow this panel, which is only a third of the window wide.
+	/// </summary>
+	private static bool DrawEngineTabs(Rectangle panel, OmrEngine[] engines, IReadOnlyList<CachedSongEntry> entries, ref OmrEngine? engineFilter, float scale)
+	{
+		float tabHeight = Math.Clamp(26f * scale, 22f, 34f);
+		int fontSize = Math.Max(14, (int)(18f * Math.Min(1.4f, tabHeight / 44f)));
+		float padding = 12f * scale;
+		float gap = 6f * scale;
+		float usableWidth = panel.Width - 20f * scale;
 
-                        if (Raylib.IsMouseButtonPressed(MouseButton.Left))
-                        {
-                            int mouse_x = Raylib.GetMouseX();
-                            int mouse_y = Raylib.GetMouseY();
+		string[] plain = new string[engines.Length + 1];
+		string[] counted = new string[engines.Length + 1];
+		plain[0] = "ALL";
+		counted[0] = $"ALL {entries.Count}";
+		for (int i = 0; i < engines.Length; i++)
+		{
+			int count = 0;
+			foreach (CachedSongEntry entry in entries)
+			{
+				if (entry.RecentSong.Engine == engines[i])
+				{
+					count++;
+				}
+			}
+			plain[i + 1] = GetEngineTabLabel(engines[i]);
+			counted[i + 1] = $"{plain[i + 1]} {count}";
+		}
 
-                            if (mouse_y >= slider_y - 10 && mouse_y <= slider_y + slider_height + 10
-                                && mouse_x >= slider_x && mouse_x <= slider_x + slider_width)
-                            {
-                                double click_percentage = (double)(mouse_x - slider_x) / slider_width;
-                                if (click_percentage < 0) click_percentage = 0;
-                                if (click_percentage > 1) click_percentage = 1;
+		float required = 0f;
+		foreach (string label in counted)
+		{
+			required += UiTheme.MeasureText(label, fontSize) + padding * 2f + gap;
+		}
+		string[] labels = ((required - gap > usableWidth) ? plain : counted);
 
-                                current_time = click_percentage * totalSongDuration;
+		bool changed = false;
+		float x = panel.X + 10f * scale;
+		float y = panel.Y + 42f * scale;
+		for (int i = 0; i < labels.Length; i++)
+		{
+			float width = UiTheme.MeasureText(labels[i], fontSize) + padding * 2f;
+			if (i > 0 && x + width > panel.X + panel.Width - 10f * scale)
+			{
+				break;
+			}
+			bool isAll = i == 0;
+			bool selected = (isAll ? !engineFilter.HasValue : engineFilter.HasValue && engineFilter.Value == engines[i - 1]);
+			Color accent = (isAll ? UiTheme.Lime : GetEngineAccent(engines[i - 1]));
+			if (UiTheme.DrawButton(new Rectangle(x, y, width, tabHeight), labels[i], accent, enabled: true, selected) && !selected)
+			{
+				engineFilter = (isAll ? null : engines[i - 1]);
+				changed = true;
+			}
+			x += width + gap;
+		}
+		return changed;
+	}
 
-                                for (int i = 0; i < 88; i++)
-                                {
-                                    synthDevice.SendEvent(new NoteOffEvent((SevenBitNumber)(byte)(i + 21), (SevenBitNumber)(byte)0));
-                                }
-                                Array.Clear(activePCounts, 0, activePCounts.Length);
+	private static string GetEngineTabLabel(OmrEngine engine) => engine switch
+	{
+		OmrEngine.Homr => "HOMR",
+		OmrEngine.Zeus => "ZEUS",
+		OmrEngine.MusicXml => "MXML",
+		OmrEngine.DirectMidi => "MIDI",
+		_ => OmrPipeline.GetEngineName(engine).ToUpperInvariant()
+	};
 
-                                foreach (Note n in dummySong)
-                                {
-                                    n.IsPlaying = false;
-                                    n.HasPlayed = (n.StartTime - audio_offset) < current_time;
-                                }
-                            }
-                        }
+	private static Color GetEngineAccent(OmrEngine engine) => engine switch
+	{
+		OmrEngine.Zeus => UiTheme.Sky,
+		OmrEngine.MusicXml => UiTheme.Warning,
+		OmrEngine.DirectMidi => UiTheme.Sky,
+		_ => UiTheme.Lime
+	};
 
-                        double progress = totalSongDuration > 0 ? (current_time / totalSongDuration) : 0;
-                        if (progress > 1.0) progress = 1.0;
-                        if (progress < 0.0) progress = 0.0;
-                        int fill_width = (int)(progress * slider_width);
+	/// <summary>
+	/// Flattens the engine-ordered cache list into display rows, inserting a section header
+	/// row wherever the engine changes. Entries already arrive grouped by engine and sorted
+	/// by name, so one pass is enough.
+	/// </summary>
+	private static List<(OmrEngine Engine, CachedSongEntry? Entry)> BuildCacheRows(IReadOnlyList<CachedSongEntry> entries, bool includeHeaders)
+	{
+		List<(OmrEngine Engine, CachedSongEntry? Entry)> rows = new();
+		OmrEngine? currentEngine = null;
+		foreach (CachedSongEntry entry in entries)
+		{
+			OmrEngine engine = entry.RecentSong.Engine;
+			if (includeHeaders && (!currentEngine.HasValue || currentEngine.Value != engine))
+			{
+				currentEngine = engine;
+				rows.Add((engine, null));
+			}
+			rows.Add((engine, entry));
+		}
+		return rows;
+	}
 
-                        Raylib.DrawRectangle(slider_x, slider_y, slider_width, slider_height, Color.DarkGray);
-                        Raylib.DrawRectangle(slider_x, slider_y, fill_width, slider_height, Color.SkyBlue);
-                        Raylib.DrawRectangleLines(slider_x, slider_y, slider_width, slider_height, Color.LightGray);
-                        Raylib.DrawCircle(slider_x + fill_width, slider_y + (slider_height / 2), 8, Color.White);
+	/// <summary>
+	/// Header and song rows have different heights, so the visible count is measured by
+	/// walking forward from the scroll offset until the panel runs out of room.
+	/// </summary>
+	private static int CountVisibleCacheRows(List<(OmrEngine Engine, CachedSongEntry? Entry)> rows, int scrollOffset, float available, float rowHeight, float rowGap, float headerHeight)
+	{
+		float used = 0f;
+		int count = 0;
+		for (int i = Math.Max(0, scrollOffset); i < rows.Count; i++)
+		{
+			float height = ((rows[i].Entry == null) ? headerHeight : rowHeight);
+			if (used + height > available)
+			{
+				break;
+			}
+			used += height + rowGap;
+			count++;
+		}
+		return Math.Max(1, count);
+	}
 
-                        foreach (PianoKey note in myPiano.Keys)
-                        {
-                            note.IsPressed = false;
-                        }
-                        foreach (Note note in dummySong)
-                        {
-                            double time_dif = note.StartTime - current_time;
-                            double dist_to_hit = time_dif * fall_speed;
-                            int note_bottom_y = hit_line_y - (int)dist_to_hit;
-                            int note_height = (int)(note.Duration * fall_speed);
-                            int note_top_y = note_bottom_y - note_height;
-                            double trigger_time = note.StartTime - audio_offset;
-                            double end_time = note.StartTime + note.Duration - audio_offset;
+	private static void DrawLibraryHeader(Rectangle panel, string title, string count, Color accent, float scale)
+	{
+		UiTheme.DrawCard(panel, scale);
+		UiTheme.DrawText(title, (int)(panel.X + 14f * scale), (int)(panel.Y + 14f * scale), Math.Max(13, (int)(16f * scale)), UiTheme.Text);
+		int fontSize = Math.Max(10, (int)(12f * scale));
+		int num = UiTheme.MeasureText(count, fontSize);
+		UiTheme.DrawText(count, (int)(panel.X + panel.Width - (float)num - 16f * scale), (int)(panel.Y + 17f * scale), fontSize, accent);
+	}
 
-                            PianoKey p = myPiano.Keys.First(temp => temp.Index == note.TargetKeyIndex);
-                            Color currentNoteColor = note.color;
+	private static void DrawLibraryEmpty(Rectangle panel, string message, float scale)
+	{
+		int fontSize = Math.Max(12, (int)(14f * scale));
+		UiTheme.DrawText(UiTheme.Ellipsize(message, fontSize, (int)(panel.Width - 30f * scale)), (int)(panel.X + 15f * scale), (int)(panel.Y + 66f * scale), fontSize, UiTheme.Muted);
+	}
 
-                            if (note_bottom_y >= hit_line_y && note_top_y <= hit_line_y)
-                            {
-                                p.IsPressed = true;
-                            }
+	private static int GetVisibleLibraryRows(Rectangle panel, float scale)
+	{
+		float num = Math.Clamp(48f * scale, 40f, 58f);
+		float num2 = Math.Clamp(6f * scale, 4f, 9f);
+		return Math.Max(1, (int)((panel.Height - 58f * scale) / (num + num2)));
+	}
 
-                            if (current_time >= trigger_time && !note.HasPlayed)
-                            {
-                                activePCounts[note.TargetKeyIndex]++;
-                                int trueMidiPitch = note.TargetKeyIndex + 21;
+	private static void UpdateLibraryScroll(Rectangle panel, int entryCount, int visibleRows, ref int scrollOffset)
+	{
+		int max = Math.Max(0, entryCount - visibleRows);
+		scrollOffset = Math.Clamp(scrollOffset, 0, max);
+		if ((bool)Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), panel))
+		{
+			float mouseWheelMove = Raylib.GetMouseWheelMove();
+			if (mouseWheelMove != 0f)
+			{
+				scrollOffset = Math.Clamp(scrollOffset - Math.Sign(mouseWheelMove), 0, max);
+			}
+		}
+	}
 
-                                if (activePCounts[note.TargetKeyIndex] == 1)
-                                {
-                                    synthDevice.SendEvent(new NoteOnEvent((SevenBitNumber)trueMidiPitch, (SevenBitNumber)note.Velocity));
-                                }
-                                note.IsPlaying = true;
-                                note.HasPlayed = true;
-                            }
-                            if (current_time >= end_time && note.IsPlaying)
-                            {
-                                activePCounts[note.TargetKeyIndex]--;
-                                int trueMidiPitch = note.TargetKeyIndex + 21;
+	private static void DrawLibraryScrollbar(Rectangle panel, int entryCount, int visibleRows, int scrollOffset, float scale, float topOffset = 50f)
+	{
+		if (entryCount > visibleRows)
+		{
+			float num = panel.Height - (topOffset + 10f) * scale;
+			Rectangle rec = new Rectangle(panel.X + panel.Width - 5f * scale, panel.Y + topOffset * scale, 2f * scale, num);
+			Raylib.DrawRectangleRec(rec, UiTheme.Border);
+			float num2 = Math.Max(20f * scale, num * (float)visibleRows / (float)entryCount);
+			float num3 = (float)scrollOffset / (float)(entryCount - visibleRows);
+			Raylib.DrawRectangleRounded(new Rectangle(rec.X - scale, rec.Y + (num - num2) * num3, 4f * scale, num2), 0.8f, 6, UiTheme.Muted);
+		}
+	}
 
-                                if (activePCounts[note.TargetKeyIndex] == 0)
-                                {
-                                    synthDevice.SendEvent(new NoteOffEvent((SevenBitNumber)(byte)trueMidiPitch, (SevenBitNumber)(byte)0));
-                                }
-                                note.IsPlaying = false;
-                            }
+	private static string FormatFileSize(long bytes)
+	{
+		if (bytes < 0)
+		{
+			return "Unknown size";
+		}
+		if (bytes >= 1024)
+		{
+			double num = (double)bytes / 1024.0;
+			if (num < 1024.0)
+			{
+				return $"{num:0.#} KB";
+			}
+			return $"{num / 1024.0:0.#} MB";
+		}
+		return $"{bytes} B";
+	}
 
-                            if (note_top_y > screenHeight)
-                            {
-                                continue;
-                            }
+	private static bool DrawEngineCard(Rectangle bounds, string title, string description, Color accent, bool selected)
+	{
+		bool flag = Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), bounds);
+		Raylib.DrawRectangleRounded(bounds, 0.12f, 10, selected ? new Color((int)accent.R, (int)accent.G, (int)accent.B, 38) : (flag ? UiTheme.Elevated : UiTheme.Surface));
+		Raylib.DrawRectangleRoundedLinesEx(bounds, 0.12f, 10, (!selected) ? 1 : 2, selected ? accent : UiTheme.Border);
+		int num = Math.Max(17, (int)(21f * Math.Min(1.4f, bounds.Height / 76f)));
+		UiTheme.DrawText(title, (int)bounds.X + 16, (int)bounds.Y + 12, num, UiTheme.Text);
+		UiTheme.DrawText(description, (int)bounds.X + 16, (int)bounds.Y + 43, Math.Max(12, num - 7), UiTheme.Muted);
+		if (selected)
+		{
+			Raylib.DrawCircle((int)(bounds.X + bounds.Width - 22f), (int)(bounds.Y + 22f), 6f, accent);
+		}
+		if (flag)
+		{
+			return Raylib.IsMouseButtonPressed(MouseButton.Left);
+		}
+		return false;
+	}
 
-                            Raylib.DrawRectangle(p.X, note_top_y, p.Width, note_height, currentNoteColor);
-                            Raylib.DrawText(p.Label, p.X + 2, note_bottom_y - 15, 10, Color.White);
-                        }
+	private static void PersistEngine(OmrEngine engine)
+	{
+		try
+		{
+			AppSettingsStore.SaveEngine(engine);
+		}
+		catch (Exception ex)
+		{
+			Console.Error.WriteLine("[SETTINGS] Selection was not persisted: " + ex.Message);
+		}
+	}
 
-                        myPiano.Draw();
-                        if (Raylib.IsKeyPressed(KeyboardKey.Space))
-                        {
-                            isPaused = !isPaused; 
-                        
-                            if (isPaused)
-                            {
-                            for (int i = 0; i < 88; i++)
-                            {
-                                synthDevice.SendEvent(new NoteOffEvent((SevenBitNumber)(byte)(i + 21), (SevenBitNumber)(byte)0));
-                            }
-                            }
-                        }
-                        if (!isPaused)
-                        {
-                            current_time += Raylib.GetFrameTime();
-                        }
-                        else
-                        {
-                            Raylib.DrawText("PAUSED", screenWidth / 2 - 60, 60, 40, Color.Yellow);
-                            Raylib.DrawText("Press SPACE to resume", screenWidth / 2 - 140, 110, 20, Color.LightGray);
-                            myPiano.Draw();
-                            break;
-                        }
-                        break;
-                }
+	private static bool DrawProcessing(UiLayout layout, LoadProgressModel model, bool cancelling)
+	{
+		float scale = layout.Scale;
+		float num = Math.Min((float)layout.Width - 64f * scale, 720f * scale);
+		float num2 = 350f * scale;
+		Rectangle bounds = new Rectangle(((float)layout.Width - num) / 2f, ((float)layout.Height - num2) / 2f, num, num2);
+		UiTheme.DrawCard(bounds, scale);
+		OmrProgress latest = model.Latest;
+		UiTheme.DrawText(cancelling ? "Cancelling conversion" : "Reading sheet music", (int)(bounds.X + 30f * scale), (int)(bounds.Y + 26f * scale), Math.Max(23, (int)(28f * scale)), UiTheme.Text);
+		UiTheme.DrawText(UiTheme.Ellipsize(model.FileName, Math.Max(14, (int)(17f * scale)), (int)(bounds.Width - 210f * scale)), (int)(bounds.X + 30f * scale), (int)(bounds.Y + 70f * scale), Math.Max(14, (int)(17f * scale)), UiTheme.Muted);
+		Color accent = ((model.Engine == OmrEngine.Zeus) ? UiTheme.Sky : UiTheme.Lime);
+		UiTheme.DrawBadge(new Rectangle(bounds.X + bounds.Width - 115f * scale, bounds.Y + 28f * scale, 82f * scale, 28f * scale), OmrPipeline.GetEngineName(model.Engine).ToUpperInvariant(), accent);
+		UiTheme.DrawText(UiTheme.Ellipsize(cancelling ? "Stopping Python processes safely…" : (latest?.Message ?? "Starting background worker"), Math.Max(15, (int)(18f * scale)), (int)(bounds.Width - 60f * scale)), (int)(bounds.X + 30f * scale), (int)(bounds.Y + 118f * scale), Math.Max(15, (int)(18f * scale)), UiTheme.Text);
+		int? num3 = latest?.PageCount;
+		UiTheme.DrawText((num3.HasValue && num3.GetValueOrDefault() > 0) ? $"Page {latest.Page ?? Math.Min(latest.CompletedPages.GetValueOrDefault() + 1, latest.PageCount.Value)} of {latest.PageCount}" : FriendlyStage(latest?.Stage), (int)(bounds.X + 30f * scale), (int)(bounds.Y + 155f * scale), Math.Max(13, (int)(16f * scale)), UiTheme.Muted);
+		Rectangle bounds2 = new Rectangle(bounds.X + 30f * scale, bounds.Y + 192f * scale, bounds.Width - 60f * scale, 18f * scale);
+		bool animated = !cancelling && latest?.Stage == "page_inference" && latest.Status == "started";
+		UiTheme.DrawProgressBar(bounds2, model.Fraction, animated, model.ElapsedSeconds);
+		UiTheme.DrawText($"{model.Fraction * 100.0:0}%", (int)(bounds2.X + bounds2.Width - 42f * scale), (int)(bounds2.Y + 28f * scale), Math.Max(12, (int)(14f * scale)), UiTheme.Muted);
+		string text = "Elapsed  " + PlaybackFormatting.FormatTime(model.ElapsedSeconds);
+		bool flag;
+		switch (latest?.Stage)
+		{
+		case "normalization":
+		case "midi_write":
+		case "cache_validation":
+			flag = true;
+			break;
+		default:
+			flag = false;
+			break;
+		}
+		object text2;
+		if (!flag)
+		{
+			double? estimatedRemainingSeconds = model.EstimatedRemainingSeconds;
+			if (estimatedRemainingSeconds.HasValue)
+			{
+				double valueOrDefault = estimatedRemainingSeconds.GetValueOrDefault();
+				text2 = "Approx. remaining  " + PlaybackFormatting.FormatTime(valueOrDefault);
+			}
+			else
+			{
+				text2 = "Estimating…";
+			}
+		}
+		else
+		{
+			text2 = "Finishing…";
+		}
+		UiTheme.DrawText(text, (int)(bounds.X + 30f * scale), (int)(bounds.Y + 244f * scale), Math.Max(13, (int)(15f * scale)), UiTheme.Muted);
+		int num4 = UiTheme.MeasureText((string)text2, Math.Max(13, (int)(15f * scale)));
+		UiTheme.DrawText((string)text2, (int)(bounds.X + bounds.Width - 30f * scale - (float)num4), (int)(bounds.Y + 244f * scale), Math.Max(13, (int)(15f * scale)), UiTheme.Muted);
+		return UiTheme.DrawButton(new Rectangle(bounds.X + bounds.Width / 2f - 70f * scale, bounds.Y + bounds.Height - 62f * scale, 140f * scale, 40f * scale), cancelling ? "Cancelling…" : "Cancel  (Esc)", UiTheme.Danger, !cancelling);
+	}
 
-                Raylib.EndDrawing();
-            }
+	private static string FriendlyStage(string? stage)
+	{
+		return stage switch
+		{
+			"cache_lookup" => "Checking cache", 
+			"input_inspection" => "Inspecting input", 
+			"model_load" => "Loading model", 
+			"page_inference" => "Processing pages", 
+			"normalization" => "Normalizing score", 
+			"midi_write" => "Writing MIDI", 
+			"cache_validation" => "Validating cache", 
+			"known_failure" => "Known deterministic failure", 
+			_ => "Preparing", 
+		};
+	}
 
-            Raylib.CloseAudioDevice();
-            synthDevice.Dispose();
-            Raylib.CloseWindow();
-        }
+	private static ErrorAction DrawError(UiLayout layout, Exception? exception, LoadRequest? request)
+	{
+		float scale = layout.Scale;
+		float num = Math.Min((float)layout.Width - 64f * scale, 760f * scale);
+		float num2 = 390f * scale;
+		Rectangle bounds = new Rectangle(((float)layout.Width - num) / 2f, ((float)layout.Height - num2) / 2f, num, num2);
+		UiTheme.DrawCard(bounds, scale);
+		UiTheme.DrawText("Conversion failed", (int)(bounds.X + 30f * scale), (int)(bounds.Y + 26f * scale), Math.Max(24, (int)(30f * scale)), UiTheme.Danger);
+		DrawWrappedText(FormatLoadError(exception ?? new InvalidOperationException("Unknown loading error.")), new Rectangle(bounds.X + 30f * scale, bounds.Y + 82f * scale, bounds.Width - 60f * scale, 110f * scale), Math.Max(14, (int)(17f * scale)), UiTheme.Text);
+		if (exception is KnownOmrFailureException)
+		{
+			UiTheme.DrawText("This deterministic result was remembered; the model was not loaded again.", (int)(bounds.X + 30f * scale), (int)(bounds.Y + 205f * scale), Math.Max(12, (int)(14f * scale)), UiTheme.Warning);
+			goto IL_01cc;
+		}
+		if (!(exception is OmrPipelineException ex))
+		{
+			goto IL_0189;
+		}
+		switch (ex.ErrorCode)
+		{
+		case "OEMER_OUTPUT_INVALID":
+		case "OEMER_LAYOUT_AMBIGUOUS":
+		case "MUSICXML_PARSE_FAILED":
+			break;
+		default:
+			goto IL_0189;
+		}
+		bool flag = true;
+		goto IL_018c;
+		IL_0189:
+		flag = false;
+		goto IL_018c;
+		IL_01cc:
+		float y = bounds.Y + bounds.Height - 116f * scale;
+		float num3 = 10f * scale;
+		float num4 = (bounds.Width - 60f * scale - num3 * 2f) / 3f;
+		if (request?.InputPath != null)
+		{
+			string label = ((request.Engine == OmrEngine.Zeus) ? "Retry homr" : "Retry Oemer");
+			Color accent = ((request.Engine == OmrEngine.Zeus) ? UiTheme.Lime : UiTheme.Sky);
+			if (UiTheme.DrawButton(new Rectangle(bounds.X + 30f * scale, y, num4, 44f * scale), label, accent))
+			{
+				return ErrorAction.RetryAlternate;
+			}
+			if (UiTheme.DrawButton(new Rectangle(bounds.X + 30f * scale + num4 + num3, y, num4, 44f * scale), "Retry anyway", UiTheme.Warning))
+			{
+				return ErrorAction.RetrySame;
+			}
+			if (UiTheme.DrawButton(new Rectangle(bounds.X + 30f * scale + (num4 + num3) * 2f, y, num4, 44f * scale), "Choose file", UiTheme.Sky))
+			{
+				return ErrorAction.ChooseFile;
+			}
+		}
+		else if (UiTheme.DrawButton(new Rectangle(bounds.X + bounds.Width / 2f - 100f * scale, y, 200f * scale, 44f * scale), "Back to library", UiTheme.Sky))
+		{
+			return ErrorAction.Back;
+		}
+		return ErrorAction.None;
+		IL_018c:
+		if (flag)
+		{
+			UiTheme.DrawText("Oemer could not preserve a reliable score structure. Try homr.", (int)(bounds.X + 30f * scale), (int)(bounds.Y + 205f * scale), Math.Max(12, (int)(14f * scale)), UiTheme.Warning);
+		}
+		goto IL_01cc;
+	}
 
-        static List<Note> ParseMidiFile(string filePath)
-        {
-            MidiFile midi = MidiFile.Read(filePath);
-            var rawNotes = midi.GetNotes();
-            TempoMap tempoMap = midi.GetTempoMap();
-            List<SynthesiaClone.Note> temp = new List<SynthesiaClone.Note>();
+	private static void DrawWrappedText(string text, Rectangle bounds, int fontSize, Color color)
+	{
+		string[] array = text.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+		string text2 = string.Empty;
+		float num = bounds.Y;
+		string[] array2 = array;
+		foreach (string text3 in array2)
+		{
+			string text4 = ((text2.Length == 0) ? text3 : (text2 + " " + text3));
+			if ((float)UiTheme.MeasureText(text4, fontSize) > bounds.Width && text2.Length > 0)
+			{
+				UiTheme.DrawText(text2, (int)bounds.X, (int)num, fontSize, color);
+				num += (float)(fontSize + 7);
+				text2 = text3;
+				if (num + (float)fontSize > bounds.Y + bounds.Height)
+				{
+					break;
+				}
+			}
+			else
+			{
+				text2 = text4;
+			}
+		}
+		if (text2.Length > 0 && num + (float)fontSize <= bounds.Y + bounds.Height)
+		{
+			UiTheme.DrawText(text2, (int)bounds.X, (int)num, fontSize, color);
+		}
+	}
 
-            foreach (var note in rawNotes)
-            {
-                if (note.NoteNumber - 21 >= 0 && note.NoteNumber - 21 < 87)
-                {
-                    int TargetKeyIndex = note.NoteNumber - 21;
-                    MetricTimeSpan metricTime = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, tempoMap);
-                    MetricTimeSpan metricDuration = LengthConverter.ConvertTo<MetricTimeSpan>(note.Length, note.Time, tempoMap);
-                    double startTime = metricTime.TotalMicroseconds / 1000000.0;
-                    double duration = metricDuration.TotalMicroseconds / 1000000.0;
-                    Color color;
-                    int velocity = note.Velocity;
-                    if (TargetKeyIndex >= 39) 
-                    {
-                        color = Color.SkyBlue; 
-                    }
-                    else
-                    {
-                        color = Color.Lime;    
-                    }
-                    temp.Add(new SynthesiaClone.Note(TargetKeyIndex, startTime, duration, velocity, color));
-                }
-            }
-            return temp;
-        }
-       static void RunSilentProcess(string executablePath, string arguments)
-        {
-            ProcessStartInfo processInfo = new ProcessStartInfo
-            {
-                FileName = executablePath,
-                Arguments = arguments,
-                RedirectStandardOutput = true, 
-                RedirectStandardError = true,  
-                UseShellExecute = false,       
-                CreateNoWindow = true          
-            };
+	private static void HandleErrorAction(ErrorAction action, LoadRequest? request, ConcurrentQueue<string> selectedFiles, DialogState dialogState, ConcurrentQueue<LoadRequest> loadRequests, ref GameState state)
+	{
+		switch (action)
+		{
+		case ErrorAction.RetrySame:
+			if (request?.InputPath != null)
+			{
+				loadRequests.Enqueue(request with
+				{
+					BypassKnownFailure = true,
+					RecentSong = null
+				});
+			}
+			break;
+		case ErrorAction.RetryAlternate:
+			if (request?.InputPath != null)
+			{
+				loadRequests.Enqueue(new LoadRequest(request.InputPath, (request.Engine == OmrEngine.Zeus) ? OmrEngine.Homr : OmrEngine.Zeus, BypassKnownFailure: false, null));
+			}
+			break;
+		case ErrorAction.ChooseFile:
+			state = GameState.WaitingForFile;
+			StartFilePicker(selectedFiles, dialogState);
+			break;
+		case ErrorAction.Back:
+			state = GameState.WaitingForFile;
+			break;
+		}
+	}
 
-            using (Process process = new Process { StartInfo = processInfo })
-            {
-                process.OutputDataReceived += (sender, e) => 
-                {
-                    if (!string.IsNullOrEmpty(e.Data)) 
-                        Console.WriteLine($"[{Path.GetFileNameWithoutExtension(executablePath)}] {e.Data}");
-                };
-                
-                process.ErrorDataReceived += (sender, e) => 
-                {
-                    if (!string.IsNullOrEmpty(e.Data)) 
-                        Console.WriteLine($"[{Path.GetFileNameWithoutExtension(executablePath)} ERROR] {e.Data}");
-                };
+	private static void HandlePlaybackKeyboard(PlaybackController playback, PlaybackRateEditor rateEditor, ref GameState state, ref bool sliderDragging, ref bool resumeAfterSlider, ref double sliderPreviewPosition, UiLayout layout)
+	{
+		if (!rateEditor.IsEditing)
+		{
+			Rectangle playbackSlider = GetPlaybackSlider(layout);
+			Rectangle rec = new Rectangle(playbackSlider.X - 8f, playbackSlider.Y - 16f, playbackSlider.Width + 16f, 42f);
+			Vector2 mousePosition = Raylib.GetMousePosition();
+			if (!sliderDragging && (bool)Raylib.IsMouseButtonPressed(MouseButton.Left) && (bool)Raylib.CheckCollisionPointRec(mousePosition, rec))
+			{
+				sliderDragging = true;
+				resumeAfterSlider = playback.IsPlaying;
+				sliderPreviewPosition = PlaybackFormatting.PositionFromSlider(mousePosition.X, playbackSlider.X, playbackSlider.Width, playback.Session.TotalDuration);
+				playback.Pause();
+			}
+			else if (sliderDragging && (bool)Raylib.IsMouseButtonDown(MouseButton.Left))
+			{
+				sliderPreviewPosition = PlaybackFormatting.PositionFromSlider(mousePosition.X, playbackSlider.X, playbackSlider.Width, playback.Session.TotalDuration);
+			}
+			if (sliderDragging && (bool)Raylib.IsMouseButtonReleased(MouseButton.Left))
+			{
+				playback.CommitSilencedSeek(sliderPreviewPosition, resumeAfterSlider);
+				sliderDragging = false;
+				state = (playback.IsCompleted ? GameState.Completed : GameState.Playing);
+			}
+			if (!sliderDragging && (bool)Raylib.IsKeyPressed(KeyboardKey.Space))
+			{
+				TogglePlayback(playback, ref state);
+			}
+			if (!sliderDragging && (bool)Raylib.IsKeyPressed(KeyboardKey.Left))
+			{
+				SeekRelative(playback, -5.0, ref state);
+			}
+			if (!sliderDragging && (bool)Raylib.IsKeyPressed(KeyboardKey.Right))
+			{
+				SeekRelative(playback, 5.0, ref state);
+			}
+		}
+	}
 
-                bool started = process.Start();
-                if (!started)
-                {
-                    throw new Exception($"Failed to start process: {executablePath}");
-                }
+	private static Rectangle GetPlaybackSlider(UiLayout layout)
+	{
+		float num = Math.Clamp(118f * layout.Scale, 90f, 180f);
+		return new Rectangle(num, (float)layout.HeaderHeight - 23f * layout.Scale, (float)layout.Width - num * 2f, Math.Max(8f, 10f * layout.Scale));
+	}
 
-                process.BeginOutputReadLine();
-                process.BeginErrorReadLine();
+	private static bool DrawPlayback(PlaybackController playback, SongLoadResult song, Keyboard piano, bool sliderDragging, double sliderPreviewPosition, PlaybackRateEditor rateEditor, ref GameState state, UiLayout layout)
+	{
+		float scale = layout.Scale;
+		Raylib.DrawRectangle(0, 0, layout.Width, layout.HeaderHeight, UiTheme.Surface);
+		if (UiTheme.DrawButton(new Rectangle(18f * scale, 14f * scale, 72f * scale, 34f * scale), "Home", UiTheme.Sky))
+		{
+			return true;
+		}
+		UiTheme.DrawText(UiTheme.Ellipsize(song.DisplayName, Math.Max(15, (int)(18f * scale)), (int)((double)layout.Width * 0.38)), (int)(106f * scale), (int)(20f * scale), Math.Max(15, (int)(18f * scale)), UiTheme.Text);
+		Color accent = ((song.Engine == OmrEngine.Zeus) ? UiTheme.Sky : UiTheme.Lime);
+		UiTheme.DrawBadge(new Rectangle((float)layout.Width - 190f * scale, 14f * scale, 74f * scale, 30f * scale), OmrPipeline.GetEngineName(song.Engine).ToUpperInvariant(), accent);
+		if (song.LoadedFromCache)
+		{
+			UiTheme.DrawBadge(new Rectangle((float)layout.Width - 108f * scale, 14f * scale, 88f * scale, 30f * scale), "CACHE", UiTheme.Muted);
+		}
+		UiTheme.DrawText($"{song.NoteCount:N0} notes", (int)(106f * scale), (int)(46f * scale), Math.Max(11, (int)(13f * scale)), UiTheme.Muted);
+		float num = (float)layout.Width / 2f - 92f * scale;
+		if (UiTheme.DrawButton(new Rectangle(num, 10f * scale, 52f * scale, 38f * scale), "−5", UiTheme.Sky))
+		{
+			SeekRelative(playback, -5.0, ref state);
+		}
+		if (UiTheme.DrawButton(new Rectangle(num + 62f * scale, 7f * scale, 60f * scale, 44f * scale), playback.IsPlaying ? "Pause" : "Play", UiTheme.Sky))
+		{
+			TogglePlayback(playback, ref state);
+		}
+		if (UiTheme.DrawButton(new Rectangle(num + 132f * scale, 10f * scale, 52f * scale, 38f * scale), "+5", UiTheme.Sky))
+		{
+			SeekRelative(playback, 5.0, ref state);
+		}
+		DrawPlaybackRateControl(playback, rateEditor, layout);
+		Rectangle playbackSlider = GetPlaybackSlider(layout);
+		double num2 = (sliderDragging ? sliderPreviewPosition : playback.Position);
+		double num3 = ((playback.Session.TotalDuration > 0.0) ? Math.Clamp(num2 / playback.Session.TotalDuration, 0.0, 1.0) : 0.0);
+		UiTheme.DrawProgressBar(playbackSlider, num3, animated: false, 0.0);
+		Raylib.DrawCircle((int)(playbackSlider.X + (float)(num3 * (double)playbackSlider.Width)), (int)(playbackSlider.Y + playbackSlider.Height / 2f), Math.Max(7f, 8f * scale), UiTheme.Text);
+		string text = PlaybackFormatting.FormatTime(num2) + " / " + PlaybackFormatting.FormatTime(playback.Session.TotalDuration);
+		int fontSize = Math.Max(12, (int)(14f * scale));
+		UiTheme.DrawText(text, (int)((float)layout.Width / 2f - (float)UiTheme.MeasureText(text, fontSize) / 2f), (int)(playbackSlider.Y + 15f * scale), fontSize, UiTheme.Muted);
+		Vector2 mousePosition = Raylib.GetMousePosition();
+		Rectangle rec = new Rectangle(playbackSlider.X - 8f, playbackSlider.Y - 16f, playbackSlider.Width + 16f, 42f);
+		if (!sliderDragging && (bool)Raylib.CheckCollisionPointRec(mousePosition, rec))
+		{
+			UiTheme.DrawText(PlaybackFormatting.FormatTime(PlaybackFormatting.PositionFromSlider(mousePosition.X, playbackSlider.X, playbackSlider.Width, playback.Session.TotalDuration)), Math.Clamp((int)mousePosition.X - 24, (int)playbackSlider.X, (int)(playbackSlider.X + playbackSlider.Width - 48f)), (int)(playbackSlider.Y + 34f * scale), fontSize, UiTheme.Text);
+		}
+		for (int i = 0; i < piano.Keys.Length; i++)
+		{
+			piano.Keys[i].IsPressed = !sliderDragging && playback.IsKeyActive(i);
+			PianoKey pianoKey = piano.Keys[i];
+			if (!pianoKey.IsBlack)
+			{
+				Raylib.DrawLine(pianoKey.X, layout.HeaderHeight, pianoKey.X, layout.HitLineY, new Color((int)UiTheme.Border.R, (int)UiTheme.Border.G, (int)UiTheme.Border.B, 72));
+			}
+		}
+		double lookAhead = Math.Max(1.0, (double)(layout.HitLineY - layout.HeaderHeight) / layout.FallSpeed + 1.0);
+		(int Start, int End) visibleRange = playback.Session.GetVisibleRange(num2, 1.0, lookAhead);
+		int item = visibleRange.Start;
+		int item2 = visibleRange.End;
+		for (int j = item; j < item2; j++)
+		{
+			Note note = playback.Session.Notes[j];
+			PianoKey key = piano.Keys[note.TargetKeyIndex];
+			int num4 = layout.HitLineY - (int)((note.StartTime - num2) * layout.FallSpeed);
+			int num5 = Math.Max(1, (int)(note.Duration * layout.FallSpeed));
+			int num6 = num4 - num5;
+			if (num6 <= layout.Height && num4 >= layout.HeaderHeight)
+			{
+				DrawFallingNote(note, key, num6, num4, scale);
+			}
+		}
+		piano.Draw();
+		if (sliderDragging)
+		{
+			UiTheme.DrawText("SEEK PREVIEW", layout.Width / 2 - 68, layout.HeaderHeight + 12, Math.Max(14, (int)(17f * scale)), UiTheme.Warning);
+		}
+		else if (!playback.IsPlaying)
+		{
+			string text2 = ((state == GameState.Completed) ? "COMPLETED" : "PAUSED");
+			int fontSize2 = Math.Max(24, (int)(34f * scale));
+			UiTheme.DrawText(text2, layout.Width / 2 - UiTheme.MeasureText(text2, fontSize2) / 2, layout.HeaderHeight + 18, fontSize2, UiTheme.Warning);
+		}
+		return false;
+	}
 
-                process.WaitForExit(); 
-            }
-        }
-    }
+	private static void DrawPlaybackRateControl(PlaybackController playback, PlaybackRateEditor editor, UiLayout layout)
+	{
+		float scale = layout.Scale;
+		float num = (float)layout.Width - 400f * scale;
+		float y = 12f * scale;
+		float num2 = 32f * scale;
+		float width = 72f * scale;
+		float height = 34f * scale;
+		bool enabled = playback.PlaybackRate > 0.050000001;
+		bool enabled2 = playback.PlaybackRate < 1.999999999;
+		if (UiTheme.DrawButton(new Rectangle(num, y, num2, height), "−", UiTheme.Muted, enabled))
+		{
+			editor.Cancel();
+			StepPlaybackRate(playback, -1);
+		}
+		Rectangle rec = new Rectangle(num + num2 + 5f * scale, y, width, height);
+		Raylib.DrawRectangleRounded(rec, 0.16f, 8, UiTheme.Elevated);
+		Color color = ((editor.Error != null) ? UiTheme.Danger : (editor.IsEditing ? UiTheme.Sky : UiTheme.Border));
+		Raylib.DrawRectangleRoundedLinesEx(rec, 0.16f, 8, Math.Max(1f, scale), color);
+		if ((bool)Raylib.IsMouseButtonPressed(MouseButton.Left))
+		{
+			double rate;
+			if ((bool)Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), rec))
+			{
+				if (!editor.IsEditing)
+				{
+					editor.Begin(playback.PlaybackRate);
+				}
+			}
+			else if (editor.IsEditing && editor.TryCommit(out rate))
+			{
+				playback.SetPlaybackRate(rate);
+			}
+		}
+		if (editor.IsEditing)
+		{
+			int charPressed;
+			while ((charPressed = Raylib.GetCharPressed()) > 0)
+			{
+				if (charPressed <= 65535)
+				{
+					editor.Append((char)charPressed);
+				}
+			}
+			if ((bool)Raylib.IsKeyPressed(KeyboardKey.Backspace))
+			{
+				editor.Backspace();
+			}
+			if ((bool)Raylib.IsKeyPressed(KeyboardKey.Enter) && editor.TryCommit(out var rate2))
+			{
+				playback.SetPlaybackRate(rate2);
+			}
+			else if ((bool)Raylib.IsKeyPressed(KeyboardKey.Escape))
+			{
+				editor.Cancel();
+			}
+		}
+		string text = (editor.IsEditing ? (editor.Text + "|") : $"{playback.PlaybackRate:0.00}x");
+		int num3 = Math.Max(11, (int)(14f * scale));
+		UiTheme.DrawText(text, (int)(rec.X + (rec.Width - (float)UiTheme.MeasureText(text, num3)) / 2f), (int)(rec.Y + (rec.Height - (float)num3) / 2f), num3, UiTheme.Text);
+		if (UiTheme.DrawButton(new Rectangle(rec.X + rec.Width + 5f * scale, y, num2, height), "+", UiTheme.Muted, enabled2))
+		{
+			editor.Cancel();
+			StepPlaybackRate(playback, 1);
+		}
+		if (editor.Error != null)
+		{
+			UiTheme.DrawText(editor.Error, (int)rec.X, (int)(rec.Y + rec.Height + 2f * scale), Math.Max(9, (int)(11f * scale)), UiTheme.Danger);
+		}
+	}
+
+	private static void StepPlaybackRate(PlaybackController playback, int direction)
+	{
+		playback.SetPlaybackRate(PlaybackRateRules.Step(playback.PlaybackRate, direction));
+	}
+
+	private static void DrawFallingNote(Note note, PianoKey key, int rawTopY, int rawBottomY, float scale)
+	{
+		float num = Math.Clamp(3f * scale, 2f, 5f);
+		float num2 = (float)rawTopY + num / 2f;
+		float num3 = (float)rawBottomY - num / 2f;
+		float height = Math.Max(7f * scale, num3 - num2);
+		float num4 = Math.Max(20f * scale, (float)key.Width - 2f * scale);
+		float x = (float)key.X + (float)key.Width / 2f - num4 / 2f;
+		Rectangle rec = new Rectangle(x, num2, num4, height);
+		Raylib.DrawRectangleRounded(rec, 0.24f, 8, note.Color);
+		Raylib.DrawRectangleRoundedLinesEx(color: new Color(Math.Max(0, note.Color.R - 55), Math.Max(0, note.Color.G - 55), Math.Max(0, note.Color.B - 55), 255), rec: rec, roundness: 0.24f, segments: 8, lineThick: Math.Max(1f, 1.5f * scale));
+		string pitchClass = note.PitchClass;
+		int num5 = Math.Clamp((int)(13f * scale), 9, 16);
+		while (num5 > 8 && (float)UiTheme.MeasureText(pitchClass, num5) > rec.Width - 3f * scale)
+		{
+			num5--;
+		}
+		int num6 = UiTheme.MeasureText(pitchClass, num5);
+		int num7 = (int)(rec.X + (rec.Width - (float)num6) / 2f);
+		int num8 = (int)(rec.Y + (rec.Height - (float)num5) / 2f);
+		UiTheme.DrawText(pitchClass, num7 + 1, num8 + 1, num5, new Color(0, 0, 0, 210));
+		UiTheme.DrawText(pitchClass, num7, num8, num5, UiTheme.Text);
+	}
+
+	private static void TogglePlayback(PlaybackController playback, ref GameState state)
+	{
+		if (playback.IsPlaying)
+		{
+			playback.Pause();
+			return;
+		}
+		playback.Resume();
+		state = GameState.Playing;
+	}
+
+	private static void SeekRelative(PlaybackController playback, double seconds, ref GameState state)
+	{
+		bool isPlaying = playback.IsPlaying;
+		playback.Seek(playback.Position + seconds, isPlaying);
+		state = (playback.IsCompleted ? GameState.Completed : GameState.Playing);
+	}
+
+	private static string FormatLoadError(Exception exception)
+	{
+		if (exception is OmrPipelineException ex && !string.IsNullOrWhiteSpace(ex.ErrorCode))
+		{
+			string text = ((!ex.Page.HasValue) ? string.Empty : $" on page {ex.Page}");
+			bool flag;
+			switch (ex.ErrorCode)
+			{
+			case "OEMER_OUTPUT_INVALID":
+			case "OEMER_LAYOUT_AMBIGUOUS":
+			case "MUSICXML_PARSE_FAILED":
+				flag = true;
+				break;
+			default:
+				flag = false;
+				break;
+			}
+			if (!flag)
+			{
+				return $"{ex.ErrorCode} ({ex.Stage ?? "unknown stage"}){text}: {ex.Message}";
+			}
+			return "Oemer produced an unreliable MusicXML structure" + text + ": " + ex.Message;
+		}
+		if (exception.Message.Length > 240)
+		{
+			return exception.Message.Substring(0, 240) + "...";
+		}
+		return exception.Message;
+	}
 }

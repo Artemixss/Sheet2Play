@@ -1,0 +1,28 @@
+{
+  "comparison": {
+    "note": "Rhythm constraint rescued 11 of 52 beam-invalid samples (21.2% rescue rate). Grammar-only rescued 4."
+  },
+  "error_breakdown": {
+    "KERN_INVALID": 3,
+    "KERN_TRUNCATED": 38
+  },
+  "evaluated": 52,
+  "failed": 41,
+  "latency": {
+    "median_seconds": 21.297762449999937,
+    "p95_seconds": 51.80185269999856
+  },
+  "policy_hash": "6516ebf4f80acca1",
+  "policy_id": "cuda|1485x1050|300dpi|grammar-rhythm-aware-v1|max2048|grammar-timeout60s|numeric-tempo-or-120",
+  "policy_version": "rhythm-aware-v1",
+  "rescue_rate": 0.21153846153846154,
+  "rescued": 11,
+  "rhythm_note_metrics": {
+    "aligned_voice_accuracy": 0.963963963963964,
+    "mean_offset_error": 0.1238716449242765,
+    "onset_duration_f1": 0.32110965423211746,
+    "onset_f1": 0.41193166482960614,
+    "pitch_f1": 0.7911539004017155,
+    "staff_accuracy": 1.0
+  }
+}

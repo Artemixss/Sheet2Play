@@ -1,0 +1,66 @@
+[
+  {
+    "id": "monophonic_melody",
+    "features": ["monophonic"],
+    "tempo_changes": [{"start_beat": 0.0, "bpm": 120.0}],
+    "notes": [
+      {"pitch": "C4", "start_beat": 0.0, "duration_beats": 1.0},
+      {"pitch": "D4", "start_beat": 1.0, "duration_beats": 1.0},
+      {"pitch": "E4", "start_beat": 2.0, "duration_beats": 2.0}
+    ]
+  },
+  {
+    "id": "dotted_notes_and_ties",
+    "features": ["dotted", "ties"],
+    "tempo_changes": [{"start_beat": 0.0, "bpm": 120.0}],
+    "notes": [
+      {"pitch": "G4", "start_beat": 0.0, "duration_beats": 3.0},
+      {"pitch": "A4", "start_beat": 3.0, "duration_beats": 1.0}
+    ]
+  },
+  {
+    "id": "triplet_tuplets",
+    "features": ["tuplets"],
+    "tempo_changes": [{"start_beat": 0.0, "bpm": 120.0}],
+    "notes": [
+      {"pitch": "C5", "start_beat": 0.0, "duration_beats": 0.3333333333333333},
+      {"pitch": "D5", "start_beat": 0.3333333333333333, "duration_beats": 0.3333333333333333},
+      {"pitch": "E5", "start_beat": 0.6666666666666666, "duration_beats": 0.3333333333333333}
+    ]
+  },
+  {
+    "id": "piano_grand_staff_chords",
+    "features": ["grand_staff", "chords", "polyphony"],
+    "tempo_changes": [{"start_beat": 0.0, "bpm": 90.0}],
+    "notes": [
+      {"pitch": "C3", "start_beat": 0.0, "duration_beats": 2.0},
+      {"pitch": "G3", "start_beat": 0.0, "duration_beats": 2.0},
+      {"pitch": "C4", "start_beat": 0.0, "duration_beats": 2.0},
+      {"pitch": "E4", "start_beat": 0.0, "duration_beats": 2.0},
+      {"pitch": "G4", "start_beat": 0.0, "duration_beats": 2.0}
+    ]
+  },
+  {
+    "id": "multiple_voices_repeats_accidentals",
+    "features": ["voices", "repeats", "accidentals", "overlap"],
+    "tempo_changes": [{"start_beat": 0.0, "bpm": 120.0}],
+    "notes": [
+      {"pitch": "F#4", "start_beat": 0.0, "duration_beats": 2.0},
+      {"pitch": "B-3", "start_beat": 0.0, "duration_beats": 1.0},
+      {"pitch": "F#4", "start_beat": 2.0, "duration_beats": 2.0},
+      {"pitch": "B-3", "start_beat": 2.0, "duration_beats": 1.0}
+    ]
+  },
+  {
+    "id": "piecewise_tempo",
+    "features": ["tempo_changes", "cross_tempo_duration"],
+    "tempo_changes": [
+      {"start_beat": 0.0, "bpm": 60.0},
+      {"start_beat": 1.0, "bpm": 120.0}
+    ],
+    "notes": [
+      {"pitch": "C4", "start_beat": 0.0, "duration_beats": 2.0},
+      {"pitch": "D4", "start_beat": 2.0, "duration_beats": 1.0}
+    ]
+  }
+]

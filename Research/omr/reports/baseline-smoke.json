@@ -1,0 +1,157 @@
+{
+  "acceptance": {
+    "f1_metrics_calculated": true,
+    "fixture_structurally_valid": true,
+    "fixture_structure_exact": true,
+    "three_run_determinism": true
+  },
+  "benchmark": {
+    "homr": null,
+    "manifest": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\tests\\fixtures\\transcoda-baseline\\benchmark.jsonl",
+    "modes": {
+      "beam": {
+        "samples": [
+          {
+            "id": "baseline-piano-001",
+            "is_structural_fixture": true,
+            "metrics": {
+              "aligned_voice_accuracy": 1.0,
+              "mean_offset_error": 0.0,
+              "onset_duration_f1": 1.0,
+              "onset_f1": 1.0,
+              "pitch_f1": 1.0,
+              "staff_accuracy": 1.0
+            },
+            "peak_vram_bytes": 1952457728,
+            "seconds": 5.633531100000255,
+            "structure_exact": true,
+            "valid": true
+          }
+        ],
+        "summary": {
+          "catastrophic_page_failure_rate": 0.0,
+          "mean_offset_error": 0.0,
+          "median_seconds_per_page": 5.633531100000255,
+          "onset_duration_f1": 1.0,
+          "onset_f1": 1.0,
+          "peak_vram_bytes": 1952457728,
+          "pitch_f1": 1.0,
+          "samples": 1,
+          "staff_accuracy": 1.0,
+          "structural_assertions": 1.0,
+          "structural_validity": 1.0,
+          "voice_accuracy": 1.0
+        }
+      },
+      "grammar": {
+        "samples": [
+          {
+            "id": "baseline-piano-001",
+            "is_structural_fixture": true,
+            "metrics": {
+              "aligned_voice_accuracy": 1.0,
+              "mean_offset_error": 0.0,
+              "onset_duration_f1": 1.0,
+              "onset_f1": 1.0,
+              "pitch_f1": 1.0,
+              "staff_accuracy": 1.0
+            },
+            "peak_vram_bytes": 808637952,
+            "seconds": 14.836555600000793,
+            "structure_exact": true,
+            "valid": true
+          }
+        ],
+        "summary": {
+          "catastrophic_page_failure_rate": 0.0,
+          "mean_offset_error": 0.0,
+          "median_seconds_per_page": 14.836555600000793,
+          "onset_duration_f1": 1.0,
+          "onset_f1": 1.0,
+          "peak_vram_bytes": 808637952,
+          "pitch_f1": 1.0,
+          "samples": 1,
+          "staff_accuracy": 1.0,
+          "structural_assertions": 1.0,
+          "structural_validity": 1.0,
+          "voice_accuracy": 1.0
+        }
+      }
+    },
+    "schema_version": 1,
+    "selected_mode": "beam"
+  },
+  "determinism": {
+    "decoder": "beam",
+    "deterministic": true,
+    "digests": [
+      "872fc845dd3f160172f281cf7a7411f102b5bb528e0197f0bf8f0486fc7052f6",
+      "872fc845dd3f160172f281cf7a7411f102b5bb528e0197f0bf8f0486fc7052f6",
+      "872fc845dd3f160172f281cf7a7411f102b5bb528e0197f0bf8f0486fc7052f6"
+    ],
+    "runs": 3
+  },
+  "error": {
+    "code": "KERN_PARSE_FAILED",
+    "message": "converter21 rejected rhythmic or spine semantics: Error: Inconsistent rhythm analysis occurring near line 55\n    Expected durationFromStart to be: 155/6 but found it to be 26.0\n    Line: 4AA\t12bb",
+    "page": null,
+    "stage": "symbolic_parse",
+    "type": "ResearchError"
+  },
+  "fixture": {
+    "files": {
+      "benchmark": {
+        "bytes": 158,
+        "name": "benchmark.jsonl",
+        "sha256": "0b876ee462e0c23593ca0ba1d5d5df32671bf062026c7361d878555d236ecf5e"
+      },
+      "events": {
+        "bytes": 14329,
+        "name": "baseline-piano.events.json",
+        "sha256": "e600e798360d140061e73bd1da096531fc88c1f2dcd7a4f9d77eccbf62a16054"
+      },
+      "kern": {
+        "bytes": 344,
+        "name": "baseline-piano.krn",
+        "sha256": "03a48bf5f047943af61f451fabf4f1eb835eff559da36faa38fe3349bc03eef5"
+      },
+      "pdf": {
+        "bytes": 12712,
+        "name": "baseline-piano.pdf",
+        "sha256": "2af3fd1e945d2496f483ab9af6b5d45dd5146cbcb0ec44a637729f8f376fb754"
+      },
+      "png": {
+        "bytes": 35285,
+        "name": "baseline-piano.png",
+        "sha256": "2cbe267a15f2f5791943523413ce6c3d25dee32e283f43af156c7eeee5f08805"
+      }
+    },
+    "generator": {
+      "cairosvg": "2.8.2",
+      "pypdf": "6.10.0",
+      "verovio": "6.0.1"
+    },
+    "note_events": 56,
+    "schema_version": 1
+  },
+  "offline": true,
+  "passed": false,
+  "real_pdf": {},
+  "runtime": {
+    "base_model_revision": "9cba4896e97bb86b1eb609e482a2149d84f345bc",
+    "base_model_sha256": "b33653bb8c060f6dee6438f18c559dcf3258bf86cc906490daaca89bc0c39fb7",
+    "model_revision": "b529f8aa5d996d9224df3395b5b92d0867343c91",
+    "model_sha256": "c173a3b75b8a7558fa8670e9161b995c14ae879a5ea5ede91759dd9f403ee52a",
+    "source_revision": "d4e2e687d5679ae96ca4aa6f01e06a5b338cd488"
+  },
+  "schema_version": 1,
+  "selected_metrics": {
+    "onset_duration_f1": 1.0,
+    "onset_f1": 1.0,
+    "pitch_f1": 1.0,
+    "staff_accuracy": 1.0,
+    "voice_accuracy": 1.0
+  },
+  "selected_mode": "beam",
+  "total_seconds": 79.14390259999982
+}

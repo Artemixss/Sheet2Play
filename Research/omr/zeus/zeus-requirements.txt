@@ -1,0 +1,14 @@
+# Core Zeus Model
+tensorflow~=2.12.0
+levenshtein
+zss>=1.2.0
+
+# OLiMPiC processing / image handling
+svgelements>=1.9.6
+pyyaml>=6.0.1
+numpy<1.24
+opencv-python>=4.8.0.74
+scikit-image>=0.17.2
+
+# LMX to MusicXML
+music21

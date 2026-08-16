@@ -1,0 +1,18 @@
+# PyTorch and torchvision are installed separately from the CUDA 13.0 wheel index.
+charset-normalizer==3.4.3
+converter21==3.5.0
+huggingface-hub==0.35.0
+loguru==0.7.3
+music21==9.9.1
+numpy==2.2.6
+packaging==25.0
+Pillow==11.3.0
+pydantic==2.12.5
+pypdfium2==4.30.0
+pytest==9.0.2
+safetensors==0.6.2
+tokenizers==0.22.1
+torchao==0.15.0
+torchtune==0.6.1
+transformers==4.57.3
+xgrammar==0.1.31
