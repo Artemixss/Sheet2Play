@@ -1,22 +1,40 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using SynthesiaClone;
 
-// Smoke test: every MIDI file in songs/midi/custom must parse and build a
-// playback session without throwing. Run with: dotnet run --project MidiTester
+// Diagnostic + smoke harness: reports the library exactly as the app sees it, then
+// verifies every MIDI file parses and builds a playback session.
+// Run with: dotnet run --project MidiTester
 class Program
 {
     static void Main()
     {
-        // Resolve through SongCache so this always tests the same library the app uses,
-        // wherever that is (%APPDATA%\Sheet2Play by default).
-        string dir = Path.Combine(
-            SongCache.ApplicationDirectory, "songs", "midi", "custom");
+        string home = SongCache.ApplicationDirectory;
+        Console.WriteLine("=== Library resolution ===");
+        Console.WriteLine($"  SHEET2PLAY_HOME : {Environment.GetEnvironmentVariable("SHEET2PLAY_HOME") ?? "(not set)"}");
+        Console.WriteLine($"  ApplicationDirectory: {home}");
 
+        string songs = Path.Combine(home, "songs");
+        foreach (string rel in new[] { "pdf", "midi\\custom", "midi\\homr", "midi\\zeus" })
+        {
+            string full = Path.Combine(songs, rel);
+            int count = Directory.Exists(full) ? Directory.GetFiles(full).Length : -1;
+            Console.WriteLine(count < 0
+                ? $"  songs\\{rel,-12} MISSING  {full}"
+                : $"  songs\\{rel,-12} {count,3} files on disk");
+        }
+
+        Console.WriteLine("\n=== What the app's own API returns ===");
+        Console.WriteLine($"  GetPdfLibrary()  : {SongCache.GetPdfLibrary().Count}");
+        Console.WriteLine($"  GetMidiLibrary() : {SongCache.GetMidiLibrary().Count}");
+        Console.WriteLine($"  GetCachedSongs() : {SongCache.GetCachedSongs().Count}");
+
+        string dir = Path.Combine(home, "songs", "midi", "custom");
         if (!Directory.Exists(dir))
         {
-            Console.WriteLine($"Not found: {dir}");
+            Console.WriteLine($"\nNot found: {dir}");
             return;
         }
 
@@ -26,8 +44,7 @@ class Program
             .OrderBy(f => f)
             .ToArray();
 
-        Console.WriteLine($"Testing {files.Length} MIDI files\n");
-
+        Console.WriteLine($"\n=== Parsing {files.Length} MIDI files ===");
         int ok = 0, failed = 0;
         foreach (string path in files)
         {
@@ -35,23 +52,13 @@ class Program
             try
             {
                 SongLoadResult result = SongCache.LoadOrCreateDetailed(path, OmrEngine.DirectMidi);
-
-                int bad = result.Notes.Count(note =>
-                    note.TargetKeyIndex is < 0 or >= 88 || note.Velocity is < 0 or > 127 ||
-                    !double.IsFinite(note.StartTime) || note.StartTime < 0 ||
-                    !double.IsFinite(note.Duration) || note.Duration <= 0);
-
                 PlaybackSession session = new(result.Notes);
-
-                Console.WriteLine($"  OK    {name}");
-                Console.WriteLine($"          notes={result.Notes.Count} invalid={bad} " +
-                                  $"duration={session.TotalDuration:F1}s");
+                Console.WriteLine($"  OK    {name}  ({result.Notes.Count} notes, {session.TotalDuration:F1}s)");
                 ok++;
             }
             catch (Exception exception)
             {
-                Console.WriteLine($"  FAIL  {name}");
-                Console.WriteLine($"          {exception.GetType().Name}: {exception.Message}");
+                Console.WriteLine($"  FAIL  {name}: {exception.GetType().Name}: {exception.Message}");
                 failed++;
             }
         }
