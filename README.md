@@ -65,12 +65,40 @@ Cached songs appear in the Cache Playlist, filterable by engine and sorted by na
 
 ## Running
 
+From source:
+
 ```bash
 dotnet run --project Visualization_engine
 ```
 
 Then drop a file onto the window, press `B` to browse, or pick something from one of the
 three library columns.
+
+## Installing as an app
+
+To get a double-clickable `Sheet2Play.exe` that needs no .NET install:
+
+```powershell
+.\scripts\publish.ps1
+.\scripts\install-shortcut.ps1
+```
+
+`publish.ps1` produces a self-contained single-file build in `dist\`, verifies that the
+Inter fonts and the Python bridge landed beside it, and seeds your song library on first
+run. `install-shortcut.ps1` adds Desktop and Start Menu shortcuts.
+
+**Where the library lives.** A published build has no `SynthesiaClone.csproj` above it, so
+it cannot use the repo folder. It resolves its home in this order:
+
+1. `SHEET2PLAY_HOME`, if set
+2. the project directory, when running from a source checkout
+3. `%APPDATA%\Sheet2Play` otherwise
+
+To make the packaged app share the repo's library instead, point a shortcut at it:
+
+```powershell
+.\scripts\install-shortcut.ps1 -LibraryHome "C:\path\to\Sheet2Play\Visualization_engine"
+```
 
 Supported inputs: `.pdf`, `.png`, `.jpg`, `.jpeg`, `.bmp`, `.tif`, `.tiff`, `.webp`,
 `.mid`, `.midi`, `.mxl`, `.musicxml`, `.xml`.
@@ -96,6 +124,30 @@ dotnet test Visualization_engine.Tests
 ```
 
 Python-side tests live in `Bridge/tests/` and run under `pytest`.
+
+`MidiTester` is a smoke harness that loads every file in `songs/midi/custom` and builds a
+playback session for each, catching MIDI regressions without opening the app:
+
+```bash
+dotnet run --project MidiTester
+```
+
+### Checking the UI without launching it
+
+The app can render every screen headlessly and write one PNG per state. It uses a hidden
+window and a null MIDI output, so it needs neither a display nor a synthesiser, and exits
+non-zero if a screen throws:
+
+```bash
+dotnet run --project Visualization_engine -- --smoke .\ui-snapshots
+```
+
+This is also the quickest way to verify a *published* build, since it catches problems that
+only appear after packaging:
+
+```powershell
+.\dist\Sheet2Play.exe --smoke .\ui-snapshots
+```
 
 ## Project layout
 

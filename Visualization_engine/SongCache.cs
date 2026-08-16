@@ -716,8 +716,33 @@ public static class SongCache
             $"{midiPath}.cache.json");
     }
 
-    private static string FindApplicationDirectory()
+    private const string HomeVariable = "SHEET2PLAY_HOME";
+
+    private static string? resolvedApplicationDirectory;
+
+    private static string FindApplicationDirectory() =>
+        resolvedApplicationDirectory ??= ResolveApplicationDirectory();
+
+    /// <summary>
+    /// Resolves the folder holding songs/ and the cache, in priority order:
+    /// an explicit SHEET2PLAY_HOME, then the project directory when running from a source
+    /// checkout, then %APPDATA%/Sheet2Play.
+    ///
+    /// The last tier matters for packaged builds: a published executable has no
+    /// SynthesiaClone.csproj above it, so without this it would silently read and write
+    /// beside the .exe - often a read-only or temporary location.
+    /// </summary>
+    private static string ResolveApplicationDirectory()
     {
+        string? configured = Environment.GetEnvironmentVariable(HomeVariable);
+        if (!string.IsNullOrWhiteSpace(configured))
+        {
+            string expanded = Environment.ExpandEnvironmentVariables(configured.Trim());
+            Directory.CreateDirectory(expanded);
+            Console.WriteLine($"[APP HOME] Using {HomeVariable}: {expanded}");
+            return expanded;
+        }
+
         DirectoryInfo? directory = new(AppContext.BaseDirectory);
         while (directory is not null)
         {
@@ -727,7 +752,22 @@ public static class SongCache
             }
             directory = directory.Parent;
         }
-        return AppContext.BaseDirectory;
+
+        string home = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+            "Sheet2Play");
+        try
+        {
+            Directory.CreateDirectory(Path.Combine(home, "songs", "pdf"));
+            Directory.CreateDirectory(Path.Combine(home, "songs", "midi", "custom"));
+        }
+        catch (Exception exception) when (
+            exception is IOException or UnauthorizedAccessException)
+        {
+            Console.Error.WriteLine($"[APP HOME] Could not prepare {home}: {exception.Message}");
+        }
+        Console.WriteLine($"[APP HOME] Packaged build; using {home}");
+        return home;
     }
 
     private static bool TryReadCache(

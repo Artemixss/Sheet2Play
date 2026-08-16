@@ -27,7 +27,7 @@ public enum GameState
 	Completed
 }
 
-internal static class Program
+internal static partial class Program
 {
 	private sealed class Win32Window : IWin32Window
 	{
@@ -75,7 +75,20 @@ internal static class Program
 
 	private const int MinimumHeight = 540;
 
-	public static void Main()
+	public static int Main(string[] args)
+	{
+		if (args.Length > 0 && string.Equals(args[0], "--smoke", StringComparison.OrdinalIgnoreCase))
+		{
+			string outputDirectory = ((args.Length > 1)
+				? args[1]
+				: Path.Combine(Path.GetTempPath(), "sheet2play-smoke"));
+			return RunSmoke(outputDirectory);
+		}
+		RunApplication();
+		return 0;
+	}
+
+	private static void RunApplication()
 	{
 		Application.EnableVisualStyles();
 		Application.SetCompatibleTextRenderingDefault(defaultValue: false);
@@ -457,12 +470,12 @@ internal static class Program
 		}
 		float scale = layout.Scale;
 		float width = Math.Min((float)layout.Width - 64f * scale, 760f * scale);
-		float height = 320f * scale;
+		float height = 250f * scale;
 		Rectangle bounds = new Rectangle(((float)layout.Width - width) / 2f, ((float)layout.Height - height) / 2f, width, height);
 		UiTheme.DrawCard(bounds, scale);
 		string engineName = OmrPipeline.GetEngineName(request.Engine).ToUpperInvariant();
 		UiTheme.DrawText("Already converted", (int)(bounds.X + 30f * scale), (int)(bounds.Y + 26f * scale), Math.Max(24, (int)(30f * scale)), UiTheme.Warning);
-		DrawWrappedText($"\"{request.DisplayName}\" already has a validated {engineName} cache, so it would load instantly. Re-running replaces that cache and takes the full {engineName} conversion time.", new Rectangle(bounds.X + 30f * scale, bounds.Y + 84f * scale, bounds.Width - 60f * scale, 120f * scale), Math.Max(14, (int)(17f * scale)), UiTheme.Text);
+		DrawWrappedText($"\"{request.DisplayName}\" already has a validated {engineName} cache, so it would load instantly. Re-running replaces that cache and takes the full {engineName} conversion time.", new Rectangle(bounds.X + 30f * scale, bounds.Y + 84f * scale, bounds.Width - 60f * scale, 84f * scale), Math.Max(14, (int)(17f * scale)), UiTheme.Text);
 		float y = bounds.Y + bounds.Height - 74f * scale;
 		float gap = 10f * scale;
 		float buttonWidth = (bounds.Width - 60f * scale - gap * 2f) / 3f;
