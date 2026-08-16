@@ -724,9 +724,13 @@ public static class SongCache
         resolvedApplicationDirectory ??= ResolveApplicationDirectory();
 
     /// <summary>
-    /// The folder holding songs/ and the cache. Always %APPDATA%/Sheet2Play unless
+    /// The folder holding songs/ and the cache: %LOCALAPPDATA%/Sheet2Play unless
     /// SHEET2PLAY_HOME overrides it, so a source checkout and a published build share one
     /// library instead of each keeping its own copy.
+    ///
+    /// LocalApplicationData, not ApplicationData: it matches AppSettingsStore,
+    /// RecentSongsStore and OmrFailureStore so everything lives in one folder, and a
+    /// multi-gigabyte score library has no business roaming with a profile.
     /// </summary>
     public static string ApplicationDirectory => FindApplicationDirectory();
 
@@ -742,7 +746,7 @@ public static class SongCache
         else
         {
             home = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                 "Sheet2Play");
         }
 
