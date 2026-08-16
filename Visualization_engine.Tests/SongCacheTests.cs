@@ -290,7 +290,7 @@ public sealed class SongCacheTests
     }
 
     [Fact]
-    public void LibraryListsPdfFilesAndEveryValidatedCacheManifest()
+    public void LibraryListsScoreFilesAndEveryValidatedCacheManifest()
     {
         using TemporaryDirectory temporary = new();
         string pdfDirectory = Path.Combine(temporary.Path, "songs", "pdf");
@@ -299,7 +299,12 @@ public sealed class SongCacheTests
         string secondPdf = Path.Combine(pdfDirectory, "Beta Score.pdf");
         File.WriteAllText(firstPdf, "alpha");
         File.WriteAllText(secondPdf, "beta");
-        File.WriteAllText(Path.Combine(pdfDirectory, "ignore.png"), "image");
+
+        // Scanned images are valid OMR input and must be listed alongside PDFs.
+        File.WriteAllText(Path.Combine(pdfDirectory, "Gamma Scan.png"), "image");
+
+        // Anything that is not a score format must stay out of the library.
+        File.WriteAllText(Path.Combine(pdfDirectory, "notes.txt"), "not a score");
 
         SongCache.PersistCacheForTesting(
             firstPdf,
@@ -312,7 +317,7 @@ public sealed class SongCacheTests
         IReadOnlyList<CachedSongEntry> cached = SongCache.GetCachedSongsForTesting(
             temporary.Path);
 
-        Assert.Equal(["Alpha Score", "Beta Score"],
+        Assert.Equal(["Alpha Score", "Beta Score", "Gamma Scan"],
             pdfs.Select(static entry => entry.DisplayName));
         CachedSongEntry song = Assert.Single(cached);
         Assert.Equal("Alpha Score", song.RecentSong.DisplayName);

@@ -1,4 +1,4 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Collections.Concurrent;
 using Melanchall.DryWetMidi.Common;
 using Melanchall.DryWetMidi.Core;
@@ -33,6 +33,25 @@ public interface IMidiOutput
     void NoteOn(int midiPitch, int velocity);
     void NoteOff(int midiPitch);
     void AllNotesOff();
+}
+
+/// <summary>
+/// Discards every note. Used when no MIDI synthesiser is installed, so the app still
+/// runs and visualises silently instead of failing to start.
+/// </summary>
+public sealed class NullMidiOutput : IMidiOutput
+{
+    public void NoteOn(int midiPitch, int velocity)
+    {
+    }
+
+    public void NoteOff(int midiPitch)
+    {
+    }
+
+    public void AllNotesOff()
+    {
+    }
 }
 
 public sealed class DryWetMidiOutput(OutputDevice outputDevice) : IMidiOutput
@@ -189,12 +208,12 @@ public sealed class PlaybackSession
             throw new ArgumentException("A playback session requires at least one playable note.", nameof(sourceNotes));
         }
 
-        TotalDuration = notes.Max(note => (note.StartTime + note.Duration));
+        TotalDuration = notes.Max(note => note.EndTime);
         MaxNoteDuration = notes.Max(note => note.Duration);
         Events = notes.SelectMany(note => new[]
             {
                 new PlaybackEvent(Math.Max(0, note.StartTime - audioOffsetSeconds), note.TargetKeyIndex, note.Velocity, true),
-                new PlaybackEvent(Math.Max(0, (note.StartTime + note.Duration) - audioOffsetSeconds), note.TargetKeyIndex, note.Velocity, false)
+                new PlaybackEvent(Math.Max(0, note.EndTime - audioOffsetSeconds), note.TargetKeyIndex, note.Velocity, false)
             })
             .OrderBy(item => item.Time)
             .ThenBy(item => item.IsNoteOn ? 1 : 0)
