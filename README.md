@@ -89,21 +89,31 @@ Start Menu shortcuts.
 
 ## Where your library lives
 
-Songs, PDFs and caches live in **`%APPDATA%\Sheet2Play\songs`**, never inside the repo.
-Running from source and running the published app therefore share one library — convert a
-score once and it is there either way, and the checkout stays clean.
+Everything the app stores lives in **`%LOCALAPPDATA%\Sheet2Play`** — on Windows that is
+`C:\Users\<you>\AppData\Local\Sheet2Play`. Note **Local**, not Roaming. Running from
+source and running the published app share this one folder, so a score converted either
+way is available to both, and the checkout stays free of user content.
+
+```
+%LOCALAPPDATA%\Sheet2Play\
+    settings.json        selected engine and playback settings
+    recent.json          recently opened songs
+    failed-omr.json      remembered OMR failures
+    songs\pdf\           sheet music you want to convert
+    songs\midi\custom\   .mid / .mxl files, shown in the MIDI Player column
+    songs\midi\<engine>\ validated MIDI caches, one folder per engine
+```
+
+Paste this into Explorer's address bar to open it:
+
+```
+%LOCALAPPDATA%\Sheet2Play\songs\midi\custom
+```
 
 Set `SHEET2PLAY_HOME` to use a different folder, or bake it into a shortcut:
 
 ```powershell
 .\scripts\install-shortcut.ps1 -LibraryHome "D:\Sheet2Play"
-```
-
-```
-%APPDATA%\Sheet2Play\songs\
-    pdf\            sheet music you want to convert
-    midi\custom\    .mid / .mxl files, shown in the MIDI Player column
-    midi\<engine>\  validated MIDI caches, one folder per engine
 ```
 
 Supported inputs: `.pdf`, `.png`, `.jpg`, `.jpeg`, `.bmp`, `.tif`, `.tiff`, `.webp`,
