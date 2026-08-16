@@ -6,9 +6,9 @@
     Path to Sheet2Play.exe. Defaults to .\dist\Sheet2Play.exe.
 
 .PARAMETER LibraryHome
-    Optional value for SHEET2PLAY_HOME, baked into the shortcut. Use this to point the
-    packaged app at an existing library (for example the repo's Visualization_engine
-    folder) instead of %APPDATA%\Sheet2Play.
+    Optional value for SHEET2PLAY_HOME, baked into the shortcut. Only needed to point
+    this shortcut at a different library; by default both source and published builds
+    use %APPDATA%\Sheet2Play.
 
 .PARAMETER StartMenuOnly
     Skip the Desktop shortcut.

@@ -83,21 +83,27 @@ To get a double-clickable `Sheet2Play.exe` that needs no .NET install:
 .\scripts\install-shortcut.ps1
 ```
 
-`publish.ps1` produces a self-contained single-file build in `dist\`, verifies that the
-Inter fonts and the Python bridge landed beside it, and seeds your song library on first
-run. `install-shortcut.ps1` adds Desktop and Start Menu shortcuts.
+`publish.ps1` produces a self-contained single-file build in `dist\` and verifies that the
+Inter fonts and the Python bridge landed beside it. `install-shortcut.ps1` adds Desktop and
+Start Menu shortcuts.
 
-**Where the library lives.** A published build has no `SynthesiaClone.csproj` above it, so
-it cannot use the repo folder. It resolves its home in this order:
+## Where your library lives
 
-1. `SHEET2PLAY_HOME`, if set
-2. the project directory, when running from a source checkout
-3. `%APPDATA%\Sheet2Play` otherwise
+Songs, PDFs and caches live in **`%APPDATA%\Sheet2Play\songs`**, never inside the repo.
+Running from source and running the published app therefore share one library — convert a
+score once and it is there either way, and the checkout stays clean.
 
-To make the packaged app share the repo's library instead, point a shortcut at it:
+Set `SHEET2PLAY_HOME` to use a different folder, or bake it into a shortcut:
 
 ```powershell
-.\scripts\install-shortcut.ps1 -LibraryHome "C:\path\to\Sheet2Play\Visualization_engine"
+.\scripts\install-shortcut.ps1 -LibraryHome "D:\Sheet2Play"
+```
+
+```
+%APPDATA%\Sheet2Play\songs\
+    pdf\            sheet music you want to convert
+    midi\custom\    .mid / .mxl files, shown in the MIDI Player column
+    midi\<engine>\  validated MIDI caches, one folder per engine
 ```
 
 Supported inputs: `.pdf`, `.png`, `.jpg`, `.jpeg`, `.bmp`, `.tif`, `.tiff`, `.webp`,
@@ -152,9 +158,12 @@ only appear after packaging:
 ## Project layout
 
 ```
-Visualization_engine/      C# frontend (assembly: SynthesiaClone)
+Visualization_engine/        C# frontend (assembly: Sheet2Play)
 Visualization_engine.Tests/  xUnit tests for cache, playback and progress
-Bridge/                    Python OMR pipeline and its tests
-Omr/                       Dataset and training experiments
-songs/                     Local sheet music, MIDI and caches (not tracked)
+MidiTester/                  MIDI regression smoke harness
+Bridge/                      Python OMR pipeline and its tests
+Omr/, Research/              Dataset work and OMR experiments
+scripts/                     publish and shortcut installers
 ```
+
+Your sheet music is not in here — see [Where your library lives](#where-your-library-lives).

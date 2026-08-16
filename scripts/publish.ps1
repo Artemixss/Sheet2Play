@@ -6,21 +6,16 @@
     Produces one double-clickable executable that needs no .NET install. Fonts and the
     Python bridge are copied beside it by the csproj <Content> rules.
 
-    A published build cannot find SynthesiaClone.csproj, so it stores songs and caches in
-    %APPDATA%\Sheet2Play instead of beside the .exe. This script seeds that folder from
-    the repo's songs/ directory on first publish, since only the build machine knows
-    where the development library lives.
+    Songs and caches live in %APPDATA%\Sheet2Play for both source and published builds,
+    so there is nothing to copy or migrate after publishing.
 
 .PARAMETER OutputPath
     Where to place the published app. Defaults to .\dist.
 
-.PARAMETER SkipLibrarySeed
-    Do not copy songs/ into %APPDATA%\Sheet2Play.
 #>
 [CmdletBinding()]
 param(
-    [string]$OutputPath,
-    [switch]$SkipLibrarySeed
+    [string]$OutputPath
 )
 
 $ErrorActionPreference = 'Stop'
@@ -54,20 +49,6 @@ foreach ($required in @('assets\fonts\Inter-Regular.ttf', 'Bridge\bridge.py')) {
         Write-Host "  ok  $required" -ForegroundColor DarkGray
     } else {
         Write-Warning "  MISSING  $required - the published app will fall back or fail at runtime."
-    }
-}
-
-if (-not $SkipLibrarySeed) {
-    $libraryHome = Join-Path $env:APPDATA 'Sheet2Play'
-    $songsSource = Join-Path $repoRoot 'Visualization_engine\songs'
-    $songsTarget = Join-Path $libraryHome 'songs'
-    if ((Test-Path $songsSource) -and -not (Test-Path $songsTarget)) {
-        Write-Host "Seeding library into $songsTarget ..." -ForegroundColor Cyan
-        New-Item -ItemType Directory -Force -Path $libraryHome | Out-Null
-        Copy-Item -Recurse -Force -Path $songsSource -Destination $songsTarget
-        Write-Host "  copied songs/ (first publish only)" -ForegroundColor DarkGray
-    } else {
-        Write-Host "Library already present at $songsTarget - left untouched." -ForegroundColor DarkGray
     }
 }
 

@@ -9,10 +9,10 @@ class Program
 {
     static void Main()
     {
-        string dir = Path.GetFullPath(Path.Combine(
-            AppContext.BaseDirectory,
-            "..", "..", "..", "..",
-            "Visualization_engine", "songs", "midi", "custom"));
+        // Resolve through SongCache so this always tests the same library the app uses,
+        // wherever that is (%APPDATA%\Sheet2Play by default).
+        string dir = Path.Combine(
+            SongCache.ApplicationDirectory, "songs", "midi", "custom");
 
         if (!Directory.Exists(dir))
         {
