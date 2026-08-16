@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "dataset": {
+    "name": "OLiMPiC 1.0 scanned",
+    "repository": "https://github.com/ufal/olimpic-icdar24",
+    "release_tag": "datasets",
+    "release_commit": "df0d842596ccd199882ff958e628d59327ca6cba",
+    "license": "CC-BY-SA-4.0",
+    "archive": {
+      "name": "olimpic-1.0-scanned.2024-02-12.tar.gz",
+      "url": "https://github.com/ufal/olimpic-icdar24/releases/download/datasets/olimpic-1.0-scanned.2024-02-12.tar.gz",
+      "size": 225607163,
+      "sha256": "a84091b50154251b66d37b50806f98d8a6d758b4195d2aa9805d1b9cb78e6993"
+    },
+    "extracted": {
+      "root": "olimpic-1.0-scanned",
+      "file_count": 8800,
+      "size": 332045370,
+      "test_system_count": 1493,
+      "test_score_count": 100
+    }
+  }
+}

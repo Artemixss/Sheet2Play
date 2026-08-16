@@ -1,0 +1,69 @@
+{
+  "determinism": {
+    "hashes": [],
+    "passed": false,
+    "runs": 0,
+    "sample_id": null
+  },
+  "homr": {
+    "6570192/p1-s1": {
+      "id": "6570192/p1-s1",
+      "metrics": {
+        "aligned_voice_accuracy": 1.0,
+        "mean_offset_error": 0.3333333333333333,
+        "onset_duration_f1": 0.03508771929824562,
+        "onset_f1": 0.10526315789473684,
+        "pitch_f1": 0.9473684210526316,
+        "staff_accuracy": 1.0
+      },
+      "peak_vram_bytes": 0,
+      "score_id": "6570192",
+      "seconds": 10.205509800001892,
+      "valid": true
+    }
+  },
+  "sample_ids": [
+    "6570192/p1-s1"
+  ],
+  "schema_version": 1,
+  "transcoda_beam_only": {
+    "6570192/p1-s1": {
+      "decoder": "beam",
+      "error": {
+        "code": "KERN_PARSE_FAILED",
+        "message": "converter21 rejected rhythmic or spine semantics: Error: Inconsistent rhythm analysis occurring near line 48\n    Expected durationFromStart to be: 15.5 but found it to be 16.0\n    Line: 8.r\t2EE-\t8.r",
+        "page": null,
+        "stage": "symbolic_parse"
+      },
+      "fallback_attempted": false,
+      "id": "6570192/p1-s1",
+      "peak_vram_bytes": 1952457728,
+      "score_id": "6570192",
+      "seconds": 9.803986499999155,
+      "valid": false
+    }
+  },
+  "transcoda_beam_then_grammar": {
+    "6570192/p1-s1": {
+      "beam_error": {
+        "code": "KERN_PARSE_FAILED",
+        "message": "converter21 rejected rhythmic or spine semantics: Error: Inconsistent rhythm analysis occurring near line 48\n    Expected durationFromStart to be: 15.5 but found it to be 16.0\n    Line: 8.r\t2EE-\t8.r",
+        "page": null,
+        "stage": "symbolic_parse"
+      },
+      "decoder": "grammar",
+      "error": {
+        "code": "KERN_PARSE_FAILED",
+        "message": "converter21 rejected rhythmic or spine semantics: Error: Inconsistent rhythm analysis occurring near line 21\n    Expected durationFromStart to be: 4.5 but found it to be 4.0\n    Line: 8r\t2EE-\t8.r",
+        "page": null,
+        "stage": "symbolic_parse"
+      },
+      "fallback_attempted": true,
+      "id": "6570192/p1-s1",
+      "peak_vram_bytes": 814224384,
+      "score_id": "6570192",
+      "seconds": 43.41060699999798,
+      "valid": false
+    }
+  }
+}

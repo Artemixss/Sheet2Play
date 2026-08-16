@@ -1,0 +1,36 @@
+{
+  "augment": "h:8,rotate:1,v:4,de,en3:0.2,n:0.01,c:-1:1,b:-0.5:0.2",
+  "batch_size": 64,
+  "cnn_dim": 32,
+  "cnn_resblocks": 2,
+  "cnn_stages": 4,
+  "decay": "cos",
+  "dev": [
+    "data/synthetic-dev",
+    "data/scanned-dev"
+  ],
+  "dropout": 0.2,
+  "epochs": 500,
+  "evaluation_each": 10,
+  "evaluation_from": 50,
+  "exp": "c2a-e500",
+  "height": 192,
+  "load": null,
+  "logdir": "logs/zeus-olimpic-1.0-2024-02-12.model",
+  "max_predict_length": 700,
+  "max_train_length": 500,
+  "rnn_dim": 192,
+  "rnn_layers": 2,
+  "rnn_layers_decoder": 1,
+  "script": "lmxr.py",
+  "seed": 42,
+  "test": [
+    "data/synthetic-test",
+    "data/scanned-test"
+  ],
+  "threads": 6,
+  "timestep_width": 16,
+  "train": "data/synthetic-train",
+  "verbose": 2,
+  "visualize_only": false
+}

@@ -8,7 +8,7 @@ namespace SynthesiaClone
         public int Y { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
-         public string Label { get; set; }
+        public string Label { get; set; } = string.Empty;
         public bool IsPressed { get; set; } 
     }
 }

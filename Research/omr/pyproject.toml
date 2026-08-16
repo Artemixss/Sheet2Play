@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools==80.9.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sheet2play-omr-research"
+version = "0.1.0"
+description = "Private, offline research harness for Sheet2Play piano OMR"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "charset-normalizer==3.4.3",
+    "converter21==3.5.0",
+    "huggingface-hub==0.35.0",
+    "loguru==0.7.3",
+    "music21==9.9.1",
+    "numpy==2.2.6",
+    "packaging==25.0",
+    "Pillow==11.3.0",
+    "pydantic==2.12.5",
+    "pypdfium2==4.30.0",
+    "safetensors==0.6.2",
+    "tokenizers==0.22.1",
+    "torchao==0.15.0",
+    "torchtune==0.6.1",
+    "transformers==4.57.3",
+    "xgrammar==0.1.31",
+]
+
+[project.optional-dependencies]
+test = ["pytest==9.0.2"]
+training = [
+    "augraphy==8.2.6",
+    "CairoSVG==2.8.2",
+    "datasets==4.4.1",
+    "fire==0.7.1",
+    "kornia==0.8.2",
+    "names==0.3.0",
+    "opencv-python-headless==4.13.0.92",
+    "pyvips==3.1.1",
+    "scikit-image==0.25.2",
+    "verovio==6.0.1",
+    "wonderwords==3.0.1",
+]
+
+[project.scripts]
+s2p-omr-research = "sheet2play_omr.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

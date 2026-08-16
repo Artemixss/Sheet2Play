@@ -1,0 +1,59 @@
+# ---- .NET build output ----
+bin/
+obj/
+*.user
+*.suo
+*.sourcelink.json
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+.venv/
+.venv-*/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+
+# ---- Managed runtimes: vendored deps and downloaded model weights ----
+# Bridge/.runtime and Research/omr/.runtime hold multi-hundred-MB checkpoints
+# (model.safetensors alone is 114MB) and vendored site-packages.
+.runtime/
+
+# ---- Song library ----
+# Sheet music, MIDI and generated caches are user content: large, machine-specific,
+# and largely third-party copyrighted arrangements. Keep them local.
+Visualization_engine/songs/
+Visualization_engine/assets/fonts/*.otf
+
+# ---- OMR research ----
+# Track the code (Research/omr/src, run_*.py, pyproject.toml, lock files, reports);
+# ignore only the heavy generated inputs and outputs.
+Research/omr/data/
+Research/omr/artifacts/
+Research/omr/out/
+Research/omr/out_zeus_test/
+Research/omr/zeus_eval_tmp_*/
+Research/omr/src/test_zeus_out/
+
+# Model checkpoints - keep the code that trains and loads them, not the weights.
+*.h5
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.onnx
+Omr/__pycache__/
+Omr/Data_Pipeline/output_svg/
+
+# ---- Pipeline scratch output ----
+zeus_e2e_out/
+zeus_test_out*/
+tmp/
+
+# ---- Editor / OS ----
+.vs/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db

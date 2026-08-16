@@ -1,0 +1,12 @@
+# Training is an additive profile installed after requirements-inference.lock.txt.
+CairoSVG==2.8.2
+augraphy==8.2.6
+datasets==4.4.1
+fire==0.7.1
+kornia==0.8.2
+names==0.3.0
+opencv-python-headless==4.13.0.92
+pyvips==3.1.1
+scikit-image==0.25.2
+verovio==6.0.1
+wonderwords==3.0.1

@@ -1,115 +1,130 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Raylib_cs;
 using Color = Raylib_cs.Color;
 
-namespace SynthesiaClone
+namespace SynthesiaClone;
+
+public class Keyboard
 {
-    public class Keyboard
-    {
-        public List<PianoKey> Keys { get; private set; }
-        
-        private int _screenWidth;
-        private int _hitLineY;
+	private readonly List<PianoKey> drawOrder = new List<PianoKey>();
 
-        public Keyboard(int screenWidth, int hitLineY)
-        {
-            Keys = new List<PianoKey>();
-            _screenWidth = screenWidth;
-            _hitLineY = hitLineY;
-            string[] noteNames = { "C", "Db", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B" };
-            const int totalKeys = 88;
-            int[] blackKeyPattern = { 1, 3, 6, 8, 10 };
-            
-            int whiteKeyCount = 0;
-            for (int i = 0; i < totalKeys; i++)
-            {
-                int midiNote = i + 21;
+	private int _screenWidth;
 
-                int patternIndex = midiNote % 12;
-                if (!blackKeyPattern.Contains(patternIndex))
-                {
-                    int startX = (int)((whiteKeyCount * _screenWidth) / 52.0f);
-                    int endX = (int)(((whiteKeyCount + 1) * _screenWidth) / 52.0f);
-                    
-                    PianoKey whiteKey = new PianoKey();
-                    whiteKey.Index = i;
-                    whiteKey.IsBlack = false;
-                    whiteKey.X = startX;
-                    whiteKey.Y = _hitLineY;
-                    whiteKey.Width = endX - startX;
-                    whiteKey.Height = 150;
-                    whiteKey.Label = noteNames[midiNote % 12];
+	private int _hitLineY;
 
-                    Keys.Add(whiteKey);
-                    whiteKeyCount++;
-                }
-            }
-            whiteKeyCount = 0;
-            int blackKeyWidth = (int)((_screenWidth / 52.0f) * 0.6f);
+	private int _keyboardHeight;
 
-            for (int i = 0; i < totalKeys; i++)
-            {
-                int midiNote = i + 21;
-                
-                int patternIndex = midiNote % 12;
-                if (blackKeyPattern.Contains(patternIndex))
-                {
-                    PianoKey previousWhiteKey = Keys[whiteKeyCount - 1];
-                    int seamX = previousWhiteKey.X + previousWhiteKey.Width;
-                    
-                    PianoKey blackKey = new PianoKey();
-                    blackKey.Index = i;
-                    blackKey.IsBlack = true;
-                    blackKey.X = seamX - (blackKeyWidth / 2);
-                    blackKey.Y = _hitLineY;
-                    blackKey.Width = blackKeyWidth;
-                    blackKey.Height = 90;
+	public PianoKey[] Keys { get; }
 
-                    Keys.Add(blackKey);
-                    blackKey.Label = noteNames[midiNote % 12];
-                }
-                else
-                {
-                    whiteKeyCount++;
-                }
-            }
-        }
+	public Keyboard(int screenWidth, int hitLineY, int keyboardHeight = 150)
+	{
+		Keys = new PianoKey[88];
+		Resize(screenWidth, hitLineY, keyboardHeight);
+	}
 
-        public void Draw()
-        {
-            Color customOffWhite = new Color(230, 230, 230, 255);
-            Color customOffgray = new Color(210, 210, 210, 255);
-            foreach (PianoKey key in Keys)
-            {
-                if (!key.IsBlack)
-                {
-                    if (key.IsPressed)
-                    {
-                       Raylib.DrawRectangle(key.X, key.Y, key.Width, key.Height, Color.DarkBlue);
-                       Raylib.DrawText(key.Label, key.X + 5, key.Y + key.Height - 20, 10, Color.Black);
-                       Raylib.DrawRectangleLines(key.X, key.Y, key.Width, key.Height, Color.LightGray); 
-                    }
-                    else{
-                    Raylib.DrawRectangle(key.X, key.Y, key.Width, key.Height, customOffWhite);
-                    Raylib.DrawText(key.Label, key.X + 5, key.Y + key.Height - 20, 10, Color.Black);
-                    Raylib.DrawRectangleLines(key.X, key.Y, key.Width, key.Height, Color.LightGray);
-                    }
-                }
-                else
-                {
-                    if (key.IsPressed)
-                    {
-                       Raylib.DrawRectangle(key.X, key.Y, key.Width, key.Height, Color.Gray);
-                       Raylib.DrawText(key.Label, key.X + 2, key.Y + key.Height - 15, 10, customOffgray);
-                    }
-                    else
-                    {
-                    Raylib.DrawRectangle(key.X, key.Y, key.Width, key.Height, Color.Black);
-                    Raylib.DrawText(key.Label, key.X + 2, key.Y + key.Height - 15, 10, customOffgray);
-                    }
-                }
-            }
-        }
-    }
+	public void Resize(int screenWidth, int hitLineY, int keyboardHeight)
+	{
+		if (screenWidth <= 0)
+		{
+			throw new ArgumentOutOfRangeException("screenWidth");
+		}
+		if (keyboardHeight <= 0)
+		{
+			throw new ArgumentOutOfRangeException("keyboardHeight");
+		}
+		_screenWidth = screenWidth;
+		_hitLineY = hitLineY;
+		_keyboardHeight = keyboardHeight;
+		drawOrder.Clear();
+		string[] array = new string[12]
+		{
+			"C", "Db", "D", "Eb", "E", "F", "F#", "G", "Ab", "A",
+			"Bb", "B"
+		};
+		int[] source = new int[5] { 1, 3, 6, 8, 10 };
+		int num = 0;
+		for (int i = 0; i < 88; i++)
+		{
+			int num2 = i + 21;
+			int value = num2 % 12;
+			if (!source.Contains(value))
+			{
+				int num3 = (int)((float)(num * _screenWidth) / 52f);
+				int num4 = (int)((float)((num + 1) * _screenWidth) / 52f);
+				PianoKey pianoKey = Keys[i] ?? new PianoKey();
+				pianoKey.Index = i;
+				pianoKey.IsBlack = false;
+				pianoKey.X = num3;
+				pianoKey.Y = _hitLineY;
+				pianoKey.Width = num4 - num3;
+				pianoKey.Height = _keyboardHeight;
+				pianoKey.Label = array[num2 % 12];
+				Keys[i] = pianoKey;
+				drawOrder.Add(pianoKey);
+				num++;
+			}
+		}
+		num = 0;
+		int num5 = (int)((float)_screenWidth / 52f * 0.6f);
+		for (int j = 0; j < 88; j++)
+		{
+			int num6 = j + 21;
+			int value2 = num6 % 12;
+			if (source.Contains(value2))
+			{
+				PianoKey pianoKey2 = drawOrder[num - 1];
+				int num7 = pianoKey2.X + pianoKey2.Width;
+				PianoKey pianoKey3 = Keys[j] ?? new PianoKey();
+				pianoKey3.Index = j;
+				pianoKey3.IsBlack = true;
+				pianoKey3.X = num7 - num5 / 2;
+				pianoKey3.Y = _hitLineY;
+				pianoKey3.Width = num5;
+				pianoKey3.Height = Math.Max(1, (int)Math.Round((double)_keyboardHeight * 0.6));
+				Keys[j] = pianoKey3;
+				drawOrder.Add(pianoKey3);
+				pianoKey3.Label = array[num6 % 12];
+			}
+			else
+			{
+				num++;
+			}
+		}
+	}
+
+	public void Draw()
+	{
+		Color color = new Color(230, 230, 230, 255);
+		Color color2 = new Color(210, 210, 210, 255);
+		foreach (PianoKey item in drawOrder)
+		{
+			if (!item.IsBlack)
+			{
+				if (item.IsPressed)
+				{
+					Raylib.DrawRectangle(item.X, item.Y, item.Width, item.Height, Color.DarkBlue);
+					Raylib.DrawText(item.Label, item.X + 5, item.Y + item.Height - 20, 10, Color.Black);
+					Raylib.DrawRectangleLines(item.X, item.Y, item.Width, item.Height, Color.LightGray);
+				}
+				else
+				{
+					Raylib.DrawRectangle(item.X, item.Y, item.Width, item.Height, color);
+					Raylib.DrawText(item.Label, item.X + 5, item.Y + item.Height - 20, 10, Color.Black);
+					Raylib.DrawRectangleLines(item.X, item.Y, item.Width, item.Height, Color.LightGray);
+				}
+			}
+			else if (item.IsPressed)
+			{
+				Raylib.DrawRectangle(item.X, item.Y, item.Width, item.Height, Color.Gray);
+				Raylib.DrawText(item.Label, item.X + 2, item.Y + item.Height - 15, 10, color2);
+			}
+			else
+			{
+				Raylib.DrawRectangle(item.X, item.Y, item.Width, item.Height, Color.Black);
+				Raylib.DrawText(item.Label, item.X + 2, item.Y + item.Height - 15, 10, color2);
+			}
+		}
+	}
 }

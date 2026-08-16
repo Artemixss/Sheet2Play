@@ -1,0 +1,36 @@
+{
+  "files": {
+    "benchmark": {
+      "bytes": 158,
+      "name": "benchmark.jsonl",
+      "sha256": "0b876ee462e0c23593ca0ba1d5d5df32671bf062026c7361d878555d236ecf5e"
+    },
+    "events": {
+      "bytes": 14329,
+      "name": "baseline-piano.events.json",
+      "sha256": "e600e798360d140061e73bd1da096531fc88c1f2dcd7a4f9d77eccbf62a16054"
+    },
+    "kern": {
+      "bytes": 344,
+      "name": "baseline-piano.krn",
+      "sha256": "03a48bf5f047943af61f451fabf4f1eb835eff559da36faa38fe3349bc03eef5"
+    },
+    "pdf": {
+      "bytes": 12712,
+      "name": "baseline-piano.pdf",
+      "sha256": "2af3fd1e945d2496f483ab9af6b5d45dd5146cbcb0ec44a637729f8f376fb754"
+    },
+    "png": {
+      "bytes": 35285,
+      "name": "baseline-piano.png",
+      "sha256": "2cbe267a15f2f5791943523413ce6c3d25dee32e283f43af156c7eeee5f08805"
+    }
+  },
+  "generator": {
+    "cairosvg": "2.8.2",
+    "pypdf": "6.10.0",
+    "verovio": "6.0.1"
+  },
+  "note_events": 56,
+  "schema_version": 1
+}
