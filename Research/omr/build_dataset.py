@@ -21,10 +21,15 @@ Known limitations (measured, not assumed):
     Real piano scores are a two-staff grand staff, so those pages teach wrong layout
     priors. Prefer MusicXML sources; check MIDI-derived pages before training on them.
 
-  * Rendered pages carry no title block, captions, fingerings, chord symbols or
-    note-name annotations. Real target PDFs do - the project's own Liyue Battle Theme
-    export has a full title/composer/arranger block. This generator models imaging
-    degradation only, not the notation layer, so it under-represents that.
+  * Pass --annotate to add the notation layer: title/composer/arranger block, note-name
+    letters, fingerings, chord symbols, performance text and stray pen marks. The label
+    stays the clean score, so those act as distractors the model must learn to ignore.
+    Without --annotate the pages are bare renders, which real exports never are.
+
+  * MuseScore cannot always re-import its own MusicXML export, which the --annotate path
+    depends on: in_the_pool.mxl fails with exit 1320 even before annotation is applied.
+    Such scores fall back to rendering the original file unannotated, recorded in the
+    manifest as fallback=annotation_render_failed.
 
   * The project's real inputs are born-digital MuseScore PDF exports, which are clean
     vector renders. For those the variant 0 (clean) images are the closest match, and
@@ -49,10 +54,13 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 import numpy as np
-from PIL import Image, ImageEnhance, ImageFilter
+from PIL import Image, ImageDraw, ImageEnhance, ImageFilter
+
+import notation_augment
 
 SCORE_SUFFIXES = {".mxl", ".musicxml", ".xml", ".mid", ".midi"}
 DEFAULT_MUSESCORE = "C:\\Program Files\\MuseScore 4\\bin\\MuseScore4.exe"
@@ -136,6 +144,39 @@ def degrade(image, rng):
     return image, params
 
 
+def add_pen_marks(image, rng, count):
+    """Draw stray pencil-style marks: underlines, circled notes, margin ticks.
+
+    Real practice copies accumulate these, and they sit on top of the notation rather
+    than in it, so they cannot be injected through MusicXML.
+    """
+    if count <= 0:
+        return image, []
+    drawable = image.convert("L")
+    draw = ImageDraw.Draw(drawable)
+    width, height = drawable.size
+    marks = []
+    for _ in range(count):
+        shade = rng.randint(70, 150)
+        kind = rng.choice(["underline", "circle", "tick"])
+        x = rng.randint(int(width * 0.08), int(width * 0.88))
+        y = rng.randint(int(height * 0.08), int(height * 0.92))
+        if kind == "underline":
+            length = rng.randint(int(width * 0.05), int(width * 0.22))
+            draw.line([(x, y), (x + length, y + rng.randint(-3, 3))],
+                      fill=shade, width=rng.randint(2, 4))
+        elif kind == "circle":
+            radius = rng.randint(12, 34)
+            draw.ellipse([x - radius, y - radius // 2, x + radius, y + radius // 2],
+                         outline=shade, width=rng.randint(2, 3))
+        else:
+            length = rng.randint(10, 26)
+            draw.line([(x, y), (x + rng.randint(-6, 6), y + length)],
+                      fill=shade, width=rng.randint(2, 3))
+        marks.append(kind)
+    return drawable, marks
+
+
 def save_with_jpeg_artifacts(image, path, rng):
     """Round-trip through JPEG; most real-world scans arrive lossily compressed."""
     quality = rng.randint(62, 92)
@@ -158,6 +199,12 @@ def discover_sources(inputs, limit):
     return sources
 
 
+def render_score(musescore, score_path, work, tag, dpi):
+    """Engrave one MusicXML/MIDI into page images, returned in page order."""
+    run_musescore(musescore, score_path, work / (tag + ".png"), dpi)
+    return collect_pages(work, tag)
+
+
 def build(args):
     musescore = find_musescore(args.musescore)
     out_root = Path(args.out).resolve()
@@ -174,6 +221,7 @@ def build(args):
     print("MuseScore  : " + musescore)
     print("Sources    : " + str(len(sources)) + " score file(s)")
     print("Output     : " + str(out_root))
+    print("Annotate   : " + ("on" if args.annotate else "off"))
     print("")
 
     rng = random.Random(args.seed)
@@ -188,51 +236,97 @@ def build(args):
 
             with tempfile.TemporaryDirectory() as raw_work:
                 work = Path(raw_work)
+                canonical = work / "score.musicxml"
                 try:
                     # Ground truth first: a score that will not export cleanly makes
                     # useless training data, so fail before spending time rendering.
-                    run_musescore(musescore, source, work / "score.musicxml", None)
-                    run_musescore(musescore, source, work / "page.png", args.dpi)
-                except (DatasetBuildError, subprocess.TimeoutExpired) as error:
+                    run_musescore(musescore, source, canonical, None)
+                    if not canonical.exists():
+                        raise DatasetBuildError("MuseScore produced no MusicXML")
+
+                    # The label is always the clean score. Annotations live only in the
+                    # rendered image, so the model learns to transcribe notes and ignore
+                    # titles, fingerings, chord symbols and note-name letters.
+                    shutil.copyfile(canonical, label_path)
+
+                    if args.annotate:
+                        try:
+                            plain = work / "plain.musicxml"
+                            marked = work / "marked.musicxml"
+                            plain_summary = notation_augment.annotate_file(
+                                canonical, plain, rng, "title")
+                            marked_summary = notation_augment.annotate_file(
+                                canonical, marked, rng, "full")
+                            plain_pages = render_score(musescore, plain, work, "plain", args.dpi)
+                            marked_pages = render_score(musescore, marked, work, "marked", args.dpi)
+                        except (DatasetBuildError, subprocess.TimeoutExpired,
+                                ET.ParseError) as error:
+                            # MuseScore cannot always re-import its own MusicXML export
+                            # (seen on in_the_pool.mxl: the untouched canonical export
+                            # fails with exit 1320 before any annotation is applied).
+                            # Fall back to the original file so the score still yields
+                            # usable clean pages instead of being dropped entirely.
+                            print("    warn  annotated render failed, using source: "
+                                  + str(error)[:80])
+                            plain_summary = {"profile": "none",
+                                             "fallback": "annotation_render_failed"}
+                            marked_summary = plain_summary
+                            plain_pages = render_score(musescore, source, work, "src", args.dpi)
+                            marked_pages = plain_pages
+                    else:
+                        plain_summary = {"profile": "none"}
+                        marked_summary = {"profile": "none"}
+                        plain_pages = render_score(musescore, source, work, "plain", args.dpi)
+                        marked_pages = plain_pages
+                except (DatasetBuildError, subprocess.TimeoutExpired, ET.ParseError) as error:
                     print("    SKIP  " + str(error))
                     failed += 1
                     continue
 
-                pages = collect_pages(work, "page")
-                if not pages or not (work / "score.musicxml").exists():
-                    print("    SKIP  MuseScore produced no pages or no MusicXML")
+                if not plain_pages:
+                    print("    SKIP  MuseScore produced no pages")
                     failed += 1
                     continue
 
-                shutil.copyfile(work / "score.musicxml", label_path)
+                def record(target, page_number, variant, quality, augmentation, notation):
+                    manifest.write(json.dumps({
+                        "image": str(target.relative_to(out_root)).replace("\\", "/"),
+                        "label": str(label_path.relative_to(out_root)).replace("\\", "/"),
+                        "source": source.name,
+                        "page": page_number,
+                        "variant": variant,
+                        "jpeg_quality": quality,
+                        "augmentation": augmentation,
+                        "notation": notation,
+                    }, ensure_ascii=False) + chr(10))
 
-                for page_number, page in enumerate(pages, start=1):
-                    original = Image.open(page).convert("L")
-                    for variant in range(args.variants + 1):
-                        name = (stem + "_p" + format(page_number, "03d")
-                                + "_v" + str(variant) + ".jpg")
-                        target = images_dir / name
-                        if variant == 0:
-                            params = {"clean": True}
-                            quality = save_with_jpeg_artifacts(original, target, rng)
-                        else:
-                            degraded, params = degrade(original, rng)
-                            quality = save_with_jpeg_artifacts(degraded, target, rng)
-                        record = {
-                            "image": str(target.relative_to(out_root)).replace("\\", "/"),
-                            "label": str(label_path.relative_to(out_root)).replace("\\", "/"),
-                            "source": source.name,
-                            "page": page_number,
-                            "variant": variant,
-                            "jpeg_quality": quality,
-                            "augmentation": params,
-                        }
-                        manifest.write(json.dumps(record, ensure_ascii=False) + "\n")
+                # Variant 0: undegraded, title block only. Closest match to the
+                # born-digital PDF exports this project actually receives.
+                for page_number, page in enumerate(plain_pages, start=1):
+                    base = Image.open(page).convert("L")
+                    target = images_dir / (stem + "_p" + format(page_number, "03d") + "_v0.jpg")
+                    quality = save_with_jpeg_artifacts(base, target, rng)
+                    record(target, page_number, 0, quality, {"clean": True}, plain_summary)
+                    written += 1
+
+                # Remaining variants: annotated engraving plus imaging degradation.
+                for page_number, page in enumerate(marked_pages, start=1):
+                    base = Image.open(page).convert("L")
+                    for variant in range(1, args.variants + 1):
+                        degraded, params = degrade(base, rng)
+                        marks = []
+                        if args.pen_marks > 0:
+                            degraded, marks = add_pen_marks(
+                                degraded, rng, rng.randint(0, args.pen_marks))
+                        params["pen_marks"] = marks
+                        target = images_dir / (stem + "_p" + format(page_number, "03d")
+                                               + "_v" + str(variant) + ".jpg")
+                        quality = save_with_jpeg_artifacts(degraded, target, rng)
+                        record(target, page_number, variant, quality, params, marked_summary)
                         written += 1
 
-                produced = len(pages) * (args.variants + 1)
-                print("    ok    " + str(len(pages)) + " page(s) -> "
-                      + str(produced) + " image(s)")
+                print("    ok    " + str(len(plain_pages)) + " plain / "
+                      + str(len(marked_pages)) + " annotated page(s)")
 
     print("")
     print("=== " + str(written) + " images from " + str(len(sources) - failed)
@@ -254,6 +348,11 @@ def main():
     parser.add_argument("--limit", type=int, default=0,
                         help="Only process the first N scores.")
     parser.add_argument("--seed", type=int, default=1234, help="Augmentation seed.")
+    parser.add_argument("--annotate", action="store_true",
+                        help="Inject title blocks, note names, fingerings and chord "
+                             "symbols into the engraving (label stays clean).")
+    parser.add_argument("--pen-marks", type=int, default=3,
+                        help="Maximum stray pencil marks per degraded page (0 disables).")
     parser.add_argument("--musescore", help="Path to the MuseScore executable.")
     args = parser.parse_args()
     try:
