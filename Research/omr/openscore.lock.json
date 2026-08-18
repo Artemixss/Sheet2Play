@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "note": "OpenScore corpora are CC0 transcriptions published by the MuseScore community. Archives are fetched from pinned GitHub commits, not scraped. sha256 is recorded on first download with --update-lock and verified on every run thereafter.",
+  "corpora": {
+    "lieder": {
+      "name": "OpenScore Lieder Corpus",
+      "repository": "https://github.com/OpenScore/Lieder",
+      "mirror": "https://musescore.com/openscore-lieder-corpus",
+      "revision": "6b2dc542ce2e8aa4b78c8ee62103b210efc07015",
+      "revision_date": "2026-04-07",
+      "license": "CC0-1.0",
+      "score_format": "mscx",
+      "approximate_scores": 1300,
+      "description": "Over 1200 nineteenth century songs by 100+ composers, voice and piano.",
+      "archive": {
+        "url": "https://codeload.github.com/OpenScore/Lieder/tar.gz/6b2dc542ce2e8aa4b78c8ee62103b210efc07015",
+        "sha256": "807999b09fc1872ccb5315784cc78d320f6f0c7ded7086ea8ad5a7e47a81f327"
+      }
+    },
+    "quartets": {
+      "name": "OpenScore String Quartets",
+      "repository": "https://github.com/OpenScore/StringQuartets",
+      "mirror": "https://musescore.com/openscore-string-quartets",
+      "revision": "2c723a5b7b4ea5420826116dfa912956c6a022c2",
+      "revision_date": "2026-08-10",
+      "license": "CC0-1.0",
+      "score_format": "mscx",
+      "approximate_scores": 100,
+      "description": "Around 100 multi-movement string quartets.",
+      "archive": {
+        "url": "https://codeload.github.com/OpenScore/StringQuartets/tar.gz/2c723a5b7b4ea5420826116dfa912956c6a022c2",
+        "sha256": null
+      }
+    }
+  }
+}
