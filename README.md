@@ -165,6 +165,50 @@ only appear after packaging:
 .\dist\Sheet2Play.exe --smoke .\ui-snapshots
 ```
 
+## Improving recognition
+
+HOMR is accurate enough for general sheet music but loses rhythmic precision on dense piano
+arrangements, which is the material this project actually receives. `Research/omr/` holds the
+work aimed at fixing that. It is research tooling, not part of the shipped app.
+
+### Evaluating another engine
+
+The Sheet Music Transformer publishes checkpoints trained on pianoform scores, so the first
+question is whether one of them simply beats HOMR — no training required.
+
+```bash
+cd Research/omr
+.venv/Scripts/python.exe compare_engines.py --pdf <score.pdf> --pages 1 --dpi 200
+```
+
+This slices each page into systems, transcribes each one, and reports spine count, note
+count, barlines and whether the output is well-formed Humdrum.
+
+**Current finding: it does not beat HOMR.** Output is well-formed and the meter is sometimes
+correct, but it recovers around 16 notes from a system holding well over fifty. Note that
+rendering resolution dominates the result — at 300 DPI the same page collapses to 4 notes,
+at 200 DPI it gives 28 — so sweep `--dpi` before drawing conclusions about any model.
+
+### Datasets
+
+| Dataset | Size | Licence | Role |
+| --- | --- | --- | --- |
+| OLiMPiC (scanned) | 2,931 aligned samples | CC BY-SA 4.0 | Real scans; robustness |
+| OpenScore Lieder | 1,352 scores | CC0 | Volume |
+| Your own library | 36 PDFs | third-party | The evaluation target |
+
+```bash
+python download_openscore.py --corpus lieder --update-lock   # hash-verified fetch
+python download_openscore.py --corpus lieder --convert --pdf # pair with MusicXML
+python build_dataset.py --input <scores> --annotate          # engrave training pages
+```
+
+`build_dataset.py --annotate` adds title blocks, note-name letters, fingerings and chord
+symbols to the rendered *image* while the training label stays the clean score, so a model
+has to learn to ignore them. OLiMPiC and OpenScore are the same repertoire in two forms, and
+both are voice-and-piano — useful for volume, not a substitute for evaluating on real piano
+arrangements.
+
 ## Project layout
 
 ```
@@ -177,3 +221,10 @@ scripts/                     publish and shortcut installers
 ```
 
 Your sheet music is not in here — see [Where your library lives](#where-your-library-lives).
+
+## Further reading
+
+* [`CONTEXT.md`](CONTEXT.md) — architecture, invariants and known traps. Read this before
+  making changes, especially automated ones.
+* [`OMR_Next_Phase_Context.md`](OMR_Next_Phase_Context.md) — the roadmap for replacing the
+  recognition engine.
