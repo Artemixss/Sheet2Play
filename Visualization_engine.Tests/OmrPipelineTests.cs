@@ -83,7 +83,7 @@ public sealed class OmrPipelineTests
             import sys
 
             engine = sys.argv[sys.argv.index("--engine") + 1]
-            revisions = {"homr": "homr-0.7.0"}
+            revisions = {"homr": "__HOMR_REVISION__"}
             print(json.dumps({
                 "schema_version": 2,
                 "engine": engine,
@@ -101,7 +101,7 @@ public sealed class OmrPipelineTests
                     "voice_identifier": "1",
                 }],
             }, separators=(",", ":")))
-            """);
+            """.Replace("__HOMR_REVISION__", OmrPipeline.HomrEngineRevision));
 
         OmrResult result = await OmrPipeline.RunAsync(
             inputPath,
@@ -188,7 +188,7 @@ public sealed class OmrPipelineTests
             print(json.dumps({
                 "schema_version": 2,
                 "engine": "homr",
-                "engine_revision": "homr-0.7.0",
+                "engine_revision": "__HOMR_REVISION__",
                 "tempo_changes": [{"start_beat": 0.0, "bpm": 120.0}],
                 "notes": [{
                     "pitch": "C4", "midi_pitch": 60, "start_beat": 0.0,
@@ -197,7 +197,7 @@ public sealed class OmrPipelineTests
                     "staff_index": 0, "voice_identifier": "1"
                 }]
             }, separators=(",", ":")))
-            """);
+            """.Replace("__HOMR_REVISION__", OmrPipeline.HomrEngineRevision));
         LoadProgressTracker progress = new();
 
         await OmrPipeline.RunAsync(

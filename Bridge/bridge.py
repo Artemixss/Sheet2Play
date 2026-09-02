@@ -30,7 +30,7 @@ from progress_protocol import emit_progress
 
 LOGGER = logging.getLogger("sheet2play.bridge")
 SCHEMA_VERSION = 2
-HOMR_ENGINE_REVISION = "homr-0.7.0"
+HOMR_ENGINE_REVISION = "homr-0.7.0.post34+2d0c0a6"
 ZEUS_ENGINE_REVISION = "df0d842596ccd199882ff958e628d59327ca6cba"
 ZEUS_MODEL_REVISION = "2024-02-12"
 OUTPUT_SUFFIXES = frozenset({".musicxml", ".mxl"})

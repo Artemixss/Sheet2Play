@@ -84,8 +84,65 @@ internal static partial class Program
 				: Path.Combine(Path.GetTempPath(), "sheet2play-smoke"));
 			return RunSmoke(outputDirectory);
 		}
+		if (args.Length > 0 && string.Equals(args[0], "--reconvert", StringComparison.OrdinalIgnoreCase))
+		{
+			return RunReconvert(args);
+		}
 		RunApplication();
 		return 0;
+	}
+
+	/// <summary>
+	/// Re-runs recognition over every cached song whose source is still in the library.
+	/// </summary>
+	/// <remarks>
+	/// Caches are keyed on the engine revision, so bumping it invalidates every entry and the
+	/// songs would otherwise reconvert one at a time as the user opened them. This does the
+	/// whole set up front, unattended, through the same <see cref="SongCache.LoadOrCreateDetailed"/>
+	/// path the app uses - so the caches produced are identical to normal ones, rather than
+	/// something written by a parallel implementation that could drift.
+	/// </remarks>
+	private static int RunReconvert(string[] args)
+	{
+		OmrEngine engine = OmrEngine.Homr;
+		if (args.Length > 1 && Enum.TryParse(args[1], ignoreCase: true, out OmrEngine parsed))
+		{
+			engine = parsed;
+		}
+
+		IReadOnlyList<PdfLibraryEntry> library = SongCache.GetPdfLibrary();
+		Console.WriteLine($"Re-converting {library.Count} source file(s) with {OmrPipeline.GetEngineName(engine)}");
+		Console.WriteLine($"engine revision: {OmrPipeline.GetEngineRevision(engine)}");
+		Console.WriteLine();
+
+		int converted = 0;
+		int failed = 0;
+		for (int index = 0; index < library.Count; index++)
+		{
+			PdfLibraryEntry entry = library[index];
+			string label = $"[{index + 1}/{library.Count}] {entry.DisplayName}";
+			try
+			{
+				// forceReprocess so a still-valid cache is rebuilt too; bypassKnownFailure so a
+				// remembered failure from an older engine does not skip a file this one may handle.
+				SongLoadResult result = SongCache.LoadOrCreateDetailed(
+					entry.FullPath,
+					engine,
+					bypassKnownFailure: true,
+					forceReprocess: true);
+				converted++;
+				Console.WriteLine($"{label}: OK, {result.NoteCount} notes");
+			}
+			catch (Exception error)
+			{
+				failed++;
+				Console.WriteLine($"{label}: FAILED - {error.Message}");
+			}
+		}
+
+		Console.WriteLine();
+		Console.WriteLine($"converted {converted}, failed {failed}");
+		return failed == 0 ? 0 : 1;
 	}
 
 	private static void RunApplication()
