@@ -17,6 +17,8 @@ MIDI playback timing.
 
 * Falling-note piano roll with an 88-key keyboard, scaled to any window size.
 * A three-column landing page: **PDF Library**, **Cache Playlist**, and **MIDI Player**.
+  Each column has its own search box; terms are matched independently, so
+  `rail sparkle` finds `Honkai_Star_Rail_-_Sparkle`.
 * Millisecond playback scheduling with an on-screen audio-offset control above the
   keyboard, calibrated during playback and persisted between sessions.
 * Variable playback rate from 0.05x to 2.00x.

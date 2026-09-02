@@ -202,6 +202,7 @@ internal static partial class Program
 		OmrEngine? cacheEngineFilter = null;
 		IReadOnlyList<MidiLibraryEntry> midiLibrary = SongCache.GetMidiLibrary();
 		int midiScrollOffset = 0;
+		LibrarySearchState librarySearch = new LibrarySearchState();
 		bool sliderDragging = false;
 		bool resumeAfterSlider = false;
 		double sliderPreviewPosition = 0.0;
@@ -339,8 +340,8 @@ internal static partial class Program
 			{
 				bool browseRequested;
 				bool refreshRequested;
-				LoadRequest loadRequest = DrawLanding(layout, ref selectedEngine, pdfLibrary, cachedSongs, midiLibrary, ref pdfScrollOffset, ref cacheScrollOffset, ref cacheEngineFilter, ref midiScrollOffset, message, out browseRequested, out refreshRequested);
-				if (browseRequested || (bool)Raylib.IsKeyPressed(KeyboardKey.B))
+				LoadRequest loadRequest = DrawLanding(layout, ref selectedEngine, pdfLibrary, cachedSongs, midiLibrary, ref pdfScrollOffset, ref cacheScrollOffset, ref cacheEngineFilter, ref midiScrollOffset, librarySearch, message, out browseRequested, out refreshRequested);
+				if (browseRequested || (!librarySearch.IsTyping && (bool)Raylib.IsKeyPressed(KeyboardKey.B)))
 				{
 					StartFilePicker(concurrentQueue, dialogState);
 				}
@@ -636,7 +637,7 @@ internal static partial class Program
 		}
 	}
 
-	private static LoadRequest? DrawLanding(UiLayout layout, ref OmrEngine selectedEngine, IReadOnlyList<PdfLibraryEntry> pdfLibrary, IReadOnlyList<CachedSongEntry> cachedSongs, IReadOnlyList<MidiLibraryEntry> midiLibrary, ref int pdfScrollOffset, ref int cacheScrollOffset, ref OmrEngine? cacheEngineFilter, ref int midiScrollOffset, string? message, out bool browseRequested, out bool refreshRequested)
+	private static LoadRequest? DrawLanding(UiLayout layout, ref OmrEngine selectedEngine, IReadOnlyList<PdfLibraryEntry> pdfLibrary, IReadOnlyList<CachedSongEntry> cachedSongs, IReadOnlyList<MidiLibraryEntry> midiLibrary, ref int pdfScrollOffset, ref int cacheScrollOffset, ref OmrEngine? cacheEngineFilter, ref int midiScrollOffset, LibrarySearchState librarySearch, string? message, out bool browseRequested, out bool refreshRequested)
 	{
 		float scale = layout.Scale;
 		int fontSize = Math.Max(25, (int)(34f * scale));
@@ -668,12 +669,13 @@ internal static partial class Program
 			selectedEngine = OmrEngine.Homr;
 			PersistEngine(selectedEngine);
 		}
-		if ((bool)Raylib.IsKeyPressed(KeyboardKey.O))
+		// Gated on focus: these would otherwise fire on the o and h in a typed query.
+		if (!librarySearch.IsTyping && (bool)Raylib.IsKeyPressed(KeyboardKey.O))
 		{
 			selectedEngine = OmrEngine.Zeus;
 			PersistEngine(selectedEngine);
 		}
-		else if ((bool)Raylib.IsKeyPressed(KeyboardKey.H))
+		else if (!librarySearch.IsTyping && (bool)Raylib.IsKeyPressed(KeyboardKey.H))
 		{
 			selectedEngine = OmrEngine.Homr;
 			PersistEngine(selectedEngine);
@@ -685,9 +687,9 @@ internal static partial class Program
 		Rectangle panel = new Rectangle(num2, num5, num7, height);
 		Rectangle panel2 = new Rectangle(num2 + num7 + num6, num5, num7, height);
 		Rectangle panel3 = new Rectangle(num2 + 2 * (num7 + num6), num5, num7, height);
-		PdfLibraryEntry pdfLibraryEntry = DrawPdfLibraryPanel(panel, pdfLibrary, ref pdfScrollOffset, scale);
-		CachedSongEntry cachedSongEntry = DrawCacheLibraryPanel(panel2, cachedSongs, ref cacheScrollOffset, ref cacheEngineFilter, scale);
-		MidiLibraryEntry midiLibraryEntry = DrawMidiLibraryPanel(panel3, midiLibrary, ref midiScrollOffset, scale);
+		PdfLibraryEntry pdfLibraryEntry = DrawPdfLibraryPanel(panel, pdfLibrary, ref pdfScrollOffset, librarySearch, scale);
+		CachedSongEntry cachedSongEntry = DrawCacheLibraryPanel(panel2, cachedSongs, ref cacheScrollOffset, ref cacheEngineFilter, librarySearch, scale);
+		MidiLibraryEntry midiLibraryEntry = DrawMidiLibraryPanel(panel3, midiLibrary, ref midiScrollOffset, librarySearch, scale);
 		if (!string.IsNullOrWhiteSpace(message))
 		{
 			Rectangle rec = new Rectangle(num2 + 8f * scale, (float)layout.Height - 47f * scale, num - 16f * scale, 32f * scale);
@@ -709,15 +711,22 @@ internal static partial class Program
 		return null;
 	}
 
-	private static PdfLibraryEntry? DrawPdfLibraryPanel(Rectangle panel, IReadOnlyList<PdfLibraryEntry> entries, ref int scrollOffset, float scale)
+	private static PdfLibraryEntry? DrawPdfLibraryPanel(Rectangle panel, IReadOnlyList<PdfLibraryEntry> entries, ref int scrollOffset, LibrarySearchState search, float scale)
 	{
-		DrawLibraryHeader(panel, "PDF LIBRARY", $"{entries.Count} files", UiTheme.Sky, scale);
+		string query = search.Get(LibraryColumn.Pdf);
+		IReadOnlyList<PdfLibraryEntry> matches = FilterLibrary(entries, query, static entry => entry.DisplayName);
+		DrawLibraryHeader(panel, "PDF LIBRARY", FormatLibraryCount(entries.Count, matches.Count, "files"), UiTheme.Sky, scale);
+		if (DrawLibrarySearchBox(panel, LibraryColumn.Pdf, search, scale))
+		{
+			scrollOffset = 0;
+		}
+		entries = matches;
 		int visibleLibraryRows = GetVisibleLibraryRows(panel, scale);
 		UpdateLibraryScroll(panel, entries.Count, visibleLibraryRows, ref scrollOffset);
 		PdfLibraryEntry result = null;
 		float num = Math.Clamp(48f * scale, 40f, 58f);
 		float num2 = Math.Clamp(6f * scale, 4f, 9f);
-		float num3 = panel.Y + 50f * scale;
+		float num3 = panel.Y + LibraryRowsTop * scale;
 		for (int i = 0; i < visibleLibraryRows && scrollOffset + i < entries.Count; i++)
 		{
 			PdfLibraryEntry pdfLibraryEntry = entries[scrollOffset + i];
@@ -733,22 +742,29 @@ internal static partial class Program
 		}
 		if (entries.Count == 0)
 		{
-			DrawLibraryEmpty(panel, "Put PDF files in songs/pdf", scale);
+			DrawLibraryEmpty(panel, string.IsNullOrWhiteSpace(query) ? "Put PDF files in songs/pdf" : $"No PDF matches \"{query}\"", scale);
 		}
 		DrawLibraryScrollbar(panel, entries.Count, visibleLibraryRows, scrollOffset, scale);
 		return result;
 	}
 
 
-	private static MidiLibraryEntry? DrawMidiLibraryPanel(Rectangle panel, IReadOnlyList<MidiLibraryEntry> entries, ref int scrollOffset, float scale)
+	private static MidiLibraryEntry? DrawMidiLibraryPanel(Rectangle panel, IReadOnlyList<MidiLibraryEntry> entries, ref int scrollOffset, LibrarySearchState search, float scale)
 	{
-		DrawLibraryHeader(panel, "MIDI PLAYER", $"{entries.Count} tracks", UiTheme.Sky, scale);
+		string query = search.Get(LibraryColumn.Midi);
+		IReadOnlyList<MidiLibraryEntry> matches = FilterLibrary(entries, query, static entry => entry.DisplayName);
+		DrawLibraryHeader(panel, "MIDI PLAYER", FormatLibraryCount(entries.Count, matches.Count, "tracks"), UiTheme.Sky, scale);
+		if (DrawLibrarySearchBox(panel, LibraryColumn.Midi, search, scale))
+		{
+			scrollOffset = 0;
+		}
+		entries = matches;
 		int visibleLibraryRows = GetVisibleLibraryRows(panel, scale);
 		UpdateLibraryScroll(panel, entries.Count, visibleLibraryRows, ref scrollOffset);
 		MidiLibraryEntry result = null;
 		float num = Math.Clamp(48f * scale, 40f, 58f);
 		float num2 = Math.Clamp(6f * scale, 4f, 9f);
-		float num3 = panel.Y + 50f * scale;
+		float num3 = panel.Y + LibraryRowsTop * scale;
 		for (int i = 0; i < visibleLibraryRows && scrollOffset + i < entries.Count; i++)
 		{
 			MidiLibraryEntry entry = entries[scrollOffset + i];
@@ -764,20 +780,34 @@ internal static partial class Program
 		}
 		if (entries.Count == 0)
 		{
-			DrawLibraryEmpty(panel, "Put MIDI/MXL files in songs/midi/custom", scale);
+			DrawLibraryEmpty(panel, string.IsNullOrWhiteSpace(query) ? "Put MIDI/MXL files in songs/midi/custom" : $"No track matches \"{query}\"", scale);
 		}
 		DrawLibraryScrollbar(panel, entries.Count, visibleLibraryRows, scrollOffset, scale);
 		return result;
 	}
 
-	private static CachedSongEntry? DrawCacheLibraryPanel(Rectangle panel, IReadOnlyList<CachedSongEntry> entries, ref int scrollOffset, ref OmrEngine? engineFilter, float scale)
+	private static CachedSongEntry? DrawCacheLibraryPanel(Rectangle panel, IReadOnlyList<CachedSongEntry> entries, ref int scrollOffset, ref OmrEngine? engineFilter, LibrarySearchState search, float scale)
 	{
-		DrawLibraryHeader(panel, "CACHE PLAYLIST", $"{entries.Count} ready", UiTheme.Lime, scale);
+		string query = search.Get(LibraryColumn.Cache);
+		IReadOnlyList<CachedSongEntry> matches = FilterLibrary(entries, query, static entry => entry.RecentSong.DisplayName);
+		DrawLibraryHeader(panel, "CACHE PLAYLIST", FormatLibraryCount(entries.Count, matches.Count, "ready"), UiTheme.Lime, scale);
 		if (entries.Count == 0)
 		{
 			DrawLibraryEmpty(panel, "Validated MIDI caches appear here", scale);
 			scrollOffset = 0;
 			engineFilter = null;
+			return null;
+		}
+		if (DrawLibrarySearchBox(panel, LibraryColumn.Cache, search, scale))
+		{
+			scrollOffset = 0;
+		}
+		// The engine tabs count what the search left, so their numbers match the rows.
+		entries = matches;
+		if (entries.Count == 0)
+		{
+			DrawLibraryEmpty(panel, $"No cached song matches {query}", scale);
+			scrollOffset = 0;
 			return null;
 		}
 		OmrEngine[] presentEngines = entries
@@ -798,7 +828,7 @@ internal static partial class Program
 		IReadOnlyList<CachedSongEntry> visible = activeFilter.HasValue
 			? entries.Where(entry => entry.RecentSong.Engine == activeFilter.Value).ToArray()
 			: entries;
-		float rowsTop = 78f;
+		float rowsTop = CacheRowsTop;
 		float rowHeight = Math.Clamp(48f * scale, 40f, 58f);
 		float rowGap = Math.Clamp(6f * scale, 4f, 9f);
 		float headerHeight = Math.Clamp(22f * scale, 18f, 28f);
@@ -874,7 +904,7 @@ internal static partial class Program
 
 		bool changed = false;
 		float x = panel.X + 10f * scale;
-		float y = panel.Y + 42f * scale;
+		float y = panel.Y + 76f * scale;
 		for (int i = 0; i < labels.Length; i++)
 		{
 			float width = UiTheme.MeasureText(labels[i], fontSize) + padding * 2f;
@@ -955,6 +985,104 @@ internal static partial class Program
 		return Math.Max(1, count);
 	}
 
+	/// <summary>Panel-relative Y of the search box, and of the rows it pushes down.</summary>
+	private const float LibrarySearchTop = 40f;
+	private const float LibrarySearchHeight = 28f;
+	private const float LibraryRowsTop = 78f;
+	private const float CacheRowsTop = 112f;
+
+	/// <summary>A plain total, or shown-of-total while a query is narrowing it.</summary>
+	private static string FormatLibraryCount(int total, int shown, string noun) =>
+		shown == total ? $"{total} {noun}" : $"{shown} of {total}";
+
+	private static IReadOnlyList<TEntry> FilterLibrary<TEntry>(IReadOnlyList<TEntry> entries, string query, Func<TEntry, string> name)
+	{
+		if (string.IsNullOrWhiteSpace(query))
+		{
+			return entries;
+		}
+		List<TEntry> matches = new List<TEntry>();
+		foreach (TEntry entry in entries)
+		{
+			if (LibrarySearchState.Matches(name(entry), query))
+			{
+				matches.Add(entry);
+			}
+		}
+		return matches;
+	}
+
+	/// <summary>
+	/// Search box for one library column. Returns true when the query changed, so the
+	/// caller can rewind its scroll offset rather than leaving the user parked past the
+	/// end of a now-shorter list.
+	/// </summary>
+	private static bool DrawLibrarySearchBox(Rectangle panel, LibraryColumn column, LibrarySearchState search, float scale)
+	{
+		Rectangle rec = new Rectangle(panel.X + 10f * scale, panel.Y + LibrarySearchTop * scale, panel.Width - 20f * scale, LibrarySearchHeight * scale);
+		bool focused = search.Focused == column;
+		if ((bool)Raylib.IsMouseButtonPressed(MouseButton.Left))
+		{
+			if ((bool)Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), rec))
+			{
+				search.Focus(column);
+				focused = true;
+			}
+			else if (focused)
+			{
+				search.ClearFocus();
+				focused = false;
+			}
+		}
+		bool changed = false;
+		if (focused)
+		{
+			int character;
+			while ((character = Raylib.GetCharPressed()) > 0)
+			{
+				if (character <= 65535)
+				{
+					search.Append(column, (char)character);
+					changed = true;
+				}
+			}
+			if ((bool)Raylib.IsKeyPressed(KeyboardKey.Backspace) && search.Get(column).Length > 0)
+			{
+				search.Backspace(column);
+				changed = true;
+			}
+			if ((bool)Raylib.IsKeyPressed(KeyboardKey.Escape))
+			{
+				if (search.Get(column).Length > 0)
+				{
+					search.Set(column, string.Empty);
+					changed = true;
+				}
+				search.ClearFocus();
+				focused = false;
+			}
+			else if ((bool)Raylib.IsKeyPressed(KeyboardKey.Enter))
+			{
+				search.ClearFocus();
+				focused = false;
+			}
+		}
+		Raylib.DrawRectangleRounded(rec, 0.24f, 8, UiTheme.Elevated);
+		Raylib.DrawRectangleRoundedLinesEx(rec, 0.24f, 8, Math.Max(1f, scale), focused ? UiTheme.Sky : UiTheme.Border);
+		string current = search.Get(column);
+		int fontSize = Math.Max(11, (int)(13f * scale));
+		bool empty = current.Length == 0;
+		string text = (empty ? (focused ? "|" : "Search") : (focused ? current + "|" : current));
+		UiTheme.DrawText(UiTheme.Ellipsize(text, fontSize, (int)(rec.Width - 40f * scale)), (int)(rec.X + 10f * scale), (int)(rec.Y + (rec.Height - (float)fontSize) / 2f), fontSize, empty ? UiTheme.Muted : UiTheme.Text);
+		if (!empty && UiTheme.DrawButton(new Rectangle(rec.X + rec.Width - 26f * scale, rec.Y + 4f * scale, 22f * scale, rec.Height - 8f * scale), "x", UiTheme.Muted))
+		{
+			search.Set(column, string.Empty);
+			search.ClearFocus();
+			changed = true;
+		}
+		return changed;
+	}
+
 	private static void DrawLibraryHeader(Rectangle panel, string title, string count, Color accent, float scale)
 	{
 		UiTheme.DrawCard(panel, scale);
@@ -967,14 +1095,14 @@ internal static partial class Program
 	private static void DrawLibraryEmpty(Rectangle panel, string message, float scale)
 	{
 		int fontSize = Math.Max(12, (int)(14f * scale));
-		UiTheme.DrawText(UiTheme.Ellipsize(message, fontSize, (int)(panel.Width - 30f * scale)), (int)(panel.X + 15f * scale), (int)(panel.Y + 66f * scale), fontSize, UiTheme.Muted);
+		UiTheme.DrawText(UiTheme.Ellipsize(message, fontSize, (int)(panel.Width - 30f * scale)), (int)(panel.X + 15f * scale), (int)(panel.Y + (LibraryRowsTop + 14f) * scale), fontSize, UiTheme.Muted);
 	}
 
 	private static int GetVisibleLibraryRows(Rectangle panel, float scale)
 	{
 		float num = Math.Clamp(48f * scale, 40f, 58f);
 		float num2 = Math.Clamp(6f * scale, 4f, 9f);
-		return Math.Max(1, (int)((panel.Height - 58f * scale) / (num + num2)));
+		return Math.Max(1, (int)((panel.Height - (LibraryRowsTop + 8f) * scale) / (num + num2)));
 	}
 
 	private static void UpdateLibraryScroll(Rectangle panel, int entryCount, int visibleRows, ref int scrollOffset)
@@ -991,7 +1119,7 @@ internal static partial class Program
 		}
 	}
 
-	private static void DrawLibraryScrollbar(Rectangle panel, int entryCount, int visibleRows, int scrollOffset, float scale, float topOffset = 50f)
+	private static void DrawLibraryScrollbar(Rectangle panel, int entryCount, int visibleRows, int scrollOffset, float scale, float topOffset = LibraryRowsTop)
 	{
 		if (entryCount > visibleRows)
 		{
