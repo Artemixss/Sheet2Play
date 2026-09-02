@@ -190,7 +190,6 @@ internal static partial class Program
 		DialogState dialogState = new DialogState();
 		GameState state = GameState.WaitingForFile;
 		OmrEngine selectedEngine = AppSettingsStore.LoadEngine();
-		int audioOffsetMilliseconds = AppSettingsStore.LoadAudioOffsetMilliseconds();
 		LoadRequest request2 = null;
 		PlaybackController playbackController = null;
 		SongLoadResult songLoadResult = null;
@@ -257,7 +256,9 @@ internal static partial class Program
 							playbackController?.Stop();
 							songLoadResult = value;
 							playbackController = new PlaybackController(
-								new PlaybackSession(value.Notes, (double)audioOffsetMilliseconds / 1000.0),
+								new PlaybackSession(
+									value.Notes,
+									(double)AppSettingsStore.LoadAudioOffsetMilliseconds() / 1000.0),
 								midiOutput);
 							playbackRateEditor.Cancel();
 							sliderDragging = false;
@@ -321,13 +322,7 @@ internal static partial class Program
 					}
 					if (num7 != 0)
 					{
-						int num8 = AppSettingsStore.Clamp(audioOffsetMilliseconds + num7);
-						if (num8 != audioOffsetMilliseconds)
-						{
-							audioOffsetMilliseconds = num8;
-							playbackController.SetAudioOffsetSeconds((double)num8 / 1000.0);
-							AppSettingsStore.SaveAudioOffsetMilliseconds(num8);
-						}
+						StepAudioOffset(playbackController, num7);
 					}
 				}
 				playbackController.Update();
@@ -1380,23 +1375,53 @@ internal static partial class Program
 			int fontSize2 = Math.Max(24, (int)(34f * scale));
 			UiTheme.DrawText(text2, layout.Width / 2 - UiTheme.MeasureText(text2, fontSize2) / 2, layout.HeaderHeight + 18, fontSize2, UiTheme.Warning);
 		}
-		DrawAudioOffsetReadout(playback, layout);
+		DrawAudioOffsetControl(playback, layout);
 		return false;
 	}
 
 	/// <summary>
-	/// Shows the audio offset and how to change it. Without a readout the [ and ]
-	/// keys are invisible, and the value has to be right for the user's own output
-	/// chain - Bluetooth alone shifts it by more than 100ms.
+	/// Audio-offset stepper, sitting above the keyboard where sync is judged. Built
+	/// like DrawPlaybackRateControl so the two read as the same kind of control. The
+	/// right value depends on the user's output chain - Bluetooth alone shifts it by
+	/// more than 100ms - so it has to be reachable without a rebuild.
 	/// </summary>
-	private static void DrawAudioOffsetReadout(PlaybackController playback, UiLayout layout)
+	private static void DrawAudioOffsetControl(PlaybackController playback, UiLayout layout)
 	{
 		float scale = layout.Scale;
-		int fontSize = Math.Max(12, (int)(14f * scale));
-		string text = $"AUDIO OFFSET {Math.Round(playback.AudioOffsetSeconds * 1000.0)}ms   [ / ]";
-		int x = layout.Width - UiTheme.MeasureText(text, fontSize) - (int)(18f * scale);
-		int y = layout.HitLineY - fontSize - (int)(10f * scale);
-		UiTheme.DrawText(text, x, y, fontSize, UiTheme.Muted);
+		float num = 26f * scale;
+		float width = 64f * scale;
+		float height = 26f * scale;
+		float x = (float)layout.Width - 16f * scale - (2f * num + width + 10f * scale);
+		float y = (float)layout.HitLineY - height - 12f * scale;
+		int current = (int)Math.Round(playback.AudioOffsetSeconds * 1000.0);
+		int num2 = Math.Max(10, (int)(12f * scale));
+		UiTheme.DrawText("AUDIO OFFSET", (int)(x - (float)UiTheme.MeasureText("AUDIO OFFSET", num2) - 10f * scale), (int)(y + (height - (float)num2) / 2f), num2, UiTheme.Muted);
+		if (UiTheme.DrawButton(new Rectangle(x, y, num, height), "−", UiTheme.Muted, current > AppSettingsStore.MinimumAudioOffsetMilliseconds))
+		{
+			StepAudioOffset(playback, -AudioOffsetStepMilliseconds);
+		}
+		Rectangle rec = new Rectangle(x + num + 5f * scale, y, width, height);
+		Raylib.DrawRectangleRounded(rec, 0.16f, 8, UiTheme.Elevated);
+		Raylib.DrawRectangleRoundedLinesEx(rec, 0.16f, 8, Math.Max(1f, scale), UiTheme.Border);
+		string text = $"{current} ms";
+		int num3 = Math.Max(11, (int)(13f * scale));
+		UiTheme.DrawText(text, (int)(rec.X + (rec.Width - (float)UiTheme.MeasureText(text, num3)) / 2f), (int)(rec.Y + (rec.Height - (float)num3) / 2f), num3, UiTheme.Text);
+		if (UiTheme.DrawButton(new Rectangle(rec.X + rec.Width + 5f * scale, y, num, height), "+", UiTheme.Muted, current < AppSettingsStore.MaximumAudioOffsetMilliseconds))
+		{
+			StepAudioOffset(playback, AudioOffsetStepMilliseconds);
+		}
+	}
+
+	/// <summary>Moves the offset and persists it, so calibration survives a restart.</summary>
+	private static void StepAudioOffset(PlaybackController playback, int deltaMilliseconds)
+	{
+		int current = (int)Math.Round(playback.AudioOffsetSeconds * 1000.0);
+		int updated = AppSettingsStore.Clamp(current + deltaMilliseconds);
+		if (updated != current)
+		{
+			playback.SetAudioOffsetSeconds((double)updated / 1000.0);
+			AppSettingsStore.SaveAudioOffsetMilliseconds(updated);
+		}
 	}
 
 	private static void DrawPlaybackRateControl(PlaybackController playback, PlaybackRateEditor editor, UiLayout layout)
