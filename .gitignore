@@ -27,6 +27,26 @@ env/
 Visualization_engine/songs/
 Visualization_engine/assets/fonts/*.otf
 
+# ---- SFZ piano sample sets ----
+# 2.6GB of third-party samples loaded by VirtualMIDISynth, not by this app.
+# The synth resolves them from its own VirtualMIDISynth.conf; nothing here reads them.
+pianos/
+
+# Transient experiment output. The conclusions live in reports/diagnosis/FINDINGS.md and
+# are reproducible from the scripts; these are working files, several from hypotheses that
+# were tested and refuted, and the cached predictions regenerate with diagnose_rhythm.py.
+Research/omr/reports/*.log
+Research/omr/reports/diagnosis/*.log
+Research/omr/reports/diagnosis/predictions/
+Research/omr/reports/pv_on/
+Research/omr/reports/pv_off/
+Research/omr/reports/tup_on/
+Research/omr/reports/tup_off/
+Research/omr/reports/canary_070/
+Research/omr/reports/canary_git/
+Research/omr/reports/homr_git/
+Research/omr/reports/comparison/
+
 # ---- OMR research ----
 # Track the code (Research/omr/src, run_*.py, pyproject.toml, lock files, reports);
 # ignore only the heavy generated inputs and outputs.

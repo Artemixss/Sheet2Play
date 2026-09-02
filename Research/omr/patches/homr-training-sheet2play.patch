@@ -1,0 +1,77 @@
+diff --git a/training/omr_datasets/convert_pdmx.py b/training/omr_datasets/convert_pdmx.py
+index eec4b64..65860ff 100644
+--- a/training/omr_datasets/convert_pdmx.py
++++ b/training/omr_datasets/convert_pdmx.py
+@@ -42,9 +42,14 @@ pdmx_mxl_root = os.path.join(pdmx_root, "mxl")
+ pdmx_out_root = os.path.join(pdmx_root, "out")
+ pdmx_train_index = os.path.join(pdmx_root, "index.txt")
+ 
+-_MAX_COMPLEXITY = 2
+-_MAX_TRACKS = 2
+-_TARGET_FILES = 10000  # ~50K images
++# Sheet2Play change. Upstream caps these at complexity 2 / 2 tracks, which excludes dense
++# multi-voice piano from training entirely - the material that produces the rhythm failure
++# reported in issue #142, where the maintainer notes it is "a case homr never covered during
++# training". Raising the ceiling is the point of this fine-tune; the bucket balancing below
++# spreads the added complexity rather than letting it swamp the mix.
++_MAX_COMPLEXITY = 4
++_MAX_TRACKS = 4
++_TARGET_FILES = 20000  # ~100K images
+ 
+ 
+ def _read_mxl(path: Path) -> str:
+diff --git a/training/transformer/train.py b/training/transformer/train.py
+index e756695..d93a602 100644
+--- a/training/transformer/train.py
++++ b/training/transformer/train.py
+@@ -176,7 +176,10 @@ def train_transformer(
+ 
+     run_id = get_run_id()
+ 
+-    batch_size = 8  # 8gb vram
++    # Sheet2Play change: 8 assumes 8 GB of VRAM. This machine has a 6 GB RTX 4050 Laptop,
++    # below homr's documented floor, so the batch is halved and accumulation doubled to hold
++    # the same effective batch. Raise SHEET2PLAY_BATCH if running on a larger card.
++    batch_size = int(os.environ.get("SHEET2PLAY_BATCH", "4"))
+ 
+     train_args = TrainingArguments(
+         checkpoint_folder,
+@@ -185,7 +188,7 @@ def train_transformer(
+         save_strategy="epoch",
+         learning_rate=1e-5 if fine_tune else 1e-4,
+         optim="adamw_torch_fused",
+-        gradient_accumulation_steps=max(1, 4 // distribute.get_world_size()),
++        gradient_accumulation_steps=max(1, 8 // distribute.get_world_size()),
+         per_device_train_batch_size=batch_size,
+         per_device_eval_batch_size=batch_size // 2,
+         num_train_epochs=number_of_epochs,
+@@ -206,9 +209,14 @@ def train_transformer(
+     if fine_tune:
+         eprint("Fine tuning model from", config.filepaths.checkpoint)
+         model = load_model(config)
+-        model.freeze_encoder()
+-        model.freeze_decoder()
+-        model.unfreeze_lift_decoder()
++        # Sheet2Play change. Upstream's fine-tune path freezes the encoder and decoder and
++        # unfreezes only the lift branch - accidentals - which is a leftover from PR #52.
++        # The defect we target is rhythm: homr issue #142, where notes vanish from the token
++        # stream in multi-voice passages. That is a perception failure, not a projection one,
++        # so training a single output head with a frozen encoder cannot fix it; the
++        # maintainer says the same in issue #51. Everything therefore stays trainable, and
++        # FreezeCallback below holds the encoder backbone for the first epochs so the decoder
++        # settles before the encoder starts moving.
+     else:
+         model = TrOMR(config)
+ 
+@@ -225,8 +233,9 @@ def train_transformer(
+ 
+     try:
+         callbacks: list[TrainerCallback] = [EarlyStoppingCallback(early_stopping_patience=5)]
+-        if not fine_tune:
+-            callbacks.append(FreezeCallback(epochs_to_freeze=2))
++        # Sheet2Play change: the backbone warmup now applies to fine-tuning too, since the
++        # fine-tune path no longer freezes the encoder outright.
++        callbacks.append(FreezeCallback(epochs_to_freeze=2))
+ 
+         trainer = HomrTrainer(
+             model,

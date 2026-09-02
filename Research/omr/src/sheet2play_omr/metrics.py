@@ -131,3 +131,29 @@ def calculate_note_metrics(predicted: Iterable[MetricNote], expected: Iterable[M
         aligned_voice_accuracy=voice_matches / exact_count if exact_count else 0.0,
     )
 
+
+def timeline_span(notes: Iterable[MetricNote]) -> Fraction:
+    """Length of the timeline these notes occupy, in quarter notes."""
+    offsets = [note.offset for note in notes]
+    return max(offsets) if offsets else Fraction(0)
+
+
+def span_ratio(predicted: Iterable[MetricNote], expected: Iterable[MetricNote]) -> float | None:
+    """Predicted timeline length divided by the ground-truth length.
+
+    The Step 1 rhythm diagnosis found this predicts onset accuracy better than any other
+    single number on the OLiMPiC canary: systems within 1.02x scored 0.884 onset F1, while
+    those beyond 1.15x scored 0.269. It separates the two failure populations because the
+    dominant error is duration over-accounting rather than imprecision - once a measure is
+    the wrong length, every later onset shifts and no amount of tolerance recovers it.
+
+    Unlike the F1 metrics this is also computable against a *notated* expectation rather than
+    a transcription, so a measure's decoded length can be checked against its time signature
+    with no ground truth at all. That makes it usable as a runtime confidence signal.
+
+    Returns None when the ground truth is empty, where the ratio is undefined.
+    """
+    expected_span = timeline_span(expected)
+    if expected_span == 0:
+        return None
+    return float(timeline_span(predicted) / expected_span)
