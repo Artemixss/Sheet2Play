@@ -1,13 +1,14 @@
 from __future__ import annotations
 
-import tempfile
 import json
+import tempfile
 import unittest
 from pathlib import Path
 
+from sheet2play_omr.errors import ResearchError
 from sheet2play_omr.olimpic import OlimpicSample, select_stratified_canary
 from sheet2play_omr.phase3_benchmark import (
-    DECODER_STATE_REVISION,
+    CHECKPOINT_SCHEMA_VERSION,
     _load_checkpoint,
     aggregate_results,
 )
@@ -32,13 +33,12 @@ class OlimpicPhase3Tests(unittest.TestCase):
         self.assertEqual(first, second)
         self.assertEqual(5, len({sample.score_id for sample in first}))
 
-    def test_phase3_aggregation_records_failures_latency_and_retry_rate(self) -> None:
+    def test_phase3_aggregation_records_failures_latency_and_vram(self) -> None:
         rows = [
             {
                 "valid": True,
                 "seconds": 10.0,
                 "peak_vram_bytes": 100,
-                "fallback_attempted": False,
                 "metrics": {
                     "pitch_f1": 1.0,
                     "onset_f1": 0.8,
@@ -52,7 +52,6 @@ class OlimpicPhase3Tests(unittest.TestCase):
                 "valid": False,
                 "seconds": 20.0,
                 "peak_vram_bytes": 200,
-                "fallback_attempted": True,
             },
         ]
 
@@ -60,34 +59,31 @@ class OlimpicPhase3Tests(unittest.TestCase):
 
         self.assertEqual(0.5, summary["structural_validity"])
         self.assertEqual(0.5, summary["catastrophic_page_failure_rate"])
-        self.assertEqual(0.5, summary["beam_to_grammar_retry_rate"])
         self.assertEqual(15.0, summary["median_seconds_per_system"])
         self.assertEqual(20.0, summary["p95_seconds_per_system"])
         self.assertEqual(200, summary["peak_vram_bytes"])
 
-    def test_checkpoint_migration_invalidates_only_stateful_grammar_rows(self) -> None:
-        payload = {
-            "schema_version": 1,
-            "sample_ids": ["beam", "grammar"],
-            "transcoda_beam_only": {"beam": {"valid": True}, "grammar": {"valid": False}},
-            "transcoda_beam_then_grammar": {
-                "beam": {"valid": True, "fallback_attempted": False},
-                "grammar": {"valid": False, "fallback_attempted": True},
-            },
-            "homr": {"beam": {"valid": True}, "grammar": {"valid": True}},
-            "determinism": {"sample_id": "beam", "passed": True},
-        }
+    def test_checkpoint_starts_empty_resumes_finished_rows_and_rejects_a_reselection(
+        self,
+    ) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             path = Path(temporary) / "checkpoint.json"
-            path.write_text(json.dumps(payload), encoding="utf-8")
-            migrated = _load_checkpoint(path, ["beam", "grammar"])
 
-        self.assertEqual(DECODER_STATE_REVISION, migrated["decoder_state_revision"])
-        self.assertIn("beam", migrated["transcoda_beam_then_grammar"])
-        self.assertNotIn("grammar", migrated["transcoda_beam_then_grammar"])
-        self.assertEqual(2, len(migrated["transcoda_beam_only"]))
-        self.assertEqual(2, len(migrated["homr"]))
-        self.assertTrue(migrated["determinism"]["passed"])
+            fresh = _load_checkpoint(path, ["one", "two"])
+            self.assertEqual(CHECKPOINT_SCHEMA_VERSION, fresh["schema_version"])
+            self.assertEqual(["one", "two"], fresh["sample_ids"])
+            self.assertEqual({}, fresh["homr"])
+
+            fresh["homr"]["one"] = {"valid": True, "seconds": 4.0}
+            path.write_text(json.dumps(fresh), encoding="utf-8")
+
+            resumed = _load_checkpoint(path, ["one", "two"])
+            self.assertEqual({"valid": True, "seconds": 4.0}, resumed["homr"]["one"])
+            self.assertNotIn("two", resumed["homr"])
+
+            with self.assertRaises(ResearchError) as raised:
+                _load_checkpoint(path, ["one", "three"])
+            self.assertEqual("BENCHMARK_INVALID", raised.exception.code)
 
 
 if __name__ == "__main__":

@@ -6,7 +6,6 @@ import sys
 from pathlib import Path
 from typing import Any
 
-from sheet2play_omr.gates import canary_gate, retention_gate
 from sheet2play_omr.olimpic import (
     load_test_partition,
     select_stratified_canary,
@@ -25,7 +24,9 @@ def _write_json(path: Path, payload: dict[str, Any]) -> None:
 
 def _parse_args() -> argparse.Namespace:
     root = Path(__file__).resolve().parent
-    parser = argparse.ArgumentParser(description="Run the Sheet2Play Transcoda Phase 3 trial")
+    parser = argparse.ArgumentParser(
+        description="Measure the homr baseline over the OLiMPiC scanned partition"
+    )
     parser.add_argument(
         "--dataset-root",
         type=Path,
@@ -63,16 +64,12 @@ def main() -> int:
         canary,
         args.output_dir / "canary.checkpoint.json",
     )
-    candidate = canary_report["transcoda_beam_then_grammar"]["summary"]
-    homr = canary_report["homr"]["summary"]
-    decision = canary_gate(candidate, homr)
-    canary_report["gate"] = {
-        "passed": decision.passed,
-        "failures": list(decision.failures),
-    }
     canary_report["manifest_sha256"] = canary_manifest_hash
     _write_json(args.output_dir / "canary-report.json", canary_report)
 
+    # The canary and retention gates in sheet2play_omr.gates score a candidate engine
+    # against this baseline. There is no candidate now that Transcoda is gone, so this
+    # run only measures homr; wire the gates back up when a replacement engine lands.
     final_report: dict[str, Any] = {
         "schema_version": 1,
         "dataset": {
@@ -83,27 +80,33 @@ def main() -> int:
         },
         "canary": canary_report,
         "full_benchmark": None,
-        "status": "canary_passed" if decision.passed else "stopped_after_canary",
+        "status": "canary_measured",
     }
-    if decision.passed and not args.no_full:
-        full_report = run_checkpointed_benchmark(
+    if not args.no_full:
+        final_report["full_benchmark"] = run_checkpointed_benchmark(
             all_samples,
             args.output_dir / "full.checkpoint.json",
         )
-        retention = retention_gate(
-            full_report["transcoda_beam_then_grammar"]["summary"],
-            full_report["homr"]["summary"],
-            deterministic=bool(full_report["determinism"]["passed"]),
-        )
-        full_report["gate"] = {
-            "passed": retention.passed,
-            "failures": list(retention.failures),
-        }
-        final_report["full_benchmark"] = full_report
-        final_report["status"] = "retained" if retention.passed else "full_benchmark_failed"
+        final_report["status"] = "baseline_measured"
 
     _write_json(args.output_dir / "phase3-report.json", final_report)
-    print(json.dumps({"status": final_report["status"], "canary_gate": final_report["canary"]["gate"]}))
+    summary = canary_report["homr"]["summary"]
+    print(
+        json.dumps(
+            {
+                "status": final_report["status"],
+                "canary_homr": {
+                    key: summary[key]
+                    for key in (
+                        "structural_validity",
+                        "pitch_f1",
+                        "onset_f1",
+                        "onset_duration_f1",
+                    )
+                },
+            }
+        )
+    )
     return 0
 
 
