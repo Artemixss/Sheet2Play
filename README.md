@@ -17,7 +17,8 @@ MIDI playback timing.
 
 * Falling-note piano roll with an 88-key keyboard, scaled to any window size.
 * A three-column landing page: **PDF Library**, **Cache Playlist**, and **MIDI Player**.
-* Millisecond playback scheduling with a configurable audio offset.
+* Millisecond playback scheduling with an audio offset you can calibrate during
+  playback and that persists between sessions.
 * Variable playback rate from 0.05x to 2.00x.
 
 ### 2. OMR bridge (Python)
@@ -125,6 +126,7 @@ Supported inputs: `.pdf`, `.png`, `.jpg`, `.jpeg`, `.bmp`, `.tif`, `.tiff`, `.we
 | --- | --- |
 | `Space` | Play / pause |
 | `←` / `→` | Seek 5 seconds |
+| `[` / `]` | Audio offset by 5 ms, to sync sound with the falling notes |
 | `B` | Browse for a file |
 | `H` / `O` | Select the Homr / Zeus engine |
 | `F11` | Toggle fullscreen |

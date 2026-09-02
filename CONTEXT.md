@@ -135,8 +135,8 @@ Run all of these before claiming something works.
 
 ```bash
 dotnet build Visualization_engine/SynthesiaClone.csproj     # expect 0 errors
-dotnet test Visualization_engine.Tests                      # expect 50/50
-dotnet run --project MidiTester                             # expect 18/18 + library report
+dotnet test Visualization_engine.Tests                      # expect 55/55
+dotnet run --project MidiTester                             # all pass + library report
 dotnet run --project Visualization_engine -- --smoke ./out   # 7 PNGs, exit 0
 ```
 
