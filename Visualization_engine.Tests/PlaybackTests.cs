@@ -184,16 +184,110 @@ public sealed class PlaybackTests
         Assert.Null(completion.Error);
     }
 
+    [Fact]
+    public void AudioOffsetDispatchesMidiAheadOfTheNotesVisualTime()
+    {
+        double now = 0;
+        FakeMidiOutput midi = new(() => now);
+        PlaybackController controller = new(
+            new PlaybackSession([NewNote(10, 1.0, 1.0)], audioOffsetSeconds: 0.055),
+            midi,
+            new PlaybackClock(() => now));
+
+        now = 0.94;
+        controller.Update();
+        Assert.Empty(midi.NoteOns);
+
+        now = 0.95;
+        controller.Update();
+        Assert.Equal(31, Assert.Single(midi.NoteOns));
+    }
+
+    [Fact]
+    public void AudioOffsetHoldsInWallTimeWhenPlaybackRateChanges()
+    {
+        // The offset compensates a fixed real-world latency, so at 2x speed it must span
+        // twice as much song time. Baking it into event times instead made it scale the
+        // wrong way, silently changing sync whenever the speed changed.
+        double now = 0;
+        FakeMidiOutput midi = new(() => now);
+        PlaybackController controller = new(
+            new PlaybackSession([NewNote(10, 1.0, 1.0)], audioOffsetSeconds: 0.055),
+            midi,
+            new PlaybackClock(() => now));
+        controller.SetPlaybackRate(2.0);
+
+        now = 0.44;
+        controller.Update();
+        Assert.Equal(0.88, controller.Position, 6);
+        Assert.Empty(midi.NoteOns);
+
+        now = 0.45;
+        controller.Update();
+        Assert.Single(midi.NoteOns);
+    }
+
+    [Fact]
+    public void KeyHighlightFollowsVisualTimeRatherThanMidiDispatch()
+    {
+        double now = 0;
+        FakeMidiOutput midi = new(() => now);
+        PlaybackController controller = new(
+            new PlaybackSession([NewNote(10, 1.0, 1.0)], audioOffsetSeconds: 0.055),
+            midi,
+            new PlaybackClock(() => now));
+
+        now = 0.96;
+        controller.Update();
+        Assert.Single(midi.NoteOns);
+        Assert.False(controller.IsKeyActive(10));
+
+        now = 1.0;
+        controller.Update();
+        Assert.True(controller.IsKeyActive(10));
+    }
+
+    [Fact]
+    public void AudioOffsetChangeKeepsPositionAndDoesNotStrandHeldKeys()
+    {
+        double now = 0;
+        FakeMidiOutput midi = new(() => now);
+        PlaybackController controller = new(
+            new PlaybackSession([NewNote(10, 1.0, 5.0)], audioOffsetSeconds: 0.055),
+            midi,
+            new PlaybackClock(() => now));
+
+        now = 2.0;
+        controller.Update();
+        Assert.True(controller.IsKeyActive(10));
+
+        controller.SetAudioOffsetSeconds(0.120);
+        Assert.Equal(2.0, controller.Position, 6);
+        Assert.True(controller.IsPlaying);
+        Assert.True(controller.IsKeyActive(10));
+    }
+
     private static Note NewNote(int key, double start, double duration) =>
         new(key, start, duration, 80, Color.SkyBlue);
 
-    private sealed class FakeMidiOutput : IMidiOutput
+    private sealed class FakeMidiOutput(Func<double>? clock = null) : IMidiOutput
     {
+        private readonly Func<double> clock = clock ?? (() => 0);
+
         public List<int> NoteOns { get; } = [];
         public List<int> NoteOffs { get; } = [];
 
-        public void NoteOn(int midiPitch, int velocity) => NoteOns.Add(midiPitch);
+        /// <summary>Dispatch times, so tests can assert on timing and not just on order.</summary>
+        public List<(int Pitch, double Time)> Dispatches { get; } = [];
+
+        public void NoteOn(int midiPitch, int velocity)
+        {
+            NoteOns.Add(midiPitch);
+            Dispatches.Add((midiPitch, clock()));
+        }
+
         public void NoteOff(int midiPitch) => NoteOffs.Add(midiPitch);
+
         public void AllNotesOff()
         {
         }

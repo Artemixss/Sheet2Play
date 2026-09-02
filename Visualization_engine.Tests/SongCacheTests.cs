@@ -32,6 +32,36 @@ public sealed class SongCacheTests
     }
 
     [Fact]
+    public void AudioOffsetPersistsAndLegacySettingsWithoutItStillLoad()
+    {
+        using TemporaryDirectory temporary = new();
+        string settingsPath = Path.Combine(temporary.Path, "settings", "settings.json");
+        Directory.CreateDirectory(Path.GetDirectoryName(settingsPath)!);
+
+        // A file written by a build that predates the setting must keep working: the
+        // store rejects unmapped members, so the missing one has to fall back rather
+        // than fail the whole read and reset the user's engine.
+        File.WriteAllText(settingsPath, "{\"omr_engine\":\"zeus\"}");
+        Assert.Equal(OmrEngine.Zeus, AppSettingsStore.LoadEngineFromPath(settingsPath));
+        Assert.Equal(
+            AppSettingsStore.DefaultAudioOffsetMilliseconds,
+            AppSettingsStore.LoadAudioOffsetFromPath(settingsPath));
+
+        AppSettingsStore.SaveAudioOffsetToPath(120, settingsPath);
+        Assert.Equal(120, AppSettingsStore.LoadAudioOffsetFromPath(settingsPath));
+        // Saving one field must not reset the other.
+        Assert.Equal(OmrEngine.Zeus, AppSettingsStore.LoadEngineFromPath(settingsPath));
+
+        AppSettingsStore.SaveEngineToPath(OmrEngine.Homr, settingsPath);
+        Assert.Equal(120, AppSettingsStore.LoadAudioOffsetFromPath(settingsPath));
+
+        AppSettingsStore.SaveAudioOffsetToPath(99999, settingsPath);
+        Assert.Equal(
+            AppSettingsStore.MaximumAudioOffsetMilliseconds,
+            AppSettingsStore.LoadAudioOffsetFromPath(settingsPath));
+    }
+
+    [Fact]
     public void SourceChangesInvalidateHomrManifest()
     {
         using TemporaryDirectory temporary = new();

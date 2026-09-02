@@ -210,10 +210,15 @@ public sealed class PlaybackSession
 
         TotalDuration = notes.Max(note => note.EndTime);
         MaxNoteDuration = notes.Max(note => note.Duration);
+        AudioOffsetSeconds = audioOffsetSeconds;
+
+        // Events carry their true score times. The offset is applied at dispatch instead,
+        // because baking it in here fixes it in song-time: at 0.5x speed a 55ms bake
+        // becomes 110ms of real-world lead, and at 2x it becomes 27.5ms.
         Events = notes.SelectMany(note => new[]
             {
-                new PlaybackEvent(Math.Max(0, note.StartTime - audioOffsetSeconds), note.TargetKeyIndex, note.Velocity, true),
-                new PlaybackEvent(Math.Max(0, note.EndTime - audioOffsetSeconds), note.TargetKeyIndex, note.Velocity, false)
+                new PlaybackEvent(note.StartTime, note.TargetKeyIndex, note.Velocity, true),
+                new PlaybackEvent(note.EndTime, note.TargetKeyIndex, note.Velocity, false)
             })
             .OrderBy(item => item.Time)
             .ThenBy(item => item.IsNoteOn ? 1 : 0)
@@ -230,6 +235,13 @@ public sealed class PlaybackSession
     public IReadOnlyList<Note> Notes => readOnlyNotes;
     public double TotalDuration { get; }
     public double MaxNoteDuration { get; }
+
+    /// <summary>
+    /// Wall-clock seconds by which MIDI is dispatched ahead of a note's visual time, so
+    /// the sound arrives from the synthesiser as the note reaches the hit line.
+    /// </summary>
+    public double AudioOffsetSeconds { get; }
+
     internal PlaybackEvent[] Events { get; }
 
     public (int Start, int End) GetVisibleRange(double position, double lookBehind, double lookAhead)
@@ -290,7 +302,11 @@ public sealed class PlaybackController
     private readonly IMidiOutput midiOutput;
     private readonly PlaybackClock clock;
     private readonly int[] activePitchCounts = new int[88];
+    // Key highlights follow the visual timeline, not the audio one. Driving them from
+    // the MIDI cursor lit each key AudioOffsetSeconds before its note reached the line.
+    private readonly int[] visualPitchCounts = new int[88];
     private int eventCursor;
+    private int visualCursor;
 
     public PlaybackController(
         PlaybackSession session,
@@ -301,6 +317,31 @@ public sealed class PlaybackController
         this.midiOutput = midiOutput ?? throw new ArgumentNullException(nameof(midiOutput));
         this.clock = clock ?? new PlaybackClock();
         this.clock.Reset(0, running: true);
+        AudioOffsetSeconds = session.AudioOffsetSeconds;
+    }
+
+    /// <summary>
+    /// Wall-clock lead applied to MIDI dispatch. Seeded from the session and adjustable
+    /// during playback so the user can calibrate against their own output chain, which
+    /// can differ by more than 100ms between wired output and Bluetooth.
+    /// </summary>
+    public double AudioOffsetSeconds { get; private set; }
+
+    public void SetAudioOffsetSeconds(double seconds)
+    {
+        double clamped = Math.Clamp(seconds, 0, 0.5);
+        if (!double.IsFinite(clamped) || Math.Abs(clamped - AudioOffsetSeconds) < 1e-9)
+        {
+            return;
+        }
+
+        // Changing the horizon moves the audio cursor, which would otherwise skip
+        // note-offs and leave keys stuck on. Re-seek in place to rebuild both cursors.
+        bool wasPlaying = IsPlaying;
+        double position = Position;
+        AudioOffsetSeconds = clamped;
+        clock.Pause();
+        SetSeekPosition(position, wasPlaying, alreadySilenced: false);
     }
 
     public PlaybackSession Session => session;
@@ -308,7 +349,14 @@ public sealed class PlaybackController
     public bool IsPlaying => clock.IsRunning && !IsCompleted;
     public double PlaybackRate => clock.PlaybackRate;
     public bool IsCompleted { get; private set; }
-    public bool IsKeyActive(int keyIndex) => keyIndex is >= 0 and < 88 && activePitchCounts[keyIndex] > 0;
+    public bool IsKeyActive(int keyIndex) => keyIndex is >= 0 and < 88 && visualPitchCounts[keyIndex] > 0;
+
+    /// <summary>
+    /// Score time at which MIDI must be dispatched to sound at <paramref name="position"/>.
+    /// The offset is wall-clock, so it is converted to song time by the playback rate.
+    /// </summary>
+    private double DispatchHorizon(double position) =>
+        position + (AudioOffsetSeconds * clock.PlaybackRate);
 
     public void Update()
     {
@@ -318,10 +366,17 @@ public sealed class PlaybackController
         }
 
         double position = clock.Position;
-        while (eventCursor < session.Events.Length && session.Events[eventCursor].Time <= position)
+        double horizon = DispatchHorizon(position);
+        while (eventCursor < session.Events.Length && session.Events[eventCursor].Time <= horizon)
         {
             ApplyEvent(session.Events[eventCursor]);
             eventCursor++;
+        }
+
+        while (visualCursor < session.Events.Length && session.Events[visualCursor].Time <= position)
+        {
+            ApplyVisualEvent(session.Events[visualCursor]);
+            visualCursor++;
         }
 
         if (position >= session.TotalDuration)
@@ -362,6 +417,7 @@ public sealed class PlaybackController
     {
         clock.Pause();
         Array.Clear(activePitchCounts);
+        Array.Clear(visualPitchCounts);
         SetSeekPosition(position, resume, alreadySilenced: true);
     }
 
@@ -369,7 +425,10 @@ public sealed class PlaybackController
     {
         double target = Math.Clamp(position, 0, session.TotalDuration);
         clock.Seek(target);
-        eventCursor = UpperBoundEvents(target);
+        // Each cursor is placed against the horizon it is swept with, so a seek does not
+        // strand notes inside the offset window as already-played.
+        eventCursor = UpperBoundEvents(DispatchHorizon(target));
+        visualCursor = UpperBoundEvents(target);
         IsCompleted = target >= session.TotalDuration;
         if (resume && !IsCompleted)
         {
@@ -409,6 +468,19 @@ public sealed class PlaybackController
         }
     }
 
+    private void ApplyVisualEvent(PlaybackEvent item)
+    {
+        if (item.IsNoteOn)
+        {
+            visualPitchCounts[item.KeyIndex]++;
+            return;
+        }
+        if (visualPitchCounts[item.KeyIndex] > 0)
+        {
+            visualPitchCounts[item.KeyIndex]--;
+        }
+    }
+
     private void RestoreAt(double position, bool silenceFirst = true)
     {
         if (silenceFirst)
@@ -418,6 +490,7 @@ public sealed class PlaybackController
         else
         {
             Array.Clear(activePitchCounts);
+            Array.Clear(visualPitchCounts);
         }
         for (int index = 0; index < eventCursor; index++)
         {
@@ -426,6 +499,17 @@ public sealed class PlaybackController
             if (activePitchCounts[item.KeyIndex] < 0)
             {
                 activePitchCounts[item.KeyIndex] = 0;
+            }
+        }
+        // Rebuilt separately: the visual cursor trails the audio one by the offset, so
+        // replaying to eventCursor would light keys for notes not yet on screen.
+        for (int index = 0; index < visualCursor; index++)
+        {
+            PlaybackEvent item = session.Events[index];
+            visualPitchCounts[item.KeyIndex] += item.IsNoteOn ? 1 : -1;
+            if (visualPitchCounts[item.KeyIndex] < 0)
+            {
+                visualPitchCounts[item.KeyIndex] = 0;
             }
         }
         for (int keyIndex = 0; keyIndex < activePitchCounts.Length; keyIndex++)
@@ -441,6 +525,7 @@ public sealed class PlaybackController
     {
         midiOutput.AllNotesOff();
         Array.Clear(activePitchCounts);
+        Array.Clear(visualPitchCounts);
     }
 
     private int UpperBoundEvents(double time)

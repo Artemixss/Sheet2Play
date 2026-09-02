@@ -145,13 +145,21 @@ internal static partial class Program
 		return failed == 0 ? 0 : 1;
 	}
 
+	/// <summary>Step used by the [ and ] audio-offset calibration keys.</summary>
+	private const int AudioOffsetStepMilliseconds = 5;
+
 	private static void RunApplication()
 	{
 		Application.EnableVisualStyles();
 		Application.SetCompatibleTextRenderingDefault(defaultValue: false);
-		Raylib.SetConfigFlags(ConfigFlags.ResizableWindow);
+		// VSyncHint locks presentation to the display's scanout. Without it the frame
+		// limiter below free-runs at almost-but-not-exactly the refresh rate, and the
+		// resulting tear seam crawls steadily up the window - most visible once
+		// playback stops and the seam is the only thing still moving.
+		Raylib.SetConfigFlags(ConfigFlags.ResizableWindow | ConfigFlags.VSyncHint);
 		Raylib.InitWindow(1280, 720, "Sheet2Play");
 		Raylib.SetWindowMinSize(960, 540);
+		// Kept as a ceiling for drivers that override the vsync hint.
 		Raylib.SetTargetFPS(144);
 		UiTheme.InitializeFonts();
 		DrawStartupNotice("Connecting to audio device...");
@@ -182,6 +190,7 @@ internal static partial class Program
 		DialogState dialogState = new DialogState();
 		GameState state = GameState.WaitingForFile;
 		OmrEngine selectedEngine = AppSettingsStore.LoadEngine();
+		int audioOffsetMilliseconds = AppSettingsStore.LoadAudioOffsetMilliseconds();
 		LoadRequest request2 = null;
 		PlaybackController playbackController = null;
 		SongLoadResult songLoadResult = null;
@@ -247,7 +256,9 @@ internal static partial class Program
 						{
 							playbackController?.Stop();
 							songLoadResult = value;
-							playbackController = new PlaybackController(new PlaybackSession(value.Notes), midiOutput);
+							playbackController = new PlaybackController(
+								new PlaybackSession(value.Notes, (double)audioOffsetMilliseconds / 1000.0),
+								midiOutput);
 							playbackRateEditor.Cancel();
 							sliderDragging = false;
 							exception = null;
@@ -297,6 +308,28 @@ internal static partial class Program
 			if (flag)
 			{
 				HandlePlaybackKeyboard(playbackController, playbackRateEditor, ref state, ref sliderDragging, ref resumeAfterSlider, ref sliderPreviewPosition, layout);
+				if (!playbackRateEditor.IsEditing && !sliderDragging)
+				{
+					int num7 = 0;
+					if ((bool)Raylib.IsKeyPressed(KeyboardKey.LeftBracket))
+					{
+						num7 = -AudioOffsetStepMilliseconds;
+					}
+					else if ((bool)Raylib.IsKeyPressed(KeyboardKey.RightBracket))
+					{
+						num7 = AudioOffsetStepMilliseconds;
+					}
+					if (num7 != 0)
+					{
+						int num8 = AppSettingsStore.Clamp(audioOffsetMilliseconds + num7);
+						if (num8 != audioOffsetMilliseconds)
+						{
+							audioOffsetMilliseconds = num8;
+							playbackController.SetAudioOffsetSeconds((double)num8 / 1000.0);
+							AppSettingsStore.SaveAudioOffsetMilliseconds(num8);
+						}
+					}
+				}
 				playbackController.Update();
 				if (playbackController.IsCompleted)
 				{
@@ -1328,7 +1361,7 @@ internal static partial class Program
 		{
 			Note note = playback.Session.Notes[j];
 			PianoKey key = piano.Keys[note.TargetKeyIndex];
-			int num4 = layout.HitLineY - (int)((note.StartTime - num2) * layout.FallSpeed);
+			int num4 = layout.HitLineY - (int)Math.Floor((note.StartTime - num2) * layout.FallSpeed);
 			int num5 = Math.Max(1, (int)(note.Duration * layout.FallSpeed));
 			int num6 = num4 - num5;
 			if (num6 <= layout.Height && num4 >= layout.HeaderHeight)
@@ -1347,7 +1380,23 @@ internal static partial class Program
 			int fontSize2 = Math.Max(24, (int)(34f * scale));
 			UiTheme.DrawText(text2, layout.Width / 2 - UiTheme.MeasureText(text2, fontSize2) / 2, layout.HeaderHeight + 18, fontSize2, UiTheme.Warning);
 		}
+		DrawAudioOffsetReadout(playback, layout);
 		return false;
+	}
+
+	/// <summary>
+	/// Shows the audio offset and how to change it. Without a readout the [ and ]
+	/// keys are invisible, and the value has to be right for the user's own output
+	/// chain - Bluetooth alone shifts it by more than 100ms.
+	/// </summary>
+	private static void DrawAudioOffsetReadout(PlaybackController playback, UiLayout layout)
+	{
+		float scale = layout.Scale;
+		int fontSize = Math.Max(12, (int)(14f * scale));
+		string text = $"AUDIO OFFSET {Math.Round(playback.AudioOffsetSeconds * 1000.0)}ms   [ / ]";
+		int x = layout.Width - UiTheme.MeasureText(text, fontSize) - (int)(18f * scale);
+		int y = layout.HitLineY - fontSize - (int)(10f * scale);
+		UiTheme.DrawText(text, x, y, fontSize, UiTheme.Muted);
 	}
 
 	private static void DrawPlaybackRateControl(PlaybackController playback, PlaybackRateEditor editor, UiLayout layout)
@@ -1429,9 +1478,14 @@ internal static partial class Program
 	private static void DrawFallingNote(Note note, PianoKey key, int rawTopY, int rawBottomY, float scale)
 	{
 		float num = Math.Clamp(3f * scale, 2f, 5f);
-		float num2 = (float)rawTopY + num / 2f;
-		float num3 = (float)rawBottomY - num / 2f;
-		float height = Math.Max(7f * scale, num3 - num2);
+		// The bottom edge is the note's actual moment, so it is not inset: insetting it
+		// held every note a pixel or two short of the hit line, which reads as the whole
+		// field sitting high. Only the top is pulled in, to leave a gap between notes.
+		float num3 = (float)rawBottomY;
+		float height = Math.Max(7f * scale, num3 - ((float)rawTopY + num));
+		// Short notes grow upward from the hit line rather than downward past it, so a
+		// clamped note still lands at the right time.
+		float num2 = num3 - height;
 		float num4 = Math.Max(20f * scale, (float)key.Width - 2f * scale);
 		float x = (float)key.X + (float)key.Width / 2f - num4 / 2f;
 		Rectangle rec = new Rectangle(x, num2, num4, height);
