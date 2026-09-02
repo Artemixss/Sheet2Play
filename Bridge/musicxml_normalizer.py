@@ -168,6 +168,77 @@ def normalize_tempo_changes(
     return tuple(normalized)
 
 
+# music21's clefFromString reads a clef as a letter followed by a line number - "G2", "F4".
+# homr sometimes emits a clef that does not fit that shape; a TAB clef comes out as
+# <sign>T</sign><line>A</line>, and music21 then calls int("A") and raises, losing the whole
+# score over one symbol. Dropping the bad clef lets music21 fall back to its default, which
+# costs a clef and saves the piece.
+_PARSEABLE_CLEF = re.compile(r"^[A-Za-z][0-9]$")
+_CLEF_ELEMENT = re.compile(r"<clef(?![A-Za-z])[^>]*>.*?</clef>", re.DOTALL)
+
+
+def _drop_unparseable_clefs(document: str) -> tuple[str, int]:
+    """Remove clef elements music21 cannot read. Returns the text and how many went."""
+    removed = 0
+
+    def replace(match: re.Match[str]) -> str:
+        nonlocal removed
+        block = match.group(0)
+        sign = re.search(r"<sign>([^<]*)</sign>", block)
+        line = re.search(r"<line>([^<]*)</line>", block)
+        combined = (sign.group(1) if sign else "") + (line.group(1) if line else "")
+        if _PARSEABLE_CLEF.match(combined):
+            return block
+        removed += 1
+        return ""
+
+    return _CLEF_ELEMENT.sub(replace, document), removed
+
+
+def _parse_musicxml_with_repair(converter: Any, path: Path) -> Any:
+    """Parse MusicXML, retrying once without malformed clefs if music21 refuses it.
+
+    The retry only runs after a real failure, so a document that parses today takes exactly
+    the path it always did. This is the same bargain as the skipped notes and the repeat
+    fallback: degrade the broken element rather than discard the score.
+    """
+    try:
+        with contextlib.redirect_stdout(sys.stderr):
+            return converter.parse(str(path))
+    except Exception as original:
+        try:
+            document = path.read_text(encoding="utf-8", errors="replace")
+        except OSError:
+            raise original from None
+        repaired, removed = _drop_unparseable_clefs(document)
+        if not removed:
+            raise original from None
+
+        import os
+        import tempfile
+
+        # mkstemp hands back an open descriptor; on Windows leaving it open locks the file
+        # and the write below fails. Close it before touching the path.
+        descriptor, raw_path = tempfile.mkstemp(suffix=".musicxml")
+        os.close(descriptor)
+        temporary = Path(raw_path)
+        try:
+            temporary.write_text(repaired, encoding="utf-8")
+            with contextlib.redirect_stdout(sys.stderr):
+                score = converter.parse(str(temporary))
+        except Exception:
+            raise original from None
+        finally:
+            temporary.unlink(missing_ok=True)
+
+        print(
+            f"[WARNING] Dropped {removed} unreadable clef(s) from {path} to recover the "
+            "score; affected staves fall back to a default clef",
+            file=sys.stderr,
+        )
+        return score
+
+
 def _prepare_score(
     parser: Callable[[], Any],
     source: str,
@@ -192,9 +263,21 @@ def _prepare_score(
         try:
             expanded_score = parsed_score.expandRepeats()
         except Exception as error:
-            raise MusicXmlNormalizationError(
-                f"Could not expand repeats in {source}: {error}", stage="repeat_expansion"
-            ) from error
+            # OMR output routinely contains unbalanced repeat barlines - a closing repeat with
+            # no opening, or one spanning a page boundary - and music21 refuses to expand
+            # those. Aborting the whole conversion over it loses a score that is otherwise
+            # fine; playing the repeated section once is a far better outcome than playing
+            # nothing. This follows the same principle as the skipped notes below and the
+            # dropped notes in PlaybackSession: degrade the bad element, keep the score.
+            #
+            # Only reachable where expansion already failed, so scores that convert today are
+            # unaffected. The cost is that repeats are played once instead of twice.
+            print(
+                f"[WARNING] Could not expand repeats in {source} ({error}); "
+                "continuing without repeat expansion, so repeated sections play once",
+                file=sys.stderr,
+            )
+            expanded_score = parsed_score
 
     try:
         score = expanded_score.stripTies(inPlace=False, matchByPitch=True)
@@ -332,7 +415,7 @@ def normalize_musicxml(
         ) from error
 
     score = _prepare_score(
-        lambda: converter.parse(str(resolved_path)),
+        lambda: _parse_musicxml_with_repair(converter, resolved_path),
         str(resolved_path),
         expand_repeats=expand_repeats,
     )

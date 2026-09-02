@@ -60,6 +60,31 @@ def configure_cuda() -> None:
     )
 
 
+KEEP_TUPLETS_VARIABLE = "SHEET2PLAY_HOMR_KEEP_TUPLETS"
+
+
+def disable_tuplet_cleanup() -> None:
+    """Neutralise homr's over-eager tuplet repair for rhythm diagnosis.
+
+    homr post-processes decoder output with `_fix_over_eager_tuplets`, which strips every
+    tuplet from any measure shorter than the median measure in the system. On a genuine
+    triplet measure that rescales the durations and shifts every later onset while leaving
+    the pitches intact. Replacing it with the identity leaves the rest of the cleanup chain
+    untouched, so the A/B isolates that one heuristic.
+
+    Note that homr's own `cleanup_tuplets=False` switch is *not* equivalent: it also skips
+    `_only_keep_lower_staff_if_there_is_a_clef`, which would confound the comparison.
+    """
+    from homr.transformer import vocabulary
+
+    vocabulary._fix_over_eager_tuplets = lambda chords: chords
+    print(
+        "homr diagnostic: tuplet cleanup disabled via " + KEEP_TUPLETS_VARIABLE,
+        file=sys.stderr,
+        flush=True,
+    )
+
+
 def run_homr(arguments: Sequence[str]) -> int:
     configure_cuda()
 
@@ -67,6 +92,9 @@ def run_homr(arguments: Sequence[str]) -> int:
         from homr.main import main as homr_main
     except ImportError as error:
         raise RuntimeError("homr is not installed in the GPU environment") from error
+
+    if os.environ.get(KEEP_TUPLETS_VARIABLE) == "1":
+        disable_tuplet_cleanup()
 
     original_arguments = sys.argv
     sys.argv = ["homr", "--gpu", "force", *arguments]
