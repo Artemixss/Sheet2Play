@@ -21,10 +21,47 @@ index eec4b64..65860ff 100644
  
  def _read_mxl(path: Path) -> str:
 diff --git a/training/transformer/train.py b/training/transformer/train.py
-index e756695..d93a602 100644
+index e756695..0dd98cd 100644
 --- a/training/transformer/train.py
 +++ b/training/transformer/train.py
-@@ -176,7 +176,10 @@ def train_transformer(
+@@ -126,10 +126,36 @@ def _check_datasets_are_present(selected_datasets: list[str]) -> list[str]:
+     return selected_datasets
+ 
+ 
++def _cap_vram_for_desktop_use() -> None:
++    """Sheet2Play addition: leave a slice of VRAM for whatever else uses the machine.
++
++    A training run will otherwise take every byte the card has, and the desktop then fights
++    it for memory. On the 8 GB box this is meant for that is the difference between being
++    able to browse while it trains and not - a browser with hardware acceleration on can hold
++    most of a gigabyte of VRAM.
++
++    This does not make training need less memory. It makes an over-large batch fail fast and
++    loudly instead of quietly starving the rest of the system, so the real lever is still
++    SHEET2PLAY_BATCH. Set SHEET2PLAY_VRAM_FRACTION to 1.0 on a machine nobody is using.
++    """
++    fraction = float(os.environ.get("SHEET2PLAY_VRAM_FRACTION", "0.90"))
++    if not torch.cuda.is_available() or fraction >= 1.0:
++        return
++    total = torch.cuda.get_device_properties(0).total_memory / 1e9
++    torch.cuda.set_per_process_memory_fraction(fraction, 0)
++    eprint(
++        f"Capping training at {fraction:.0%} of VRAM "
++        f"({total * fraction:.1f} GB of {total:.1f} GB); "
++        f"{total * (1 - fraction):.1f} GB left for the desktop. "
++        "Set SHEET2PLAY_VRAM_FRACTION=1.0 to use the whole card."
++    )
++
++
+ def train_transformer(
+     fp32: bool = False, resume: str = "", smoke_test: bool = False, fine_tune: bool = False
+ ) -> None:
+     distribute = Distribute()
++    _cap_vram_for_desktop_use()
+ 
+     number_of_epochs = 35
+     if smoke_test:
+@@ -176,7 +202,10 @@ def train_transformer(
  
      run_id = get_run_id()
  
@@ -36,7 +73,7 @@ index e756695..d93a602 100644
  
      train_args = TrainingArguments(
          checkpoint_folder,
-@@ -185,7 +188,7 @@ def train_transformer(
+@@ -185,7 +214,7 @@ def train_transformer(
          save_strategy="epoch",
          learning_rate=1e-5 if fine_tune else 1e-4,
          optim="adamw_torch_fused",
@@ -45,7 +82,7 @@ index e756695..d93a602 100644
          per_device_train_batch_size=batch_size,
          per_device_eval_batch_size=batch_size // 2,
          num_train_epochs=number_of_epochs,
-@@ -206,9 +209,14 @@ def train_transformer(
+@@ -206,9 +235,14 @@ def train_transformer(
      if fine_tune:
          eprint("Fine tuning model from", config.filepaths.checkpoint)
          model = load_model(config)
@@ -63,7 +100,7 @@ index e756695..d93a602 100644
      else:
          model = TrOMR(config)
  
-@@ -225,8 +233,9 @@ def train_transformer(
+@@ -225,8 +259,9 @@ def train_transformer(
  
      try:
          callbacks: list[TrainerCallback] = [EarlyStoppingCallback(early_stopping_patience=5)]

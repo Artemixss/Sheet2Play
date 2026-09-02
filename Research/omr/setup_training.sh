@@ -139,4 +139,10 @@ Next steps, in order:
 
   3. Fine-tune:
          SHEET2PLAY_BATCH=4 python3 -c "from training.transformer.train import train_transformer; train_transformer(fine_tune=True)"
+
+  Training caps itself at 90% of VRAM so the machine stays usable - browsing and
+  video are fine, anything GPU-heavy is not. Override with SHEET2PLAY_VRAM_FRACTION,
+  or set it to 1.0 on a box nobody else is touching. Note the cap does not reduce
+  what training needs; it makes an over-large batch fail fast instead of starving
+  the desktop, so SHEET2PLAY_BATCH is still the lever that decides whether it fits.
 EOF
