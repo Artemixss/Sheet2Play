@@ -48,7 +48,7 @@ internal static partial class Program
 				OmrEngine engine = OmrEngine.Homr;
 				OmrEngine? filter = null;
 				int a = 0, b = 0, c = 0;
-				DrawLanding(layout, ref engine, [], [], [], ref a, ref b, ref filter, ref c,
+				DrawLanding(layout, ref engine, [], [], [], ref a, ref b, ref filter, ref c, new LibrarySearchState(),
 					null, out _, out _);
 			});
 
@@ -58,7 +58,7 @@ internal static partial class Program
 				OmrEngine? filter = null;
 				int a = 0, b = 0, c = 0;
 				DrawLanding(layout, ref engine, SamplePdfs(), SampleCached(), SampleMidis(),
-					ref a, ref b, ref filter, ref c, null, out _, out _);
+					ref a, ref b, ref filter, ref c, new LibrarySearchState(), null, out _, out _);
 			});
 
 			// Same page filtered to one engine, to prove the tab selection renders.
@@ -68,7 +68,7 @@ internal static partial class Program
 				OmrEngine? filter = OmrEngine.Zeus;
 				int a = 0, b = 0, c = 0;
 				DrawLanding(layout, ref engine, SamplePdfs(), SampleCached(), SampleMidis(),
-					ref a, ref b, ref filter, ref c, "Zeus finished with warnings.", out _, out _);
+					ref a, ref b, ref filter, ref c, new LibrarySearchState(), "Zeus finished with warnings.", out _, out _);
 			});
 
 			failures += Capture(outputDirectory, "04-confirm-reuse", layout, () =>
