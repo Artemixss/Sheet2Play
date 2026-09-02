@@ -17,8 +17,8 @@ MIDI playback timing.
 
 * Falling-note piano roll with an 88-key keyboard, scaled to any window size.
 * A three-column landing page: **PDF Library**, **Cache Playlist**, and **MIDI Player**.
-* Millisecond playback scheduling with an audio offset you can calibrate during
-  playback and that persists between sessions.
+* Millisecond playback scheduling with an on-screen audio-offset control above the
+  keyboard, calibrated during playback and persisted between sessions.
 * Variable playback rate from 0.05x to 2.00x.
 
 ### 2. OMR bridge (Python)
