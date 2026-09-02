@@ -154,6 +154,7 @@ internal static partial class Program
 		Raylib.SetWindowMinSize(960, 540);
 		Raylib.SetTargetFPS(144);
 		UiTheme.InitializeFonts();
+		DrawStartupNotice("Connecting to audio device...");
 		using OutputDevice outputDevice = TryOpenSynthDevice(out string audioWarning);
 		IMidiOutput midiOutput;
 		if ((object)outputDevice == null)
@@ -389,6 +390,38 @@ internal static partial class Program
 	/// available device. Returns null when the machine has no MIDI output at all; the
 	/// caller then runs silently rather than failing to start.
 	/// </summary>
+	/// <summary>
+	/// Presents a single frame so the window has painted before a slow blocking call.
+	/// </summary>
+	/// <remarks>
+	/// Opening the MIDI device makes the synthesiser load its sound bank, and a large one -
+	/// several gigabytes of piano samples for VirtualMIDISynth here - takes long enough that
+	/// Windows marks the process Not Responding. The window is created by InitWindow before
+	/// that happens, so without this the user sees a blank white rectangle and reasonably
+	/// concludes the app has hung. It only looks that way on a cold synthesiser: once the
+	/// samples are resident the next open returns immediately, which is why closing and
+	/// relaunching appears to fix it.
+	///
+	/// This does not shorten the wait. It replaces an unexplained freeze with a window that
+	/// says what it is doing. Do not remove it because a lone draw before the main loop looks
+	/// redundant.
+	/// </remarks>
+	private static void DrawStartupNotice(string message)
+	{
+		Raylib.BeginDrawing();
+		Raylib.ClearBackground(UiTheme.Background);
+		int fontSize = 20;
+		int x = (Raylib.GetScreenWidth() - UiTheme.MeasureText(message, fontSize)) / 2;
+		int y = Raylib.GetScreenHeight() / 2 - fontSize;
+		UiTheme.DrawText(message, x, y, fontSize, UiTheme.Text);
+
+		const string hint = "First launch can take a moment while the synthesiser loads its sounds.";
+		int hintSize = 14;
+		int hintX = (Raylib.GetScreenWidth() - UiTheme.MeasureText(hint, hintSize)) / 2;
+		UiTheme.DrawText(hint, hintX, y + fontSize + 14, hintSize, UiTheme.Muted);
+		Raylib.EndDrawing();
+	}
+
 	private static OutputDevice TryOpenSynthDevice(out string warning)
 	{
 		warning = null;
