@@ -1,0 +1,204 @@
+{
+  "mode": "scored",
+  "manifest": "data\\polyrhythm\\manifest.jsonl",
+  "rows": [
+    {
+      "id": "homophonic",
+      "engines": {
+        "homr": {
+          "seconds": 16.12,
+          "ok": true,
+          "pitch_f1": 1.0,
+          "onset_f1": 1.0,
+          "onset_duration_f1": 1.0,
+          "mean_offset_error": 0.0,
+          "staff_accuracy": 1.0,
+          "aligned_voice_accuracy": 0.5,
+          "span_ratio": 1.0,
+          "predicted_notes": 8,
+          "expected_notes": 8
+        }
+      }
+    },
+    {
+      "id": "tuplet_aligned",
+      "engines": {
+        "homr": {
+          "seconds": 8.82,
+          "ok": true,
+          "pitch_f1": 1.0,
+          "onset_f1": 1.0,
+          "onset_duration_f1": 1.0,
+          "mean_offset_error": 0.0,
+          "staff_accuracy": 1.0,
+          "aligned_voice_accuracy": 0.5,
+          "span_ratio": 1.0,
+          "predicted_notes": 24,
+          "expected_notes": 24
+        }
+      }
+    },
+    {
+      "id": "offset_entry",
+      "engines": {
+        "homr": {
+          "seconds": 7.47,
+          "ok": true,
+          "pitch_f1": 1.0,
+          "onset_f1": 0.14285714285714285,
+          "onset_duration_f1": 0.14285714285714285,
+          "mean_offset_error": 0.0,
+          "staff_accuracy": 1.0,
+          "aligned_voice_accuracy": 1.0,
+          "span_ratio": 1.5,
+          "predicted_notes": 7,
+          "expected_notes": 7
+        }
+      }
+    },
+    {
+      "id": "triplet_vs_duple",
+      "engines": {
+        "homr": {
+          "seconds": 6.6,
+          "ok": true,
+          "pitch_f1": 1.0,
+          "onset_f1": 0.4000000000000001,
+          "onset_duration_f1": 0.20000000000000004,
+          "mean_offset_error": 0.16666666666666666,
+          "staff_accuracy": 1.0,
+          "aligned_voice_accuracy": 1.0,
+          "span_ratio": 1.3333333333333333,
+          "predicted_notes": 5,
+          "expected_notes": 5
+        }
+      }
+    },
+    {
+      "id": "triplet_vs_quadruple",
+      "engines": {
+        "homr": {
+          "seconds": 6.51,
+          "ok": true,
+          "pitch_f1": 0.923076923076923,
+          "onset_f1": 0.4615384615384615,
+          "onset_duration_f1": 0.30769230769230765,
+          "mean_offset_error": 0.05555555555555555,
+          "staff_accuracy": 1.0,
+          "aligned_voice_accuracy": 1.0,
+          "span_ratio": 0.75,
+          "predicted_notes": 6,
+          "expected_notes": 7
+        }
+      }
+    },
+    {
+      "id": "tie_across_barline",
+      "engines": {
+        "homr": {
+          "seconds": 7.16,
+          "ok": true,
+          "pitch_f1": 0.8571428571428571,
+          "onset_f1": 0.8571428571428571,
+          "onset_duration_f1": 0.5714285714285715,
+          "mean_offset_error": 0.6666666666666666,
+          "staff_accuracy": 1.0,
+          "aligned_voice_accuracy": 1.0,
+          "span_ratio": 1.0,
+          "predicted_notes": 4,
+          "expected_notes": 3
+        }
+      }
+    },
+    {
+      "id": "same_position_sustain",
+      "engines": {
+        "homr": {
+          "seconds": 6.58,
+          "ok": true,
+          "pitch_f1": 0.6666666666666666,
+          "onset_f1": 0.4444444444444444,
+          "onset_duration_f1": 0.4444444444444444,
+          "mean_offset_error": 0.0,
+          "staff_accuracy": 1.0,
+          "aligned_voice_accuracy": 1.0,
+          "span_ratio": 1.0,
+          "predicted_notes": 3,
+          "expected_notes": 6
+        }
+      }
+    },
+    {
+      "id": "quintuplet_vs_duple",
+      "engines": {
+        "homr": {
+          "seconds": 6.12,
+          "ok": true,
+          "pitch_f1": 0.9411764705882353,
+          "onset_f1": 0.47058823529411764,
+          "onset_duration_f1": 0.35294117647058826,
+          "mean_offset_error": 0.05,
+          "staff_accuracy": 1.0,
+          "aligned_voice_accuracy": 0.6666666666666666,
+          "span_ratio": 1.0,
+          "predicted_notes": 8,
+          "expected_notes": 9
+        }
+      }
+    },
+    {
+      "id": "septuplet_vs_duple",
+      "engines": {
+        "homr": {
+          "seconds": 6.33,
+          "ok": true,
+          "pitch_f1": 0.9523809523809523,
+          "onset_f1": 0.380952380952381,
+          "onset_duration_f1": 0.28571428571428564,
+          "mean_offset_error": 0.017857142857142856,
+          "staff_accuracy": 1.0,
+          "aligned_voice_accuracy": 0.6666666666666666,
+          "span_ratio": 1.0,
+          "predicted_notes": 10,
+          "expected_notes": 11
+        }
+      }
+    },
+    {
+      "id": "three_voices",
+      "engines": {
+        "homr": {
+          "seconds": 6.75,
+          "ok": true,
+          "pitch_f1": 0.923076923076923,
+          "onset_f1": 0.15384615384615383,
+          "onset_duration_f1": 0.15384615384615383,
+          "mean_offset_error": 0.0,
+          "staff_accuracy": 1.0,
+          "aligned_voice_accuracy": 1.0,
+          "span_ratio": 2.0,
+          "predicted_notes": 6,
+          "expected_notes": 7
+        }
+      }
+    },
+    {
+      "id": "syncopation",
+      "engines": {
+        "homr": {
+          "seconds": 6.69,
+          "ok": true,
+          "pitch_f1": 1.0,
+          "onset_f1": 0.125,
+          "onset_duration_f1": 0.125,
+          "mean_offset_error": 0.0,
+          "staff_accuracy": 1.0,
+          "aligned_voice_accuracy": 1.0,
+          "span_ratio": 1.875,
+          "predicted_notes": 8,
+          "expected_notes": 8
+        }
+      }
+    }
+  ]
+}
