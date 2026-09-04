@@ -11,15 +11,6 @@ play back, scrub, and slow down.
 **[Download Sheet2Play.exe](https://github.com/Artemixss/Sheet2Play/releases/latest)** — one
 self-contained Windows executable, no .NET install needed.
 
-## What works, and what does not
-
-`.mid`, `.mxl` and MusicXML files bypass recognition entirely, so they are exact — that is the
-engine at its best. For scanned or photographed sheet music, HOMR handles general notation
-well but **loses rhythmic precision on dense polyphonic piano**, which is an open research
-problem rather than a bug waiting to be fixed. `Research/omr/` holds the measurements and the
-attempts to improve on it — see [Improving recognition](#improving-recognition) for what has
-been tried and what the numbers actually say.
-
 ## Architecture
 
 The project is two components talking over a process boundary.
