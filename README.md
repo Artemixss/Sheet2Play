@@ -8,8 +8,13 @@ play back, scrub, and slow down.
 
 ![Sheet2Play playing a dense passage of Moonlight Sonata](docs/media/demo.gif)
 
-**[Download Sheet2Play.exe](https://github.com/Artemixss/Sheet2Play/releases/latest)** — one
-self-contained Windows executable, no .NET install needed.
+**[Download for Windows](https://github.com/Artemixss/Sheet2Play/releases/latest)** — unzip and
+run `Sheet2Play.exe`, keeping the folder together: the fonts and the Python bridge sit beside
+the executable rather than inside it.
+
+The .NET runtime is bundled, so `.mid` and `.midi` playback needs nothing else installed.
+Converting sheet music additionally needs Python 3.11+ — the bridge builds its own virtualenvs
+on first run — and hearing anything needs a MIDI synthesiser such as VirtualMIDISynth.
 
 ## Architecture
 
