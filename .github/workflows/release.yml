@@ -35,8 +35,20 @@ jobs:
         # landed beside the executable, which is the packaging failure worth catching.
         run: pwsh -ExecutionPolicy Bypass -File scripts/publish.ps1
 
-      - name: Attach the executable to the release
+      - name: Package
+        # The whole publish folder, not just the .exe. PublishSingleFile bundles the .NET
+        # runtime, but assets/** is deliberately ExcludeFromSingleFile because UiDesign
+        # loads fonts from disk relative to AppContext.BaseDirectory, and Bridge/*.py has
+        # to sit beside the executable for OMR to run at all. Shipping the bare .exe gives
+        # the user Raylib's fallback font and no recognition pipeline.
+        run: |
+          Remove-Item dist/*.pdb -ErrorAction SilentlyContinue
+          Get-ChildItem dist -Recurse -Directory -Filter __pycache__ | Remove-Item -Recurse -Force
+          Compress-Archive -Path dist/* -DestinationPath Sheet2Play-win-x64.zip
+        shell: pwsh
+
+      - name: Attach the package to the release
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/Sheet2Play.exe
+          files: Sheet2Play-win-x64.zip
           generate_release_notes: true
