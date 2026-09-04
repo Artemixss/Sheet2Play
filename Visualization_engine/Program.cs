@@ -149,9 +149,6 @@ internal static partial class Program
 		return failed == 0 ? 0 : 1;
 	}
 
-	/// <summary>Step used by the [ and ] audio-offset calibration keys.</summary>
-	private const int AudioOffsetStepMilliseconds = 5;
-
 	private static void RunApplication()
 	{
 		Application.EnableVisualStyles();
@@ -211,6 +208,7 @@ internal static partial class Program
 		bool resumeAfterSlider = false;
 		double sliderPreviewPosition = 0.0;
 		PlaybackRateEditor playbackRateEditor = new PlaybackRateEditor();
+		AudioOffsetEditor audioOffsetEditor = new AudioOffsetEditor();
 		while (!Raylib.WindowShouldClose())
 		{
 			if ((bool)Raylib.IsKeyPressed(KeyboardKey.F11))
@@ -314,16 +312,16 @@ internal static partial class Program
 			if (flag)
 			{
 				HandlePlaybackKeyboard(playbackController, playbackRateEditor, ref state, ref sliderDragging, ref resumeAfterSlider, ref sliderPreviewPosition, layout);
-				if (!playbackRateEditor.IsEditing && !sliderDragging)
+				if (!playbackRateEditor.IsEditing && !audioOffsetEditor.IsEditing && !sliderDragging)
 				{
 					int num7 = 0;
 					if ((bool)Raylib.IsKeyPressed(KeyboardKey.LeftBracket))
 					{
-						num7 = -AudioOffsetStepMilliseconds;
+						num7 = -AudioOffsetRules.StepMilliseconds;
 					}
 					else if ((bool)Raylib.IsKeyPressed(KeyboardKey.RightBracket))
 					{
-						num7 = AudioOffsetStepMilliseconds;
+						num7 = AudioOffsetRules.StepMilliseconds;
 					}
 					if (num7 != 0)
 					{
@@ -389,7 +387,7 @@ internal static partial class Program
 				break;
 			case GameState.Playing:
 			case GameState.Completed:
-				if (playbackController != null && (object)songLoadResult != null && DrawPlayback(playbackController, songLoadResult, keyboard, sliderDragging, sliderPreviewPosition, playbackRateEditor, ref state, layout))
+				if (playbackController != null && (object)songLoadResult != null && DrawPlayback(playbackController, songLoadResult, keyboard, sliderDragging, sliderPreviewPosition, playbackRateEditor, audioOffsetEditor, ref state, layout))
 				{
 					playbackController.Stop();
 					playbackRateEditor.Cancel();
@@ -1427,7 +1425,7 @@ internal static partial class Program
 		return new Rectangle(num, (float)layout.HeaderHeight - 23f * layout.Scale, (float)layout.Width - num * 2f, Math.Max(8f, 10f * layout.Scale));
 	}
 
-	private static bool DrawPlayback(PlaybackController playback, SongLoadResult song, Keyboard piano, bool sliderDragging, double sliderPreviewPosition, PlaybackRateEditor rateEditor, ref GameState state, UiLayout layout)
+	private static bool DrawPlayback(PlaybackController playback, SongLoadResult song, Keyboard piano, bool sliderDragging, double sliderPreviewPosition, PlaybackRateEditor rateEditor, AudioOffsetEditor offsetEditor, ref GameState state, UiLayout layout)
 	{
 		float scale = layout.Scale;
 		Raylib.DrawRectangle(0, 0, layout.Width, layout.HeaderHeight, UiTheme.Surface);
@@ -1507,17 +1505,17 @@ internal static partial class Program
 			int fontSize2 = Math.Max(24, (int)(34f * scale));
 			UiTheme.DrawText(text2, layout.Width / 2 - UiTheme.MeasureText(text2, fontSize2) / 2, layout.HeaderHeight + 18, fontSize2, UiTheme.Warning);
 		}
-		DrawAudioOffsetControl(playback, layout);
+		DrawAudioOffsetControl(playback, offsetEditor, layout);
 		return false;
 	}
 
 	/// <summary>
-	/// Audio-offset stepper, sitting above the keyboard where sync is judged. Built
-	/// like DrawPlaybackRateControl so the two read as the same kind of control. The
-	/// right value depends on the user's output chain - Bluetooth alone shifts it by
-	/// more than 100ms - so it has to be reachable without a rebuild.
+	/// Audio-offset stepper with a typed field, built like DrawPlaybackRateControl so
+	/// the two read as the same control. Typing matters here: a 5ms nudge is below the
+	/// roughly 20-40ms at which a listener notices an audio-visual shift, so finding the
+	/// right value by stepping alone means dozens of presses that each feel like nothing.
 	/// </summary>
-	private static void DrawAudioOffsetControl(PlaybackController playback, UiLayout layout)
+	private static void DrawAudioOffsetControl(PlaybackController playback, AudioOffsetEditor editor, UiLayout layout)
 	{
 		float scale = layout.Scale;
 		float num = 26f * scale;
@@ -1528,28 +1526,78 @@ internal static partial class Program
 		int current = (int)Math.Round(playback.AudioOffsetSeconds * 1000.0);
 		int num2 = Math.Max(10, (int)(12f * scale));
 		UiTheme.DrawText("AUDIO OFFSET", (int)(x - (float)UiTheme.MeasureText("AUDIO OFFSET", num2) - 10f * scale), (int)(y + (height - (float)num2) / 2f), num2, UiTheme.Muted);
-		if (UiTheme.DrawButton(new Rectangle(x, y, num, height), "−", UiTheme.Muted, current > AppSettingsStore.MinimumAudioOffsetMilliseconds))
+		if (UiTheme.DrawButton(new Rectangle(x, y, num, height), "−", UiTheme.Muted, !editor.IsEditing && current > AppSettingsStore.MinimumAudioOffsetMilliseconds))
 		{
-			StepAudioOffset(playback, -AudioOffsetStepMilliseconds);
+			editor.Cancel();
+			StepAudioOffset(playback, -AudioOffsetRules.StepMilliseconds);
 		}
 		Rectangle rec = new Rectangle(x + num + 5f * scale, y, width, height);
 		Raylib.DrawRectangleRounded(rec, 0.16f, 8, UiTheme.Elevated);
-		Raylib.DrawRectangleRoundedLinesEx(rec, 0.16f, 8, Math.Max(1f, scale), UiTheme.Border);
-		string text = $"{current} ms";
+		Color color = ((editor.Error != null) ? UiTheme.Danger : (editor.IsEditing ? UiTheme.Sky : UiTheme.Border));
+		Raylib.DrawRectangleRoundedLinesEx(rec, 0.16f, 8, Math.Max(1f, scale), color);
+		if ((bool)Raylib.IsMouseButtonPressed(MouseButton.Left))
+		{
+			int committed;
+			if ((bool)Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), rec))
+			{
+				if (!editor.IsEditing)
+				{
+					editor.Begin(current);
+				}
+			}
+			else if (editor.IsEditing && editor.TryCommit(out committed))
+			{
+				ApplyAudioOffset(playback, committed);
+			}
+		}
+		if (editor.IsEditing)
+		{
+			int charPressed;
+			while ((charPressed = Raylib.GetCharPressed()) > 0)
+			{
+				if (charPressed <= 65535)
+				{
+					editor.Append((char)charPressed);
+				}
+			}
+			if ((bool)Raylib.IsKeyPressed(KeyboardKey.Backspace))
+			{
+				editor.Backspace();
+			}
+			if ((bool)Raylib.IsKeyPressed(KeyboardKey.Enter) && editor.TryCommit(out var committed2))
+			{
+				ApplyAudioOffset(playback, committed2);
+			}
+			else if ((bool)Raylib.IsKeyPressed(KeyboardKey.Escape))
+			{
+				editor.Cancel();
+			}
+		}
+		string text = (editor.IsEditing ? (editor.Text + "|") : $"{current} ms");
 		int num3 = Math.Max(11, (int)(13f * scale));
 		UiTheme.DrawText(text, (int)(rec.X + (rec.Width - (float)UiTheme.MeasureText(text, num3)) / 2f), (int)(rec.Y + (rec.Height - (float)num3) / 2f), num3, UiTheme.Text);
-		if (UiTheme.DrawButton(new Rectangle(rec.X + rec.Width + 5f * scale, y, num, height), "+", UiTheme.Muted, current < AppSettingsStore.MaximumAudioOffsetMilliseconds))
+		if (UiTheme.DrawButton(new Rectangle(rec.X + rec.Width + 5f * scale, y, num, height), "+", UiTheme.Muted, !editor.IsEditing && current < AppSettingsStore.MaximumAudioOffsetMilliseconds))
 		{
-			StepAudioOffset(playback, AudioOffsetStepMilliseconds);
+			editor.Cancel();
+			StepAudioOffset(playback, AudioOffsetRules.StepMilliseconds);
+		}
+		if (editor.Error != null)
+		{
+			UiTheme.DrawText(editor.Error, (int)rec.X, (int)(rec.Y + rec.Height + 2f * scale), Math.Max(9, (int)(11f * scale)), UiTheme.Danger);
 		}
 	}
 
-	/// <summary>Moves the offset and persists it, so calibration survives a restart.</summary>
 	private static void StepAudioOffset(PlaybackController playback, int deltaMilliseconds)
 	{
 		int current = (int)Math.Round(playback.AudioOffsetSeconds * 1000.0);
-		int updated = AppSettingsStore.Clamp(current + deltaMilliseconds);
-		if (updated != current)
+		ApplyAudioOffset(playback, AppSettingsStore.Clamp(current + deltaMilliseconds));
+	}
+
+	/// <summary>Applies the offset and persists it, so calibration survives a restart.</summary>
+	private static void ApplyAudioOffset(PlaybackController playback, int milliseconds)
+	{
+		int updated = AppSettingsStore.Clamp(milliseconds);
+		if (updated != (int)Math.Round(playback.AudioOffsetSeconds * 1000.0))
 		{
 			playback.SetAudioOffsetSeconds((double)updated / 1000.0);
 			AppSettingsStore.SaveAudioOffsetMilliseconds(updated);

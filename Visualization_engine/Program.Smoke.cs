@@ -108,7 +108,7 @@ internal static partial class Program
 				SongLoadResult song = new(notes, "Liyue Battle Theme", OmrEngine.Homr, true, null);
 				Keyboard piano = new(layout.Width, layout.HitLineY, layout.KeyboardHeight);
 				GameState state = GameState.Playing;
-				DrawPlayback(playback, song, piano, false, 0.0, new PlaybackRateEditor(),
+				DrawPlayback(playback, song, piano, false, 0.0, new PlaybackRateEditor(), new AudioOffsetEditor(),
 					ref state, layout);
 			});
 		}
