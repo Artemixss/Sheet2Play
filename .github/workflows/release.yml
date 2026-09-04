@@ -1,0 +1,42 @@
+name: Release
+
+# Tag-driven: pushing v1.0.0 builds the app and attaches the executable to that release,
+# so the download link in the README always points at a build from a known commit.
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    # The app is a self-contained win-x64 build and publish.ps1 is PowerShell, so this
+    # cannot run on a Linux runner.
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "9.0.x"
+
+      - name: Build and test
+        run: |
+          dotnet build Visualization_engine/SynthesiaClone.csproj -c Release
+          dotnet test Visualization_engine.Tests -c Release
+
+      - name: Publish
+        # Reuses the script developers run locally rather than repeating its flags here,
+        # so the two cannot drift. It also asserts that the Inter fonts and bridge.py
+        # landed beside the executable, which is the packaging failure worth catching.
+        run: pwsh -ExecutionPolicy Bypass -File scripts/publish.ps1
+
+      - name: Attach the executable to the release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/Sheet2Play.exe
+          generate_release_notes: true

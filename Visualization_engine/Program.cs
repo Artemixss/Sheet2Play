@@ -84,6 +84,10 @@ internal static partial class Program
 				: Path.Combine(Path.GetTempPath(), "sheet2play-smoke"));
 			return RunSmoke(outputDirectory);
 		}
+		if (args.Length > 0 && string.Equals(args[0], "--smoke-gif", StringComparison.OrdinalIgnoreCase))
+		{
+			return RunDemoGif(args);
+		}
 		if (args.Length > 0 && string.Equals(args[0], "--reconvert", StringComparison.OrdinalIgnoreCase))
 		{
 			return RunReconvert(args);
