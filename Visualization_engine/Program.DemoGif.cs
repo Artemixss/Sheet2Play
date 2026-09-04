@@ -65,6 +65,7 @@ internal static partial class Program
 			UiLayout layout = UiLayout.Create(InitialWidth, InitialHeight);
 			Keyboard piano = new(layout.Width, layout.HitLineY, layout.KeyboardHeight);
 			PlaybackRateEditor rateEditor = new();
+			AudioOffsetEditor offsetEditor = new();
 			int frameCount = Math.Max(1, (int)Math.Round(seconds * fps));
 
 			for (int frame = 0; frame < frameCount; frame++)
@@ -76,7 +77,7 @@ internal static partial class Program
 					outputDirectory,
 					$"frame-{frame:D4}",
 					layout,
-					() => DrawPlayback(playback, song, piano, false, 0.0, rateEditor, ref state, layout));
+					() => DrawPlayback(playback, song, piano, false, 0.0, rateEditor, offsetEditor, ref state, layout));
 				if (failed != 0)
 				{
 					return 1;

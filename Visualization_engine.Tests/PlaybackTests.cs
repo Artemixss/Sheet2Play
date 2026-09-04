@@ -248,6 +248,41 @@ public sealed class PlaybackTests
     }
 
     [Fact]
+    public void ChangingAudioOffsetMidPlaybackMovesLaterDispatchesEarlier()
+    {
+        double now = 0;
+        FakeMidiOutput midi = new(() => now);
+        PlaybackController controller = new(
+            new PlaybackSession(
+                [NewNote(10, 1.0, 0.5), NewNote(20, 5.0, 0.5)],
+                audioOffsetSeconds: 0),
+            midi,
+            new PlaybackClock(() => now));
+
+        now = 1.0;
+        controller.Update();
+        Assert.Equal(1.0, Assert.Single(midi.Dispatches).Time, 6);
+
+        // Raised while nothing is sounding, so no note is restored and the only dispatch
+        // that follows is the second note.
+        now = 2.0;
+        controller.Update();
+        controller.SetAudioOffsetSeconds(0.4);
+
+        now = 4.59;
+        controller.Update();
+        Assert.Single(midi.Dispatches);
+
+        now = 4.61;
+        controller.Update();
+        (int Pitch, double Time) second = midi.Dispatches[^1];
+        Assert.Equal(41, second.Pitch);
+        // Its score time is 5.0, so firing at 4.61 is the offset doing its job. Without it
+        // the note would not sound until 5.0.
+        Assert.Equal(4.61, second.Time, 6);
+    }
+
+    [Fact]
     public void AudioOffsetChangeKeepsPositionAndDoesNotStrandHeldKeys()
     {
         double now = 0;
@@ -265,6 +300,44 @@ public sealed class PlaybackTests
         Assert.Equal(2.0, controller.Position, 6);
         Assert.True(controller.IsPlaying);
         Assert.True(controller.IsKeyActive(10));
+    }
+
+    [Theory]
+    [InlineData("85", 85)]
+    [InlineData("  85  ", 85)]
+    [InlineData("85 ms", 85)]
+    [InlineData("85ms", 85)]
+    [InlineData("0", 0)]
+    [InlineData("500", 500)]
+    public void AudioOffsetFieldAcceptsWholeMilliseconds(string text, int expected)
+    {
+        Assert.True(AudioOffsetRules.TryParse(text, out int parsed, out string? error));
+        Assert.Equal(expected, parsed);
+        Assert.Null(error);
+    }
+
+    [Theory]
+    [InlineData("")]
+    [InlineData("   ")]
+    [InlineData("abc")]
+    [InlineData("8.5")]
+    [InlineData("-5")]
+    [InlineData("501")]
+    public void AudioOffsetFieldRejectsValuesTheSettingsFileWouldClamp(string text)
+    {
+        Assert.False(AudioOffsetRules.TryParse(text, out _, out string? error));
+        Assert.False(string.IsNullOrWhiteSpace(error));
+    }
+
+    [Fact]
+    public void AudioOffsetStepsByFiveAndStopsAtTheBounds()
+    {
+        Assert.Equal(90, AudioOffsetRules.Step(85, 1));
+        Assert.Equal(80, AudioOffsetRules.Step(85, -1));
+        Assert.Equal(AppSettingsStore.MinimumAudioOffsetMilliseconds, AudioOffsetRules.Step(0, -1));
+        Assert.Equal(
+            AppSettingsStore.MaximumAudioOffsetMilliseconds,
+            AudioOffsetRules.Step(AppSettingsStore.MaximumAudioOffsetMilliseconds, 1));
     }
 
     private static Note NewNote(int key, double start, double duration) =>
