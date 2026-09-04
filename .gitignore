@@ -80,3 +80,6 @@ tmp/
 Thumbs.db
 Research/omr/dataset/
 Research/omr/vendor/
+
+# Unreferenced sample score, kept locally but not distributed under the repo licence.
+Omr/test_sheet.jpg

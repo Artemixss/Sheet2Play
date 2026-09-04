@@ -6,6 +6,20 @@ Sheet2Play reads sheet music — a PDF, a scan, or a photo — runs it through a
 Recognition (OMR) pipeline, and renders the result as a Synthesia-style piano roll you can
 play back, scrub, and slow down.
 
+![Sheet2Play playing a dense passage of Moonlight Sonata](docs/media/demo.gif)
+
+**[Download Sheet2Play.exe](https://github.com/Artemixss/Sheet2Play/releases/latest)** — one
+self-contained Windows executable, no .NET install needed.
+
+## What works, and what does not
+
+`.mid`, `.mxl` and MusicXML files bypass recognition entirely, so they are exact — that is the
+engine at its best. For scanned or photographed sheet music, HOMR handles general notation
+well but **loses rhythmic precision on dense polyphonic piano**, which is an open research
+problem rather than a bug waiting to be fixed. `Research/omr/` holds the measurements and the
+attempts to improve on it — see [Improving recognition](#improving-recognition) for what has
+been tried and what the numbers actually say.
+
 ## Architecture
 
 The project is two components talking over a process boundary.
@@ -19,8 +33,11 @@ MIDI playback timing.
 * A three-column landing page: **PDF Library**, **Cache Playlist**, and **MIDI Player**.
   Each column has its own search box; terms are matched independently, so
   `rail sparkle` finds `Honkai_Star_Rail_-_Sparkle`.
-* Millisecond playback scheduling with an on-screen audio-offset control above the
-  keyboard, calibrated during playback and persisted between sessions.
+* MIDI events are dispatched once per rendered frame, against a monotonic clock rather than
+  an accumulated one. An on-screen audio-offset control above the keyboard compensates for
+  your synthesiser's output latency — tuned by ear during playback and persisted between
+  sessions, because the right value depends on your output chain and moves by over 100 ms
+  between wired output and Bluetooth.
 * Variable playback rate from 0.05x to 2.00x.
 
 ### 2. OMR bridge (Python)
@@ -155,8 +172,8 @@ dotnet run --project MidiTester
 ### Checking the UI without launching it
 
 The app can render every screen headlessly and write one PNG per state. It uses a hidden
-window and a null MIDI output, so it needs neither a display nor a synthesiser, and exits
-non-zero if a screen throws:
+window and a null MIDI output, so it needs no visible window and no synthesiser — it does
+still need a GPU and an OpenGL driver — and exits non-zero if a screen throws:
 
 ```bash
 dotnet run --project Visualization_engine -- --smoke .\ui-snapshots
@@ -168,6 +185,22 @@ only appear after packaging:
 ```powershell
 .\dist\Sheet2Play.exe --smoke .\ui-snapshots
 ```
+
+### Regenerating the demo
+
+The animation at the top of this file is rendered by the app itself rather than screen
+recorded, so it can be refreshed whenever the frontend changes instead of going stale. It
+scans the score for its densest four seconds and renders those, driving playback from an
+injected clock so the frames are identical on every run:
+
+```powershell
+dotnet run --project Visualization_engine -- --smoke-gif .\demo-frames --source "$env:LOCALAPPDATA\Sheet2Play\songs\midi\custom\Moonlight.mid"
+Bridge\.venv-homr-gpu\Scripts\python.exe scripts\make-demo-gif.py .\demo-frames docs\media\demo.gif
+```
+
+`--start`, `--seconds` and `--fps` override the automatic window; `--width` and `--colors` on
+the Python side trade file size against fidelity. Keep the result under about 8 MB or the
+README gets slow to load.
 
 ## Improving recognition
 
@@ -232,3 +265,12 @@ Your sheet music is not in here — see [Where your library lives](#where-your-l
   making changes, especially automated ones.
 * [`OMR_Next_Phase_Context.md`](OMR_Next_Phase_Context.md) — the roadmap for replacing the
   recognition engine.
+
+## Licence
+
+[MIT](LICENSE).
+
+The recognition engines keep their own licences and are not redistributed here: HOMR is
+AGPL-3.0 and the bridge installs it into its own virtualenv on first run. The C#
+dependencies are `Melanchall.DryWetMidi` (MIT) and `Raylib-cs` (Zlib). Sheet music under
+`Omr/` and `Research/` is sample material belonging to its respective owners.
