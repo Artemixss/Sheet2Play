@@ -135,10 +135,21 @@ Run all of these before claiming something works.
 
 ```bash
 dotnet build Visualization_engine/SynthesiaClone.csproj     # expect 0 errors
-dotnet test Visualization_engine.Tests                      # expect 55/55
+dotnet test Visualization_engine.Tests                      # expect 0 failures
 dotnet run --project MidiTester                             # all pass + library report
 dotnet run --project Visualization_engine -- --smoke ./out   # 7 PNGs, exit 0
 ```
+
+The Python suites matter too, and both must be green:
+
+```bash
+cd Bridge && ../Research/omr/.venv/Scripts/python.exe -m pytest tests -q
+cd Research/omr && .venv/Scripts/python.exe -m pytest tests -q
+```
+
+Counts are deliberately not pinned here. This section has claimed 55 while the suite held 50
+and then 69; a number that drifts is worse than no number, because it invites someone to
+"fix" a passing suite to match a stale doc. Expect zero failures instead.
 
 `--smoke` is the important one for UI work: it renders every screen with a hidden window and
 a null MIDI output, so frontend changes can be checked without launching the app. It also
@@ -163,14 +174,81 @@ machine; LibreOffice is not installed. Neither is needed for the app.
 
 | Engine | Notes |
 | --- | --- |
-| `Homr` | Default. Works acceptably; loses rhythmic precision on dense piano. |
-| `Zeus` | GPU path. **Labelled "Oemer GPU" in some UI strings** — same engine, historical naming. |
+| `Homr` | Default. Reads pitch well, places notes in time badly on polyrhythm - see below. |
+| `Zeus` | GPU path. **Labelled "Oemer GPU" in some UI strings** - same engine, historical naming. |
 | `MusicXml` | Bypasses recognition; normalises a symbolic score directly. |
 | `DirectMidi` | Bypasses the bridge entirely; parsed in C# by DryWetMidi. |
 
+**homr is installed from git, not PyPI.** `setup_gpu.ps1` pins commit `2d0c0a6`
+(`0.7.0.post34`). The 0.7.0 release predates `aa5c8ce`, which fixes a crash where a rest
+merged into a chord yields a zero-duration element and homr exits non-zero (upstream #136);
+upstream releases infrequently and recommends installing from source meanwhile.
+
+The engine revision string lives in **two** places that must agree: `HOMR_ENGINE_REVISION` in
+`bridge.py` and `HomrEngineRevision` in `OmrPipeline.cs`. Caches are keyed on it, so bumping
+it invalidates every cached conversion by design. `dotnet run --project Visualization_engine
+-- --reconvert homr` rebuilds them all in one pass. **A stale `dist/` build is the usual
+cause of an empty Cache Playlist** - the published binary validates manifests against its own
+compiled-in revision, so republish after any bump.
+
+Exactly one OpenCV distribution may be installed in the homr venv. With both `opencv-python`
+and `opencv-python-headless` present they overwrite each other, and every run dies with an
+error naming GStreamer rather than the real cause.
+
 `bridge.py` emits only these error codes: `INPUT_INVALID`, `MODEL_INVALID`,
-`NORMALIZATION_FAILED`, `RUNTIME_MISSING`. The C# error screen previously switched on
-`OEMER_*` codes that were never produced, making its recovery hint unreachable.
+`NORMALIZATION_FAILED`, `RUNTIME_MISSING`.
+
+### What is actually wrong with homr's rhythm
+
+Measured, not assumed. Full write-up in `Research/omr/reports/diagnosis/FINDINGS.md`.
+
+On 100 OLiMPiC scanned systems: **pitch F1 0.960, onset F1 0.585**. 47% of systems emit a
+timeline *longer* than the music contains, and that single ratio (`span_ratio`) predicts
+onset accuracy better than anything else tried - systems within 1.02x score 0.884, those past
+1.15x score 0.269.
+
+The cause is **polyrhythm, not tuplets**. Generated cases vary the two independently, which
+no real corpus does because they co-occur:
+
+| case | polyrhythm | onset F1 |
+| --- | --- | --- |
+| `tuplet_aligned` (24 triplets) | no | **1.000** |
+| `offset_entry` (no tuplet at all) | yes | **0.143** |
+
+Every polyrhythm case lands 0.125-0.471; every non-polyrhythm case 0.857-1.000. Upstream
+agrees this is a training gap (liebharc/homr#142: "a case homr never covered during
+training"), and `training/omr_datasets/convert_pdmx.py` shows why - it caps training data at
+complexity 2, excluding dense multi-voice piano entirely.
+
+Three hypotheses were tested and **refuted**; do not re-litigate them without new evidence:
+
+- Metric strictness. A tolerance sweep moves onset F1 only 0.579 to 0.587.
+- homr's tuplet-repair heuristic. Disabling it moves the canary 0.159 to 0.174. Note it
+  cannot fire on single-measure inputs at all, so generated cases cannot test it.
+- A per-voice cursor in the MusicXML generator. Implemented and it changed nothing: homr
+  emits one `chord` token in the whole failing measure, so the timing information is not
+  there to reconstruct.
+
+### Research tooling
+
+All under `Research/omr/`, all reusing one bridge runner (`src/sheet2play_omr/engines.py`):
+
+| Script | Purpose |
+| --- | --- |
+| `diagnose_rhythm.py` | Canary run with cached predictions; exact vs tolerant metrics, span ratio |
+| `generate_polyrhythm.py` | Engraves 11 targeted cases via MuseScore; labels exact by construction |
+| `compare_engines.py` | Scores any engine against ground truth; `--engine`, DPI sweep |
+| `setup_training.sh` + `patches/` | Rebuilds the training environment on another machine |
+| `download_smb.py` | Sheet Music Benchmark fetch (gated; access granted) |
+
+`src/sheet2play_omr/metrics.py` holds `calculate_note_metrics` and `span_ratio`;
+`omr_ned.py` adds OMR-NED, the metric published OMR results are quoted in. **OMR-NED runs
+opposite to everything else - lower is better.**
+
+Two datasets worth knowing: upstream's benchmark release ships `smb_homr.db`, homr's own
+predictions and expected output over 685 SMB pages, which can be mined without running
+anything. PDMX is the lawful MuseScore corpus (250K scores, PDF+MIDI+MusicXML, ungated) and
+is already what homr trains on - scraping MuseScore would reproduce its training set.
 
 ### Datasets on hand
 
@@ -178,64 +256,41 @@ machine; LibreOffice is not installed. Neither is needed for the app.
 | --- | --- | --- | --- |
 | OLiMPiC scanned | 2,931 aligned samples | CC BY-SA 4.0 | Real scans, robustness eval |
 | OpenScore Lieder | 1,352 scores | CC0 | Volume; `download_openscore.py` |
-| Local library | 36 PDFs | third-party | **The real evaluation target** |
+| Generated polyrhythm | 11 cases | own | The regression suite for rhythm work |
+| Local library | 40 PDFs | third-party | **The real evaluation target** |
 
-OLiMPiC is derived from OpenScore Lieder — the same repertoire in two forms, not two
-corpora. Both are voice-and-piano, so neither matches the dense piano arrangements this
-project targets.
+OLiMPiC is derived from OpenScore Lieder - the same repertoire in two forms, not two
+corpora. Both are voice-and-piano, so neither matches dense piano.
 
-`build_dataset.py` engraves scores locally into aligned image/MusicXML pairs, with
-`--annotate` adding title blocks, note-name letters, fingerings and chord symbols to the
-*image* while the label stays clean, so the model must learn to ignore them.
+### Superseded engine evaluations
 
-### Sheet Music Transformer evaluation
+`antoniorv6/smt-grandstaff` was evaluated and does not beat homr. It has since been
+superseded twice, by SMT++ and then LEGATO, so do not invest further there. LEGATO handles
+multiple voices per staff and is the candidate if replacing homr ever comes back on the
+table; it needs `meta-llama/Llama-3.2-11B-Vision` (gated, access granted) and ~20 GB VRAM.
 
-`antoniorv6/smt-grandstaff` was wired up to test whether a published pianoform model beats
-HOMR. **It does not**, on current evidence: output is well-formed Humdrum with occasionally
-correct meter, but recovers roughly 16 notes from a system containing well over fifty.
+One lesson from that work still applies generally: **rendering DPI dominated SMT results**,
+7x from resolution alone. homr, by contrast, is DPI-insensitive - it rescales each detected
+staff to a canonical height, so the hardcoded 300 in `render_pdf.py` is fine.
 
-Three traps, each of which fails silently:
+### Fine-tuning homr
 
-1. **Use the 2024 upstream code (`d25acd43`), not master.** The decoder was reimplemented in
-   Feb 2025. Against master 210 of 360 tensors do not match, transformers leaves the whole
-   decoder randomly initialised, and the model still loads and emits fluent nonsense.
-   `SMTTranscriber` now verifies tensor coverage and raises.
-2. `SMTConfig` never calls `PretrainedConfig.__init__`; `smt_compat.py` patches it.
-3. Feed one **system**, sized as upstream `data.py` does — width kept and clamped, height
-   resized to `maxh` without preserving aspect. A full page overflows the positional
-   encoding.
+Viable, and the prerequisites all exist: PyTorch weights for run 426 are published,
+`train_transformer` takes `resume` and `fine_tune` (lr 1e-5), and there is a backbone-freeze
+callback. Two traps:
 
-**Rendering DPI dominates results.** At 300 DPI systems are squashed and output collapses to
-26–59 spines with 4 notes per page; at 200 DPI, where systems are natively ~`maxh` tall, the
-same page gives 3–4 spines and 28 notes. A 7× difference from resolution alone.
+- Upstream's `fine_tune=True` unfreezes **only the lift (accidentals) branch** - a leftover
+  from PR #52. Rhythm is a perception failure, so a frozen encoder cannot fix it. The
+  vendored patch changes this.
+- Training auto-downloads and converts **all five** corpora unless `dataset_index` is
+  trimmed.
 
-### HOMR can be fine-tuned — prefer this over a new engine
-
-HOMR is not a black box. Upstream (`liebharc/homr`) documents training in `Training.md`:
-
-- `training/train.py transformer`, with dataset converters for PrIMuS, GrandStaff and
-  Lieder — the same corpora researched here.
-- Prediction is **multi-head**: separate tokenizers and vocabularies for `rhythm`, `pitch`,
-  `lift`, `articulation`, `slur` and `position`. Rhythm is its own head, so the weakness
-  this project cares about can be targeted directly.
-- A metric already exists: `symbol_error_rate_torch.py`, plus published baselines. Run 426
-  (July 2026) reports **SER 4.0%** at system level and OMR-NED 14.5–18.1%, trained on
-  lieder + grandstaff + primus + pdmx + musetrainer.
-
-Constraints: training requires **Linux** (WSL2 or the provided `Dockerfile.gpu`), the
-documented VRAM floor is **8 GB against this machine's 6 GB** (reduce batch size and raise
-gradient accumulation, or rent a GPU — upstream suggests vast.ai and an RTX 3090), the
-dataset is ~12 GB, and a full run takes 2–4 days on suitable hardware.
-
-**Measure before training.** HOMR at 4% SER is already trained on GrandStaff and Lieder, so
-poor rhythm here may not be model capacity at all. The likelier culprits are `start_beat`
-computation in `musicxml_normalizer.py` or staff segmentation quality. Evidence from the SMT
-work supports this: results moved 7× on rendering DPI alone, and one bad crop produced a
-degenerate transcription. Feed HOMR a cleanly segmented system with known ground truth —
-`build_dataset.py` can generate exactly that — and check whether rhythm is still wrong before
-spending days on a training run.
-
----
+Constraints: Linux (WSL2 works), documented VRAM floor **8 GB**, ~12 GB of data, 2-4 days.
+Training caps itself at 90% of VRAM (`SHEET2PLAY_VRAM_FRACTION`) so the machine stays usable.
+Watch throughput in the first 15 minutes - a contributor in liebharc/homr#61 hit 70 s/it
+under WSL, a 115-day run, while others get 1-2 s/it. Above ~10 s/it, stop; renting is ~$3-5.
+Rare-token collapse is the likeliest failure: adding rare tokens took someone's SER from 26%
+to 132%.
 
 ## 6. Conventions
 
