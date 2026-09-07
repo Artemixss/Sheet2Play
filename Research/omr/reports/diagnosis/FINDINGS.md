@@ -412,6 +412,51 @@ tuplet and two-voice onsets correctly when the MusicXML it is given is correct.
 The normalizer handles tuplets, parallel voices, repeats, ties, grand staff and piecewise
 tempo correctly. The fault is upstream, in the engine.
 
+## Measured on the real library: multi-page drift dominates everything else
+
+`evaluate_library.py` scores the app's own library, using the MuseScore MIDIs the user
+downloaded as ground truth for the seven songs that have one. The patched engine reaches it
+through `PYTHONPATH`, so this is the same comparison as the canary on different material.
+
+The improvement carries over almost exactly — mean onset_f1 **0.214 to 0.294**, against the
+canary's 0.583 to 0.661, so **+0.080 here against +0.078 there**. `Drake - God's Plan`, the
+score first reported as failing, goes **0.224 to 0.678**.
+
+But the *absolute* numbers are far worse than the canary's, and the reason matters more than
+the improvement does:
+
+| pages | pitch_f1 | onset_f1 |
+| --- | --- | --- |
+| 2 | 0.974 | **0.904** |
+| 4 | 0.810 | 0.678 |
+| 6 | 0.786 | 0.034 |
+| 8 | 0.994 | 0.166 |
+| 11 | 0.960 | **0.028** |
+| 12 | 0.846 | 0.065 |
+| 13 | 0.700 | 0.186 |
+
+**Correlation between page count and onset_f1 is −0.783.** Pitch stays high throughout, so the
+notes are being read correctly and put in the wrong place.
+
+The discriminator against "long pieces are simply harder" is the span ratio. If these scores
+were failing the way canary systems fail, their timelines would inflate. They do not:
+`Beyond This Station` has span 0.99, pitch_f1 0.960 and onset_f1 0.028 — a correct-length
+timeline, nearly every note identified, and almost nothing in the right place. That is
+displacement, not over-accounting, and it points at page stitching rather than at rhythm
+decoding.
+
+That makes `combine_score_pages` below the dominant defect for this application, and it is
+**our** code in `Bridge/musicxml_normalizer.py`, not homr's — which is why every homr-side fix
+in this document leaves it untouched, and why the single-system canary cannot see it at all.
+The polyrhythm work is real and worth keeping, but it has been optimising a defect worth
++0.078 on single systems while the library is dominated by one page-stitching bug.
+
+Two cautions on these numbers. The MuseScore MIDI is a rendered performance rather than the
+printed page, so it is an imperfect reference — note counts differ from the transcription by
+0.54x to 1.47x, and MusicXML from the same score page would be a better ground truth. And
+seven songs is a small sample. Neither weakens the page-count correlation, which is visible in
+pitch/onset divergence within each individual song.
+
 ## Separate bug: multi-page offset drift
 
 `combine_score_pages` concatenates pages with `page_offset += page.total_beats`, where
