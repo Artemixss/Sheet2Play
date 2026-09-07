@@ -445,11 +445,31 @@ timeline, nearly every note identified, and almost nothing in the right place. T
 displacement, not over-accounting, and it points at page stitching rather than at rhythm
 decoding.
 
-That makes `combine_score_pages` below the dominant defect for this application, and it is
-**our** code in `Bridge/musicxml_normalizer.py`, not homr's — which is why every homr-side fix
-in this document leaves it untouched, and why the single-system canary cannot see it at all.
-The polyrhythm work is real and worth keeping, but it has been optimising a defect worth
-+0.078 on single systems while the library is dominated by one page-stitching bug.
+That looked like `combine_score_pages` below — our code in `Bridge/musicxml_normalizer.py`,
+which no homr-side fix touches and the single-system canary cannot exercise.
+
+**It is not. That inference was tested and refuted.** Fixing the page-boundary bug, with the
+anacrusis handled correctly, is worth **+0.0066** on this library against the engine fixes'
++0.0801:
+
+| | old engine | new engine |
+| --- | --- | --- |
+| no page fix | 0.2144 | 0.2944 |
+| with page fix | 0.2210 | 0.2946 |
+
+The page fix is real and correct — it repairs a genuine bug and now carries the tests the
+function never had — but it recovers almost none of what the page-count correlation predicted,
+and adds nothing once the engine fixes are in.
+
+So the correlation stands and the causal story attached to it does not. Page count is standing
+in for score length: errors accumulate per *measure*, not per page boundary, and a longer score
+simply offers more chances to go wrong. `Beyond This Station` is the disproof — eleven pages,
+onset_f1 0.027 before the page fix and 0.028 after. Its displacement is inside the pages, not
+at the joins between them.
+
+Span near 1.00 with onsets scattered says the errors are local and compensating rather than a
+single accumulating shift, which is also why a boundary repair cannot help. What is actually
+wrong inside those pages is still open, and is the most valuable thing left to measure.
 
 Two cautions on these numbers. The MuseScore MIDI is a rendered performance rather than the
 printed page, so it is an imperfect reference — note counts differ from the transcription by

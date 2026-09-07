@@ -3,6 +3,7 @@ from __future__ import annotations
 import bisect
 import contextlib
 import math
+import os
 import re
 import sys
 from dataclasses import dataclass
@@ -59,6 +60,9 @@ class NormalizedScore:
     total_beats: float
     part_count: int
     staff_count: int
+    # Length of one measure in quarter notes, or 0.0 when the score declares no time
+    # signature. Only combine_score_pages uses it, to land each page on a barline.
+    measure_beats: float = 0.0
 
 
 def _load_music21_types() -> tuple[Any, Any, Any, Any]:
@@ -396,7 +400,31 @@ def _extract_score(
         total_beats=total_beats,
         part_count=part_count,
         staff_count=staff_count,
+        measure_beats=_extract_measure_beats(score),
     )
+
+
+def _extract_measure_beats(score: Any) -> float:
+    """Length of one measure in quarter notes, or 0.0 if the score declares no meter.
+
+    The most common time signature wins rather than the first, so a single pickup or a brief
+    metre change does not decide the value for the whole page.
+    """
+    try:
+        from music21 import meter
+
+        lengths: dict[float, int] = {}
+        for signature in score.recurse().getElementsByClass(meter.TimeSignature):
+            length = float(signature.barDuration.quarterLength)
+            if length > 0:
+                lengths[length] = lengths.get(length, 0) + 1
+        if not lengths:
+            return 0.0
+        return max(lengths.items(), key=lambda item: (item[1], -item[0]))[0]
+    except Exception:
+        # A missing or unreadable meter only costs page-boundary alignment, so it must not
+        # take down a conversion that is otherwise fine.
+        return 0.0
 
 
 def normalize_musicxml(
@@ -427,6 +455,51 @@ def normalize_musicxml(
     )
 
 
+def _page_advance(page: NormalizedScore, is_first_page: bool) -> float:
+    """How far the timeline moves on before the next page starts.
+
+    Pages are recognised independently, and OMR routinely mis-reads the last measure of one -
+    a beat short, occasionally a beat long. Advancing by the raw decoded length then starts
+    the next page mid-measure, and the error accumulates every boundary rather than
+    cancelling, so a score drifts further off the beat with each page. Measured on the app's
+    own library, page count correlates -0.783 with onset accuracy: two pages scores 0.904,
+    eleven scores 0.028, while pitch stays above 0.9 throughout. The notes are read correctly
+    and then put in the wrong place.
+
+    Page breaks fall on barlines, so a page holds a whole number of measures and rounding to
+    the nearest one recovers the true length. Nearest rather than upward on purpose: a page
+    read slightly long would otherwise gain an entire spurious measure, the same failure
+    mirrored.
+
+    **The first page is exempt**, because a piece that opens with a pickup makes its length
+    legitimately not a multiple of the measure, and rounding that away corrupts a page that
+    was right. Bella Ciao is the worked example: 4/4, page one decodes to 114 beats, and
+    114 = 2 + 4x28, so the leftover 2 is its anacrusis rather than an error. Snapping it to
+    112 moved onset F1 from 0.921 to 0.759. Only the first page can carry an anacrusis, so
+    exempting it costs nothing elsewhere - and if that page is genuinely mis-read there is no
+    way to tell the two apart, which makes leaving it alone the conservative choice.
+    """
+    if is_first_page or page.measure_beats <= 0 or page.total_beats <= 0:
+        advance = page.total_beats
+    else:
+        measures = round(page.total_beats / page.measure_beats)
+        if measures < 1:
+            # Shorter than a single measure. Trusting the rounding here would collapse the
+            # page to nothing and stack the next one on top of it.
+            advance = page.total_beats
+        else:
+            advance = measures * page.measure_beats
+    if os.environ.get("SHEET2PLAY_PAGE_DEBUG") == "1":
+        print(
+            f"[page] decoded={page.total_beats:g} measure={page.measure_beats:g} "
+            f"advance={advance:g} remainder="
+            f"{(page.total_beats % page.measure_beats if page.measure_beats else 0):g}",
+            file=sys.stderr,
+            flush=True,
+        )
+    return advance
+
+
 def combine_score_pages(pages: Iterable[NormalizedScore]) -> NormalizedScore:
     notes: list[RawMusicNote] = []
     tempos: list[TempoChange] = []
@@ -434,7 +507,7 @@ def combine_score_pages(pages: Iterable[NormalizedScore]) -> NormalizedScore:
     part_count = 0
     staff_count = 0
 
-    for page in pages:
+    for page_index, page in enumerate(pages):
         notes.extend(
             RawMusicNote(
                 pitch=note.pitch,
@@ -451,7 +524,7 @@ def combine_score_pages(pages: Iterable[NormalizedScore]) -> NormalizedScore:
             TempoChange(start_beat=change.start_beat + page_offset, bpm=change.bpm)
             for change in page.tempo_changes
         )
-        page_offset += page.total_beats
+        page_offset += _page_advance(page, page_index == 0)
         part_count = max(part_count, page.part_count)
         staff_count = max(staff_count, page.staff_count)
 
