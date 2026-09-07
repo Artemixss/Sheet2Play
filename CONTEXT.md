@@ -179,19 +179,29 @@ machine; LibreOffice is not installed. Neither is needed for the app.
 | `MusicXml` | Bypasses recognition; normalises a symbolic score directly. |
 | `DirectMidi` | Bypasses the bridge entirely; parsed in C# by DryWetMidi. |
 
-**homr is installed from git, not PyPI.** `setup_gpu.ps1` pins commit `2d0c0a6`
-(`0.7.0.post34`). The 0.7.0 release predates `aa5c8ce`, which fixes a crash where a rest
-merged into a chord yields a zero-duration element and homr exits non-zero (upstream #136);
-upstream releases infrequently and recommends installing from source meanwhile.
+**homr is installed from git, not PyPI, plus one local patch.** `setup_gpu.ps1` pins commit
+`457e7c6` and then applies `Bridge/patches/homr-pr146-retiming.patch` to the installed
+package. The current engine revision is `homr-0.7.0.post38+457e7c6+pr146`.
 
-**The app and the research tree are deliberately on different commits.** `setup_gpu.ps1`
-still pins `2d0c0a6` for the app; `Research/omr/setup_training.sh` pins `457e7c6`, four
-commits later, and applies `Research/omr/patches/homr-training-sheet2play.patch` on top. That
-is not drift, it is the opt-in rule: the newer tree measures better but has not shipped, so
-the app keeps running the engine whose behaviour is known. Research code reaches the newer
-tree by putting it on `PYTHONPATH` (see the `patched` variant in `diagnose_rhythm.py`), which
-leaves the installed wheel untouched. Shipping means bumping `setup_gpu.ps1`, both engine
-revision constants, reconverting, and republishing - in that order.
+Two upstream changes are why:
+
+- `aa5c8ce` fixes a crash where a rest merged into a chord yields a zero-duration element and
+  homr exits non-zero (upstream #136). It is unreleased on PyPI, which is why this installs
+  from git at all.
+- `5a5a8ee` (**PR #141**) recovers ties from same-pitch slurs. homr has no tie token and
+  trains slurs and ties as one class, so this is the only way a tie is read back out, and
+  without it an onset falling inside a sustained note cannot be placed.
+
+**PR #146 exists only as a closed pull request**, so there is no commit to pin and it ships as
+a patch. Its author closed it after seeing no movement in homr's OMR-NED benchmark, which
+does not measure onset placement. Scored on onsets it is the largest single win available.
+If the patch stops applying, upstream has moved and it needs reconciling by hand -
+`setup_gpu.ps1` prints a warning rather than failing, so check its output after any pin bump.
+
+The research tree under `Research/omr/vendor/homr/` carries the same two changes plus
+training-only ones, and is reached by putting it on `PYTHONPATH` (the `patched` variant in
+`diagnose_rhythm.py`) so an experiment never disturbs the installed wheel. Use that for
+anything unmeasured; the opt-in rule still holds.
 
 The engine revision string lives in **two** places that must agree: `HOMR_ENGINE_REVISION` in
 `bridge.py` and `HomrEngineRevision` in `OmrPipeline.cs`. Caches are keyed on it, so bumping
@@ -283,6 +293,32 @@ all sharing one signature - already correct at span 1.00 and pushed below it. Ca
 open; the next hypothesis is to leave a measure alone when its decoded length is already
 musically plausible.
 
+### Shipped, and what it did to the real library
+
+Both engine fixes are **live in the app** as of engine revision
+`homr-0.7.0.post38+457e7c6+pr146`, and all 46 library sources were reconverted against it.
+
+| change | library onset F1 |
+| --- | --- |
+| engine fixes (PR #141 + #146) | **+0.0801** |
+| page-stitching fix | +0.0066 |
+
+`Drake - God's Plan`, the score originally reported as playing wrong, went 0.224 to 0.678.
+
+Three things a future session should not have to rediscover:
+
+- **PR #146 regresses 18 of 100 canary systems**, all of which were already correct at span
+  1.00 and get pushed below it. The cause is open. The measure-length estimator was the
+  obvious suspect and has been **ruled out** by measurement, so do not retry it. If the user
+  reports one song sounding worse after an engine change, this is the first thing to suspect.
+- **The engine drops about 5.7% of notes**, and that is fine. It shrinks over-long measures,
+  so some notes reach zero duration and the validator discards them - 846 across the library.
+  pitch F1 moved 0.870 to 0.867, so what goes is homr's duplicated output rather than real
+  music. Do not "fix" this without checking pitch recall first.
+- **Two caches sit on old revisions** (`MOONLIGHT SONATA`, `Unravel - Tokyo Ghoul`) because
+  their source PDFs are no longer in `songs/pdf`. `--reconvert` only touches songs whose
+  source still exists. They are orphans, not failures.
+
 ### Benchmark corpora do not predict this app
 
 OLiMPiC is *scanned*; the library is engraved MuseScore PDFs, and they are not comparable.
@@ -358,6 +394,47 @@ Watch throughput in the first 15 minutes - a contributor in liebharc/homr#61 hit
 under WSL, a 115-day run, while others get 1-2 s/it. Above ~10 s/it, stop; renting is ~$3-5.
 Rare-token collapse is the likeliest failure: adding rare tokens took someone's SER from 26%
 to 132%.
+
+### Where this is going next
+
+Two things are open, in priority order.
+
+**1. What actually breaks multi-page scores.** Page count correlates -0.783 with onset
+accuracy on the real library - two pages scores 0.904, eleven scores 0.028, while pitch stays
+above 0.9. The obvious explanation was `combine_score_pages` stitching pages at the wrong
+offset. That was fixed, tested, and is worth only +0.0066, so **the correlation is real and
+its cause is not page stitching**. Span sits near 1.00 on the worst scores, so the timeline
+length is right and the notes inside are displaced - errors accumulate per measure rather than
+per page boundary, and page count is standing in for score length. This is the largest
+unexplained effect on the material the user actually plays.
+
+**2. Training, whose target changed.** Do not start a fine-tune on the current vocabulary
+without re-reading the ceiling argument in FINDINGS.md. The short version:
+
+- Before the fixes, the ceiling was 0.690 against homr's 0.624 - no headroom, and training was
+  not worth GPU time.
+- After them the ceiling is 0.766 and the app is at 0.661, so roughly +0.18 is now learnable.
+- **Upstream PR #156** is the more interesting target. It splits the position vocabulary into
+  `upper`/`upper2` and `lower`/`lower2`, which is what lets two voices on one staff be told
+  apart, and a collaborator has already trained it without regression. Its checkpoint (run
+  445) is **not published** - the release URL 404s - so getting its benefit means training it.
+  A clone sits at `Research/omr/vendor/homr-pr156/`.
+- PR #156 does **not** move the round-trip ceiling (0.689, the same as this tree straight
+  after PR #141). That is expected rather than damning: the oracle starts from correct ground
+  truth, so it cannot see a recognition fix. It means #156 and the shipped decoder fixes are
+  complementary, and the sensible training run stacks them.
+- Training runs on a second machine the user has access to; the environment is built by
+  `Research/omr/setup_training.sh`, which needs WSL2 because the dataset converters use a
+  Linux-only MuseScore AppImage. Watch seconds/iteration in the first 15 minutes and abort
+  above ~10 s/it - upstream issue #61 has a contributor who hit 70 s/it under WSL, which would
+  be a 115-day run.
+
+Ground truth for the library is thin: only 7 of 46 songs have a MuseScore MIDI to score
+against, and a MIDI is a rendered performance rather than the printed page, so note counts
+differ from the transcription by 0.54x to 1.47x. The user has suggested automating MuseScore
+downloads to fix this; if that happens it should fetch **MusicXML, not MIDI**, from the same
+score page as the PDF. For training data at scale, PDMX already provides 250K public-domain
+MuseScore scores with PDF, MIDI and MusicXML, so there is no reason to build a scraper.
 
 ## 6. Conventions
 
