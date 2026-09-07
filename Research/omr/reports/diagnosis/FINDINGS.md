@@ -220,14 +220,90 @@ So both failure modes are **recognition errors, not generation errors**. In neit
 the generator receive a correct token stream to work with, and no amount of downstream
 cleverness recovers information the model did not produce.
 
-This closes the "fix the decoder" route and reopens fine-tuning, because the gap is now
-demonstrably *learnable* rather than representational: the vocabulary can express these
-passages correctly - `chord` plus differing durations round-trips, and tuplet arithmetic is
-exact - the model simply fails to emit that structure on polyrhythmic piano writing. That is
-what training data changes.
+This closes the "fix the decoder" route. It appeared at the time to reopen fine-tuning, on the
+reasoning that the vocabulary can express these passages correctly - `chord` plus differing
+durations round-trips, and tuplet arithmetic is exact - so the model merely fails to emit that
+structure on polyrhythmic piano writing, which is what training data changes.
+
+**That inference was wrong, and the next section measures why.** It generalised from two
+constructed examples that happen to round-trip to the claim that the vocabulary is adequate in
+general. On real music it is not.
 
 The implementation is left in place but inert (`Bridge/homr_voices.py`, off unless its
 variable is set), and the app path was verified byte-identical with the switch unset.
+
+## Measured: the representation ceiling
+
+The question "is the gap learnable?" was settled by measurement rather than argument.
+`roundtrip_oracle.py` encodes ground-truth MusicXML into homr's vocabulary with
+`music_xml_file_to_tokens`, decodes it straight back with `generate_xml`, and scores the result
+against the original through the same normalizer and metrics used on real predictions:
+
+```
+MusicXML(truth) --music_xml_file_to_tokens--> tokens --generate_xml--> MusicXML(rebuilt)
+```
+
+No model is involved, so the score is the ceiling: the best any perfectly trained model could
+achieve while emitting this vocabulary. Across the 75 canary systems both can be scored on:
+
+| | onset_f1 |
+| --- | --- |
+| HOMR today | 0.624 |
+| a perfect model, same vocabulary | **0.690** |
+| headroom | **+0.066** |
+
+Splitting by whether the round trip is lossless is what actually decides the fine-tune:
+
+| round trip | n | HOMR | ceiling | headroom |
+| --- | --- | --- | --- | --- |
+| lossless | 31 | 0.864 | 1.000 | **+0.136** |
+| loses time | 44 | 0.455 | 0.472 | **+0.017** |
+
+**The systems whose timelines inflate are already at the representation's ceiling.** That is
+the 53% this entire diagnosis is about, and training cannot move them, because the target
+itself is unreachable. The remaining headroom lives almost entirely in systems that are
+already scoring 0.864.
+
+Three corroborating details:
+
+- **HOMR beats the ceiling on 7 of 75 systems.** On `6986065/p2-s1` it transcribes the music
+  perfectly (1.000) while a round trip of the ground truth scores 0.216. When a model
+  outscores a faithful encoding of its own label, the label is the defect.
+- **The round trip inflates timelines on its own.** 31 of 75 systems come back longer than
+  truth, median 1.00 but reaching 1.68 - the same overshoot signature attributed above to
+  recognition error, reproduced here with no recognition involved.
+- **24 of 100 systems cannot be encoded at all**, raising `ValueError` on slurs
+  (`slurStart_slurStart`, 21 cases), `detachedLegato`, and octave shifts. `convert_pdmx.py`
+  calls the same encoder, so these are files training silently skips - and dense piano, the
+  material the raised complexity ceiling is meant to admit, is exactly where such markings
+  cluster.
+
+The constructed cases separate learnable from unreachable cleanly:
+
+| case | HOMR | ceiling | verdict |
+| --- | --- | --- | --- |
+| homophonic | 1.000 | 1.000 | already solved |
+| tuplet_aligned | 1.000 | 1.000 | already solved |
+| tie_across_barline | 0.857 | 0.857 | at ceiling |
+| three_voices | 0.154 | **1.000** | **learnable** |
+| same_position_sustain | 0.444 | **1.000** | **learnable** |
+| triplet_vs_duple | 0.400 | 0.600 | partly learnable |
+| offset_entry | 0.143 | 0.429 | partly learnable |
+| triplet_vs_quadruple | 0.462 | 0.429 | at ceiling |
+| quintuplet_vs_duple | 0.471 | 0.333 | above ceiling |
+| septuplet_vs_duple | 0.381 | 0.273 | above ceiling |
+| syncopation | 0.125 | 0.125 | at ceiling |
+
+So the earlier reading was half right. `three_voices` and `same_position_sustain` are genuine
+recognition failures with a perfect target, and a fine-tune should fix them. But every case
+where one voice's onsets fall inside another's notes and a tie would be needed to split them
+is unreachable, and on real music that case dominates.
+
+Reproduce with:
+
+```bash
+cd Research/omr && .venv/Scripts/python.exe roundtrip_oracle.py --both
+```
 
 ## The normalizer is not at fault
 
@@ -267,7 +343,10 @@ The plan's Step 3 decision now has evidence behind it, and it is not encouraging
 
 - The dominant failure is a **grammar limit, not a training deficiency**. HOMR's rhythm
   alphabet has no tie, and its time cursor can only advance by the shortest duration in the
-  current group. No amount of data teaches a model to emit a symbol its alphabet lacks.
+  current group. No amount of data teaches a model to emit a symbol its alphabet lacks. This
+  was the original reading, briefly overturned by the token-stream inspection above, and then
+  confirmed by direct measurement: **the ceiling is 0.690 against today's 0.624**, and on the
+  systems that actually fail it is 0.472 against 0.455.
 - Dense piano — the material this project targets — is full of exactly the polyrhythm and
   offset-entry writing that hits this limit. It is rare in the monophonic and homophonic
   corpora HOMR was tuned on, which is consistent with pitch_f1 staying at 0.960 while onsets
@@ -299,6 +378,11 @@ Options worth weighing before committing GPU time:
 **The screening question for any replacement engine is not "does it have voices?" but "can it
 encode a tie, and can it place an onset inside a sustaining note?"**
 
+`roundtrip_oracle.py` answers that question for any candidate without training it, and it also
+prices option 1 before the work starts: add a tie to the encoder and the cursor logic, re-run
+the oracle, and the new ceiling says what full retraining would buy. A ceiling that stays near
+0.69 means the redesign is not worth it either.
+
 A practical caveat for any training route: the installed `homr` wheel is **inference-only**.
 It ships two ONNX graphs and no PyTorch, no model definition, no `.pth`, no dataset
 converters and no `Training.md`. Step zero for any fine-tune is cloning
@@ -316,3 +400,9 @@ cd Research/omr && .venv/Scripts/python.exe diagnose_rhythm.py --only-tuplets --
 
 Predictions are cached per sample and variant, so re-scoring is free; pass `--rerun` to
 re-invoke HOMR.
+
+The representation ceiling needs no model and runs in seconds:
+
+```bash
+cd Research/omr && .venv/Scripts/python.exe roundtrip_oracle.py --both --keep-xml
+```
