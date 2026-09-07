@@ -43,7 +43,7 @@ Invoke-CheckedCommand -Executable $uvCommand.Source -Arguments @(
     "install",
     "--python",
     $pythonExecutable,
-    "homr @ git+https://github.com/liebharc/homr.git@2d0c0a66b6ebc9a8b3e3e61b3a6be4b0e1701d97",
+    "homr @ git+https://github.com/liebharc/homr.git@457e7c6518a10ba755db2e60883419e56c4d7369",
     "pymupdf==1.26.3",
     "music21==10.5.0"
 )
@@ -53,6 +53,38 @@ Invoke-CheckedCommand -Executable $uvCommand.Source -Arguments @(
 # element and homr exits non-zero (upstream issue #136). Upstream releases infrequently and
 # has not packaged it. Measured against 0.7.0 on the 100-sample OLiMPiC canary: onset F1
 # 0.579 -> 0.585, timeline-too-long 53% -> 47%, pitch F1 unchanged within noise.
+#
+# Moved from 2d0c0a6 to 457e7c6 for 5a5a8ee (upstream PR #141), which recovers ties from
+# same-pitch slurs. homr has no tie token and deliberately trains slurs and ties as one
+# class, so that is how a tie is read back out at all - and without one, an onset falling
+# inside a sustained note cannot be placed. Upstream measures its recall at 0.93-1.00 on
+# engraved input against 0.04-0.12 on scans, which suits this app's PDF library.
+
+# Upstream PR #146, which its author closed after concluding the problem was harder than
+# expected and seeing no movement in homr's OMR-NED benchmark. OMR-NED does not measure
+# onset placement. Scored on onsets it is the largest single win available: on the OLiMPiC
+# canary onset F1 0.583 -> 0.661 and scores running long 52% -> 34%, and on this app's own
+# library 0.214 -> 0.294. It replays each staff on its own cursor and shrinks measures that
+# overflow the expected duration.
+#
+# Applied as a patch because it exists only as a closed pull request, so there is no commit
+# to pin. It regresses 18 of 100 canary systems, all already correct beforehand; the cause
+# is recorded in Research/omr/reports/diagnosis/FINDINGS.md and is not the measure-length
+# estimator, which was tested and ruled out.
+$patchFile = Join-Path $PSScriptRoot "patches/homr-pr146-retiming.patch"
+$homrRoot = & $pythonExecutable -c "import homr, pathlib; print(pathlib.Path(homr.__file__).parent.parent)"
+if (-not (Test-Path $patchFile)) { throw "Missing $patchFile" }
+Invoke-CheckedCommand -Executable "git" -Arguments @(
+    "apply", "--check", "--unsafe-paths", "-p1", "--directory=$homrRoot", $patchFile
+) -AllowFailure
+if ($LASTEXITCODE -eq 0) {
+    Invoke-CheckedCommand -Executable "git" -Arguments @(
+        "apply", "--unsafe-paths", "-p1", "--directory=$homrRoot", $patchFile
+    )
+    Write-Host "Applied homr re-timing patch (upstream PR #146)"
+} else {
+    Write-Host "homr re-timing patch already applied, or does not apply - check manually"
+}
 
 # Exactly one OpenCV distribution may be installed. homr declares
 # opencv-python-headless <5, but the transitive graph can also pull opencv-python 5.x, and

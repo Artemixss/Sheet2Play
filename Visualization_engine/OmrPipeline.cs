@@ -118,7 +118,7 @@ public static class OmrPipeline
 {
     private const string ProgressPrefix = "SHEET2PLAY_PROGRESS:";
     public const int SchemaVersion = 2;
-    public const string HomrEngineRevision = "homr-0.7.0.post34+2d0c0a6";
+    public const string HomrEngineRevision = "homr-0.7.0.post38+457e7c6+pr146";
     public const string HomrModelRevision = "homr-default-models";
     public const string ZeusEngineRevision =
         "df0d842596ccd199882ff958e628d59327ca6cba";
