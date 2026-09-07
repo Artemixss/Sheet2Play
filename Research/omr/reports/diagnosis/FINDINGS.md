@@ -359,7 +359,20 @@ fault — it fires only when a measure exceeds `expected` and bails when it fall
 estimate is. `expected` is `np.median(measure_duration)`
 (`find_division_and_time_signature_nominator`), so when several measures decode short the median
 follows them down, correctly timed measures start to look over-long, and the repair damages
-them. A majority-agreement estimator is under measurement behind `SHEET2PLAY_EXPECTED_MODE=1`.
+them.
+
+**That explanation was tested and is wrong.** Replacing the median with the most common measure
+duration changed exactly one of the 18 regressed systems (`6725782/p1-s2`, 0.123 to 0.526) and
+left the other 17 untouched; the mean over that set moved 0.302 to 0.324 against a baseline of
+0.522. A first attempt, gated on a *strict majority*, was worse than useless — a no-op by
+construction, since a strict majority is precisely the case where the median already returns
+that value, and the notes came back byte-identical across all 100 systems. Both versions have
+been removed rather than left in as dead switches.
+
+So the estimator is not the lever, and what actually breaks these 18 systems is still open. The
+next hypothesis worth testing is a guard rather than a better estimate: leave a measure alone
+when its decoded duration is already a musically plausible measure length, on the grounds that
+the regressed systems all sat at span 1.00 before the repair touched them.
 
 **The constructed cases cannot measure any of this**, and the flat 0.6535 they report is an
 artifact rather than a null result. `_plan_voice_repairs` compares each measure against that

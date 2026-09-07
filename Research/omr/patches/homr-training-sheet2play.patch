@@ -1,20 +1,15 @@
 diff --git a/homr/music_xml_generator.py b/homr/music_xml_generator.py
-index a3de753..39d5066 100644
+index a3de753..d178d69 100644
 --- a/homr/music_xml_generator.py
 +++ b/homr/music_xml_generator.py
-@@ -1,8 +1,10 @@
+@@ -1,5 +1,6 @@
  # flake8: noqa: S101
  
 +import itertools
  import math
-+import os
  import xml.etree.ElementTree as ET
--from collections import defaultdict
-+from collections import Counter, defaultdict
- from dataclasses import dataclass
- from fractions import Fraction
- 
-@@ -147,14 +149,24 @@ def build_measures(
+ from collections import defaultdict
+@@ -147,14 +148,24 @@ def build_measures(
      is_first_part: bool,
      has_two_staves: bool = False,
  ) -> list[ET.Element]:
@@ -40,7 +35,7 @@ index a3de753..39d5066 100644
      measures: list[ET.Element] = []
      current_measure = ET.Element("measure", number=str(measure_number))
      first_attributes = build_or_get_attributes(current_measure, None)
-@@ -176,6 +188,26 @@ def build_measures(
+@@ -176,6 +187,26 @@ def build_measures(
              if len(group.symbols) == 1 and rhythm.endswith("m"):
                  attributes = build_or_get_attributes(current_measure, last_attributes)
                  build_multi_measure_rest(symbol, attributes)
@@ -67,7 +62,7 @@ index a3de753..39d5066 100644
              else:
                  staff_positions = group.into_positions()
                  for pos_no, staff_pos in enumerate(staff_positions):
-@@ -744,6 +776,260 @@ def build_backup(duration: Fraction, state: ConversionState) -> ET.Element:
+@@ -744,6 +775,260 @@ def build_backup(duration: Fraction, state: ConversionState) -> ET.Element:
      return backup
  
  
@@ -328,26 +323,6 @@ index a3de753..39d5066 100644
  def build_note_chord(
      note_chord: SymbolChord, state: ConversionState, chord_duration: Fraction
  ) -> list[ET.Element]:
-@@ -845,6 +1131,19 @@ def find_division_and_time_signature_nominator(voice: list[SymbolChord]) -> tupl
- 
-     nominator: Fraction = np.median(measure_duration)  # type: ignore
- 
-+    # Sheet2Play change, opt-in via SHEET2PLAY_EXPECTED_MODE=1. The median is what decides
-+    # whether a measure counts as over-long, and PR #146's re-timing then shrinks measures to
-+    # match it. When several measures decode short the median follows them down, correctly
-+    # timed measures start looking over-long, and the repair damages them - which is what the
-+    # measured regressions look like: span 1.00 going to 0.88. A measure length that a strict
-+    # majority of measures agree on exactly is better evidence than the middle of a spread, so
-+    # prefer it when it exists and fall back to the median when it does not.
-+    if os.environ.get("SHEET2PLAY_EXPECTED_MODE") == "1" and measure_duration:
-+        counts = Counter(measure_duration)
-+        candidate, agreeing = counts.most_common(1)[0]
-+        if agreeing * 2 > len(measure_duration):
-+            nominator = candidate
-+
-     return find_common_division(durations), nominator
- 
- 
 diff --git a/tests/test_music_xml_generator.py b/tests/test_music_xml_generator.py
 index a8882ed..f23e979 100644
 --- a/tests/test_music_xml_generator.py
