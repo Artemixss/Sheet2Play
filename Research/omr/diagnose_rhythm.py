@@ -72,7 +72,9 @@ def parse_arguments(argv: list[str] | None = None) -> argparse.Namespace:
         help="JSONL of OlimpicSample rows; defaults to the Phase 3 canary.",
     )
     parser.add_argument(
-        "--variants", default="baseline", help="Comma-separated: baseline, keep-tuplets."
+        "--variants",
+        default="baseline",
+        help="Comma-separated: baseline, keep-tuplets, patched (the vendored clone).",
     )
     parser.add_argument("--limit", type=int, default=0, help="Cap sample count (0 = all).")
     parser.add_argument(
@@ -138,6 +140,17 @@ def predict(sample: dict[str, Any], variant: str, cache_dir: Path, rerun: bool) 
     extra_env = {"SHEET2PLAY_HOMR_KEEP_TUPLETS": "1"} if variant == "keep-tuplets" else {}
     if variant != "keep-tuplets":
         os.environ.pop("SHEET2PLAY_HOMR_KEEP_TUPLETS", None)
+    if variant in ("patched", "patched-mode"):
+        # Put the vendored clone ahead of the wheel installed in Bridge/.venv-homr-gpu, so the
+        # app's own engine is left exactly as it is while this variant measures the patched one.
+        # PYTHONPATH survives both subprocess hops and precedes site-packages, so the clone wins.
+        extra_env["PYTHONPATH"] = str(HERE / "vendor" / "homr")
+    if variant == "patched-mode":
+        # Also trust a measure length a majority of measures agree on over the median, which
+        # is what decides whether the re-timing treats a measure as over-long.
+        extra_env["SHEET2PLAY_EXPECTED_MODE"] = "1"
+    else:
+        os.environ.pop("SHEET2PLAY_EXPECTED_MODE", None)
 
     result = run_bridge_engine(
         sample["image"],
@@ -217,7 +230,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parse_arguments(argv)
     variants = [variant.strip() for variant in args.variants.split(",") if variant.strip()]
     for variant in variants:
-        if variant not in ("baseline", "keep-tuplets"):
+        if variant not in ("baseline", "keep-tuplets", "patched", "patched-mode"):
             print(f"Unknown variant: {variant}", file=sys.stderr)
             return 2
 

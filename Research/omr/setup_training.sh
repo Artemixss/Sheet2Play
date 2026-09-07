@@ -14,8 +14,13 @@
 set -euo pipefail
 
 # Pinned so every machine trains identical code. Contains aa5c8ce, the fix for the
-# zero-duration crash (upstream issue #136) that is still unreleased on PyPI.
-HOMR_COMMIT="2d0c0a66b6ebc9a8b3e3e61b3a6be4b0e1701d97"
+# zero-duration crash (upstream issue #136) that is still unreleased on PyPI, and 5a5a8ee
+# (PR #141), which recovers ties from same-pitch slurs. That tie fix matters more than it
+# looks: homr has no tie token and trains slurs and ties as one class, so this is how a tie
+# is read back out at all, and without it an onset falling inside a sustained note cannot be
+# placed. Upstream measures its recall at 0.93-1.00 on engraved input and 0.04-0.12 on scans,
+# so it helps this project's PDF library far more than a scanned benchmark will suggest.
+HOMR_COMMIT="457e7c6518a10ba755db2e60883419e56c4d7369"
 CHECKPOINT="pytorch_model_426-b6fd20809a8dcaf10dfd39a4ca4f64c6f056e644"
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
