@@ -184,6 +184,15 @@ machine; LibreOffice is not installed. Neither is needed for the app.
 merged into a chord yields a zero-duration element and homr exits non-zero (upstream #136);
 upstream releases infrequently and recommends installing from source meanwhile.
 
+**The app and the research tree are deliberately on different commits.** `setup_gpu.ps1`
+still pins `2d0c0a6` for the app; `Research/omr/setup_training.sh` pins `457e7c6`, four
+commits later, and applies `Research/omr/patches/homr-training-sheet2play.patch` on top. That
+is not drift, it is the opt-in rule: the newer tree measures better but has not shipped, so
+the app keeps running the engine whose behaviour is known. Research code reaches the newer
+tree by putting it on `PYTHONPATH` (see the `patched` variant in `diagnose_rhythm.py`), which
+leaves the installed wheel untouched. Shipping means bumping `setup_gpu.ps1`, both engine
+revision constants, reconverting, and republishing - in that order.
+
 The engine revision string lives in **two** places that must agree: `HOMR_ENGINE_REVISION` in
 `bridge.py` and `HomrEngineRevision` in `OmrPipeline.cs`. Caches are keyed on it, so bumping
 it invalidates every cached conversion by design. `dotnet run --project Visualization_engine
@@ -228,6 +237,64 @@ Three hypotheses were tested and **refuted**; do not re-litigate them without ne
 - A per-voice cursor in the MusicXML generator. Implemented and it changed nothing: homr
   emits one `chord` token in the whole failing measure, so the timing information is not
   there to reconstruct.
+- The measure-length estimator behind PR #146's re-timing. Swapping the median for the most
+  common measure duration changed 1 of 18 regressed systems; a strict-majority version was a
+  no-op by construction. Both removed.
+
+### The representation ceiling, and why it decides the training question
+
+`roundtrip_oracle.py` encodes ground-truth MusicXML into homr's vocabulary and decodes it
+straight back, with no model involved. What comes out is the best score a perfectly trained
+model could reach. **Run this before proposing any fine-tune**; it is fast and needs no GPU.
+
+The first measurement killed the fine-tune plan: ceiling 0.690 against homr's own 0.624, and
+on the systems that actually fail 0.472 against 0.455 - no headroom. Only after the fixes
+below did the ceiling rise to 0.766, which is what made training worth revisiting. The
+sequence matters: **repair the representation first, then train on labels that are correct.**
+
+Two ways the encoder lies about its own labels, both worth knowing because
+`convert_pdmx.py` builds training data with the same code:
+
+- homr outscored a faithful encoding of its ground truth on 7 of 75 systems. When the model
+  beats its own label, the label is the defect.
+- 24 of 100 systems could not be encoded at all until the slur fix below.
+
+### Fixed without training: onset F1 0.583 to 0.661
+
+Searching upstream's tracker was worth more than any experiment. Most of the fix existed:
+
+| upstream | state | effect |
+| --- | --- | --- |
+| PR #141 recover ties from same-pitch slurs | merged, after the app's pin | a tie *is* a slur joining adjacent same-pitch notes - homr trains them as one class, so no new token and no retraining |
+| PR #146 re-time overflowing measures | **closed by its author** | the large win; he saw "no change in OMR-NED", which does not measure onset placement |
+| PR #156 `upper2`/`lower2` positions | open, by a collaborator, already retrained | Plan B, and the likeliest way to raise the ceiling further |
+| issue #150 chord split overflows measure | open | this project's symptom, reported independently |
+| issue #152 PDMX quality | open | liebharc: "only a few bad examples are needed to degrade performance" - relevant because our patch raises the complexity ceiling 2 to 4 |
+
+Plus one local fix: `_collect_articulation` deduped articulations but not slurs, so a note
+both tied and slurred produced `slurStart_slurStart`, absent from `build_slur()`, and the
+file was rejected outright. `list(set(slurs))` takes encode failures from 24 to 6. It never
+looked like a rhythm bug because it is not one - it silently deleted a fifth of real piano
+from everything the encoder touches, training labels included.
+
+Measured on the canary: onset F1 0.583 to 0.661, systems running long 52% to 34%, mean span
+1.128 to 1.088, perfect systems 16 to 25, pitch unaffected. **It also regresses 18 of 100**,
+all sharing one signature - already correct at span 1.00 and pushed below it. Cause still
+open; the next hypothesis is to leave a measure alone when its decoded length is already
+musically plausible.
+
+### Benchmark corpora do not predict this app
+
+OLiMPiC is *scanned*; the library is engraved MuseScore PDFs, and they are not comparable.
+Upstream measures PR #141's tie recall at 0.93-1.00 engraved against 0.04-0.12 on scans, and
+the first library song scored onset F1 0.921 where the canary average is 0.583. `evaluate_library.py`
+scores the real library, using MuseScore MIDIs as ground truth for the songs that have one.
+Prefer MusicXML over MIDI as a reference where possible: a MuseScore MIDI is the rendered
+performance with repeats expanded, so it will not align with the printed page the OMR reads.
+
+Also note `generate_polyrhythm.py`'s cases are single-measure, and both the tuplet heuristic
+and PR #146's re-timing compare a measure against the median of the others - so that corpus
+cannot test either, and a flat result there is an artifact rather than evidence.
 
 ### Research tooling
 
