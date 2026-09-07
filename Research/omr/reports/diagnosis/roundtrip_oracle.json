@@ -1,0 +1,897 @@
+[
+  {
+    "corpus": "olimpic",
+    "summary": {
+      "samples": 100,
+      "scored": 76,
+      "failed": 24,
+      "pitch_f1": 0.9812,
+      "onset_f1": 0.684,
+      "onset_duration_f1": 0.6675,
+      "lossless": 31,
+      "lossless_fraction": 0.4079
+    },
+    "samples": [
+      {
+        "identifier": "4919798/p1-s3",
+        "has_tuplet": false,
+        "expected_notes": 95,
+        "rebuilt_notes": 95,
+        "pitch_f1": 1.0,
+        "onset_f1": 0.8632,
+        "onset_duration_f1": 0.8632,
+        "span_ratio": 1.0138888888888888
+      },
+      {
+        "identifier": "4978492/p6-s1",
+        "has_tuplet": false,
+        "expected_notes": 64,
+        "rebuilt_notes": 64,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "4982465/p1-s4",
+        "has_tuplet": false,
+        "expected_notes": 78,
+        "rebuilt_notes": 78,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "4982505/p4-s2",
+        "has_tuplet": false,
+        "expected_notes": 75,
+        "rebuilt_notes": 77,
+        "pitch_f1": 0.9342,
+        "onset_f1": 0.9342,
+        "onset_duration_f1": 0.8421,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "5000459/p1-s3",
+        "has_tuplet": false,
+        "expected_notes": 87,
+        "rebuilt_notes": 87,
+        "pitch_f1": 1.0,
+        "onset_f1": 0.7701,
+        "onset_duration_f1": 0.7701,
+        "span_ratio": 1.05
+      },
+      {
+        "identifier": "5000464/p1-s1",
+        "has_tuplet": false,
+        "expected_notes": 40,
+        "rebuilt_notes": 40,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "5000467/p3-s2",
+        "has_tuplet": false,
+        "expected_notes": 96,
+        "rebuilt_notes": 96,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "5026306/p2-s4",
+        "has_tuplet": false,
+        "expected_notes": 89,
+        "rebuilt_notes": 92,
+        "pitch_f1": 0.9834,
+        "onset_f1": 0.9834,
+        "onset_duration_f1": 0.9503,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "5026309/p6-s3",
+        "has_tuplet": true,
+        "expected_notes": 64,
+        "rebuilt_notes": 73,
+        "pitch_f1": 0.8905,
+        "onset_f1": 0.0876,
+        "onset_duration_f1": 0.0292,
+        "span_ratio": 1.25
+      },
+      {
+        "identifier": "5026316/p2-s4",
+        "has_tuplet": true,
+        "expected_notes": 70,
+        "rebuilt_notes": 70,
+        "pitch_f1": 1.0,
+        "onset_f1": 0.1429,
+        "onset_duration_f1": 0.1,
+        "span_ratio": 1.03125
+      },
+      {
+        "identifier": "5062156/p2-s1",
+        "has_tuplet": false,
+        "expected_notes": 81,
+        "rebuilt_notes": 83,
+        "pitch_f1": 0.9878,
+        "onset_f1": 0.1707,
+        "onset_duration_f1": 0.1341,
+        "span_ratio": 1.2
+      },
+      {
+        "identifier": "5062158/p1-s3",
+        "has_tuplet": false,
+        "expected_notes": 78,
+        "rebuilt_notes": 81,
+        "pitch_f1": 0.9811,
+        "onset_f1": 0.9811,
+        "onset_duration_f1": 0.9434,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "5062159/p1-s1",
+        "has_tuplet": false,
+        "error": "encode/decode: ValueError: Unsupported slur slurStart_slurStop_slurStop"
+      },
+      {
+        "identifier": "5069022/p2-s2",
+        "has_tuplet": false,
+        "expected_notes": 79,
+        "rebuilt_notes": 79,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "5069028/p1-s4",
+        "has_tuplet": false,
+        "expected_notes": 62,
+        "rebuilt_notes": 42,
+        "pitch_f1": 0.8077,
+        "onset_f1": 0.7692,
+        "onset_duration_f1": 0.7692,
+        "span_ratio": 0.85
+      },
+      {
+        "identifier": "5071644/p1-s3",
+        "has_tuplet": false,
+        "error": "encode/decode: ValueError: Unsupported slur slurStart_slurStart"
+      },
+      {
+        "identifier": "5098713/p2-s2",
+        "has_tuplet": true,
+        "error": "encode/decode: ValueError: Unsupported slur slurStart_slurStart"
+      },
+      {
+        "identifier": "5654342/p1-s2",
+        "has_tuplet": false,
+        "expected_notes": 36,
+        "rebuilt_notes": 36,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "5656522/p3-s4",
+        "has_tuplet": false,
+        "expected_notes": 75,
+        "rebuilt_notes": 75,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "5659823/p1-s2",
+        "has_tuplet": false,
+        "expected_notes": 48,
+        "rebuilt_notes": 48,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "5667944/p4-s3",
+        "has_tuplet": false,
+        "expected_notes": 71,
+        "rebuilt_notes": 71,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "5700433/p2-s4",
+        "has_tuplet": true,
+        "expected_notes": 57,
+        "rebuilt_notes": 57,
+        "pitch_f1": 1.0,
+        "onset_f1": 0.1228,
+        "onset_duration_f1": 0.1228,
+        "span_ratio": 1.3333333333333333
+      },
+      {
+        "identifier": "5701612/p1-s3",
+        "has_tuplet": false,
+        "error": "encode/decode: ValueError: Unsupported slur slurStart_slurStart"
+      },
+      {
+        "identifier": "5820797/p1-s2",
+        "has_tuplet": false,
+        "expected_notes": 64,
+        "rebuilt_notes": 67,
+        "pitch_f1": 0.9771,
+        "onset_f1": 0.9771,
+        "onset_duration_f1": 0.9313,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "5834392/p1-s3",
+        "has_tuplet": false,
+        "expected_notes": 81,
+        "rebuilt_notes": 86,
+        "pitch_f1": 0.9701,
+        "onset_f1": 0.515,
+        "onset_duration_f1": 0.491,
+        "span_ratio": 1.025
+      },
+      {
+        "identifier": "5837811/p1-s4",
+        "has_tuplet": true,
+        "expected_notes": 100,
+        "rebuilt_notes": 100,
+        "pitch_f1": 1.0,
+        "onset_f1": 0.81,
+        "onset_duration_f1": 0.81,
+        "span_ratio": 1.0416666666666667
+      },
+      {
+        "identifier": "5840228/p1-s3",
+        "has_tuplet": false,
+        "error": "encode/decode: ValueError: Unsupported slur slurStop_slurStop"
+      },
+      {
+        "identifier": "6112984/p4-s3",
+        "has_tuplet": false,
+        "expected_notes": 78,
+        "rebuilt_notes": 78,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "6114679/p1-s2",
+        "has_tuplet": false,
+        "expected_notes": 48,
+        "rebuilt_notes": 64,
+        "pitch_f1": 0.8571,
+        "onset_f1": 0.2143,
+        "onset_duration_f1": 0.2143,
+        "span_ratio": 2.0
+      },
+      {
+        "identifier": "6115317/p3-s3",
+        "has_tuplet": false,
+        "expected_notes": 133,
+        "rebuilt_notes": 133,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "6209594/p3-s1",
+        "has_tuplet": false,
+        "error": "encode/decode: ValueError: Unsupported slur slurStart_slurStart"
+      },
+      {
+        "identifier": "6209602/p4-s2",
+        "has_tuplet": false,
+        "expected_notes": 49,
+        "rebuilt_notes": 50,
+        "pitch_f1": 0.9899,
+        "onset_f1": 0.5253,
+        "onset_duration_f1": 0.4646,
+        "span_ratio": 1.125
+      },
+      {
+        "identifier": "6209605/p1-s2",
+        "has_tuplet": false,
+        "expected_notes": 43,
+        "rebuilt_notes": 43,
+        "pitch_f1": 1.0,
+        "onset_f1": 0.3953,
+        "onset_duration_f1": 0.3953,
+        "span_ratio": 1.03125
+      },
+      {
+        "identifier": "6209607/p1-s3",
+        "has_tuplet": false,
+        "expected_notes": 44,
+        "rebuilt_notes": 44,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "6209608/p1-s2",
+        "has_tuplet": false,
+        "error": "encode/decode: ValueError: Unsupported slur slurStart_slurStart"
+      },
+      {
+        "identifier": "6232117/p2-s2",
+        "has_tuplet": false,
+        "expected_notes": 65,
+        "rebuilt_notes": 67,
+        "pitch_f1": 0.9848,
+        "onset_f1": 0.5455,
+        "onset_duration_f1": 0.5152,
+        "span_ratio": 1.0208333333333333
+      },
+      {
+        "identifier": "6243836/p4-s3",
+        "has_tuplet": false,
+        "expected_notes": 35,
+        "rebuilt_notes": 35,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "6243838/p3-s4",
+        "has_tuplet": false,
+        "expected_notes": 34,
+        "rebuilt_notes": 34,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "6243839/p2-s1",
+        "has_tuplet": false,
+        "expected_notes": 47,
+        "rebuilt_notes": 47,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "6302395/p2-s1",
+        "has_tuplet": true,
+        "error": "encode/decode: ValueError: Unsupported slur slurStart_slurStart_slurStop"
+      },
+      {
+        "identifier": "6320420/p7-s2",
+        "has_tuplet": false,
+        "expected_notes": 38,
+        "rebuilt_notes": 38,
+        "pitch_f1": 1.0,
+        "onset_f1": 0.1316,
+        "onset_duration_f1": 0.1316,
+        "span_ratio": 0.9736842105263158
+      },
+      {
+        "identifier": "6351349/p4-s2",
+        "has_tuplet": false,
+        "expected_notes": 74,
+        "rebuilt_notes": 75,
+        "pitch_f1": 0.9933,
+        "onset_f1": 0.2282,
+        "onset_duration_f1": 0.2148,
+        "span_ratio": 1.3541666666666667
+      },
+      {
+        "identifier": "6377942/p2-s2",
+        "has_tuplet": true,
+        "expected_notes": 58,
+        "rebuilt_notes": 58,
+        "pitch_f1": 1.0,
+        "onset_f1": 0.5,
+        "onset_duration_f1": 0.5,
+        "span_ratio": 1.0625
+      },
+      {
+        "identifier": "6378337/p2-s1",
+        "has_tuplet": false,
+        "expected_notes": 40,
+        "rebuilt_notes": 42,
+        "pitch_f1": 0.9756,
+        "onset_f1": 0.9756,
+        "onset_duration_f1": 0.9268,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "6378373/p1-s2",
+        "has_tuplet": false,
+        "expected_notes": 29,
+        "rebuilt_notes": 29,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "6379527/p3-s4",
+        "has_tuplet": false,
+        "error": "encode/decode: ValueError: Unsupported slur slurStart_slurStart"
+      },
+      {
+        "identifier": "6379750/p2-s1",
+        "has_tuplet": false,
+        "expected_notes": 36,
+        "rebuilt_notes": 38,
+        "pitch_f1": 0.973,
+        "onset_f1": 0.973,
+        "onset_duration_f1": 0.9189,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "6447286/p2-s1",
+        "has_tuplet": false,
+        "expected_notes": 63,
+        "rebuilt_notes": 64,
+        "pitch_f1": 0.9921,
+        "onset_f1": 0.9921,
+        "onset_duration_f1": 0.9764,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "6447342/p2-s3",
+        "has_tuplet": false,
+        "error": "encode/decode: ValueError: Unsupported articulation detachedLegato"
+      },
+      {
+        "identifier": "6447372/p1-s3",
+        "has_tuplet": false,
+        "expected_notes": 45,
+        "rebuilt_notes": 45,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "6481218/p10-s1",
+        "has_tuplet": false,
+        "error": "encode/decode: ValueError: Octave shift isn't supported"
+      },
+      {
+        "identifier": "6481941/p11-s2",
+        "has_tuplet": false,
+        "expected_notes": 42,
+        "rebuilt_notes": 42,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "6482032/p34-s2",
+        "has_tuplet": false,
+        "error": "encode/decode: ValueError: Unsupported articulation detachedLegato"
+      },
+      {
+        "identifier": "6548435/p4-s2",
+        "has_tuplet": false,
+        "expected_notes": 65,
+        "rebuilt_notes": 65,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "6565727/p6-s1",
+        "has_tuplet": false,
+        "expected_notes": 65,
+        "rebuilt_notes": 65,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "6567603/p1-s3",
+        "has_tuplet": true,
+        "error": "encode/decode: ValueError: Octave shift isn't supported"
+      },
+      {
+        "identifier": "6568021/p1-s2",
+        "has_tuplet": false,
+        "expected_notes": 36,
+        "rebuilt_notes": 36,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "6568070/p3-s4",
+        "has_tuplet": false,
+        "expected_notes": 21,
+        "rebuilt_notes": 38,
+        "pitch_f1": 0.7119,
+        "onset_f1": 0.4746,
+        "onset_duration_f1": 0.2373,
+        "span_ratio": 1.0952380952380953
+      },
+      {
+        "identifier": "6569855/p1-s1",
+        "has_tuplet": false,
+        "expected_notes": 61,
+        "rebuilt_notes": 65,
+        "pitch_f1": 0.9683,
+        "onset_f1": 0.2063,
+        "onset_duration_f1": 0.1587,
+        "span_ratio": 1.0408163265306123
+      },
+      {
+        "identifier": "6569865/p2-s1",
+        "has_tuplet": false,
+        "expected_notes": 97,
+        "rebuilt_notes": 58,
+        "pitch_f1": 0.7484,
+        "onset_f1": 0.6968,
+        "onset_duration_f1": 0.6194,
+        "span_ratio": 0.8333333333333334
+      },
+      {
+        "identifier": "6570092/p1-s4",
+        "has_tuplet": false,
+        "expected_notes": 63,
+        "rebuilt_notes": 63,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "6570192/p1-s1",
+        "has_tuplet": false,
+        "expected_notes": 56,
+        "rebuilt_notes": 60,
+        "pitch_f1": 0.9655,
+        "onset_f1": 0.1207,
+        "onset_duration_f1": 0.1034,
+        "span_ratio": 1.5
+      },
+      {
+        "identifier": "6570255/p3-s1",
+        "has_tuplet": true,
+        "expected_notes": 43,
+        "rebuilt_notes": 43,
+        "pitch_f1": 0.9767,
+        "onset_f1": 0.0233,
+        "onset_duration_f1": 0.0233,
+        "span_ratio": 1.125
+      },
+      {
+        "identifier": "6570310/p3-s3",
+        "has_tuplet": true,
+        "expected_notes": 69,
+        "rebuilt_notes": 69,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "6573515/p2-s1",
+        "has_tuplet": false,
+        "expected_notes": 42,
+        "rebuilt_notes": 42,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "6573701/p4-s3",
+        "has_tuplet": false,
+        "error": "encode/decode: ValueError: Octave shift isn't supported"
+      },
+      {
+        "identifier": "6586696/p1-s1",
+        "has_tuplet": false,
+        "expected_notes": 45,
+        "rebuilt_notes": 47,
+        "pitch_f1": 0.9783,
+        "onset_f1": 0.2609,
+        "onset_duration_f1": 0.2609,
+        "span_ratio": 1.0833333333333333
+      },
+      {
+        "identifier": "6592539/p1-s3",
+        "has_tuplet": false,
+        "expected_notes": 70,
+        "rebuilt_notes": 70,
+        "pitch_f1": 1.0,
+        "onset_f1": 0.2714,
+        "onset_duration_f1": 0.2571,
+        "span_ratio": 1.0714285714285714
+      },
+      {
+        "identifier": "6592662/p2-s2",
+        "has_tuplet": false,
+        "expected_notes": 52,
+        "rebuilt_notes": 52,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "6621051/p1-s3",
+        "has_tuplet": false,
+        "expected_notes": 79,
+        "rebuilt_notes": 79,
+        "pitch_f1": 1.0,
+        "onset_f1": 0.3924,
+        "onset_duration_f1": 0.3418,
+        "span_ratio": 1.0833333333333333
+      },
+      {
+        "identifier": "6631610/p7-s1",
+        "has_tuplet": false,
+        "expected_notes": 41,
+        "rebuilt_notes": 41,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "6660019/p2-s5",
+        "has_tuplet": false,
+        "expected_notes": 52,
+        "rebuilt_notes": 54,
+        "pitch_f1": 0.9811,
+        "onset_f1": 0.566,
+        "onset_duration_f1": 0.4906,
+        "span_ratio": 1.2857142857142858
+      },
+      {
+        "identifier": "6660043/p2-s4",
+        "has_tuplet": false,
+        "expected_notes": 100,
+        "rebuilt_notes": 100,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "6660097/p3-s3",
+        "has_tuplet": false,
+        "expected_notes": 44,
+        "rebuilt_notes": 44,
+        "pitch_f1": 1.0,
+        "onset_f1": 0.7273,
+        "onset_duration_f1": 0.7045,
+        "span_ratio": 1.1875
+      },
+      {
+        "identifier": "6686592/p2-s2",
+        "has_tuplet": false,
+        "expected_notes": 91,
+        "rebuilt_notes": 91,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "6686901/p2-s1",
+        "has_tuplet": false,
+        "expected_notes": 67,
+        "rebuilt_notes": 67,
+        "pitch_f1": 1.0,
+        "onset_f1": 0.1642,
+        "onset_duration_f1": 0.1493,
+        "span_ratio": 1.2
+      },
+      {
+        "identifier": "6686980/p1-s3",
+        "has_tuplet": false,
+        "expected_notes": 58,
+        "rebuilt_notes": 58,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "6687153/p4-s1",
+        "has_tuplet": true,
+        "expected_notes": 47,
+        "rebuilt_notes": 47,
+        "pitch_f1": 1.0,
+        "onset_f1": 0.0851,
+        "onset_duration_f1": 0.0638,
+        "span_ratio": 1.1071428571428572
+      },
+      {
+        "identifier": "6715306/p1-s1",
+        "has_tuplet": true,
+        "expected_notes": 36,
+        "rebuilt_notes": 37,
+        "pitch_f1": 0.9863,
+        "onset_f1": 0.0,
+        "onset_duration_f1": 0.0,
+        "span_ratio": 1.1111111111111112
+      },
+      {
+        "identifier": "6715339/p1-s2",
+        "has_tuplet": true,
+        "expected_notes": 41,
+        "rebuilt_notes": 41,
+        "pitch_f1": 1.0,
+        "onset_f1": 0.0488,
+        "onset_duration_f1": 0.0488,
+        "span_ratio": 1.6371834894207422
+      },
+      {
+        "identifier": "6715795/p1-s3",
+        "has_tuplet": true,
+        "error": "encode/decode: ValueError: Unsupported slur slurStart_slurStart"
+      },
+      {
+        "identifier": "6716614/p1-s4",
+        "has_tuplet": true,
+        "error": "encode/decode: ValueError: Unsupported slur slurStop_slurStop"
+      },
+      {
+        "identifier": "6716631/p1-s3",
+        "has_tuplet": false,
+        "error": "encode/decode: ValueError: Unsupported slur slurStart_slurStart"
+      },
+      {
+        "identifier": "6725471/p1-s1",
+        "has_tuplet": false,
+        "expected_notes": 19,
+        "rebuilt_notes": 19,
+        "pitch_f1": 1.0,
+        "onset_f1": 0.1579,
+        "onset_duration_f1": 0.1579,
+        "span_ratio": 1.6428571428571428
+      },
+      {
+        "identifier": "6725510/p1-s2",
+        "has_tuplet": true,
+        "error": "encode/decode: ValueError: Unsupported slur slurStart_slurStart"
+      },
+      {
+        "identifier": "6725782/p1-s2",
+        "has_tuplet": false,
+        "expected_notes": 57,
+        "rebuilt_notes": 57,
+        "pitch_f1": 1.0,
+        "onset_f1": 0.5263,
+        "onset_duration_f1": 0.5263,
+        "span_ratio": 1.0555555555555556
+      },
+      {
+        "identifier": "6725890/p1-s3",
+        "has_tuplet": true,
+        "error": "encode/decode: ValueError: Unsupported slur slurStart_slurStart"
+      },
+      {
+        "identifier": "6726319/p1-s4",
+        "has_tuplet": true,
+        "error": "encode/decode: ValueError: Unsupported slur slurStart_slurStart"
+      },
+      {
+        "identifier": "6753259/p4-s3",
+        "has_tuplet": false,
+        "error": "encode/decode: ValueError: Unsupported slur slurStart_slurStart"
+      },
+      {
+        "identifier": "6834630/p2-s1",
+        "has_tuplet": false,
+        "expected_notes": 59,
+        "rebuilt_notes": 59,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "6984262/p1-s1",
+        "has_tuplet": false,
+        "error": "encode/decode: ValueError: Unsupported slur slurStart_slurStart"
+      },
+      {
+        "identifier": "6984553/p3-s2",
+        "has_tuplet": false,
+        "expected_notes": 67,
+        "rebuilt_notes": 69,
+        "pitch_f1": 0.9853,
+        "onset_f1": 0.9853,
+        "onset_duration_f1": 0.9559,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "6984631/p1-s4",
+        "has_tuplet": true,
+        "expected_notes": 67,
+        "rebuilt_notes": 67,
+        "pitch_f1": 1.0,
+        "onset_f1": 0.1045,
+        "onset_duration_f1": 0.0597,
+        "span_ratio": 1.6842105263157894
+      },
+      {
+        "identifier": "6985082/p1-s2",
+        "has_tuplet": true,
+        "expected_notes": 147,
+        "rebuilt_notes": 147,
+        "pitch_f1": 1.0,
+        "onset_f1": 0.3469,
+        "onset_duration_f1": 0.3333,
+        "span_ratio": 1.0625
+      },
+      {
+        "identifier": "6986065/p2-s1",
+        "has_tuplet": false,
+        "expected_notes": 37,
+        "rebuilt_notes": 37,
+        "pitch_f1": 1.0,
+        "onset_f1": 0.2162,
+        "onset_duration_f1": 0.2162,
+        "span_ratio": 0.9166666666666666
+      },
+      {
+        "identifier": "6986302/p6-s4",
+        "has_tuplet": false,
+        "error": "encode/decode: ValueError: Unsupported slur slurStop_slurStop"
+      },
+      {
+        "identifier": "6987705/p5-s3",
+        "has_tuplet": false,
+        "error": "encode/decode: ValueError: Unsupported articulation detachedLegato"
+      },
+      {
+        "identifier": "6993176/p5-s3",
+        "has_tuplet": false,
+        "expected_notes": 52,
+        "rebuilt_notes": 52,
+        "pitch_f1": 1.0,
+        "onset_f1": 1.0,
+        "onset_duration_f1": 1.0,
+        "span_ratio": 1.0
+      },
+      {
+        "identifier": "7086632/p3-s3",
+        "has_tuplet": false,
+        "expected_notes": 37,
+        "rebuilt_notes": 39,
+        "pitch_f1": 0.9737,
+        "onset_f1": 0.2105,
+        "onset_duration_f1": 0.2105,
+        "span_ratio": 1.15
+      },
+      {
+        "identifier": "7163829/p1-s3",
+        "has_tuplet": false,
+        "expected_notes": 58,
+        "rebuilt_notes": 58,
+        "pitch_f1": 1.0,
+        "onset_f1": 0.7931,
+        "onset_duration_f1": 0.7931,
+        "span_ratio": 1.0416666666666667
+      }
+    ]
+  }
+]
