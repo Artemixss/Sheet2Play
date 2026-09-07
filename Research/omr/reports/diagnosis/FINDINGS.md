@@ -305,6 +305,87 @@ Reproduce with:
 cd Research/omr && .venv/Scripts/python.exe roundtrip_oracle.py --both
 ```
 
+## Fixed: +0.078 onset_f1 with no training at all
+
+Searching homr's own issue tracker turned out to be worth more than any experiment here. The
+timing defect is known upstream, and most of the fix already existed.
+
+| upstream work | state | what it does |
+| --- | --- | --- |
+| PR #141 recover ties from same-pitch slurs | **merged**, after our old pin | reads a tie back out of the slur head |
+| PR #146 re-time measures that overflow | **closed by its author** | per-staff cursor, shrinks over-long measures |
+| PR #156 `upper2`/`lower2` positions | open, by a collaborator, already retrained | the representation fix — see Plan B below |
+| issue #150 chord split causes overflow | open | this project's symptom, independently reported |
+
+Three changes were applied to the vendored clone and measured one at a time. The ceiling first:
+
+| step | ceiling | scoreable | encode failures |
+| --- | --- | --- | --- |
+| old pin | 0.684 | 76 | 24 |
+| + PR #141 | 0.689 | 76 | 24 |
+| + slur dedup (below) | 0.689 | **94** | **6** |
+| + PR #146 | **0.760** | 94 | 6 |
+
+**The slur dedup fix.** `_collect_articulation` dedupes articulations but not slurs, so a note
+that is both tied and slurred — ordinary in piano — produced `slurStart_slurStart`, which
+`build_slur()` does not contain, and the file was rejected outright. One `list(set(slurs))`
+takes encode failures from 24 to 6. This never showed up as a rhythm bug because it is not one:
+it silently removed a fifth of real piano from anything the encoder touches, **including the
+training labels `convert_pdmx.py` builds**, and precisely the dense material we most want.
+
+**PR #146 is the large win, and it was abandoned.** Its author closed it saying the problem
+space was more complex than expected, and noting *"no change in OMR-NED score as this
+improvement didn't seem to be caught by the benchmark."* OMR-NED does not measure onset
+placement. Re-measured on real HOMR predictions across the 100-sample canary:
+
+| | baseline | patched | |
+| --- | --- | --- | --- |
+| onset_f1, all | 0.583 | **0.661** | **+0.078** |
+| onset_f1, no tuplet | 0.689 | **0.776** | +0.087 |
+| onset_f1, tuplet | 0.159 | 0.201 | +0.042 |
+| mean span ratio | 1.128 | **1.088** | |
+| **systems running long** | **52%** | **34%** | **-18 points** |
+| systems running long, no tuplet | 41% | **21%** | -20 points |
+| perfectly transcribed systems | 16 | **25** | |
+| pitch_f1 (sanity) | 0.960 | 0.968 | no regression |
+
+That is the reported symptom directly addressed: fewer scores run long, and they run less long.
+`6592539/p1-s3` goes from onset_f1 0.157 at span 1.74 to 0.965 at span 1.00.
+
+**It is not free.** 37 systems improve, 45 are unchanged, and **18 regress**, some badly
+(`6570092/p1-s4`, 1.000 to 0.206). The regressions share a signature: a system that was already
+correctly timed at span 1.00 is pushed *below* it, to 0.88 or 0.74. The shrink logic is not at
+fault — it fires only when a measure exceeds `expected` and bails when it falls short. The
+estimate is. `expected` is `np.median(measure_duration)`
+(`find_division_and_time_signature_nominator`), so when several measures decode short the median
+follows them down, correctly timed measures start to look over-long, and the repair damages
+them. A majority-agreement estimator is under measurement behind `SHEET2PLAY_EXPECTED_MODE=1`.
+
+**The constructed cases cannot measure any of this**, and the flat 0.6535 they report is an
+artifact rather than a null result. `_plan_voice_repairs` compares each measure against that
+same median, and ten of the eleven generated cases are a single measure, where the median is
+the measure's own wrong length — so the repair never fires. This is the same trap that made the
+earlier tuplet re-test underpowered. Any future generated case meant to exercise measure repair
+needs several measures.
+
+### What this does to the training question
+
+The ceiling rose faster than HOMR did, so the gap that training could close got *wider*:
+
+| | before | after |
+| --- | --- | --- |
+| HOMR | 0.624 | 0.661 |
+| ceiling | 0.690 | 0.766 |
+| **headroom for training** | **+0.066** | **+0.182** |
+
+Part of that widening is composition — the 18 systems the dedup fix newly admits are hard ones
+that pull HOMR's own average down — but the ceiling rise from 0.665 to 0.760 is on an identical
+94-sample set and is attributable to PR #146 alone.
+
+The conclusion inverts. Before these fixes a fine-tune competed for 0.066 and was not worth
+days of GPU time. Repairing the representation first is what makes training worth doing, and in
+that order: **fix the labels, then train on them.**
+
 ## The normalizer is not at fault
 
 `Bridge/musicxml_normalizer.py` computes no timing of its own; `start_beat` is one call to
@@ -339,7 +420,13 @@ PDFs, which is the normal case, and it has no test coverage. Recorded, not fixed
 ## What this means for fine-tuning
 
 The plan's Step 3 decision now has evidence behind it, and it is not encouraging for the
-"fine-tune HOMR" strategy:
+"fine-tune HOMR" strategy.
+
+**Read this section as the state before the in-place fixes.** It is kept because its reasoning
+still holds — training cannot beat the representation it is trained into — but its numbers are
+superseded. Once the ceiling was raised, the headroom went from +0.066 to +0.182 and training
+became worth considering again, in that order. The options below are annotated where the fixes
+changed them.
 
 - The dominant failure is a **grammar limit, not a training deficiency**. HOMR's rhythm
   alphabet has no tie, and its time cursor can only advance by the shortest duration in the
@@ -362,10 +449,15 @@ Options worth weighing before committing GPU time:
 1. **Add a tie token and fix the cursor.** This targets the actual defect, but it means
    extending the *rhythm* vocabulary (both the embedding table and the output head) and
    rewriting `build_measures` / `build_note_chord` cursor logic — a grammar redesign
-   requiring full decoder retraining, not a LoRA fine-tune. Note that extending
-   `build_position()` into voice IDs, the obvious-looking fix, is architecturally cheap
-   (output-only head, no embedding to widen) but **would not move onset F1**, because voices
-   are already representable and the cursor is the blocker.
+   requiring full decoder retraining, not a LoRA fine-tune. **Largely superseded**: PR #141
+   recovers a tie from the slur head without any vocabulary change at all, and is merged.
+
+   An earlier revision of this document also claimed that extending `build_position()` into
+   voice IDs "would not move onset F1", on the reasoning that voices are already representable
+   and the cursor is the blocker. That is contradicted by upstream PR #156, which does exactly
+   that — `upper`/`upper2` and `lower`/`lower2` — and reports no regression from a retrained
+   model. The claim assumed an output-head-only change; #156 also rewrites parts of
+   `music_xml_generator.py`, so it is not the cheap change the objection was aimed at.
 2. **Post-hoc repair.** Span ratio is computable without ground truth: compare each measure's
    decoded length against the time signature. That gives a runtime signal for detecting bad
    measures, and would let the app flag a low-confidence transcription instead of silently
@@ -373,7 +465,20 @@ Options worth weighing before committing GPU time:
 3. **Replace the engine.** Transcoda scored onset_f1 0.897 against HOMR's 0.584 on this same
    canary — consistent with it having a tie or backup representation — but it was removed for
    instability and is AGPL. LEGATO is the current candidate: MIT-licensed, public weights,
-   and explicitly built for full-page polyphonic scores.
+   and explicitly built for full-page polyphonic scores. **Weaker now than when written**: the
+   in-place fixes above took HOMR from 0.583 to 0.661 without training, so the gap a
+   replacement has to justify is narrower than it was.
+
+4. **Plan B — adopt upstream PR #156.** weixlu's open PR distinguishes `upper`/`upper2` and
+   `lower`/`lower2` in the position vocabulary, which is what lets two voices on one staff be
+   told apart at all rather than inferred from differing durations. The author has already
+   retrained it and reports polish 16.89% and smb 13.72% NED, so it comes with weights and no
+   GPU cost to us. This is the most likely candidate to raise the ceiling further, and it
+   deserves evaluation even if the fixes above hold, precisely because it comes from a project
+   collaborator with a retrained model behind it rather than from us. Score it on the canary,
+   and run `roundtrip_oracle.py` against its vocabulary to get the new ceiling: if that ceiling
+   rises materially, it — not a fine-tune on the present vocabulary — is what makes training
+   worthwhile.
 
 **The screening question for any replacement engine is not "does it have voices?" but "can it
 encode a tie, and can it place an onset inside a sustaining note?"**
