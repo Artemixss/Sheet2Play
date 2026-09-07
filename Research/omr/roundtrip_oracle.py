@@ -34,6 +34,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 import xml.etree.ElementTree as ET
 from fractions import Fraction
@@ -45,8 +46,10 @@ WORKSPACE = HERE.parent.parent
 sys.path.insert(0, str(HERE / "src"))
 sys.path.insert(0, str(WORKSPACE / "Bridge"))
 # The vendored clone, not the installed wheel: the wheel is inference-only and ships no
-# training tree, and the clone is what the fine-tune will actually run.
-sys.path.insert(0, str(HERE / "vendor" / "homr"))
+# training tree, and the clone is what the fine-tune will actually run. SHEET2PLAY_HOMR_TREE
+# points this at a different checkout, which is how a candidate branch gets its own ceiling
+# measured - upstream PR #156 changes the vocabulary itself, so it needs a tree of its own.
+sys.path.insert(0, os.environ.get("SHEET2PLAY_HOMR_TREE", str(HERE / "vendor" / "homr")))
 
 from sheet2play_omr.metrics import (  # noqa: E402
     MetricNote,
