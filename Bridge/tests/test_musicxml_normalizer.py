@@ -13,9 +13,12 @@ if str(BRIDGE_DIRECTORY) not in sys.path:
 
 from musicxml_normalizer import (  # noqa: E402
     MusicXmlNormalizationError,
+    NormalizedScore,
+    RawMusicNote,
     TempoChange,
     TempoTimeline,
     add_seconds,
+    combine_score_pages,
     normalize_musicxml,
 )
 
@@ -419,6 +422,93 @@ class MusicXmlNormalizerTests(unittest.TestCase):
             normalized = normalize_musicxml(path)
 
         self.assertEqual(["C4", "D4"], [item.pitch for item in normalized.notes])
+
+
+class CombineScorePagesTests(unittest.TestCase):
+    """Page stitching, which had no coverage while it silently drifted every score.
+
+    OMR reads each page on its own and routinely mis-reads the final measure, so advancing
+    the timeline by the raw decoded length starts the next page mid-measure. The error never
+    cancels, so it accumulates once per page boundary.
+    """
+
+    def page(self, total_beats: float, measure_beats: float = 4.0, onset: float = 0.0):
+        note = RawMusicNote(
+            pitch="C4",
+            midi_pitch=60,
+            start_beat=onset,
+            duration_beats=1.0,
+            part_index=0,
+            staff_index=0,
+            voice_identifier="1",
+        )
+        return NormalizedScore(
+            notes=(note,),
+            tempo_changes=(),
+            total_beats=total_beats,
+            part_count=1,
+            staff_count=1,
+            measure_beats=measure_beats,
+        )
+
+    def test_short_final_measure_does_not_shift_later_pages(self) -> None:
+        # Page two is a beat short of four 4/4 measures, so page three must still land on 32.
+        combined = combine_score_pages(
+            [self.page(16.0), self.page(15.0), self.page(4.0)]
+        )
+        self.assertEqual([n.start_beat for n in combined.notes], [0.0, 16.0, 32.0])
+
+    def test_long_final_measure_does_not_gain_a_measure(self) -> None:
+        # Rounding upward instead of to nearest would put page three at 36.0.
+        combined = combine_score_pages(
+            [self.page(16.0), self.page(17.0), self.page(4.0)]
+        )
+        self.assertEqual([n.start_beat for n in combined.notes], [0.0, 16.0, 32.0])
+
+    def test_first_page_keeps_its_pickup(self) -> None:
+        # Bella Ciao: 4/4 with a two-beat anacrusis, so page one is legitimately 114 beats
+        # (2 + 4x28). Rounding that to 112 cost onset F1 0.921 -> 0.759 on the real library.
+        combined = combine_score_pages([self.page(114.0), self.page(4.0)])
+        self.assertEqual([n.start_beat for n in combined.notes], [0.0, 114.0])
+
+    def test_drift_does_not_accumulate_across_many_pages(self) -> None:
+        pages = [self.page(16.0)] + [self.page(15.0) for _ in range(5)] + [self.page(4.0)]
+        combined = combine_score_pages(pages)
+        self.assertEqual(combined.notes[-1].start_beat, 96.0)
+
+    def test_exact_pages_are_left_alone(self) -> None:
+        combined = combine_score_pages([self.page(16.0), self.page(16.0), self.page(4.0)])
+        self.assertEqual([n.start_beat for n in combined.notes], [0.0, 16.0, 32.0])
+
+    def test_unknown_meter_falls_back_to_the_decoded_length(self) -> None:
+        combined = combine_score_pages(
+            [
+                self.page(16.0, measure_beats=0.0),
+                self.page(15.0, measure_beats=0.0),
+                self.page(4.0, measure_beats=0.0),
+            ]
+        )
+        self.assertEqual([n.start_beat for n in combined.notes], [0.0, 16.0, 31.0])
+
+    def test_page_shorter_than_one_measure_is_not_collapsed(self) -> None:
+        # Rounding would send this to zero and stack the following page on top of it.
+        combined = combine_score_pages(
+            [self.page(16.0), self.page(1.5), self.page(4.0)]
+        )
+        self.assertEqual([n.start_beat for n in combined.notes], [0.0, 16.0, 17.5])
+
+    def test_tempo_changes_move_with_their_page(self) -> None:
+        first = self.page(15.0)
+        second = NormalizedScore(
+            notes=(),
+            tempo_changes=(TempoChange(start_beat=0.0, bpm=90.0),),
+            total_beats=4.0,
+            part_count=1,
+            staff_count=1,
+            measure_beats=4.0,
+        )
+        combined = combine_score_pages([self.page(16.0), first, second])
+        self.assertIn(32.0, [change.start_beat for change in combined.tempo_changes])
 
 
 if __name__ == "__main__":
