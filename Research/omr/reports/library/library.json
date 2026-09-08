@@ -1,156 +1,167 @@
 [
   {
+    "song": "- If I can Stop One Heart From Breaking",
+    "paired": true,
+    "patched": {
+      "ok": true,
+      "notes": 1332,
+      "seconds": 139.19,
+      "runtime": 83.7,
+      "cached": true,
+      "pitch_f1": 0.9711,
+      "onset_f1": 0.1483,
+      "span_ratio": 1.1135
+    },
+    "pair_status": "confirmed"
+  },
+  {
     "song": "Arr. Alice Lefebvre - Bella Ciao - Piano",
     "paired": true,
-    "baseline": {
-      "ok": true,
-      "notes": 784,
-      "seconds": 84.5,
-      "runtime": 30.7,
-      "pitch_f1": 0.9937,
-      "onset_f1": 0.9214,
-      "span_ratio": 0.9883040935672515
-    },
     "patched": {
       "ok": true,
       "notes": 753,
       "seconds": 84.5,
-      "runtime": 30.0,
+      "runtime": 37.1,
+      "cached": true,
       "pitch_f1": 0.9735,
       "onset_f1": 0.9037,
       "span_ratio": 0.9883040935672515
-    }
+    },
+    "pair_status": "confirmed"
   },
   {
     "song": "Composed by Yu-peng Chen_Arr by Prower's Sheets - Liyue Battle Theme 1",
     "paired": true,
-    "baseline": {
-      "ok": true,
-      "notes": 2514,
-      "seconds": 244.12,
-      "runtime": 99.6,
-      "pitch_f1": 0.9407,
-      "onset_f1": 0.1299,
-      "span_ratio": 1.0171875
-    },
     "patched": {
       "ok": true,
       "notes": 2237,
       "seconds": 244.12,
-      "runtime": 104.3,
+      "runtime": 121.5,
+      "cached": true,
       "pitch_f1": 0.9935,
       "onset_f1": 0.1183,
       "span_ratio": 1.0171875
-    }
+    },
+    "pair_status": "confirmed"
   },
   {
-    "song": "Dark Souls - Gwyn Lord of Cinder",
+    "song": "coronal radiance",
     "paired": true,
-    "baseline": {
-      "ok": true,
-      "notes": 1573,
-      "seconds": 351.0,
-      "runtime": 114.4,
-      "pitch_f1": 0.711,
-      "onset_f1": 0.1243,
-      "span_ratio": 1.125
-    },
     "patched": {
       "ok": true,
-      "notes": 1534,
-      "seconds": 344.0,
-      "runtime": 113.3,
-      "pitch_f1": 0.6995,
-      "onset_f1": 0.186,
-      "span_ratio": 1.1025641025641026
-    }
+      "notes": 1417,
+      "seconds": 124.88,
+      "runtime": 71.2,
+      "cached": true,
+      "pitch_f1": 0.7651,
+      "onset_f1": 0.0478,
+      "span_ratio": 0.5925266903914591
+    },
+    "pair_status": "candidate"
   },
   {
     "song": "Drake - God's Plan",
     "paired": true,
-    "baseline": {
-      "ok": true,
-      "notes": 2992,
-      "seconds": 347.75,
-      "runtime": 63.9,
-      "pitch_f1": 0.8003,
-      "onset_f1": 0.2145,
-      "span_ratio": 1.4504692387904066
-    },
     "patched": {
       "ok": true,
       "notes": 2927,
       "seconds": 338.0,
-      "runtime": 63.9,
+      "runtime": 78.4,
+      "cached": true,
       "pitch_f1": 0.8105,
       "onset_f1": 0.6784,
       "span_ratio": 1.4098018769551617
-    }
+    },
+    "pair_status": "confirmed"
   },
   {
     "song": "HOYO-MiX, Mika Kobayashi - Beyond This Station",
     "paired": true,
-    "baseline": {
-      "ok": true,
-      "notes": 4201,
-      "seconds": 451.92,
-      "runtime": 155.6,
-      "pitch_f1": 0.9792,
-      "onset_f1": 0.0271,
-      "span_ratio": 1.0093057882002605
-    },
     "patched": {
       "ok": true,
       "notes": 3832,
       "seconds": 443.92,
-      "runtime": 154.6,
+      "runtime": 186.3,
+      "cached": true,
       "pitch_f1": 0.9596,
       "onset_f1": 0.0281,
       "span_ratio": 0.9914386748557603
-    }
+    },
+    "pair_status": "confirmed"
   },
   {
     "song": "If I Can Stop One Heart From Breaking",
     "paired": true,
-    "baseline": {
-      "ok": true,
-      "notes": 1349,
-      "seconds": 161.94,
-      "runtime": 79.5,
-      "pitch_f1": 0.8103,
-      "onset_f1": 0.0324,
-      "span_ratio": 1.2955
-    },
     "patched": {
       "ok": true,
       "notes": 1182,
       "seconds": 161.94,
-      "runtime": 80.6,
+      "runtime": 86.3,
+      "cached": true,
       "pitch_f1": 0.7865,
       "onset_f1": 0.0338,
       "span_ratio": 1.2955
-    }
+    },
+    "pair_status": "confirmed"
+  },
+  {
+    "song": "if_i_am_with_you",
+    "paired": true,
+    "patched": {
+      "ok": true,
+      "notes": 808,
+      "seconds": 81.5,
+      "runtime": 43.0,
+      "cached": true,
+      "pitch_f1": 0.9493,
+      "onset_f1": 0.1347,
+      "span_ratio": 1.0688524590163935
+    },
+    "pair_status": "confirmed"
+  },
+  {
+    "song": "in_the_pool",
+    "paired": true,
+    "patched": {
+      "ok": true,
+      "notes": 1447,
+      "seconds": 267.0,
+      "runtime": 37.6,
+      "cached": true,
+      "pitch_f1": 0.7219,
+      "onset_f1": 0.0012,
+      "span_ratio": 0.9956494717215661
+    },
+    "pair_status": "candidate"
   },
   {
     "song": "moonlight",
     "paired": true,
-    "baseline": {
-      "ok": true,
-      "notes": 4993,
-      "seconds": 424.5,
-      "runtime": 181.3,
-      "pitch_f1": 0.8537,
-      "onset_f1": 0.0974,
-      "span_ratio": 0.794200187090739
-    },
     "patched": {
       "ok": true,
       "notes": 4898,
       "seconds": 418.5,
-      "runtime": 182.1,
+      "runtime": 191.0,
+      "cached": true,
       "pitch_f1": 0.8456,
       "onset_f1": 0.1141,
       "span_ratio": 0.7829747427502338
-    }
+    },
+    "pair_status": "candidate"
+  },
+  {
+    "song": "van_gogh-virginio_aiello",
+    "paired": true,
+    "patched": {
+      "ok": true,
+      "notes": 910,
+      "seconds": 133.5,
+      "runtime": 78.2,
+      "cached": true,
+      "pitch_f1": 0.8986,
+      "onset_f1": 0.0455,
+      "span_ratio": 0.6872586872586872
+    },
+    "pair_status": "candidate"
   }
 ]

@@ -21,6 +21,7 @@ came out 45% too long and now comes out the right length is the whole point.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import shutil
@@ -34,8 +35,10 @@ from typing import Any
 
 HERE = Path(__file__).resolve().parent
 WORKSPACE = HERE.parent.parent
+sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE / "src"))
 
+from library_pairs import DEFAULT_PAIRS, load_pairs, truth_for  # noqa: E402
 from sheet2play_omr.metrics import (  # noqa: E402
     MetricNote,
     calculate_note_metrics,
@@ -59,7 +62,37 @@ def parse_arguments(argv: list[str] | None = None) -> argparse.Namespace:
     )
     parser.add_argument("--limit", type=int, default=0)
     parser.add_argument("--out", type=Path, default=HERE / "reports" / "library")
+    parser.add_argument(
+        "--pairs",
+        type=Path,
+        default=DEFAULT_PAIRS,
+        help="Reviewed PDF-to-reference pairing. Falls back to filename equality if absent.",
+    )
+    parser.add_argument(
+        "--songs",
+        default="",
+        help="Comma-separated substrings; only PDFs matching one of them are run.",
+    )
+    parser.add_argument(
+        "--rerun",
+        action="store_true",
+        help="Ignore cached payloads and re-transcribe every song.",
+    )
+    parser.add_argument(
+        "--variants",
+        default="baseline,patched",
+        help="Which engines to run. 'patched' alone halves the runtime when only the "
+        "shipped engine's output is wanted.",
+    )
     return parser.parse_args(argv)
+
+
+def source_digest(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for block in iter(lambda: handle.read(1 << 20), b""):
+            digest.update(block)
+    return digest.hexdigest()
 
 
 def notes_from_midi(path: Path) -> list[MetricNote]:
@@ -80,13 +113,36 @@ def notes_from_midi(path: Path) -> list[MetricNote]:
     return notes
 
 
-def run_engine(pdf: Path, patched: bool) -> dict[str, Any]:
+def run_engine(
+    pdf: Path, patched: bool, cache_dir: Path | None = None, rerun: bool = False
+) -> dict[str, Any]:
     """Transcribe one PDF through bridge.py, optionally with the patched clone in front.
 
     PYTHONPATH rather than installing: the wheel in Bridge/.venv-homr-gpu stays exactly as the
     app has it, so nothing here can change what the user launches.
+
+    The payload is cached per (song, variant) and keyed on the source hash, the same way
+    diagnose_rhythm.py caches the canary. A full paired run costs about twelve minutes of GPU,
+    and every question asked of these predictions afterwards - drift curves, offset sweeps,
+    a different ground truth - would otherwise pay that again. Failures are not cached, so a
+    transient error does not freeze into the report.
     """
-    environment = {**os.environ, "PYTHONUNBUFFERED": "1"}
+    variant = "patched" if patched else "baseline"
+    cached: Path | None = None
+    digest = source_digest(pdf)
+    if cache_dir is not None:
+        cache_dir.mkdir(parents=True, exist_ok=True)
+        cached = cache_dir / f"{pdf.stem}.{variant}.json"
+        if cached.is_file() and not rerun:
+            record = json.loads(cached.read_text(encoding="utf-8"))
+            if record.get("source_sha256") == digest:
+                record["cached"] = True
+                return record
+
+    # musicxml_normalizer prints one "[page] decoded=... advance=..." line per page under this
+    # flag. It is the only way to learn where each page landed on the combined timeline, which is
+    # what tells a drift jump at a page boundary apart from one in the middle of a page.
+    environment = {**os.environ, "PYTHONUNBUFFERED": "1", "SHEET2PLAY_PAGE_DEBUG": "1"}
     if patched:
         environment["PYTHONPATH"] = str(VENDOR_HOMR)
     else:
@@ -116,7 +172,39 @@ def run_engine(pdf: Path, patched: bool) -> dict[str, Any]:
     if payload is None:
         tail = (completed.stderr or completed.stdout or "").strip().splitlines()[-3:]
         return {"ok": False, "error": " / ".join(tail) or "no JSON payload", "seconds": seconds}
-    return {"ok": True, "payload": payload, "seconds": seconds}
+
+    record = {
+        "ok": True,
+        "payload": payload,
+        "seconds": seconds,
+        "source_sha256": digest,
+        "variant": variant,
+        "song": pdf.stem,
+        "pages": parse_page_debug(completed.stderr or ""),
+    }
+    if cached is not None:
+        cached.write_text(json.dumps(record), encoding="utf-8")
+    return record
+
+
+def parse_page_debug(stderr: str) -> list[dict[str, float]]:
+    """Per-page decoded length and advance, from the normalizer's SHEET2PLAY_PAGE_DEBUG output."""
+    pages: list[dict[str, float]] = []
+    offset = 0.0
+    for line in stderr.splitlines():
+        if not line.startswith("[page]"):
+            continue
+        fields = dict(
+            part.split("=", 1) for part in line[len("[page]") :].split() if "=" in part
+        )
+        try:
+            entry = {name: float(value) for name, value in fields.items()}
+        except ValueError:
+            continue
+        entry["offset"] = offset
+        offset += entry.get("advance", 0.0)
+        pages.append(entry)
+    return pages
 
 
 def notes_from_payload(payload: dict[str, Any]) -> list[MetricNote]:
@@ -139,10 +227,18 @@ def timeline_seconds(payload: dict[str, Any]) -> float:
     return max(n["start_seconds"] + n["duration_seconds"] for n in notes)
 
 
-def score_song(pdf: Path, truth_midi: Path | None) -> dict[str, Any]:
+def score_song(
+    pdf: Path,
+    truth_midi: Path | None,
+    cache_dir: Path | None = None,
+    rerun: bool = False,
+    variants: tuple[str, ...] = ("baseline", "patched"),
+) -> dict[str, Any]:
     row: dict[str, Any] = {"song": pdf.stem, "paired": truth_midi is not None}
     for label, patched in (("baseline", False), ("patched", True)):
-        result = run_engine(pdf, patched)
+        if label not in variants:
+            continue
+        result = run_engine(pdf, patched, cache_dir, rerun)
         if not result["ok"]:
             row[label] = {"ok": False, "error": result["error"]}
             continue
@@ -152,6 +248,7 @@ def score_song(pdf: Path, truth_midi: Path | None) -> dict[str, Any]:
             "notes": len(payload.get("notes", [])),
             "seconds": round(timeline_seconds(payload), 2),
             "runtime": round(result["seconds"], 1),
+            "cached": bool(result.get("cached")),
         }
         if truth_midi is not None:
             expected = notes_from_midi(truth_midi)
@@ -171,6 +268,7 @@ def score_song(pdf: Path, truth_midi: Path | None) -> dict[str, Any]:
 def main(argv: list[str] | None = None) -> int:
     args = parse_arguments(argv)
     args.out.mkdir(parents=True, exist_ok=True)
+    variants = tuple(part.strip() for part in args.variants.split(",") if part.strip())
 
     pdf_directory = args.library / "pdf"
     custom_directory = args.library / "midi" / "custom"
@@ -178,24 +276,41 @@ def main(argv: list[str] | None = None) -> int:
         print(f"No PDFs at {pdf_directory}", file=sys.stderr)
         return 2
 
-    songs: list[tuple[Path, Path | None]] = []
+    pairs = load_pairs(args.pairs)
+    wanted = [part.strip().lower() for part in args.songs.split(",") if part.strip()]
+
+    songs: list[tuple[Path, Path | None, str]] = []
     for pdf in sorted(pdf_directory.glob("*.pdf")):
-        truth = custom_directory / (pdf.stem + ".mid")
-        paired = truth if truth.is_file() else None
+        if wanted and not any(part in pdf.stem.lower() for part in wanted):
+            continue
+        paired, status = truth_for(pdf.stem, args.library, pairs)
         if args.paired_only and paired is None:
             continue
-        songs.append((pdf, paired))
+        songs.append((pdf, paired, status))
     if args.limit:
         songs = songs[: args.limit]
 
-    print(f"{len(songs)} songs ({sum(1 for _, t in songs if t)} with ground truth)\n")
+    print(f"{len(songs)} songs ({sum(1 for _, truth, _ in songs if truth)} with ground truth)")
+    print(f"pairing: {args.pairs if pairs else 'filename equality (no pairs file)'}\n")
     rows = []
-    for index, (pdf, truth) in enumerate(songs, start=1):
+    for index, (pdf, truth, status) in enumerate(songs, start=1):
         print(f"[{index}/{len(songs)}] {pdf.stem[:60]}", flush=True)
-        row = score_song(pdf, truth)
+        row = score_song(pdf, truth, args.out / "predictions", args.rerun, variants)
+        row["pair_status"] = status
         rows.append(row)
         base, patch = row.get("baseline", {}), row.get("patched", {})
-        if base.get("ok") and patch.get("ok"):
+        if len(variants) == 1:
+            only = row.get(variants[0], {})
+            if only.get("ok"):
+                summary = (
+                    f"    onset_f1 {only['onset_f1']:.3f}   span {only['span_ratio']:.2f}"
+                    if row["paired"]
+                    else f"    length {only['seconds'] / 60:.1f}m"
+                )
+                print(summary + ("   (cached)" if only.get("cached") else ""), flush=True)
+            else:
+                print(f"    failed: {only.get('error')}", flush=True)
+        elif base.get("ok") and patch.get("ok"):
             if row["paired"]:
                 print(
                     f"    onset_f1 {base['onset_f1']:.3f} -> {patch['onset_f1']:.3f}   "
@@ -213,14 +328,32 @@ def main(argv: list[str] | None = None) -> int:
             json.dumps(rows, indent=2), encoding="utf-8"
         )
 
-    paired = [r for r in rows if r["paired"] and r["baseline"].get("ok") and r["patched"].get("ok")]
-    if paired:
+    paired = [
+        r
+        for r in rows
+        if r["paired"] and all(r.get(variant, {}).get("ok") for variant in variants)
+    ]
+    if paired and len(variants) > 1:
         mean = lambda values: sum(values) / len(values)  # noqa: E731
         print("\n=== songs with MuseScore ground truth ===")
         print(f"  onset_f1  {mean([r['baseline']['onset_f1'] for r in paired]):.4f}"
               f" -> {mean([r['patched']['onset_f1'] for r in paired]):.4f}")
         print(f"  span      {mean([r['baseline']['span_ratio'] for r in paired]):.3f}"
               f" -> {mean([r['patched']['span_ratio'] for r in paired]):.3f}   (1.00 is correct)")
+    elif paired:
+        mean = lambda values: sum(values) / len(values)  # noqa: E731
+        variant = variants[0]
+        # Confirmed and candidate pairs are summarised apart on purpose. A candidate reference has
+        # not been shown to be the same arrangement as the PDF, and averaging it into the headline
+        # is how an unverified pairing becomes a quoted number.
+        for status in ("confirmed", "candidate", "filename-match"):
+            group = [r for r in paired if r.get("pair_status") == status]
+            if not group:
+                continue
+            print(f"\n=== {status} pairs ({len(group)} songs, {variant}) ===")
+            print(f"  onset_f1  {mean([r[variant]['onset_f1'] for r in group]):.4f}")
+            print(f"  span      {mean([r[variant]['span_ratio'] for r in group]):.3f}"
+                  "   (1.00 is correct)")
     print(f"\nwrote {args.out / 'library.json'}")
     return 0
 

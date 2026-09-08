@@ -1,0 +1,117 @@
+{
+  "comment": [
+    "Which library PDF is scored against which reference, and why. Read library_pairs.py for the",
+    "rules. Evidence quoted below is from reports/library/drift.json: 'pitch agreement' is the",
+    "fraction of reference notes whose pitch appears anywhere in the transcription, which no timing",
+    "error can move - it falls only when the two are different music, or when the source is read so",
+    "badly that the notes are not recovered at all.",
+    "",
+    "Statuses: confirmed (same arrangement, evidence agrees), candidate (plausible, unverified,",
+    "summarised separately so it cannot join a headline), rejected (a pairing that looks right and",
+    "must not be made, with the reason)."
+  ],
+  "pairs": [
+    {
+      "pdf": "Arr. Alice Lefebvre - Bella Ciao - Piano",
+      "reference": "midi/custom/Arr. Alice Lefebvre - Bella Ciao - Piano.mid",
+      "status": "confirmed",
+      "why": "Same arranger named in both filenames. Pitch agreement 0.948, note ratio 0.948, span 0.99."
+    },
+    {
+      "pdf": "Composed by Yu-peng Chen_Arr by Prower's Sheets - Liyue Battle Theme 1",
+      "reference": "midi/custom/Composed by Yu-peng Chen_Arr by Prower's Sheets - Liyue Battle Theme 1.mid",
+      "status": "confirmed",
+      "why": "Pitch agreement 0.992 and note ratio 0.997 - as close to the same music as this sample gets."
+    },
+    {
+      "pdf": "Drake - God's Plan",
+      "reference": "midi/custom/Drake - God's Plan.mid",
+      "status": "confirmed",
+      "why": "Pitch agreement 1.000: every reference note is present. Note ratio 1.466 and span 1.41 are the engine over-producing, not a reference mismatch."
+    },
+    {
+      "pdf": "HOYO-MiX, Mika Kobayashi - Beyond This Station",
+      "reference": "midi/custom/HOYO-MiX, Mika Kobayashi - Beyond This Station.mid",
+      "status": "confirmed",
+      "why": "Pitch agreement 0.924, note ratio 0.927, span 0.99."
+    },
+    {
+      "pdf": "if_i_am_with_you",
+      "reference": "midi/custom/If I am with you.mid",
+      "status": "confirmed",
+      "why": "Filename match once punctuation is normalised, and the numbers agree: pitch agreement 0.948, note ratio 0.998. Missed entirely by the old filename-equality rule."
+    },
+    {
+      "pdf": "- If I can Stop One Heart From Breaking",
+      "reference": "midi/custom/If I can Stop One Heart From Breaking.mid",
+      "status": "confirmed",
+      "why": "Pitch agreement 0.959, note ratio 0.975. Missed by filename equality because of the leading dash, and it is the more useful of the two PDFs of this piece: it validates the reference that the other PDF appeared to impugn."
+    },
+    {
+      "pdf": "If I Can Stop One Heart From Breaking",
+      "reference": "midi/custom/If I can Stop One Heart From Breaking.mid",
+      "status": "confirmed",
+      "why": "Pitch agreement 0.734 against the same reference the PDF above scores 0.959 on. That rules out the reference and indicts this source: same music, same truth, six pages each, and the engine recovers a quarter less of it here. Keep it - a controlled pair of sources with the reference held fixed is the only place source quality can be measured apart from score length."
+    },
+    {
+      "pdf": "moonlight",
+      "reference": "midi/custom/Moonlight.mid",
+      "status": "candidate",
+      "why": "Pitch agreement 0.735 and span 0.783 - the reference is a quarter longer than the transcription, which is what a repeat the printed page does not expand looks like. Same piece, probably not the same edition."
+    },
+    {
+      "pdf": "van_gogh-virginio_aiello",
+      "reference": "midi/custom/vangoh.mid",
+      "status": "candidate",
+      "why": "Pitch agreement 0.817 with note ratio 0.819 and span 0.687: the same music is plausibly there, but a third of the timeline is not. Unresolved."
+    },
+    {
+      "pdf": "in_the_pool",
+      "reference": "midi/custom/in the pool  Kensuke Ushio.mid",
+      "status": "candidate",
+      "why": "Pitch agreement 0.657 at span 0.996 - right length, a third of the notes unaccounted for. Either a different edition or a badly read source; the one-page PDF of the same title below does not help decide."
+    },
+    {
+      "pdf": "coronal radiance",
+      "reference": "midi/custom/Original Art by HOYO-MIX - Coronal Radiance.mid",
+      "status": "candidate",
+      "why": "Pitch agreement 0.785 but span 0.593: the transcription is little more than half the reference's length. Needs a MusicXML reference before it means anything."
+    },
+    {
+      "pdf": "Kensuke Ushio - IN THE POOL",
+      "reference": null,
+      "status": "rejected",
+      "why": "One page, 288 notes against the reference's 1764, span 0.246, pitch agreement 0.163. This PDF is an excerpt of the piece, not the piece, so scoring it against a full reference measures nothing about the engine."
+    },
+    {
+      "pdf": "Coronal Radiance 烈日の栄冠",
+      "reference": null,
+      "status": "rejected",
+      "why": "Two pages, pitch agreement 0.337, note ratio 0.342, span 0.342. Like the IN THE POOL excerpt above, this is a fraction of the music the reference contains."
+    },
+    {
+      "pdf": "Dark Souls - Gwyn Lord of Cinder",
+      "reference": null,
+      "status": "rejected",
+      "why": "Different arrangement. The PDF carries Finale 2014 metadata naming it 'Gwyn, Lord of Cinder (Two Pianos)'; the reference is a solo MuseScore MIDI with 2852 notes against the transcription's 1534. Pitch agreement 0.538 - a third of the reference is music that is not on this page. Its onset F1 of 0.186 was never an engine result, and it was the 13-page point anchoring the top of the page-count correlation."
+    },
+    {
+      "pdf": "Yu-peng Chen_Arr_ musescore.com_munzutai - Rapid as Wildfires　／　Liyue Battle Theme I",
+      "reference": null,
+      "status": "rejected",
+      "why": "Same piece as the confirmed Liyue entry, different arranger - munzutai here against Prower's Sheets in the reference. Filename similarity is high enough that a fuzzy matcher would pair them, and doing so would score one arrangement against another."
+    },
+    {
+      "pdf": "Johannes Johansson_Piano Arrangment - Unravel",
+      "reference": null,
+      "status": "rejected",
+      "why": "The only Unravel reference is Animenz's arrangement, which is a different and far denser piece. Do not pair on title alone."
+    },
+    {
+      "pdf": "Dragonspine OST #1",
+      "reference": null,
+      "status": "rejected",
+      "why": "The nearest reference is 'genshin1.mid', which names neither a piece nor an arranger. Pairing on a guess is how an invalid reference enters the sample; it needs the user to say what genshin1 is."
+    }
+  ]
+}

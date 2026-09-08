@@ -38,6 +38,9 @@ pianos/
 Research/omr/reports/*.log
 Research/omr/reports/diagnosis/*.log
 Research/omr/reports/diagnosis/predictions/
+Research/omr/reports/library/predictions/
+# Rebuilt MusicXML from roundtrip_oracle.py --keep-xml: regenerates in seconds, 1.5 MB.
+Research/omr/reports/diagnosis/oracle-corrected/
 Research/omr/reports/pv_on/
 Research/omr/reports/pv_off/
 Research/omr/reports/tup_on/
