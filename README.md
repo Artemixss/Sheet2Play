@@ -224,11 +224,18 @@ at 200 DPI it gives 28 — so sweep `--dpi` before drawing conclusions about any
 
 ### Datasets
 
-| Dataset | Size | Licence | Role |
-| --- | --- | --- | --- |
-| OLiMPiC (scanned) | 2,931 aligned samples | CC BY-SA 4.0 | Real scans; robustness |
-| OpenScore Lieder | 1,352 scores | CC0 | Volume |
-| Your own library | 36 PDFs | third-party | The evaluation target |
+| Dataset | Size | On disk | Licence | Role |
+| --- | --- | --- | --- | --- |
+| OLiMPiC (scanned) | 2,931 systems, 200 scores | yes, 552 MB | CC BY-SA 4.0 | Real scans; robustness |
+| OpenScore Lieder | ~1,300 scores | no — lock file only | CC0 | Volume, where training runs |
+| Your own library | 46 PDFs | yes | third-party | The evaluation target |
+
+**A sample is one staff system, not a score.** OLiMPiC ships each score cut into
+`p<page>-s<system>` images of roughly five bars, with exact MusicXML for each. The library is
+whole pieces of one to thirteen pages. That gap is why `build_olimpic_scores.py` exists: the
+per-system MusicXML carries consecutive measure numbers, so a score's systems tile it completely
+and can be reassembled into a multi-page PDF with an exact label — the only whole-score ground
+truth this project has.
 
 ```bash
 python download_openscore.py --corpus lieder --update-lock   # hash-verified fetch
