@@ -1,0 +1,9030 @@
+[
+  {
+    "song": "4919798/p1-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 93,
+      "truth_notes": 95,
+      "note_ratio": 0.979,
+      "pitch_agreement": 0.9789,
+      "pitch_f1": 0.9894,
+      "span_ratio": 0.9583,
+      "predicted_span": 17.25,
+      "truth_span": 18.0
+    },
+    "onset_f1": 0.3936,
+    "global_offset": {
+      "delta": 0.5,
+      "onset_f1": 0.7234,
+      "onset_f1_at_zero": 0.3936,
+      "gain": 0.3298,
+      "tested": [
+        [
+          -4.0,
+          0.1383
+        ],
+        [
+          -2.5,
+          0.1596
+        ],
+        [
+          -1.5,
+          0.1383
+        ],
+        [
+          -1.0,
+          0.266
+        ],
+        [
+          -0.5,
+          0.2128
+        ],
+        [
+          0.0,
+          0.3936
+        ],
+        [
+          0.5,
+          0.7234
+        ],
+        [
+          0.75,
+          0.1383
+        ],
+        [
+          1.0,
+          0.2447
+        ],
+        [
+          1.5,
+          0.1809
+        ],
+        [
+          2.0,
+          0.266
+        ],
+        [
+          3.5,
+          0.1915
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.7872,
+    "recovered_gain": 0.3936,
+    "control_onset_f1": 0.1915,
+    "control_recovered_onset_f1": 0.2234,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 87,
+        "delta": 0.5,
+        "support": 68
+      },
+      {
+        "start": 16.0,
+        "notes": 6,
+        "delta": 0.75,
+        "support": 6
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [
+      {
+        "window_start": 16.0,
+        "from": 0.5,
+        "to": 0.75,
+        "nearest_page_boundary": null,
+        "inside_window": false
+      }
+    ],
+    "shape": "global offset (one shift recovers the score)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "4978492/p6-s1",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 65,
+      "truth_notes": 64,
+      "note_ratio": 1.016,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 0.9922,
+      "span_ratio": 1.0,
+      "predicted_span": 12.0,
+      "truth_span": 12.0
+    },
+    "onset_f1": 0.9922,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.9922,
+      "onset_f1_at_zero": 0.9922,
+      "gain": 0.0,
+      "tested": [
+        [
+          -3.0,
+          0.2326
+        ],
+        [
+          -2.5,
+          0.124
+        ],
+        [
+          -2.0,
+          0.093
+        ],
+        [
+          -1.0,
+          0.124
+        ],
+        [
+          -0.5,
+          0.1705
+        ],
+        [
+          0.0,
+          0.9922
+        ],
+        [
+          0.5,
+          0.1705
+        ],
+        [
+          1.0,
+          0.124
+        ],
+        [
+          2.0,
+          0.093
+        ],
+        [
+          2.5,
+          0.124
+        ],
+        [
+          3.0,
+          0.2326
+        ],
+        [
+          3.5,
+          0.0775
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.9922,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.155,
+    "control_recovered_onset_f1": 0.186,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 65,
+        "delta": 0.0,
+        "support": 64
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "4982465/p1-s4",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 78,
+      "truth_notes": 78,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0,
+      "predicted_span": 12.0,
+      "truth_span": 12.0
+    },
+    "onset_f1": 1.0,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 1.0,
+      "onset_f1_at_zero": 1.0,
+      "gain": 0.0,
+      "tested": [
+        [
+          -4.5,
+          0.2949
+        ],
+        [
+          -3.0,
+          0.3974
+        ],
+        [
+          -1.5,
+          0.359
+        ],
+        [
+          -1.0,
+          0.2179
+        ],
+        [
+          -0.5,
+          0.4231
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.5,
+          0.4231
+        ],
+        [
+          1.0,
+          0.2179
+        ],
+        [
+          1.5,
+          0.359
+        ],
+        [
+          3.0,
+          0.3974
+        ],
+        [
+          4.5,
+          0.2949
+        ],
+        [
+          6.0,
+          0.2051
+        ]
+      ]
+    },
+    "recovered_onset_f1": 1.0,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.1538,
+    "control_recovered_onset_f1": 0.2179,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 78,
+        "delta": 0.0,
+        "support": 78
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "4982505/p4-s2",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 77,
+      "truth_notes": 75,
+      "note_ratio": 1.027,
+      "pitch_agreement": 0.9467,
+      "pitch_f1": 0.9342,
+      "span_ratio": 1.0,
+      "predicted_span": 24.0,
+      "truth_span": 24.0
+    },
+    "onset_f1": 0.9342,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.9342,
+      "onset_f1_at_zero": 0.9342,
+      "gain": 0.0,
+      "tested": [
+        [
+          -8.0,
+          0.2368
+        ],
+        [
+          -6.0,
+          0.1711
+        ],
+        [
+          -4.0,
+          0.3421
+        ],
+        [
+          -2.0,
+          0.3289
+        ],
+        [
+          -1.0,
+          0.1579
+        ],
+        [
+          0.0,
+          0.9342
+        ],
+        [
+          1.0,
+          0.1579
+        ],
+        [
+          2.0,
+          0.3026
+        ],
+        [
+          3.0,
+          0.1579
+        ],
+        [
+          4.0,
+          0.3158
+        ],
+        [
+          6.0,
+          0.1711
+        ],
+        [
+          8.0,
+          0.2632
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.9342,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.3026,
+    "control_recovered_onset_f1": 0.2763,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 36,
+        "delta": 0.0,
+        "support": 32
+      },
+      {
+        "start": 16.0,
+        "notes": 41,
+        "delta": 0.0,
+        "support": 39
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "flat (offset constant across the score)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "5000459/p1-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 87,
+      "truth_notes": 87,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0,
+      "predicted_span": 20.0,
+      "truth_span": 20.0
+    },
+    "onset_f1": 1.0,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 1.0,
+      "onset_f1_at_zero": 1.0,
+      "gain": 0.0,
+      "tested": [
+        [
+          -8.0,
+          0.1609
+        ],
+        [
+          -4.0,
+          0.1839
+        ],
+        [
+          -3.5,
+          0.1034
+        ],
+        [
+          -2.0,
+          0.1149
+        ],
+        [
+          -0.5,
+          0.1494
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.5,
+          0.1494
+        ],
+        [
+          2.0,
+          0.1149
+        ],
+        [
+          3.5,
+          0.1034
+        ],
+        [
+          4.0,
+          0.1839
+        ],
+        [
+          5.0,
+          0.1034
+        ],
+        [
+          8.0,
+          0.1609
+        ]
+      ]
+    },
+    "recovered_onset_f1": 1.0,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.1264,
+    "control_recovered_onset_f1": 0.2299,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 69,
+        "delta": 0.0,
+        "support": 69
+      },
+      {
+        "start": 16.0,
+        "notes": 18,
+        "delta": 0.0,
+        "support": 18
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "flat (offset constant across the score)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "5000464/p1-s1",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 40,
+      "truth_notes": 40,
+      "note_ratio": 1.0,
+      "pitch_agreement": 0.975,
+      "pitch_f1": 0.975,
+      "span_ratio": 1.0,
+      "predicted_span": 16.0,
+      "truth_span": 16.0
+    },
+    "onset_f1": 0.975,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.975,
+      "onset_f1_at_zero": 0.975,
+      "gain": 0.0,
+      "tested": [
+        [
+          -8.0,
+          0.075
+        ],
+        [
+          -6.0,
+          0.175
+        ],
+        [
+          -5.0,
+          0.075
+        ],
+        [
+          -3.0,
+          0.1
+        ],
+        [
+          -2.0,
+          0.125
+        ],
+        [
+          -1.0,
+          0.05
+        ],
+        [
+          0.0,
+          0.975
+        ],
+        [
+          1.0,
+          0.05
+        ],
+        [
+          2.0,
+          0.125
+        ],
+        [
+          3.0,
+          0.075
+        ],
+        [
+          5.0,
+          0.075
+        ],
+        [
+          6.0,
+          0.175
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.975,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.2,
+    "control_recovered_onset_f1": 0.225,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 40,
+        "delta": 0.0,
+        "support": 39
+      },
+      {
+        "start": 16.0,
+        "notes": 0,
+        "delta": 0.0,
+        "support": 0
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "5000467/p3-s2",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 96,
+      "truth_notes": 96,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0,
+      "predicted_span": 18.0,
+      "truth_span": 18.0
+    },
+    "onset_f1": 1.0,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 1.0,
+      "onset_f1_at_zero": 1.0,
+      "gain": 0.0,
+      "tested": [
+        [
+          -3.0,
+          0.2604
+        ],
+        [
+          -2.0,
+          0.2188
+        ],
+        [
+          -1.5,
+          0.375
+        ],
+        [
+          -1.0,
+          0.1875
+        ],
+        [
+          -0.5,
+          0.3021
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.5,
+          0.3021
+        ],
+        [
+          1.0,
+          0.1875
+        ],
+        [
+          1.5,
+          0.375
+        ],
+        [
+          2.0,
+          0.2188
+        ],
+        [
+          3.0,
+          0.2604
+        ],
+        [
+          3.5,
+          0.1667
+        ]
+      ]
+    },
+    "recovered_onset_f1": 1.0,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.1875,
+    "control_recovered_onset_f1": 0.2708,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 86,
+        "delta": 0.0,
+        "support": 86
+      },
+      {
+        "start": 16.0,
+        "notes": 10,
+        "delta": 0.0,
+        "support": 10
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "flat (offset constant across the score)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "5026306/p2-s4",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 90,
+      "truth_notes": 89,
+      "note_ratio": 1.011,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 0.9944,
+      "span_ratio": 1.0,
+      "predicted_span": 18.0,
+      "truth_span": 18.0
+    },
+    "onset_f1": 0.9944,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.9944,
+      "onset_f1_at_zero": 0.9944,
+      "gain": 0.0,
+      "tested": [
+        [
+          -2.5,
+          0.4804
+        ],
+        [
+          -2.0,
+          0.4916
+        ],
+        [
+          -1.5,
+          0.5251
+        ],
+        [
+          -1.0,
+          0.5363
+        ],
+        [
+          -0.5,
+          0.5475
+        ],
+        [
+          0.0,
+          0.9944
+        ],
+        [
+          0.5,
+          0.5363
+        ],
+        [
+          1.0,
+          0.5363
+        ],
+        [
+          1.5,
+          0.5251
+        ],
+        [
+          2.0,
+          0.4916
+        ],
+        [
+          2.5,
+          0.4804
+        ],
+        [
+          3.0,
+          0.4581
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.9944,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.3464,
+    "control_recovered_onset_f1": 0.3799,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 82,
+        "delta": 0.0,
+        "support": 81
+      },
+      {
+        "start": 16.0,
+        "notes": 8,
+        "delta": 0.0,
+        "support": 8
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "flat (offset constant across the score)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "5026309/p6-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 68,
+      "truth_notes": 64,
+      "note_ratio": 1.062,
+      "pitch_agreement": 0.9375,
+      "pitch_f1": 0.9091,
+      "span_ratio": 1.2222,
+      "predicted_span": 29.333333333333332,
+      "truth_span": 24.0
+    },
+    "onset_f1": 0.0909,
+    "global_offset": {
+      "delta": -5.0,
+      "onset_f1": 0.5152,
+      "onset_f1_at_zero": 0.0909,
+      "gain": 0.4242,
+      "tested": [
+        [
+          -8.0,
+          0.1515
+        ],
+        [
+          -7.0,
+          0.197
+        ],
+        [
+          -6.333333333333333,
+          0.1364
+        ],
+        [
+          -6.0,
+          0.1364
+        ],
+        [
+          -5.666666666666667,
+          0.1364
+        ],
+        [
+          -5.0,
+          0.5152
+        ],
+        [
+          -4.333333333333333,
+          0.1667
+        ],
+        [
+          -4.0,
+          0.1818
+        ],
+        [
+          -3.0,
+          0.197
+        ],
+        [
+          -2.0,
+          0.2424
+        ],
+        [
+          0.0,
+          0.0909
+        ],
+        [
+          1.0,
+          0.1364
+        ],
+        [
+          3.0,
+          0.1515
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.7121,
+    "recovered_gain": 0.6212,
+    "control_onset_f1": 0.0606,
+    "control_recovered_onset_f1": 0.197,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 27,
+        "delta": -2.0,
+        "support": 14
+      },
+      {
+        "start": 16.0,
+        "notes": 41,
+        "delta": -5.0,
+        "support": 33
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [
+      {
+        "window_start": 16.0,
+        "from": -2.0,
+        "to": -5.0,
+        "nearest_page_boundary": null,
+        "inside_window": false
+      }
+    ],
+    "shape": "global offset (one shift recovers the score)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "5026316/p2-s4",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 70,
+      "truth_notes": 70,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0,
+      "predicted_span": 16.0,
+      "truth_span": 16.0
+    },
+    "onset_f1": 1.0,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 1.0,
+      "onset_f1_at_zero": 1.0,
+      "gain": 0.0,
+      "tested": [
+        [
+          -10.0,
+          0.1714
+        ],
+        [
+          -8.0,
+          0.2429
+        ],
+        [
+          -6.0,
+          0.3286
+        ],
+        [
+          -4.0,
+          0.4
+        ],
+        [
+          -2.0,
+          0.5143
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          2.0,
+          0.5143
+        ],
+        [
+          3.0,
+          0.1286
+        ],
+        [
+          4.0,
+          0.4
+        ],
+        [
+          6.0,
+          0.3286
+        ],
+        [
+          8.0,
+          0.2429
+        ],
+        [
+          10.0,
+          0.1714
+        ]
+      ]
+    },
+    "recovered_onset_f1": 1.0,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.2429,
+    "control_recovered_onset_f1": 0.2571,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 70,
+        "delta": 0.0,
+        "support": 70
+      },
+      {
+        "start": 16.0,
+        "notes": 0,
+        "delta": 0.0,
+        "support": 0
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "5062156/p2-s1",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 79,
+      "truth_notes": 81,
+      "note_ratio": 0.975,
+      "pitch_agreement": 0.9753,
+      "pitch_f1": 0.9875,
+      "span_ratio": 1.2,
+      "predicted_span": 18.0,
+      "truth_span": 15.0
+    },
+    "onset_f1": 0.175,
+    "global_offset": {
+      "delta": -2.5,
+      "onset_f1": 0.6125,
+      "onset_f1_at_zero": 0.175,
+      "gain": 0.4375,
+      "tested": [
+        [
+          -5.5,
+          0.1125
+        ],
+        [
+          -4.0,
+          0.2
+        ],
+        [
+          -3.0,
+          0.175
+        ],
+        [
+          -2.5,
+          0.6125
+        ],
+        [
+          -2.0,
+          0.1875
+        ],
+        [
+          -1.5,
+          0.2375
+        ],
+        [
+          -1.0,
+          0.1625
+        ],
+        [
+          -0.5,
+          0.1125
+        ],
+        [
+          0.0,
+          0.175
+        ],
+        [
+          0.5,
+          0.1
+        ],
+        [
+          2.5,
+          0.1625
+        ],
+        [
+          3.5,
+          0.1375
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.5875,
+    "recovered_gain": 0.4125,
+    "control_onset_f1": 0.1125,
+    "control_recovered_onset_f1": 0.15,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 76,
+        "delta": -2.5,
+        "support": 47
+      },
+      {
+        "start": 16.0,
+        "notes": 3,
+        "delta": 0.0,
+        "support": 2
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "5062158/p1-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 80,
+      "truth_notes": 78,
+      "note_ratio": 1.026,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 0.9873,
+      "span_ratio": 1.0,
+      "predicted_span": 12.0,
+      "truth_span": 12.0
+    },
+    "onset_f1": 0.9747,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.9747,
+      "onset_f1_at_zero": 0.9747,
+      "gain": 0.0,
+      "tested": [
+        [
+          -4.0,
+          0.1139
+        ],
+        [
+          -3.5,
+          0.1392
+        ],
+        [
+          -2.5,
+          0.1519
+        ],
+        [
+          -1.0,
+          0.2025
+        ],
+        [
+          -0.5,
+          0.1519
+        ],
+        [
+          0.0,
+          0.9747
+        ],
+        [
+          0.5,
+          0.1519
+        ],
+        [
+          1.0,
+          0.1899
+        ],
+        [
+          1.5,
+          0.1139
+        ],
+        [
+          2.0,
+          0.1139
+        ],
+        [
+          2.5,
+          0.1392
+        ],
+        [
+          3.5,
+          0.1519
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.9747,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.1899,
+    "control_recovered_onset_f1": 0.1899,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 80,
+        "delta": 0.0,
+        "support": 78
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "5062159/p1-s1",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 52,
+      "truth_notes": 47,
+      "note_ratio": 1.106,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 0.9495,
+      "span_ratio": 1.0,
+      "predicted_span": 16.0,
+      "truth_span": 16.0
+    },
+    "onset_f1": 0.8687,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.8687,
+      "onset_f1_at_zero": 0.8687,
+      "gain": 0.0,
+      "tested": [
+        [
+          -5.5,
+          0.0606
+        ],
+        [
+          -4.5,
+          0.0606
+        ],
+        [
+          -4.0,
+          0.0808
+        ],
+        [
+          -3.0,
+          0.0606
+        ],
+        [
+          -2.0,
+          0.101
+        ],
+        [
+          -1.0,
+          0.0808
+        ],
+        [
+          0.0,
+          0.8687
+        ],
+        [
+          1.0,
+          0.0606
+        ],
+        [
+          2.0,
+          0.0606
+        ],
+        [
+          3.0,
+          0.0808
+        ],
+        [
+          4.0,
+          0.0808
+        ],
+        [
+          5.0,
+          0.0606
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.8687,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.1818,
+    "control_recovered_onset_f1": 0.1818,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 52,
+        "delta": 0.0,
+        "support": 43
+      },
+      {
+        "start": 16.0,
+        "notes": 0,
+        "delta": 0.0,
+        "support": 0
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "5069022/p2-s2",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 79,
+      "truth_notes": 79,
+      "note_ratio": 1.0,
+      "pitch_agreement": 0.9873,
+      "pitch_f1": 0.9873,
+      "span_ratio": 1.0,
+      "predicted_span": 9.0,
+      "truth_span": 9.0
+    },
+    "onset_f1": 0.9873,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.9873,
+      "onset_f1_at_zero": 0.9873,
+      "gain": 0.0,
+      "tested": [
+        [
+          -2.5,
+          0.1772
+        ],
+        [
+          -2.0,
+          0.1392
+        ],
+        [
+          -1.5,
+          0.1646
+        ],
+        [
+          -1.0,
+          0.2278
+        ],
+        [
+          -0.5,
+          0.1392
+        ],
+        [
+          0.0,
+          0.9873
+        ],
+        [
+          0.5,
+          0.1392
+        ],
+        [
+          1.0,
+          0.2152
+        ],
+        [
+          1.5,
+          0.1646
+        ],
+        [
+          2.0,
+          0.1392
+        ],
+        [
+          2.5,
+          0.1772
+        ],
+        [
+          3.0,
+          0.1392
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.9873,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.2278,
+    "control_recovered_onset_f1": 0.2278,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 79,
+        "delta": 0.0,
+        "support": 78
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "5069028/p1-s4",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 70,
+      "truth_notes": 62,
+      "note_ratio": 1.129,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 0.9394,
+      "span_ratio": 1.15,
+      "predicted_span": 23.0,
+      "truth_span": 20.0
+    },
+    "onset_f1": 0.8485,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.8485,
+      "onset_f1_at_zero": 0.8485,
+      "gain": 0.0,
+      "tested": [
+        [
+          -15.0,
+          0.1818
+        ],
+        [
+          -12.0,
+          0.1515
+        ],
+        [
+          -9.0,
+          0.5152
+        ],
+        [
+          -6.0,
+          0.303
+        ],
+        [
+          -3.0,
+          0.3636
+        ],
+        [
+          -2.0,
+          0.1515
+        ],
+        [
+          0.0,
+          0.8485
+        ],
+        [
+          2.0,
+          0.1515
+        ],
+        [
+          3.0,
+          0.2576
+        ],
+        [
+          6.0,
+          0.1818
+        ],
+        [
+          9.0,
+          0.3636
+        ],
+        [
+          12.0,
+          0.1667
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.9242,
+    "recovered_gain": 0.0758,
+    "control_onset_f1": 0.1667,
+    "control_recovered_onset_f1": 0.2121,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 52,
+        "delta": 0.0,
+        "support": 51
+      },
+      {
+        "start": 16.0,
+        "notes": 18,
+        "delta": -3.0,
+        "support": 13
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [
+      {
+        "window_start": 16.0,
+        "from": 0.0,
+        "to": -3.0,
+        "nearest_page_boundary": null,
+        "inside_window": false
+      }
+    ],
+    "shape": "steps (offset constant in stretches, jumping between them)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "5071644/p1-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 45,
+      "truth_notes": 45,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0,
+      "predicted_span": 12.0,
+      "truth_span": 12.0
+    },
+    "onset_f1": 1.0,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 1.0,
+      "onset_f1_at_zero": 1.0,
+      "gain": 0.0,
+      "tested": [
+        [
+          -3.5,
+          0.0667
+        ],
+        [
+          -3.0,
+          0.0667
+        ],
+        [
+          -1.5,
+          0.2667
+        ],
+        [
+          -1.0,
+          0.0667
+        ],
+        [
+          -0.5,
+          0.0667
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.5,
+          0.0667
+        ],
+        [
+          1.0,
+          0.0667
+        ],
+        [
+          1.5,
+          0.2667
+        ],
+        [
+          3.0,
+          0.0667
+        ],
+        [
+          3.5,
+          0.0667
+        ],
+        [
+          4.5,
+          0.0667
+        ]
+      ]
+    },
+    "recovered_onset_f1": 1.0,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.1778,
+    "control_recovered_onset_f1": 0.1778,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 45,
+        "delta": 0.0,
+        "support": 45
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "5098713/p2-s2",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 108,
+      "truth_notes": 108,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.5,
+      "predicted_span": 18.0,
+      "truth_span": 12.0
+    },
+    "onset_f1": 0.1759,
+    "global_offset": {
+      "delta": -1.5,
+      "onset_f1": 0.2222,
+      "onset_f1_at_zero": 0.1759,
+      "gain": 0.0463,
+      "tested": [
+        [
+          -4.5,
+          0.2037
+        ],
+        [
+          -3.5,
+          0.213
+        ],
+        [
+          -3.0,
+          0.213
+        ],
+        [
+          -2.6666666666666665,
+          0.1944
+        ],
+        [
+          -2.5,
+          0.1944
+        ],
+        [
+          -2.0,
+          0.213
+        ],
+        [
+          -1.6666666666666667,
+          0.1944
+        ],
+        [
+          -1.5,
+          0.2222
+        ],
+        [
+          -1.3333333333333333,
+          0.1944
+        ],
+        [
+          -1.1666666666666667,
+          0.1944
+        ],
+        [
+          -1.0,
+          0.1944
+        ],
+        [
+          -0.6666666666666666,
+          0.1944
+        ],
+        [
+          0.0,
+          0.1759
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.2593,
+    "recovered_gain": 0.0833,
+    "control_onset_f1": 0.1389,
+    "control_recovered_onset_f1": 0.1852,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 99,
+        "delta": -1.5,
+        "support": 24
+      },
+      {
+        "start": 16.0,
+        "notes": 9,
+        "delta": -5.333333333333333,
+        "support": 4
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [
+      {
+        "window_start": 16.0,
+        "from": -1.5,
+        "to": -5.333333333333333,
+        "nearest_page_boundary": null,
+        "inside_window": false
+      }
+    ],
+    "shape": "steps (offset constant in stretches, jumping between them)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "5654342/p1-s2",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 36,
+      "truth_notes": 36,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0,
+      "predicted_span": 12.0,
+      "truth_span": 12.0
+    },
+    "onset_f1": 1.0,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 1.0,
+      "onset_f1_at_zero": 1.0,
+      "gain": 0.0,
+      "tested": [
+        [
+          -6.0,
+          0.1944
+        ],
+        [
+          -4.0,
+          0.0833
+        ],
+        [
+          -3.5,
+          0.1111
+        ],
+        [
+          -3.0,
+          0.1389
+        ],
+        [
+          -2.0,
+          0.2222
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          1.0,
+          0.0556
+        ],
+        [
+          2.0,
+          0.2222
+        ],
+        [
+          3.0,
+          0.1389
+        ],
+        [
+          3.5,
+          0.1111
+        ],
+        [
+          4.0,
+          0.0833
+        ],
+        [
+          6.0,
+          0.1944
+        ]
+      ]
+    },
+    "recovered_onset_f1": 1.0,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.2222,
+    "control_recovered_onset_f1": 0.2222,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 36,
+        "delta": 0.0,
+        "support": 36
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "5656522/p3-s4",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 75,
+      "truth_notes": 75,
+      "note_ratio": 1.0,
+      "pitch_agreement": 0.9867,
+      "pitch_f1": 0.9867,
+      "span_ratio": 1.0,
+      "predicted_span": 18.0,
+      "truth_span": 18.0
+    },
+    "onset_f1": 0.9867,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.9867,
+      "onset_f1_at_zero": 0.9867,
+      "gain": 0.0,
+      "tested": [
+        [
+          -12.0,
+          0.1467
+        ],
+        [
+          -6.0,
+          0.1867
+        ],
+        [
+          -4.5,
+          0.2
+        ],
+        [
+          -3.0,
+          0.2
+        ],
+        [
+          -1.5,
+          0.32
+        ],
+        [
+          0.0,
+          0.9867
+        ],
+        [
+          1.0,
+          0.1067
+        ],
+        [
+          1.5,
+          0.32
+        ],
+        [
+          3.0,
+          0.2
+        ],
+        [
+          4.5,
+          0.2
+        ],
+        [
+          6.0,
+          0.1867
+        ],
+        [
+          12.0,
+          0.1467
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.9867,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.1733,
+    "control_recovered_onset_f1": 0.2133,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 67,
+        "delta": 0.0,
+        "support": 66
+      },
+      {
+        "start": 16.0,
+        "notes": 8,
+        "delta": 0.0,
+        "support": 8
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "flat (offset constant across the score)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "5659823/p1-s2",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 48,
+      "truth_notes": 48,
+      "note_ratio": 1.0,
+      "pitch_agreement": 0.9792,
+      "pitch_f1": 0.9792,
+      "span_ratio": 1.0,
+      "predicted_span": 12.0,
+      "truth_span": 12.0
+    },
+    "onset_f1": 0.9792,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.9792,
+      "onset_f1_at_zero": 0.9792,
+      "gain": 0.0,
+      "tested": [
+        [
+          -6.0,
+          0.125
+        ],
+        [
+          -4.5,
+          0.1458
+        ],
+        [
+          -4.0,
+          0.0625
+        ],
+        [
+          -3.0,
+          0.2083
+        ],
+        [
+          -1.5,
+          0.25
+        ],
+        [
+          0.0,
+          0.9792
+        ],
+        [
+          1.5,
+          0.2292
+        ],
+        [
+          2.0,
+          0.0417
+        ],
+        [
+          3.0,
+          0.2083
+        ],
+        [
+          4.0,
+          0.0625
+        ],
+        [
+          4.5,
+          0.1458
+        ],
+        [
+          6.0,
+          0.125
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.9792,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.1875,
+    "control_recovered_onset_f1": 0.1875,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 48,
+        "delta": 0.0,
+        "support": 47
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "5667944/p4-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 71,
+      "truth_notes": 71,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0,
+      "predicted_span": 18.0,
+      "truth_span": 18.0
+    },
+    "onset_f1": 1.0,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 1.0,
+      "onset_f1_at_zero": 1.0,
+      "gain": 0.0,
+      "tested": [
+        [
+          -6.0,
+          0.0704
+        ],
+        [
+          -4.5,
+          0.169
+        ],
+        [
+          -3.0,
+          0.2676
+        ],
+        [
+          -1.5,
+          0.4648
+        ],
+        [
+          -1.0,
+          0.0986
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.5,
+          0.0563
+        ],
+        [
+          1.0,
+          0.0986
+        ],
+        [
+          1.5,
+          0.4648
+        ],
+        [
+          3.0,
+          0.2676
+        ],
+        [
+          4.5,
+          0.169
+        ],
+        [
+          6.0,
+          0.0704
+        ]
+      ]
+    },
+    "recovered_onset_f1": 1.0,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.1408,
+    "control_recovered_onset_f1": 0.2535,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 62,
+        "delta": 0.0,
+        "support": 62
+      },
+      {
+        "start": 16.0,
+        "notes": 9,
+        "delta": 0.0,
+        "support": 9
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "flat (offset constant across the score)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "5700433/p2-s4",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 59,
+      "truth_notes": 57,
+      "note_ratio": 1.035,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 0.9828,
+      "span_ratio": 1.4583,
+      "predicted_span": 8.75,
+      "truth_span": 6.0
+    },
+    "onset_f1": 0.1034,
+    "global_offset": {
+      "delta": -1.0,
+      "onset_f1": 0.2069,
+      "onset_f1_at_zero": 0.1034,
+      "gain": 0.1034,
+      "tested": [
+        [
+          -2.25,
+          0.069
+        ],
+        [
+          -2.0,
+          0.069
+        ],
+        [
+          -1.75,
+          0.069
+        ],
+        [
+          -1.5,
+          0.1552
+        ],
+        [
+          -1.0,
+          0.2069
+        ],
+        [
+          -0.75,
+          0.1724
+        ],
+        [
+          -0.5,
+          0.1552
+        ],
+        [
+          -0.25,
+          0.1207
+        ],
+        [
+          0.0,
+          0.1034
+        ],
+        [
+          0.25,
+          0.1207
+        ],
+        [
+          0.5,
+          0.069
+        ],
+        [
+          1.0,
+          0.069
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.2069,
+    "recovered_gain": 0.1034,
+    "control_onset_f1": 0.0517,
+    "control_recovered_onset_f1": 0.1034,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 59,
+        "delta": -1.0,
+        "support": 12
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "5701612/p1-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 56,
+      "truth_notes": 56,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.3333,
+      "predicted_span": 20.0,
+      "truth_span": 15.0
+    },
+    "onset_f1": 0.1607,
+    "global_offset": {
+      "delta": -5.0,
+      "onset_f1": 0.3571,
+      "onset_f1_at_zero": 0.1607,
+      "gain": 0.1964,
+      "tested": [
+        [
+          -10.5,
+          0.1071
+        ],
+        [
+          -7.0,
+          0.1071
+        ],
+        [
+          -6.0,
+          0.1071
+        ],
+        [
+          -5.5,
+          0.1071
+        ],
+        [
+          -5.0,
+          0.3571
+        ],
+        [
+          -4.5,
+          0.2679
+        ],
+        [
+          -4.0,
+          0.3214
+        ],
+        [
+          -3.0,
+          0.125
+        ],
+        [
+          -2.5,
+          0.1071
+        ],
+        [
+          -2.0,
+          0.1607
+        ],
+        [
+          0.0,
+          0.1607
+        ],
+        [
+          2.5,
+          0.1071
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.5536,
+    "recovered_gain": 0.3929,
+    "control_onset_f1": 0.0714,
+    "control_recovered_onset_f1": 0.1964,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 39,
+        "delta": -4.0,
+        "support": 14
+      },
+      {
+        "start": 16.0,
+        "notes": 17,
+        "delta": -5.0,
+        "support": 17
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [
+      {
+        "window_start": 16.0,
+        "from": -4.0,
+        "to": -5.0,
+        "nearest_page_boundary": null,
+        "inside_window": false
+      }
+    ],
+    "shape": "global offset (one shift recovers the score)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "5820797/p1-s2",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 63,
+      "truth_notes": 64,
+      "note_ratio": 0.984,
+      "pitch_agreement": 0.9844,
+      "pitch_f1": 0.9921,
+      "span_ratio": 1.0,
+      "predicted_span": 15.0,
+      "truth_span": 15.0
+    },
+    "onset_f1": 0.9921,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.9921,
+      "onset_f1_at_zero": 0.9921,
+      "gain": 0.0,
+      "tested": [
+        [
+          -5.0,
+          0.063
+        ],
+        [
+          -2.0,
+          0.0472
+        ],
+        [
+          -1.0,
+          0.252
+        ],
+        [
+          -0.75,
+          0.1732
+        ],
+        [
+          -0.25,
+          0.1732
+        ],
+        [
+          0.0,
+          0.9921
+        ],
+        [
+          0.25,
+          0.1732
+        ],
+        [
+          0.5,
+          0.0315
+        ],
+        [
+          0.75,
+          0.1732
+        ],
+        [
+          1.0,
+          0.252
+        ],
+        [
+          2.0,
+          0.0472
+        ],
+        [
+          5.0,
+          0.063
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.9921,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.126,
+    "control_recovered_onset_f1": 0.126,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 63,
+        "delta": 0.0,
+        "support": 64
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "5834392/p1-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 78,
+      "truth_notes": 81,
+      "note_ratio": 0.963,
+      "pitch_agreement": 0.8889,
+      "pitch_f1": 0.9057,
+      "span_ratio": 0.975,
+      "predicted_span": 9.75,
+      "truth_span": 10.0
+    },
+    "onset_f1": 0.8302,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.8302,
+      "onset_f1_at_zero": 0.8302,
+      "gain": 0.0,
+      "tested": [
+        [
+          -2.5,
+          0.1132
+        ],
+        [
+          -2.0,
+          0.1006
+        ],
+        [
+          -1.5,
+          0.1132
+        ],
+        [
+          -1.0,
+          0.2893
+        ],
+        [
+          -0.5,
+          0.1509
+        ],
+        [
+          0.0,
+          0.8302
+        ],
+        [
+          0.25,
+          0.1132
+        ],
+        [
+          0.5,
+          0.1384
+        ],
+        [
+          1.0,
+          0.3019
+        ],
+        [
+          1.5,
+          0.1006
+        ],
+        [
+          2.0,
+          0.1132
+        ],
+        [
+          2.75,
+          0.1258
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.8302,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.1509,
+    "control_recovered_onset_f1": 0.1635,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 78,
+        "delta": 0.0,
+        "support": 68
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "5837811/p1-s4",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 90,
+      "truth_notes": 100,
+      "note_ratio": 0.9,
+      "pitch_agreement": 0.88,
+      "pitch_f1": 0.9263,
+      "span_ratio": 1.2639,
+      "predicted_span": 15.166666666666666,
+      "truth_span": 12.0
+    },
+    "onset_f1": 0.1474,
+    "global_offset": {
+      "delta": -3.1666666666666665,
+      "onset_f1": 0.3789,
+      "onset_f1_at_zero": 0.1474,
+      "gain": 0.2316,
+      "tested": [
+        [
+          -6.666666666666667,
+          0.1789
+        ],
+        [
+          -3.6666666666666665,
+          0.1895
+        ],
+        [
+          -3.1666666666666665,
+          0.3789
+        ],
+        [
+          -2.6666666666666665,
+          0.3368
+        ],
+        [
+          -2.1666666666666665,
+          0.2421
+        ],
+        [
+          -1.6666666666666667,
+          0.2316
+        ],
+        [
+          -1.1666666666666667,
+          0.2737
+        ],
+        [
+          -0.6666666666666666,
+          0.2105
+        ],
+        [
+          -0.16666666666666666,
+          0.1579
+        ],
+        [
+          0.0,
+          0.1474
+        ],
+        [
+          0.8333333333333334,
+          0.2211
+        ],
+        [
+          1.3333333333333333,
+          0.1789
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.3789,
+    "recovered_gain": 0.2316,
+    "control_onset_f1": 0.1053,
+    "control_recovered_onset_f1": 0.1789,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 90,
+        "delta": -3.1666666666666665,
+        "support": 40
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "5840228/p1-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 69,
+      "truth_notes": 75,
+      "note_ratio": 0.92,
+      "pitch_agreement": 0.48,
+      "pitch_f1": 0.5,
+      "span_ratio": 1.375,
+      "predicted_span": 11.0,
+      "truth_span": 8.0
+    },
+    "onset_f1": 0.1528,
+    "global_offset": {
+      "delta": -1.5,
+      "onset_f1": 0.1944,
+      "onset_f1_at_zero": 0.1528,
+      "gain": 0.0417,
+      "tested": [
+        [
+          -4.75,
+          0.1389
+        ],
+        [
+          -3.75,
+          0.125
+        ],
+        [
+          -3.5,
+          0.1389
+        ],
+        [
+          -3.25,
+          0.1528
+        ],
+        [
+          -3.0,
+          0.1528
+        ],
+        [
+          -2.5,
+          0.1389
+        ],
+        [
+          -2.25,
+          0.1806
+        ],
+        [
+          -1.5,
+          0.1944
+        ],
+        [
+          -0.75,
+          0.1806
+        ],
+        [
+          0.0,
+          0.1528
+        ],
+        [
+          1.0,
+          0.1111
+        ],
+        [
+          1.25,
+          0.125
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.1944,
+    "recovered_gain": 0.0417,
+    "control_onset_f1": 0.0833,
+    "control_recovered_onset_f1": 0.1389,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 69,
+        "delta": -1.5,
+        "support": 17
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6112984/p4-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 78,
+      "truth_notes": 78,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0,
+      "predicted_span": 12.0,
+      "truth_span": 12.0
+    },
+    "onset_f1": 1.0,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 1.0,
+      "onset_f1_at_zero": 1.0,
+      "gain": 0.0,
+      "tested": [
+        [
+          -8.0,
+          0.1026
+        ],
+        [
+          -2.5,
+          0.0897
+        ],
+        [
+          -2.0,
+          0.2308
+        ],
+        [
+          -1.0,
+          0.141
+        ],
+        [
+          -0.5,
+          0.1282
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.5,
+          0.1282
+        ],
+        [
+          1.0,
+          0.141
+        ],
+        [
+          2.0,
+          0.2308
+        ],
+        [
+          2.5,
+          0.0897
+        ],
+        [
+          3.0,
+          0.0769
+        ],
+        [
+          8.0,
+          0.1026
+        ]
+      ]
+    },
+    "recovered_onset_f1": 1.0,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.2436,
+    "control_recovered_onset_f1": 0.2436,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 78,
+        "delta": 0.0,
+        "support": 78
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6114679/p1-s2",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 48,
+      "truth_notes": 48,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0,
+      "predicted_span": 6.0,
+      "truth_span": 6.0
+    },
+    "onset_f1": 1.0,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 1.0,
+      "onset_f1_at_zero": 1.0,
+      "gain": 0.0,
+      "tested": [
+        [
+          -3.0,
+          0.4167
+        ],
+        [
+          -2.0,
+          0.5
+        ],
+        [
+          -1.5,
+          0.375
+        ],
+        [
+          -1.0,
+          0.6875
+        ],
+        [
+          -0.5,
+          0.4583
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.5,
+          0.4583
+        ],
+        [
+          1.0,
+          0.6875
+        ],
+        [
+          1.5,
+          0.375
+        ],
+        [
+          2.0,
+          0.5
+        ],
+        [
+          3.0,
+          0.4167
+        ],
+        [
+          4.0,
+          0.3333
+        ]
+      ]
+    },
+    "recovered_onset_f1": 1.0,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.3125,
+    "control_recovered_onset_f1": 0.3125,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 48,
+        "delta": 0.0,
+        "support": 48
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6115317/p3-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 132,
+      "truth_notes": 133,
+      "note_ratio": 0.992,
+      "pitch_agreement": 0.9774,
+      "pitch_f1": 0.9811,
+      "span_ratio": 1.0,
+      "predicted_span": 10.0,
+      "truth_span": 10.0
+    },
+    "onset_f1": 0.9811,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.9811,
+      "onset_f1_at_zero": 0.9811,
+      "gain": 0.0,
+      "tested": [
+        [
+          -2.5,
+          0.234
+        ],
+        [
+          -2.0,
+          0.3547
+        ],
+        [
+          -1.5,
+          0.3396
+        ],
+        [
+          -1.0,
+          0.5509
+        ],
+        [
+          -0.5,
+          0.4151
+        ],
+        [
+          0.0,
+          0.9811
+        ],
+        [
+          0.5,
+          0.4151
+        ],
+        [
+          1.0,
+          0.5509
+        ],
+        [
+          1.5,
+          0.3396
+        ],
+        [
+          2.0,
+          0.3547
+        ],
+        [
+          2.5,
+          0.234
+        ],
+        [
+          3.0,
+          0.2189
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.9811,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.2868,
+    "control_recovered_onset_f1": 0.317,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 132,
+        "delta": 0.0,
+        "support": 131
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6209594/p3-s1",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 48,
+      "truth_notes": 48,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.2778,
+      "predicted_span": 11.5,
+      "truth_span": 9.0
+    },
+    "onset_f1": 0.7917,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.7917,
+      "onset_f1_at_zero": 0.7917,
+      "gain": 0.0,
+      "tested": [
+        [
+          -6.0,
+          0.0833
+        ],
+        [
+          -5.0,
+          0.0833
+        ],
+        [
+          -3.0,
+          0.0833
+        ],
+        [
+          -1.5,
+          0.0833
+        ],
+        [
+          -1.0,
+          0.0625
+        ],
+        [
+          -0.5,
+          0.1042
+        ],
+        [
+          0.0,
+          0.7917
+        ],
+        [
+          1.0,
+          0.0625
+        ],
+        [
+          2.0,
+          0.1042
+        ],
+        [
+          3.0,
+          0.1042
+        ],
+        [
+          5.0,
+          0.1667
+        ],
+        [
+          6.0,
+          0.0833
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.7917,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.2708,
+    "control_recovered_onset_f1": 0.2708,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 48,
+        "delta": 0.0,
+        "support": 38
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6209602/p4-s2",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 49,
+      "truth_notes": 49,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0,
+      "predicted_span": 16.0,
+      "truth_span": 16.0
+    },
+    "onset_f1": 0.9796,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.9796,
+      "onset_f1_at_zero": 0.9796,
+      "gain": 0.0,
+      "tested": [
+        [
+          -5.0,
+          0.3061
+        ],
+        [
+          -4.0,
+          0.3469
+        ],
+        [
+          -3.0,
+          0.3061
+        ],
+        [
+          -2.0,
+          0.3265
+        ],
+        [
+          -1.0,
+          0.5102
+        ],
+        [
+          0.0,
+          0.9796
+        ],
+        [
+          1.0,
+          0.5102
+        ],
+        [
+          2.0,
+          0.3265
+        ],
+        [
+          3.0,
+          0.3061
+        ],
+        [
+          4.0,
+          0.3265
+        ],
+        [
+          5.0,
+          0.3061
+        ],
+        [
+          6.0,
+          0.2245
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.9796,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.2857,
+    "control_recovered_onset_f1": 0.2857,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 49,
+        "delta": 0.0,
+        "support": 48
+      },
+      {
+        "start": 16.0,
+        "notes": 0,
+        "delta": 0.0,
+        "support": 0
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6209605/p1-s2",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 43,
+      "truth_notes": 43,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0,
+      "predicted_span": 16.0,
+      "truth_span": 16.0
+    },
+    "onset_f1": 1.0,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 1.0,
+      "onset_f1_at_zero": 1.0,
+      "gain": 0.0,
+      "tested": [
+        [
+          -10.0,
+          0.093
+        ],
+        [
+          -8.0,
+          0.186
+        ],
+        [
+          -6.0,
+          0.1163
+        ],
+        [
+          -4.0,
+          0.093
+        ],
+        [
+          -2.0,
+          0.2326
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          2.0,
+          0.2326
+        ],
+        [
+          4.0,
+          0.093
+        ],
+        [
+          6.0,
+          0.1163
+        ],
+        [
+          7.0,
+          0.0465
+        ],
+        [
+          8.0,
+          0.186
+        ],
+        [
+          10.0,
+          0.093
+        ]
+      ]
+    },
+    "recovered_onset_f1": 1.0,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.2326,
+    "control_recovered_onset_f1": 0.3023,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 43,
+        "delta": 0.0,
+        "support": 43
+      },
+      {
+        "start": 16.0,
+        "notes": 0,
+        "delta": 0.0,
+        "support": 0
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6209607/p1-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 44,
+      "truth_notes": 44,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0,
+      "predicted_span": 12.0,
+      "truth_span": 12.0
+    },
+    "onset_f1": 1.0,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 1.0,
+      "onset_f1_at_zero": 1.0,
+      "gain": 0.0,
+      "tested": [
+        [
+          -4.5,
+          0.0682
+        ],
+        [
+          -3.5,
+          0.0682
+        ],
+        [
+          -3.0,
+          0.1818
+        ],
+        [
+          -1.5,
+          0.1591
+        ],
+        [
+          -1.0,
+          0.0909
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.5,
+          0.0455
+        ],
+        [
+          1.0,
+          0.0909
+        ],
+        [
+          1.5,
+          0.1591
+        ],
+        [
+          3.0,
+          0.1818
+        ],
+        [
+          3.5,
+          0.0682
+        ],
+        [
+          4.5,
+          0.0682
+        ]
+      ]
+    },
+    "recovered_onset_f1": 1.0,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.2273,
+    "control_recovered_onset_f1": 0.2273,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 44,
+        "delta": 0.0,
+        "support": 44
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6209608/p1-s2",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 66,
+      "truth_notes": 65,
+      "note_ratio": 1.015,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 0.9924,
+      "span_ratio": 1.4375,
+      "predicted_span": 23.0,
+      "truth_span": 16.0
+    },
+    "onset_f1": 0.1679,
+    "global_offset": {
+      "delta": -0.5,
+      "onset_f1": 0.3664,
+      "onset_f1_at_zero": 0.1679,
+      "gain": 0.1985,
+      "tested": [
+        [
+          -8.5,
+          0.1985
+        ],
+        [
+          -7.5,
+          0.1374
+        ],
+        [
+          -7.0,
+          0.1679
+        ],
+        [
+          -6.5,
+          0.1527
+        ],
+        [
+          -5.5,
+          0.1832
+        ],
+        [
+          -4.5,
+          0.1374
+        ],
+        [
+          -4.0,
+          0.1221
+        ],
+        [
+          -3.5,
+          0.1527
+        ],
+        [
+          -2.5,
+          0.1985
+        ],
+        [
+          -2.0,
+          0.1374
+        ],
+        [
+          -0.5,
+          0.3664
+        ],
+        [
+          0.0,
+          0.1679
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.5038,
+    "recovered_gain": 0.3359,
+    "control_onset_f1": 0.0611,
+    "control_recovered_onset_f1": 0.2443,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 42,
+        "delta": -0.5,
+        "support": 24
+      },
+      {
+        "start": 16.0,
+        "notes": 24,
+        "delta": -7.0,
+        "support": 11
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [
+      {
+        "window_start": 16.0,
+        "from": -0.5,
+        "to": -7.0,
+        "nearest_page_boundary": null,
+        "inside_window": false
+      }
+    ],
+    "shape": "global offset (one shift recovers the score)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6232117/p2-s2",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 65,
+      "truth_notes": 65,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0,
+      "predicted_span": 12.0,
+      "truth_span": 12.0
+    },
+    "onset_f1": 1.0,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 1.0,
+      "onset_f1_at_zero": 1.0,
+      "gain": 0.0,
+      "tested": [
+        [
+          -7.5,
+          0.1385
+        ],
+        [
+          -4.5,
+          0.1846
+        ],
+        [
+          -3.0,
+          0.2923
+        ],
+        [
+          -1.5,
+          0.3385
+        ],
+        [
+          -1.0,
+          0.1846
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          1.0,
+          0.1846
+        ],
+        [
+          1.5,
+          0.3385
+        ],
+        [
+          2.5,
+          0.1077
+        ],
+        [
+          3.0,
+          0.2923
+        ],
+        [
+          4.5,
+          0.1846
+        ],
+        [
+          7.5,
+          0.1385
+        ]
+      ]
+    },
+    "recovered_onset_f1": 1.0,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.3077,
+    "control_recovered_onset_f1": 0.2769,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 65,
+        "delta": 0.0,
+        "support": 65
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6243836/p4-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 34,
+      "truth_notes": 35,
+      "note_ratio": 0.971,
+      "pitch_agreement": 0.9714,
+      "pitch_f1": 0.9855,
+      "span_ratio": 1.0,
+      "predicted_span": 12.0,
+      "truth_span": 12.0
+    },
+    "onset_f1": 0.9855,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.9855,
+      "onset_f1_at_zero": 0.9855,
+      "gain": 0.0,
+      "tested": [
+        [
+          -7.5,
+          0.1739
+        ],
+        [
+          -6.0,
+          0.4058
+        ],
+        [
+          -4.5,
+          0.3478
+        ],
+        [
+          -3.0,
+          0.6667
+        ],
+        [
+          -1.5,
+          0.5217
+        ],
+        [
+          0.0,
+          0.9855
+        ],
+        [
+          1.5,
+          0.5217
+        ],
+        [
+          3.0,
+          0.6957
+        ],
+        [
+          4.5,
+          0.3478
+        ],
+        [
+          6.0,
+          0.4348
+        ],
+        [
+          7.5,
+          0.1739
+        ],
+        [
+          9.0,
+          0.1739
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.9855,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.2609,
+    "control_recovered_onset_f1": 0.3188,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 34,
+        "delta": 0.0,
+        "support": 34
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6243838/p3-s4",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 33,
+      "truth_notes": 34,
+      "note_ratio": 0.971,
+      "pitch_agreement": 0.9706,
+      "pitch_f1": 0.9851,
+      "span_ratio": 1.0,
+      "predicted_span": 9.0,
+      "truth_span": 9.0
+    },
+    "onset_f1": 0.9851,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.9851,
+      "onset_f1_at_zero": 0.9851,
+      "gain": 0.0,
+      "tested": [
+        [
+          -3.0,
+          0.209
+        ],
+        [
+          -2.5,
+          0.2388
+        ],
+        [
+          -2.0,
+          0.2985
+        ],
+        [
+          -1.5,
+          0.2687
+        ],
+        [
+          -1.0,
+          0.3881
+        ],
+        [
+          -0.5,
+          0.3284
+        ],
+        [
+          0.0,
+          0.9851
+        ],
+        [
+          0.5,
+          0.3284
+        ],
+        [
+          1.0,
+          0.3881
+        ],
+        [
+          1.5,
+          0.2687
+        ],
+        [
+          2.0,
+          0.2985
+        ],
+        [
+          2.5,
+          0.2388
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.9851,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.3881,
+    "control_recovered_onset_f1": 0.3881,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 33,
+        "delta": 0.0,
+        "support": 34
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6243839/p2-s1",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 47,
+      "truth_notes": 47,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0,
+      "predicted_span": 11.5,
+      "truth_span": 11.5
+    },
+    "onset_f1": 1.0,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 1.0,
+      "onset_f1_at_zero": 1.0,
+      "gain": 0.0,
+      "tested": [
+        [
+          -6.0,
+          0.2128
+        ],
+        [
+          -4.0,
+          0.1702
+        ],
+        [
+          -3.0,
+          0.1064
+        ],
+        [
+          -2.0,
+          0.1915
+        ],
+        [
+          -1.0,
+          0.2128
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          1.0,
+          0.2128
+        ],
+        [
+          2.0,
+          0.1915
+        ],
+        [
+          3.0,
+          0.1064
+        ],
+        [
+          4.0,
+          0.1702
+        ],
+        [
+          5.0,
+          0.1064
+        ],
+        [
+          6.0,
+          0.2128
+        ]
+      ]
+    },
+    "recovered_onset_f1": 1.0,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.234,
+    "control_recovered_onset_f1": 0.234,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 47,
+        "delta": 0.0,
+        "support": 47
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6302395/p2-s1",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 32,
+      "truth_notes": 32,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 0.8571,
+      "predicted_span": 12.0,
+      "truth_span": 14.0
+    },
+    "onset_f1": 0.0625,
+    "global_offset": {
+      "delta": 2.0,
+      "onset_f1": 0.125,
+      "onset_f1_at_zero": 0.0625,
+      "gain": 0.0625,
+      "tested": [
+        [
+          -0.75,
+          0.0625
+        ],
+        [
+          -0.16666666666666666,
+          0.0312
+        ],
+        [
+          -0.08333333333333333,
+          0.0312
+        ],
+        [
+          0.0,
+          0.0625
+        ],
+        [
+          2.0,
+          0.125
+        ],
+        [
+          3.0833333333333335,
+          0.0625
+        ],
+        [
+          3.25,
+          0.0625
+        ],
+        [
+          3.5833333333333335,
+          0.0625
+        ],
+        [
+          3.75,
+          0.0625
+        ],
+        [
+          4.0,
+          0.125
+        ],
+        [
+          6.75,
+          0.0625
+        ],
+        [
+          7.416666666666667,
+          0.0625
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.125,
+    "recovered_gain": 0.0625,
+    "control_onset_f1": 0.0312,
+    "control_recovered_onset_f1": 0.125,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 32,
+        "delta": 2.0,
+        "support": 4
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6320420/p7-s2",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 37,
+      "truth_notes": 38,
+      "note_ratio": 0.974,
+      "pitch_agreement": 0.9737,
+      "pitch_f1": 0.9867,
+      "span_ratio": 0.9211,
+      "predicted_span": 17.5,
+      "truth_span": 19.0
+    },
+    "onset_f1": 0.3467,
+    "global_offset": {
+      "delta": 1.5,
+      "onset_f1": 0.6667,
+      "onset_f1_at_zero": 0.3467,
+      "gain": 0.32,
+      "tested": [
+        [
+          -4.0,
+          0.08
+        ],
+        [
+          -2.5,
+          0.08
+        ],
+        [
+          -1.5,
+          0.1333
+        ],
+        [
+          -1.0,
+          0.1333
+        ],
+        [
+          0.0,
+          0.3467
+        ],
+        [
+          1.0,
+          0.16
+        ],
+        [
+          1.5,
+          0.6667
+        ],
+        [
+          2.5,
+          0.1067
+        ],
+        [
+          3.0,
+          0.08
+        ],
+        [
+          4.0,
+          0.1333
+        ],
+        [
+          4.5,
+          0.1067
+        ],
+        [
+          7.0,
+          0.1067
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.6133,
+    "recovered_gain": 0.2667,
+    "control_onset_f1": 0.1867,
+    "control_recovered_onset_f1": 0.2133,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 35,
+        "delta": 1.5,
+        "support": 23
+      },
+      {
+        "start": 16.0,
+        "notes": 2,
+        "delta": 0.0,
+        "support": 2
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6351349/p4-s2",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 70,
+      "truth_notes": 74,
+      "note_ratio": 0.946,
+      "pitch_agreement": 0.9459,
+      "pitch_f1": 0.9722,
+      "span_ratio": 1.4583,
+      "predicted_span": 17.5,
+      "truth_span": 12.0
+    },
+    "onset_f1": 0.125,
+    "global_offset": {
+      "delta": -5.5,
+      "onset_f1": 0.4306,
+      "onset_f1_at_zero": 0.125,
+      "gain": 0.3056,
+      "tested": [
+        [
+          -7.5,
+          0.125
+        ],
+        [
+          -6.5,
+          0.1806
+        ],
+        [
+          -5.5,
+          0.4306
+        ],
+        [
+          -4.5,
+          0.2222
+        ],
+        [
+          -3.5,
+          0.1806
+        ],
+        [
+          -2.5,
+          0.125
+        ],
+        [
+          -2.0,
+          0.1528
+        ],
+        [
+          -1.5,
+          0.1528
+        ],
+        [
+          -1.0,
+          0.125
+        ],
+        [
+          -0.5,
+          0.1667
+        ],
+        [
+          0.0,
+          0.125
+        ],
+        [
+          1.0,
+          0.1528
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.4306,
+    "recovered_gain": 0.3056,
+    "control_onset_f1": 0.0972,
+    "control_recovered_onset_f1": 0.1389,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 66,
+        "delta": -5.5,
+        "support": 27
+      },
+      {
+        "start": 16.0,
+        "notes": 4,
+        "delta": -5.5,
+        "support": 4
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "global offset (one shift recovers the score)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6377942/p2-s2",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 58,
+      "truth_notes": 58,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0104,
+      "predicted_span": 16.166666666666668,
+      "truth_span": 16.0
+    },
+    "onset_f1": 0.3966,
+    "global_offset": {
+      "delta": -0.16666666666666666,
+      "onset_f1": 0.5345,
+      "onset_f1_at_zero": 0.3966,
+      "gain": 0.1379,
+      "tested": [
+        [
+          -9.666666666666666,
+          0.1034
+        ],
+        [
+          -4.166666666666667,
+          0.2241
+        ],
+        [
+          -2.1666666666666665,
+          0.0517
+        ],
+        [
+          -2.0,
+          0.0517
+        ],
+        [
+          -1.1666666666666667,
+          0.069
+        ],
+        [
+          -0.16666666666666666,
+          0.5345
+        ],
+        [
+          0.0,
+          0.3966
+        ],
+        [
+          0.8333333333333334,
+          0.069
+        ],
+        [
+          1.8333333333333333,
+          0.069
+        ],
+        [
+          2.0,
+          0.0517
+        ],
+        [
+          3.8333333333333335,
+          0.2414
+        ],
+        [
+          9.5,
+          0.1034
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.5345,
+    "recovered_gain": 0.1379,
+    "control_onset_f1": 0.0,
+    "control_recovered_onset_f1": 0.1034,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 58,
+        "delta": -0.16666666666666666,
+        "support": 31
+      },
+      {
+        "start": 16.0,
+        "notes": 0,
+        "delta": 0.0,
+        "support": 0
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6378337/p2-s1",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 40,
+      "truth_notes": 40,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0,
+      "predicted_span": 16.0,
+      "truth_span": 16.0
+    },
+    "onset_f1": 1.0,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 1.0,
+      "onset_f1_at_zero": 1.0,
+      "gain": 0.0,
+      "tested": [
+        [
+          -8.5,
+          0.125
+        ],
+        [
+          -6.5,
+          0.1
+        ],
+        [
+          -5.5,
+          0.075
+        ],
+        [
+          -4.5,
+          0.1
+        ],
+        [
+          -2.0,
+          0.15
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          2.0,
+          0.15
+        ],
+        [
+          4.5,
+          0.1
+        ],
+        [
+          5.5,
+          0.075
+        ],
+        [
+          6.5,
+          0.1
+        ],
+        [
+          7.5,
+          0.075
+        ],
+        [
+          8.5,
+          0.125
+        ]
+      ]
+    },
+    "recovered_onset_f1": 1.0,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.175,
+    "control_recovered_onset_f1": 0.175,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 40,
+        "delta": 0.0,
+        "support": 40
+      },
+      {
+        "start": 16.0,
+        "notes": 0,
+        "delta": 0.0,
+        "support": 0
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6378373/p1-s2",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 29,
+      "truth_notes": 29,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0,
+      "predicted_span": 16.0,
+      "truth_span": 16.0
+    },
+    "onset_f1": 1.0,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 1.0,
+      "onset_f1_at_zero": 1.0,
+      "gain": 0.0,
+      "tested": [
+        [
+          -7.0,
+          0.069
+        ],
+        [
+          -4.0,
+          0.1724
+        ],
+        [
+          -3.0,
+          0.1034
+        ],
+        [
+          -2.0,
+          0.069
+        ],
+        [
+          -1.5,
+          0.0345
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          1.5,
+          0.0345
+        ],
+        [
+          2.0,
+          0.069
+        ],
+        [
+          2.5,
+          0.0345
+        ],
+        [
+          3.0,
+          0.1034
+        ],
+        [
+          4.0,
+          0.1724
+        ],
+        [
+          7.0,
+          0.069
+        ]
+      ]
+    },
+    "recovered_onset_f1": 1.0,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.069,
+    "control_recovered_onset_f1": 0.1724,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 29,
+        "delta": 0.0,
+        "support": 29
+      },
+      {
+        "start": 16.0,
+        "notes": 0,
+        "delta": 0.0,
+        "support": 0
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6379527/p3-s4",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 54,
+      "truth_notes": 54,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.3958,
+      "predicted_span": 8.375,
+      "truth_span": 6.0
+    },
+    "onset_f1": 0.3148,
+    "global_offset": {
+      "delta": -0.625,
+      "onset_f1": 0.3889,
+      "onset_f1_at_zero": 0.3148,
+      "gain": 0.0741,
+      "tested": [
+        [
+          -2.625,
+          0.2407
+        ],
+        [
+          -2.375,
+          0.2407
+        ],
+        [
+          -1.625,
+          0.2222
+        ],
+        [
+          -0.625,
+          0.3889
+        ],
+        [
+          0.0,
+          0.3148
+        ],
+        [
+          0.375,
+          0.1481
+        ],
+        [
+          1.0,
+          0.1481
+        ],
+        [
+          1.375,
+          0.1481
+        ],
+        [
+          2.0,
+          0.1296
+        ],
+        [
+          2.125,
+          0.1111
+        ],
+        [
+          3.0,
+          0.1111
+        ],
+        [
+          4.0,
+          0.1296
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.3889,
+    "recovered_gain": 0.0741,
+    "control_onset_f1": 0.0926,
+    "control_recovered_onset_f1": 0.2037,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 54,
+        "delta": -0.625,
+        "support": 21
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6379750/p2-s1",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 36,
+      "truth_notes": 36,
+      "note_ratio": 1.0,
+      "pitch_agreement": 0.9722,
+      "pitch_f1": 0.9722,
+      "span_ratio": 1.0,
+      "predicted_span": 14.0,
+      "truth_span": 14.0
+    },
+    "onset_f1": 0.9722,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.9722,
+      "onset_f1_at_zero": 0.9722,
+      "gain": 0.0,
+      "tested": [
+        [
+          -6.0,
+          0.1111
+        ],
+        [
+          -4.5,
+          0.0833
+        ],
+        [
+          -2.5,
+          0.0833
+        ],
+        [
+          -1.5,
+          0.0833
+        ],
+        [
+          -1.0,
+          0.1111
+        ],
+        [
+          0.0,
+          0.9722
+        ],
+        [
+          1.0,
+          0.1111
+        ],
+        [
+          1.5,
+          0.0833
+        ],
+        [
+          2.5,
+          0.0833
+        ],
+        [
+          4.5,
+          0.0833
+        ],
+        [
+          6.0,
+          0.1389
+        ],
+        [
+          7.0,
+          0.0556
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.9722,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.25,
+    "control_recovered_onset_f1": 0.25,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 36,
+        "delta": 0.0,
+        "support": 35
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6447286/p2-s1",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 64,
+      "truth_notes": 63,
+      "note_ratio": 1.016,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 0.9921,
+      "span_ratio": 1.0,
+      "predicted_span": 12.0,
+      "truth_span": 12.0
+    },
+    "onset_f1": 0.9921,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.9921,
+      "onset_f1_at_zero": 0.9921,
+      "gain": 0.0,
+      "tested": [
+        [
+          -7.5,
+          0.126
+        ],
+        [
+          -3.5,
+          0.0945
+        ],
+        [
+          -3.0,
+          0.0945
+        ],
+        [
+          -2.0,
+          0.0787
+        ],
+        [
+          -1.5,
+          0.1575
+        ],
+        [
+          -0.5,
+          0.0787
+        ],
+        [
+          0.0,
+          0.9921
+        ],
+        [
+          0.5,
+          0.0787
+        ],
+        [
+          1.5,
+          0.1417
+        ],
+        [
+          3.0,
+          0.0945
+        ],
+        [
+          3.5,
+          0.0945
+        ],
+        [
+          7.5,
+          0.126
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.9921,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.2362,
+    "control_recovered_onset_f1": 0.2362,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 64,
+        "delta": 0.0,
+        "support": 63
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6447342/p2-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 77,
+      "truth_notes": 77,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0,
+      "predicted_span": 12.0,
+      "truth_span": 12.0
+    },
+    "onset_f1": 0.987,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.987,
+      "onset_f1_at_zero": 0.987,
+      "gain": 0.0,
+      "tested": [
+        [
+          -4.5,
+          0.1558
+        ],
+        [
+          -3.0,
+          0.1429
+        ],
+        [
+          -2.5,
+          0.1429
+        ],
+        [
+          -1.5,
+          0.2468
+        ],
+        [
+          -1.0,
+          0.3377
+        ],
+        [
+          0.0,
+          0.987
+        ],
+        [
+          0.5,
+          0.1039
+        ],
+        [
+          1.0,
+          0.3377
+        ],
+        [
+          1.5,
+          0.2468
+        ],
+        [
+          2.5,
+          0.1429
+        ],
+        [
+          3.0,
+          0.1429
+        ],
+        [
+          4.5,
+          0.1558
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.987,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.2338,
+    "control_recovered_onset_f1": 0.2727,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 77,
+        "delta": 0.0,
+        "support": 76
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6447372/p1-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 43,
+      "truth_notes": 45,
+      "note_ratio": 0.956,
+      "pitch_agreement": 0.9556,
+      "pitch_f1": 0.9773,
+      "span_ratio": 1.0,
+      "predicted_span": 10.5,
+      "truth_span": 10.5
+    },
+    "onset_f1": 0.9773,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.9773,
+      "onset_f1_at_zero": 0.9773,
+      "gain": 0.0,
+      "tested": [
+        [
+          -3.5,
+          0.2727
+        ],
+        [
+          -2.5,
+          0.0682
+        ],
+        [
+          -2.0,
+          0.0909
+        ],
+        [
+          -1.5,
+          0.0682
+        ],
+        [
+          -1.0,
+          0.0909
+        ],
+        [
+          0.0,
+          0.9773
+        ],
+        [
+          1.0,
+          0.0909
+        ],
+        [
+          1.5,
+          0.0682
+        ],
+        [
+          2.0,
+          0.0909
+        ],
+        [
+          2.5,
+          0.0682
+        ],
+        [
+          3.5,
+          0.2727
+        ],
+        [
+          7.0,
+          0.0682
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.9773,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.2727,
+    "control_recovered_onset_f1": 0.2727,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 43,
+        "delta": 0.0,
+        "support": 43
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6481218/p10-s1",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 58,
+      "truth_notes": 58,
+      "note_ratio": 1.0,
+      "pitch_agreement": 0.8966,
+      "pitch_f1": 0.8966,
+      "span_ratio": 0.6667,
+      "predicted_span": 8.0,
+      "truth_span": 12.0
+    },
+    "onset_f1": 0.431,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.431,
+      "onset_f1_at_zero": 0.431,
+      "gain": 0.0,
+      "tested": [
+        [
+          -1.5,
+          0.069
+        ],
+        [
+          -1.0,
+          0.069
+        ],
+        [
+          -0.75,
+          0.1552
+        ],
+        [
+          -0.5,
+          0.0862
+        ],
+        [
+          0.0,
+          0.431
+        ],
+        [
+          0.75,
+          0.1207
+        ],
+        [
+          1.0,
+          0.0862
+        ],
+        [
+          1.25,
+          0.0862
+        ],
+        [
+          2.0,
+          0.2931
+        ],
+        [
+          2.75,
+          0.1552
+        ],
+        [
+          3.0,
+          0.069
+        ],
+        [
+          4.0,
+          0.1724
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.431,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.0,
+    "control_recovered_onset_f1": 0.069,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 58,
+        "delta": 0.0,
+        "support": 25
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6481941/p11-s2",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 42,
+      "truth_notes": 42,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0,
+      "predicted_span": 9.0,
+      "truth_span": 9.0
+    },
+    "onset_f1": 1.0,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 1.0,
+      "onset_f1_at_zero": 1.0,
+      "gain": 0.0,
+      "tested": [
+        [
+          -6.0,
+          0.2143
+        ],
+        [
+          -3.0,
+          0.3333
+        ],
+        [
+          -2.5,
+          0.2143
+        ],
+        [
+          -1.5,
+          0.4524
+        ],
+        [
+          -1.0,
+          0.2143
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          1.0,
+          0.2143
+        ],
+        [
+          1.5,
+          0.4524
+        ],
+        [
+          2.5,
+          0.2143
+        ],
+        [
+          3.0,
+          0.3333
+        ],
+        [
+          4.0,
+          0.1905
+        ],
+        [
+          6.0,
+          0.2143
+        ]
+      ]
+    },
+    "recovered_onset_f1": 1.0,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.2381,
+    "control_recovered_onset_f1": 0.3333,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 42,
+        "delta": 0.0,
+        "support": 42
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6482032/p34-s2",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 26,
+      "truth_notes": 26,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0,
+      "predicted_span": 8.0,
+      "truth_span": 8.0
+    },
+    "onset_f1": 1.0,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 1.0,
+      "onset_f1_at_zero": 1.0,
+      "gain": 0.0,
+      "tested": [
+        [
+          -6.0,
+          0.1538
+        ],
+        [
+          -4.0,
+          0.4615
+        ],
+        [
+          -2.0,
+          0.4615
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          2.0,
+          0.4615
+        ],
+        [
+          4.0,
+          0.4615
+        ],
+        [
+          6.0,
+          0.1538
+        ]
+      ]
+    },
+    "recovered_onset_f1": 1.0,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.3846,
+    "control_recovered_onset_f1": 0.3846,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 26,
+        "delta": 0.0,
+        "support": 26
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6548435/p4-s2",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 65,
+      "truth_notes": 65,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0,
+      "predicted_span": 16.0,
+      "truth_span": 16.0
+    },
+    "onset_f1": 1.0,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 1.0,
+      "onset_f1_at_zero": 1.0,
+      "gain": 0.0,
+      "tested": [
+        [
+          -6.0,
+          0.1231
+        ],
+        [
+          -4.0,
+          0.1692
+        ],
+        [
+          -3.0,
+          0.2154
+        ],
+        [
+          -2.0,
+          0.2308
+        ],
+        [
+          -1.0,
+          0.3077
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          1.0,
+          0.3077
+        ],
+        [
+          2.0,
+          0.2308
+        ],
+        [
+          3.0,
+          0.2154
+        ],
+        [
+          4.0,
+          0.1692
+        ],
+        [
+          6.0,
+          0.1231
+        ],
+        [
+          7.0,
+          0.1231
+        ]
+      ]
+    },
+    "recovered_onset_f1": 1.0,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.1692,
+    "control_recovered_onset_f1": 0.2154,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 65,
+        "delta": 0.0,
+        "support": 65
+      },
+      {
+        "start": 16.0,
+        "notes": 0,
+        "delta": 0.0,
+        "support": 0
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6565727/p6-s1",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 65,
+      "truth_notes": 65,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0,
+      "predicted_span": 16.0,
+      "truth_span": 16.0
+    },
+    "onset_f1": 1.0,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 1.0,
+      "onset_f1_at_zero": 1.0,
+      "gain": 0.0,
+      "tested": [
+        [
+          -8.0,
+          0.4923
+        ],
+        [
+          -5.0,
+          0.2615
+        ],
+        [
+          -4.0,
+          0.3231
+        ],
+        [
+          -3.0,
+          0.2923
+        ],
+        [
+          -1.0,
+          0.3538
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          1.0,
+          0.3538
+        ],
+        [
+          2.0,
+          0.2154
+        ],
+        [
+          3.0,
+          0.2923
+        ],
+        [
+          4.0,
+          0.3231
+        ],
+        [
+          5.0,
+          0.2615
+        ],
+        [
+          8.0,
+          0.4923
+        ]
+      ]
+    },
+    "recovered_onset_f1": 1.0,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.3231,
+    "control_recovered_onset_f1": 0.3231,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 65,
+        "delta": 0.0,
+        "support": 65
+      },
+      {
+        "start": 16.0,
+        "notes": 0,
+        "delta": 0.0,
+        "support": 0
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6567603/p1-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 51,
+      "truth_notes": 52,
+      "note_ratio": 0.981,
+      "pitch_agreement": 0.9615,
+      "pitch_f1": 0.9709,
+      "span_ratio": 1.0833,
+      "predicted_span": 6.5,
+      "truth_span": 6.0
+    },
+    "onset_f1": 0.4272,
+    "global_offset": {
+      "delta": -0.5,
+      "onset_f1": 0.6214,
+      "onset_f1_at_zero": 0.4272,
+      "gain": 0.1942,
+      "tested": [
+        [
+          -3.5,
+          0.0971
+        ],
+        [
+          -3.0,
+          0.0971
+        ],
+        [
+          -2.5,
+          0.1359
+        ],
+        [
+          -2.0,
+          0.0971
+        ],
+        [
+          -1.5,
+          0.0971
+        ],
+        [
+          -1.0,
+          0.0971
+        ],
+        [
+          -0.5,
+          0.6214
+        ],
+        [
+          0.0,
+          0.4272
+        ],
+        [
+          0.6666666666666666,
+          0.0971
+        ],
+        [
+          1.0,
+          0.0971
+        ],
+        [
+          2.0,
+          0.0971
+        ],
+        [
+          2.5,
+          0.1165
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.6214,
+    "recovered_gain": 0.1942,
+    "control_onset_f1": 0.233,
+    "control_recovered_onset_f1": 0.233,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 51,
+        "delta": -0.5,
+        "support": 33
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6568021/p1-s2",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 36,
+      "truth_notes": 36,
+      "note_ratio": 1.0,
+      "pitch_agreement": 0.9722,
+      "pitch_f1": 0.9722,
+      "span_ratio": 0.7361,
+      "predicted_span": 6.625,
+      "truth_span": 9.0
+    },
+    "onset_f1": 0.25,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.25,
+      "onset_f1_at_zero": 0.25,
+      "gain": 0.0,
+      "tested": [
+        [
+          0.0,
+          0.25
+        ],
+        [
+          0.125,
+          0.1111
+        ],
+        [
+          0.25,
+          0.0833
+        ],
+        [
+          0.375,
+          0.1111
+        ],
+        [
+          0.75,
+          0.1111
+        ],
+        [
+          1.0,
+          0.0556
+        ],
+        [
+          1.125,
+          0.0556
+        ],
+        [
+          1.25,
+          0.0833
+        ],
+        [
+          1.75,
+          0.1111
+        ],
+        [
+          1.875,
+          0.0833
+        ],
+        [
+          4.5,
+          0.1111
+        ],
+        [
+          6.0,
+          0.1667
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.25,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.0556,
+    "control_recovered_onset_f1": 0.1389,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 36,
+        "delta": 0.0,
+        "support": 9
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6568070/p3-s4",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 21,
+      "truth_notes": 21,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0,
+      "predicted_span": 21.0,
+      "truth_span": 21.0
+    },
+    "onset_f1": 1.0,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 1.0,
+      "onset_f1_at_zero": 1.0,
+      "gain": 0.0,
+      "tested": [
+        [
+          -12.0,
+          0.1905
+        ],
+        [
+          -10.0,
+          0.1429
+        ],
+        [
+          -8.0,
+          0.2381
+        ],
+        [
+          -4.0,
+          0.2857
+        ],
+        [
+          -2.0,
+          0.1905
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          2.0,
+          0.1905
+        ],
+        [
+          4.0,
+          0.2857
+        ],
+        [
+          8.0,
+          0.2381
+        ],
+        [
+          10.0,
+          0.1429
+        ],
+        [
+          12.0,
+          0.1905
+        ],
+        [
+          14.0,
+          0.1429
+        ]
+      ]
+    },
+    "recovered_onset_f1": 1.0,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.381,
+    "control_recovered_onset_f1": 0.381,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 20,
+        "delta": 0.0,
+        "support": 20
+      },
+      {
+        "start": 16.0,
+        "notes": 1,
+        "delta": 0.0,
+        "support": 1
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6569855/p1-s1",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 65,
+      "truth_notes": 61,
+      "note_ratio": 1.066,
+      "pitch_agreement": 0.9344,
+      "pitch_f1": 0.9048,
+      "span_ratio": 1.0408,
+      "predicted_span": 12.75,
+      "truth_span": 12.25
+    },
+    "onset_f1": 0.2063,
+    "global_offset": {
+      "delta": -0.5,
+      "onset_f1": 0.619,
+      "onset_f1_at_zero": 0.2063,
+      "gain": 0.4127,
+      "tested": [
+        [
+          -3.5,
+          0.1587
+        ],
+        [
+          -2.5,
+          0.2857
+        ],
+        [
+          -2.25,
+          0.2381
+        ],
+        [
+          -1.5,
+          0.2381
+        ],
+        [
+          -0.5,
+          0.619
+        ],
+        [
+          -0.25,
+          0.3651
+        ],
+        [
+          0.0,
+          0.2063
+        ],
+        [
+          0.25,
+          0.1746
+        ],
+        [
+          0.5,
+          0.2063
+        ],
+        [
+          1.5,
+          0.1587
+        ],
+        [
+          1.75,
+          0.1746
+        ],
+        [
+          2.0,
+          0.1746
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.619,
+    "recovered_gain": 0.4127,
+    "control_onset_f1": 0.0317,
+    "control_recovered_onset_f1": 0.2381,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 65,
+        "delta": -0.5,
+        "support": 39
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6569865/p2-s1",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 105,
+      "truth_notes": 97,
+      "note_ratio": 1.082,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 0.9604,
+      "span_ratio": 1.1667,
+      "predicted_span": 28.0,
+      "truth_span": 24.0
+    },
+    "onset_f1": 0.9307,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.9307,
+      "onset_f1_at_zero": 0.9307,
+      "gain": 0.0,
+      "tested": [
+        [
+          -16.0,
+          0.2574
+        ],
+        [
+          -12.0,
+          0.495
+        ],
+        [
+          -8.0,
+          0.297
+        ],
+        [
+          -4.0,
+          0.4752
+        ],
+        [
+          -2.0,
+          0.2178
+        ],
+        [
+          -0.5,
+          0.1881
+        ],
+        [
+          0.0,
+          0.9307
+        ],
+        [
+          0.5,
+          0.1782
+        ],
+        [
+          2.0,
+          0.2079
+        ],
+        [
+          4.0,
+          0.3861
+        ],
+        [
+          8.0,
+          0.2376
+        ],
+        [
+          12.0,
+          0.4653
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.6436,
+    "recovered_gain": -0.2871,
+    "control_onset_f1": 0.2871,
+    "control_recovered_onset_f1": 0.2277,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 66,
+        "delta": 0.0,
+        "support": 66
+      },
+      {
+        "start": 16.0,
+        "notes": 39,
+        "delta": -12.0,
+        "support": 34
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [
+      {
+        "window_start": 16.0,
+        "from": 0.0,
+        "to": -12.0,
+        "nearest_page_boundary": null,
+        "inside_window": false
+      }
+    ],
+    "shape": "steps (offset constant in stretches, jumping between them)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6570092/p1-s4",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 63,
+      "truth_notes": 63,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 0.875,
+      "predicted_span": 17.5,
+      "truth_span": 20.0
+    },
+    "onset_f1": 0.2063,
+    "global_offset": {
+      "delta": 2.0,
+      "onset_f1": 0.3175,
+      "onset_f1_at_zero": 0.2063,
+      "gain": 0.1111,
+      "tested": [
+        [
+          -2.5,
+          0.1587
+        ],
+        [
+          -1.5,
+          0.127
+        ],
+        [
+          -1.0,
+          0.127
+        ],
+        [
+          -0.5,
+          0.1746
+        ],
+        [
+          0.0,
+          0.2063
+        ],
+        [
+          0.5,
+          0.2063
+        ],
+        [
+          1.0,
+          0.2381
+        ],
+        [
+          1.5,
+          0.2381
+        ],
+        [
+          2.0,
+          0.3175
+        ],
+        [
+          2.5,
+          0.1587
+        ],
+        [
+          3.0,
+          0.1746
+        ],
+        [
+          4.0,
+          0.1587
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.3175,
+    "recovered_gain": 0.1111,
+    "control_onset_f1": 0.0952,
+    "control_recovered_onset_f1": 0.1429,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 55,
+        "delta": 2.0,
+        "support": 16
+      },
+      {
+        "start": 16.0,
+        "notes": 8,
+        "delta": 2.0,
+        "support": 4
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "global offset (one shift recovers the score)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6570192/p1-s1",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 58,
+      "truth_notes": 56,
+      "note_ratio": 1.036,
+      "pitch_agreement": 0.9643,
+      "pitch_f1": 0.9474,
+      "span_ratio": 1.3281,
+      "predicted_span": 21.25,
+      "truth_span": 16.0
+    },
+    "onset_f1": 0.0877,
+    "global_offset": {
+      "delta": -5.25,
+      "onset_f1": 0.1754,
+      "onset_f1_at_zero": 0.0877,
+      "gain": 0.0877,
+      "tested": [
+        [
+          -13.25,
+          0.1579
+        ],
+        [
+          -5.25,
+          0.1754
+        ],
+        [
+          -4.75,
+          0.1053
+        ],
+        [
+          -4.5,
+          0.1228
+        ],
+        [
+          -4.0,
+          0.1228
+        ],
+        [
+          -2.5,
+          0.1053
+        ],
+        [
+          -2.0,
+          0.0877
+        ],
+        [
+          -1.5,
+          0.1228
+        ],
+        [
+          -0.75,
+          0.1404
+        ],
+        [
+          -0.5,
+          0.1228
+        ],
+        [
+          0.0,
+          0.0877
+        ],
+        [
+          1.5,
+          0.0877
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.2632,
+    "recovered_gain": 0.1754,
+    "control_onset_f1": 0.0526,
+    "control_recovered_onset_f1": 0.193,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 43,
+        "delta": -0.75,
+        "support": 8
+      },
+      {
+        "start": 16.0,
+        "notes": 15,
+        "delta": -5.25,
+        "support": 8
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [
+      {
+        "window_start": 16.0,
+        "from": -0.75,
+        "to": -5.25,
+        "nearest_page_boundary": null,
+        "inside_window": false
+      }
+    ],
+    "shape": "steps (offset constant in stretches, jumping between them)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6570255/p3-s1",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 43,
+      "truth_notes": 43,
+      "note_ratio": 1.0,
+      "pitch_agreement": 0.9767,
+      "pitch_f1": 0.9767,
+      "span_ratio": 1.125,
+      "predicted_span": 13.5,
+      "truth_span": 12.0
+    },
+    "onset_f1": 0.0233,
+    "global_offset": {
+      "delta": -1.5,
+      "onset_f1": 0.4651,
+      "onset_f1_at_zero": 0.0233,
+      "gain": 0.4419,
+      "tested": [
+        [
+          -2.3333333333333335,
+          0.0698
+        ],
+        [
+          -1.8333333333333333,
+          0.0698
+        ],
+        [
+          -1.5833333333333333,
+          0.0698
+        ],
+        [
+          -1.5,
+          0.4651
+        ],
+        [
+          -1.3333333333333333,
+          0.0698
+        ],
+        [
+          -1.0833333333333333,
+          0.0698
+        ],
+        [
+          -0.8333333333333334,
+          0.0698
+        ],
+        [
+          -0.5833333333333334,
+          0.0698
+        ],
+        [
+          -0.08333333333333333,
+          0.0698
+        ],
+        [
+          0.0,
+          0.0233
+        ],
+        [
+          0.16666666666666666,
+          0.0698
+        ],
+        [
+          0.4166666666666667,
+          0.0698
+        ],
+        [
+          0.9166666666666666,
+          0.0698
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.4651,
+    "recovered_gain": 0.4419,
+    "control_onset_f1": 0.1395,
+    "control_recovered_onset_f1": 0.1628,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 43,
+        "delta": -1.5,
+        "support": 22
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6570310/p3-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 68,
+      "truth_notes": 69,
+      "note_ratio": 0.986,
+      "pitch_agreement": 0.9565,
+      "pitch_f1": 0.9635,
+      "span_ratio": 1.5,
+      "predicted_span": 12.0,
+      "truth_span": 8.0
+    },
+    "onset_f1": 0.1314,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.1314,
+      "onset_f1_at_zero": 0.1314,
+      "gain": 0.0,
+      "tested": [
+        [
+          -6.0,
+          0.073
+        ],
+        [
+          -3.5,
+          0.073
+        ],
+        [
+          -3.0,
+          0.0876
+        ],
+        [
+          -2.0,
+          0.0876
+        ],
+        [
+          -1.5,
+          0.073
+        ],
+        [
+          -1.25,
+          0.073
+        ],
+        [
+          -0.75,
+          0.1168
+        ],
+        [
+          -0.5,
+          0.0584
+        ],
+        [
+          0.0,
+          0.1314
+        ],
+        [
+          0.75,
+          0.0438
+        ],
+        [
+          2.0,
+          0.0584
+        ],
+        [
+          4.0,
+          0.1022
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.1314,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.0584,
+    "control_recovered_onset_f1": 0.0584,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 68,
+        "delta": 0.0,
+        "support": 9
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6573515/p2-s1",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 42,
+      "truth_notes": 42,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0,
+      "predicted_span": 12.0,
+      "truth_span": 12.0
+    },
+    "onset_f1": 1.0,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 1.0,
+      "onset_f1_at_zero": 1.0,
+      "gain": 0.0,
+      "tested": [
+        [
+          -6.0,
+          0.3095
+        ],
+        [
+          -4.0,
+          0.119
+        ],
+        [
+          -3.0,
+          0.4762
+        ],
+        [
+          -2.0,
+          0.119
+        ],
+        [
+          -1.0,
+          0.1667
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          1.0,
+          0.1667
+        ],
+        [
+          2.0,
+          0.119
+        ],
+        [
+          3.0,
+          0.4762
+        ],
+        [
+          4.0,
+          0.119
+        ],
+        [
+          6.0,
+          0.3095
+        ],
+        [
+          7.0,
+          0.0714
+        ]
+      ]
+    },
+    "recovered_onset_f1": 1.0,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.2857,
+    "control_recovered_onset_f1": 0.2857,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 42,
+        "delta": 0.0,
+        "support": 42
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6573701/p4-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 32,
+      "truth_notes": 33,
+      "note_ratio": 0.97,
+      "pitch_agreement": 0.5758,
+      "pitch_f1": 0.5846,
+      "span_ratio": 1.0,
+      "predicted_span": 5.5,
+      "truth_span": 5.5
+    },
+    "onset_f1": 0.5846,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.5846,
+      "onset_f1_at_zero": 0.5846,
+      "gain": 0.0,
+      "tested": [
+        [
+          -5.0,
+          0.0923
+        ],
+        [
+          -4.5,
+          0.0615
+        ],
+        [
+          -3.0,
+          0.0615
+        ],
+        [
+          -2.5,
+          0.0615
+        ],
+        [
+          -2.0,
+          0.0923
+        ],
+        [
+          0.0,
+          0.5846
+        ],
+        [
+          1.0,
+          0.0923
+        ],
+        [
+          2.0,
+          0.1231
+        ],
+        [
+          2.5,
+          0.0923
+        ],
+        [
+          3.0,
+          0.0615
+        ],
+        [
+          4.5,
+          0.0615
+        ],
+        [
+          5.0,
+          0.0923
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.5846,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.1846,
+    "control_recovered_onset_f1": 0.1846,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 32,
+        "delta": 0.0,
+        "support": 19
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6586696/p1-s1",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 45,
+      "truth_notes": 45,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0833,
+      "predicted_span": 13.0,
+      "truth_span": 12.0
+    },
+    "onset_f1": 0.2667,
+    "global_offset": {
+      "delta": -1.0,
+      "onset_f1": 0.5333,
+      "onset_f1_at_zero": 0.2667,
+      "gain": 0.2667,
+      "tested": [
+        [
+          -9.0,
+          0.2444
+        ],
+        [
+          -7.0,
+          0.1333
+        ],
+        [
+          -5.0,
+          0.4
+        ],
+        [
+          -4.5,
+          0.1778
+        ],
+        [
+          -3.0,
+          0.1333
+        ],
+        [
+          -1.0,
+          0.5333
+        ],
+        [
+          -0.5,
+          0.3333
+        ],
+        [
+          0.0,
+          0.2667
+        ],
+        [
+          1.0,
+          0.1778
+        ],
+        [
+          3.5,
+          0.3556
+        ],
+        [
+          4.0,
+          0.2
+        ],
+        [
+          8.0,
+          0.2
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.5333,
+    "recovered_gain": 0.2667,
+    "control_onset_f1": 0.3556,
+    "control_recovered_onset_f1": 0.3556,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 45,
+        "delta": -1.0,
+        "support": 24
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6592539/p1-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 71,
+      "truth_notes": 70,
+      "note_ratio": 1.014,
+      "pitch_agreement": 0.9714,
+      "pitch_f1": 0.9645,
+      "span_ratio": 1.0,
+      "predicted_span": 10.5,
+      "truth_span": 10.5
+    },
+    "onset_f1": 0.9645,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.9645,
+      "onset_f1_at_zero": 0.9645,
+      "gain": 0.0,
+      "tested": [
+        [
+          -3.0,
+          0.2837
+        ],
+        [
+          -2.0,
+          0.1844
+        ],
+        [
+          -1.5,
+          0.4113
+        ],
+        [
+          -1.0,
+          0.1844
+        ],
+        [
+          -0.5,
+          0.3262
+        ],
+        [
+          0.0,
+          0.9645
+        ],
+        [
+          0.5,
+          0.3121
+        ],
+        [
+          1.0,
+          0.1986
+        ],
+        [
+          1.5,
+          0.4113
+        ],
+        [
+          2.0,
+          0.1702
+        ],
+        [
+          3.0,
+          0.2979
+        ],
+        [
+          6.0,
+          0.1702
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.9645,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.2411,
+    "control_recovered_onset_f1": 0.2979,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 71,
+        "delta": 0.0,
+        "support": 68
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6592662/p2-s2",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 52,
+      "truth_notes": 52,
+      "note_ratio": 1.0,
+      "pitch_agreement": 0.9423,
+      "pitch_f1": 0.9423,
+      "span_ratio": 1.0,
+      "predicted_span": 12.0,
+      "truth_span": 12.0
+    },
+    "onset_f1": 0.9423,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.9423,
+      "onset_f1_at_zero": 0.9423,
+      "gain": 0.0,
+      "tested": [
+        [
+          -5.0,
+          0.1154
+        ],
+        [
+          -4.0,
+          0.3846
+        ],
+        [
+          -3.0,
+          0.1346
+        ],
+        [
+          -2.0,
+          0.1154
+        ],
+        [
+          -1.0,
+          0.25
+        ],
+        [
+          0.0,
+          0.9423
+        ],
+        [
+          1.0,
+          0.25
+        ],
+        [
+          2.0,
+          0.1154
+        ],
+        [
+          3.0,
+          0.1538
+        ],
+        [
+          4.0,
+          0.3846
+        ],
+        [
+          5.0,
+          0.1154
+        ],
+        [
+          7.0,
+          0.0769
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.9423,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.0962,
+    "control_recovered_onset_f1": 0.2115,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 52,
+        "delta": 0.0,
+        "support": 49
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6621051/p1-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 78,
+      "truth_notes": 79,
+      "note_ratio": 0.987,
+      "pitch_agreement": 0.9873,
+      "pitch_f1": 0.9936,
+      "span_ratio": 1.0,
+      "predicted_span": 12.0,
+      "truth_span": 12.0
+    },
+    "onset_f1": 0.879,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.879,
+      "onset_f1_at_zero": 0.879,
+      "gain": 0.0,
+      "tested": [
+        [
+          -3.5,
+          0.1783
+        ],
+        [
+          -3.0,
+          0.2038
+        ],
+        [
+          -2.5,
+          0.2166
+        ],
+        [
+          -2.0,
+          0.2038
+        ],
+        [
+          -1.5,
+          0.2293
+        ],
+        [
+          -1.0,
+          0.3057
+        ],
+        [
+          -0.5,
+          0.5223
+        ],
+        [
+          0.0,
+          0.879
+        ],
+        [
+          0.5,
+          0.5223
+        ],
+        [
+          1.0,
+          0.3312
+        ],
+        [
+          1.5,
+          0.242
+        ],
+        [
+          2.0,
+          0.1911
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.879,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.2675,
+    "control_recovered_onset_f1": 0.2675,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 78,
+        "delta": 0.0,
+        "support": 69
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6631610/p7-s1",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 41,
+      "truth_notes": 41,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0,
+      "predicted_span": 12.0,
+      "truth_span": 12.0
+    },
+    "onset_f1": 1.0,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 1.0,
+      "onset_f1_at_zero": 1.0,
+      "gain": 0.0,
+      "tested": [
+        [
+          -5.5,
+          0.0732
+        ],
+        [
+          -4.5,
+          0.0732
+        ],
+        [
+          -3.0,
+          0.122
+        ],
+        [
+          -2.5,
+          0.0732
+        ],
+        [
+          -2.0,
+          0.122
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          2.0,
+          0.122
+        ],
+        [
+          2.5,
+          0.0732
+        ],
+        [
+          3.0,
+          0.122
+        ],
+        [
+          4.5,
+          0.0732
+        ],
+        [
+          5.5,
+          0.0732
+        ],
+        [
+          8.5,
+          0.0732
+        ]
+      ]
+    },
+    "recovered_onset_f1": 1.0,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.1951,
+    "control_recovered_onset_f1": 0.1951,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 41,
+        "delta": 0.0,
+        "support": 41
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6660019/p2-s5",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 52,
+      "truth_notes": 52,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0,
+      "predicted_span": 21.0,
+      "truth_span": 21.0
+    },
+    "onset_f1": 1.0,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 1.0,
+      "onset_f1_at_zero": 1.0,
+      "gain": 0.0,
+      "tested": [
+        [
+          -5.0,
+          0.1731
+        ],
+        [
+          -4.0,
+          0.2115
+        ],
+        [
+          -3.0,
+          0.2308
+        ],
+        [
+          -2.0,
+          0.3846
+        ],
+        [
+          -1.0,
+          0.3269
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          1.0,
+          0.3269
+        ],
+        [
+          2.0,
+          0.3846
+        ],
+        [
+          3.0,
+          0.2308
+        ],
+        [
+          4.0,
+          0.2115
+        ],
+        [
+          5.0,
+          0.1731
+        ],
+        [
+          8.5,
+          0.1731
+        ]
+      ]
+    },
+    "recovered_onset_f1": 1.0,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.4038,
+    "control_recovered_onset_f1": 0.3846,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 43,
+        "delta": 0.0,
+        "support": 43
+      },
+      {
+        "start": 16.0,
+        "notes": 9,
+        "delta": 0.0,
+        "support": 9
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "flat (offset constant across the score)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6660043/p2-s4",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 100,
+      "truth_notes": 100,
+      "note_ratio": 1.0,
+      "pitch_agreement": 0.97,
+      "pitch_f1": 0.97,
+      "span_ratio": 1.0,
+      "predicted_span": 15.0,
+      "truth_span": 15.0
+    },
+    "onset_f1": 0.97,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.97,
+      "onset_f1_at_zero": 0.97,
+      "gain": 0.0,
+      "tested": [
+        [
+          -3.0,
+          0.23
+        ],
+        [
+          -2.0,
+          0.31
+        ],
+        [
+          -1.5,
+          0.46
+        ],
+        [
+          -1.0,
+          0.56
+        ],
+        [
+          -0.5,
+          0.72
+        ],
+        [
+          0.0,
+          0.97
+        ],
+        [
+          0.5,
+          0.73
+        ],
+        [
+          1.0,
+          0.58
+        ],
+        [
+          1.5,
+          0.48
+        ],
+        [
+          2.0,
+          0.32
+        ],
+        [
+          2.5,
+          0.17
+        ],
+        [
+          3.0,
+          0.23
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.97,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.4,
+    "control_recovered_onset_f1": 0.4,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 100,
+        "delta": 0.0,
+        "support": 97
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6660097/p3-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 44,
+      "truth_notes": 44,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.1875,
+      "predicted_span": 9.5,
+      "truth_span": 8.0
+    },
+    "onset_f1": 0.7273,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.7273,
+      "onset_f1_at_zero": 0.7273,
+      "gain": 0.0,
+      "tested": [
+        [
+          -4.0,
+          0.1364
+        ],
+        [
+          -2.5,
+          0.1818
+        ],
+        [
+          -2.0,
+          0.25
+        ],
+        [
+          -1.5,
+          0.2045
+        ],
+        [
+          -1.0,
+          0.1364
+        ],
+        [
+          -0.5,
+          0.4091
+        ],
+        [
+          0.0,
+          0.7273
+        ],
+        [
+          0.5,
+          0.25
+        ],
+        [
+          1.0,
+          0.1136
+        ],
+        [
+          1.5,
+          0.1364
+        ],
+        [
+          2.0,
+          0.2727
+        ],
+        [
+          4.0,
+          0.2045
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.7273,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.4091,
+    "control_recovered_onset_f1": 0.4091,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 44,
+        "delta": 0.0,
+        "support": 32
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6686592/p2-s2",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 88,
+      "truth_notes": 91,
+      "note_ratio": 0.967,
+      "pitch_agreement": 0.9451,
+      "pitch_f1": 0.9609,
+      "span_ratio": 0.9688,
+      "predicted_span": 15.5,
+      "truth_span": 16.0
+    },
+    "onset_f1": 0.4693,
+    "global_offset": {
+      "delta": 0.5,
+      "onset_f1": 0.4916,
+      "onset_f1_at_zero": 0.4693,
+      "gain": 0.0223,
+      "tested": [
+        [
+          -7.5,
+          0.3128
+        ],
+        [
+          -5.5,
+          0.2011
+        ],
+        [
+          -3.5,
+          0.3911
+        ],
+        [
+          0.0,
+          0.4693
+        ],
+        [
+          0.5,
+          0.4916
+        ],
+        [
+          1.0,
+          0.2123
+        ],
+        [
+          2.0,
+          0.2235
+        ],
+        [
+          4.0,
+          0.4358
+        ],
+        [
+          5.0,
+          0.2123
+        ],
+        [
+          6.0,
+          0.2123
+        ],
+        [
+          8.0,
+          0.2905
+        ],
+        [
+          9.0,
+          0.1899
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.4916,
+    "recovered_gain": 0.0223,
+    "control_onset_f1": 0.2235,
+    "control_recovered_onset_f1": 0.3017,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 88,
+        "delta": 0.5,
+        "support": 46
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6686901/p2-s1",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 66,
+      "truth_notes": 67,
+      "note_ratio": 0.985,
+      "pitch_agreement": 0.9552,
+      "pitch_f1": 0.9624,
+      "span_ratio": 1.2333,
+      "predicted_span": 18.5,
+      "truth_span": 15.0
+    },
+    "onset_f1": 0.2406,
+    "global_offset": {
+      "delta": -2.0,
+      "onset_f1": 0.6767,
+      "onset_f1_at_zero": 0.2406,
+      "gain": 0.4361,
+      "tested": [
+        [
+          -5.0,
+          0.0902
+        ],
+        [
+          -4.0,
+          0.1353
+        ],
+        [
+          -3.0,
+          0.2707
+        ],
+        [
+          -2.0,
+          0.6767
+        ],
+        [
+          -1.5,
+          0.1053
+        ],
+        [
+          -1.0,
+          0.1955
+        ],
+        [
+          -0.5,
+          0.0902
+        ],
+        [
+          0.0,
+          0.2406
+        ],
+        [
+          0.5,
+          0.0752
+        ],
+        [
+          1.0,
+          0.0752
+        ],
+        [
+          1.5,
+          0.0752
+        ],
+        [
+          2.0,
+          0.0752
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.7368,
+    "recovered_gain": 0.4962,
+    "control_onset_f1": 0.1504,
+    "control_recovered_onset_f1": 0.1504,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 60,
+        "delta": -2.0,
+        "support": 45
+      },
+      {
+        "start": 16.0,
+        "notes": 6,
+        "delta": -3.0,
+        "support": 4
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [
+      {
+        "window_start": 16.0,
+        "from": -2.0,
+        "to": -3.0,
+        "nearest_page_boundary": null,
+        "inside_window": false
+      }
+    ],
+    "shape": "global offset (one shift recovers the score)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6686980/p1-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 58,
+      "truth_notes": 58,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0,
+      "predicted_span": 12.0,
+      "truth_span": 12.0
+    },
+    "onset_f1": 1.0,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 1.0,
+      "onset_f1_at_zero": 1.0,
+      "gain": 0.0,
+      "tested": [
+        [
+          -8.0,
+          0.1379
+        ],
+        [
+          -6.0,
+          0.1034
+        ],
+        [
+          -5.0,
+          0.1207
+        ],
+        [
+          -2.0,
+          0.2069
+        ],
+        [
+          -1.0,
+          0.2759
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          1.0,
+          0.2759
+        ],
+        [
+          2.0,
+          0.2069
+        ],
+        [
+          3.0,
+          0.0862
+        ],
+        [
+          5.0,
+          0.1207
+        ],
+        [
+          6.0,
+          0.1034
+        ],
+        [
+          8.0,
+          0.1379
+        ]
+      ]
+    },
+    "recovered_onset_f1": 1.0,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.1034,
+    "control_recovered_onset_f1": 0.1724,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 58,
+        "delta": 0.0,
+        "support": 58
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6687153/p4-s1",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 46,
+      "truth_notes": 47,
+      "note_ratio": 0.979,
+      "pitch_agreement": 0.7447,
+      "pitch_f1": 0.7527,
+      "span_ratio": 1.3214,
+      "predicted_span": 18.5,
+      "truth_span": 14.0
+    },
+    "onset_f1": 0.086,
+    "global_offset": {
+      "delta": -1.5,
+      "onset_f1": 0.2151,
+      "onset_f1_at_zero": 0.086,
+      "gain": 0.129,
+      "tested": [
+        [
+          -6.0,
+          0.086
+        ],
+        [
+          -5.5,
+          0.086
+        ],
+        [
+          -3.5,
+          0.086
+        ],
+        [
+          -3.0,
+          0.0645
+        ],
+        [
+          -2.0,
+          0.086
+        ],
+        [
+          -1.5,
+          0.2151
+        ],
+        [
+          -1.0,
+          0.1505
+        ],
+        [
+          -0.5,
+          0.129
+        ],
+        [
+          0.0,
+          0.086
+        ],
+        [
+          1.5,
+          0.086
+        ],
+        [
+          2.0,
+          0.0645
+        ],
+        [
+          3.5,
+          0.0645
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.2151,
+    "recovered_gain": 0.129,
+    "control_onset_f1": 0.1075,
+    "control_recovered_onset_f1": 0.1075,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 41,
+        "delta": -1.5,
+        "support": 10
+      },
+      {
+        "start": 16.0,
+        "notes": 5,
+        "delta": 0.0,
+        "support": 1
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6715306/p1-s1",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 37,
+      "truth_notes": 36,
+      "note_ratio": 1.028,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 0.9863,
+      "span_ratio": 1.1111,
+      "predicted_span": 10.0,
+      "truth_span": 9.0
+    },
+    "onset_f1": 0.0,
+    "global_offset": {
+      "delta": -1.0,
+      "onset_f1": 0.5753,
+      "onset_f1_at_zero": 0.0,
+      "gain": 0.5753,
+      "tested": [
+        [
+          -5.0,
+          0.1096
+        ],
+        [
+          -2.8333333333333335,
+          0.0548
+        ],
+        [
+          -2.5,
+          0.1096
+        ],
+        [
+          -2.3333333333333335,
+          0.0822
+        ],
+        [
+          -1.0,
+          0.5753
+        ],
+        [
+          -0.8333333333333334,
+          0.0548
+        ],
+        [
+          -0.5,
+          0.2466
+        ],
+        [
+          -0.16666666666666666,
+          0.1096
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.5,
+          0.0822
+        ],
+        [
+          1.5,
+          0.0822
+        ],
+        [
+          1.6666666666666667,
+          0.137
+        ],
+        [
+          2.1666666666666665,
+          0.0548
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.5753,
+    "recovered_gain": 0.5753,
+    "control_onset_f1": 0.0822,
+    "control_recovered_onset_f1": 0.1096,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 37,
+        "delta": -1.0,
+        "support": 21
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6715339/p1-s2",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 41,
+      "truth_notes": 41,
+      "note_ratio": 1.0,
+      "pitch_agreement": 0.9512,
+      "pitch_f1": 0.9512,
+      "span_ratio": 1.3181,
+      "predicted_span": 7.916666666666667,
+      "truth_span": 6.00625
+    },
+    "onset_f1": 0.2195,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.2195,
+      "onset_f1_at_zero": 0.2195,
+      "gain": 0.0,
+      "tested": [
+        [
+          -3.49375,
+          0.0488
+        ],
+        [
+          -2.8270833333333334,
+          0.0488
+        ],
+        [
+          -1.49375,
+          0.0732
+        ],
+        [
+          -1.4104166666666667,
+          0.0488
+        ],
+        [
+          -1.24375,
+          0.0732
+        ],
+        [
+          -0.74375,
+          0.0488
+        ],
+        [
+          -0.10625,
+          0.0244
+        ],
+        [
+          -0.07708333333333334,
+          0.0244
+        ],
+        [
+          0.0,
+          0.2195
+        ],
+        [
+          0.00625,
+          0.0976
+        ],
+        [
+          0.08958333333333333,
+          0.0244
+        ],
+        [
+          0.15625,
+          0.0244
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.2195,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.0732,
+    "control_recovered_onset_f1": 0.0732,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 41,
+        "delta": 0.0,
+        "support": 9
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6715795/p1-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 43,
+      "truth_notes": 39,
+      "note_ratio": 1.103,
+      "pitch_agreement": 0.9487,
+      "pitch_f1": 0.9024,
+      "span_ratio": 1.3854,
+      "predicted_span": 11.083333333333334,
+      "truth_span": 8.0
+    },
+    "onset_f1": 0.0244,
+    "global_offset": {
+      "delta": -1.5,
+      "onset_f1": 0.2927,
+      "onset_f1_at_zero": 0.0244,
+      "gain": 0.2683,
+      "tested": [
+        [
+          -4.833333333333333,
+          0.0976
+        ],
+        [
+          -3.5,
+          0.0976
+        ],
+        [
+          -3.0833333333333335,
+          0.0976
+        ],
+        [
+          -2.3333333333333335,
+          0.0732
+        ],
+        [
+          -2.1666666666666665,
+          0.0732
+        ],
+        [
+          -1.8333333333333333,
+          0.1951
+        ],
+        [
+          -1.5,
+          0.2927
+        ],
+        [
+          -0.5,
+          0.1463
+        ],
+        [
+          -0.16666666666666666,
+          0.1951
+        ],
+        [
+          0.0,
+          0.0244
+        ],
+        [
+          0.16666666666666666,
+          0.0732
+        ],
+        [
+          1.0,
+          0.0732
+        ],
+        [
+          1.1666666666666667,
+          0.0976
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.2927,
+    "recovered_gain": 0.2683,
+    "control_onset_f1": 0.0244,
+    "control_recovered_onset_f1": 0.122,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 43,
+        "delta": -1.5,
+        "support": 12
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6716614/p1-s4",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 44,
+      "truth_notes": 45,
+      "note_ratio": 0.978,
+      "pitch_agreement": 0.9556,
+      "pitch_f1": 0.9663,
+      "span_ratio": 1.2381,
+      "predicted_span": 13.0,
+      "truth_span": 10.5
+    },
+    "onset_f1": 0.0225,
+    "global_offset": {
+      "delta": -2.5,
+      "onset_f1": 0.3371,
+      "onset_f1_at_zero": 0.0225,
+      "gain": 0.3146,
+      "tested": [
+        [
+          -3.3333333333333335,
+          0.0449
+        ],
+        [
+          -2.8333333333333335,
+          0.0449
+        ],
+        [
+          -2.5,
+          0.3371
+        ],
+        [
+          -2.3333333333333335,
+          0.0674
+        ],
+        [
+          -1.8333333333333333,
+          0.1348
+        ],
+        [
+          -1.6666666666666667,
+          0.0899
+        ],
+        [
+          -1.5,
+          0.1348
+        ],
+        [
+          -0.6666666666666666,
+          0.0449
+        ],
+        [
+          -0.5,
+          0.0449
+        ],
+        [
+          -0.16666666666666666,
+          0.0899
+        ],
+        [
+          0.0,
+          0.0225
+        ],
+        [
+          0.8333333333333334,
+          0.0674
+        ],
+        [
+          1.6666666666666667,
+          0.0449
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.3371,
+    "recovered_gain": 0.3146,
+    "control_onset_f1": 0.0674,
+    "control_recovered_onset_f1": 0.0674,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 44,
+        "delta": -2.5,
+        "support": 15
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6716631/p1-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 65,
+      "truth_notes": 64,
+      "note_ratio": 1.016,
+      "pitch_agreement": 0.9219,
+      "pitch_f1": 0.9147,
+      "span_ratio": 0.9792,
+      "predicted_span": 11.75,
+      "truth_span": 12.0
+    },
+    "onset_f1": 0.6202,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.6202,
+      "onset_f1_at_zero": 0.6202,
+      "gain": 0.0,
+      "tested": [
+        [
+          -2.25,
+          0.062
+        ],
+        [
+          -2.0,
+          0.1085
+        ],
+        [
+          -1.25,
+          0.0775
+        ],
+        [
+          -0.5,
+          0.062
+        ],
+        [
+          0.0,
+          0.6202
+        ],
+        [
+          0.25,
+          0.2946
+        ],
+        [
+          1.5,
+          0.0465
+        ],
+        [
+          1.75,
+          0.062
+        ],
+        [
+          2.0,
+          0.1705
+        ],
+        [
+          2.5,
+          0.124
+        ],
+        [
+          3.0,
+          0.062
+        ],
+        [
+          5.0,
+          0.062
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.6202,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.0465,
+    "control_recovered_onset_f1": 0.1085,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 65,
+        "delta": 0.0,
+        "support": 40
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6725471/p1-s1",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 19,
+      "truth_notes": 19,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.6429,
+      "predicted_span": 11.5,
+      "truth_span": 7.0
+    },
+    "onset_f1": 0.1579,
+    "global_offset": {
+      "delta": -3.0,
+      "onset_f1": 0.3158,
+      "onset_f1_at_zero": 0.1579,
+      "gain": 0.1579,
+      "tested": [
+        [
+          -9.5,
+          0.1053
+        ],
+        [
+          -8.0,
+          0.1579
+        ],
+        [
+          -4.5,
+          0.2105
+        ],
+        [
+          -4.0,
+          0.0526
+        ],
+        [
+          -3.5,
+          0.1053
+        ],
+        [
+          -3.0,
+          0.3158
+        ],
+        [
+          -2.0,
+          0.2105
+        ],
+        [
+          -1.0,
+          0.1579
+        ],
+        [
+          0.0,
+          0.1579
+        ],
+        [
+          1.5,
+          0.2632
+        ],
+        [
+          2.0,
+          0.0526
+        ],
+        [
+          5.0,
+          0.1053
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.3158,
+    "recovered_gain": 0.1579,
+    "control_onset_f1": 0.1579,
+    "control_recovered_onset_f1": 0.2105,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 19,
+        "delta": -3.0,
+        "support": 6
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6725510/p1-s2",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 29,
+      "truth_notes": 34,
+      "note_ratio": 0.853,
+      "pitch_agreement": 0.8529,
+      "pitch_f1": 0.9206,
+      "span_ratio": 1.125,
+      "predicted_span": 9.0,
+      "truth_span": 8.0
+    },
+    "onset_f1": 0.254,
+    "global_offset": {
+      "delta": -1.0,
+      "onset_f1": 0.6032,
+      "onset_f1_at_zero": 0.254,
+      "gain": 0.3492,
+      "tested": [
+        [
+          -3.3333333333333335,
+          0.0635
+        ],
+        [
+          -2.6666666666666665,
+          0.1587
+        ],
+        [
+          -1.0,
+          0.6032
+        ],
+        [
+          -0.8333333333333334,
+          0.0317
+        ],
+        [
+          -0.6666666666666666,
+          0.1905
+        ],
+        [
+          -0.3333333333333333,
+          0.0317
+        ],
+        [
+          0.0,
+          0.254
+        ],
+        [
+          0.6666666666666666,
+          0.1587
+        ],
+        [
+          1.0,
+          0.0317
+        ],
+        [
+          1.3333333333333333,
+          0.0317
+        ],
+        [
+          2.0,
+          0.0317
+        ],
+        [
+          3.6666666666666665,
+          0.0317
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.6032,
+    "recovered_gain": 0.3492,
+    "control_onset_f1": 0.1587,
+    "control_recovered_onset_f1": 0.3175,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 29,
+        "delta": -1.0,
+        "support": 19
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6725782/p1-s2",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 57,
+      "truth_notes": 57,
+      "note_ratio": 1.0,
+      "pitch_agreement": 0.9474,
+      "pitch_f1": 0.9474,
+      "span_ratio": 0.9722,
+      "predicted_span": 8.75,
+      "truth_span": 9.0
+    },
+    "onset_f1": 0.1228,
+    "global_offset": {
+      "delta": 0.75,
+      "onset_f1": 0.4035,
+      "onset_f1_at_zero": 0.1228,
+      "gain": 0.2807,
+      "tested": [
+        [
+          -2.5,
+          0.0877
+        ],
+        [
+          -2.25,
+          0.1228
+        ],
+        [
+          -1.5,
+          0.0702
+        ],
+        [
+          -1.0,
+          0.0877
+        ],
+        [
+          -0.5,
+          0.0877
+        ],
+        [
+          0.0,
+          0.1228
+        ],
+        [
+          0.5,
+          0.386
+        ],
+        [
+          0.75,
+          0.4035
+        ],
+        [
+          2.0,
+          0.1053
+        ],
+        [
+          2.5,
+          0.0877
+        ],
+        [
+          3.0,
+          0.1053
+        ],
+        [
+          3.75,
+          0.0877
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.4035,
+    "recovered_gain": 0.2807,
+    "control_onset_f1": 0.0351,
+    "control_recovered_onset_f1": 0.1228,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 57,
+        "delta": 0.75,
+        "support": 23
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6725890/p1-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 30,
+      "truth_notes": 27,
+      "note_ratio": 1.111,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 0.9474,
+      "span_ratio": 1.0909,
+      "predicted_span": 6.0,
+      "truth_span": 5.5
+    },
+    "onset_f1": 0.5965,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.5965,
+      "onset_f1_at_zero": 0.5965,
+      "gain": 0.0,
+      "tested": [
+        [
+          -2.5,
+          0.1053
+        ],
+        [
+          -2.1666666666666665,
+          0.0351
+        ],
+        [
+          -2.0,
+          0.1404
+        ],
+        [
+          -1.8333333333333333,
+          0.0351
+        ],
+        [
+          -0.5,
+          0.3509
+        ],
+        [
+          0.0,
+          0.5965
+        ],
+        [
+          0.5,
+          0.1053
+        ],
+        [
+          1.8333333333333333,
+          0.0351
+        ],
+        [
+          2.0,
+          0.1404
+        ],
+        [
+          2.1666666666666665,
+          0.0351
+        ],
+        [
+          3.0,
+          0.1053
+        ],
+        [
+          4.0,
+          0.0351
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.5965,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.1404,
+    "control_recovered_onset_f1": 0.2456,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 30,
+        "delta": 0.0,
+        "support": 17
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6726319/p1-s4",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 25,
+      "truth_notes": 22,
+      "note_ratio": 1.136,
+      "pitch_agreement": 0.9545,
+      "pitch_f1": 0.8936,
+      "span_ratio": 1.4375,
+      "predicted_span": 11.5,
+      "truth_span": 8.0
+    },
+    "onset_f1": 0.0426,
+    "global_offset": {
+      "delta": -0.16666666666666666,
+      "onset_f1": 0.383,
+      "onset_f1_at_zero": 0.0426,
+      "gain": 0.3404,
+      "tested": [
+        [
+          -3.3333333333333335,
+          0.0851
+        ],
+        [
+          -2.6666666666666665,
+          0.0851
+        ],
+        [
+          -1.1666666666666667,
+          0.1277
+        ],
+        [
+          -1.0,
+          0.1277
+        ],
+        [
+          -0.8333333333333334,
+          0.0851
+        ],
+        [
+          -0.6666666666666666,
+          0.1702
+        ],
+        [
+          -0.3333333333333333,
+          0.0851
+        ],
+        [
+          -0.16666666666666666,
+          0.383
+        ],
+        [
+          0.0,
+          0.0426
+        ],
+        [
+          0.5,
+          0.0851
+        ],
+        [
+          0.8333333333333334,
+          0.0851
+        ],
+        [
+          1.8333333333333333,
+          0.1277
+        ],
+        [
+          2.5,
+          0.1277
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.383,
+    "recovered_gain": 0.3404,
+    "control_onset_f1": 0.0426,
+    "control_recovered_onset_f1": 0.1702,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 25,
+        "delta": -0.16666666666666666,
+        "support": 9
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6753259/p4-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 47,
+      "truth_notes": 46,
+      "note_ratio": 1.022,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 0.9892,
+      "span_ratio": 1.0625,
+      "predicted_span": 17.0,
+      "truth_span": 16.0
+    },
+    "onset_f1": 0.8602,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.8602,
+      "onset_f1_at_zero": 0.8602,
+      "gain": 0.0,
+      "tested": [
+        [
+          -10.0,
+          0.086
+        ],
+        [
+          -9.0,
+          0.1075
+        ],
+        [
+          -5.0,
+          0.1505
+        ],
+        [
+          -4.0,
+          0.1935
+        ],
+        [
+          -3.0,
+          0.0645
+        ],
+        [
+          -1.0,
+          0.2581
+        ],
+        [
+          0.0,
+          0.8602
+        ],
+        [
+          1.0,
+          0.1075
+        ],
+        [
+          3.0,
+          0.0645
+        ],
+        [
+          4.0,
+          0.2581
+        ],
+        [
+          8.0,
+          0.129
+        ],
+        [
+          9.0,
+          0.086
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.8602,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.2581,
+    "control_recovered_onset_f1": 0.2151,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 47,
+        "delta": 0.0,
+        "support": 40
+      },
+      {
+        "start": 16.0,
+        "notes": 0,
+        "delta": 0.0,
+        "support": 0
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6834630/p2-s1",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 59,
+      "truth_notes": 59,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0,
+      "predicted_span": 12.0,
+      "truth_span": 12.0
+    },
+    "onset_f1": 1.0,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 1.0,
+      "onset_f1_at_zero": 1.0,
+      "gain": 0.0,
+      "tested": [
+        [
+          -6.0,
+          0.1525
+        ],
+        [
+          -2.0,
+          0.1186
+        ],
+        [
+          -1.5,
+          0.1356
+        ],
+        [
+          -1.0,
+          0.1525
+        ],
+        [
+          -0.5,
+          0.1695
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.5,
+          0.1695
+        ],
+        [
+          1.0,
+          0.1525
+        ],
+        [
+          1.5,
+          0.1356
+        ],
+        [
+          2.0,
+          0.1186
+        ],
+        [
+          4.0,
+          0.1017
+        ],
+        [
+          6.0,
+          0.1525
+        ]
+      ]
+    },
+    "recovered_onset_f1": 1.0,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.0339,
+    "control_recovered_onset_f1": 0.1525,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 59,
+        "delta": 0.0,
+        "support": 59
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6984262/p1-s1",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 70,
+      "truth_notes": 70,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0,
+      "predicted_span": 28.0,
+      "truth_span": 28.0
+    },
+    "onset_f1": 0.9714,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.9714,
+      "onset_f1_at_zero": 0.9714,
+      "gain": 0.0,
+      "tested": [
+        [
+          -10.0,
+          0.2571
+        ],
+        [
+          -8.0,
+          0.2143
+        ],
+        [
+          -6.0,
+          0.2429
+        ],
+        [
+          -4.0,
+          0.3
+        ],
+        [
+          -2.0,
+          0.2857
+        ],
+        [
+          0.0,
+          0.9714
+        ],
+        [
+          2.0,
+          0.2857
+        ],
+        [
+          4.0,
+          0.3143
+        ],
+        [
+          6.0,
+          0.2286
+        ],
+        [
+          8.0,
+          0.2286
+        ],
+        [
+          10.0,
+          0.2286
+        ],
+        [
+          14.0,
+          0.2143
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.9714,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.3857,
+    "control_recovered_onset_f1": 0.4,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 39,
+        "delta": 0.0,
+        "support": 37
+      },
+      {
+        "start": 16.0,
+        "notes": 31,
+        "delta": 0.0,
+        "support": 31
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "flat (offset constant across the score)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6984553/p3-s2",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 67,
+      "truth_notes": 67,
+      "note_ratio": 1.0,
+      "pitch_agreement": 0.9851,
+      "pitch_f1": 0.9851,
+      "span_ratio": 1.0,
+      "predicted_span": 12.0,
+      "truth_span": 12.0
+    },
+    "onset_f1": 0.9851,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.9851,
+      "onset_f1_at_zero": 0.9851,
+      "gain": 0.0,
+      "tested": [
+        [
+          -6.0,
+          0.1493
+        ],
+        [
+          -3.5,
+          0.0746
+        ],
+        [
+          -2.5,
+          0.0746
+        ],
+        [
+          -1.5,
+          0.1493
+        ],
+        [
+          -1.0,
+          0.0746
+        ],
+        [
+          -0.75,
+          0.1045
+        ],
+        [
+          0.0,
+          0.9851
+        ],
+        [
+          0.75,
+          0.1045
+        ],
+        [
+          1.5,
+          0.1642
+        ],
+        [
+          2.5,
+          0.0746
+        ],
+        [
+          4.5,
+          0.0746
+        ],
+        [
+          6.0,
+          0.1493
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.9851,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.1791,
+    "control_recovered_onset_f1": 0.1791,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 67,
+        "delta": 0.0,
+        "support": 66
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6984631/p1-s4",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 67,
+      "truth_notes": 67,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.6842,
+      "predicted_span": 32.0,
+      "truth_span": 19.0
+    },
+    "onset_f1": 0.1045,
+    "global_offset": {
+      "delta": -10.0,
+      "onset_f1": 0.3134,
+      "onset_f1_at_zero": 0.1045,
+      "gain": 0.209,
+      "tested": [
+        [
+          -19.0,
+          0.1343
+        ],
+        [
+          -14.0,
+          0.1343
+        ],
+        [
+          -13.5,
+          0.1194
+        ],
+        [
+          -13.0,
+          0.2388
+        ],
+        [
+          -12.0,
+          0.2239
+        ],
+        [
+          -11.0,
+          0.1045
+        ],
+        [
+          -10.0,
+          0.3134
+        ],
+        [
+          -9.0,
+          0.1194
+        ],
+        [
+          -8.0,
+          0.1642
+        ],
+        [
+          -4.0,
+          0.194
+        ],
+        [
+          -3.0,
+          0.1045
+        ],
+        [
+          0.0,
+          0.1045
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.403,
+    "recovered_gain": 0.2985,
+    "control_onset_f1": 0.1045,
+    "control_recovered_onset_f1": 0.194,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 18,
+        "delta": 0.0,
+        "support": 6
+      },
+      {
+        "start": 16.0,
+        "notes": 49,
+        "delta": -10.0,
+        "support": 21
+      },
+      {
+        "start": 32.0,
+        "notes": 0,
+        "delta": 0.0,
+        "support": 0
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [
+      {
+        "window_start": 16.0,
+        "from": 0.0,
+        "to": -10.0,
+        "nearest_page_boundary": null,
+        "inside_window": false
+      }
+    ],
+    "shape": "global offset (one shift recovers the score)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6985082/p1-s2",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 147,
+      "truth_notes": 147,
+      "note_ratio": 1.0,
+      "pitch_agreement": 0.9864,
+      "pitch_f1": 0.9864,
+      "span_ratio": 1.5625,
+      "predicted_span": 18.75,
+      "truth_span": 12.0
+    },
+    "onset_f1": 0.1156,
+    "global_offset": {
+      "delta": -1.5,
+      "onset_f1": 0.1565,
+      "onset_f1_at_zero": 0.1156,
+      "gain": 0.0408,
+      "tested": [
+        [
+          -4.5,
+          0.1361
+        ],
+        [
+          -3.75,
+          0.1497
+        ],
+        [
+          -3.4166666666666665,
+          0.1361
+        ],
+        [
+          -3.25,
+          0.1293
+        ],
+        [
+          -3.0833333333333335,
+          0.1361
+        ],
+        [
+          -2.9166666666666665,
+          0.1293
+        ],
+        [
+          -2.5833333333333335,
+          0.1293
+        ],
+        [
+          -2.5,
+          0.1361
+        ],
+        [
+          -2.25,
+          0.1429
+        ],
+        [
+          -1.5,
+          0.1565
+        ],
+        [
+          -1.1666666666666667,
+          0.1293
+        ],
+        [
+          -0.8333333333333334,
+          0.1293
+        ],
+        [
+          0.0,
+          0.1156
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.2245,
+    "recovered_gain": 0.1088,
+    "control_onset_f1": 0.0544,
+    "control_recovered_onset_f1": 0.1429,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 128,
+        "delta": -1.5,
+        "support": 23
+      },
+      {
+        "start": 16.0,
+        "notes": 19,
+        "delta": -9.0,
+        "support": 10
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [
+      {
+        "window_start": 16.0,
+        "from": -1.5,
+        "to": -9.0,
+        "nearest_page_boundary": null,
+        "inside_window": false
+      }
+    ],
+    "shape": "steps (offset constant in stretches, jumping between them)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6986065/p2-s1",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 37,
+      "truth_notes": 37,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 0.9167,
+      "predicted_span": 11.0,
+      "truth_span": 12.0
+    },
+    "onset_f1": 0.2162,
+    "global_offset": {
+      "delta": 1.0,
+      "onset_f1": 0.7838,
+      "onset_f1_at_zero": 0.2162,
+      "gain": 0.5676,
+      "tested": [
+        [
+          -5.0,
+          0.1351
+        ],
+        [
+          -4.5,
+          0.1622
+        ],
+        [
+          -3.5,
+          0.1351
+        ],
+        [
+          -2.0,
+          0.1081
+        ],
+        [
+          -1.5,
+          0.1081
+        ],
+        [
+          -0.5,
+          0.1622
+        ],
+        [
+          0.0,
+          0.2162
+        ],
+        [
+          1.0,
+          0.7838
+        ],
+        [
+          2.5,
+          0.2432
+        ],
+        [
+          4.0,
+          0.1622
+        ],
+        [
+          5.5,
+          0.2973
+        ],
+        [
+          7.0,
+          0.1622
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.7838,
+    "recovered_gain": 0.5676,
+    "control_onset_f1": 0.0541,
+    "control_recovered_onset_f1": 0.3514,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 37,
+        "delta": 1.0,
+        "support": 29
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6986302/p6-s4",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 45,
+      "truth_notes": 44,
+      "note_ratio": 1.023,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 0.9888,
+      "span_ratio": 1.0,
+      "predicted_span": 12.0,
+      "truth_span": 12.0
+    },
+    "onset_f1": 0.9888,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.9888,
+      "onset_f1_at_zero": 0.9888,
+      "gain": 0.0,
+      "tested": [
+        [
+          -10.0,
+          0.0899
+        ],
+        [
+          -8.0,
+          0.0899
+        ],
+        [
+          -3.0,
+          0.1573
+        ],
+        [
+          -2.0,
+          0.1798
+        ],
+        [
+          -1.0,
+          0.1124
+        ],
+        [
+          0.0,
+          0.9888
+        ],
+        [
+          1.0,
+          0.1124
+        ],
+        [
+          2.0,
+          0.1798
+        ],
+        [
+          3.0,
+          0.1573
+        ],
+        [
+          5.0,
+          0.0674
+        ],
+        [
+          8.0,
+          0.0899
+        ],
+        [
+          10.0,
+          0.0899
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.9888,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.3146,
+    "control_recovered_onset_f1": 0.3146,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 45,
+        "delta": 0.0,
+        "support": 44
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6987705/p5-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 46,
+      "truth_notes": 45,
+      "note_ratio": 1.022,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 0.989,
+      "span_ratio": 1.1333,
+      "predicted_span": 8.5,
+      "truth_span": 7.5
+    },
+    "onset_f1": 0.2637,
+    "global_offset": {
+      "delta": -1.0,
+      "onset_f1": 0.5934,
+      "onset_f1_at_zero": 0.2637,
+      "gain": 0.3297,
+      "tested": [
+        [
+          -4.0,
+          0.0879
+        ],
+        [
+          -2.0,
+          0.0879
+        ],
+        [
+          -1.75,
+          0.0879
+        ],
+        [
+          -1.5,
+          0.1319
+        ],
+        [
+          -1.25,
+          0.0879
+        ],
+        [
+          -1.0,
+          0.5934
+        ],
+        [
+          -0.75,
+          0.1319
+        ],
+        [
+          -0.5,
+          0.1978
+        ],
+        [
+          0.0,
+          0.2637
+        ],
+        [
+          0.25,
+          0.0879
+        ],
+        [
+          0.5,
+          0.0659
+        ],
+        [
+          1.0,
+          0.1099
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.5934,
+    "recovered_gain": 0.3297,
+    "control_onset_f1": 0.0879,
+    "control_recovered_onset_f1": 0.1538,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 46,
+        "delta": -1.0,
+        "support": 27
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "6993176/p5-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 57,
+      "truth_notes": 52,
+      "note_ratio": 1.096,
+      "pitch_agreement": 0.9615,
+      "pitch_f1": 0.9174,
+      "span_ratio": 1.0,
+      "predicted_span": 12.0,
+      "truth_span": 12.0
+    },
+    "onset_f1": 0.9174,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.9174,
+      "onset_f1_at_zero": 0.9174,
+      "gain": 0.0,
+      "tested": [
+        [
+          -7.0,
+          0.1284
+        ],
+        [
+          -6.0,
+          0.1835
+        ],
+        [
+          -5.0,
+          0.1835
+        ],
+        [
+          -3.0,
+          0.1284
+        ],
+        [
+          -2.0,
+          0.1835
+        ],
+        [
+          -1.0,
+          0.2936
+        ],
+        [
+          0.0,
+          0.9174
+        ],
+        [
+          1.0,
+          0.2752
+        ],
+        [
+          2.0,
+          0.1835
+        ],
+        [
+          5.0,
+          0.2018
+        ],
+        [
+          6.0,
+          0.2018
+        ],
+        [
+          7.0,
+          0.1284
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.9174,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.2202,
+    "control_recovered_onset_f1": 0.2752,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 57,
+        "delta": 0.0,
+        "support": 52
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "7086632/p3-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 38,
+      "truth_notes": 37,
+      "note_ratio": 1.027,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 0.9867,
+      "span_ratio": 1.0,
+      "predicted_span": 20.0,
+      "truth_span": 20.0
+    },
+    "onset_f1": 0.9867,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.9867,
+      "onset_f1_at_zero": 0.9867,
+      "gain": 0.0,
+      "tested": [
+        [
+          -8.0,
+          0.08
+        ],
+        [
+          -5.0,
+          0.0533
+        ],
+        [
+          -4.0,
+          0.1067
+        ],
+        [
+          -3.0,
+          0.08
+        ],
+        [
+          -1.0,
+          0.08
+        ],
+        [
+          0.0,
+          0.9867
+        ],
+        [
+          1.0,
+          0.08
+        ],
+        [
+          3.0,
+          0.08
+        ],
+        [
+          4.0,
+          0.08
+        ],
+        [
+          5.0,
+          0.0533
+        ],
+        [
+          7.0,
+          0.0533
+        ],
+        [
+          8.0,
+          0.08
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.9867,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.2133,
+    "control_recovered_onset_f1": 0.2133,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 30,
+        "delta": 0.0,
+        "support": 29
+      },
+      {
+        "start": 16.0,
+        "notes": 8,
+        "delta": 0.0,
+        "support": 8
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "flat (offset constant across the score)",
+    "pair_status": "exact-label"
+  },
+  {
+    "song": "7163829/p1-s3",
+    "pages": 1,
+    "reference": {
+      "predicted_notes": 58,
+      "truth_notes": 58,
+      "note_ratio": 1.0,
+      "pitch_agreement": 1.0,
+      "pitch_f1": 1.0,
+      "span_ratio": 1.0,
+      "predicted_span": 12.0,
+      "truth_span": 12.0
+    },
+    "onset_f1": 0.9483,
+    "global_offset": {
+      "delta": 0.0,
+      "onset_f1": 0.9483,
+      "onset_f1_at_zero": 0.9483,
+      "gain": 0.0,
+      "tested": [
+        [
+          -4.0,
+          0.2414
+        ],
+        [
+          -3.0,
+          0.2414
+        ],
+        [
+          -2.0,
+          0.3966
+        ],
+        [
+          -1.5,
+          0.3276
+        ],
+        [
+          -1.0,
+          0.4828
+        ],
+        [
+          -0.5,
+          0.3793
+        ],
+        [
+          0.0,
+          0.9483
+        ],
+        [
+          0.5,
+          0.3448
+        ],
+        [
+          1.0,
+          0.4828
+        ],
+        [
+          1.5,
+          0.3793
+        ],
+        [
+          2.0,
+          0.3966
+        ],
+        [
+          3.0,
+          0.2414
+        ]
+      ]
+    },
+    "recovered_onset_f1": 0.9483,
+    "recovered_gain": 0.0,
+    "control_onset_f1": 0.3276,
+    "control_recovered_onset_f1": 0.3276,
+    "windows": [
+      {
+        "start": 0.0,
+        "notes": 58,
+        "delta": 0.0,
+        "support": 55
+      }
+    ],
+    "page_offsets": [],
+    "jumps": [],
+    "shape": "scatter (no window has a consistent offset)",
+    "pair_status": "exact-label"
+  }
+]
