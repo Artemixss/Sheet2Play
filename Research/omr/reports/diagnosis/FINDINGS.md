@@ -391,6 +391,11 @@ The ceiling rose faster than HOMR did, so the gap that training could close got 
 | ceiling | 0.690 | 0.766 |
 | **headroom for training** | **+0.066** | **+0.182** |
 
+**The +0.182 is inflated and has been superseded.** It compares means over different sample sets -
+HOMR over 100 systems, the ceiling over the 94 it can encode. On the same 94 the headroom is
+**+0.096**, and it stays there when both sides are corrected for displacement. See "The training
+headroom, measured like for like" below.
+
 Part of that widening is composition — the 18 systems the dedup fix newly admits are hard ones
 that pull HOMR's own average down — but the ceiling rise from 0.665 to 0.760 is on an identical
 94-sample set and is attributable to PR #146 alone.
@@ -438,6 +443,11 @@ the improvement does:
 **Correlation between page count and onset_f1 is −0.783.** Pitch stays high throughout, so the
 notes are being read correctly and put in the wrong place.
 
+**Read the rest of this section with the next one open.** Two of its claims do not survive
+measurement: pitch does *not* stay high throughout - three of these seven references turn out not
+to be the same arrangement as the PDF - and "displacement" is established below to be most of the
+failure rather than a possibility that was ruled out. The correlation itself survives, smaller.
+
 The discriminator against "long pieces are simply harder" is the span ratio. If these scores
 were failing the way canary systems fail, their timelines would inflate. They do not:
 `Beyond This Station` has span 0.99, pitch_f1 0.960 and onset_f1 0.028 — a correct-length
@@ -476,6 +486,255 @@ printed page, so it is an imperfect reference — note counts differ from the tr
 0.54x to 1.47x, and MusicXML from the same score page would be a better ground truth. And
 seven songs is a small sample. Neither weakens the page-count correlation, which is visible in
 pitch/onset divergence within each individual song.
+
+## Measured: the page-count correlation is displacement plus a broken scoreboard
+
+**The section above draws its conclusion from reasoning that does not hold, and the correction is
+large.** It reads "span near 1.00 with onsets scattered" as proof that the errors are local and
+compensating. Span is a length ratio, so translation cannot move it - a transcription that is
+musically correct but *displaced* in time has span 1.00, high pitch F1 and near-zero onset F1,
+which is precisely the signature attributed there to scatter. That alternative was never excluded.
+
+Excluding it accounts for the whole effect. On a repaired sample, **once displacement is corrected
+page count predicts onset accuracy with r = -0.005.**
+
+### Why the metric cannot tell displacement from scatter
+
+`calculate_note_metrics` (`metrics.py:103`) matches onsets as a multiset intersection of
+`(pitch, onset)` under exact rational equality, with onsets measured absolutely from the start of
+the score. There is no alignment step and no tolerance. One extra beat anywhere near the start - a
+pickup bar, a repeat the reference plays and the printed page does not, a single measure decoded
+long - moves every later onset and costs the whole score, leaving pitch and span untouched.
+
+### Method
+
+`diagnose_library_drift.py` reads the payload cache `evaluate_library.py` now writes, so it costs
+no GPU, and asks three things per song:
+
+- **Global offset.** The single shift maximising onset F1. Candidates are the exact `Fraction`
+  differences between same-pitch predicted and truth onsets, so the search finds the true optimum
+  rather than the best point on a grid, and the top candidates are re-scored through the real
+  metric rather than trusted from the histogram.
+- **Local offset curve.** The same modal-difference estimate per 16-quarter window of the
+  predicted timeline. Its shape names the failure: flat, stepped, ramped or genuinely scattered.
+  Sixteen quarters is the working resolution; at four the windows hold too few notes for the mode
+  to be stable and the recovered score falls on noise rather than signal.
+- **Recovered onset F1.** The score after shifting each window by its own offset - how much of the
+  gap is displacement that correct alignment would recover.
+
+Fitting an offset per window extracts *some* agreement from anything, so every recovered number is
+reported beside a control: the same procedure run against the same reference with its pitches
+permuted, which keeps the onset grid, note density and pitch distribution and destroys only the
+correspondence. The control sits at **0.10-0.17**. That is the floor a recovered number must beat.
+
+Pairing was repaired first, because three of the original seven references were not the same music
+as the PDF - see `reports/library/pairs.json`, which now records why each pair is trusted and
+which plausible pairings must not be made.
+
+### Result, on the seven confirmed pairs
+
+| pages | song | pitch agree | note ratio | onset F1 | best single shift | recovered | control |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 2 | Bella Ciao | 0.948 | 0.948 | 0.904 | 0.904 | 0.941 | 0.145 |
+| 4 | God's Plan | 1.000 | 1.466 | 0.678 | 0.678 | 0.771 | 0.168 |
+| 4 | if_i_am_with_you | 0.948 | 0.998 | 0.135 | 0.199 | 0.562 | 0.130 |
+| 6 | - If I can Stop One Heart | 0.959 | 0.975 | 0.148 | 0.228 | 0.614 | 0.109 |
+| 6 | If I Can Stop One Heart | 0.734 | 0.865 | 0.034 | 0.042 | 0.198 | 0.101 |
+| 8 | Liyue Battle Theme 1 | 0.992 | 0.997 | 0.118 | **0.806** | **0.911** | 0.140 |
+| 11 | Beyond This Station | 0.924 | 0.927 | 0.028 | 0.394 | **0.593** | 0.150 |
+
+Mean onset F1 **0.2922 to 0.6558**, against a control of 0.1346.
+
+**`Liyue Battle Theme 1` is the clean proof.** Pitch agreement 0.992 and note ratio 0.997 - the
+transcription and the reference are the same music, note for note. Its onset F1 is 0.118. *One*
+number, a shift of -8.25 quarters, takes it to 0.806, and per-window correction to 0.911. The
+local curve says where the 8.25 comes from: `0, -2, -3.75, -5.75, -8.25` and then flat at -8.25
+for the remaining twenty-odd windows, and the predicted timeline is longer than the reference by
+exactly 8.25. The engine over-accounts by eight and a quarter beats inside the first eighty, then
+transcribes the remaining four hundred beats of an eight-page score essentially perfectly. The
+metric reported that as 0.118.
+
+`Beyond This Station` - the score the section above calls the disproof, at "almost nothing in the
+right place" - recovers from 0.028 to 0.593. Almost nothing was in the right *absolute* place;
+most of it was in the right place relative to the music around it.
+
+### The correlation does not survive the repair
+
+| | r against page count |
+| --- | --- |
+| onset F1 as measured, 11 scored pairs | **-0.454** |
+| onset F1 after local correction, same 11 | **-0.005** |
+| onset F1 as measured, 6 pairs with pitch agreement >= 0.9 | -0.768 |
+| onset F1 after local correction, same 6 | -0.336 |
+
+The original -0.783 was measured on seven filename-matched songs, three of whose references were
+not the same arrangement as the PDF, and those three were among the four longest scores. On a
+reviewed sample the raw correlation is -0.454, and correcting displacement takes it to zero. Page
+count is not a predictor of anything the engine does; it was standing in for displacement, which
+grows with the number of opportunities a score offers rather than with pages.
+
+### Page boundaries are not where the drift happens
+
+The earlier refutation of page stitching rested on an aggregate: fixing `combine_score_pages` was
+worth +0.0066. The local curve tests it directly instead, by asking where the offset changes.
+Across the eleven songs scored there are **164 offset jumps, of which 32 fall in a window
+containing a page boundary. Chance is 55 boundary windows out of 311, or 0.177; observed is
+0.195.** The drift jumps where the music is, not where the pages join.
+
+### Source quality matters more than score length
+
+The two PDFs of `If I Can Stop One Heart From Breaking` are an accidental controlled experiment:
+same piece, same reference, six pages each. One reaches pitch agreement 0.959 and recovers to
+0.614; the other reaches 0.734 and recovers to 0.198. Nothing about length or page count differs.
+That also settles the reference, which the poorer PDF had appeared to impugn - and it is the
+reason both are kept as confirmed pairs rather than the weaker one being dropped.
+
+### What this changes
+
+- **The library number understates the engine badly.** 0.294 was a floor that folded in every
+  displacement and three references that were different music. The engine's real accuracy on this
+  material is nearer 0.66, and 0.80 on the songs where the reference is beyond question.
+- **The remaining target is localised over-accounting.** Liyue loses 0.69 of onset F1 to 8.25 beats
+  gained in one early stretch of an otherwise perfect transcription. Finding those stretches is
+  worth more on this material than anything training would buy, and it is the same defect PR #146
+  attacks without catching.
+- **Nothing here is a reason to change the shipped engine yet.** The measurement changed; the
+  engine did not. What it changes is which experiment is worth running next, and what any future
+  checkpoint has to be scored against.
+
+### Reproducing
+
+```bash
+cd Research/omr && .venv/Scripts/python.exe evaluate_library.py --paired-only --variants patched
+cd Research/omr && .venv/Scripts/python.exe diagnose_library_drift.py
+```
+
+The first is about twenty minutes of GPU and caches every payload under
+`reports/library/predictions/`; the second is free and repeatable.
+
+## Confirmed on exact labels: whole scores lose to displacement, single systems barely do
+
+The section above measures displacement against MuseScore MIDIs, which are rendered performances
+of sometimes-different editions. Three of the original seven were not even the same arrangement.
+So the finding needed re-testing on labels that cannot be wrong, and two such tests exist.
+
+### Single systems: the canary, against its own MusicXML
+
+`diagnose_library_drift.py --source olimpic` scores the 100 cached canary predictions against the
+exact MusicXML OLiMPiC ships beside each image. It reproduces the published 0.661 at zero offset,
+which is the check that the truth loader agrees with `diagnose_rhythm.py`.
+
+| | onset F1 |
+| --- | --- |
+| as measured | 0.6607 |
+| best single shift per system | 0.7452 |
+| per-window correction | 0.7516 |
+| shuffled-pitch control | 0.2245 |
+
+Displacement is worth about **+0.09** here. 66 of 100 systems need no shift at all and average
+0.908; the 34 that do go 0.181 to 0.429, so a shift helps them without rescuing them. Most
+common shifts are small — 1.5, 1.0 and 0.5 quarters.
+
+### Whole scores: rebuilt from those same systems
+
+`build_olimpic_scores.py` reassembles a score from its systems — images stacked by the page number
+in each filename, per-system MusicXML concatenated, which is sound because the measure numbers
+already run consecutively. Twenty dev-partition scores, two to six pages, 62 measures on average,
+transcribed through the same engine:
+
+| | single systems (n=100) | **whole scores (n=20)** |
+| --- | --- | --- |
+| onset F1 as measured | 0.6607 | **0.5206** |
+| best single shift | 0.7452 | 0.6273 |
+| per-window correction | 0.7516 | **0.7714** |
+| shuffled-pitch control | 0.2245 | 0.1660 |
+| pitch F1 | 0.9676 | 0.9460 |
+
+**That is the whole finding in one table.** A whole multi-page score scores 0.14 *worse* than its
+own systems do — and after correcting for displacement it scores slightly *better*. The engine is
+not worse at reading a page than at reading a crop. Everything it loses over a longer score is
+displacement, and this is on labels that are exact by construction, with no MuseScore MIDI
+anywhere near the measurement.
+
+Individual scores make it concrete:
+
+| score | pages | measures | pitch agree | span | onset F1 | corrected | shape |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 5071629 | 2 | 44 | **1.000** | 1.07 | 0.154 | **0.963** | global offset |
+| 5023603 | 4 | 89 | 0.973 | 1.00 | 0.237 | **0.950** | global offset |
+| 5001716 | 5 | 84 | 0.875 | 0.99 | 0.039 | **0.727** | global offset |
+| 5079391 | 6 | 87 | 0.988 | 1.04 | 0.353 | **0.919** | global offset |
+| 4985990 | 5 | 141 | 0.997 | **1.51** | 0.060 | 0.157 | scatter |
+| 5079378 | 4 | 59 | 0.994 | 0.99 | **0.986** | 0.986 | flat |
+
+`5071629` is the cleanest case in the project: every reference pitch present, and a transcription
+scored at 0.154 that is worth 0.963 once one shift is applied. Six of the twenty are already flat
+and near-perfect (0.986 to 0.999), so homr transcribes whole multi-page scores correctly more
+often than any number in this document has suggested.
+
+What is left after correction is two distinct failures, not one:
+
+- **Real over-accounting.** `4985990` runs 51% long across 141 measures and stays at 0.157 after
+  correction. This is the defect PR #146 attacks, and the one still worth fixing.
+- **Reading failures.** `5069066` and `5067692` have pitch agreement 0.515 and 0.433 — the engine
+  did not recover the notes at all, so timing never enters into it.
+
+Page count against onset F1 on these twenty: **-0.264 as measured, +0.086 after correction**. The
+same collapse as the library, on exact labels.
+
+## The training headroom, measured like for like
+
+The claim that a fine-tune is worth revisiting rested on homr 0.661 against a round-trip ceiling of
+0.766, a headroom of +0.182. **That number compares means over different sample sets** — homr on
+100 systems, the ceiling on the 94 it can encode — and the document already warned that part of
+the widening was composition. On the same 94 systems it is half that.
+
+The comparison also has to be fair in a second way. Correcting homr for displacement while leaving
+the ceiling uncorrected would credit homr with an allowance the target never gets, so
+`roundtrip_oracle.py --keep-xml` was re-run and its rebuilt MusicXML put through the same
+correction (`--source oracle`). The oracle inflates timelines on its own — 31 of 75 systems come
+back long with no recognition involved — so it is displaced too.
+
+| same 94 systems | homr | ceiling | headroom |
+| --- | --- | --- | --- |
+| as measured | 0.6636 | 0.7598 | **+0.0962** |
+| one shift per system | 0.7478 | 0.8425 | +0.0946 |
+| per-window correction | 0.7547 | 0.8510 | +0.0963 |
+| (shuffled-pitch control) | 0.2250 | 0.2355 | |
+
+**The headroom is real and it is not a metric artifact.** Correcting for displacement moves both
+sides by almost exactly the same amount, so the earlier suspicion — that the gap might vanish under
+a fair metric — is refuted. What changes is its size: **+0.096, not +0.182.** On 8 of the 94,
+corrected homr already beats the corrected ceiling, which is the usual sign of a defective label.
+
+### What that means for the fine-tune
+
+Both numbers now sit on the table at once, and they are not close:
+
+| | worth | cost |
+| --- | --- | --- |
+| fine-tuning, at the representation ceiling, on single systems | +0.096 | two days of GPU, a second machine, and a real risk of rare-token collapse |
+| fixing localised displacement, on whole multi-page scores | **+0.251** | no GPU at all |
+
+Training is not ruled out — the headroom survived the fairest test available, and it is well above
+the +0.066 that was originally judged not worth the time. But it is competing for a third of what
+is sitting untouched in the engine's own timing, on exactly the material the user plays. **Fix the
+displacement first.**
+
+### Reproducing
+
+```bash
+cd Research/omr && .venv/Scripts/python.exe diagnose_library_drift.py --source olimpic
+cd Research/omr && .venv/Scripts/python.exe roundtrip_oracle.py --keep-xml --out reports/diagnosis/oracle-corrected
+cd Research/omr && .venv/Scripts/python.exe diagnose_library_drift.py --source oracle
+cd Research/omr && .venv/Scripts/python.exe build_olimpic_scores.py --limit 20
+cd Research/omr && .venv/Scripts/python.exe diagnose_library_drift.py --source olimpic \
+    --manifest data/olimpic-scores/manifest.jsonl \
+    --predictions reports/diagnosis/predictions/composite \
+    --out reports/diagnosis/drift-composite.json
+```
+
+Only `build_olimpic_scores.py` needs the GPU, and twenty scores take about twenty minutes.
 
 ## Separate bug: multi-page offset drift
 

@@ -324,7 +324,9 @@ Three things a future session should not have to rediscover:
 OLiMPiC is *scanned*; the library is engraved MuseScore PDFs, and they are not comparable.
 Upstream measures PR #141's tie recall at 0.93-1.00 engraved against 0.04-0.12 on scans, and
 the first library song scored onset F1 0.921 where the canary average is 0.583. `evaluate_library.py`
-scores the real library, using MuseScore MIDIs as ground truth for the songs that have one.
+scores the real library against the references listed in `reports/library/pairs.json`, caching
+each bridge payload under `reports/library/predictions/` so later analysis costs no GPU;
+`diagnose_library_drift.py` reads that cache.
 Prefer MusicXML over MIDI as a reference where possible: a MuseScore MIDI is the rendered
 performance with repeats expanded, so it will not align with the printed page the OMR reads.
 
@@ -399,14 +401,51 @@ to 132%.
 
 Two things are open, in priority order.
 
-**1. What actually breaks multi-page scores.** Page count correlates -0.783 with onset
-accuracy on the real library - two pages scores 0.904, eleven scores 0.028, while pitch stays
-above 0.9. The obvious explanation was `combine_score_pages` stitching pages at the wrong
-offset. That was fixed, tested, and is worth only +0.0066, so **the correlation is real and
-its cause is not page stitching**. Span sits near 1.00 on the worst scores, so the timeline
-length is right and the notes inside are displaced - errors accumulate per measure rather than
-per page boundary, and page count is standing in for score length. This is the largest
-unexplained effect on the material the user actually plays.
+**1. Localised over-accounting.** This was "page count correlates -0.783 with onset accuracy and
+nobody knows why". It has been measured, and **the page-count correlation does not survive the
+measurement**. Full write-up in FINDINGS.md; the short version:
+
+- **The metric cannot tell displacement from scatter.** Onsets are matched by exact absolute
+  equality with no alignment, so a transcription that is musically correct but shifted in time
+  scores near zero while span stays 1.00 and pitch stays high. That is the signature the old
+  reading attributed to scatter.
+- **Correcting displacement takes the correlation to nothing.** Across the eleven scored pairs,
+  page count against onset F1 is -0.454; against onset F1 after each 16-quarter window is shifted
+  by its own measured offset, **-0.005**. Mean onset F1 on the seven confirmed pairs goes
+  **0.2922 to 0.6558**, against a shuffled-reference control of 0.1346.
+- **`Liyue Battle Theme 1` is the clean case.** Pitch agreement 0.992, note ratio 0.997, onset F1
+  0.118. One shift of -8.25 quarters takes it to 0.806. The engine gains 8.25 beats inside the
+  first eighty and transcribes the remaining four hundred of an eight-page score essentially
+  perfectly.
+- **Page boundaries are not where the drift jumps.** 164 offset jumps across the scored songs, 32
+  in a window containing a page boundary, against a chance rate of 0.177 versus 0.195 observed.
+  This is the direct version of the earlier aggregate refutation.
+- **Three of the original seven references were not the same music as the PDF.** Pairing is now
+  the reviewed `Research/omr/reports/library/pairs.json`, not filename equality, and it records
+  the pairings that must *not* be made as well as the ones that hold.
+- **Source quality beats score length.** The two PDFs of `If I Can Stop One Heart From Breaking`
+  share a piece, a reference and a page count; one recovers to 0.614 and the other to 0.198.
+
+**Confirmed on exact labels.** `build_olimpic_scores.py` rebuilds whole multi-page scores out of
+OLiMPiC's single systems - the per-system MusicXML carries consecutive measure numbers, so the
+systems tile the piece and concatenate into an exact label. Twenty rebuilt scores, two to six
+pages:
+
+| | single systems (n=100) | whole scores (n=20) |
+| --- | --- | --- |
+| onset F1 as measured | 0.6607 | **0.5206** |
+| after local correction | 0.7516 | **0.7714** |
+| shuffled-pitch control | 0.2245 | 0.1660 |
+
+A whole score scores 0.14 *worse* than its own systems, and after correction slightly *better*. The
+engine is no worse at a page than at a crop; everything it loses over length is displacement - on
+labels no MuseScore MIDI was involved in. `5071629` is the cleanest case anywhere in this project:
+pitch agreement 1.000, onset F1 0.154, and **0.963** after one shift.
+
+What is still open is the localised over-accounting itself: finding the measures where a score
+gains its extra beats. Two failures survive correction and they are different - real span
+inflation (`4985990`, 51% long over 141 measures, 0.157 after correction) and outright reading
+failures (pitch agreement 0.43-0.52, where timing never enters into it).
 
 **2. Training, whose target changed.** Do not start a fine-tune on the current vocabulary
 without re-reading the ceiling argument in FINDINGS.md. The short version:
@@ -414,6 +453,11 @@ without re-reading the ceiling argument in FINDINGS.md. The short version:
 - Before the fixes, the ceiling was 0.690 against homr's 0.624 - no headroom, and training was
   not worth GPU time.
 - After them the ceiling is 0.766 and the app is at 0.661, so roughly +0.18 is now learnable.
+- **The headroom is +0.096, not +0.182.** The larger figure compares means over different sample
+  sets. On the same 94 systems homr is 0.6636 against a ceiling of 0.7598, and correcting *both*
+  for displacement moves them together (0.7547 against 0.8510) - so the gap is real and not a
+  metric artifact, but it is half what CONTEXT used to claim. Against it, fixing displacement is
+  worth **+0.251** on whole scores and costs no GPU. Fix the displacement first.
 - **Upstream PR #156** is the more interesting target. It splits the position vocabulary into
   `upper`/`upper2` and `lower`/`lower2`, which is what lets two voices on one staff be told
   apart, and a collaborator has already trained it without regression. Its checkpoint (run
@@ -429,9 +473,9 @@ without re-reading the ceiling argument in FINDINGS.md. The short version:
   above ~10 s/it - upstream issue #61 has a contributor who hit 70 s/it under WSL, which would
   be a 115-day run.
 
-Ground truth for the library is thin: only 7 of 46 songs have a MuseScore MIDI to score
-against, and a MIDI is a rendered performance rather than the printed page, so note counts
-differ from the transcription by 0.54x to 1.47x. The user has suggested automating MuseScore
+Ground truth for the library is thin: of 46 songs, 11 have a reference after the pairing review
+and 7 of those are confirmed. A MIDI is a rendered performance rather than the printed page, so
+note counts differ from the transcription by 0.16x to 1.47x. The user has suggested automating MuseScore
 downloads to fix this; if that happens it should fetch **MusicXML, not MIDI**, from the same
 score page as the PDF. For training data at scale, PDMX already provides 250K public-domain
 MuseScore scores with PDF, MIDI and MusicXML, so there is no reason to build a scraper.
