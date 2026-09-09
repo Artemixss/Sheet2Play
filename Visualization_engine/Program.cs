@@ -166,7 +166,7 @@ internal static partial class Program
 		DrawStartupNotice("Connecting to audio device...");
 		using OutputDevice outputDevice = TryOpenSynthDevice(out string audioWarning);
 		IMidiOutput midiOutput;
-		if ((object)outputDevice == null)
+		if (outputDevice is null)
 		{
 			midiOutput = new NullMidiOutput();
 		}
@@ -211,7 +211,7 @@ internal static partial class Program
 		AudioOffsetEditor audioOffsetEditor = new AudioOffsetEditor();
 		while (!Raylib.WindowShouldClose())
 		{
-			if ((bool)Raylib.IsKeyPressed(KeyboardKey.F11))
+			if (Raylib.IsKeyPressed(KeyboardKey.F11))
 			{
 				Raylib.ToggleFullscreen();
 			}
@@ -225,11 +225,11 @@ internal static partial class Program
 				num2 = screenHeight;
 			}
 			OmrProgress progress;
-			while (progressQueue.TryTake(out progress) && (object)progress != null)
+			while (progressQueue.TryTake(out progress) && progress is not null)
 			{
 				loadProgressModel.Apply(progress);
 			}
-			if (loadResults.TryTake(out LoadCompletion<SongLoadResult> completion) && (object)completion != null)
+			if (loadResults.TryTake(out LoadCompletion<SongLoadResult> completion) && completion is not null)
 			{
 				cancellationTokenSource?.Dispose();
 				cancellationTokenSource = null;
@@ -251,7 +251,7 @@ internal static partial class Program
 				else
 				{
 					SongLoadResult value = completion.Value;
-					if ((object)value != null)
+					if (value is not null)
 					{
 						List<Note> notes = value.Notes;
 						if (notes != null && notes.Count > 0)
@@ -315,11 +315,11 @@ internal static partial class Program
 				if (!playbackRateEditor.IsEditing && !audioOffsetEditor.IsEditing && !sliderDragging)
 				{
 					int num7 = 0;
-					if ((bool)Raylib.IsKeyPressed(KeyboardKey.LeftBracket))
+					if (Raylib.IsKeyPressed(KeyboardKey.LeftBracket))
 					{
 						num7 = -AudioOffsetRules.StepMilliseconds;
 					}
-					else if ((bool)Raylib.IsKeyPressed(KeyboardKey.RightBracket))
+					else if (Raylib.IsKeyPressed(KeyboardKey.RightBracket))
 					{
 						num7 = AudioOffsetRules.StepMilliseconds;
 					}
@@ -343,7 +343,7 @@ internal static partial class Program
 				bool browseRequested;
 				bool refreshRequested;
 				LoadRequest loadRequest = DrawLanding(layout, ref selectedEngine, pdfLibrary, cachedSongs, midiLibrary, ref pdfScrollOffset, ref cacheScrollOffset, ref cacheEngineFilter, ref midiScrollOffset, librarySearch, message, out browseRequested, out refreshRequested);
-				if (browseRequested || (!librarySearch.IsTyping && (bool)Raylib.IsKeyPressed(KeyboardKey.B)))
+				if (browseRequested || (!librarySearch.IsTyping && Raylib.IsKeyPressed(KeyboardKey.B)))
 				{
 					StartFilePicker(concurrentQueue, dialogState);
 				}
@@ -356,7 +356,7 @@ internal static partial class Program
 					cacheScrollOffset = 0;
 					midiScrollOffset = 0;
 				}
-				if ((object)loadRequest != null)
+				if (loadRequest is not null)
 				{
 					concurrentQueue2.Enqueue(loadRequest);
 				}
@@ -365,7 +365,7 @@ internal static partial class Program
 			case GameState.ConfirmReuse:
 			{
 				ReuseAction reuseAction = DrawConfirmReuse(layout, request2);
-				if ((bool)Raylib.IsKeyPressed(KeyboardKey.Escape))
+				if (Raylib.IsKeyPressed(KeyboardKey.Escape))
 				{
 					reuseAction = ReuseAction.Cancel;
 				}
@@ -373,7 +373,7 @@ internal static partial class Program
 				break;
 			}
 			case GameState.Processing:
-				if (DrawProcessing(layout, loadProgressModel, cancelling: false) || (bool)Raylib.IsKeyPressed(KeyboardKey.Escape))
+				if (DrawProcessing(layout, loadProgressModel, cancelling: false) || Raylib.IsKeyPressed(KeyboardKey.Escape))
 				{
 					cancellationTokenSource?.Cancel();
 					state = GameState.Cancelling;
@@ -387,7 +387,7 @@ internal static partial class Program
 				break;
 			case GameState.Playing:
 			case GameState.Completed:
-				if (playbackController != null && (object)songLoadResult != null && DrawPlayback(playbackController, songLoadResult, keyboard, sliderDragging, sliderPreviewPosition, playbackRateEditor, audioOffsetEditor, ref state, layout))
+				if (playbackController != null && songLoadResult is not null && DrawPlayback(playbackController, songLoadResult, keyboard, sliderDragging, sliderPreviewPosition, playbackRateEditor, audioOffsetEditor, ref state, layout))
 				{
 					playbackController.Stop();
 					playbackRateEditor.Cancel();
@@ -474,7 +474,7 @@ internal static partial class Program
 				Console.Error.WriteLine("[AUDIO SYSTEM] Could not enumerate MIDI devices. " + discovery.Message);
 				outputDevice = null;
 			}
-			if ((object)outputDevice == null)
+			if (outputDevice is null)
 			{
 				warning = "No MIDI output device found. Playback is silent; install a MIDI synthesizer such as VirtualMIDISynth for sound.";
 				Console.Error.WriteLine("[AUDIO SYSTEM] " + warning + " " + ex.Message);
@@ -551,7 +551,7 @@ internal static partial class Program
 	{
 		try
 		{
-			SongLoadResult value = (((object)request.RecentSong != null) ? SongCache.LoadRecent(request.RecentSong) : SongCache.LoadOrCreateDetailed(request.InputPath ?? throw new InvalidOperationException("Load request has no source path."), request.Engine, cancellationToken, progress, request.BypassKnownFailure, request.ForceReprocess));
+			SongLoadResult value = ((request.RecentSong is not null) ? SongCache.LoadRecent(request.RecentSong) : SongCache.LoadOrCreateDetailed(request.InputPath ?? throw new InvalidOperationException("Load request has no source path."), request.Engine, cancellationToken, progress, request.BypassKnownFailure, request.ForceReprocess));
 			results.Complete(value);
 		}
 		catch (Exception error)
@@ -567,7 +567,7 @@ internal static partial class Program
 	/// </summary>
 	private static bool NeedsReuseConfirmation(LoadRequest request)
 	{
-		if (request.ReuseConfirmed || request.ForceReprocess || (object)request.RecentSong != null)
+		if (request.ReuseConfirmed || request.ForceReprocess || request.RecentSong is not null)
 		{
 			return false;
 		}
@@ -585,7 +585,7 @@ internal static partial class Program
 
 	private static ReuseAction DrawConfirmReuse(UiLayout layout, LoadRequest? request)
 	{
-		if ((object)request == null)
+		if (request is null)
 		{
 			return ReuseAction.Cancel;
 		}
@@ -620,14 +620,14 @@ internal static partial class Program
 		switch (action)
 		{
 		case ReuseAction.UseCached:
-			if ((object)request != null)
+			if (request is not null)
 			{
 				loadRequests.Enqueue(request with { ReuseConfirmed = true });
 			}
 			state = GameState.WaitingForFile;
 			break;
 		case ReuseAction.Reprocess:
-			if ((object)request != null)
+			if (request is not null)
 			{
 				loadRequests.Enqueue(request with { ForceReprocess = true, ReuseConfirmed = true });
 			}
@@ -672,12 +672,12 @@ internal static partial class Program
 			PersistEngine(selectedEngine);
 		}
 		// Gated on focus: these would otherwise fire on the o and h in a typed query.
-		if (!librarySearch.IsTyping && (bool)Raylib.IsKeyPressed(KeyboardKey.O))
+		if (!librarySearch.IsTyping && Raylib.IsKeyPressed(KeyboardKey.O))
 		{
 			selectedEngine = OmrEngine.Zeus;
 			PersistEngine(selectedEngine);
 		}
-		else if (!librarySearch.IsTyping && (bool)Raylib.IsKeyPressed(KeyboardKey.H))
+		else if (!librarySearch.IsTyping && Raylib.IsKeyPressed(KeyboardKey.H))
 		{
 			selectedEngine = OmrEngine.Homr;
 			PersistEngine(selectedEngine);
@@ -698,15 +698,15 @@ internal static partial class Program
 			Raylib.DrawRectangleRounded(rec, 0.18f, 8, UiTheme.Elevated);
 			UiTheme.DrawText(UiTheme.Ellipsize(message, 13, (int)(rec.Width - 20f * scale)), (int)(rec.X + 10f * scale), (int)(rec.Y + 8f * scale), 13, UiTheme.Warning);
 		}
-		if ((object)pdfLibraryEntry != null)
+		if (pdfLibraryEntry is not null)
 		{
 			return new LoadRequest(pdfLibraryEntry.FullPath, selectedEngine, BypassKnownFailure: false, null);
 		}
-		if ((object)cachedSongEntry != null)
+		if (cachedSongEntry is not null)
 		{
 			return new LoadRequest(null, cachedSongEntry.RecentSong.Engine, BypassKnownFailure: false, cachedSongEntry.RecentSong);
 		}
-		if ((object)midiLibraryEntry != null)
+		if (midiLibraryEntry is not null)
 		{
 			return new LoadRequest(midiLibraryEntry.FullPath, selectedEngine, BypassKnownFailure: false, null);
 		}
@@ -1023,9 +1023,9 @@ internal static partial class Program
 	{
 		Rectangle rec = new Rectangle(panel.X + 10f * scale, panel.Y + LibrarySearchTop * scale, panel.Width - 20f * scale, LibrarySearchHeight * scale);
 		bool focused = search.Focused == column;
-		if ((bool)Raylib.IsMouseButtonPressed(MouseButton.Left))
+		if (Raylib.IsMouseButtonPressed(MouseButton.Left))
 		{
-			if ((bool)Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), rec))
+			if (Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), rec))
 			{
 				search.Focus(column);
 				focused = true;
@@ -1048,12 +1048,12 @@ internal static partial class Program
 					changed = true;
 				}
 			}
-			if ((bool)Raylib.IsKeyPressed(KeyboardKey.Backspace) && search.Get(column).Length > 0)
+			if (Raylib.IsKeyPressed(KeyboardKey.Backspace) && search.Get(column).Length > 0)
 			{
 				search.Backspace(column);
 				changed = true;
 			}
-			if ((bool)Raylib.IsKeyPressed(KeyboardKey.Escape))
+			if (Raylib.IsKeyPressed(KeyboardKey.Escape))
 			{
 				if (search.Get(column).Length > 0)
 				{
@@ -1063,7 +1063,7 @@ internal static partial class Program
 				search.ClearFocus();
 				focused = false;
 			}
-			else if ((bool)Raylib.IsKeyPressed(KeyboardKey.Enter))
+			else if (Raylib.IsKeyPressed(KeyboardKey.Enter))
 			{
 				search.ClearFocus();
 				focused = false;
@@ -1111,7 +1111,7 @@ internal static partial class Program
 	{
 		int max = Math.Max(0, entryCount - visibleRows);
 		scrollOffset = Math.Clamp(scrollOffset, 0, max);
-		if ((bool)Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), panel))
+		if (Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), panel))
 		{
 			float mouseWheelMove = Raylib.GetMouseWheelMove();
 			if (mouseWheelMove != 0f)
@@ -1387,32 +1387,32 @@ internal static partial class Program
 			Rectangle playbackSlider = GetPlaybackSlider(layout);
 			Rectangle rec = new Rectangle(playbackSlider.X - 8f, playbackSlider.Y - 16f, playbackSlider.Width + 16f, 42f);
 			Vector2 mousePosition = Raylib.GetMousePosition();
-			if (!sliderDragging && (bool)Raylib.IsMouseButtonPressed(MouseButton.Left) && (bool)Raylib.CheckCollisionPointRec(mousePosition, rec))
+			if (!sliderDragging && Raylib.IsMouseButtonPressed(MouseButton.Left) && Raylib.CheckCollisionPointRec(mousePosition, rec))
 			{
 				sliderDragging = true;
 				resumeAfterSlider = playback.IsPlaying;
 				sliderPreviewPosition = PlaybackFormatting.PositionFromSlider(mousePosition.X, playbackSlider.X, playbackSlider.Width, playback.Session.TotalDuration);
 				playback.Pause();
 			}
-			else if (sliderDragging && (bool)Raylib.IsMouseButtonDown(MouseButton.Left))
+			else if (sliderDragging && Raylib.IsMouseButtonDown(MouseButton.Left))
 			{
 				sliderPreviewPosition = PlaybackFormatting.PositionFromSlider(mousePosition.X, playbackSlider.X, playbackSlider.Width, playback.Session.TotalDuration);
 			}
-			if (sliderDragging && (bool)Raylib.IsMouseButtonReleased(MouseButton.Left))
+			if (sliderDragging && Raylib.IsMouseButtonReleased(MouseButton.Left))
 			{
 				playback.CommitSilencedSeek(sliderPreviewPosition, resumeAfterSlider);
 				sliderDragging = false;
 				state = (playback.IsCompleted ? GameState.Completed : GameState.Playing);
 			}
-			if (!sliderDragging && (bool)Raylib.IsKeyPressed(KeyboardKey.Space))
+			if (!sliderDragging && Raylib.IsKeyPressed(KeyboardKey.Space))
 			{
 				TogglePlayback(playback, ref state);
 			}
-			if (!sliderDragging && (bool)Raylib.IsKeyPressed(KeyboardKey.Left))
+			if (!sliderDragging && Raylib.IsKeyPressed(KeyboardKey.Left))
 			{
 				SeekRelative(playback, -5.0, ref state);
 			}
-			if (!sliderDragging && (bool)Raylib.IsKeyPressed(KeyboardKey.Right))
+			if (!sliderDragging && Raylib.IsKeyPressed(KeyboardKey.Right))
 			{
 				SeekRelative(playback, 5.0, ref state);
 			}
@@ -1441,57 +1441,57 @@ internal static partial class Program
 			UiTheme.DrawBadge(new Rectangle((float)layout.Width - 108f * scale, 14f * scale, 88f * scale, 30f * scale), "CACHE", UiTheme.Muted);
 		}
 		UiTheme.DrawText($"{song.NoteCount:N0} notes", (int)(106f * scale), (int)(46f * scale), Math.Max(11, (int)(13f * scale)), UiTheme.Muted);
-		float num = (float)layout.Width / 2f - 92f * scale;
-		if (UiTheme.DrawButton(new Rectangle(num, 10f * scale, 52f * scale, 38f * scale), "−5", UiTheme.Sky))
+		float transportLeft = (float)layout.Width / 2f - 92f * scale;
+		if (UiTheme.DrawButton(new Rectangle(transportLeft, 10f * scale, 52f * scale, 38f * scale), "−5", UiTheme.Sky))
 		{
 			SeekRelative(playback, -5.0, ref state);
 		}
-		if (UiTheme.DrawButton(new Rectangle(num + 62f * scale, 7f * scale, 60f * scale, 44f * scale), playback.IsPlaying ? "Pause" : "Play", UiTheme.Sky))
+		if (UiTheme.DrawButton(new Rectangle(transportLeft + 62f * scale, 7f * scale, 60f * scale, 44f * scale), playback.IsPlaying ? "Pause" : "Play", UiTheme.Sky))
 		{
 			TogglePlayback(playback, ref state);
 		}
-		if (UiTheme.DrawButton(new Rectangle(num + 132f * scale, 10f * scale, 52f * scale, 38f * scale), "+5", UiTheme.Sky))
+		if (UiTheme.DrawButton(new Rectangle(transportLeft + 132f * scale, 10f * scale, 52f * scale, 38f * scale), "+5", UiTheme.Sky))
 		{
 			SeekRelative(playback, 5.0, ref state);
 		}
 		DrawPlaybackRateControl(playback, rateEditor, layout);
 		Rectangle playbackSlider = GetPlaybackSlider(layout);
-		double num2 = (sliderDragging ? sliderPreviewPosition : playback.Position);
-		double num3 = ((playback.Session.TotalDuration > 0.0) ? Math.Clamp(num2 / playback.Session.TotalDuration, 0.0, 1.0) : 0.0);
-		UiTheme.DrawProgressBar(playbackSlider, num3, animated: false, 0.0);
-		Raylib.DrawCircle((int)(playbackSlider.X + (float)(num3 * (double)playbackSlider.Width)), (int)(playbackSlider.Y + playbackSlider.Height / 2f), Math.Max(7f, 8f * scale), UiTheme.Text);
-		string text = PlaybackFormatting.FormatTime(num2) + " / " + PlaybackFormatting.FormatTime(playback.Session.TotalDuration);
+		// Dragging previews a position the clock has not moved to yet, so everything below
+		// follows the preview rather than the controller until the drag is committed.
+		double position = (sliderDragging ? sliderPreviewPosition : playback.Position);
+		double progress = ((playback.Session.TotalDuration > 0.0) ? Math.Clamp(position / playback.Session.TotalDuration, 0.0, 1.0) : 0.0);
+		UiTheme.DrawProgressBar(playbackSlider, progress, animated: false, 0.0);
+		Raylib.DrawCircle((int)(playbackSlider.X + (float)(progress * (double)playbackSlider.Width)), (int)(playbackSlider.Y + playbackSlider.Height / 2f), Math.Max(7f, 8f * scale), UiTheme.Text);
+		string timeLabel = PlaybackFormatting.FormatTime(position) + " / " + PlaybackFormatting.FormatTime(playback.Session.TotalDuration);
 		int fontSize = Math.Max(12, (int)(14f * scale));
-		UiTheme.DrawText(text, (int)((float)layout.Width / 2f - (float)UiTheme.MeasureText(text, fontSize) / 2f), (int)(playbackSlider.Y + 15f * scale), fontSize, UiTheme.Muted);
+		UiTheme.DrawText(timeLabel, (int)((float)layout.Width / 2f - (float)UiTheme.MeasureText(timeLabel, fontSize) / 2f), (int)(playbackSlider.Y + 15f * scale), fontSize, UiTheme.Muted);
 		Vector2 mousePosition = Raylib.GetMousePosition();
-		Rectangle rec = new Rectangle(playbackSlider.X - 8f, playbackSlider.Y - 16f, playbackSlider.Width + 16f, 42f);
-		if (!sliderDragging && (bool)Raylib.CheckCollisionPointRec(mousePosition, rec))
+		Rectangle sliderHitArea = new Rectangle(playbackSlider.X - 8f, playbackSlider.Y - 16f, playbackSlider.Width + 16f, 42f);
+		if (!sliderDragging && Raylib.CheckCollisionPointRec(mousePosition, sliderHitArea))
 		{
 			UiTheme.DrawText(PlaybackFormatting.FormatTime(PlaybackFormatting.PositionFromSlider(mousePosition.X, playbackSlider.X, playbackSlider.Width, playback.Session.TotalDuration)), Math.Clamp((int)mousePosition.X - 24, (int)playbackSlider.X, (int)(playbackSlider.X + playbackSlider.Width - 48f)), (int)(playbackSlider.Y + 34f * scale), fontSize, UiTheme.Text);
 		}
-		for (int i = 0; i < piano.Keys.Length; i++)
+		for (int index = 0; index < piano.Keys.Length; index++)
 		{
-			piano.Keys[i].IsPressed = !sliderDragging && playback.IsKeyActive(i);
-			PianoKey pianoKey = piano.Keys[i];
-			if (!pianoKey.IsBlack)
+			piano.Keys[index].IsPressed = !sliderDragging && playback.IsKeyActive(index);
+			PianoKey key = piano.Keys[index];
+			if (!key.IsBlack)
 			{
-				Raylib.DrawLine(pianoKey.X, layout.HeaderHeight, pianoKey.X, layout.HitLineY, new Color((int)UiTheme.Border.R, (int)UiTheme.Border.G, (int)UiTheme.Border.B, 72));
+				Raylib.DrawLine(key.X, layout.HeaderHeight, key.X, layout.HitLineY, new Color((int)UiTheme.Border.R, (int)UiTheme.Border.G, (int)UiTheme.Border.B, 72));
 			}
 		}
 		double lookAhead = Math.Max(1.0, (double)(layout.HitLineY - layout.HeaderHeight) / layout.FallSpeed + 1.0);
-		(int Start, int End) visibleRange = playback.Session.GetVisibleRange(num2, 1.0, lookAhead);
-		int item = visibleRange.Start;
-		int item2 = visibleRange.End;
-		for (int j = item; j < item2; j++)
+		(int Start, int End) visibleRange = playback.Session.GetVisibleRange(position, 1.0, lookAhead);
+		for (int index = visibleRange.Start; index < visibleRange.End; index++)
 		{
-			Note note = playback.Session.Notes[j];
+			Note note = playback.Session.Notes[index];
 			PianoKey key = piano.Keys[note.TargetKeyIndex];
-			int num4 = layout.HitLineY - (int)Math.Floor((note.StartTime - num2) * layout.FallSpeed);
-			int num5 = Math.Max(1, (int)(note.Duration * layout.FallSpeed));
-			int num6 = num4 - num5;
-			if (num6 <= layout.Height && num4 >= layout.HeaderHeight)
+			int bottomY = layout.HitLineY - (int)Math.Floor((note.StartTime - position) * layout.FallSpeed);
+			int noteHeight = Math.Max(1, (int)(note.Duration * layout.FallSpeed));
+			int topY = bottomY - noteHeight;
+			if (topY <= layout.Height && bottomY >= layout.HeaderHeight)
 			{
-				DrawFallingNote(note, key, num6, num4, scale);
+				DrawFallingNote(note, key, topY, bottomY, scale);
 			}
 		}
 		piano.Draw();
@@ -1501,9 +1501,9 @@ internal static partial class Program
 		}
 		else if (!playback.IsPlaying)
 		{
-			string text2 = ((state == GameState.Completed) ? "COMPLETED" : "PAUSED");
-			int fontSize2 = Math.Max(24, (int)(34f * scale));
-			UiTheme.DrawText(text2, layout.Width / 2 - UiTheme.MeasureText(text2, fontSize2) / 2, layout.HeaderHeight + 18, fontSize2, UiTheme.Warning);
+			string statusLabel = ((state == GameState.Completed) ? "COMPLETED" : "PAUSED");
+			int statusFontSize = Math.Max(24, (int)(34f * scale));
+			UiTheme.DrawText(statusLabel, layout.Width / 2 - UiTheme.MeasureText(statusLabel, statusFontSize) / 2, layout.HeaderHeight + 18, statusFontSize, UiTheme.Warning);
 		}
 		DrawAudioOffsetControl(playback, offsetEditor, layout);
 		return false;
@@ -1535,10 +1535,10 @@ internal static partial class Program
 		Raylib.DrawRectangleRounded(rec, 0.16f, 8, UiTheme.Elevated);
 		Color color = ((editor.Error != null) ? UiTheme.Danger : (editor.IsEditing ? UiTheme.Sky : UiTheme.Border));
 		Raylib.DrawRectangleRoundedLinesEx(rec, 0.16f, 8, Math.Max(1f, scale), color);
-		if ((bool)Raylib.IsMouseButtonPressed(MouseButton.Left))
+		if (Raylib.IsMouseButtonPressed(MouseButton.Left))
 		{
 			int committed;
-			if ((bool)Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), rec))
+			if (Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), rec))
 			{
 				if (!editor.IsEditing)
 				{
@@ -1560,15 +1560,15 @@ internal static partial class Program
 					editor.Append((char)charPressed);
 				}
 			}
-			if ((bool)Raylib.IsKeyPressed(KeyboardKey.Backspace))
+			if (Raylib.IsKeyPressed(KeyboardKey.Backspace))
 			{
 				editor.Backspace();
 			}
-			if ((bool)Raylib.IsKeyPressed(KeyboardKey.Enter) && editor.TryCommit(out var committed2))
+			if (Raylib.IsKeyPressed(KeyboardKey.Enter) && editor.TryCommit(out var committed2))
 			{
 				ApplyAudioOffset(playback, committed2);
 			}
-			else if ((bool)Raylib.IsKeyPressed(KeyboardKey.Escape))
+			else if (Raylib.IsKeyPressed(KeyboardKey.Escape))
 			{
 				editor.Cancel();
 			}
@@ -1623,10 +1623,10 @@ internal static partial class Program
 		Raylib.DrawRectangleRounded(rec, 0.16f, 8, UiTheme.Elevated);
 		Color color = ((editor.Error != null) ? UiTheme.Danger : (editor.IsEditing ? UiTheme.Sky : UiTheme.Border));
 		Raylib.DrawRectangleRoundedLinesEx(rec, 0.16f, 8, Math.Max(1f, scale), color);
-		if ((bool)Raylib.IsMouseButtonPressed(MouseButton.Left))
+		if (Raylib.IsMouseButtonPressed(MouseButton.Left))
 		{
 			double rate;
-			if ((bool)Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), rec))
+			if (Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), rec))
 			{
 				if (!editor.IsEditing)
 				{
@@ -1648,15 +1648,15 @@ internal static partial class Program
 					editor.Append((char)charPressed);
 				}
 			}
-			if ((bool)Raylib.IsKeyPressed(KeyboardKey.Backspace))
+			if (Raylib.IsKeyPressed(KeyboardKey.Backspace))
 			{
 				editor.Backspace();
 			}
-			if ((bool)Raylib.IsKeyPressed(KeyboardKey.Enter) && editor.TryCommit(out var rate2))
+			if (Raylib.IsKeyPressed(KeyboardKey.Enter) && editor.TryCommit(out var rate2))
 			{
 				playback.SetPlaybackRate(rate2);
 			}
-			else if ((bool)Raylib.IsKeyPressed(KeyboardKey.Escape))
+			else if (Raylib.IsKeyPressed(KeyboardKey.Escape))
 			{
 				editor.Cancel();
 			}
