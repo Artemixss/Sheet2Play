@@ -646,27 +646,27 @@ internal static partial class Program
 		UiTheme.DrawText("Sheet2Play", (int)(32f * scale), (int)(18f * scale), fontSize, UiTheme.Text);
 		UiTheme.DrawText("Turn sheet music into synchronized piano playback", (int)(34f * scale), (int)(56f * scale), Math.Max(13, (int)(16f * scale)), UiTheme.Muted);
 		UiTheme.DrawText("F11  FULLSCREEN", layout.Width - (int)(150f * scale), (int)(29f * scale), Math.Max(12, (int)(14f * scale)), UiTheme.Muted);
-		float num = Math.Min((float)layout.Width - 48f * scale, 1120f * scale);
-		float num2 = ((float)layout.Width - num) / 2f;
-		Rectangle bounds = new Rectangle(num2, 88f * scale, num, 74f * scale);
+		float contentWidth = Math.Min((float)layout.Width - 48f * scale, 1120f * scale);
+		float contentLeft = ((float)layout.Width - contentWidth) / 2f;
+		Rectangle bounds = new Rectangle(contentLeft, 88f * scale, contentWidth, 74f * scale);
 		UiTheme.DrawCard(bounds, scale);
 		UiTheme.DrawText("Drop a PDF or score image here", (int)(bounds.X + 24f * scale), (int)(bounds.Y + 14f * scale), Math.Max(16, (int)(20f * scale)), UiTheme.Text);
 		UiTheme.DrawText("PDF, PNG, JPEG, TIFF, BMP or WebP", (int)(bounds.X + 24f * scale), (int)(bounds.Y + 43f * scale), Math.Max(12, (int)(14f * scale)), UiTheme.Muted);
-		Rectangle bounds2 = new Rectangle(bounds.X + bounds.Width - 150f * scale, bounds.Y + 16f * scale, 122f * scale, 42f * scale);
-		browseRequested = UiTheme.DrawButton(bounds2, "Browse", UiTheme.Sky);
-		Rectangle bounds3 = new Rectangle(bounds2.X - 112f * scale, bounds2.Y, 98f * scale, bounds2.Height);
-		refreshRequested = UiTheme.DrawButton(bounds3, "Refresh", UiTheme.Muted);
-		UiTheme.DrawText("OMR ENGINE", (int)num2, (int)(174f * scale), Math.Max(12, (int)(14f * scale)), UiTheme.Muted);
-		float num3 = 16f * scale;
-		float num4 = (num - num3) / 2f;
-		Rectangle bounds4 = new Rectangle(num2, 194f * scale, num4, 64f * scale);
-		Rectangle bounds5 = new Rectangle(num2 + num4 + num3, 194f * scale, num4, 64f * scale);
-		if (DrawEngineCard(bounds4, "Zeus GPU", "Experimental rhythm · CUDA-only", UiTheme.Sky, selectedEngine == OmrEngine.Zeus))
+		Rectangle browseButton = new Rectangle(bounds.X + bounds.Width - 150f * scale, bounds.Y + 16f * scale, 122f * scale, 42f * scale);
+		browseRequested = UiTheme.DrawButton(browseButton, "Browse", UiTheme.Sky);
+		Rectangle refreshButton = new Rectangle(browseButton.X - 112f * scale, browseButton.Y, 98f * scale, browseButton.Height);
+		refreshRequested = UiTheme.DrawButton(refreshButton, "Refresh", UiTheme.Muted);
+		UiTheme.DrawText("OMR ENGINE", (int)contentLeft, (int)(174f * scale), Math.Max(12, (int)(14f * scale)), UiTheme.Muted);
+		float engineCardGap = 16f * scale;
+		float engineCardWidth = (contentWidth - engineCardGap) / 2f;
+		Rectangle zeusCard = new Rectangle(contentLeft, 194f * scale, engineCardWidth, 64f * scale);
+		Rectangle homrCard = new Rectangle(contentLeft + engineCardWidth + engineCardGap, 194f * scale, engineCardWidth, 64f * scale);
+		if (DrawEngineCard(zeusCard, "Zeus GPU", "Experimental rhythm · CUDA-only", UiTheme.Sky, selectedEngine == OmrEngine.Zeus))
 		{
 			selectedEngine = OmrEngine.Zeus;
 			PersistEngine(selectedEngine);
 		}
-		if (DrawEngineCard(bounds5, "homr", "Faster · general sheet music", UiTheme.Lime, selectedEngine == OmrEngine.Homr))
+		if (DrawEngineCard(homrCard, "homr", "Faster · general sheet music", UiTheme.Lime, selectedEngine == OmrEngine.Homr))
 		{
 			selectedEngine = OmrEngine.Homr;
 			PersistEngine(selectedEngine);
@@ -682,21 +682,21 @@ internal static partial class Program
 			selectedEngine = OmrEngine.Homr;
 			PersistEngine(selectedEngine);
 		}
-		float num5 = 274f * scale;
-		float num6 = 14f * scale;
-		float num7 = (num - 2 * num6) / 3f;
-		float height = Math.Max(170f * scale, (float)layout.Height - num5 - 24f * scale);
-		Rectangle panel = new Rectangle(num2, num5, num7, height);
-		Rectangle panel2 = new Rectangle(num2 + num7 + num6, num5, num7, height);
-		Rectangle panel3 = new Rectangle(num2 + 2 * (num7 + num6), num5, num7, height);
-		PdfLibraryEntry pdfLibraryEntry = DrawPdfLibraryPanel(panel, pdfLibrary, ref pdfScrollOffset, librarySearch, scale);
-		CachedSongEntry cachedSongEntry = DrawCacheLibraryPanel(panel2, cachedSongs, ref cacheScrollOffset, ref cacheEngineFilter, librarySearch, scale);
-		MidiLibraryEntry midiLibraryEntry = DrawMidiLibraryPanel(panel3, midiLibrary, ref midiScrollOffset, librarySearch, scale);
+		float panelsTop = 274f * scale;
+		float panelGap = 14f * scale;
+		float panelWidth = (contentWidth - 2 * panelGap) / 3f;
+		float height = Math.Max(170f * scale, (float)layout.Height - panelsTop - 24f * scale);
+		Rectangle pdfPanel = new Rectangle(contentLeft, panelsTop, panelWidth, height);
+		Rectangle cachePanel = new Rectangle(contentLeft + panelWidth + panelGap, panelsTop, panelWidth, height);
+		Rectangle midiPanel = new Rectangle(contentLeft + 2 * (panelWidth + panelGap), panelsTop, panelWidth, height);
+		PdfLibraryEntry pdfLibraryEntry = DrawPdfLibraryPanel(pdfPanel, pdfLibrary, ref pdfScrollOffset, librarySearch, scale);
+		CachedSongEntry cachedSongEntry = DrawCacheLibraryPanel(cachePanel, cachedSongs, ref cacheScrollOffset, ref cacheEngineFilter, librarySearch, scale);
+		MidiLibraryEntry midiLibraryEntry = DrawMidiLibraryPanel(midiPanel, midiLibrary, ref midiScrollOffset, librarySearch, scale);
 		if (!string.IsNullOrWhiteSpace(message))
 		{
-			Rectangle rec = new Rectangle(num2 + 8f * scale, (float)layout.Height - 47f * scale, num - 16f * scale, 32f * scale);
-			Raylib.DrawRectangleRounded(rec, 0.18f, 8, UiTheme.Elevated);
-			UiTheme.DrawText(UiTheme.Ellipsize(message, 13, (int)(rec.Width - 20f * scale)), (int)(rec.X + 10f * scale), (int)(rec.Y + 8f * scale), 13, UiTheme.Warning);
+			Rectangle messageBar = new Rectangle(contentLeft + 8f * scale, (float)layout.Height - 47f * scale, contentWidth - 16f * scale, 32f * scale);
+			Raylib.DrawRectangleRounded(messageBar, 0.18f, 8, UiTheme.Elevated);
+			UiTheme.DrawText(UiTheme.Ellipsize(message, 13, (int)(messageBar.Width - 20f * scale)), (int)(messageBar.X + 10f * scale), (int)(messageBar.Y + 8f * scale), 13, UiTheme.Warning);
 		}
 		if (pdfLibraryEntry is not null)
 		{
@@ -726,18 +726,18 @@ internal static partial class Program
 		int visibleLibraryRows = GetVisibleLibraryRows(panel, scale);
 		UpdateLibraryScroll(panel, entries.Count, visibleLibraryRows, ref scrollOffset);
 		PdfLibraryEntry result = null;
-		float num = Math.Clamp(48f * scale, 40f, 58f);
-		float num2 = Math.Clamp(6f * scale, 4f, 9f);
-		float num3 = panel.Y + LibraryRowsTop * scale;
-		for (int i = 0; i < visibleLibraryRows && scrollOffset + i < entries.Count; i++)
+		float rowHeight = Math.Clamp(48f * scale, 40f, 58f);
+		float rowGap = Math.Clamp(6f * scale, 4f, 9f);
+		float rowsTop = panel.Y + LibraryRowsTop * scale;
+		for (int index = 0; index < visibleLibraryRows && scrollOffset + index < entries.Count; index++)
 		{
-			PdfLibraryEntry pdfLibraryEntry = entries[scrollOffset + i];
-			Rectangle rec = new Rectangle(panel.X + 10f * scale, num3 + (float)i * (num + num2), panel.Width - 20f * scale, num);
-			Raylib.DrawRectangleRounded(rec, 0.12f, 8, UiTheme.Elevated);
+			PdfLibraryEntry pdfLibraryEntry = entries[scrollOffset + index];
+			Rectangle row = new Rectangle(panel.X + 10f * scale, rowsTop + (float)index * (rowHeight + rowGap), panel.Width - 20f * scale, rowHeight);
+			Raylib.DrawRectangleRounded(row, 0.12f, 8, UiTheme.Elevated);
 			int fontSize = Math.Max(12, (int)(15f * scale));
-			UiTheme.DrawText(UiTheme.Ellipsize(pdfLibraryEntry.DisplayName, fontSize, (int)(rec.Width - 94f * scale)), (int)(rec.X + 12f * scale), (int)(rec.Y + 7f * scale), fontSize, UiTheme.Text);
-			UiTheme.DrawText(FormatFileSize(pdfLibraryEntry.SizeBytes), (int)(rec.X + 12f * scale), (int)(rec.Y + 27f * scale), Math.Max(10, (int)(12f * scale)), UiTheme.Muted);
-			if (UiTheme.DrawButton(new Rectangle(rec.X + rec.Width - 72f * scale, rec.Y + 7f * scale, 62f * scale, rec.Height - 14f * scale), "Load", UiTheme.Sky))
+			UiTheme.DrawText(UiTheme.Ellipsize(pdfLibraryEntry.DisplayName, fontSize, (int)(row.Width - 94f * scale)), (int)(row.X + 12f * scale), (int)(row.Y + 7f * scale), fontSize, UiTheme.Text);
+			UiTheme.DrawText(FormatFileSize(pdfLibraryEntry.SizeBytes), (int)(row.X + 12f * scale), (int)(row.Y + 27f * scale), Math.Max(10, (int)(12f * scale)), UiTheme.Muted);
+			if (UiTheme.DrawButton(new Rectangle(row.X + row.Width - 72f * scale, row.Y + 7f * scale, 62f * scale, row.Height - 14f * scale), "Load", UiTheme.Sky))
 			{
 				result = pdfLibraryEntry;
 			}
@@ -764,18 +764,18 @@ internal static partial class Program
 		int visibleLibraryRows = GetVisibleLibraryRows(panel, scale);
 		UpdateLibraryScroll(panel, entries.Count, visibleLibraryRows, ref scrollOffset);
 		MidiLibraryEntry result = null;
-		float num = Math.Clamp(48f * scale, 40f, 58f);
-		float num2 = Math.Clamp(6f * scale, 4f, 9f);
-		float num3 = panel.Y + LibraryRowsTop * scale;
-		for (int i = 0; i < visibleLibraryRows && scrollOffset + i < entries.Count; i++)
+		float rowHeight = Math.Clamp(48f * scale, 40f, 58f);
+		float rowGap = Math.Clamp(6f * scale, 4f, 9f);
+		float rowsTop = panel.Y + LibraryRowsTop * scale;
+		for (int index = 0; index < visibleLibraryRows && scrollOffset + index < entries.Count; index++)
 		{
-			MidiLibraryEntry entry = entries[scrollOffset + i];
-			Rectangle rec = new Rectangle(panel.X + 10f * scale, num3 + (float)i * (num + num2), panel.Width - 20f * scale, num);
-			Raylib.DrawRectangleRounded(rec, 0.12f, 8, UiTheme.Elevated);
+			MidiLibraryEntry entry = entries[scrollOffset + index];
+			Rectangle row = new Rectangle(panel.X + 10f * scale, rowsTop + (float)index * (rowHeight + rowGap), panel.Width - 20f * scale, rowHeight);
+			Raylib.DrawRectangleRounded(row, 0.12f, 8, UiTheme.Elevated);
 			int fontSize = Math.Max(12, (int)(15f * scale));
-			UiTheme.DrawText(UiTheme.Ellipsize(entry.DisplayName, fontSize, (int)(rec.Width - 94f * scale)), (int)(rec.X + 12f * scale), (int)(rec.Y + 7f * scale), fontSize, UiTheme.Text);
-			UiTheme.DrawText(FormatFileSize(entry.SizeBytes), (int)(rec.X + 12f * scale), (int)(rec.Y + 27f * scale), Math.Max(10, (int)(12f * scale)), UiTheme.Muted);
-			if (UiTheme.DrawButton(new Rectangle(rec.X + rec.Width - 72f * scale, rec.Y + 7f * scale, 62f * scale, rec.Height - 14f * scale), "Play", UiTheme.Sky))
+			UiTheme.DrawText(UiTheme.Ellipsize(entry.DisplayName, fontSize, (int)(row.Width - 94f * scale)), (int)(row.X + 12f * scale), (int)(row.Y + 7f * scale), fontSize, UiTheme.Text);
+			UiTheme.DrawText(FormatFileSize(entry.SizeBytes), (int)(row.X + 12f * scale), (int)(row.Y + 27f * scale), Math.Max(10, (int)(12f * scale)), UiTheme.Muted);
+			if (UiTheme.DrawButton(new Rectangle(row.X + row.Width - 72f * scale, row.Y + 7f * scale, 62f * scale, row.Height - 14f * scale), "Play", UiTheme.Sky))
 			{
 				result = entry;
 			}
@@ -1090,8 +1090,8 @@ internal static partial class Program
 		UiTheme.DrawCard(panel, scale);
 		UiTheme.DrawText(title, (int)(panel.X + 14f * scale), (int)(panel.Y + 14f * scale), Math.Max(13, (int)(16f * scale)), UiTheme.Text);
 		int fontSize = Math.Max(10, (int)(12f * scale));
-		int num = UiTheme.MeasureText(count, fontSize);
-		UiTheme.DrawText(count, (int)(panel.X + panel.Width - (float)num - 16f * scale), (int)(panel.Y + 17f * scale), fontSize, accent);
+		int countWidth = UiTheme.MeasureText(count, fontSize);
+		UiTheme.DrawText(count, (int)(panel.X + panel.Width - (float)countWidth - 16f * scale), (int)(panel.Y + 17f * scale), fontSize, accent);
 	}
 
 	private static void DrawLibraryEmpty(Rectangle panel, string message, float scale)
@@ -1102,9 +1102,9 @@ internal static partial class Program
 
 	private static int GetVisibleLibraryRows(Rectangle panel, float scale)
 	{
-		float num = Math.Clamp(48f * scale, 40f, 58f);
-		float num2 = Math.Clamp(6f * scale, 4f, 9f);
-		return Math.Max(1, (int)((panel.Height - (LibraryRowsTop + 8f) * scale) / (num + num2)));
+		float rowHeight = Math.Clamp(48f * scale, 40f, 58f);
+		float rowGap = Math.Clamp(6f * scale, 4f, 9f);
+		return Math.Max(1, (int)((panel.Height - (LibraryRowsTop + 8f) * scale) / (rowHeight + rowGap)));
 	}
 
 	private static void UpdateLibraryScroll(Rectangle panel, int entryCount, int visibleRows, ref int scrollOffset)
@@ -1125,12 +1125,12 @@ internal static partial class Program
 	{
 		if (entryCount > visibleRows)
 		{
-			float num = panel.Height - (topOffset + 10f) * scale;
-			Rectangle rec = new Rectangle(panel.X + panel.Width - 5f * scale, panel.Y + topOffset * scale, 2f * scale, num);
-			Raylib.DrawRectangleRec(rec, UiTheme.Border);
-			float num2 = Math.Max(20f * scale, num * (float)visibleRows / (float)entryCount);
-			float num3 = (float)scrollOffset / (float)(entryCount - visibleRows);
-			Raylib.DrawRectangleRounded(new Rectangle(rec.X - scale, rec.Y + (num - num2) * num3, 4f * scale, num2), 0.8f, 6, UiTheme.Muted);
+			float trackHeight = panel.Height - (topOffset + 10f) * scale;
+			Rectangle track = new Rectangle(panel.X + panel.Width - 5f * scale, panel.Y + topOffset * scale, 2f * scale, trackHeight);
+			Raylib.DrawRectangleRec(track, UiTheme.Border);
+			float thumbHeight = Math.Max(20f * scale, trackHeight * (float)visibleRows / (float)entryCount);
+			float thumbPosition = (float)scrollOffset / (float)(entryCount - visibleRows);
+			Raylib.DrawRectangleRounded(new Rectangle(track.X - scale, track.Y + (trackHeight - thumbHeight) * thumbPosition, 4f * scale, thumbHeight), 0.8f, 6, UiTheme.Muted);
 		}
 	}
 
@@ -1142,29 +1142,29 @@ internal static partial class Program
 		}
 		if (bytes >= 1024)
 		{
-			double num = (double)bytes / 1024.0;
-			if (num < 1024.0)
+			double kilobytes = (double)bytes / 1024.0;
+			if (kilobytes < 1024.0)
 			{
-				return $"{num:0.#} KB";
+				return $"{kilobytes:0.#} KB";
 			}
-			return $"{num / 1024.0:0.#} MB";
+			return $"{kilobytes / 1024.0:0.#} MB";
 		}
 		return $"{bytes} B";
 	}
 
 	private static bool DrawEngineCard(Rectangle bounds, string title, string description, Color accent, bool selected)
 	{
-		bool flag = Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), bounds);
-		Raylib.DrawRectangleRounded(bounds, 0.12f, 10, selected ? new Color((int)accent.R, (int)accent.G, (int)accent.B, 38) : (flag ? UiTheme.Elevated : UiTheme.Surface));
+		bool hovered = Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), bounds);
+		Raylib.DrawRectangleRounded(bounds, 0.12f, 10, selected ? new Color((int)accent.R, (int)accent.G, (int)accent.B, 38) : (hovered ? UiTheme.Elevated : UiTheme.Surface));
 		Raylib.DrawRectangleRoundedLinesEx(bounds, 0.12f, 10, (!selected) ? 1 : 2, selected ? accent : UiTheme.Border);
-		int num = Math.Max(17, (int)(21f * Math.Min(1.4f, bounds.Height / 76f)));
-		UiTheme.DrawText(title, (int)bounds.X + 16, (int)bounds.Y + 12, num, UiTheme.Text);
-		UiTheme.DrawText(description, (int)bounds.X + 16, (int)bounds.Y + 43, Math.Max(12, num - 7), UiTheme.Muted);
+		int titleSize = Math.Max(17, (int)(21f * Math.Min(1.4f, bounds.Height / 76f)));
+		UiTheme.DrawText(title, (int)bounds.X + 16, (int)bounds.Y + 12, titleSize, UiTheme.Text);
+		UiTheme.DrawText(description, (int)bounds.X + 16, (int)bounds.Y + 43, Math.Max(12, titleSize - 7), UiTheme.Muted);
 		if (selected)
 		{
 			Raylib.DrawCircle((int)(bounds.X + bounds.Width - 22f), (int)(bounds.Y + 22f), 6f, accent);
 		}
-		if (flag)
+		if (hovered)
 		{
 			return Raylib.IsMouseButtonPressed(MouseButton.Left);
 		}
