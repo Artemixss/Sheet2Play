@@ -413,11 +413,6 @@ internal static partial class Program
 	}
 
 	/// <summary>
-	/// Opens a MIDI synthesiser, preferring VirtualMIDISynth and falling back to any
-	/// available device. Returns null when the machine has no MIDI output at all; the
-	/// caller then runs silently rather than failing to start.
-	/// </summary>
-	/// <summary>
 	/// Presents a single frame so the window has painted before a slow blocking call.
 	/// </summary>
 	/// <remarks>
@@ -449,6 +444,11 @@ internal static partial class Program
 		Raylib.EndDrawing();
 	}
 
+	/// <summary>
+	/// Opens a MIDI synthesiser, preferring VirtualMIDISynth and falling back to any
+	/// available device. Returns null when the machine has no MIDI output at all; the
+	/// caller then runs silently rather than failing to start.
+	/// </summary>
 	private static OutputDevice TryOpenSynthDevice(out string warning)
 	{
 		warning = null;
