@@ -178,20 +178,20 @@ internal static partial class Program
 		midiOutput.AllNotesOff();
 		UiLayout layout = UiLayout.Create(Raylib.GetScreenWidth(), Raylib.GetScreenHeight());
 		Keyboard keyboard = new Keyboard(layout.Width, layout.HitLineY, layout.KeyboardHeight);
-		int num = layout.Width;
-		int num2 = layout.Height;
-		ConcurrentQueue<string> concurrentQueue = new ConcurrentQueue<string>();
-		ConcurrentQueue<LoadRequest> concurrentQueue2 = new ConcurrentQueue<LoadRequest>();
+		int lastWidth = layout.Width;
+		int lastHeight = layout.Height;
+		ConcurrentQueue<string> selectedFiles = new ConcurrentQueue<string>();
+		ConcurrentQueue<LoadRequest> loadRequests = new ConcurrentQueue<LoadRequest>();
 		LoadResultHandoff<SongLoadResult> loadResults = new LoadResultHandoff<SongLoadResult>();
 		LoadProgressTracker progressQueue = new LoadProgressTracker();
 		LoadProgressModel loadProgressModel = new LoadProgressModel();
-		using CancellationTokenSource cancellationTokenSource2 = new CancellationTokenSource();
+		using CancellationTokenSource applicationLifetime = new CancellationTokenSource();
 		CancellationTokenSource cancellationTokenSource = null;
 		Task task = null;
 		DialogState dialogState = new DialogState();
 		GameState state = GameState.WaitingForFile;
 		OmrEngine selectedEngine = AppSettingsStore.LoadEngine();
-		LoadRequest request2 = null;
+		LoadRequest pendingRequest = null;
 		PlaybackController playbackController = null;
 		SongLoadResult songLoadResult = null;
 		Exception exception = null;
@@ -217,12 +217,12 @@ internal static partial class Program
 			}
 			int screenWidth = Raylib.GetScreenWidth();
 			int screenHeight = Raylib.GetScreenHeight();
-			if (screenWidth != num || screenHeight != num2)
+			if (screenWidth != lastWidth || screenHeight != lastHeight)
 			{
 				layout = UiLayout.Create(screenWidth, screenHeight);
 				keyboard.Resize(layout.Width, layout.HitLineY, layout.KeyboardHeight);
-				num = screenWidth;
-				num2 = screenHeight;
+				lastWidth = screenWidth;
+				lastHeight = screenHeight;
 			}
 			OmrProgress progress;
 			while (progressQueue.TryTake(out progress) && progress is not null)
@@ -275,16 +275,18 @@ internal static partial class Program
 					}
 				}
 			}
-			HandleDroppedFiles(state, concurrentQueue);
+			HandleDroppedFiles(state, selectedFiles);
 			string result;
-			while (state == GameState.WaitingForFile && concurrentQueue.TryDequeue(out result))
+			while (state == GameState.WaitingForFile && selectedFiles.TryDequeue(out result))
 			{
-				concurrentQueue2.Enqueue(new LoadRequest(result, selectedEngine, BypassKnownFailure: false, null));
+				loadRequests.Enqueue(new LoadRequest(result, selectedEngine, BypassKnownFailure: false, null));
 			}
-			bool flag = ((state == GameState.WaitingForFile || state == GameState.Error) ? true : false);
-			if (flag && concurrentQueue2.TryDequeue(out var request))
+			// A load is only picked up from the idle screens; mid-conversion or mid-playback
+			// the queue is left alone until the user comes back to the library.
+			bool canStartLoad = state is GameState.WaitingForFile or GameState.Error;
+			if (canStartLoad && loadRequests.TryDequeue(out var request))
 			{
-				request2 = request;
+				pendingRequest = request;
 				exception = null;
 				message = null;
 				if (NeedsReuseConfirmation(request))
@@ -294,7 +296,7 @@ internal static partial class Program
 				else
 				{
 					loadProgressModel.Start(request.DisplayName, request.Engine);
-					cancellationTokenSource = CancellationTokenSource.CreateLinkedTokenSource(cancellationTokenSource2.Token);
+					cancellationTokenSource = CancellationTokenSource.CreateLinkedTokenSource(applicationLifetime.Token);
 					CancellationToken token = cancellationTokenSource.Token;
 					state = GameState.Processing;
 					task = Task.Run(delegate
@@ -303,29 +305,23 @@ internal static partial class Program
 					});
 				}
 			}
-			flag = playbackController != null;
-			if (flag)
-			{
-				bool flag2 = state == GameState.Playing || state == GameState.Completed;
-				flag = flag2;
-			}
-			if (flag)
+			if (playbackController != null && state is GameState.Playing or GameState.Completed)
 			{
 				HandlePlaybackKeyboard(playbackController, playbackRateEditor, ref state, ref sliderDragging, ref resumeAfterSlider, ref sliderPreviewPosition, layout);
 				if (!playbackRateEditor.IsEditing && !audioOffsetEditor.IsEditing && !sliderDragging)
 				{
-					int num7 = 0;
+					int offsetStep = 0;
 					if (Raylib.IsKeyPressed(KeyboardKey.LeftBracket))
 					{
-						num7 = -AudioOffsetRules.StepMilliseconds;
+						offsetStep = -AudioOffsetRules.StepMilliseconds;
 					}
 					else if (Raylib.IsKeyPressed(KeyboardKey.RightBracket))
 					{
-						num7 = AudioOffsetRules.StepMilliseconds;
+						offsetStep = AudioOffsetRules.StepMilliseconds;
 					}
-					if (num7 != 0)
+					if (offsetStep != 0)
 					{
-						StepAudioOffset(playbackController, num7);
+						StepAudioOffset(playbackController, offsetStep);
 					}
 				}
 				playbackController.Update();
@@ -345,7 +341,7 @@ internal static partial class Program
 				LoadRequest loadRequest = DrawLanding(layout, ref selectedEngine, pdfLibrary, cachedSongs, midiLibrary, ref pdfScrollOffset, ref cacheScrollOffset, ref cacheEngineFilter, ref midiScrollOffset, librarySearch, message, out browseRequested, out refreshRequested);
 				if (browseRequested || (!librarySearch.IsTyping && Raylib.IsKeyPressed(KeyboardKey.B)))
 				{
-					StartFilePicker(concurrentQueue, dialogState);
+					StartFilePicker(selectedFiles, dialogState);
 				}
 				if (refreshRequested)
 				{
@@ -358,18 +354,18 @@ internal static partial class Program
 				}
 				if (loadRequest is not null)
 				{
-					concurrentQueue2.Enqueue(loadRequest);
+					loadRequests.Enqueue(loadRequest);
 				}
 				break;
 			}
 			case GameState.ConfirmReuse:
 			{
-				ReuseAction reuseAction = DrawConfirmReuse(layout, request2);
+				ReuseAction reuseAction = DrawConfirmReuse(layout, pendingRequest);
 				if (Raylib.IsKeyPressed(KeyboardKey.Escape))
 				{
 					reuseAction = ReuseAction.Cancel;
 				}
-				HandleReuseAction(reuseAction, request2, concurrentQueue2, ref state);
+				HandleReuseAction(reuseAction, pendingRequest, loadRequests, ref state);
 				break;
 			}
 			case GameState.Processing:
@@ -383,7 +379,7 @@ internal static partial class Program
 				DrawProcessing(layout, loadProgressModel, cancelling: true);
 				break;
 			case GameState.Error:
-				HandleErrorAction(DrawError(layout, exception, request2), request2, concurrentQueue, dialogState, concurrentQueue2, ref state);
+				HandleErrorAction(DrawError(layout, exception, pendingRequest), pendingRequest, selectedFiles, dialogState, loadRequests, ref state);
 				break;
 			case GameState.Playing:
 			case GameState.Completed:
@@ -397,7 +393,7 @@ internal static partial class Program
 			}
 			Raylib.EndDrawing();
 		}
-		cancellationTokenSource2.Cancel();
+		applicationLifetime.Cancel();
 		cancellationTokenSource?.Cancel();
 		if (task != null)
 		{
@@ -1381,8 +1377,8 @@ internal static partial class Program
 
 	private static Rectangle GetPlaybackSlider(UiLayout layout)
 	{
-		float num = Math.Clamp(118f * layout.Scale, 90f, 180f);
-		return new Rectangle(num, (float)layout.HeaderHeight - 23f * layout.Scale, (float)layout.Width - num * 2f, Math.Max(8f, 10f * layout.Scale));
+		float inset = Math.Clamp(118f * layout.Scale, 90f, 180f);
+		return new Rectangle(inset, (float)layout.HeaderHeight - 23f * layout.Scale, (float)layout.Width - inset * 2f, Math.Max(8f, 10f * layout.Scale));
 	}
 
 	private static bool DrawPlayback(PlaybackController playback, SongLoadResult song, Keyboard piano, bool sliderDragging, double sliderPreviewPosition, PlaybackRateEditor rateEditor, AudioOffsetEditor offsetEditor, ref GameState state, UiLayout layout)
@@ -1696,23 +1692,14 @@ internal static partial class Program
 	{
 		if (exception is OmrPipelineException ex && !string.IsNullOrWhiteSpace(ex.ErrorCode))
 		{
-			string text = ((!ex.Page.HasValue) ? string.Empty : $" on page {ex.Page}");
-			bool flag;
-			switch (ex.ErrorCode)
+			string pageSuffix = ((!ex.Page.HasValue) ? string.Empty : $" on page {ex.Page}");
+			// These two codes get a plain-language message; every other code is shown raw,
+			// because the code and stage are what make an unfamiliar failure searchable.
+			if (ex.ErrorCode is "NORMALIZATION_FAILED" or "MUSICXML_PARSE_FAILED")
 			{
-			case "NORMALIZATION_FAILED":
-			case "MUSICXML_PARSE_FAILED":
-				flag = true;
-				break;
-			default:
-				flag = false;
-				break;
+				return "The engine produced an unreliable MusicXML structure" + pageSuffix + ": " + ex.Message;
 			}
-			if (!flag)
-			{
-				return $"{ex.ErrorCode} ({ex.Stage ?? "unknown stage"}){text}: {ex.Message}";
-			}
-			return "The engine produced an unreliable MusicXML structure" + text + ": " + ex.Message;
+			return $"{ex.ErrorCode} ({ex.Stage ?? "unknown stage"}){pageSuffix}: {ex.Message}";
 		}
 		if (exception.Message.Length > 240)
 		{
