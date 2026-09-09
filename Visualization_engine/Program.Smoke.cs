@@ -104,7 +104,14 @@ internal static partial class Program
 			failures += Capture(outputDirectory, "07-playback", layout, () =>
 			{
 				List<Note> notes = SampleNotes();
-				PlaybackController playback = new(new PlaybackSession(notes), new NullMidiOutput());
+				// Frozen clock. A live one starts counting the moment the controller is
+				// built, so a millisecond or two passes before the notes are drawn and they
+				// land a pixel lower - enough to change the PNG between runs and make this
+				// screen useless as a reference image for refactoring.
+				PlaybackController playback = new(
+					new PlaybackSession(notes),
+					new NullMidiOutput(),
+					new PlaybackClock(() => 0));
 				SongLoadResult song = new(notes, "Liyue Battle Theme", OmrEngine.Homr, true, null);
 				Keyboard piano = new(layout.Width, layout.HitLineY, layout.KeyboardHeight);
 				GameState state = GameState.Playing;
