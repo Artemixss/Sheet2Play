@@ -1186,9 +1186,9 @@ internal static partial class Program
 	private static bool DrawProcessing(UiLayout layout, LoadProgressModel model, bool cancelling)
 	{
 		float scale = layout.Scale;
-		float num = Math.Min((float)layout.Width - 64f * scale, 720f * scale);
-		float num2 = 350f * scale;
-		Rectangle bounds = new Rectangle(((float)layout.Width - num) / 2f, ((float)layout.Height - num2) / 2f, num, num2);
+		float cardWidth = Math.Min((float)layout.Width - 64f * scale, 720f * scale);
+		float cardHeight = 350f * scale;
+		Rectangle bounds = new Rectangle(((float)layout.Width - cardWidth) / 2f, ((float)layout.Height - cardHeight) / 2f, cardWidth, cardHeight);
 		UiTheme.DrawCard(bounds, scale);
 		OmrProgress latest = model.Latest;
 		UiTheme.DrawText(cancelling ? "Cancelling conversion" : "Reading sheet music", (int)(bounds.X + 30f * scale), (int)(bounds.Y + 26f * scale), Math.Max(23, (int)(28f * scale)), UiTheme.Text);
@@ -1196,46 +1196,25 @@ internal static partial class Program
 		Color accent = ((model.Engine == OmrEngine.Zeus) ? UiTheme.Sky : UiTheme.Lime);
 		UiTheme.DrawBadge(new Rectangle(bounds.X + bounds.Width - 115f * scale, bounds.Y + 28f * scale, 82f * scale, 28f * scale), OmrPipeline.GetEngineName(model.Engine).ToUpperInvariant(), accent);
 		UiTheme.DrawText(UiTheme.Ellipsize(cancelling ? "Stopping Python processes safely…" : (latest?.Message ?? "Starting background worker"), Math.Max(15, (int)(18f * scale)), (int)(bounds.Width - 60f * scale)), (int)(bounds.X + 30f * scale), (int)(bounds.Y + 118f * scale), Math.Max(15, (int)(18f * scale)), UiTheme.Text);
-		int? num3 = latest?.PageCount;
-		UiTheme.DrawText((num3.HasValue && num3.GetValueOrDefault() > 0) ? $"Page {latest.Page ?? Math.Min(latest.CompletedPages.GetValueOrDefault() + 1, latest.PageCount.Value)} of {latest.PageCount}" : FriendlyStage(latest?.Stage), (int)(bounds.X + 30f * scale), (int)(bounds.Y + 155f * scale), Math.Max(13, (int)(16f * scale)), UiTheme.Muted);
+		int? pageCount = latest?.PageCount;
+		UiTheme.DrawText((pageCount > 0) ? $"Page {latest.Page ?? Math.Min(latest.CompletedPages.GetValueOrDefault() + 1, latest.PageCount.Value)} of {latest.PageCount}" : FriendlyStage(latest?.Stage), (int)(bounds.X + 30f * scale), (int)(bounds.Y + 155f * scale), Math.Max(13, (int)(16f * scale)), UiTheme.Muted);
 		Rectangle bounds2 = new Rectangle(bounds.X + 30f * scale, bounds.Y + 192f * scale, bounds.Width - 60f * scale, 18f * scale);
 		bool animated = !cancelling && latest?.Stage == "page_inference" && latest.Status == "started";
 		UiTheme.DrawProgressBar(bounds2, model.Fraction, animated, model.ElapsedSeconds);
 		UiTheme.DrawText($"{model.Fraction * 100.0:0}%", (int)(bounds2.X + bounds2.Width - 42f * scale), (int)(bounds2.Y + 28f * scale), Math.Max(12, (int)(14f * scale)), UiTheme.Muted);
-		string text = "Elapsed  " + PlaybackFormatting.FormatTime(model.ElapsedSeconds);
-		bool flag;
-		switch (latest?.Stage)
-		{
-		case "normalization":
-		case "midi_write":
-		case "cache_validation":
-			flag = true;
-			break;
-		default:
-			flag = false;
-			break;
-		}
-		object text2;
-		if (!flag)
-		{
-			double? estimatedRemainingSeconds = model.EstimatedRemainingSeconds;
-			if (estimatedRemainingSeconds.HasValue)
-			{
-				double valueOrDefault = estimatedRemainingSeconds.GetValueOrDefault();
-				text2 = "Approx. remaining  " + PlaybackFormatting.FormatTime(valueOrDefault);
-			}
-			else
-			{
-				text2 = "Estimating…";
-			}
-		}
-		else
-		{
-			text2 = "Finishing…";
-		}
-		UiTheme.DrawText(text, (int)(bounds.X + 30f * scale), (int)(bounds.Y + 244f * scale), Math.Max(13, (int)(15f * scale)), UiTheme.Muted);
-		int num4 = UiTheme.MeasureText((string)text2, Math.Max(13, (int)(15f * scale)));
-		UiTheme.DrawText((string)text2, (int)(bounds.X + bounds.Width - 30f * scale - (float)num4), (int)(bounds.Y + 244f * scale), Math.Max(13, (int)(15f * scale)), UiTheme.Muted);
+		string elapsedLabel = "Elapsed  " + PlaybackFormatting.FormatTime(model.ElapsedSeconds);
+		// Past recognition the estimate stops meaning anything: these stages are short and
+		// not page-paced, so a countdown extrapolated from page rate would be misleading.
+		bool isFinishing = latest?.Stage is "normalization" or "midi_write" or "cache_validation";
+		string remainingLabel = isFinishing
+			? "Finishing…"
+			: model.EstimatedRemainingSeconds is double remainingSeconds
+				? "Approx. remaining  " + PlaybackFormatting.FormatTime(remainingSeconds)
+				: "Estimating…";
+		int labelFontSize = Math.Max(13, (int)(15f * scale));
+		UiTheme.DrawText(elapsedLabel, (int)(bounds.X + 30f * scale), (int)(bounds.Y + 244f * scale), labelFontSize, UiTheme.Muted);
+		int remainingWidth = UiTheme.MeasureText(remainingLabel, labelFontSize);
+		UiTheme.DrawText(remainingLabel, (int)(bounds.X + bounds.Width - 30f * scale - (float)remainingWidth), (int)(bounds.Y + 244f * scale), labelFontSize, UiTheme.Muted);
 		return UiTheme.DrawButton(new Rectangle(bounds.X + bounds.Width / 2f - 70f * scale, bounds.Y + bounds.Height - 62f * scale, 140f * scale, 40f * scale), cancelling ? "Cancelling…" : "Cancel  (Esc)", UiTheme.Danger, !cancelling);
 	}
 
@@ -1258,51 +1237,40 @@ internal static partial class Program
 	private static ErrorAction DrawError(UiLayout layout, Exception? exception, LoadRequest? request)
 	{
 		float scale = layout.Scale;
-		float num = Math.Min((float)layout.Width - 64f * scale, 760f * scale);
-		float num2 = 390f * scale;
-		Rectangle bounds = new Rectangle(((float)layout.Width - num) / 2f, ((float)layout.Height - num2) / 2f, num, num2);
+		float cardWidth = Math.Min((float)layout.Width - 64f * scale, 760f * scale);
+		float cardHeight = 390f * scale;
+		Rectangle bounds = new Rectangle(((float)layout.Width - cardWidth) / 2f, ((float)layout.Height - cardHeight) / 2f, cardWidth, cardHeight);
 		UiTheme.DrawCard(bounds, scale);
 		UiTheme.DrawText("Conversion failed", (int)(bounds.X + 30f * scale), (int)(bounds.Y + 26f * scale), Math.Max(24, (int)(30f * scale)), UiTheme.Danger);
 		DrawWrappedText(FormatLoadError(exception ?? new InvalidOperationException("Unknown loading error.")), new Rectangle(bounds.X + 30f * scale, bounds.Y + 82f * scale, bounds.Width - 60f * scale, 110f * scale), Math.Max(14, (int)(17f * scale)), UiTheme.Text);
+		// One optional hint line, drawn in the same slot either way. The decompiler could
+		// not reconstruct this and left it as a goto chain across four labels.
 		if (exception is KnownOmrFailureException)
 		{
 			UiTheme.DrawText("This deterministic result was remembered; the model was not loaded again.", (int)(bounds.X + 30f * scale), (int)(bounds.Y + 205f * scale), Math.Max(12, (int)(14f * scale)), UiTheme.Warning);
-			goto IL_01cc;
 		}
-		if (!(exception is OmrPipelineException ex))
+		else if (exception is OmrPipelineException pipelineFailure &&
+			pipelineFailure.ErrorCode is "NORMALIZATION_FAILED" or "MUSICXML_PARSE_FAILED")
 		{
-			goto IL_0189;
+			UiTheme.DrawText("The engine could not preserve a reliable score structure. Try the other engine.", (int)(bounds.X + 30f * scale), (int)(bounds.Y + 205f * scale), Math.Max(12, (int)(14f * scale)), UiTheme.Warning);
 		}
-		switch (ex.ErrorCode)
-		{
-		case "NORMALIZATION_FAILED":
-		case "MUSICXML_PARSE_FAILED":
-			break;
-		default:
-			goto IL_0189;
-		}
-		bool flag = true;
-		goto IL_018c;
-		IL_0189:
-		flag = false;
-		goto IL_018c;
-		IL_01cc:
+
 		float y = bounds.Y + bounds.Height - 116f * scale;
-		float num3 = 10f * scale;
-		float num4 = (bounds.Width - 60f * scale - num3 * 2f) / 3f;
+		float gap = 10f * scale;
+		float buttonWidth = (bounds.Width - 60f * scale - gap * 2f) / 3f;
 		if (request?.InputPath != null)
 		{
 			string label = ((request.Engine == OmrEngine.Zeus) ? "Retry homr" : "Retry Zeus");
 			Color accent = ((request.Engine == OmrEngine.Zeus) ? UiTheme.Lime : UiTheme.Sky);
-			if (UiTheme.DrawButton(new Rectangle(bounds.X + 30f * scale, y, num4, 44f * scale), label, accent))
+			if (UiTheme.DrawButton(new Rectangle(bounds.X + 30f * scale, y, buttonWidth, 44f * scale), label, accent))
 			{
 				return ErrorAction.RetryAlternate;
 			}
-			if (UiTheme.DrawButton(new Rectangle(bounds.X + 30f * scale + num4 + num3, y, num4, 44f * scale), "Retry anyway", UiTheme.Warning))
+			if (UiTheme.DrawButton(new Rectangle(bounds.X + 30f * scale + buttonWidth + gap, y, buttonWidth, 44f * scale), "Retry anyway", UiTheme.Warning))
 			{
 				return ErrorAction.RetrySame;
 			}
-			if (UiTheme.DrawButton(new Rectangle(bounds.X + 30f * scale + (num4 + num3) * 2f, y, num4, 44f * scale), "Choose file", UiTheme.Sky))
+			if (UiTheme.DrawButton(new Rectangle(bounds.X + 30f * scale + (buttonWidth + gap) * 2f, y, buttonWidth, 44f * scale), "Choose file", UiTheme.Sky))
 			{
 				return ErrorAction.ChooseFile;
 			}
@@ -1312,41 +1280,33 @@ internal static partial class Program
 			return ErrorAction.Back;
 		}
 		return ErrorAction.None;
-		IL_018c:
-		if (flag)
-		{
-			UiTheme.DrawText("The engine could not preserve a reliable score structure. Try the other engine.", (int)(bounds.X + 30f * scale), (int)(bounds.Y + 205f * scale), Math.Max(12, (int)(14f * scale)), UiTheme.Warning);
-		}
-		goto IL_01cc;
 	}
 
 	private static void DrawWrappedText(string text, Rectangle bounds, int fontSize, Color color)
 	{
-		string[] array = text.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-		string text2 = string.Empty;
-		float num = bounds.Y;
-		string[] array2 = array;
-		foreach (string text3 in array2)
+		string line = string.Empty;
+		float y = bounds.Y;
+		foreach (string word in text.Split(' ', StringSplitOptions.RemoveEmptyEntries))
 		{
-			string text4 = ((text2.Length == 0) ? text3 : (text2 + " " + text3));
-			if ((float)UiTheme.MeasureText(text4, fontSize) > bounds.Width && text2.Length > 0)
+			string candidate = ((line.Length == 0) ? word : (line + " " + word));
+			if ((float)UiTheme.MeasureText(candidate, fontSize) > bounds.Width && line.Length > 0)
 			{
-				UiTheme.DrawText(text2, (int)bounds.X, (int)num, fontSize, color);
-				num += (float)(fontSize + 7);
-				text2 = text3;
-				if (num + (float)fontSize > bounds.Y + bounds.Height)
+				UiTheme.DrawText(line, (int)bounds.X, (int)y, fontSize, color);
+				y += (float)(fontSize + 7);
+				line = word;
+				if (y + (float)fontSize > bounds.Y + bounds.Height)
 				{
 					break;
 				}
 			}
 			else
 			{
-				text2 = text4;
+				line = candidate;
 			}
 		}
-		if (text2.Length > 0 && num + (float)fontSize <= bounds.Y + bounds.Height)
+		if (line.Length > 0 && y + (float)fontSize <= bounds.Y + bounds.Height)
 		{
-			UiTheme.DrawText(text2, (int)bounds.X, (int)num, fontSize, color);
+			UiTheme.DrawText(line, (int)bounds.X, (int)y, fontSize, color);
 		}
 	}
 
