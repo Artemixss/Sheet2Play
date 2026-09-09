@@ -1518,36 +1518,36 @@ internal static partial class Program
 	private static void DrawAudioOffsetControl(PlaybackController playback, AudioOffsetEditor editor, UiLayout layout)
 	{
 		float scale = layout.Scale;
-		float num = 26f * scale;
+		float buttonSize = 26f * scale;
 		float width = 64f * scale;
 		float height = 26f * scale;
-		float x = (float)layout.Width - 16f * scale - (2f * num + width + 10f * scale);
+		float x = (float)layout.Width - 16f * scale - (2f * buttonSize + width + 10f * scale);
 		float y = (float)layout.HitLineY - height - 12f * scale;
 		int current = (int)Math.Round(playback.AudioOffsetSeconds * 1000.0);
-		int num2 = Math.Max(10, (int)(12f * scale));
-		UiTheme.DrawText("AUDIO OFFSET", (int)(x - (float)UiTheme.MeasureText("AUDIO OFFSET", num2) - 10f * scale), (int)(y + (height - (float)num2) / 2f), num2, UiTheme.Muted);
-		if (UiTheme.DrawButton(new Rectangle(x, y, num, height), "−", UiTheme.Muted, !editor.IsEditing && current > AppSettingsStore.MinimumAudioOffsetMilliseconds))
+		int labelSize = Math.Max(10, (int)(12f * scale));
+		UiTheme.DrawText("AUDIO OFFSET", (int)(x - (float)UiTheme.MeasureText("AUDIO OFFSET", labelSize) - 10f * scale), (int)(y + (height - (float)labelSize) / 2f), labelSize, UiTheme.Muted);
+		if (UiTheme.DrawButton(new Rectangle(x, y, buttonSize, height), "−", UiTheme.Muted, !editor.IsEditing && current > AppSettingsStore.MinimumAudioOffsetMilliseconds))
 		{
 			editor.Cancel();
 			StepAudioOffset(playback, -AudioOffsetRules.StepMilliseconds);
 		}
-		Rectangle rec = new Rectangle(x + num + 5f * scale, y, width, height);
-		Raylib.DrawRectangleRounded(rec, 0.16f, 8, UiTheme.Elevated);
-		Color color = ((editor.Error != null) ? UiTheme.Danger : (editor.IsEditing ? UiTheme.Sky : UiTheme.Border));
-		Raylib.DrawRectangleRoundedLinesEx(rec, 0.16f, 8, Math.Max(1f, scale), color);
+		Rectangle valueBox = new Rectangle(x + buttonSize + 5f * scale, y, width, height);
+		Raylib.DrawRectangleRounded(valueBox, 0.16f, 8, UiTheme.Elevated);
+		Color borderColor = ((editor.Error != null) ? UiTheme.Danger : (editor.IsEditing ? UiTheme.Sky : UiTheme.Border));
+		Raylib.DrawRectangleRoundedLinesEx(valueBox, 0.16f, 8, Math.Max(1f, scale), borderColor);
 		if (Raylib.IsMouseButtonPressed(MouseButton.Left))
 		{
-			int committed;
-			if (Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), rec))
+			int typedOffset;
+			if (Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), valueBox))
 			{
 				if (!editor.IsEditing)
 				{
 					editor.Begin(current);
 				}
 			}
-			else if (editor.IsEditing && editor.TryCommit(out committed))
+			else if (editor.IsEditing && editor.TryCommit(out typedOffset))
 			{
-				ApplyAudioOffset(playback, committed);
+				ApplyAudioOffset(playback, typedOffset);
 			}
 		}
 		if (editor.IsEditing)
@@ -1564,26 +1564,26 @@ internal static partial class Program
 			{
 				editor.Backspace();
 			}
-			if (Raylib.IsKeyPressed(KeyboardKey.Enter) && editor.TryCommit(out var committed2))
+			if (Raylib.IsKeyPressed(KeyboardKey.Enter) && editor.TryCommit(out var typedOffset))
 			{
-				ApplyAudioOffset(playback, committed2);
+				ApplyAudioOffset(playback, typedOffset);
 			}
 			else if (Raylib.IsKeyPressed(KeyboardKey.Escape))
 			{
 				editor.Cancel();
 			}
 		}
-		string text = (editor.IsEditing ? (editor.Text + "|") : $"{current} ms");
-		int num3 = Math.Max(11, (int)(13f * scale));
-		UiTheme.DrawText(text, (int)(rec.X + (rec.Width - (float)UiTheme.MeasureText(text, num3)) / 2f), (int)(rec.Y + (rec.Height - (float)num3) / 2f), num3, UiTheme.Text);
-		if (UiTheme.DrawButton(new Rectangle(rec.X + rec.Width + 5f * scale, y, num, height), "+", UiTheme.Muted, !editor.IsEditing && current < AppSettingsStore.MaximumAudioOffsetMilliseconds))
+		string valueText = (editor.IsEditing ? (editor.Text + "|") : $"{current} ms");
+		int valueFontSize = Math.Max(11, (int)(13f * scale));
+		UiTheme.DrawText(valueText, (int)(valueBox.X + (valueBox.Width - (float)UiTheme.MeasureText(valueText, valueFontSize)) / 2f), (int)(valueBox.Y + (valueBox.Height - (float)valueFontSize) / 2f), valueFontSize, UiTheme.Text);
+		if (UiTheme.DrawButton(new Rectangle(valueBox.X + valueBox.Width + 5f * scale, y, buttonSize, height), "+", UiTheme.Muted, !editor.IsEditing && current < AppSettingsStore.MaximumAudioOffsetMilliseconds))
 		{
 			editor.Cancel();
 			StepAudioOffset(playback, AudioOffsetRules.StepMilliseconds);
 		}
 		if (editor.Error != null)
 		{
-			UiTheme.DrawText(editor.Error, (int)rec.X, (int)(rec.Y + rec.Height + 2f * scale), Math.Max(9, (int)(11f * scale)), UiTheme.Danger);
+			UiTheme.DrawText(editor.Error, (int)valueBox.X, (int)(valueBox.Y + valueBox.Height + 2f * scale), Math.Max(9, (int)(11f * scale)), UiTheme.Danger);
 		}
 	}
 
@@ -1607,35 +1607,35 @@ internal static partial class Program
 	private static void DrawPlaybackRateControl(PlaybackController playback, PlaybackRateEditor editor, UiLayout layout)
 	{
 		float scale = layout.Scale;
-		float num = (float)layout.Width - 400f * scale;
+		float controlLeft = (float)layout.Width - 400f * scale;
 		float y = 12f * scale;
-		float num2 = 32f * scale;
+		float buttonSize = 32f * scale;
 		float width = 72f * scale;
 		float height = 34f * scale;
-		bool enabled = playback.PlaybackRate > 0.050000001;
-		bool enabled2 = playback.PlaybackRate < 1.999999999;
-		if (UiTheme.DrawButton(new Rectangle(num, y, num2, height), "−", UiTheme.Muted, enabled))
+		bool canDecrease = playback.PlaybackRate > 0.050000001;
+		bool canIncrease = playback.PlaybackRate < 1.999999999;
+		if (UiTheme.DrawButton(new Rectangle(controlLeft, y, buttonSize, height), "−", UiTheme.Muted, canDecrease))
 		{
 			editor.Cancel();
 			StepPlaybackRate(playback, -1);
 		}
-		Rectangle rec = new Rectangle(num + num2 + 5f * scale, y, width, height);
-		Raylib.DrawRectangleRounded(rec, 0.16f, 8, UiTheme.Elevated);
-		Color color = ((editor.Error != null) ? UiTheme.Danger : (editor.IsEditing ? UiTheme.Sky : UiTheme.Border));
-		Raylib.DrawRectangleRoundedLinesEx(rec, 0.16f, 8, Math.Max(1f, scale), color);
+		Rectangle valueBox = new Rectangle(controlLeft + buttonSize + 5f * scale, y, width, height);
+		Raylib.DrawRectangleRounded(valueBox, 0.16f, 8, UiTheme.Elevated);
+		Color borderColor = ((editor.Error != null) ? UiTheme.Danger : (editor.IsEditing ? UiTheme.Sky : UiTheme.Border));
+		Raylib.DrawRectangleRoundedLinesEx(valueBox, 0.16f, 8, Math.Max(1f, scale), borderColor);
 		if (Raylib.IsMouseButtonPressed(MouseButton.Left))
 		{
-			double rate;
-			if (Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), rec))
+			double typedRate;
+			if (Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), valueBox))
 			{
 				if (!editor.IsEditing)
 				{
 					editor.Begin(playback.PlaybackRate);
 				}
 			}
-			else if (editor.IsEditing && editor.TryCommit(out rate))
+			else if (editor.IsEditing && editor.TryCommit(out typedRate))
 			{
-				playback.SetPlaybackRate(rate);
+				playback.SetPlaybackRate(typedRate);
 			}
 		}
 		if (editor.IsEditing)
@@ -1652,26 +1652,26 @@ internal static partial class Program
 			{
 				editor.Backspace();
 			}
-			if (Raylib.IsKeyPressed(KeyboardKey.Enter) && editor.TryCommit(out var rate2))
+			if (Raylib.IsKeyPressed(KeyboardKey.Enter) && editor.TryCommit(out var typedRate))
 			{
-				playback.SetPlaybackRate(rate2);
+				playback.SetPlaybackRate(typedRate);
 			}
 			else if (Raylib.IsKeyPressed(KeyboardKey.Escape))
 			{
 				editor.Cancel();
 			}
 		}
-		string text = (editor.IsEditing ? (editor.Text + "|") : $"{playback.PlaybackRate:0.00}x");
-		int num3 = Math.Max(11, (int)(14f * scale));
-		UiTheme.DrawText(text, (int)(rec.X + (rec.Width - (float)UiTheme.MeasureText(text, num3)) / 2f), (int)(rec.Y + (rec.Height - (float)num3) / 2f), num3, UiTheme.Text);
-		if (UiTheme.DrawButton(new Rectangle(rec.X + rec.Width + 5f * scale, y, num2, height), "+", UiTheme.Muted, enabled2))
+		string valueText = (editor.IsEditing ? (editor.Text + "|") : $"{playback.PlaybackRate:0.00}x");
+		int valueFontSize = Math.Max(11, (int)(14f * scale));
+		UiTheme.DrawText(valueText, (int)(valueBox.X + (valueBox.Width - (float)UiTheme.MeasureText(valueText, valueFontSize)) / 2f), (int)(valueBox.Y + (valueBox.Height - (float)valueFontSize) / 2f), valueFontSize, UiTheme.Text);
+		if (UiTheme.DrawButton(new Rectangle(valueBox.X + valueBox.Width + 5f * scale, y, buttonSize, height), "+", UiTheme.Muted, canIncrease))
 		{
 			editor.Cancel();
 			StepPlaybackRate(playback, 1);
 		}
 		if (editor.Error != null)
 		{
-			UiTheme.DrawText(editor.Error, (int)rec.X, (int)(rec.Y + rec.Height + 2f * scale), Math.Max(9, (int)(11f * scale)), UiTheme.Danger);
+			UiTheme.DrawText(editor.Error, (int)valueBox.X, (int)(valueBox.Y + valueBox.Height + 2f * scale), Math.Max(9, (int)(11f * scale)), UiTheme.Danger);
 		}
 	}
 
@@ -1682,31 +1682,36 @@ internal static partial class Program
 
 	private static void DrawFallingNote(Note note, PianoKey key, int rawTopY, int rawBottomY, float scale)
 	{
-		float num = Math.Clamp(3f * scale, 2f, 5f);
+		float topInset = Math.Clamp(3f * scale, 2f, 5f);
 		// The bottom edge is the note's actual moment, so it is not inset: insetting it
 		// held every note a pixel or two short of the hit line, which reads as the whole
 		// field sitting high. Only the top is pulled in, to leave a gap between notes.
-		float num3 = (float)rawBottomY;
-		float height = Math.Max(7f * scale, num3 - ((float)rawTopY + num));
+		float bottomEdge = (float)rawBottomY;
+		float height = Math.Max(7f * scale, bottomEdge - ((float)rawTopY + topInset));
 		// Short notes grow upward from the hit line rather than downward past it, so a
 		// clamped note still lands at the right time.
-		float num2 = num3 - height;
-		float num4 = Math.Max(20f * scale, (float)key.Width - 2f * scale);
-		float x = (float)key.X + (float)key.Width / 2f - num4 / 2f;
-		Rectangle rec = new Rectangle(x, num2, num4, height);
-		Raylib.DrawRectangleRounded(rec, 0.24f, 8, note.Color);
-		Raylib.DrawRectangleRoundedLinesEx(color: new Color(Math.Max(0, note.Color.R - 55), Math.Max(0, note.Color.G - 55), Math.Max(0, note.Color.B - 55), 255), rec: rec, roundness: 0.24f, segments: 8, lineThick: Math.Max(1f, 1.5f * scale));
+		float topEdge = bottomEdge - height;
+		float noteWidth = Math.Max(20f * scale, (float)key.Width - 2f * scale);
+		float x = (float)key.X + (float)key.Width / 2f - noteWidth / 2f;
+		Rectangle bounds = new Rectangle(x, topEdge, noteWidth, height);
+		Raylib.DrawRectangleRounded(bounds, 0.24f, 8, note.Color);
+		Raylib.DrawRectangleRoundedLinesEx(
+			bounds,
+			0.24f,
+			8,
+			Math.Max(1f, 1.5f * scale),
+			new Color(Math.Max(0, note.Color.R - 55), Math.Max(0, note.Color.G - 55), Math.Max(0, note.Color.B - 55), 255));
 		string pitchClass = note.PitchClass;
-		int num5 = Math.Clamp((int)(13f * scale), 9, 16);
-		while (num5 > 8 && (float)UiTheme.MeasureText(pitchClass, num5) > rec.Width - 3f * scale)
+		int labelSize = Math.Clamp((int)(13f * scale), 9, 16);
+		while (labelSize > 8 && (float)UiTheme.MeasureText(pitchClass, labelSize) > bounds.Width - 3f * scale)
 		{
-			num5--;
+			labelSize--;
 		}
-		int num6 = UiTheme.MeasureText(pitchClass, num5);
-		int num7 = (int)(rec.X + (rec.Width - (float)num6) / 2f);
-		int num8 = (int)(rec.Y + (rec.Height - (float)num5) / 2f);
-		UiTheme.DrawText(pitchClass, num7 + 1, num8 + 1, num5, new Color(0, 0, 0, 210));
-		UiTheme.DrawText(pitchClass, num7, num8, num5, UiTheme.Text);
+		int labelWidth = UiTheme.MeasureText(pitchClass, labelSize);
+		int labelX = (int)(bounds.X + (bounds.Width - (float)labelWidth) / 2f);
+		int labelY = (int)(bounds.Y + (bounds.Height - (float)labelSize) / 2f);
+		UiTheme.DrawText(pitchClass, labelX + 1, labelY + 1, labelSize, new Color(0, 0, 0, 210));
+		UiTheme.DrawText(pitchClass, labelX, labelY, labelSize, UiTheme.Text);
 	}
 
 	private static void TogglePlayback(PlaybackController playback, ref GameState state)
