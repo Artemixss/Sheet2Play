@@ -92,6 +92,10 @@ internal static partial class Program
 		{
 			return RunReconvert(args);
 		}
+		if (args.Length > 0 && string.Equals(args[0], "--render-audio", StringComparison.OrdinalIgnoreCase))
+		{
+			return RunRenderAudio(args);
+		}
 		RunApplication();
 		return 0;
 	}
@@ -163,19 +167,23 @@ internal static partial class Program
 		// Kept as a ceiling for drivers that override the vsync hint.
 		Raylib.SetTargetFPS(144);
 		UiTheme.InitializeFonts();
-		DrawStartupNotice("Connecting to audio device...");
-		using OutputDevice outputDevice = TryOpenSynthDevice(out string audioWarning);
-		IMidiOutput midiOutput;
-		if (outputDevice is null)
-		{
-			midiOutput = new NullMidiOutput();
-		}
-		else
-		{
-			outputDevice.PrepareForEventsSending();
-			midiOutput = new DryWetMidiOutput(outputDevice);
-		}
-		midiOutput.AllNotesOff();
+		AudioBackend preferredBackend = AppSettingsStore.LoadAudioBackend();
+		selectedAudioBackend = preferredBackend;
+		// The built-in synth loads a soundfont from disk in well under a second; opening a cold
+		// VirtualMIDISynth makes it page in gigabytes of samples and takes seconds. Say which is
+		// happening, because a silent multi-second stall reads as a hang.
+		DrawStartupNotice(preferredBackend == AudioBackend.SoundFont
+			? "Loading soundfont..."
+			: "Connecting to audio device...");
+		using AudioOutput audioOutput = AudioOutput.Create(
+			preferredBackend,
+			AppSettingsStore.LoadSoundFontPath());
+		IMidiOutput midiOutput = audioOutput.MidiOutput;
+		string audioWarning = audioOutput.Status.Problem;
+		// Set after Create, not from the setting: Create falls back when the preferred backend
+		// cannot be opened, and the offset must be saved against what is actually playing.
+		activeAudioBackend = audioOutput.Backend;
+		activeAudioStatus = audioOutput.Status;
 		UiLayout layout = UiLayout.Create(Raylib.GetScreenWidth(), Raylib.GetScreenHeight());
 		Keyboard keyboard = new Keyboard(layout.Width, layout.HitLineY, layout.KeyboardHeight);
 		int lastWidth = layout.Width;
@@ -224,6 +232,10 @@ internal static partial class Program
 				lastWidth = screenWidth;
 				lastHeight = screenHeight;
 			}
+			// Before anything else, and on every screen rather than only while playing: the
+			// built-in synth's stream must never run dry, or resuming clicks, and song time is
+			// re-anchored here so Update() below reads a fresh position rather than a stale one.
+			audioOutput.Pump();
 			OmrProgress progress;
 			while (progressQueue.TryTake(out progress) && progress is not null)
 			{
@@ -258,11 +270,16 @@ internal static partial class Program
 						{
 							playbackController?.Stop();
 							songLoadResult = value;
+							// The offset means different things per backend - a dispatch lead for
+							// an external synth, an output latency for the built-in one - so it is
+							// resolved per backend rather than shared.
+							double offsetSeconds = AppSettingsStore.ResolveAudioOffsetMilliseconds(
+								audioOutput.Backend, audioOutput.BufferedSeconds) / 1000.0;
+							PlaybackSession newSession = new(value.Notes, offsetSeconds);
 							playbackController = new PlaybackController(
-								new PlaybackSession(
-									value.Notes,
-									(double)AppSettingsStore.LoadAudioOffsetMilliseconds() / 1000.0),
-								midiOutput);
+								newSession,
+								midiOutput,
+								audioOutput.CreateTimebase(newSession, offsetSeconds));
 							playbackRateEditor.Cancel();
 							sliderDragging = false;
 							exception = null;
@@ -442,43 +459,6 @@ internal static partial class Program
 		int hintX = (Raylib.GetScreenWidth() - UiTheme.MeasureText(hint, hintSize)) / 2;
 		UiTheme.DrawText(hint, hintX, y + fontSize + 14, hintSize, UiTheme.Muted);
 		Raylib.EndDrawing();
-	}
-
-	/// <summary>
-	/// Opens a MIDI synthesiser, preferring VirtualMIDISynth and falling back to any
-	/// available device. Returns null when the machine has no MIDI output at all; the
-	/// caller then runs silently rather than failing to start.
-	/// </summary>
-	private static OutputDevice TryOpenSynthDevice(out string warning)
-	{
-		warning = null;
-		try
-		{
-			OutputDevice byName = OutputDevice.GetByName("VirtualMIDISynth #1");
-			Console.WriteLine("[AUDIO SYSTEM] Connected to VirtualMIDISynth.");
-			return byName;
-		}
-		catch (Exception ex)
-		{
-			OutputDevice outputDevice;
-			try
-			{
-				outputDevice = OutputDevice.GetAll().FirstOrDefault();
-			}
-			catch (Exception discovery)
-			{
-				Console.Error.WriteLine("[AUDIO SYSTEM] Could not enumerate MIDI devices. " + discovery.Message);
-				outputDevice = null;
-			}
-			if (outputDevice is null)
-			{
-				warning = "No MIDI output device found. Playback is silent; install a MIDI synthesizer such as VirtualMIDISynth for sound.";
-				Console.Error.WriteLine("[AUDIO SYSTEM] " + warning + " " + ex.Message);
-				return null;
-			}
-			Console.Error.WriteLine("[AUDIO SYSTEM] VirtualMIDISynth unavailable; using " + outputDevice.Name + ". " + ex.Message);
-			return outputDevice;
-		}
 	}
 
 	private unsafe static void StartFilePicker(ConcurrentQueue<string> selectedFiles, DialogState dialogState)
@@ -678,7 +658,40 @@ internal static partial class Program
 			selectedEngine = OmrEngine.Homr;
 			PersistEngine(selectedEngine);
 		}
-		float panelsTop = 274f * scale;
+		// AUDIO OUTPUT sits between the engine row and the library panels. The backend is a
+		// user-adjustable setting, so it gets a visible control rather than only a shortcut.
+		UiTheme.DrawText("AUDIO OUTPUT", (int)contentLeft, (int)(274f * scale), Math.Max(12, (int)(14f * scale)), UiTheme.Muted);
+		Rectangle synthCard = new Rectangle(contentLeft, 294f * scale, engineCardWidth, 64f * scale);
+		Rectangle deviceCard = new Rectangle(contentLeft + engineCardWidth + engineCardGap, 294f * scale, engineCardWidth, 64f * scale);
+		int audioDescriptionSize = Math.Max(12, (int)(14f * scale));
+		int audioDescriptionWidth = (int)(engineCardWidth - 60f * scale);
+		// The dot follows the stored choice so clicking responds, but the description tells the
+		// truth about what is playing: switching backend means reopening an audio device, so it
+		// applies at the next launch rather than mid-song.
+		string synthDescription = selectedAudioBackend != activeAudioBackend && selectedAudioBackend == AudioBackend.SoundFont
+			? "Restart to apply"
+			: activeAudioStatus?.SoundFontName is string fontName
+				? UiTheme.Ellipsize(fontName, audioDescriptionSize, audioDescriptionWidth) + " · reverb"
+				: "No soundfont installed";
+		string deviceDescription = selectedAudioBackend != activeAudioBackend && selectedAudioBackend == AudioBackend.MidiDevice
+			? "Restart to apply"
+			: activeAudioStatus?.DeviceName is string deviceName
+				? UiTheme.Ellipsize(deviceName, audioDescriptionSize, audioDescriptionWidth) + " · external"
+				// Only claim there is no device when we actually went looking. With the built-in
+				// synth playing, the MIDI device is never opened, so its absence is unknown
+				// rather than established.
+				: activeAudioBackend == AudioBackend.MidiDevice
+					? "No MIDI device found"
+					: "VirtualMIDISynth or similar";
+		if (DrawEngineCard(synthCard, "Built-in synth", synthDescription, UiTheme.Lime, selectedAudioBackend == AudioBackend.SoundFont))
+		{
+			PersistAudioBackend(AudioBackend.SoundFont);
+		}
+		if (DrawEngineCard(deviceCard, "MIDI device", deviceDescription, UiTheme.Sky, selectedAudioBackend == AudioBackend.MidiDevice))
+		{
+			PersistAudioBackend(AudioBackend.MidiDevice);
+		}
+		float panelsTop = 374f * scale;
 		float panelGap = 14f * scale;
 		float panelWidth = (contentWidth - 2 * panelGap) / 3f;
 		float height = Math.Max(170f * scale, (float)layout.Height - panelsTop - 24f * scale);
@@ -1391,6 +1404,24 @@ internal static partial class Program
 		}
 		UiTheme.DrawText(UiTheme.Ellipsize(song.DisplayName, Math.Max(15, (int)(18f * scale)), (int)((double)layout.Width * 0.38)), (int)(106f * scale), (int)(20f * scale), Math.Max(15, (int)(18f * scale)), UiTheme.Text);
 		Color accent = ((song.Engine == OmrEngine.Zeus) ? UiTheme.Sky : UiTheme.Lime);
+		// Which output is making the sound. Not decoration: the audio offset below is stored per
+		// backend, so without this the control's number is ambiguous - and a silent app should
+		// say it is silent rather than leave the user hunting for a broken synthesiser.
+		if (activeAudioStatus is AudioOutputStatus audio)
+		{
+			(string audioLabel, Color audioAccent) = audio switch
+			{
+				{ IsSilent: true } => ("SILENT", UiTheme.Muted),
+				{ Backend: AudioBackend.SoundFont } => ("SYNTH", UiTheme.Lime),
+				_ => ("MIDI", UiTheme.Sky)
+			};
+			// Left of the playback-rate control, which starts at Width - 400. The two badges on
+			// the right of the header are already up against it.
+			UiTheme.DrawBadge(
+				new Rectangle((float)layout.Width - 482f * scale, 14f * scale, 74f * scale, 30f * scale),
+				audioLabel,
+				audioAccent);
+		}
 		UiTheme.DrawBadge(new Rectangle((float)layout.Width - 190f * scale, 14f * scale, 74f * scale, 30f * scale), OmrPipeline.GetEngineName(song.Engine).ToUpperInvariant(), accent);
 		if (song.LoadedFromCache)
 		{
@@ -1549,14 +1580,61 @@ internal static partial class Program
 		ApplyAudioOffset(playback, AppSettingsStore.Clamp(current + deltaMilliseconds));
 	}
 
+	/// <summary>
+	/// Which output is making sound this run. Held here rather than passed down because the
+	/// offset control is reached through several layers of drawing code, and there is exactly
+	/// one audio output per process.
+	/// </summary>
+	private static AudioBackend activeAudioBackend = AudioBackend.MidiDevice;
+
+	/// <summary>
+	/// What the audio badge shows, as plain data rather than a live query, so the headless
+	/// smoke render can fabricate any state - including the degraded ones - on a machine with
+	/// no audio device and no soundfont.
+	/// </summary>
+	private static AudioOutputStatus? activeAudioStatus;
+
+	/// <summary>
+	/// The stored backend choice, which can differ from <see cref="activeAudioBackend"/> until
+	/// the next launch - either because the user just switched, or because the preferred backend
+	/// could not be opened and <see cref="AudioOutput.Create"/> fell back.
+	/// </summary>
+	private static AudioBackend selectedAudioBackend = AudioBackend.SoundFont;
+
+	private static void PersistAudioBackend(AudioBackend backend)
+	{
+		selectedAudioBackend = backend;
+		try
+		{
+			AppSettingsStore.SaveAudioBackend(backend);
+		}
+		catch (Exception error)
+		{
+			Console.Error.WriteLine("[SETTINGS] Could not save the audio backend: " + error.Message);
+		}
+	}
+
 	/// <summary>Applies the offset and persists it, so calibration survives a restart.</summary>
+	/// <remarks>
+	/// Saved against the backend it was measured on. The two are not interchangeable: the stored
+	/// MIDI-device value is the user's own by-ear calibration against VirtualMIDISynth, and the
+	/// built-in synth's latency is a fraction of it, so writing one over the other would either
+	/// mis-time the synth or destroy a measurement that cannot be recovered.
+	/// </remarks>
 	private static void ApplyAudioOffset(PlaybackController playback, int milliseconds)
 	{
 		int updated = AppSettingsStore.Clamp(milliseconds);
 		if (updated != (int)Math.Round(playback.AudioOffsetSeconds * 1000.0))
 		{
 			playback.SetAudioOffsetSeconds((double)updated / 1000.0);
-			AppSettingsStore.SaveAudioOffsetMilliseconds(updated);
+			if (activeAudioBackend == AudioBackend.SoundFont)
+			{
+				AppSettingsStore.SaveSynthAudioOffsetMilliseconds(updated);
+			}
+			else
+			{
+				AppSettingsStore.SaveAudioOffsetMilliseconds(updated);
+			}
 		}
 	}
 

@@ -17,12 +17,28 @@ public static class AppSettingsStore
     public const int MinimumAudioOffsetMilliseconds = 0;
     public const int MaximumAudioOffsetMilliseconds = 500;
 
+    /// <summary>
+    /// Marks the built-in synth's offset as never having been calibrated, so it can follow the
+    /// buffer configuration instead of a stored number.
+    /// </summary>
+    /// <remarks>
+    /// The offset above is the user's own by-ear measurement against VirtualMIDISynth, and it
+    /// means something different on each backend: in-process synthesis has a fraction of the
+    /// latency, so reusing that number would silently mis-time the new path and reusing the new
+    /// one would destroy their calibration. They are stored separately for that reason.
+    /// </remarks>
+    public const int UnsetSynthAudioOffset = -1;
+
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
         PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
         WriteIndented = true,
         UnmappedMemberHandling = JsonUnmappedMemberHandling.Disallow,
-        Converters = { new JsonStringEnumConverter<OmrEngine>(JsonNamingPolicy.CamelCase) }
+        Converters =
+        {
+            new JsonStringEnumConverter<OmrEngine>(JsonNamingPolicy.CamelCase),
+            new JsonStringEnumConverter<AudioBackend>(JsonNamingPolicy.CamelCase)
+        }
     };
 
     public static OmrEngine LoadEngine()
@@ -73,6 +89,80 @@ public static class AppSettingsStore
             settingsPath);
     }
 
+    public static AudioBackend LoadAudioBackend() => LoadAudioBackendFromPath(GetSettingsPath());
+
+    internal static AudioBackend LoadAudioBackendFromPath(string settingsPath) =>
+        ReadOrRepair(settingsPath).AudioBackend;
+
+    public static void SaveAudioBackend(AudioBackend backend) =>
+        SaveAudioBackendToPath(backend, GetSettingsPath());
+
+    internal static void SaveAudioBackendToPath(AudioBackend backend, string settingsPath)
+    {
+        if (!Enum.IsDefined(backend))
+        {
+            throw new ArgumentOutOfRangeException(nameof(backend), backend, "Unknown audio backend.");
+        }
+        Write(ReadOrRepair(settingsPath) with { AudioBackend = backend }, settingsPath);
+    }
+
+    public static string? LoadSoundFontPath() => LoadSoundFontPathFromPath(GetSettingsPath());
+
+    internal static string? LoadSoundFontPathFromPath(string settingsPath) =>
+        ReadOrRepair(settingsPath).SoundFontPath;
+
+    public static void SaveSoundFontPath(string? path) =>
+        SaveSoundFontPathToPath(path, GetSettingsPath());
+
+    internal static void SaveSoundFontPathToPath(string? path, string settingsPath)
+    {
+        string? trimmed = string.IsNullOrWhiteSpace(path) ? null : path.Trim();
+        Write(ReadOrRepair(settingsPath) with { SoundFontPath = trimmed }, settingsPath);
+    }
+
+    /// <summary>
+    /// The built-in synth's offset, or <see cref="UnsetSynthAudioOffset"/> when the user has
+    /// never calibrated it and it should follow the audio buffer instead.
+    /// </summary>
+    public static int LoadSynthAudioOffsetMilliseconds() =>
+        LoadSynthAudioOffsetFromPath(GetSettingsPath());
+
+    internal static int LoadSynthAudioOffsetFromPath(string settingsPath) =>
+        ReadOrRepair(settingsPath).SynthAudioOffsetMilliseconds;
+
+    public static void SaveSynthAudioOffsetMilliseconds(int offsetMilliseconds) =>
+        SaveSynthAudioOffsetToPath(offsetMilliseconds, GetSettingsPath());
+
+    internal static void SaveSynthAudioOffsetToPath(int offsetMilliseconds, string settingsPath)
+    {
+        Write(
+            ReadOrRepair(settingsPath) with { SynthAudioOffsetMilliseconds = Clamp(offsetMilliseconds) },
+            settingsPath);
+    }
+
+    /// <summary>
+    /// Offset to use for a backend: the user's stored value, or for the built-in synth before
+    /// they have touched it, whatever the audio buffer actually costs.
+    /// </summary>
+    /// <remarks>
+    /// A computed default rather than a guessed one - it is a measured property of the buffer
+    /// configuration, not somebody's opinion about what sounds right.
+    /// </remarks>
+    public static int ResolveAudioOffsetMilliseconds(AudioBackend backend, double bufferedSeconds)
+    {
+        if (backend == AudioBackend.MidiDevice)
+        {
+            return LoadAudioOffsetMilliseconds();
+        }
+
+        int stored = LoadSynthAudioOffsetMilliseconds();
+        if (stored != UnsetSynthAudioOffset)
+        {
+            return Clamp(stored);
+        }
+        return Clamp((int)Math.Ceiling(bufferedSeconds * 1000.0));
+    }
+
     public static int Clamp(int offsetMilliseconds)
     {
         return Math.Clamp(
@@ -104,6 +194,8 @@ public static class AppSettingsStore
         AppSettings? settings = TryRead(settingsPath);
         if (settings is not null)
         {
+            // The synth offset is deliberately not clamped here: UnsetSynthAudioOffset is -1,
+            // and clamping would turn "never calibrated" into a real 0 ms.
             return settings with { AudioOffsetMilliseconds = Clamp(settings.AudioOffsetMilliseconds) };
         }
 
@@ -177,5 +269,8 @@ public static class AppSettingsStore
 
     private sealed record AppSettings(
         OmrEngine OmrEngine,
-        int AudioOffsetMilliseconds = DefaultAudioOffsetMilliseconds);
+        int AudioOffsetMilliseconds = DefaultAudioOffsetMilliseconds,
+        AudioBackend AudioBackend = AudioBackend.SoundFont,
+        int SynthAudioOffsetMilliseconds = UnsetSynthAudioOffset,
+        string? SoundFontPath = null);
 }
