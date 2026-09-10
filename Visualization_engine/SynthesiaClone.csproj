@@ -13,6 +13,8 @@
 
   <ItemGroup>
     <PackageReference Include="Melanchall.DryWetMidi" Version="8.0.3" />
+    <PackageReference Include="MeltySynth" Version="2.4.1" />
+    <PackageReference Include="NAudio.Lame" Version="2.1.0" />
     <PackageReference Include="Raylib-cs" Version="7.0.2" />
   </ItemGroup>
 
@@ -33,6 +35,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <!-- libmp3lame (MP3 export, via NAudio.Lame) needs no rule here, unlike the fonts and the
+         bridge below. NAudio.Lame's own .targets adds it, and PublishSingleFile bundles it
+         into the .exe where the host resolves it at load time. Verified by running the
+         published binary's render-audio flag from a neutral working directory, because the
+         obvious failure mode is a stray copy in bin\ being picked up instead: it encodes an
+         MP3 with no libmp3lame anywhere on disk.
+
+         So do not "fix" its absence from dist\ by adding ExcludeFromSingleFile. That is for
+         assets read from disk by path, which this is not. -->
     <Content Include="..\Bridge\*.py" Link="Bridge\%(Filename)%(Extension)">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>

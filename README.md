@@ -275,5 +275,19 @@ Your sheet music is not in here — see [Where your library lives](#where-your-l
 
 The recognition engines keep their own licences and are not redistributed here: HOMR is
 AGPL-3.0 and the bridge installs it into its own virtualenv on first run. The C#
-dependencies are `Melanchall.DryWetMidi` (MIT) and `Raylib-cs` (Zlib). Sheet music under
-`Omr/` and `Research/` is sample material belonging to its respective owners.
+dependencies are `Melanchall.DryWetMidi` (MIT), `Raylib-cs` (Zlib) and `MeltySynth` (MIT).
+Sheet music under `Omr/` and `Research/` is sample material belonging to its respective
+owners.
+
+Two components carry obligations worth stating plainly:
+
+* **YDP Grand Piano**, the SoundFont the built-in synthesiser plays, is built from the
+  Zenph Studios Yamaha Disklavier Pro multisamples by roberto@zenvoid.org for the
+  [FreePats project](https://freepats.zenvoid.org/Piano/acoustic-grand-piano.html) and is
+  licensed **CC BY 3.0** — attribution required. `scripts/install-soundfont.ps1` fetches it
+  and installs its licence text alongside. It is not committed to this repository.
+* **MP3 export** uses LAME via `NAudio.Lame`, and LAME is **LGPL-2.1**. `libmp3lame.dll` is
+  a native library loaded dynamically at runtime, bundled into the single-file executable and
+  replaceable by rebuilding against a different copy — it is not statically linked into the
+  managed code. WAV export uses no native code at all, so MP3 is the only part of the app
+  that depends on it.

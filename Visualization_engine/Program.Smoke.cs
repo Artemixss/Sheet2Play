@@ -38,6 +38,14 @@ internal static partial class Program
 			Console.Error.WriteLine("[SMOKE] library scan failed: " + exception.Message);
 		}
 
+		// Fabricated rather than queried, so these PNGs are identical on any machine - including
+		// one with no audio device and no soundfont installed. The audio system is never opened
+		// here; InitAudioDevice belongs to RunApplication alone.
+		activeAudioBackend = AudioBackend.SoundFont;
+		selectedAudioBackend = AudioBackend.SoundFont;
+		activeAudioStatus = new AudioOutputStatus(
+			AudioBackend.SoundFont, "YDP-GrandPiano.sf2", 118_398_836, null, null);
+
 		int failures = 0;
 		try
 		{

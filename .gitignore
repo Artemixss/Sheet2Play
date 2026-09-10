@@ -32,6 +32,14 @@ Visualization_engine/assets/fonts/*.otf
 # The synth resolves them from its own VirtualMIDISynth.conf; nothing here reads them.
 pianos/
 
+# ---- SoundFonts for the built-in synthesiser ----
+# Tens to hundreds of megabytes of third-party samples. scripts/install-soundfont.ps1
+# fetches one and verifies its hash, so the binary stays out of git the same way the
+# model weights do. The folder's README.txt is tracked; the .sf2 files are not.
+Visualization_engine/assets/soundfonts/*.sf2
+Visualization_engine/assets/soundfonts/*.txt
+!Visualization_engine/assets/soundfonts/README.txt
+
 # Transient experiment output. The conclusions live in reports/diagnosis/FINDINGS.md and
 # are reproducible from the scripts; these are working files, several from hypotheses that
 # were tested and refuted, and the cached predictions regenerate with diagnose_rhythm.py.

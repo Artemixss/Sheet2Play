@@ -91,7 +91,7 @@ public sealed class DryWetMidiOutput(OutputDevice outputDevice) : IMidiOutput
     }
 }
 
-public sealed class PlaybackClock
+public sealed class PlaybackClock : IPlaybackTimebase
 {
     private readonly Func<double> timestampSeconds;
     private double baselinePosition;
@@ -300,7 +300,7 @@ public sealed class PlaybackController
 {
     private readonly PlaybackSession session;
     private readonly IMidiOutput midiOutput;
-    private readonly PlaybackClock clock;
+    private readonly IPlaybackTimebase clock;
     private readonly int[] activePitchCounts = new int[88];
     // Key highlights follow the visual timeline, not the audio one. Driving them from
     // the MIDI cursor lit each key AudioOffsetSeconds before its note reached the line.
@@ -311,7 +311,7 @@ public sealed class PlaybackController
     public PlaybackController(
         PlaybackSession session,
         IMidiOutput midiOutput,
-        PlaybackClock? clock = null)
+        IPlaybackTimebase? clock = null)
     {
         this.session = session ?? throw new ArgumentNullException(nameof(session));
         this.midiOutput = midiOutput ?? throw new ArgumentNullException(nameof(midiOutput));
@@ -340,6 +340,9 @@ public sealed class PlaybackController
         bool wasPlaying = IsPlaying;
         double position = Position;
         AudioOffsetSeconds = clamped;
+        // On a self-scheduling timebase the same number is an output latency to hold the
+        // visuals back by, not a lead to dispatch ahead of. One control, either meaning.
+        clock.SetOutputLatencySeconds(clamped);
         clock.Pause();
         SetSeekPosition(position, wasPlaying, alreadySilenced: false);
     }
@@ -355,8 +358,15 @@ public sealed class PlaybackController
     /// Score time at which MIDI must be dispatched to sound at <paramref name="position"/>.
     /// The offset is wall-clock, so it is converted to song time by the playback rate.
     /// </summary>
-    private double DispatchHorizon(double position) =>
-        position + (AudioOffsetSeconds * clock.PlaybackRate);
+    /// <remarks>
+    /// A timebase that renders its own audio places every note on an exact sample, so there
+    /// is no latency to lead and the horizon collapses onto the visual position. Leading it
+    /// anyway would advance <c>eventCursor</c> past <c>visualCursor</c> and let
+    /// <see cref="RestoreAt"/> sound notes that are not on screen yet.
+    /// </remarks>
+    private double DispatchHorizon(double position) => clock.OwnsAudioDispatch
+        ? position
+        : position + (AudioOffsetSeconds * clock.PlaybackRate);
 
     public void Update()
     {
