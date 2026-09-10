@@ -168,18 +168,21 @@ internal static partial class Program
 		Raylib.SetTargetFPS(144);
 		UiTheme.InitializeFonts();
 		AudioBackend preferredBackend = AppSettingsStore.LoadAudioBackend();
-		selectedAudioBackend = preferredBackend;
+
 		// The built-in synth loads a soundfont from disk in well under a second; opening a cold
 		// VirtualMIDISynth makes it page in gigabytes of samples and takes seconds. Say which is
 		// happening, because a silent multi-second stall reads as a hang.
 		DrawStartupNotice(preferredBackend == AudioBackend.SoundFont
 			? "Loading soundfont..."
 			: "Connecting to audio device...");
-		using AudioOutput audioOutput = AudioOutput.Create(
+		// Not a using declaration: switching backend disposes this and builds another, and a
+		// using declaration cannot be reassigned. Disposed at the end of the method instead.
+		AudioOutput audioOutput = AudioOutput.Create(
 			preferredBackend,
 			AppSettingsStore.LoadSoundFontPath());
 		IMidiOutput midiOutput = audioOutput.MidiOutput;
 		string audioWarning = audioOutput.Status.Problem;
+		LogAudioDecision("startup", preferredBackend, audioOutput);
 		// Set after Create, not from the setting: Create falls back when the preferred backend
 		// cannot be opened, and the offset must be saved against what is actually playing.
 		activeAudioBackend = audioOutput.Backend;
@@ -231,6 +234,52 @@ internal static partial class Program
 				keyboard.Resize(layout.Width, layout.HitLineY, layout.KeyboardHeight);
 				lastWidth = screenWidth;
 				lastHeight = screenHeight;
+			}
+			// A backend switch requested on the landing page. Applied here, before the pump,
+			// because it replaces the thing being pumped.
+			if (pendingBackendSwitch is AudioBackend requestedBackend)
+			{
+				pendingBackendSwitch = null;
+				double resumePosition = playbackController?.Position ?? 0.0;
+				bool wasPlaying = playbackController?.IsPlaying ?? false;
+				IReadOnlyList<Note> currentNotes = playbackController?.Session.Notes;
+
+				playbackController?.Stop();
+				midiOutput.AllNotesOff();
+				audioOutput.Dispose();
+
+				// Paint before the switch, for the same reason startup does: opening a cold
+				// VirtualMIDISynth pages in gigabytes of samples and blocks for seconds, and a
+				// frame loop that stops pumping gets marked "Not Responding" by Windows. Measured
+				// at roughly ten seconds on this machine, which is far too long to leave a frozen
+				// window with no explanation.
+				DrawStartupNotice(requestedBackend == AudioBackend.SoundFont
+					? "Loading soundfont..."
+					: "Connecting to audio device...");
+
+				audioOutput = AudioOutput.Create(
+					requestedBackend,
+					AppSettingsStore.LoadSoundFontPath());
+				midiOutput = audioOutput.MidiOutput;
+				activeAudioBackend = audioOutput.Backend;
+				activeAudioStatus = audioOutput.Status;
+				LogAudioDecision("switch", requestedBackend, audioOutput);
+				message = audioOutput.Status.Problem;
+
+				// Rebuild the session so it carries the new backend's offset: the two are
+				// separately calibrated and mean different things, so the old one must not
+				// follow the audio across a switch.
+				if (currentNotes is not null && currentNotes.Count > 0)
+				{
+					double switchedOffset = AppSettingsStore.ResolveAudioOffsetMilliseconds(
+						audioOutput.Backend, audioOutput.BufferedSeconds) / 1000.0;
+					PlaybackSession switchedSession = new(currentNotes, switchedOffset);
+					playbackController = new PlaybackController(
+						switchedSession,
+						midiOutput,
+						audioOutput.CreateTimebase(switchedSession, switchedOffset));
+					playbackController.Seek(resumePosition, wasPlaying);
+				}
 			}
 			// Before anything else, and on every screen rather than only while playing: the
 			// built-in synth's stream must never run dry, or resuming clicks, and song time is
@@ -425,6 +474,7 @@ internal static partial class Program
 		cancellationTokenSource?.Dispose();
 		playbackController?.Stop();
 		midiOutput.AllNotesOff();
+		audioOutput.Dispose();
 		UiTheme.ShutdownFonts();
 		Raylib.CloseWindow();
 	}
@@ -665,29 +715,28 @@ internal static partial class Program
 		Rectangle deviceCard = new Rectangle(contentLeft + engineCardWidth + engineCardGap, 294f * scale, engineCardWidth, 64f * scale);
 		int audioDescriptionSize = Math.Max(12, (int)(14f * scale));
 		int audioDescriptionWidth = (int)(engineCardWidth - 60f * scale);
-		// The dot follows the stored choice so clicking responds, but the description tells the
-		// truth about what is playing: switching backend means reopening an audio device, so it
-		// applies at the next launch rather than mid-song.
-		string synthDescription = selectedAudioBackend != activeAudioBackend && selectedAudioBackend == AudioBackend.SoundFont
-			? "Restart to apply"
-			: activeAudioStatus?.SoundFontName is string fontName
-				? UiTheme.Ellipsize(fontName, audioDescriptionSize, audioDescriptionWidth) + " · reverb"
-				: "No soundfont installed";
-		string deviceDescription = selectedAudioBackend != activeAudioBackend && selectedAudioBackend == AudioBackend.MidiDevice
-			? "Restart to apply"
-			: activeAudioStatus?.DeviceName is string deviceName
-				? UiTheme.Ellipsize(deviceName, audioDescriptionSize, audioDescriptionWidth) + " · external"
-				// Only claim there is no device when we actually went looking. With the built-in
-				// synth playing, the MIDI device is never opened, so its absence is unknown
-				// rather than established.
-				: activeAudioBackend == AudioBackend.MidiDevice
-					? "No MIDI device found"
-					: "VirtualMIDISynth or similar";
-		if (DrawEngineCard(synthCard, "Built-in synth", synthDescription, UiTheme.Lime, selectedAudioBackend == AudioBackend.SoundFont))
+		// Both the dot and the text follow activeAudioBackend - what is actually making sound -
+		// because switching now takes effect immediately. When they disagreed, a card could show
+		// the dot while the other backend played, which is exactly how a silent fallback became
+		// indistinguishable from "you just clicked this".
+		string synthDescription = activeAudioStatus?.SoundFontName is string fontName
+			? UiTheme.Ellipsize(fontName, audioDescriptionSize, audioDescriptionWidth) + " · reverb"
+			: activeAudioBackend == AudioBackend.SoundFont
+				? "No soundfont installed"
+				: "Soundfont · reverb";
+		string deviceDescription = activeAudioStatus?.DeviceName is string deviceName
+			? UiTheme.Ellipsize(deviceName, audioDescriptionSize, audioDescriptionWidth) + " · external"
+			// Only claim there is no device when we actually went looking. With the built-in
+			// synth playing, the MIDI device is never opened, so its absence is unknown
+			// rather than established.
+			: activeAudioBackend == AudioBackend.MidiDevice
+				? "No MIDI device found"
+				: "VirtualMIDISynth or similar";
+		if (DrawEngineCard(synthCard, "Built-in synth", synthDescription, UiTheme.Lime, activeAudioBackend == AudioBackend.SoundFont))
 		{
 			PersistAudioBackend(AudioBackend.SoundFont);
 		}
-		if (DrawEngineCard(deviceCard, "MIDI device", deviceDescription, UiTheme.Sky, selectedAudioBackend == AudioBackend.MidiDevice))
+		if (DrawEngineCard(deviceCard, "MIDI device", deviceDescription, UiTheme.Sky, activeAudioBackend == AudioBackend.MidiDevice))
 		{
 			PersistAudioBackend(AudioBackend.MidiDevice);
 		}
@@ -1595,15 +1644,27 @@ internal static partial class Program
 	private static AudioOutputStatus? activeAudioStatus;
 
 	/// <summary>
-	/// The stored backend choice, which can differ from <see cref="activeAudioBackend"/> until
-	/// the next launch - either because the user just switched, or because the preferred backend
-	/// could not be opened and <see cref="AudioOutput.Create"/> fell back.
+	/// A backend switch asked for by the landing page, applied by the main loop.
 	/// </summary>
-	private static AudioBackend selectedAudioBackend = AudioBackend.SoundFont;
+	/// <remarks>
+	/// DrawLanding is static and has no access to the audio output, so the click records a
+	/// request and the loop performs it - the same shape as the existing browseRequested and
+	/// refreshRequested out-parameters.
+	/// </remarks>
+	private static AudioBackend? pendingBackendSwitch;
 
 	private static void PersistAudioBackend(AudioBackend backend)
 	{
-		selectedAudioBackend = backend;
+		// Compared against what is actually playing, not against a separate "selected" field.
+		// Keeping two variables is what let the selection dot sit on one card while the other
+		// backend made the sound, which made a silent fallback look identical to a fresh click.
+		// Clicking the card for a backend that is already live is a no-op; clicking the one that
+		// failed to open retries it, which is what you want after installing a soundfont.
+		if (backend == activeAudioBackend)
+		{
+			return;
+		}
+		pendingBackendSwitch = backend;
 		try
 		{
 			AppSettingsStore.SaveAudioBackend(backend);
@@ -1611,6 +1672,39 @@ internal static partial class Program
 		catch (Exception error)
 		{
 			Console.Error.WriteLine("[SETTINGS] Could not save the audio backend: " + error.Message);
+		}
+	}
+
+	/// <summary>
+	/// Records which output the app actually ended up with, and why.
+	/// </summary>
+	/// <remarks>
+	/// The app already knew all of this and told only a console that is discarded when it is
+	/// launched from a shortcut - which is why working out what a past run had chosen meant
+	/// reading process module lists and file timestamps. One appended line per launch and per
+	/// switch removes that whole class of archaeology.
+	/// </remarks>
+	private static void LogAudioDecision(string reason, AudioBackend requested, AudioOutput result)
+	{
+		try
+		{
+			AudioOutputStatus status = result.Status;
+			string line =
+				$"{DateTime.Now:yyyy-MM-dd HH:mm:ss}  {reason,-8}  requested={requested}  " +
+				$"active={result.Backend}" +
+				(status.SoundFontName is null ? string.Empty : $"  soundfont={status.SoundFontName}") +
+				(status.DeviceName is null ? string.Empty : $"  device={status.DeviceName}") +
+				(result.Backend != requested ? "  FELL BACK" : string.Empty) +
+				(status.Problem is null ? string.Empty : $"  problem={status.Problem}");
+			File.AppendAllText(
+				Path.Combine(SongCache.ApplicationDirectory, "audio.log"),
+				line + Environment.NewLine);
+		}
+		catch (Exception error) when (
+			error is IOException or UnauthorizedAccessException or ArgumentException)
+		{
+			// Diagnostics must never take the app down.
+			Console.Error.WriteLine("[AUDIO] Could not write audio.log: " + error.Message);
 		}
 	}
 

@@ -42,7 +42,6 @@ internal static partial class Program
 		// one with no audio device and no soundfont installed. The audio system is never opened
 		// here; InitAudioDevice belongs to RunApplication alone.
 		activeAudioBackend = AudioBackend.SoundFont;
-		selectedAudioBackend = AudioBackend.SoundFont;
 		activeAudioStatus = new AudioOutputStatus(
 			AudioBackend.SoundFont, "YDP-GrandPiano.sf2", 118_398_836, null, null);
 
