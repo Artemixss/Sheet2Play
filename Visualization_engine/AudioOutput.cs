@@ -218,10 +218,15 @@ public sealed class AudioOutput : IDisposable
     }
 
     /// <summary>
-    /// Keeps the audio stream fed and re-anchors song time. Cheap, and meant to be called every
-    /// frame from every screen: the stream must not run dry between songs, or restarting one
-    /// clicks, and a timebase left un-latched mid-buffer reports a stale position.
+    /// Keeps the audio stream fed and re-anchors song time. Cheap, and called every frame.
     /// </summary>
+    /// <remarks>
+    /// It does nothing until a song has been loaded, because the engine is built per song in
+    /// <see cref="CreateTimebase"/>. An earlier comment here claimed the stream was kept fed "on
+    /// every screen", which was not true before the first load - and after returning Home the engine
+    /// keeps rendering silence rather than stopping. Neither is expensive, but the comment was
+    /// describing intent rather than behaviour.
+    /// </remarks>
     public void Pump()
     {
         if (engine is null)
