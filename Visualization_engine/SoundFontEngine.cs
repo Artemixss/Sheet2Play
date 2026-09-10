@@ -165,18 +165,21 @@ public sealed class SoundFontEngine
     /// </summary>
     public void Pump()
     {
-        bool wantedOnEntry = sink.WantsBlock;
-        bool renderedAny = false;
+        // A raylib stream holds two sub-buffers, so this loop runs at most twice. Rendering two in
+        // one pass means both were free on entry - the stream had already run dry and the gap was
+        // heard as a dropout.
+        //
+        // The previous version of this check asked the sink whether it was starved AFTER the loop,
+        // which could never be true: the loop only exits once the sink stops wanting blocks, so the
+        // final Submit always cleared the flag. It counted zero underruns no matter what happened,
+        // which is worse than no counter at all - it reads as evidence that there were none.
+        int rendered = 0;
         while (sink.WantsBlock)
         {
             RenderBlock();
-            renderedAny = true;
+            rendered++;
         }
-
-        // Both sub-buffers free on entry means the sink had already drained before we got
-        // here - the audio ran out. Counted rather than guessed at, so the decision to move
-        // rendering onto the audio thread can be made on evidence.
-        if (wantedOnEntry && renderedAny && sink is IUnderrunAware aware && aware.WasStarved)
+        if (rendered > 1)
         {
             UnderrunCount++;
         }
@@ -308,6 +311,9 @@ public sealed class SoundFontTimebase : IPlaybackTimebase
     private readonly double blockPeriodSeconds;
 
     private double latchedSong;
+    // Sentinel rather than 0, so the very first latch at song position 0 is not mistaken for
+    // "nothing new has been rendered".
+    private double lastLatchedSubmitted = double.NaN;
     private double latchedAt;
     private double lastReturned;
     private double outputLatencySeconds;
@@ -352,16 +358,42 @@ public sealed class SoundFontTimebase : IPlaybackTimebase
     /// <summary>
     /// Called after the engine has been topped up, to re-anchor the interpolation.
     /// </summary>
+    /// <summary>
+    /// Re-anchors the interpolation, but only when the engine has actually produced more audio.
+    /// </summary>
+    /// <remarks>
+    /// The conditional is the whole point. This is called every frame from the pump, while a block
+    /// is only submitted about every third frame at 144Hz. Re-anchoring unconditionally reset
+    /// <c>latchedAt</c> to now while <c>latchedSong</c> stood still, so the elapsed term could never
+    /// accumulate and <see cref="Position"/> returned the block position every time - collapsing the
+    /// motion into a 46.875Hz staircase, which is exactly what the interpolation exists to prevent.
+    /// The frame rate stayed at 144 throughout, so it looked like dropped frames without being any.
+    /// </remarks>
     public void Latch()
     {
-        latchedSong = Math.Max(0, engine.SubmittedSongSeconds - (outputLatencySeconds * playbackRate));
+        double submitted = engine.SubmittedSongSeconds;
+        if (submitted == lastLatchedSubmitted)
+        {
+            return;
+        }
+        Reanchor();
+    }
+
+    /// <summary>
+    /// Forces a re-anchor. Used where song time moves for a reason other than rendering - a seek, a
+    /// rate change, or a new output latency - and the previous anchor is meaningless.
+    /// </summary>
+    private void Reanchor()
+    {
+        lastLatchedSubmitted = engine.SubmittedSongSeconds;
+        latchedSong = Math.Max(0, lastLatchedSubmitted - (outputLatencySeconds * playbackRate));
         latchedAt = timestampSeconds();
     }
 
     public void SetOutputLatencySeconds(double seconds)
     {
         outputLatencySeconds = Math.Max(0, seconds);
-        Latch();
+        Reanchor();
     }
 
     public void SetPlaybackRate(double rate)
@@ -377,14 +409,14 @@ public sealed class SoundFontTimebase : IPlaybackTimebase
         }
         playbackRate = rate;
         engine.SetRate(rate);
-        Latch();
+        Reanchor();
     }
 
     public void Reset(double position, bool running)
     {
         engine.Seek(position);
         lastReturned = 0;
-        Latch();
+        Reanchor();
         if (running)
         {
             engine.Start();
@@ -399,7 +431,7 @@ public sealed class SoundFontTimebase : IPlaybackTimebase
 
     public void Resume()
     {
-        Latch();
+        Reanchor();
         engine.Start();
     }
 
@@ -407,7 +439,7 @@ public sealed class SoundFontTimebase : IPlaybackTimebase
     {
         engine.Seek(position);
         lastReturned = 0;
-        Latch();
+        Reanchor();
     }
 
     private static double DefaultTimestampSeconds() =>

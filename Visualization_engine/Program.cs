@@ -96,6 +96,10 @@ internal static partial class Program
 		{
 			return RunRenderAudio(args);
 		}
+		if (args.Length > 0 && string.Equals(args[0], "--bench", StringComparison.OrdinalIgnoreCase))
+		{
+			return RunBench(args);
+		}
 		RunApplication();
 		return 0;
 	}
@@ -220,11 +224,21 @@ internal static partial class Program
 		double sliderPreviewPosition = 0.0;
 		PlaybackRateEditor playbackRateEditor = new PlaybackRateEditor();
 		AudioOffsetEditor audioOffsetEditor = new AudioOffsetEditor();
+		FrameTimeTracker frameTimes = new FrameTimeTracker();
 		while (!Raylib.WindowShouldClose())
 		{
+			// Measured here rather than from Raylib.GetFrameTime(), which reports the time raylib
+			// spent including its own end-of-frame sleep for SetTargetFPS - that hides exactly the
+			// overruns this is meant to catch.
+			double frameStarted = System.Diagnostics.Stopwatch.GetTimestamp()
+				/ (double)System.Diagnostics.Stopwatch.Frequency;
 			if (Raylib.IsKeyPressed(KeyboardKey.F11))
 			{
 				Raylib.ToggleFullscreen();
+			}
+			if (Raylib.IsKeyPressed(KeyboardKey.F3))
+			{
+				frameTimes.IsVisible = !frameTimes.IsVisible;
 			}
 			int screenWidth = Raylib.GetScreenWidth();
 			int screenHeight = Raylib.GetScreenHeight();
@@ -281,9 +295,13 @@ internal static partial class Program
 					playbackController.Seek(resumePosition, wasPlaying);
 				}
 			}
-			// Before anything else, and on every screen rather than only while playing: the
-			// built-in synth's stream must never run dry, or resuming clicks, and song time is
-			// re-anchored here so Update() below reads a fresh position rather than a stale one.
+			if (exportRequested)
+			{
+				exportRequested = false;
+				StartAudioExport(audioOutput, songLoadResult, playbackController);
+			}
+			// Before Update(), so it reads a freshly anchored position. No-ops until a song has
+			// been loaded, since the synth engine is built per song.
 			audioOutput.Pump();
 			OmrProgress progress;
 			while (progressQueue.TryTake(out progress) && progress is not null)
@@ -457,8 +475,17 @@ internal static partial class Program
 				}
 				break;
 			}
+			// Before EndDrawing, which is where raylib sleeps out the rest of the frame for
+			// SetTargetFPS. Measuring after it would report a flat 6.94ms forever.
+			frameTimes.Record((System.Diagnostics.Stopwatch.GetTimestamp()
+				/ (double)System.Diagnostics.Stopwatch.Frequency - frameStarted) * 1000.0);
+			if (frameTimes.IsVisible)
+			{
+				DrawFrameTimeReadout(frameTimes, layout);
+			}
 			Raylib.EndDrawing();
 		}
+		Console.WriteLine(frameTimes.Summarise("session"));
 		applicationLifetime.Cancel();
 		cancellationTokenSource?.Cancel();
 		if (task != null)
@@ -1451,6 +1478,7 @@ internal static partial class Program
 		{
 			return true;
 		}
+		DrawExportControl(song, layout);
 		UiTheme.DrawText(UiTheme.Ellipsize(song.DisplayName, Math.Max(15, (int)(18f * scale)), (int)((double)layout.Width * 0.38)), (int)(106f * scale), (int)(20f * scale), Math.Max(15, (int)(18f * scale)), UiTheme.Text);
 		Color accent = ((song.Engine == OmrEngine.Zeus) ? UiTheme.Sky : UiTheme.Lime);
 		// Which output is making the sound. Not decoration: the audio offset below is stored per
@@ -1642,6 +1670,150 @@ internal static partial class Program
 	/// no audio device and no soundfont.
 	/// </summary>
 	private static AudioOutputStatus? activeAudioStatus;
+
+	/// <summary>
+	/// Renders the loaded song to an MP3 on a worker thread.
+	/// </summary>
+	/// <remarks>
+	/// Off the frame loop because a full song takes seconds even at ~50x real time, and blocking the
+	/// loop is what made the backend switch look like a hang. MeltySynth is not thread-safe, so the
+	/// worker builds its own <see cref="SoundFontEngine"/> and shares only the immutable, already
+	/// parsed <see cref="MeltySynth.SoundFont"/> - loading the 118MB font a second time would be
+	/// both slow and pointless.
+	///
+	/// Requires the built-in synth: the MIDI-device backend has no soundfont to render with, because
+	/// the samples live inside the external synthesiser.
+	/// </remarks>
+	private static void StartAudioExport(
+		AudioOutput audioOutput,
+		SongLoadResult? song,
+		PlaybackController? playback)
+	{
+		if (exportRunning)
+		{
+			return;
+		}
+		if (song is null || playback is null)
+		{
+			exportStatus = "Nothing loaded to export.";
+			return;
+		}
+		if (audioOutput.SoundFont is null)
+		{
+			exportStatus = "Export needs the built-in synth - switch AUDIO OUTPUT on the home screen.";
+			return;
+		}
+
+		MeltySynth.SoundFont soundFont = audioOutput.SoundFont;
+		IReadOnlyList<Note> notes = playback.Session.Notes;
+		string displayName = song.DisplayName;
+		exportRunning = true;
+		exportStatus = "Rendering...";
+
+		Task.Run(delegate
+		{
+			try
+			{
+				Directory.CreateDirectory(ExportDirectory);
+				string safeName = string.Join("_", displayName.Split(Path.GetInvalidFileNameChars()));
+				string target = Path.Combine(ExportDirectory, safeName + ".mp3");
+				PlaybackSession exportSession = new(notes);
+
+				using Mp3FileSink sink = new(target, RenderSampleRate, RenderBlockFrames);
+				SoundFontEngine synth = new(soundFont, sink, exportSession, RenderSampleRate);
+				synth.Seek(0);
+				synth.Start();
+				double until = exportSession.TotalDuration + RenderDefaultTailSeconds;
+				while (synth.SubmittedSongSeconds < until)
+				{
+					synth.RenderBlock();
+				}
+				exportStatus = "Saved to " + target;
+				Console.WriteLine("[EXPORT] " + target);
+			}
+			catch (Exception error)
+			{
+				exportStatus = "Export failed: " + error.Message;
+				Console.Error.WriteLine("[EXPORT] " + error);
+			}
+			finally
+			{
+				exportRunning = false;
+			}
+		});
+	}
+
+	/// <summary>Set by the Export button; performed by the main loop, which owns the audio output.</summary>
+	private static bool exportRequested;
+
+	/// <summary>What the export control shows: idle, in progress, the finished path, or an error.</summary>
+	private static string? exportStatus;
+
+	private static bool exportRunning;
+
+	/// <summary>Where exported audio goes, so there is one obvious place to look for it.</summary>
+	internal static string ExportDirectory =>
+		Path.Combine(SongCache.ApplicationDirectory, "exports");
+
+	/// <summary>
+	/// Draws the Export button and whatever it last had to say, bottom-left, mirroring the audio
+	/// offset control on the right.
+	/// </summary>
+	private static void DrawExportControl(SongLoadResult song, UiLayout layout)
+	{
+		float scale = layout.Scale;
+		float height = 26f * scale;
+		float y = (float)layout.HitLineY - height - 12f * scale;
+		Rectangle button = new Rectangle(16f * scale, y, 104f * scale, height);
+
+		if (UiTheme.DrawButton(button, exportRunning ? "Exporting..." : "Export MP3", UiTheme.Lime)
+			&& !exportRunning)
+		{
+			exportRequested = true;
+		}
+
+		if (exportStatus is not null)
+		{
+			int labelSize = Math.Max(10, (int)(12f * scale));
+			UiTheme.DrawText(
+				UiTheme.Ellipsize(exportStatus, labelSize, (int)((float)layout.Width * 0.55f)),
+				(int)(button.X + button.Width + 10f * scale),
+				(int)(y + (height - (float)labelSize) / 2f),
+				labelSize,
+				UiTheme.Muted);
+		}
+	}
+
+	/// <summary>
+	/// Draws the F3 frame-time overlay: frame rate, and the worst single frame in the last second.
+	/// </summary>
+	/// <remarks>
+	/// Worst-frame is shown beside the average deliberately. A steady 144 with a 30ms spike reads as
+	/// a stutter to the eye while the average looks perfect, and those are the two cases this exists
+	/// to tell apart.
+	/// </remarks>
+	private static void DrawFrameTimeReadout(FrameTimeTracker frameTimes, UiLayout layout)
+	{
+		if (!frameTimes.HasSample)
+		{
+			return;
+		}
+
+		float scale = layout.Scale;
+		int fontSize = Math.Max(12, (int)(14f * scale));
+		string text = $"{frameTimes.FramesPerSecond:0} fps   worst {frameTimes.WorstMilliseconds:0.0} ms";
+		int width = UiTheme.MeasureText(text, fontSize);
+		int padding = (int)(10f * scale);
+		Rectangle bounds = new Rectangle(
+			(float)(layout.Width - width - (3 * padding)),
+			(float)(layout.Height - fontSize - (3 * padding)),
+			(float)(width + (2 * padding)),
+			(float)(fontSize + (2 * padding)));
+		Raylib.DrawRectangleRounded(bounds, 0.25f, 8, new Color(0, 0, 0, 190));
+		// One refresh interval at the 144Hz target. Past it, the frame is presented late.
+		Color colour = frameTimes.WorstMilliseconds > 1000.0 / 144.0 ? UiTheme.Warning : UiTheme.Lime;
+		UiTheme.DrawText(text, (int)bounds.X + padding, (int)bounds.Y + padding, fontSize, colour);
+	}
 
 	/// <summary>
 	/// A backend switch asked for by the landing page, applied by the main loop.
