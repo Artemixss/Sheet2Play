@@ -57,8 +57,8 @@ the single-file bundle. Do not remove it.
 
 ## Audio
 
-The `audioOffsetSeconds` default in `Playback.cs` is the user's own by-ear calibration.
-Do not replace it with a guessed or "more correct" value.
+The `audioOffsetSeconds` default in `Playback.cs` was calibrated by ear against a real
+output chain. Do not replace it with a guessed or "more correct" value.
 
 ## ML / Model Selection
 

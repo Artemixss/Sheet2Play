@@ -27,17 +27,20 @@ TITLE_WORDS = [
     "Main Theme", "Battle Theme", "Opening", "Ending Theme", "Boss Theme",
     "Character Theme", "Piano Arrangement", "OST", "Prelude", "Reprise",
 ]
+# Invented names throughout. These only have to *look* like a title block so the model learns to
+# ignore one; nothing downstream reads them. Real franchises, composers and arrangers were used
+# here at first, which named living people in a synthetic-data generator for no benefit.
 TITLE_SOURCES = [
-    "Genshin Impact", "Dark Souls", "Chainsaw Man", "Tokyo Ghoul", "Oppenheimer",
-    "Honkai: Star Rail", "Attack on Titan", "Your Name", "Elden Ring",
+    "Ashfall Chronicles", "The Verdant Hour", "Northwind Saga", "Glass Cathedral",
+    "Lanternfall", "Sundered Crown", "Quiet Harbour", "The Long Descent",
 ]
 COMPOSERS = [
-    "Yu-peng Chen", "Kensuke Ushio", "Motoi Sakuraba", "Hiroyuki Sawano",
-    "Ludwig Goransson", "Yuki Kajiura", "Joe Hisaishi",
+    "A. Lindqvist", "M. Takahara", "R. Okonkwo", "L. Beaumont",
+    "S. Varga", "J. Ferreira", "K. Andersen",
 ]
 ARRANGERS = [
-    "Arr. by Animenz", "Arr. by Prower's Sheets", "Arr. by The Rhythmic Pianist",
-    "Arr. Alice Lefebvre", "Piano arrangement by Sheet2Play",
+    "Arr. by D. Whitlock", "Arr. by the Ensemble Press", "Arr. by P. Nakamura",
+    "Arr. C. Moreau", "Piano arrangement, editor unknown",
 ]
 PERFORMANCE_WORDS = [
     "rit.", "accel.", "dolce", "espressivo", "cantabile", "poco a poco",

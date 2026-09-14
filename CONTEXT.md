@@ -303,7 +303,7 @@ Both engine fixes are **live in the app** as of engine revision
 | engine fixes (PR #141 + #146) | **+0.0801** |
 | page-stitching fix | +0.0066 |
 
-`Drake - God's Plan`, the score originally reported as playing wrong, went 0.224 to 0.678.
+`Score C`, the score originally reported as playing wrong, went 0.224 to 0.678.
 
 Three things a future session should not have to rediscover:
 
@@ -315,8 +315,7 @@ Three things a future session should not have to rediscover:
   so some notes reach zero duration and the validator discards them - 846 across the library.
   pitch F1 moved 0.870 to 0.867, so what goes is homr's duplicated output rather than real
   music. Do not "fix" this without checking pitch recall first.
-- **Two caches sit on old revisions** (`MOONLIGHT SONATA`, `Unravel - Tokyo Ghoul`) because
-  their source PDFs are no longer in `songs/pdf`. `--reconvert` only touches songs whose
+- **Two caches sit on old revisions** because their source PDFs are no longer in `songs/pdf`. `--reconvert` only touches songs whose
   source still exists. They are orphans, not failures.
 
 ### Benchmark corpora do not predict this app
@@ -324,7 +323,8 @@ Three things a future session should not have to rediscover:
 OLiMPiC is *scanned*; the library is engraved MuseScore PDFs, and they are not comparable.
 Upstream measures PR #141's tie recall at 0.93-1.00 engraved against 0.04-0.12 on scans, and
 the first library song scored onset F1 0.921 where the canary average is 0.583. `evaluate_library.py`
-scores the real library against the references listed in `reports/library/pairs.json`, caching
+scores the real library against the references listed in a local `reports/library/pairs.json`
+(not committed - it names a personal collection), caching
 each bridge payload under `reports/library/predictions/` so later analysis costs no GPU;
 `diagnose_library_drift.py` reads that cache.
 Prefer MusicXML over MIDI as a reference where possible: a MuseScore MIDI is the rendered
@@ -413,7 +413,7 @@ measurement**. Full write-up in FINDINGS.md; the short version:
   page count against onset F1 is -0.454; against onset F1 after each 16-quarter window is shifted
   by its own measured offset, **-0.005**. Mean onset F1 on the seven confirmed pairs goes
   **0.2922 to 0.6558**, against a shuffled-reference control of 0.1346.
-- **`Liyue Battle Theme 1` is the clean case.** Pitch agreement 0.992, note ratio 0.997, onset F1
+- **`Score J` is the clean case.** Pitch agreement 0.992, note ratio 0.997, onset F1
   0.118. One shift of -8.25 quarters takes it to 0.806. The engine gains 8.25 beats inside the
   first eighty and transcribes the remaining four hundred of an eight-page score essentially
   perfectly.
@@ -421,10 +421,10 @@ measurement**. Full write-up in FINDINGS.md; the short version:
   in a window containing a page boundary, against a chance rate of 0.177 versus 0.195 observed.
   This is the direct version of the earlier aggregate refutation.
 - **Three of the original seven references were not the same music as the PDF.** Pairing is now
-  the reviewed `Research/omr/reports/library/pairs.json`, not filename equality, and it records
+  a reviewed local `Research/omr/reports/library/pairs.json`, not filename equality, and it records
   the pairings that must *not* be made as well as the ones that hold.
-- **Source quality beats score length.** The two PDFs of `If I Can Stop One Heart From Breaking`
-  share a piece, a reference and a page count; one recovers to 0.614 and the other to 0.198.
+- **Source quality beats score length.** `Score G` and `Score H` are two PDFs sharing a piece, a
+  reference and a page count; one recovers to 0.614 and the other to 0.198.
 
 **Confirmed on exact labels.** `build_olimpic_scores.py` rebuilds whole multi-page scores out of
 OLiMPiC's single systems - the per-system MusicXML carries consecutive measure numbers, so the

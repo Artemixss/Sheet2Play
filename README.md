@@ -190,7 +190,7 @@ scans the score for its densest four seconds and renders those, driving playback
 injected clock so the frames are identical on every run:
 
 ```powershell
-dotnet run --project Visualization_engine -- --smoke-gif .\demo-frames --source "$env:LOCALAPPDATA\Sheet2Play\songs\midi\custom\Moonlight.mid"
+dotnet run --project Visualization_engine -- --smoke-gif .\demo-frames --source "$env:LOCALAPPDATA\Sheet2Play\songs\midi\custom\<song>.mid"
 Bridge\.venv-homr-gpu\Scripts\python.exe scripts\make-demo-gif.py .\demo-frames docs\media\demo.gif
 ```
 

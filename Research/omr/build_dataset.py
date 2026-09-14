@@ -27,7 +27,7 @@ Known limitations (measured, not assumed):
     Without --annotate the pages are bare renders, which real exports never are.
 
   * MuseScore cannot always re-import its own MusicXML export, which the --annotate path
-    depends on: in_the_pool.mxl fails with exit 1320 even before annotation is applied.
+    depends on: one sample score fails with exit 1320 even before annotation is applied.
     Such scores fall back to rendering the original file unannotated, recorded in the
     manifest as fallback=annotation_render_failed.
 
@@ -262,7 +262,7 @@ def build(args):
                         except (DatasetBuildError, subprocess.TimeoutExpired,
                                 ET.ParseError) as error:
                             # MuseScore cannot always re-import its own MusicXML export
-                            # (seen on in_the_pool.mxl: the untouched canonical export
+                            # (seen on one sample score: the untouched canonical export
                             # fails with exit 1320 before any annotation is applied).
                             # Fall back to the original file so the score still yields
                             # usable clean pages instead of being dropped entirely.

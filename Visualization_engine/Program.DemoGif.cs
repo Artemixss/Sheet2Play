@@ -126,14 +126,19 @@ internal static partial class Program
 		return bestStart;
 	}
 
-	/// <summary>Prefers a score whose name looks dense, then simply the largest file.</summary>
+	/// <summary>
+	/// Picks the score to render. SHEET2PLAY_DEMO_SONG names one by a substring of its title;
+	/// otherwise the largest file wins, which is a serviceable proxy for the densest score.
+	/// </summary>
 	private static string? FindDemoSource()
 	{
 		try
 		{
+			string preferred = Environment.GetEnvironmentVariable("SHEET2PLAY_DEMO_SONG") ?? string.Empty;
 			return SongCache.GetMidiLibrary()
 				.OrderByDescending(entry =>
-					entry.DisplayName.Contains("moonlight", StringComparison.OrdinalIgnoreCase) ? 1 : 0)
+					preferred.Length > 0
+					&& entry.DisplayName.Contains(preferred, StringComparison.OrdinalIgnoreCase) ? 1 : 0)
 				.ThenByDescending(entry => entry.SizeBytes)
 				.Select(entry => entry.FullPath)
 				.FirstOrDefault();

@@ -1,6 +1,6 @@
 {
   "canary": {
-    "checkpoint": "C:\\Users\\user\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\phase3-smoke\\canary.checkpoint.json",
+    "checkpoint": "<repo>\\Research\\omr\\reports\\phase3-smoke\\canary.checkpoint.json",
     "determinism": {
       "hashes": [],
       "passed": false,
@@ -133,7 +133,7 @@
   },
   "dataset": {
     "full_manifest_sha256": "b66c91031dae9352143fe87cf3706bd3da316b337ae64731f79913c18f24a9db",
-    "root": "C:\\Users\\user\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\olimpic\\olimpic-1.0-scanned",
+    "root": "<repo>\\Research\\omr\\data\\olimpic\\olimpic-1.0-scanned",
     "test_scores": 100,
     "test_systems": 1493
   },

@@ -625,9 +625,9 @@ index e756695..2f8d67c 100644
      run_id = get_run_id()
  
 -    batch_size = 8  # 8gb vram
-+    # Sheet2Play change: 8 assumes 8 GB of VRAM. This machine has a 6 GB RTX 4050 Laptop,
-+    # below homr's documented floor, so the batch is halved and accumulation doubled to hold
-+    # the same effective batch. Raise SHEET2PLAY_BATCH if running on a larger card.
++    # Sheet2Play change: 8 assumes 8 GB of VRAM. The default here is halved, with gradient
++    # accumulation doubled to hold the same effective batch, so the run fits on a 6 GB card -
++    # below homr's documented floor. Raise SHEET2PLAY_BATCH on anything larger.
 +    batch_size = int(os.environ.get("SHEET2PLAY_BATCH", "4"))
  
      train_args = TrainingArguments(

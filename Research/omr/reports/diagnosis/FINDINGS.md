@@ -424,7 +424,7 @@ downloaded as ground truth for the seven songs that have one. The patched engine
 through `PYTHONPATH`, so this is the same comparison as the canary on different material.
 
 The improvement carries over almost exactly — mean onset_f1 **0.214 to 0.294**, against the
-canary's 0.583 to 0.661, so **+0.080 here against +0.078 there**. `Drake - God's Plan`, the
+canary's 0.583 to 0.661, so **+0.080 here against +0.078 there**. `Score C`, the
 score first reported as failing, goes **0.224 to 0.678**.
 
 But the *absolute* numbers are far worse than the canary's, and the reason matters more than
@@ -450,7 +450,7 @@ failure rather than a possibility that was ruled out. The correlation itself sur
 
 The discriminator against "long pieces are simply harder" is the span ratio. If these scores
 were failing the way canary systems fail, their timelines would inflate. They do not:
-`Beyond This Station` has span 0.99, pitch_f1 0.960 and onset_f1 0.028 — a correct-length
+`Score K` has span 0.99, pitch_f1 0.960 and onset_f1 0.028 — a correct-length
 timeline, nearly every note identified, and almost nothing in the right place. That is
 displacement, not over-accounting, and it points at page stitching rather than at rhythm
 decoding.
@@ -473,7 +473,7 @@ and adds nothing once the engine fixes are in.
 
 So the correlation stands and the causal story attached to it does not. Page count is standing
 in for score length: errors accumulate per *measure*, not per page boundary, and a longer score
-simply offers more chances to go wrong. `Beyond This Station` is the disproof — eleven pages,
+simply offers more chances to go wrong. `Score K` is the disproof — eleven pages,
 onset_f1 0.027 before the page fix and 0.028 after. Its displacement is inside the pages, not
 at the joins between them.
 
@@ -528,24 +528,31 @@ permuted, which keeps the onset grid, note density and pitch distribution and de
 correspondence. The control sits at **0.10-0.17**. That is the floor a recovered number must beat.
 
 Pairing was repaired first, because three of the original seven references were not the same music
-as the PDF - see `reports/library/pairs.json`, which now records why each pair is trusted and
-which plausible pairings must not be made.
+as the PDF. The reviewed pairing records why each pair is trusted and which plausible pairings must
+not be made; it is kept privately, along with the measurement reports, because its content is a
+list of one person's music collection.
+
+**Scores are named by label rather than by title.** Page count is the only attribute any of the
+analysis below uses, so it is carried in the label's row; the titles were only row headings.
+Labels are stable — `Score A` means the same score wherever it appears — and the mapping to real
+titles lives in the private companion repository. Labels `I` and `O` are skipped, because they
+read as `1` and `0` in a table.
 
 ### Result, on the seven confirmed pairs
 
 | pages | song | pitch agree | note ratio | onset F1 | best single shift | recovered | control |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2 | Bella Ciao | 0.948 | 0.948 | 0.904 | 0.904 | 0.941 | 0.145 |
-| 4 | God's Plan | 1.000 | 1.466 | 0.678 | 0.678 | 0.771 | 0.168 |
-| 4 | if_i_am_with_you | 0.948 | 0.998 | 0.135 | 0.199 | 0.562 | 0.130 |
-| 6 | - If I can Stop One Heart | 0.959 | 0.975 | 0.148 | 0.228 | 0.614 | 0.109 |
-| 6 | If I Can Stop One Heart | 0.734 | 0.865 | 0.034 | 0.042 | 0.198 | 0.101 |
-| 8 | Liyue Battle Theme 1 | 0.992 | 0.997 | 0.118 | **0.806** | **0.911** | 0.140 |
-| 11 | Beyond This Station | 0.924 | 0.927 | 0.028 | 0.394 | **0.593** | 0.150 |
+| 2 | Score A | 0.948 | 0.948 | 0.904 | 0.904 | 0.941 | 0.145 |
+| 4 | Score C | 1.000 | 1.466 | 0.678 | 0.678 | 0.771 | 0.168 |
+| 4 | Score D | 0.948 | 0.998 | 0.135 | 0.199 | 0.562 | 0.130 |
+| 6 | Score G | 0.959 | 0.975 | 0.148 | 0.228 | 0.614 | 0.109 |
+| 6 | Score H | 0.734 | 0.865 | 0.034 | 0.042 | 0.198 | 0.101 |
+| 8 | Score J | 0.992 | 0.997 | 0.118 | **0.806** | **0.911** | 0.140 |
+| 11 | Score K | 0.924 | 0.927 | 0.028 | 0.394 | **0.593** | 0.150 |
 
 Mean onset F1 **0.2922 to 0.6558**, against a control of 0.1346.
 
-**`Liyue Battle Theme 1` is the clean proof.** Pitch agreement 0.992 and note ratio 0.997 - the
+**`Score J` is the clean proof.** Pitch agreement 0.992 and note ratio 0.997 - the
 transcription and the reference are the same music, note for note. Its onset F1 is 0.118. *One*
 number, a shift of -8.25 quarters, takes it to 0.806, and per-window correction to 0.911. The
 local curve says where the 8.25 comes from: `0, -2, -3.75, -5.75, -8.25` and then flat at -8.25
@@ -554,7 +561,7 @@ exactly 8.25. The engine over-accounts by eight and a quarter beats inside the f
 transcribes the remaining four hundred beats of an eight-page score essentially perfectly. The
 metric reported that as 0.118.
 
-`Beyond This Station` - the score the section above calls the disproof, at "almost nothing in the
+`Score K` - the score the section above calls the disproof, at "almost nothing in the
 right place" - recovers from 0.028 to 0.593. Almost nothing was in the right *absolute* place;
 most of it was in the right place relative to the music around it.
 
@@ -583,8 +590,8 @@ containing a page boundary. Chance is 55 boundary windows out of 311, or 0.177; 
 
 ### Source quality matters more than score length
 
-The two PDFs of `If I Can Stop One Heart From Breaking` are an accidental controlled experiment:
-same piece, same reference, six pages each. One reaches pitch agreement 0.959 and recovers to
+`Score G` and `Score H` are two PDFs of the same piece, an accidental controlled experiment:
+one reference, six pages each. One reaches pitch agreement 0.959 and recovers to
 0.614; the other reaches 0.734 and recovers to 0.198. Nothing about length or page count differs.
 That also settles the reference, which the poorer PDF had appeared to impugn - and it is the
 reason both are kept as confirmed pairs rather than the weaker one being dropped.
@@ -594,7 +601,7 @@ reason both are kept as confirmed pairs rather than the weaker one being dropped
 - **The library number understates the engine badly.** 0.294 was a floor that folded in every
   displacement and three references that were different music. The engine's real accuracy on this
   material is nearer 0.66, and 0.80 on the songs where the reference is beyond question.
-- **The remaining target is localised over-accounting.** Liyue loses 0.69 of onset F1 to 8.25 beats
+- **The remaining target is localised over-accounting.** `Score J` loses 0.69 of onset F1 to 8.25 beats
   gained in one early stretch of an otherwise perfect transcription. Finding those stretches is
   worth more on this material than anything training would buy, and it is the same defect PR #146
   attacks without catching.

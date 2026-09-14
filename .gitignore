@@ -47,6 +47,19 @@ Research/omr/reports/*.log
 Research/omr/reports/diagnosis/*.log
 Research/omr/reports/diagnosis/predictions/
 Research/omr/reports/library/predictions/
+
+# ---- Report data that names a personal library or an absolute local path ----
+# These regenerate from the scripts, and their content is either one person's music collection
+# or a filesystem layout with a username in it. The measurement *summaries* stay tracked; the
+# manifests and per-song reports do not.
+Research/omr/reports/library/*.json
+Research/omr/reports/phase3/olimpic-scanned-*.jsonl
+Research/omr/reports/phase3-smoke/olimpic-scanned-*.jsonl
+
+# ---- Source scores ----
+# Same policy as the song library above: third-party arrangements stay local, including the
+# Data_Pipeline inputs that were tracked by mistake.
+Omr/Data_Pipeline/input_xml/
 # Rebuilt MusicXML from roundtrip_oracle.py --keep-xml: regenerates in seconds, 1.5 MB.
 Research/omr/reports/diagnosis/oracle-corrected/
 Research/omr/reports/pv_on/

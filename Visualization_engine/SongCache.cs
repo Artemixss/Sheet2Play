@@ -955,6 +955,11 @@ public static class SongCache
             DefaultTempoBpm: 120),
         OmrEngine.Zeus => new OmrSettings(
             Device: "cuda",
+            // A specific card name, recorded when this engine was first wired up, where the Homr
+            // entry above uses the generic provider name. It is not read back as a requirement,
+            // but OmrSettings is compared by value to validate a cache, so changing it discards
+            // every existing Zeus conversion. Fold the correction into the next revision bump,
+            // which invalidates those caches anyway.
             CudaDevice: "NVIDIA GeForce RTX 4050 Laptop GPU",
             PdfDpi: 300,
             Preprocessing: "width-fit-top-crop-bottom-pad",

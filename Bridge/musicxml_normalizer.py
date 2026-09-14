@@ -473,7 +473,7 @@ def _page_advance(page: NormalizedScore, is_first_page: bool) -> float:
 
     **The first page is exempt**, because a piece that opens with a pickup makes its length
     legitimately not a multiple of the measure, and rounding that away corrupts a page that
-    was right. Bella Ciao is the worked example: 4/4, page one decodes to 114 beats, and
+    was right. The worked example is 4/4: page one decodes to 114 beats, and
     114 = 2 + 4x28, so the leftover 2 is its anacrusis rather than an error. Snapping it to
     112 moved onset F1 from 0.921 to 0.759. Only the first page can carry an anacrusis, so
     exempting it costs nothing elsewhere - and if that page is genuinely mis-read there is no

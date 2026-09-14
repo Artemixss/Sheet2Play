@@ -80,12 +80,12 @@ internal static partial class Program
 
 			failures += Capture(outputDirectory, "04-confirm-reuse", layout, () =>
 				DrawConfirmReuse(layout, new LoadRequest(
-					@"C:\scores\Liyue Battle Theme.pdf", OmrEngine.Homr, false, null)));
+					@"C:\scores\Sample Score.pdf", OmrEngine.Homr, false, null)));
 
 			failures += Capture(outputDirectory, "05-processing", layout, () =>
 			{
 				LoadProgressModel model = new();
-				model.Start("Liyue Battle Theme.pdf", OmrEngine.Homr);
+				model.Start("Sample Score.pdf", OmrEngine.Homr);
 				model.Apply(new OmrProgress
 				{
 					Engine = OmrEngine.Homr,
@@ -106,7 +106,7 @@ internal static partial class Program
 					stage: "normalize",
 					exitCode: 7,
 					page: 8),
-					new LoadRequest(@"C:\scores\Liyue Battle Theme.pdf", OmrEngine.Homr, false, null)));
+					new LoadRequest(@"C:\scores\Sample Score.pdf", OmrEngine.Homr, false, null)));
 
 			failures += Capture(outputDirectory, "07-playback", layout, () =>
 			{
@@ -119,7 +119,7 @@ internal static partial class Program
 					new PlaybackSession(notes),
 					new NullMidiOutput(),
 					new PlaybackClock(() => 0));
-				SongLoadResult song = new(notes, "Liyue Battle Theme", OmrEngine.Homr, true, null);
+				SongLoadResult song = new(notes, "Sample Score", OmrEngine.Homr, true, null);
 				Keyboard piano = new(layout.Width, layout.HitLineY, layout.KeyboardHeight);
 				GameState state = GameState.Playing;
 				DrawPlayback(playback, song, piano, false, 0.0, new PlaybackRateEditor(), new AudioOffsetEditor(),
@@ -184,15 +184,15 @@ internal static partial class Program
 
 	private static PdfLibraryEntry[] SamplePdfs() =>
 	[
-		new(@"C:\scores\Liyue Battle Theme.pdf", "Liyue Battle Theme", 1_482_112, DateTimeOffset.UtcNow),
+		new(@"C:\scores\Sample Score.pdf", "Sample Score", 1_482_112, DateTimeOffset.UtcNow),
 		new(@"C:\scores\Dexter Main Theme.pdf", "Dexter Main Theme", 733_184, DateTimeOffset.UtcNow),
 		new(@"C:\scores\Homelander's Theme.png", "Homelander's Theme", 2_201_088, DateTimeOffset.UtcNow)
 	];
 
 	private static MidiLibraryEntry[] SampleMidis() =>
 	[
-		new(@"C:\midi\Beyond This Station.mid", "Beyond This Station", 26_955, DateTimeOffset.UtcNow),
-		new(@"C:\midi\Coronal Radiance.mid", "Coronal Radiance", 8_911, DateTimeOffset.UtcNow),
+		new(@"C:\midi\Evening Prelude.mid", "Evening Prelude", 26_955, DateTimeOffset.UtcNow),
+		new(@"C:\midi\Study in C.mid", "Study in C", 8_911, DateTimeOffset.UtcNow),
 		new(@"C:\midi\in the pool.mxl", "in the pool", 14_233, DateTimeOffset.UtcNow)
 	];
 

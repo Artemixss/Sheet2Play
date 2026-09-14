@@ -4,6 +4,7 @@ import json
 import math
 import os
 import subprocess
+import sys
 import time
 from dataclasses import asdict, dataclass
 from pathlib import Path
@@ -142,8 +143,17 @@ def train_adapter(
         from transformers import AutoModelForCausalLM, PreTrainedTokenizerFast
     except ImportError as error:
         raise ResearchError("RUNTIME_MISSING", "adaptation", f"Training dependency is missing: {error}") from error
-    if not torch.cuda.is_available() or "RTX 4050" not in torch.cuda.get_device_name(0).upper():
-        raise ResearchError("CUDA_UNAVAILABLE", "adaptation", "Adapter training requires the benchmark RTX 4050")
+    if not torch.cuda.is_available():
+        raise ResearchError("CUDA_UNAVAILABLE", "adaptation", "Adapter training requires a CUDA GPU")
+    # A specific model is only ever an expectation, never a requirement: adapter results are
+    # comparable across runs on the same card, and nothing here depends on which card it is.
+    expected = os.environ.get("SHEET2PLAY_EXPECTED_GPU", "")
+    device_name = torch.cuda.get_device_name(0)
+    if expected and expected.upper() not in device_name.upper():
+        print(
+            f"WARNING: expected a GPU matching {expected!r}, found {device_name}.",
+            file=sys.stderr,
+        )
 
     class LoRALinear(nn.Module):
         def __init__(self, base: nn.Linear) -> None:

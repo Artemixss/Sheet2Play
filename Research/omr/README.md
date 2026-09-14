@@ -101,8 +101,8 @@ Tests:
 
 | Script | Purpose |
 | --- | --- |
-| `evaluate_library.py` | Score the engine on the user's own library instead of a research corpus. About twenty minutes of GPU; caches every bridge payload under `reports/library/predictions/`. |
-| `library_pairs.py` | Which library PDF is scored against which reference, and why. Backs the reviewed `reports/library/pairs.json`, which records the pairings that must *not* be made as well as the ones that hold. |
+| `evaluate_library.py` | Score the engine on the app's own song library instead of a research corpus. About twenty minutes of GPU; caches every bridge payload under `reports/library/predictions/`. |
+| `library_pairs.py` | Which library PDF is scored against which reference, and why. Backs a reviewed `reports/library/pairs.json`, which records the pairings that must *not* be made as well as the ones that hold. The file is written locally and not committed, since it names a personal collection. |
 | `compare_engines.py` | Compare OMR engines on the same pages, with real numbers where ground truth exists. |
 | `eval_zeus_on_olimpic.py` | Score the Zeus engine on the OLiMPiC canary. |
 

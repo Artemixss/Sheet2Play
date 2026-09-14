@@ -98,7 +98,11 @@ if ($freeBytes -lt $minimumFreeBytes) {
 
 $cudaInfo = (& nvidia-smi '--query-gpu=name,driver_version,memory.total' '--format=csv,noheader,nounits' '--id=0').Trim()
 if ($LASTEXITCODE -ne 0) { throw 'nvidia-smi could not inspect GPU 0.' }
-if ($cudaInfo -notmatch 'RTX 4050') { throw "Expected an RTX 4050 on GPU 0; found: $cudaInfo" }
+# Set SHEET2PLAY_EXPECTED_GPU to have a mismatch called out. It warns rather than refusing:
+# benchmark numbers are only comparable on identical hardware, but setup itself works anywhere.
+if ($env:SHEET2PLAY_EXPECTED_GPU -and $cudaInfo -notmatch [regex]::Escape($env:SHEET2PLAY_EXPECTED_GPU)) {
+    Write-Warning "Expected a GPU matching '$env:SHEET2PLAY_EXPECTED_GPU' on GPU 0; found: $cudaInfo"
+}
 
 New-Item -ItemType Directory -Path $runtimeRoot -Force | Out-Null
 $completedStages.Add('preflight')

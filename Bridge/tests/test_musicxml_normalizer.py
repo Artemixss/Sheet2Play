@@ -466,7 +466,7 @@ class CombineScorePagesTests(unittest.TestCase):
         self.assertEqual([n.start_beat for n in combined.notes], [0.0, 16.0, 32.0])
 
     def test_first_page_keeps_its_pickup(self) -> None:
-        # Bella Ciao: 4/4 with a two-beat anacrusis, so page one is legitimately 114 beats
+        # 4/4 with a two-beat anacrusis, so page one is legitimately 114 beats
         # (2 + 4x28). Rounding that to 112 cost onset F1 0.921 -> 0.759 on the real library.
         combined = combine_score_pages([self.page(114.0), self.page(4.0)])
         self.assertEqual([n.start_beat for n in combined.notes], [0.0, 114.0])

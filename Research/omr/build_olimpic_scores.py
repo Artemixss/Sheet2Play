@@ -2,7 +2,7 @@
 """Rebuild whole multi-page scores out of OLiMPiC's single systems, with exact labels.
 
 Every benchmark in this project measures **one staff system at a time**. `p1-s1.png` is page 1,
-system 1 - about five bars. The user's library is complete pieces of one to thirteen pages, and
+system 1 - about five bars. A real library is complete pieces of one to thirteen pages, and
 the displacement effect measured in `diagnose_library_drift.py` lives precisely in that gap: it
 grows with the number of opportunities a score offers, and a five-bar crop offers almost none.
 So the finding has never been tested on a whole score whose label is exact, only on whole scores

@@ -22,10 +22,10 @@ public static class AppSettingsStore
     /// buffer configuration instead of a stored number.
     /// </summary>
     /// <remarks>
-    /// The offset above is the user's own by-ear measurement against VirtualMIDISynth, and it
-    /// means something different on each backend: in-process synthesis has a fraction of the
-    /// latency, so reusing that number would silently mis-time the new path and reusing the new
-    /// one would destroy their calibration. They are stored separately for that reason.
+    /// The offset above is a by-ear calibration against VirtualMIDISynth, and it means something
+    /// different on each backend: in-process synthesis has a fraction of the latency, so reusing
+    /// that number would silently mis-time the new path, and reusing the new one would discard a
+    /// calibration that was measured rather than guessed. They are stored separately for that reason.
     /// </remarks>
     public const int UnsetSynthAudioOffset = -1;
 

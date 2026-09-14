@@ -13,8 +13,8 @@ Send and capture share one perf_counter() clock because they run in one process.
 KNOWN LIMITATION -- the absolute number is not trustworthy. WASAPI loopback via
 soundcard delivers audio at the correct *rate* but lags real time by an unknown
 constant, and a constant pipeline delay produces zero measurable drift. That means
-capture lag and genuine synth latency are indistinguishable here: measured runs on
-this machine returned ~300 ms at the default endpoint and ~430 ms at the Bluetooth
+capture lag and genuine synth latency are indistinguishable here: on one development
+machine, runs returned ~300 ms at the default endpoint and ~430 ms at a Bluetooth
 endpoint, both far larger than any latency the app could plausibly have.
 
 What this script IS good for: proving which endpoint the synth actually renders to

@@ -3,11 +3,10 @@
 
 Pairing used to be filename equality: `evaluate_library.py` looked for a MIDI whose stem matched
 the PDF's. That is silent in both directions. It misses real pairs whose filenames merely differ
-(`if_i_am_with_you.pdf` against `If I am with you.mid`), and - worse - it cannot tell that a pair
-it does find is the *same arrangement*. `Dark Souls - Gwyn Lord of Cinder.pdf` carries Finale
-metadata naming it "Gwyn, Lord of Cinder (Two Pianos)" and was being scored against a solo
-MuseScore MIDI with nearly twice the notes. An onset F1 computed against a different arrangement
-is not an engine result, and there were seven songs in the sample.
+(punctuation and capitalisation differ), and - worse - it cannot tell that a pair it does find is
+the *same arrangement*. One PDF carried Finale metadata naming it a **two-piano** arrangement and
+was being scored against a solo MuseScore MIDI with nearly twice the notes. An onset F1 computed
+against a different arrangement is not an engine result, and there were seven songs in the sample.
 
 So pairing is a reviewed file instead of a coincidence, with every decision written down:
 

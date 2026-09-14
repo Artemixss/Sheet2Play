@@ -265,7 +265,7 @@ internal static partial class Program
 				// Paint before the switch, for the same reason startup does: opening a cold
 				// VirtualMIDISynth pages in gigabytes of samples and blocks for seconds, and a
 				// frame loop that stops pumping gets marked "Not Responding" by Windows. Measured
-				// at roughly ten seconds on this machine, which is far too long to leave a frozen
+				// at roughly ten seconds on one development machine, far too long to leave a frozen
 				// window with no explanation.
 				DrawStartupNotice(requestedBackend == AudioBackend.SoundFont
 					? "Loading soundfont..."

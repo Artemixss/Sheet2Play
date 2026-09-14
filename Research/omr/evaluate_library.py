@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Score the engine on the user's own library instead of a research corpus.
+"""Score the engine on the app's own song library instead of a research corpus.
 
 Every measurement in reports/diagnosis/ runs on OLiMPiC, which is *scanned* sheet music. The
 library this app actually plays is engraved MuseScore PDFs, and the two behave differently -
@@ -8,7 +8,7 @@ scans. So a canary result predicts app behaviour only loosely, and shipping deci
 not rest on it alone.
 
 The library has no ground-truth MusicXML, but part of it has something better: a handful of
-songs exist both as a MuseScore MIDI the user downloaded and as a PDF the engine transcribed.
+songs exist both as a downloaded MuseScore MIDI and as a PDF the engine transcribed.
 For those the MIDI *is* ground truth, on exactly the material the app runs on. This script
 scores against it, and falls back to reporting the timeline length change for the rest, which
 is still meaningful because the defect being fixed is duration over-accounting: a song that
@@ -119,7 +119,7 @@ def run_engine(
     """Transcribe one PDF through bridge.py, optionally with the patched clone in front.
 
     PYTHONPATH rather than installing: the wheel in Bridge/.venv-homr-gpu stays exactly as the
-    app has it, so nothing here can change what the user launches.
+    app has it, so nothing here can change what the published app runs.
 
     The payload is cached per (song, variant) and keyed on the source hash, the same way
     diagnose_rhythm.py caches the canary. A full paired run costs about twelve minutes of GPU,

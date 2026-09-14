@@ -92,7 +92,7 @@ def parse_arguments(argv: Sequence[str] | None = None) -> argparse.Namespace:
         "--source",
         choices=("library", "olimpic", "oracle"),
         default="library",
-        help="library: the user's PDFs against MuseScore references. "
+        help="library: the app's own PDFs against MuseScore references. "
         "olimpic: the canary's single systems against their exact MusicXML. "
         "oracle: the round-trip oracle's rebuilt MusicXML against the same truth, so the "
         "representation ceiling is corrected the same way homr's score is.",
@@ -517,7 +517,7 @@ def summarise(rows: Sequence[dict[str, Any]]) -> None:
 
 
 def library_rows(args: argparse.Namespace, window: Fraction) -> list[dict[str, Any]]:
-    """The user's PDFs, scored against the references in pairs.json."""
+    """The library's PDFs, scored against the references in pairs.json."""
     pdf_directory = args.library / "pdf"
     pairs = load_pairs(args.pairs)
     rows: list[dict[str, Any]] = []
