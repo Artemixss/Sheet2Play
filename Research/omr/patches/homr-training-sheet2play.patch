@@ -564,10 +564,10 @@ index d06fb4b..9c3c529 100644
          return empty, empty
  
 diff --git a/training/transformer/train.py b/training/transformer/train.py
-index e756695..2f8d67c 100644
+index e756695..96d57a9 100644
 --- a/training/transformer/train.py
 +++ b/training/transformer/train.py
-@@ -126,10 +126,52 @@ def _check_datasets_are_present(selected_datasets: list[str]) -> list[str]:
+@@ -126,10 +126,56 @@ def _check_datasets_are_present(selected_datasets: list[str]) -> list[str]:
      return selected_datasets
  
  
@@ -596,16 +596,20 @@ index e756695..2f8d67c 100644
 +    )
 +
 +
-+def _has_native_bf16() -> bool:
-+    """True only for Ampere and newer.
++def _is_ampere_or_newer() -> bool:
++    """Compute capability 8.0 or higher.
 +
-+    Sheet2Play change. Upstream sets bf16=not fp32, which leaves pre-Ampere cards with a
-+    choice between emulated bf16 and no mixed precision at all - the RTX 20xx series has
-+    no native bf16, but it does have real fp16 tensor cores. Note that
-+    torch.cuda.is_bf16_supported() counts the emulated path and returns True on Turing,
-+    so it cannot be used as the gate; compute capability is the honest signal.
++    Sheet2Play change. Two separate decisions hang on this, which is why it lives in one place.
 +
-+    HuggingFace's Trainer attaches a GradScaler when fp16 is set, so overflow is handled.
++    Whether bf16 is real rather than emulated: the RTX 20xx series has no native bf16 but does
++    have real fp16 tensor cores, and torch.cuda.is_bf16_supported() counts the emulated path and
++    answers True on Turing - so compute capability is the honest signal, not that call. Upstream
++    sets bf16=not fp32, which leaves such cards choosing between emulated bf16 and no mixed
++    precision at all. HuggingFace's Trainer attaches a GradScaler when fp16 is set, so overflow
++    is handled.
++
++    And whether torch.compile is worth attempting: on pre-Ampere cards it buys nothing, and
++    TorchInductor's worker pool can hang outright instead.
 +    """
 +    if not torch.cuda.is_available():
 +        return False
@@ -620,34 +624,56 @@ index e756695..2f8d67c 100644
  
      number_of_epochs = 35
      if smoke_test:
-@@ -176,7 +218,10 @@ def train_transformer(
+@@ -168,15 +214,24 @@ def train_transformer(
+     datasets = load_dataset(train_index, config, val_split=0.1)
+ 
+     compile_threshold = 50000
++    # Sheet2Play change. TorchInductor's compile worker pool deadlocks here on pre-Ampere
++    # hardware: the main thread parks in futex_do_wait, the fork-based workers sit idle, and
++    # the run makes zero progress with load average near nothing - observed hanging at step 0
++    # of 96910 for over half an hour. torch itself reports that "speedups for torchdynamo
++    # mostly come with GPU Ampere or higher", so on those cards compiling buys nothing and
++    # costs a hang. Gate it on the same capability check the precision choice uses.
+     compile_model = (
+         number_of_files < 0 or number_of_files * number_of_epochs >= compile_threshold
+-    )  # Compiling needs time, but pays off for large datasets
++    ) and _is_ampere_or_newer()  # Compiling needs time, but pays off for large datasets
+     if compile_model:
+         eprint("Compiling model")
  
      run_id = get_run_id()
  
 -    batch_size = 8  # 8gb vram
-+    # Sheet2Play change: 8 assumes 8 GB of VRAM. The default here is halved, with gradient
-+    # accumulation doubled to hold the same effective batch, so the run fits on a 6 GB card -
-+    # below homr's documented floor. Raise SHEET2PLAY_BATCH on anything larger.
++    # Sheet2Play change: 8 assumes 8 GB of VRAM. The default here is halved so the run fits
++    # on a 6 GB card, below homr's documented floor; gradient accumulation below keeps the
++    # effective batch constant. Raise SHEET2PLAY_BATCH on anything larger.
 +    batch_size = int(os.environ.get("SHEET2PLAY_BATCH", "4"))
  
      train_args = TrainingArguments(
          checkpoint_folder,
-@@ -185,7 +230,7 @@ def train_transformer(
+@@ -185,7 +240,14 @@ def train_transformer(
          save_strategy="epoch",
          learning_rate=1e-5 if fine_tune else 1e-4,
          optim="adamw_torch_fused",
 -        gradient_accumulation_steps=max(1, 4 // distribute.get_world_size()),
-+        gradient_accumulation_steps=max(1, 8 // distribute.get_world_size()),
++        # Sheet2Play change. Upstream fixes this at 8, which silently changes the effective
++        # batch whenever SHEET2PLAY_BATCH moves - the halved-batch comment above says the
++        # intent is to hold it constant, so derive it instead. Effective batch stays
++        # 4 x 8 = 32 per optimizer step, leaving SHEET2PLAY_BATCH as a pure throughput knob
++        # rather than something that also alters the optimisation.
++        gradient_accumulation_steps=max(
++            1, 32 // (batch_size * distribute.get_world_size())
++        ),
          per_device_train_batch_size=batch_size,
          per_device_eval_batch_size=batch_size // 2,
          num_train_epochs=number_of_epochs,
-@@ -198,17 +243,23 @@ def train_transformer(
+@@ -198,17 +260,23 @@ def train_transformer(
          report_to=["tensorboard"],
          logging_dir=os.path.join("logs", f"run{run_id}"),
          label_names=label_names,
 -        bf16=not fp32,
-+        bf16=not fp32 and _has_native_bf16(),
-+        fp16=not fp32 and not _has_native_bf16(),
++        bf16=not fp32 and _is_ampere_or_newer(),
++        fp16=not fp32 and not _is_ampere_or_newer(),
          dataloader_pin_memory=True,
 -        dataloader_num_workers=12,
 +        dataloader_num_workers=int(os.environ.get("SHEET2PLAY_WORKERS", "12")),
@@ -670,7 +696,7 @@ index e756695..2f8d67c 100644
      else:
          model = TrOMR(config)
  
-@@ -225,8 +276,9 @@ def train_transformer(
+@@ -225,8 +293,9 @@ def train_transformer(
  
      try:
          callbacks: list[TrainerCallback] = [EarlyStoppingCallback(early_stopping_patience=5)]
