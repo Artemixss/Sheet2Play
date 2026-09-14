@@ -72,12 +72,22 @@ fi
 
 log "Installing dependencies"
 cd "$REPO"
-if command -v uv >/dev/null; then
-    uv sync --extra training 2>/dev/null || uv sync
+# Poetry first whenever the project ships a poetry.lock, which homr does. uv has no lockfile
+# to work from here, so it re-resolves from scratch and dies on the rocm extra's cp312-only
+# wheel against homr's requires-python >=3.11 - and even on success it would not reproduce the
+# versions upstream pinned, which is the whole point of pinning the commit. Note also that
+# there is no `training` extra at this commit, so the old --extra training always failed.
+if [ -f "$REPO/poetry.lock" ] && command -v poetry >/dev/null; then
+    # --extras cuda is required, not optional: onnxruntime lives behind the cpu/cuda/rocm
+    # extras, and training/transformer/train.py imports homr.staff_parsing, which imports
+    # it. A bare `poetry install` leaves the training entry point unimportable.
+    poetry install --extras cuda
+elif command -v uv >/dev/null; then
+    uv sync
 elif command -v poetry >/dev/null; then
     poetry install
 else
-    echo "Neither uv nor poetry found. Install uv:  curl -LsSf https://astral.sh/uv/install.sh | sh"
+    echo "Poetry not found. Install it:  curl -sSL https://install.python-poetry.org | python3 - --version 2.4.1"
     exit 1
 fi
 
@@ -100,9 +110,16 @@ PY
 
 log "GPU capability check"
 # bf16 needs Ampere (compute capability 8.0+). A Turing card - RTX 20xx, including the
-# 2060 Super - cannot do it, and the trainer defaults to bf16. Those boxes must pass
-# fp32=True, or be switched to fp16, or training will fail or silently misbehave.
-python3 - <<'PY'
+# 2060 Super - cannot do it. The vendored patch derives the precision from compute capability,
+# so those boxes train in fp16 rather than failing; this check is what tells the operator which
+# path they are on.
+#
+# Must be the project interpreter: torch lives in the venv, not in system python3. Using
+# python3 here makes this check print "torch not importable yet" and pass silently, which
+# defeats its entire purpose on exactly the pre-Ampere cards it exists to catch.
+PYBIN="python3"
+[ -x "$REPO/.venv/bin/python" ] && PYBIN="$REPO/.venv/bin/python"
+"$PYBIN" - <<'PY'
 try:
     import torch
 except ImportError:
@@ -115,12 +132,16 @@ name = torch.cuda.get_device_name(0)
 major, minor = torch.cuda.get_device_capability(0)
 memory = torch.cuda.get_device_properties(0).total_memory / 1e9
 print(f"{name}  compute {major}.{minor}  {memory:.1f} GB")
+# torch.cuda.is_bf16_supported() counts emulated bf16 and returns True on Turing, where the
+# emulated path is slower than fp16. Compute capability is the honest gate, and it is what the
+# patched trainer uses too.
 if major >= 8:
     print("bf16 supported -> default settings are fine")
 else:
     print("bf16 NOT supported on this card (pre-Ampere).")
-    print("  Run training with fp32=True, or change bf16 to fp16 in")
-    print("  training/transformer/train.py TrainingArguments.")
+    print("  The patched trainer selects fp16 here by itself; Turing has real fp16")
+    print("  tensor cores, so this is the right path. Do not pass fp32=True, which")
+    print("  roughly doubles activation memory on a card already at the 8 GB floor.")
 if memory < 7.5:
     print(f"VRAM {memory:.1f} GB is under homr's 8 GB floor: keep SHEET2PLAY_BATCH=4 or lower.")
 elif memory < 12:

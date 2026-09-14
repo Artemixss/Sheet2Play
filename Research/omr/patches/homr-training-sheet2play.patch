@@ -564,10 +564,10 @@ index d06fb4b..9c3c529 100644
          return empty, empty
  
 diff --git a/training/transformer/train.py b/training/transformer/train.py
-index e756695..0dd98cd 100644
+index e756695..2f8d67c 100644
 --- a/training/transformer/train.py
 +++ b/training/transformer/train.py
-@@ -126,10 +126,36 @@ def _check_datasets_are_present(selected_datasets: list[str]) -> list[str]:
+@@ -126,10 +126,52 @@ def _check_datasets_are_present(selected_datasets: list[str]) -> list[str]:
      return selected_datasets
  
  
@@ -596,6 +596,22 @@ index e756695..0dd98cd 100644
 +    )
 +
 +
++def _has_native_bf16() -> bool:
++    """True only for Ampere and newer.
++
++    Sheet2Play change. Upstream sets bf16=not fp32, which leaves pre-Ampere cards with a
++    choice between emulated bf16 and no mixed precision at all - the RTX 20xx series has
++    no native bf16, but it does have real fp16 tensor cores. Note that
++    torch.cuda.is_bf16_supported() counts the emulated path and returns True on Turing,
++    so it cannot be used as the gate; compute capability is the honest signal.
++
++    HuggingFace's Trainer attaches a GradScaler when fp16 is set, so overflow is handled.
++    """
++    if not torch.cuda.is_available():
++        return False
++    return torch.cuda.get_device_capability(0)[0] >= 8
++
++
  def train_transformer(
      fp32: bool = False, resume: str = "", smoke_test: bool = False, fine_tune: bool = False
  ) -> None:
@@ -604,7 +620,7 @@ index e756695..0dd98cd 100644
  
      number_of_epochs = 35
      if smoke_test:
-@@ -176,7 +202,10 @@ def train_transformer(
+@@ -176,7 +218,10 @@ def train_transformer(
  
      run_id = get_run_id()
  
@@ -616,7 +632,7 @@ index e756695..0dd98cd 100644
  
      train_args = TrainingArguments(
          checkpoint_folder,
-@@ -185,7 +214,7 @@ def train_transformer(
+@@ -185,7 +230,7 @@ def train_transformer(
          save_strategy="epoch",
          learning_rate=1e-5 if fine_tune else 1e-4,
          optim="adamw_torch_fused",
@@ -625,7 +641,18 @@ index e756695..0dd98cd 100644
          per_device_train_batch_size=batch_size,
          per_device_eval_batch_size=batch_size // 2,
          num_train_epochs=number_of_epochs,
-@@ -206,9 +235,14 @@ def train_transformer(
+@@ -198,17 +243,23 @@ def train_transformer(
+         report_to=["tensorboard"],
+         logging_dir=os.path.join("logs", f"run{run_id}"),
+         label_names=label_names,
+-        bf16=not fp32,
++        bf16=not fp32 and _has_native_bf16(),
++        fp16=not fp32 and not _has_native_bf16(),
+         dataloader_pin_memory=True,
+-        dataloader_num_workers=12,
++        dataloader_num_workers=int(os.environ.get("SHEET2PLAY_WORKERS", "12")),
+     )
+ 
      if fine_tune:
          eprint("Fine tuning model from", config.filepaths.checkpoint)
          model = load_model(config)
@@ -643,7 +670,7 @@ index e756695..0dd98cd 100644
      else:
          model = TrOMR(config)
  
-@@ -225,8 +259,9 @@ def train_transformer(
+@@ -225,8 +276,9 @@ def train_transformer(
  
      try:
          callbacks: list[TrainerCallback] = [EarlyStoppingCallback(early_stopping_patience=5)]
