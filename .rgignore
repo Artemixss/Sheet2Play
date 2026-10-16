@@ -1,0 +1,25 @@
+# Search scope only. Preserve downloaded documentation, source, and licenses on disk.
+# For a dependency investigation, use --no-ignore with its explicit directory.
+.git/
+/.codex/checkpoints/
+**/.venv*/
+**/venv/
+**/env/
+**/site-packages/
+**/node_modules/
+**/__pycache__/
+**/.pytest_cache/
+**/.runtime/
+**/bin/
+**/obj/
+/dist/
+/tmp/
+/pianos/
+/Research/omr/data/
+/Research/omr/dataset/
+/Research/omr/vendor/
+/Research/omr/zeus/source/
+/Research/omr/zeus/weights/
+/Research/omr/artifacts/
+/Research/omr/out/
+/Research/omr/out_zeus_test/

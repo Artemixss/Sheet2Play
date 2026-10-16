@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sheet2Play Retro"
+  short_description: "Audit workflow efficiency without weakening quality"
+  default_prompt: "Use $retro to review this Sheet2Play phase and report evidence-backed workflow improvements without making changes."

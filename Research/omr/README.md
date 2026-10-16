@@ -13,10 +13,27 @@ this directory's `.venv`.
 
 ## Read this first
 
-**`CONTEXT.md §5` in the repository root is the current state of the OMR work**, and
-`reports/diagnosis/FINDINGS.md` is the long form with the measurements behind it. This file only
-covers how to run the harness. Two things from there are worth repeating because they decide what is
-worth doing next:
+**Plans directory:** [All plans, statuses and handoffs](../../plans/README.md).
+
+**Current execution plan:** [MAIN_PLAN.md](../../plans/MAIN_PLAN.md) owns the
+workstream, phase status and next action. Read its linked handoff before
+execution. Older plans and handoffs below are historical evidence.
+
+**Canonical Stage 4 is complete:** the [evaluation and decision](reports/screening/v1/stage4-evaluation/REPORT.md)
+recommends retaining shipped HOMR and no accuracy-led challenger confirmation now.
+The historical 343-page remainder is partly previously inferred; the review records
+exposure limits and optional runtime estimates. A later confirmation, Stage 5,
+training or production change needs a separate request.
+
+Consult the [historical screening comparison baseline](../../plans/archive/2026-09-26-omr-screening-comparison.superseded.md), the historical
+[Phase 1](PHASE1_HANDOFF.md) and [Phase 2](PHASE2_HANDOFF.md) handoffs, and the
+[Phase 2R correction handoff](PHASE2R_CORRECTION_HANDOFF.md) for prior evidence;
+the [original Phase 2R handoff](PHASE2R_HANDOFF.md) remains historical. The old
+full Phase 3 run was interrupted and is superseded by the selected screen.
+[CONTEXT.md](../../CONTEXT.md) covers architecture, and
+[FINDINGS.md](reports/diagnosis/FINDINGS.md) preserves historical measurements.
+This file covers the harness. The following observations are historical diagnostics,
+not a candidate ranking or a replacement for the current plan:
 
 - HOMR reads **pitch** well (F1 ~0.96) and places notes **in time** badly (onset F1 0.585 on the
   canary, 0.661 after the shipped fixes). The cause is measured: polyrhythm, not tuplets.
@@ -25,11 +42,13 @@ worth doing next:
   absolute equality with no alignment, so one extra beat early in a score costs everything after it.
   Correcting for it moves whole-score onset F1 from 0.5206 to 0.7714.
 
-Do not start a fine-tune without re-reading the ceiling argument in FINDINGS.md. The measured
-headroom is +0.096, and fixing displacement is worth +0.251 on whole scores for no GPU time.
+**Superseded proposal:** use the old headroom/displacement estimates to decide the next
+training run. The current comparison leaves the separate fine-tune unchanged and selects
+settings on development data. Alignment-assisted improvements are diagnostic, not headline scores.
 
-`instructions_remote.md` in the repository root is the self-contained runbook for the training
-machine.
+The old `instructions_remote.md` runbook is absent from this checkout. The existing
+[training setup script](setup_training.sh) is implementation reference, not authorization
+to start or restart training.
 
 ---
 

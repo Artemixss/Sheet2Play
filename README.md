@@ -13,8 +13,10 @@ run `Sheet2Play.exe`, keeping the folder together: the fonts and the Python brid
 the executable rather than inside it.
 
 The .NET runtime is bundled, so `.mid` and `.midi` playback needs nothing else installed.
-Converting sheet music additionally needs Python 3.11+ — the bridge builds its own virtualenvs
-on first run — and hearing anything needs a MIDI synthesiser such as VirtualMIDISynth.
+Converting sheet music with the default HOMR 465 engine additionally needs Python 3.11 x64,
+CUDA and the [pinned runtime setup](Bridge/HOMR465.md). Its assets and dependencies must be
+provisioned explicitly before scanning. Audio uses the built-in SoundFont synthesiser with an installed SoundFont,
+or an external MIDI synthesiser such as VirtualMIDISynth.
 
 ## Architecture
 
@@ -48,11 +50,12 @@ pitches are skipped with a warning rather than aborting the whole score.
 
 ## Engines
 
-Selected on the landing page, or with the `H` / `O` shortcuts.
+Select an engine on the landing page. The `H` / `O` shortcuts select legacy 426 / Zeus.
 
 | Engine | Input | Notes |
 | --- | --- | --- |
-| `Homr` | PDF, images | Default. Faster, general-purpose sheet music. |
+| `Homr465` | PDF, images | Default. Pinned 465 FP16 models, CUDA and no title detection; explicit offline setup required. |
+| `Homr` | PDF, images | Visible HOMR 426 fallback; retains its existing assets and caches. |
 | `Zeus` | PDF, images | GPU/CUDA path. Pages are sliced into systems by `Bridge/detect_systems.py` before recognition. |
 | `MusicXml` | `.mxl`, `.musicxml`, `.xml` | Bypasses recognition entirely — normalizes the score directly. |
 | `DirectMidi` | `.mid`, `.midi` | Bypasses the bridge entirely and parses in C# via DryWetMidi. |
@@ -64,7 +67,9 @@ it into `songs/midi/custom/` and it appears in the MIDI Player column.
 
 Every successful conversion is cached as a validated MIDI file plus a JSON manifest, keyed
 by the **SHA-256 of the source file and the engine**. Re-opening the same PDF with the same
-engine loads instantly instead of re-running recognition.
+engine loads instantly instead of re-running recognition. HOMR 465 also keys its cache
+by the full pinned runtime-profile hash, so incompatible profiles cannot reuse MIDI.
+Its versions remain separate from the older 426 entries.
 
 Because that makes it easy to *think* you re-ran an engine when you didn't, loading a source
 that already has a cache asks first, and offers **Use cached** / **Re-run** / **Cancel**.
@@ -76,12 +81,13 @@ Cached songs appear in the Cache Playlist, filterable by engine and sorted by na
 ## Requirements
 
 * [.NET 9 SDK](https://dotnet.microsoft.com/download)
-* Python 3.11+ (the bridge builds its own venvs on first run)
-* A CUDA GPU — optional, and only for the `Zeus` engine
+* Python 3.11 x64 and the [pinned HOMR 465 dependencies/assets](Bridge/HOMR465.md)
+* A compatible NVIDIA CUDA GPU for HOMR 465 or Zeus; direct MIDI/MusicXML import bypasses recognition
 
 ## Running
 
-From source:
+Launch the installed app using its Desktop/Start Menu shortcut or `dist\Sheet2Play.exe`.
+For isolated development, run from source:
 
 ```bash
 dotnet run --project Visualization_engine
@@ -204,7 +210,11 @@ HOMR is accurate enough for general sheet music but loses rhythmic precision on 
 arrangements, which is the material this project actually receives. `Research/omr/` holds the
 work aimed at fixing that. It is research tooling, not part of the shipped app.
 
-### Evaluating another engine
+### Historical engine evaluation — superseded as the current plan
+
+Use the [plans index](plans/README.md) and [current execution plan](plans/MAIN_PLAN.md)
+with its linked current handoff for new research work. The experiment below is
+retained for its rendering-resolution lesson; its results are not a current candidate ranking.
 
 The Sheet Music Transformer publishes checkpoints trained on pianoform scores, so the first
 question is whether one of them simply beats HOMR — no training required.
@@ -217,7 +227,7 @@ cd Research/omr
 This slices each page into systems, transcribes each one, and reports spine count, note
 count, barlines and whether the output is well-formed Humdrum.
 
-**Current finding: it does not beat HOMR.** Output is well-formed and the meter is sometimes
+**Historical finding in that setup: it did not beat HOMR.** Output is well-formed and the meter is sometimes
 correct, but it recovers around 16 notes from a system holding well over fifty. Note that
 rendering resolution dominates the result — at 300 DPI the same page collapses to 4 notes,
 at 200 DPI it gives 28 — so sweep `--dpi` before drawing conclusions about any model.
@@ -227,7 +237,7 @@ at 200 DPI it gives 28 — so sweep `--dpi` before drawing conclusions about any
 | Dataset | Size | On disk | Licence | Role |
 | --- | --- | --- | --- | --- |
 | OLiMPiC (scanned) | 2,931 systems, 200 scores | yes, 552 MB | CC BY-SA 4.0 | Real scans; robustness |
-| OpenScore Lieder | ~1,300 scores | no — lock file only | CC0 | Volume, where training runs |
+| OpenScore Lieder | ~1,300 scores in upstream corpus | downloaded locally; see frozen manifests | CC0 | Development volume; composition overlap must be checked |
 | Your own library | 46 PDFs | yes | third-party | The evaluation target |
 
 **A sample is one staff system, not a score.** OLiMPiC ships each score cut into
@@ -266,15 +276,24 @@ Your sheet music is not in here — see [Where your library lives](#where-your-l
 
 * [`CONTEXT.md`](CONTEXT.md) — architecture, invariants and known traps. Read this before
   making changes, especially automated ones.
-* [`OMR_Next_Phase_Context.md`](OMR_Next_Phase_Context.md) — the roadmap for replacing the
-  recognition engine.
+* [Plans directory and status index](plans/README.md) — active, completed and superseded
+  plans, with their phase handoffs and closeout evidence.
+* [Current research plan](plans/MAIN_PLAN.md) — workstream, phase status and next action.
+* [Historical comparison plan](plans/archive/2026-09-26-omr-screening-comparison.superseded.md) —
+  completed screening Stages 1–4 and preserved evaluation contracts.
+* [Completed comparison Phase 1](Research/omr/PHASE1_HANDOFF.md) — historical freeze and entry conditions.
+* [Completed comparison Phase 2](Research/omr/PHASE2_HANDOFF.md) — historical adapter/fixture evidence.
+* [Completed comparison Phase 2R](Research/omr/PHASE2R_HANDOFF.md) — historical readiness and candidate failures.
+* [Agent instructions](AGENTS.md) — repository rules and documentation search scope.
 
 ## Licence
 
 [MIT](LICENSE).
 
-The recognition engines keep their own licences and are not redistributed here: HOMR is
-AGPL-3.0 and the bridge installs it into its own virtualenv on first run. The C#
+The recognition engines keep their own licences. HOMR is AGPL-3.0; the published 465
+runtime retains its pinned upstream source and LICENSE. Model payloads and virtual
+environments are excluded from Git and provisioned through the
+[documented setup](Bridge/HOMR465.md). The C#
 dependencies are `Melanchall.DryWetMidi` (MIT), `Raylib-cs` (Zlib) and `MeltySynth` (MIT).
 Sheet music under `Omr/` and `Research/` is sample material belonging to its respective
 owners.

@@ -1,0 +1,8 @@
+{
+  "description": "Sheet2Play context checkpoints: remind near 50%, record before compaction, restore continuation context after compaction.",
+  "hooks": {
+    "PreToolUse": [{"hooks": [{"type": "command", "command": "python .codex/hooks/context_checkpoint.py", "commandWindows": "\"C:/Users/bur4x/AppData/Local/Programs/Python/Python311/python.exe\" \"C:/Users/bur4x/Desktop/lecture/big_projects/Sheet2Play/.codex/hooks/context_checkpoint.py\"", "timeout": 5, "additionalContextLimit": 1200}]}],
+    "PreCompact": [{"hooks": [{"type": "command", "command": "python .codex/hooks/context_checkpoint.py", "commandWindows": "\"C:/Users/bur4x/AppData/Local/Programs/Python/Python311/python.exe\" \"C:/Users/bur4x/Desktop/lecture/big_projects/Sheet2Play/.codex/hooks/context_checkpoint.py\"", "timeout": 5}]}],
+    "SessionStart": [{"matcher": "^compact$", "hooks": [{"type": "command", "command": "python .codex/hooks/context_checkpoint.py", "commandWindows": "\"C:/Users/bur4x/AppData/Local/Programs/Python/Python311/python.exe\" \"C:/Users/bur4x/Desktop/lecture/big_projects/Sheet2Play/.codex/hooks/context_checkpoint.py\"", "timeout": 5, "additionalContextLimit": 1800}]}]
+  }
+}
