@@ -17,6 +17,15 @@ The completed predecessor and its [handoff](../Research/omr/reports/homr-timing-
 retain the research evidence. The active plan records the user's later selection
 of conditional 465 default adoption, a 426 fallback and recoverable-cache migration.
 
+## Draft plans
+
+Written 2026-10-17 for the user's review; neither is authorized for execution yet.
+
+| Plan | Status |
+| --- | --- |
+| [Displacement correction](2026-10-17-displacement-correction.md) | Draft; becomes MAIN_PLAN once selected and the 465 plan is archived |
+| [Current upstream exporter and run 480](2026-10-17-upstream-exporter-480.md) | Draft; separate bounded task selected by the user, independent of displacement |
+
 ## Archived plans
 
 | Plan | Lifecycle status | Completion / handoff evidence |
