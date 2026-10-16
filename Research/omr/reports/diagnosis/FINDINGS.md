@@ -847,6 +847,56 @@ cd Research/omr && .venv/Scripts/python.exe diagnose_library_drift.py --source o
 
 Only `build_olimpic_scores.py` needs the GPU, and twenty scores take about twenty minutes.
 
+## HOMR 465 on the real library: no onset gain, and the drift gap widens
+
+*2026-10-16.* 465 became the app's default after scoring primary F1 0.5313 against 426's
+0.4139 on the 59-page, 18-composition screen. That screen is OpenScore material scored on
+composition-macro pitch/onset/duration F1. The library is engraved MuseScore piano scored
+on onset F1, and nobody had measured it with 465.
+
+`compare_library_caches.py` reads both engines' results from the app's own caches after the
+migration, joined to `pairs.json` by source SHA-256, so it scores exactly what the app plays
+and runs no inference. Its 426 scores reproduce the September payload-based ones within
+0.007 on average (max 0.021); the residue is MIDI quantization.
+
+| | confirmed, 426 | confirmed, 465 | all scored, 426 | all scored, 465 |
+| --- | --- | --- | --- | --- |
+| pairs | 6 | 6 | 10 | 10 |
+| onset F1 | 0.3284 | **0.3266** | 0.2167 | **0.2148** |
+| after per-window drift correction | 0.5452 | 0.5862 | 0.4026 | 0.4267 |
+| shuffled control, corrected | 0.1272 | 0.1290 | 0.1178 | 0.1191 |
+| pitch F1 | 0.9033 | 0.9037 | 0.8671 | 0.8689 |
+| span ratio | 1.151 | 1.131 | 1.011 | 0.998 |
+
+465 beats 426 on onset by more than 0.01 on one confirmed score and loses on one; the other
+four are tied. Three of the eleven pairs (two confirmed, one candidate) came out as
+byte-identical MIDI from both engines. That is not reuse: the migration journal records a
+fresh recognition for each (`reused_cache` false, 41-118 s), so both models read those scores
+identically through the same normalizer. One confirmed pair could not be compared because
+its 426 cache manifest has lost its MIDI.
+
+What this changes:
+
+- **The 59-page gain does not transfer to this library.** On what the app plays, rhythm is
+  unchanged. Different repertoire and a different metric are the likely reasons; this
+  measurement does not separate them.
+- **465 reads better locally, but displacement buries it.** After drift correction 465 is
+  0.04 ahead, and the drift-recoverable gain is now 0.26 on confirmed pairs against a
+  shuffled control of 0.13.
+- **Displacement correction is still the largest measured opportunity**, and no engine change
+  has moved it. The corrected figures are oracle numbers - offsets fitted against the
+  reference - so they bound what a blind corrector could recover rather than promise it.
+- The sample is small, and several low scores (span 0.65-0.80 or 1.3-1.4) look like reference
+  mismatch, such as repeats expanded on one side only, rather than misreading.
+
+### Reproducing
+
+```bash
+cd Research/omr && .venv/Scripts/python.exe compare_library_caches.py
+```
+
+It needs the local, ignored `reports/library/pairs.json` and the migrated app library.
+
 ## Separate bug: multi-page offset drift
 
 `combine_score_pages` concatenates pages with `page_offset += page.total_beats`, where
