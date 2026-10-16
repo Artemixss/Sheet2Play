@@ -96,9 +96,13 @@ def find_musescore(explicit):
     raise OpenScoreError("MuseScore CLI not found. Pass --musescore <path>.")
 
 
-def convert_scores(musescore, source_root, output_root, limit, want_pdf):
+def convert_scores(musescore, source_root, output_root, limit, want_pdf, excluded_score_ids):
     """Convert .mscx scores into MusicXML labels and page images."""
-    scores = sorted(source_root.rglob("*.mscx"))
+    scores = [
+        score
+        for score in sorted(source_root.rglob("*.mscx"))
+        if score.stem.removeprefix("lc") not in excluded_score_ids
+    ]
     if limit:
         scores = scores[:limit]
     if not scores:
@@ -113,26 +117,27 @@ def convert_scores(musescore, source_root, output_root, limit, want_pdf):
     manifest_path = output_root / "pairs.jsonl"
     converted = skipped = failed = 0
 
-    with manifest_path.open("a", encoding="utf-8") as manifest:
+    with manifest_path.open("w", encoding="utf-8") as manifest:
         for index, score in enumerate(scores, start=1):
             stem = score.stem
             label = labels_dir / (stem + ".musicxml")
             pdf = pdf_dir / (stem + ".pdf")
 
-            if label.exists() and (not want_pdf or pdf.exists()):
+            outputs_exist = label.exists() and (not want_pdf or pdf.exists())
+            if outputs_exist:
                 skipped += 1
-                continue
-
-            print("[" + str(index) + "/" + str(len(scores)) + "] " + stem)
-            try:
-                if not label.exists():
-                    run_convert(musescore, score, label)
-                if want_pdf and not pdf.exists():
-                    run_convert(musescore, score, pdf)
-            except (OpenScoreError, subprocess.TimeoutExpired) as error:
-                print("    SKIP  " + str(error)[:110])
-                failed += 1
-                continue
+            else:
+                print("[" + str(index) + "/" + str(len(scores)) + "] " + stem)
+                try:
+                    if not label.exists():
+                        run_convert(musescore, score, label)
+                    if want_pdf and not pdf.exists():
+                        run_convert(musescore, score, pdf)
+                except (OpenScoreError, subprocess.TimeoutExpired) as error:
+                    print("    SKIP  " + str(error)[:110])
+                    failed += 1
+                    continue
+                converted += 1
 
             # Layout is <composer>/<set>/<song>/<id>.mscx. Composer matters: a fair
             # train/test split has to be composer-disjoint, or the model memorises a
@@ -149,7 +154,6 @@ def convert_scores(musescore, source_root, output_root, limit, want_pdf):
             if want_pdf:
                 record["pdf"] = str(pdf.relative_to(output_root)).replace("\\", "/")
             manifest.write(json.dumps(record, ensure_ascii=False) + chr(10))
-            converted += 1
 
     print("")
     print("=== converted " + str(converted) + ", already present " + str(skipped)
@@ -180,6 +184,10 @@ def main():
     parser.add_argument("--pdf", action="store_true",
                         help="Also export a PDF per score (slower).")
     parser.add_argument("--limit", type=int, default=0, help="Convert only the first N scores.")
+    parser.add_argument(
+        "--exclude-score-ids-manifest",
+        help="JSONL manifest whose score_id values are excluded before --limit is applied.",
+    )
     parser.add_argument("--musescore", help="Path to the MuseScore executable.")
     args = parser.parse_args()
 
@@ -235,7 +243,26 @@ def main():
             musescore = find_musescore(args.musescore)
             print("  MuseScore: " + musescore)
             print("")
-            convert_scores(musescore, source_root, out_root, args.limit, args.pdf)
+            excluded_score_ids = set()
+            if args.exclude_score_ids_manifest:
+                exclusion_path = Path(args.exclude_score_ids_manifest)
+                try:
+                    for line in exclusion_path.read_text(encoding="utf-8").splitlines():
+                        if line.strip():
+                            excluded_score_ids.add(str(json.loads(line)["score_id"]))
+                except (OSError, ValueError, KeyError) as error:
+                    raise OpenScoreError(
+                        "Cannot read exclusion manifest " + str(exclusion_path) + ": " + str(error)
+                    ) from error
+                print("  excluded composition IDs: " + str(len(excluded_score_ids)))
+            convert_scores(
+                musescore,
+                source_root,
+                out_root,
+                args.limit,
+                args.pdf,
+                excluded_score_ids,
+            )
         else:
             print("")
             print("Run again with --convert to produce MusicXML labels.")

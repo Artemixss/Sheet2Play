@@ -10,10 +10,12 @@ from pathlib import Path
 from typing import Any
 
 from .assets import RuntimePaths
+from .adapter_contract import sha256_file
 from .errors import ResearchError
 from .events import _load_music21, extract_canonical_events, write_exports
 from .input_pages import iter_document_pages
 from .inference import ProgressCallback, _progress
+from .phase2r_vlm import crop_detected_systems
 
 def infer_zeus_document(
     input_path: Path,
@@ -47,10 +49,9 @@ def infer_zeus_document(
         images_payload = []
         sys_counter = 1
         
-        # Path to detect_systems.py
         bridge_dir = omr_dir.parent.parent / "Bridge"
         homr_python = bridge_dir / ".venv-homr-gpu" / "Scripts" / "python.exe"
-        detect_script = bridge_dir / "detect_systems.py"
+        detect_script = omr_dir / "src" / "sheet2play_omr" / "phase2r_detector.py"
         
         with iter_document_pages(input_path) as pages:
             for info, image in pages:
@@ -60,30 +61,22 @@ def infer_zeus_document(
                 
                 # Detect systems
                 systems_json = tmp_path / f"systems_{info.number}.json"
+                detector_image = tmp_path / f"detector_{info.number}.png"
                 try:
                     subprocess.run(
-                        [str(homr_python), str(detect_script), str(img_path), str(systems_json)],
+                        [str(homr_python), str(detect_script), str(img_path),
+                         str(systems_json), str(detector_image), str(bridge_dir)],
                         check=True,
                         capture_output=True,
                         text=True
                     )
-                    
-                    with open(systems_json, "r") as f:
-                        systems_data = json.load(f)
-                        
-                    # Crop systems
-                    for idx, sys_box in enumerate(systems_data["systems"]):
-                        min_x, max_x = sys_box["min_x"], sys_box["max_x"]
-                        min_y, max_y = sys_box["min_y"], sys_box["max_y"]
-                        
-                        # Add a small horizontal margin (optional, HOMR margin was already added vertically in detect_script)
-                        # We just use the box directly, but expand width to the full page to avoid missing key signatures
-                        sys_img = image.crop((0, max(0, min_y), image.width, min(image.height, max_y)))
-                        
-                        sys_img_path = tmp_path / f"sys_{sys_counter}.png"
-                        sys_img.save(sys_img_path)
-                        
-                        images_payload.append({"page": sys_counter, "path": str(sys_img_path)})
+                    systems_data = json.loads(systems_json.read_text(encoding="utf-8"))
+                    crops = crop_detected_systems(
+                        detector_image, systems_data, tmp_path / f"crops_{info.number}",
+                        source_sha256=sha256_file(img_path),
+                    )
+                    for crop in crops:
+                        images_payload.append({"page": sys_counter, "path": str(crop)})
                         sys_counter += 1
                         
                 except Exception as e:

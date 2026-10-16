@@ -1,6 +1,6 @@
 """Fetch the Sheet Music Benchmark, pinned to an exact revision.
 
-SMB (arXiv:2506.10488, CC BY 4.0) is 685 pages with `**kern` ground truth, 469 of them
+SMB (arXiv:2506.10488, CC BY-NC 4.0) is 685 pages with `**kern` ground truth, 469 of them
 pianoform - the texture this project actually receives, and better matched to it than OLiMPiC,
 which is voice-and-piano lieder. It ships the OMR-NED metric, so scoring against it makes
 results comparable to published numbers rather than only to this project's own history.
@@ -58,6 +58,10 @@ def parse_arguments(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--manifest", type=Path, default=None,
                         help="Where to write the filtered manifest "
                              "(default: <out>/smb-<texture>.jsonl).")
+    parser.add_argument("--metadata-only", action="store_true",
+                        help="Fetch metadata and remote LFS hashes without the 366 MB image payload.")
+    parser.add_argument("--image-hashes", type=Path, default=None,
+                        help="Remote image-hash output (default: <out>/smb-image-hashes.json).")
     return parser.parse_args(argv)
 
 
@@ -67,13 +71,13 @@ def load_lock(path: Path) -> dict:
     return {
         "schema_version": 1,
         "note": (
-            "Sheet Music Benchmark (arXiv:2506.10488), CC BY 4.0, gated on HuggingFace. "
+            "Sheet Music Benchmark (arXiv:2506.10488), CC BY-NC 4.0, gated on HuggingFace. "
             "There is no single archive to hash, so the dataset is pinned by revision SHA: "
             "recorded on first download with --update-lock and required on every run "
             "thereafter."
         ),
         "repo_id": REPO_ID,
-        "license": "CC BY 4.0",
+        "license": "CC BY-NC 4.0",
         "revision": None,
     }
 
@@ -118,9 +122,62 @@ def download(out: Path, revision: str) -> Path:
     return Path(path)
 
 
+def download_metadata(out: Path, revision: str) -> Path:
+    """Fetch only the files needed to freeze the dataset selection."""
+    from huggingface_hub import hf_hub_download
+    from huggingface_hub.errors import GatedRepoError
+
+    for variable in ("HF_HUB_OFFLINE", "TRANSFORMERS_OFFLINE"):
+        os.environ.pop(variable, None)
+    try:
+        for name in ("README.md", "metadata.jsonl"):
+            hf_hub_download(
+                REPO_ID,
+                name,
+                repo_type="dataset",
+                revision=revision,
+                local_dir=str(out),
+            )
+    except GatedRepoError:
+        print(GATED_HELP, file=sys.stderr)
+        raise SystemExit("Cannot download SMB: access has not been granted to this account.")
+    return out
+
+
+def fetch_image_hashes(revision: str) -> dict:
+    """Return SHA-256 hashes from the pinned repository's LFS pointers."""
+    from huggingface_hub import HfApi
+    from huggingface_hub.hf_api import RepoFile
+
+    images: dict[str, dict[str, int | str]] = {}
+    for item in HfApi().list_repo_tree(
+        REPO_ID,
+        path_in_repo="test",
+        recursive=True,
+        expand=True,
+        revision=revision,
+        repo_type="dataset",
+    ):
+        if not isinstance(item, RepoFile) or not item.path.lower().endswith(".png"):
+            continue
+        if item.lfs is None or not item.lfs.sha256:
+            raise SystemExit(f"SMB image has no LFS SHA-256 at {revision}: {item.path}")
+        images[item.path] = {"sha256": item.lfs.sha256, "size": item.size}
+    if len(images) != 685:
+        raise SystemExit(f"Expected 685 SMB image hashes at {revision}; found {len(images)}")
+    return {
+        "schema_version": 1,
+        "repo_id": REPO_ID,
+        "revision": revision,
+        "algorithm": "sha256",
+        "source": "Hugging Face LFS pointer metadata",
+        "images": dict(sorted(images.items())),
+    }
+
+
 def _texture_of(row: dict) -> str | None:
     """SMB's texture field, tolerating naming differences across revisions."""
-    for key in ("texture", "category", "type", "subset", "split_category"):
+    for key in ("page_texture", "texture", "category", "type", "subset", "split_category"):
         value = row.get(key)
         if isinstance(value, str) and value.strip():
             return value.strip().lower()
@@ -165,7 +222,7 @@ def main(argv: list[str] | None = None) -> int:
     print(f"repo     : {REPO_ID}")
     print(f"revision : {revision}")
 
-    root = download(args.out, revision)
+    root = download_metadata(args.out, revision) if args.metadata_only else download(args.out, revision)
     print(f"snapshot : {root}")
 
     if args.update_lock and lock.get("revision") != revision:
@@ -182,6 +239,10 @@ def main(argv: list[str] | None = None) -> int:
     count = build_manifest(root, args.texture.lower(), manifest)
     print(f"texture  : {args.texture} ({count} pages)")
     print(f"manifest : {manifest}")
+    if args.metadata_only:
+        image_hashes = args.image_hashes or (args.out / "smb-image-hashes.json")
+        save_lock(image_hashes, fetch_image_hashes(revision))
+        print(f"hashes   : {image_hashes}")
     return 0
 
 

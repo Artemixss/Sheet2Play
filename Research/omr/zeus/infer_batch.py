@@ -38,6 +38,11 @@ def main():
         try:
             # Predict
             lmx = runner.predict_image(img_path)
+
+            # Preserve the native recognizer output for the Phase-2 attribution path.
+            # MusicXML alone cannot distinguish a recognition error from delinearization.
+            out_lmx = output_dir / f"page-{page_num:04d}.lmx"
+            out_lmx.write_text(lmx, encoding="utf-8")
             
             # Save XML
             out_xml = output_dir / f"page-{page_num:04d}.musicxml"
@@ -49,7 +54,9 @@ def main():
                 "page": page_num,
                 "status": "success",
                 "seconds": elapsed,
-                "xml_path": str(out_xml.resolve())
+                "xml_path": str(out_xml.resolve()),
+                "lmx_path": str(out_lmx.resolve()),
+                "lmx": lmx,
             })
             
         except Exception as e:

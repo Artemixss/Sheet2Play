@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "method": "Visual review of every PDF page plus MIDI duration, meter, filename, and prior pitch/span evidence. Private names and paths are represented only by SHA-256 identities.",
+  "items": [
+    {
+      "private_id_sha256": "571f0f90d4a39c00ea5de28bf47a395a8535108067e94611a4d7c6023f46397b",
+      "eligible": false,
+      "edition": "same arranger is named",
+      "page_coverage": "both printed pages present",
+      "pickup": "no unresolved pickup mismatch observed",
+      "repeats": "printed repeat barlines and first/second endings are present; the MIDI timeline is expanded",
+      "transcription_alignment": "prior pitch/note/span evidence is strong but uses incompatible repeat semantics",
+      "reason": "Exclude from printed-page scoring; retain for expanded-repeat playback diagnostics."
+    },
+    {
+      "private_id_sha256": "e8128f3b9ecea23a29cbc1fc1ff912e7b6e11301d65f81dbc71a82ba9ab115d8",
+      "eligible": true,
+      "edition": "same composer and arranger are named",
+      "page_coverage": "eight pages cover measures 1-120; MIDI duration is exactly 480 quarter notes",
+      "pickup": "none",
+      "repeats": "none observed",
+      "transcription_alignment": "prior pitch agreement 0.992 and note ratio 0.997",
+      "reason": "Eligible as an already-inspected application diagnostic, not as an untouched test item."
+    },
+    {
+      "private_id_sha256": "1ff58e8f79ace0811c002751d2245910ed70c399531b4bf8709d96c71d658aa8",
+      "eligible": false,
+      "edition": "reference carries no arranger or edition metadata",
+      "page_coverage": "four pages cover measures 1-120; MIDI duration is exactly 480 quarter notes",
+      "pickup": "none",
+      "repeats": "none observed",
+      "transcription_alignment": "prior pitch evidence is strong but cannot establish the edition",
+      "reason": "Exclude until an edition-identifiable symbolic reference is available."
+    },
+    {
+      "private_id_sha256": "343c7cf94957d6b9cc365cb89660cbf039e9822359db46ad61cc4add5b569629",
+      "eligible": false,
+      "edition": "reference carries no edition metadata",
+      "page_coverage": "eleven printed pages; prior span ratio is 0.99 but complex meter changes prevent independent MIDI-only coverage proof",
+      "pickup": "MIDI duration ends on a half-quarter boundary; pickup status is unresolved",
+      "repeats": "none observed at contact-sheet resolution",
+      "transcription_alignment": "prior pitch agreement is 0.924, insufficient to prove the same edition",
+      "reason": "Exclude until a matching MusicXML reference establishes meter, pickup, and edition."
+    },
+    {
+      "private_id_sha256": "8b5e0bd851ff74150041e3d5a5bfbdee9e5025f2d8224850baf951bbfb80a71b",
+      "eligible": false,
+      "edition": "PDF describes itself as an arrangement similar to the original; MIDI edition is unidentified",
+      "page_coverage": "PDF reaches measure 53 while the MIDI duration is only 152.5 quarter notes",
+      "pickup": "unresolved",
+      "repeats": "none observed",
+      "transcription_alignment": "prior note ratio near 1.0 came from an incomplete transcription and does not prove full-score alignment",
+      "reason": "Exclude because the reference does not cover the complete printed score."
+    },
+    {
+      "private_id_sha256": "00eab3fd3e2dd6c4540c6cb8732143d8e73fac358f645bb52f018c71155d7cdf",
+      "eligible": false,
+      "edition": "PDF does not identify its arranger; MIDI carries no edition metadata",
+      "page_coverage": "six pages and 252 MIDI quarter notes are plausibly complete but not independently edition-matched",
+      "pickup": "none observed",
+      "repeats": "none observed",
+      "transcription_alignment": "prior pitch agreement 0.959 is strong but cannot establish edition identity",
+      "reason": "Exclude until the reference provenance identifies the arrangement."
+    },
+    {
+      "private_id_sha256": "ae2407ef40bb7dbcf86c6293fded4ac687e288e1a23dd30d8e78394966fe4394",
+      "eligible": false,
+      "edition": "PDF explicitly names a different arranger while reusing another PDF's MIDI reference",
+      "page_coverage": "six printed pages; reused MIDI duration is 252 quarter notes",
+      "pickup": "not material after arrangement mismatch",
+      "repeats": "none observed",
+      "transcription_alignment": "prior pitch agreement 0.734 is consistent with an arrangement mismatch",
+      "reason": "Exclude because the PDF and reference are different arrangements."
+    }
+  ]
+}
