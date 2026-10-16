@@ -847,7 +847,7 @@ cd Research/omr && .venv/Scripts/python.exe diagnose_library_drift.py --source o
 
 Only `build_olimpic_scores.py` needs the GPU, and twenty scores take about twenty minutes.
 
-## HOMR 465 on the real library: no onset gain, and the drift gap widens
+## HOMR 465 on the real library: no detectable onset change against MIDI references
 
 *2026-10-16.* 465 became the app's default after scoring primary F1 0.5313 against 426's
 0.4139 on the 59-page, 18-composition screen. That screen is OpenScore material scored on
@@ -875,19 +875,26 @@ fresh recognition for each (`reused_cache` false, 41-118 s), so both models read
 identically through the same normalizer. One confirmed pair could not be compared because
 its 426 cache manifest has lost its MIDI.
 
-What this changes:
+What this can and cannot show:
 
-- **The 59-page gain does not transfer to this library.** On what the app plays, rhythm is
-  unchanged. Different repertoire and a different metric are the likely reasons; this
-  measurement does not separate them.
-- **465 reads better locally, but displacement buries it.** After drift correction 465 is
-  0.04 ahead, and the drift-recoverable gain is now 0.26 on confirmed pairs against a
-  shuffled control of 0.13.
-- **Displacement correction is still the largest measured opportunity**, and no engine change
-  has moved it. The corrected figures are oracle numbers - offsets fitted against the
-  reference - so they bound what a blind corrector could recover rather than promise it.
-- The sample is small, and several low scores (span 0.65-0.80 or 1.3-1.4) look like reference
-  mismatch, such as repeats expanded on one side only, rather than misreading.
+- **The references are MuseScore MIDI exports, not verified transcriptions of the printed
+  page.** `pairs.json` confirms a pair when the notes agree (pitch agreement 0.92-1.00), which
+  establishes that it is the same music. It does not establish correct onsets: a MIDI is a
+  rendered performance, so one structural difference - an expanded repeat, a pickup bar,
+  an extra ending - shifts every later onset and drives onset F1 toward zero however well
+  the page was read.
+- **Most pairs sit on that floor.** Seven of the ten scored pairs are below onset F1 0.1 for
+  both engines, where a real improvement would be invisible. The two confirmed pairs that
+  score high enough to show a difference produced identical MIDI from both engines.
+- **So this measurement cannot say whether 465 improves rhythm on the library.** It finds no
+  detectable change. The drift-corrected figures absorb some structural shifts and lean
+  slightly towards 465 (+0.04), but on six pairs and the same references that is a hint.
+- **The library's displacement figures rest on the same references**, so treat them as
+  suggestive. The evidence that establishes displacement is the exact-label whole-score
+  result above (0.52 to 0.77 on rebuilt OLiMPiC scores), where no MIDI is involved.
+- A trustworthy library measurement needs references of the printed page itself: MusicXML
+  exported from the same MuseScore score as each PDF, or engraved scores whose source
+  MusicXML is exact by construction.
 
 ### Reproducing
 
