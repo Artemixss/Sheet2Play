@@ -17,6 +17,7 @@ from musicxml_normalizer import (  # noqa: E402
     RawMusicNote,
     TempoChange,
     TempoTimeline,
+    _parse_musicxml_with_repair,
     add_seconds,
     combine_score_pages,
     normalize_musicxml,
@@ -28,6 +29,37 @@ class MusicXmlNormalizerTests(unittest.TestCase):
         path = directory / f"{name}.musicxml"
         score.write("musicxml", fp=path)
         return path
+
+    def test_force_source_bypasses_music21_parse_cache(self) -> None:
+        class RecordingConverter:
+            def __init__(self) -> None:
+                self.calls: list[tuple[str, dict[str, bool]]] = []
+
+            def parse(self, path: str, **options: bool) -> object:
+                self.calls.append((path, options))
+                return object()
+
+        converter = RecordingConverter()
+        source = Path("fixture.musicxml")
+
+        _parse_musicxml_with_repair(converter, source, force_source=True)
+
+        self.assertEqual(converter.calls, [(str(source), {"forceSource": True})])
+
+    def test_default_parse_path_keeps_music21_default_options(self) -> None:
+        class RecordingConverter:
+            def __init__(self) -> None:
+                self.options: list[dict[str, bool]] = []
+
+            def parse(self, _: str, **options: bool) -> object:
+                self.options.append(options)
+                return object()
+
+        converter = RecordingConverter()
+
+        _parse_musicxml_with_repair(converter, Path("fixture.musicxml"))
+
+        self.assertEqual(converter.options, [{}])
 
     def test_piecewise_tempo_converts_crossing_note_duration(self) -> None:
         from music21 import chord, stream, tempo

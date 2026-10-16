@@ -52,7 +52,7 @@ internal static partial class Program
 
 			failures += Capture(outputDirectory, "01-landing-empty", layout, () =>
 			{
-				OmrEngine engine = OmrEngine.Homr;
+				OmrEngine engine = OmrEngine.Homr465;
 				OmrEngine? filter = null;
 				int a = 0, b = 0, c = 0;
 				DrawLanding(layout, ref engine, [], [], [], ref a, ref b, ref filter, ref c, new LibrarySearchState(),
@@ -107,6 +107,11 @@ internal static partial class Program
 					exitCode: 7,
 					page: 8),
 					new LoadRequest(@"C:\scores\Sample Score.pdf", OmrEngine.Homr, false, null)));
+
+			failures += Capture(outputDirectory, "06-error-465-fallback", layout, () =>
+				DrawError(layout, new OmrPipelineException("Pinned model assets are unavailable.",
+					errorCode: "MODEL_INVALID", stage: "admission", exitCode: 8),
+					new LoadRequest(@"C:\scores\Sample Score.pdf", OmrEngine.Homr465, false, null)));
 
 			failures += Capture(outputDirectory, "07-playback", layout, () =>
 			{

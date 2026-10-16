@@ -12,7 +12,8 @@ public enum OmrEngine
     Homr,
     Zeus,
     MusicXml,
-    DirectMidi
+    DirectMidi,
+    Homr465
 }
 
 public sealed class TempoChange
@@ -56,6 +57,12 @@ public sealed class MusicNote
 
 public sealed class OmrResult
 {
+    [JsonPropertyName("model_revision")]
+    public string? ModelRevision { get; init; }
+
+    [JsonPropertyName("runtime_profile_sha256")]
+    public string? RuntimeProfileSha256 { get; init; }
+
     [JsonPropertyName("schema_version")]
     public int SchemaVersion { get; init; }
 
@@ -120,6 +127,9 @@ public static class OmrPipeline
     public const int SchemaVersion = 2;
     public const string HomrEngineRevision = "homr-0.7.0.post38+457e7c6+pr146";
     public const string HomrModelRevision = "homr-default-models";
+    public const string Homr465EngineRevision = "33baa326900faa12702df8c4bdcbea034a3d6a34";
+    public const string Homr465ModelRevision = "465-597144cab54c8f6d0f6c9619df5c5312694eadd6-fp16";
+    public const string Homr465ProfileSha256 = "1fd5b26e461688307b7480fe8c1e7bb959152b8436fc8c64fbe4141629f1ac46";
     public const string ZeusEngineRevision =
         "df0d842596ccd199882ff958e628d59327ca6cba";
     public const string ZeusModelRevision =
@@ -190,6 +200,16 @@ public static class OmrPipeline
         }
 
         bool useManagedEngineRuntime = bridgeScriptPath is null && pythonExecutable == "python";
+        if (engine == OmrEngine.Homr465 && useManagedEngineRuntime)
+        {
+            string profilePath = Path.Combine(Path.GetDirectoryName(validatedBridgePath)!, "homr465-profile.json");
+            if (!File.Exists(profilePath) || Convert.ToHexStringLower(
+                    System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(profilePath))) != Homr465ProfileSha256)
+            {
+                throw new OmrPipelineException("The pinned HOMR 465 runtime profile is missing or changed.",
+                    errorCode: "MODEL_INVALID", stage: "runtime_profile");
+            }
+        }
         string effectivePythonExecutable = useManagedEngineRuntime
             ? ResolveEnginePythonExecutable(validatedBridgePath, engine)
             : pythonExecutable;
@@ -349,20 +369,25 @@ public static class OmrPipeline
     public static string GetEngineRevision(OmrEngine engine) => engine switch
     {
         OmrEngine.Homr => HomrEngineRevision,
+        OmrEngine.Homr465 => Homr465EngineRevision,
         OmrEngine.Zeus => ZeusEngineRevision,
+        OmrEngine.MusicXml => "direct-xml",
         _ => throw new ArgumentOutOfRangeException(nameof(engine), engine, "Unknown OMR engine.")
     };
 
     public static string GetModelRevision(OmrEngine engine) => engine switch
     {
         OmrEngine.Homr => HomrModelRevision,
+        OmrEngine.Homr465 => Homr465ModelRevision,
         OmrEngine.Zeus => ZeusModelRevision,
+        OmrEngine.MusicXml => "none",
         _ => throw new ArgumentOutOfRangeException(nameof(engine), engine, "Unknown OMR engine.")
     };
 
     public static string GetEngineName(OmrEngine engine) => engine switch
     {
         OmrEngine.Homr => "homr",
+        OmrEngine.Homr465 => "homr465",
         OmrEngine.Zeus => "zeus",
         OmrEngine.MusicXml => "musicxml",
         OmrEngine.DirectMidi => "directmidi",
@@ -372,6 +397,7 @@ public static class OmrPipeline
     public static string GetSettingsFingerprint(OmrEngine engine) => engine switch
     {
         OmrEngine.Homr => "cuda|CUDAExecutionProvider|homr-default-300-dpi|120",
+        OmrEngine.Homr465 => "cuda|CUDAExecutionProvider|no-title-300-dpi|8:1|" + Homr465ProfileSha256,
         OmrEngine.Zeus =>
             "cuda|1485x1050|300dpi|beam3-then-grammar1|max2048|numeric-tempo-or-120",
         OmrEngine.MusicXml => "musicxml-native-120",
@@ -420,7 +446,7 @@ public static class OmrPipeline
         {
             string candidate = engine switch
             {
-                OmrEngine.Homr => Path.Combine(
+                OmrEngine.Homr or OmrEngine.Homr465 or OmrEngine.MusicXml => Path.Combine(
                     directory.FullName,
                     "Bridge",
                     ".venv-homr-gpu",
@@ -441,7 +467,7 @@ public static class OmrPipeline
                 return candidate;
             }
 
-            if (engine == OmrEngine.Homr)
+            if (engine is OmrEngine.Homr or OmrEngine.Homr465 or OmrEngine.MusicXml)
             {
                 string directCandidate = Path.Combine(
                     directory.FullName,
@@ -458,7 +484,7 @@ public static class OmrPipeline
 
         return engine switch
         {
-            OmrEngine.Homr => Path.Combine(
+            OmrEngine.Homr or OmrEngine.Homr465 or OmrEngine.MusicXml => Path.Combine(
                 bridgeDirectory, ".venv-homr-gpu", "Scripts", "python.exe"),
             OmrEngine.Zeus => Path.GetFullPath(Path.Combine(
                 bridgeDirectory,
@@ -476,6 +502,8 @@ public static class OmrPipeline
     internal static string GetRuntimeSetupInstruction(OmrEngine engine) => engine switch
     {
         OmrEngine.Homr => "Run Bridge/setup_gpu.ps1 first.",
+        OmrEngine.Homr465 => "Provision the pinned runtime with Bridge/setup_homr465.py after Bridge/setup_gpu.ps1.",
+        OmrEngine.MusicXml => "Run Bridge/setup_gpu.ps1 first.",
         OmrEngine.Zeus =>
             "Run Research/omr/setup_research.ps1 -Profile Inference first.",
         _ => throw new ArgumentOutOfRangeException(nameof(engine), engine, "Unknown OMR engine.")
@@ -585,7 +613,7 @@ public static class OmrPipeline
         }
     }
 
-    private static void ValidateResult(OmrResult result, OmrEngine requestedEngine)
+    internal static void ValidateResult(OmrResult result, OmrEngine requestedEngine)
     {
         if (result.SchemaVersion != SchemaVersion)
         {
@@ -596,6 +624,13 @@ public static class OmrPipeline
         {
             throw new OmrPipelineException(
                 $"Bridge returned engine {result.Engine} after {requestedEngine} was requested.");
+        }
+        if (requestedEngine == OmrEngine.Homr465 &&
+            (result.ModelRevision != Homr465ModelRevision ||
+             result.RuntimeProfileSha256 != Homr465ProfileSha256))
+        {
+            throw new OmrPipelineException("HOMR 465 result model/profile identity is missing or changed.",
+                errorCode: "MODEL_INVALID", stage: "runtime_profile");
         }
 
         string expectedRevision = GetEngineRevision(requestedEngine);

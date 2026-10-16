@@ -79,7 +79,8 @@ public static class SongCache
         CancellationToken cancellationToken = default,
         IProgress<OmrProgress>? progress = null,
         bool bypassKnownFailure = false,
-        bool forceReprocess = false)
+        bool forceReprocess = false,
+        bool recordRecent = true)
     {
         string applicationDirectory = FindApplicationDirectory();
         
@@ -120,7 +121,7 @@ public static class SongCache
                 LoadedFromCache: true,
                 ManifestRelativePath: Path.GetRelativePath(applicationDirectory, inputPath)
             );
-            TouchRecent(midiResult);
+            if (recordRecent) TouchRecent(midiResult);
             return midiResult;
         }
 
@@ -143,7 +144,7 @@ public static class SongCache
             progress,
             bypassKnownFailure,
             forceReprocess);
-        TouchRecent(result);
+        if (recordRecent) TouchRecent(result);
         return result;
     }
 
@@ -178,7 +179,7 @@ public static class SongCache
         cancellationToken.ThrowIfCancellationRequested();
         string sourcePath = ValidateInputPath(inputPath);
         string sourceHash = ComputeSha256(sourcePath);
-        CachePaths cachePaths = CreateCachePaths(sourcePath, engine, applicationDirectory);
+        CachePaths cachePaths = CreateCachePaths(sourcePath, engine, applicationDirectory, sourceHash);
         Directory.CreateDirectory(cachePaths.MidiDirectory);
         Directory.CreateDirectory(cachePaths.PdfDirectory);
 
@@ -236,6 +237,10 @@ public static class SongCache
         }
         cancellationToken.ThrowIfCancellationRequested();
         OmrFailureStore.Remove(sourceHash, engine);
+        if (engine == OmrEngine.Homr465)
+        {
+            OmrPipeline.ValidateResult(result, engine);
+        }
         List<VisualNote> generatedNotes = MapOmrNotes(result.Notes);
         if (generatedNotes.Count == 0)
         {
@@ -509,23 +514,23 @@ public static class SongCache
         }
 
         return cachedSongs
-            .OrderBy(static entry => (int)entry.RecentSong.Engine)
+            .OrderBy(static entry => entry.RecentSong.Engine == OmrEngine.Homr465 ? -1 : (int)entry.RecentSong.Engine)
             .ThenBy(static entry => entry.RecentSong.DisplayName, StringComparer.CurrentCultureIgnoreCase)
             .ToArray();
     }
 
-    public static SongLoadResult LoadRecent(RecentSongEntry entry)
+    public static SongLoadResult LoadRecent(RecentSongEntry entry, bool recordRecent = true)
     {
         ArgumentNullException.ThrowIfNull(entry);
         string applicationDirectory = FindApplicationDirectory();
         if (!TryLoadRecentCore(entry, applicationDirectory, out SongLoadResult? result) ||
             result is null)
         {
-            RecentSongsStore.Remove(entry.ManifestRelativePath);
+            if (recordRecent) RecentSongsStore.Remove(entry.ManifestRelativePath);
             throw new InvalidDataException(
                 $"Recent cache for '{entry.DisplayName}' is missing, outdated, or corrupt.");
         }
-        TouchRecent(result);
+        if (recordRecent) TouchRecent(result);
         return result;
     }
 
@@ -575,6 +580,7 @@ public static class SongCache
                 out bool requiresUpgrade);
             if (manifest is null ||
                 manifest.Engine != entry.Engine ||
+                (entry.Engine == OmrEngine.Homr465 && manifest.RuntimeProfileSha256 != OmrPipeline.Homr465ProfileSha256) ||
                 manifest.EngineRevision != OmrPipeline.GetEngineRevision(entry.Engine) ||
                 manifest.ModelRevision != OmrPipeline.GetModelRevision(entry.Engine) ||
                 manifest.BridgeSchemaVersion != OmrPipeline.SchemaVersion ||
@@ -698,7 +704,8 @@ public static class SongCache
     private static CachePaths CreateCachePaths(
         string sourcePath,
         OmrEngine engine,
-        string applicationDirectory)
+        string applicationDirectory,
+        string? sourceHash = null)
     {
         string songsDirectory = Path.Combine(applicationDirectory, "songs");
         string pdfDirectory = Path.Combine(songsDirectory, "pdf");
@@ -707,11 +714,17 @@ public static class SongCache
             "midi",
             OmrPipeline.GetEngineName(engine));
         string songName = Path.GetFileNameWithoutExtension(sourcePath);
+        string retainedSourceName = Path.GetFileName(sourcePath);
+        if (engine == OmrEngine.Homr465)
+        {
+            songName = $"{sourceHash ?? ComputeSha256(sourcePath)}-{OmrPipeline.Homr465ProfileSha256}";
+            retainedSourceName = songName + Path.GetExtension(sourcePath);
+        }
         string midiPath = Path.Combine(midiDirectory, $"{songName}.mid");
         return new CachePaths(
             pdfDirectory,
             midiDirectory,
-            Path.Combine(pdfDirectory, Path.GetFileName(sourcePath)),
+            Path.Combine(pdfDirectory, retainedSourceName),
             midiPath,
             $"{midiPath}.cache.json");
     }
@@ -784,6 +797,7 @@ public static class SongCache
             if (manifest is null ||
                 manifest.SourceSha256 != sourceHash ||
                 manifest.Engine != engine ||
+                (engine == OmrEngine.Homr465 && manifest.RuntimeProfileSha256 != OmrPipeline.Homr465ProfileSha256) ||
                 manifest.EngineRevision != OmrPipeline.GetEngineRevision(engine) ||
                 manifest.ModelRevision != OmrPipeline.GetModelRevision(engine) ||
                 manifest.BridgeSchemaVersion != OmrPipeline.SchemaVersion ||
@@ -947,12 +961,25 @@ public static class SongCache
 
     private static OmrSettings GetOmrSettings(OmrEngine engine) => engine switch
     {
+        OmrEngine.MusicXml => new OmrSettings(
+            Device: "cpu",
+            CudaDevice: "none",
+            PdfDpi: 0,
+            Preprocessing: "musicxml-native",
+            DefaultTempoBpm: 120),
         OmrEngine.Homr => new OmrSettings(
             Device: "cuda",
             CudaDevice: "CUDAExecutionProvider",
             PdfDpi: 300,
             Preprocessing: "homr-default-300-dpi",
             DefaultTempoBpm: 120),
+        OmrEngine.Homr465 => new OmrSettings(
+            Device: "cuda",
+            CudaDevice: "CUDAExecutionProvider",
+            PdfDpi: 300,
+            Preprocessing: "native-no-title-8:1",
+            DefaultTempoBpm: 120,
+            ModelSha256: OmrPipeline.Homr465ProfileSha256),
         OmrEngine.Zeus => new OmrSettings(
             Device: "cuda",
             // A specific card name, recorded when this engine was first wired up, where the Homr
@@ -1039,14 +1066,15 @@ public static class SongCache
                 CacheManifestVersion: CacheManifestVersion,
                 MidiSha256: midiSha256,
                 DurationSeconds: durationSeconds,
-                DisplayName: Path.GetFileNameWithoutExtension(sourcePath));
+                DisplayName: Path.GetFileNameWithoutExtension(sourcePath),
+                RuntimeProfileSha256: result.RuntimeProfileSha256);
             string manifestJson = JsonSerializer.Serialize(manifest, ManifestJsonOptions);
             File.WriteAllText(temporaryManifestPath, manifestJson);
 
-            if (string.Equals(
+            if ((engine == OmrEngine.Homr465 || string.Equals(
                     Path.GetExtension(sourcePath),
                     ".pdf",
-                    StringComparison.OrdinalIgnoreCase) &&
+                    StringComparison.OrdinalIgnoreCase)) &&
                 !string.Equals(
                     Path.GetFullPath(sourcePath),
                     Path.GetFullPath(cachePaths.PdfPath),
@@ -1382,6 +1410,13 @@ public static class SongCache
             CancellationToken.None).Notes;
     }
 
+    internal static SongLoadResult LoadOrCreateDetailedForTesting(
+        string inputPath,
+        OmrEngine engine,
+        string applicationDirectory,
+        Func<string, OmrEngine, CancellationToken, OmrResult> pipeline) =>
+        LoadOrCreateCore(inputPath, engine, applicationDirectory, pipeline, CancellationToken.None);
+
     internal static IReadOnlyList<PdfLibraryEntry> GetPdfLibraryForTesting(
         string applicationDirectory) => GetPdfLibraryCore(applicationDirectory);
 
@@ -1422,7 +1457,8 @@ public static class SongCache
         int CacheManifestVersion = 1,
         string? MidiSha256 = null,
         double? DurationSeconds = null,
-        string? DisplayName = null);
+        string? DisplayName = null,
+        string? RuntimeProfileSha256 = null);
 
     private sealed record LegacyOmrSettings(
         string Device,

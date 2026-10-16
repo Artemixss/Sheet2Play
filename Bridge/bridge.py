@@ -54,6 +54,7 @@ EXIT_CODES = {
     "KERN_PARSE_FAILED": 6,
     "MUSICXML_PARSE_FAILED": 6,
     "NORMALIZATION_FAILED": 7,
+    "RESOURCE_STOP": 8,
 }
 
 
@@ -83,6 +84,8 @@ class OmrResult:
     engine_revision: str
     tempo_changes: tuple[TempoChange, ...]
     notes: tuple[MusicNote, ...]
+    model_revision: str | None = None
+    runtime_profile_sha256: str | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -107,7 +110,7 @@ def parse_arguments(arguments: Sequence[str] | None = None) -> argparse.Namespac
     parser.add_argument("input_path", type=Path, help="Path to a sheet image or PDF")
     parser.add_argument(
         "--engine",
-        choices=("homr", "zeus", "musicxml"),
+        choices=("homr", "homr465", "zeus", "musicxml"),
         default="homr",
         help="OMR engine; homr is production and Zeus is an experimental local engine, musicxml parses direct MXL files",
     )
@@ -264,6 +267,37 @@ def run_homr(input_path: Path) -> Path:
     return select_generated_output(input_path, files_before, started_at_ns)
 
 
+def run_homr465_page(input_path: Path) -> Path:
+    from guarded_execution import run_guarded
+    from execution_safety.safety_policy import SafetyLimits
+    import uuid
+    root = Path(os.environ.get("SHEET2PLAY_HOME") or Path(os.environ.get("LOCALAPPDATA", str(Path.home()))) / "Sheet2Play")
+    if os.environ.get("SHEET2PLAY_HOME"):
+        root = Path(os.environ["SHEET2PLAY_HOME"])
+    job_root = root / "omr-jobs"
+    job_root.mkdir(parents=True, exist_ok=True)
+    output = job_root / str(uuid.uuid4())
+    receipt = output / "native.json"
+    command = [str(resolve_homr_python()), "-B", str(Path(__file__).with_name("homr465_native.py")), str(input_path), str(receipt)]
+    result = run_guarded(command, input_path.parent, output, SafetyLimits(max_seconds=1800), lock_path=job_root / ".worker.lock")
+    LOGGER.info("HOMR 465 receipt=%s status=%s", output, result["status"])
+    if result["status"] != "complete":
+        details = json.loads(receipt.read_text(encoding="utf-8")) if receipt.is_file() else {}
+        error = str(details.get("error") or result["stop_reason"] or "Native HOMR 465 failed")
+        code = "RESOURCE_STOP" if result["status"] == "blocked" or result["worker_exit_code"] == 90 else "NORMALIZATION_FAILED"
+        if "ProfileError" in error:
+            code = "MODEL_INVALID"
+        elif "CUDA" in error:
+            code = "CUDA_UNAVAILABLE"
+        raise BridgeError(code, "homr465", f"{error}; receipt: {output}")
+    details = json.loads(receipt.read_text(encoding="utf-8"))
+    from homr465_profile import load_profile
+    profile, identity = load_profile()
+    if details.get("runtime_profile_sha256") != identity or details.get("model_revision") != profile["model_revision"]:
+        raise BridgeError("MODEL_INVALID", "runtime_profile", "Native 465 receipt identity mismatch")
+    return input_path.with_suffix(".musicxml")
+
+
 def render_pdf_pages(input_path: Path, output_directory: Path) -> list[Path]:
     homr_python = resolve_homr_python()
     if not PDF_RENDERER_FILE.is_file():
@@ -313,12 +347,12 @@ def _normalization_error(error: MusicXmlNormalizationError) -> BridgeError:
     return BridgeError(code, error.stage, str(error))
 
 
-def run_homr_engine(input_path: Path) -> EngineOutput:
+def run_homr_engine(input_path: Path, engine: str = "homr") -> EngineOutput:
     try:
         with prepare_homr_inputs(input_path) as inputs:
             page_count = len(inputs)
             emit_progress(
-                engine="homr",
+                engine=engine,
                 stage="input_inspection",
                 status="completed",
                 message=f"Prepared {page_count} page(s)",
@@ -329,7 +363,7 @@ def run_homr_engine(input_path: Path) -> EngineOutput:
             for page_number, omr_input in enumerate(inputs, start=1):
                 started = time.perf_counter()
                 emit_progress(
-                    engine="homr",
+                    engine=engine,
                     stage="page_inference",
                     status="started",
                     message=f"Processing page {page_number} of {page_count}",
@@ -337,9 +371,9 @@ def run_homr_engine(input_path: Path) -> EngineOutput:
                     page_count=page_count,
                     completed_pages=page_number - 1,
                 )
-                outputs.append(run_homr(omr_input))
+                outputs.append(run_homr465_page(omr_input) if engine == "homr465" else run_homr(omr_input))
                 emit_progress(
-                    engine="homr",
+                    engine=engine,
                     stage="page_inference",
                     status="completed",
                     message=f"Completed page {page_number} of {page_count}",
@@ -349,7 +383,7 @@ def run_homr_engine(input_path: Path) -> EngineOutput:
                     page_duration_seconds=time.perf_counter() - started,
                 )
             emit_progress(
-                engine="homr",
+                engine=engine,
                 stage="normalization",
                 status="started",
                 message="Normalizing MusicXML",
@@ -361,7 +395,7 @@ def run_homr_engine(input_path: Path) -> EngineOutput:
         raise _normalization_error(error) from error
     score = combine_score_pages(pages)
     emit_progress(
-        engine="homr",
+        engine=engine,
         stage="normalization",
         status="completed",
         message="MusicXML normalized",
@@ -693,8 +727,9 @@ def run_zeus_engine(
 
 
 def emit_json(result: OmrResult) -> None:
+    payload = {name: value for name, value in asdict(result).items() if value is not None}
     json.dump(
-        asdict(result),
+        payload,
         sys.stdout,
         ensure_ascii=False,
         allow_nan=False,
@@ -746,8 +781,17 @@ def main(arguments: Sequence[str] | None = None) -> int:
             source_hash,
             input_path,
         )
-        if engine == "homr":
-            output = run_homr_engine(input_path)
+        if engine in {"homr", "homr465"}:
+            model_revision = profile_identity = None
+            if engine == "homr465":
+                from homr465_profile import SOURCE_REVISION, load_profile
+                try:
+                    profile, profile_identity = load_profile()
+                except RuntimeError as error:
+                    raise BridgeError("MODEL_INVALID", "runtime_profile", str(error)) from error
+                revision = SOURCE_REVISION
+                model_revision = profile["model_revision"]
+            output = run_homr_engine(input_path, engine) if engine == "homr465" else run_homr_engine(input_path)
             try:
                 notes = add_seconds(output.score)
             except MusicXmlNormalizationError as error:
@@ -762,6 +806,8 @@ def main(arguments: Sequence[str] | None = None) -> int:
                 engine_revision=revision,
                 tempo_changes=output.score.tempo_changes,
                 notes=notes,
+                model_revision=model_revision,
+                runtime_profile_sha256=profile_identity,
             )
             page_count = output.page_count
             staff_count = output.staff_count

@@ -30,6 +30,9 @@ Write-Host "Publishing Sheet2Play..." -ForegroundColor Cyan
 # IncludeNativeLibrariesForSelfExtract is required: Raylib ships native DLLs that will
 # not load from inside a single-file bundle without it.
 dotnet publish $project `
+    '-m:1' `
+    '-nodeReuse:false' `
+    '-p:UseSharedCompilation=false' `
     -c Release `
     -r win-x64 `
     --self-contained true `

@@ -14,10 +14,63 @@ if str(BRIDGE_DIRECTORY) not in sys.path:
     sys.path.insert(0, str(BRIDGE_DIRECTORY))
 
 import bridge  # noqa: E402
-from musicxml_normalizer import NormalizedScore, RawMusicNote, TempoChange  # noqa: E402
+from musicxml_normalizer import (  # noqa: E402
+    NormalizedScore,
+    RawMusicNote,
+    TempoChange,
+    normalize_musicxml,
+)
 
 
 class BridgeTests(unittest.TestCase):
+    def test_source_musicxml_events_survive_direct_bridge_path(self) -> None:
+        from music21 import meter, note, stream, tempo
+
+        with tempfile.TemporaryDirectory() as temporary:
+            score = stream.Score()
+            part = stream.Part(id="P1")
+            measure = stream.Measure(number=1)
+            measure.insert(0, meter.TimeSignature("4/4"))
+            measure.insert(0, tempo.MetronomeMark(number=120))
+            measure.insert(0, note.Note("C#4", quarterLength=1.5))
+            part.append(measure)
+            score.append(part)
+            source = Path(temporary) / "control.musicxml"
+            score.write("musicxml", fp=source)
+
+            normalized = normalize_musicxml(source)
+            stdout = io.StringIO()
+            with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(io.StringIO()):
+                exit_code = bridge.main(["--engine", "musicxml", str(source)])
+
+        self.assertEqual(exit_code, 0)
+        document = json.loads(stdout.getvalue())
+        expected = [
+            (
+                item.pitch,
+                item.midi_pitch,
+                item.start_beat,
+                item.duration_beats,
+                item.part_index,
+                item.staff_index,
+                item.voice_identifier,
+            )
+            for item in normalized.notes
+        ]
+        actual = [
+            (
+                item["pitch"],
+                item["midi_pitch"],
+                item["start_beat"],
+                item["duration_beats"],
+                item["part_index"],
+                item["staff_index"],
+                item["voice_identifier"],
+            )
+            for item in document["notes"]
+        ]
+        self.assertEqual(actual, expected)
+
     def test_success_stdout_contains_only_schema_json(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             input_path = Path(temporary) / "score.png"

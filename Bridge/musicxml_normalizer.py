@@ -199,16 +199,19 @@ def _drop_unparseable_clefs(document: str) -> tuple[str, int]:
     return _CLEF_ELEMENT.sub(replace, document), removed
 
 
-def _parse_musicxml_with_repair(converter: Any, path: Path) -> Any:
+def _parse_musicxml_with_repair(
+    converter: Any, path: Path, *, force_source: bool = False
+) -> Any:
     """Parse MusicXML, retrying once without malformed clefs if music21 refuses it.
 
     The retry only runs after a real failure, so a document that parses today takes exactly
     the path it always did. This is the same bargain as the skipped notes and the repeat
     fallback: degrade the broken element rather than discard the score.
     """
+    parse_options = {"forceSource": True} if force_source else {}
     try:
         with contextlib.redirect_stdout(sys.stderr):
-            return converter.parse(str(path))
+            return converter.parse(str(path), **parse_options)
     except Exception as original:
         try:
             document = path.read_text(encoding="utf-8", errors="replace")
@@ -229,7 +232,7 @@ def _parse_musicxml_with_repair(converter: Any, path: Path) -> Any:
         try:
             temporary.write_text(repaired, encoding="utf-8")
             with contextlib.redirect_stdout(sys.stderr):
-                score = converter.parse(str(temporary))
+                score = converter.parse(str(temporary), **parse_options)
         except Exception:
             raise original from None
         finally:
@@ -432,6 +435,7 @@ def normalize_musicxml(
     *,
     expand_repeats: bool = True,
     skip_grace_notes: bool = False,
+    force_source: bool = False,
 ) -> NormalizedScore:
     _, converter, _, _ = _load_music21_types()
     try:
@@ -443,7 +447,9 @@ def normalize_musicxml(
         ) from error
 
     score = _prepare_score(
-        lambda: _parse_musicxml_with_repair(converter, resolved_path),
+        lambda: _parse_musicxml_with_repair(
+            converter, resolved_path, force_source=force_source
+        ),
         str(resolved_path),
         expand_repeats=expand_repeats,
     )

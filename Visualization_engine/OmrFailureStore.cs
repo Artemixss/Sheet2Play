@@ -54,8 +54,7 @@ public static class OmrFailureStore
         Converters = { new JsonStringEnumConverter<OmrEngine>(JsonNamingPolicy.CamelCase) }
     };
     public static string DefaultPath => Path.Combine(
-        Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-        "Sheet2Play",
+        Path.GetDirectoryName(AppSettingsStore.GetSettingsPath())!,
         "failed-omr.json");
 
     public static bool TryGet(

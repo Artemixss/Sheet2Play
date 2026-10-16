@@ -28,10 +28,11 @@ def main():
         selected_staff=0,
         transformer_use_gpu=True,
         segnet_use_gpu=True,
-        coreml_encoder=False
+        coreml_encoder=False,
+        title_detection=False,
     )
     
-    multi_staffs, _, _, _ = detect_staffs_in_image(image_path, config)
+    multi_staffs, _, _, _, _ = detect_staffs_in_image(image_path, config)
     
     systems = []
     for multi in multi_staffs:

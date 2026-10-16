@@ -17,7 +17,7 @@ internal static class OmrRecoveryPolicy
                 OmrRecoveryAction.RetrySameEngine,
                 OmrRecoveryAction.ChooseAnotherFile
             ],
-            OmrEngine.Zeus =>
+            OmrEngine.Zeus or OmrEngine.Homr465 =>
             [
                 OmrRecoveryAction.RetrySameEngine,
                 OmrRecoveryAction.RetryWithHomr,
@@ -30,6 +30,7 @@ internal static class OmrRecoveryPolicy
     public static string GetSameEngineLabel(OmrEngine engine) => engine switch
     {
         OmrEngine.Homr => "Retry homr",
+        OmrEngine.Homr465 => "Retry HOMR 465",
         OmrEngine.Zeus => "Retry Zeus anyway",
         _ => throw new ArgumentOutOfRangeException(
             nameof(engine), engine, "Unknown OMR engine.")

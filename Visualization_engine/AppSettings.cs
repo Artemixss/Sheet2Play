@@ -173,6 +173,15 @@ public static class AppSettingsStore
 
     public static string GetSettingsPath()
     {
+        string? configured = Environment.GetEnvironmentVariable("SHEET2PLAY_SETTINGS_PATH");
+        if (!string.IsNullOrWhiteSpace(configured))
+        {
+            if (!Path.IsPathFullyQualified(configured))
+            {
+                throw new InvalidOperationException("SHEET2PLAY_SETTINGS_PATH must be an absolute file path.");
+            }
+            return Path.GetFullPath(configured);
+        }
         string localApplicationData = Environment.GetFolderPath(
             Environment.SpecialFolder.LocalApplicationData);
         if (string.IsNullOrWhiteSpace(localApplicationData))
@@ -199,7 +208,7 @@ public static class AppSettingsStore
             return settings with { AudioOffsetMilliseconds = Clamp(settings.AudioOffsetMilliseconds) };
         }
 
-        AppSettings defaults = new(OmrEngine.Homr, DefaultAudioOffsetMilliseconds);
+        AppSettings defaults = new(OmrEngine.Homr465, DefaultAudioOffsetMilliseconds);
         try
         {
             Write(defaults, settingsPath);
@@ -230,7 +239,7 @@ public static class AppSettingsStore
             exception is IOException or UnauthorizedAccessException or JsonException)
         {
             Console.Error.WriteLine(
-                $"[SETTINGS] Could not read {settingsPath}; using homr. {exception.Message}");
+                $"[SETTINGS] Could not read {settingsPath}; using homr465. {exception.Message}");
             return null;
         }
     }

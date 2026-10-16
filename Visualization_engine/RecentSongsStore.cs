@@ -22,8 +22,7 @@ public static class RecentSongsStore
     };
 
     public static string DefaultPath => Path.Combine(
-        Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-        "Sheet2Play",
+        Path.GetDirectoryName(AppSettingsStore.GetSettingsPath())!,
         "recent.json");
 
     public static IReadOnlyList<RecentSongEntry> Load(string? storePath = null)
@@ -142,7 +141,28 @@ public static class RecentSongsStore
         }
     }
 
-    private static void WriteEntries(string path, IReadOnlyCollection<RecentSongEntry> entries)
+    internal static void MapCommittedCache(string oldManifest, string newManifest, string? storePath = null)
+    {
+        string path = storePath ?? DefaultPath;
+        lock (Gate)
+        {
+            if (!File.Exists(path)) return;
+            List<RecentSongEntry> entries = JsonSerializer.Deserialize<List<RecentSongEntry>>(
+                File.ReadAllText(path), JsonOptions) ?? throw new InvalidDataException("Recent-song store is null.");
+            bool changed = false;
+            for (int index = 0; index < entries.Count; index++)
+            {
+                RecentSongEntry entry = entries[index];
+                if (entry.Engine != OmrEngine.Homr || !string.Equals(entry.ManifestRelativePath.Replace('\\', '/'),
+                        oldManifest.Replace('\\', '/'), StringComparison.OrdinalIgnoreCase)) continue;
+                entries[index] = entry with { ManifestRelativePath = newManifest, Engine = OmrEngine.Homr465 };
+                changed = true;
+            }
+            if (changed) WriteEntries(path, entries, throwOnFailure: true);
+        }
+    }
+
+    private static void WriteEntries(string path, IReadOnlyCollection<RecentSongEntry> entries, bool throwOnFailure = false)
     {
         string directory = Path.GetDirectoryName(path)
             ?? throw new InvalidOperationException("Recent-song store has no parent directory.");
@@ -159,6 +179,7 @@ public static class RecentSongsStore
             exception is IOException or UnauthorizedAccessException)
         {
             Console.Error.WriteLine($"[RECENT SONGS] Save failed: {exception.Message}");
+            if (throwOnFailure) throw;
         }
         finally
         {

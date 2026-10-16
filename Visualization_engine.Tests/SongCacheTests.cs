@@ -6,29 +6,29 @@ namespace Visualization_engine.Tests;
 public sealed class SongCacheTests
 {
     [Fact]
-    public void SettingsDefaultToHomrAndRecoverLegacyEnginesAsHomr()
+    public void SettingsDefaultToHomr465AndRecoverUnknownEngines()
     {
         using TemporaryDirectory temporary = new();
         string settingsPath = Path.Combine(temporary.Path, "settings", "settings.json");
 
-        Assert.Equal(OmrEngine.Homr, AppSettingsStore.LoadEngineFromPath(settingsPath));
+        Assert.Equal(OmrEngine.Homr465, AppSettingsStore.LoadEngineFromPath(settingsPath));
         File.WriteAllText(settingsPath, "{\"omr_engine\":\"oemer\"}");
-        Assert.Equal(OmrEngine.Homr, AppSettingsStore.LoadEngineFromPath(settingsPath));
+        Assert.Equal(OmrEngine.Homr465, AppSettingsStore.LoadEngineFromPath(settingsPath));
         File.WriteAllText(settingsPath, "{\"omr_engine\":\"clarity\"}");
-        Assert.Equal(OmrEngine.Homr, AppSettingsStore.LoadEngineFromPath(settingsPath));
-        Assert.Contains("\"homr\"", File.ReadAllText(settingsPath));
+        Assert.Equal(OmrEngine.Homr465, AppSettingsStore.LoadEngineFromPath(settingsPath));
+        Assert.Contains("\"homr465\"", File.ReadAllText(settingsPath));
 
         File.WriteAllText(settingsPath, "{\"omr_engine\":\"smt\"}");
-        Assert.Equal(OmrEngine.Homr, AppSettingsStore.LoadEngineFromPath(settingsPath));
-        Assert.Contains("\"homr\"", File.ReadAllText(settingsPath));
+        Assert.Equal(OmrEngine.Homr465, AppSettingsStore.LoadEngineFromPath(settingsPath));
+        Assert.Contains("\"homr465\"", File.ReadAllText(settingsPath));
 
         AppSettingsStore.SaveEngineToPath(OmrEngine.Zeus, settingsPath);
         Assert.Equal(OmrEngine.Zeus, AppSettingsStore.LoadEngineFromPath(settingsPath));
         Assert.Contains("\"zeus\"", File.ReadAllText(settingsPath));
 
         File.WriteAllText(settingsPath, "{\"omr_engine\":\"unknown-engine\"}");
-        Assert.Equal(OmrEngine.Homr, AppSettingsStore.LoadEngineFromPath(settingsPath));
-        Assert.Contains("\"homr\"", File.ReadAllText(settingsPath));
+        Assert.Equal(OmrEngine.Homr465, AppSettingsStore.LoadEngineFromPath(settingsPath));
+        Assert.Contains("\"homr465\"", File.ReadAllText(settingsPath));
     }
 
     [Fact]
@@ -409,3 +409,4 @@ public sealed class SongCacheTests
         };
     }
 }
+

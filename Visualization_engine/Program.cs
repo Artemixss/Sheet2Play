@@ -77,6 +77,10 @@ internal static partial class Program
 
 	public static int Main(string[] args)
 	{
+		if (args.Length > 0 && args[0] is "--verify-omr" or "--verify-omr-reopen")
+		{
+			return RunOmrVerification(args);
+		}
 		if (args.Length > 0 && string.Equals(args[0], "--smoke", StringComparison.OrdinalIgnoreCase))
 		{
 			string outputDirectory = ((args.Length > 1)
@@ -116,6 +120,7 @@ internal static partial class Program
 	/// </remarks>
 	private static int RunReconvert(string[] args)
 	{
+		if (args.Length > 1 && args[1] is "inventory" or "resume") return RunMigration(args);
 		OmrEngine engine = OmrEngine.Homr;
 		if (args.Length > 1 && Enum.TryParse(args[1], ignoreCase: true, out OmrEngine parsed))
 		{
@@ -712,14 +717,21 @@ internal static partial class Program
 		UiTheme.DrawText("OMR ENGINE", (int)contentLeft, (int)(174f * scale), Math.Max(12, (int)(14f * scale)), UiTheme.Muted);
 		float engineCardGap = 16f * scale;
 		float engineCardWidth = (contentWidth - engineCardGap) / 2f;
-		Rectangle zeusCard = new Rectangle(contentLeft, 194f * scale, engineCardWidth, 64f * scale);
-		Rectangle homrCard = new Rectangle(contentLeft + engineCardWidth + engineCardGap, 194f * scale, engineCardWidth, 64f * scale);
+		float omrCardWidth = (contentWidth - 2f * engineCardGap) / 3f;
+		Rectangle homr465Card = new Rectangle(contentLeft, 194f * scale, omrCardWidth, 64f * scale);
+		Rectangle homrCard = new Rectangle(contentLeft + omrCardWidth + engineCardGap, 194f * scale, omrCardWidth, 64f * scale);
+		Rectangle zeusCard = new Rectangle(contentLeft + 2f * (omrCardWidth + engineCardGap), 194f * scale, omrCardWidth, 64f * scale);
+		if (DrawEngineCard(homr465Card, "HOMR 465", "Newer recognition model", UiTheme.Lime, selectedEngine == OmrEngine.Homr465))
+		{
+			selectedEngine = OmrEngine.Homr465;
+			PersistEngine(selectedEngine);
+		}
 		if (DrawEngineCard(zeusCard, "Zeus GPU", "Experimental rhythm · CUDA-only", UiTheme.Sky, selectedEngine == OmrEngine.Zeus))
 		{
 			selectedEngine = OmrEngine.Zeus;
 			PersistEngine(selectedEngine);
 		}
-		if (DrawEngineCard(homrCard, "homr", "Faster · general sheet music", UiTheme.Lime, selectedEngine == OmrEngine.Homr))
+		if (DrawEngineCard(homrCard, "HOMR 426", "Previous model · fallback", UiTheme.Lime, selectedEngine == OmrEngine.Homr))
 		{
 			selectedEngine = OmrEngine.Homr;
 			PersistEngine(selectedEngine);
@@ -1014,7 +1026,8 @@ internal static partial class Program
 
 	private static string GetEngineTabLabel(OmrEngine engine) => engine switch
 	{
-		OmrEngine.Homr => "HOMR",
+		OmrEngine.Homr => "426",
+		OmrEngine.Homr465 => "465",
 		OmrEngine.Zeus => "ZEUS",
 		OmrEngine.MusicXml => "MXML",
 		OmrEngine.DirectMidi => "MIDI",
@@ -1345,8 +1358,8 @@ internal static partial class Program
 		float buttonWidth = (bounds.Width - 60f * scale - gap * 2f) / 3f;
 		if (request?.InputPath != null)
 		{
-			string label = ((request.Engine == OmrEngine.Zeus) ? "Retry homr" : "Retry Zeus");
-			Color accent = ((request.Engine == OmrEngine.Zeus) ? UiTheme.Lime : UiTheme.Sky);
+			string label = ((request.Engine is OmrEngine.Zeus or OmrEngine.Homr465) ? "Retry HOMR 426" : "Retry Zeus");
+			Color accent = ((request.Engine is OmrEngine.Zeus or OmrEngine.Homr465) ? UiTheme.Lime : UiTheme.Sky);
 			if (UiTheme.DrawButton(new Rectangle(bounds.X + 30f * scale, y, buttonWidth, 44f * scale), label, accent))
 			{
 				return ErrorAction.RetryAlternate;
@@ -1412,7 +1425,7 @@ internal static partial class Program
 		case ErrorAction.RetryAlternate:
 			if (request?.InputPath != null)
 			{
-				loadRequests.Enqueue(new LoadRequest(request.InputPath, (request.Engine == OmrEngine.Zeus) ? OmrEngine.Homr : OmrEngine.Zeus, BypassKnownFailure: false, null));
+				loadRequests.Enqueue(new LoadRequest(request.InputPath, (request.Engine is OmrEngine.Zeus or OmrEngine.Homr465) ? OmrEngine.Homr : OmrEngine.Zeus, BypassKnownFailure: false, null));
 			}
 			break;
 		case ErrorAction.ChooseFile:

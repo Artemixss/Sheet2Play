@@ -47,6 +47,24 @@ $ErrorActionPreference = 'Stop'
 $scriptRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 $repoRoot = (Resolve-Path (Join-Path $scriptRoot '..')).Path
 if (-not $OutputPath) { $OutputPath = Join-Path $repoRoot 'dist' }
+$OutputPath = [IO.Path]::GetFullPath($OutputPath)
+$distPath = [IO.Path]::GetFullPath((Join-Path $repoRoot 'dist'))
+$scratchRoot = [IO.Path]::GetFullPath((Join-Path $repoRoot 'tmp')) + [IO.Path]::DirectorySeparatorChar
+if ($OutputPath -ne $distPath -and -not $OutputPath.StartsWith($scratchRoot, [StringComparison]::OrdinalIgnoreCase)) {
+    throw 'Release output must be dist or a dedicated directory beneath repository tmp.'
+}
+$ancestor = $OutputPath
+while ($ancestor -and $ancestor -ne $repoRoot) {
+    if ((Test-Path -LiteralPath $ancestor) -and ((Get-Item -LiteralPath $ancestor).Attributes -band [IO.FileAttributes]::ReparsePoint)) {
+        throw "Release output contains a redirected directory: $ancestor"
+    }
+    $ancestor = Split-Path -Parent $ancestor
+}
+$runEvidence = Join-Path $repoRoot ('tmp\release-verification\' + [Guid]::NewGuid().ToString('N'))
+New-Item -ItemType Directory -Path $runEvidence | Out-Null
+$env:DOTNET_PROCESSOR_COUNT = '2'
+$env:DOTNET_GCHeapHardLimit = '0x10000000'
+$env:MSBUILDDISABLENODEREUSE = '1'
 
 $projectDir = Join-Path $repoRoot 'Visualization_engine'
 $project = Join-Path $projectDir 'SynthesiaClone.csproj'
@@ -82,6 +100,18 @@ function Write-Summary {
     }
 }
 
+function Get-AssetHash {
+    param([string]$Path)
+    $stream = [IO.File]::OpenRead($Path)
+    $algorithm = [Security.Cryptography.SHA256]::Create()
+    try {
+        return [BitConverter]::ToString($algorithm.ComputeHash($stream)).Replace('-', '').ToLowerInvariant()
+    } finally {
+        $algorithm.Dispose()
+        $stream.Dispose()
+    }
+}
+
 Write-Host "Verifying Sheet2Play release into $OutputPath" -ForegroundColor Cyan
 Write-Host ""
 
@@ -103,9 +133,19 @@ if ($SkipTests) {
 } else {
     $prev = $ErrorActionPreference
     $ErrorActionPreference = 'Continue'
-    $testOutput = & dotnet test $testProject --nologo --verbosity quiet 2>&1
+    $buildOutput = & dotnet build $testProject -c Release --nologo --verbosity quiet '-m:1' '-nodeReuse:false' '-p:UseSharedCompilation=false' 2>&1
+    $buildCode = $LASTEXITCODE
+    $buildOutput | Out-File (Join-Path $runEvidence 'test-build.log')
+    if ($buildCode -ne 0) {
+        $ErrorActionPreference = $prev
+        Add-Step 'Test suite' $false (($buildOutput | Select-Object -Last 12) -join "`n")
+        Stop-Verification 'test build failed'
+    }
+    $testAssembly = Join-Path $repoRoot 'Visualization_engine.Tests\bin\Release\net9.0-windows\Visualization_engine.Tests.dll'
+    $testOutput = & dotnet vstest $testAssembly "--ResultsDirectory:$runEvidence" '--Logger:trx;LogFileName=tests.trx' 2>&1
     $testCode = $LASTEXITCODE
     $ErrorActionPreference = $prev
+    $testOutput | Out-File (Join-Path $runEvidence 'tests.log')
 
     $summary = ($testOutput | ForEach-Object { $_.ToString() } |
         Where-Object { $_ -match 'Passed!|Failed!|error|Test summary|failed' } |
@@ -124,7 +164,13 @@ if ($SkipTests) {
 if (Test-Path $OutputPath) {
     $existing = @(Get-ChildItem -LiteralPath $OutputPath -Force)
     Write-Host "Clearing $($existing.Count) item(s) from $OutputPath before publishing." -ForegroundColor DarkGray
-    Remove-Item -LiteralPath (Join-Path $OutputPath '*') -Recurse -Force -ErrorAction Stop
+    foreach ($item in $existing) {
+        $resolved = [IO.Path]::GetFullPath($item.FullName)
+        if (-not $resolved.StartsWith($OutputPath.TrimEnd('\') + '\', [StringComparison]::OrdinalIgnoreCase)) {
+            throw "Release cleanup escaped the checked output directory: $resolved"
+        }
+        Remove-Item -LiteralPath $resolved -Recurse -Force -ErrorAction Stop
+    }
 }
 
 $publishScript = Join-Path $scriptRoot 'publish.ps1'
@@ -133,13 +179,16 @@ $ErrorActionPreference = 'Continue'
 $publishOutput = & $publishScript -OutputPath $OutputPath 2>&1
 $publishCode = $LASTEXITCODE
 $ErrorActionPreference = $prev
+$publishOutput | Out-File (Join-Path $runEvidence 'publish.log')
 
-if (-not (Test-Path $exe)) {
+if ($publishCode -ne 0 -or -not (Test-Path $exe)) {
     Add-Step 'Clean publish' $false (($publishOutput | ForEach-Object { $_.ToString() } | Select-Object -Last 15) -join "`n")
     Stop-Verification 'publish did not produce Sheet2Play.exe'
 }
 $sizeMb = [math]::Round((Get-Item $exe).Length / 1MB, 1)
 Add-Step 'Clean publish' $true "$exe ($sizeMb MB)"
+New-Item -ItemType Directory -Force $evidenceDir | Out-Null
+Copy-Item -LiteralPath $runEvidence -Destination (Join-Path $evidenceDir 'checks') -Recurse
 
 # --- 4. asset manifest --------------------------------------------------------
 # Generated from the csproj Content rules rather than hardcoded, so an asset added to the
@@ -168,7 +217,7 @@ function Get-ExpectedContent {
 
         $files = Get-ChildItem -LiteralPath $baseFull -Filter $leaf -File -Recurse:$recursive -ErrorAction SilentlyContinue
         foreach ($f in $files) {
-            if ($f.FullName -match '\\__pycache__\\') { continue }
+            if ($f.FullName -match '\\__pycache__\\' -or $f.Extension -in @('.pyc', '.pyo')) { continue }
 
             if ($link) {
                 $recursiveDir = ''
@@ -219,6 +268,38 @@ if ($unshipped.Count -gt 0) {
     Add-Step 'Runtime assets referenced in C# are shipped' $false ("Referenced in source but absent from the published folder:`n  " + ($unshipped -join "`n  "))
 } else {
     Add-Step 'Runtime assets referenced in C# are shipped' $true "All $($referenced.Count) referenced asset filename(s) present."
+}
+
+try {
+    $profilePath = Join-Path $OutputPath 'Bridge\homr465-profile.json'
+    $sourceProfile = Join-Path $repoRoot 'Bridge\homr465-profile.json'
+    if ((Get-AssetHash $profilePath) -ne (Get-AssetHash $sourceProfile)) {
+        throw 'Published profile differs from the source profile.'
+    }
+    $profile = Get-Content -LiteralPath $profilePath -Raw | ConvertFrom-Json
+    $bridgeRoot = Split-Path -Parent $profilePath
+    $runtimeRoot = Join-Path $bridgeRoot $profile.runtime_directory
+    $assets = @($profile.source_files) + @($profile.models.PSObject.Properties | ForEach-Object { $_.Value })
+    foreach ($row in $assets) {
+        $asset = Join-Path $runtimeRoot $row.path
+        if ((Get-AssetHash $asset) -ne $row.sha256) {
+            throw "Published 465 asset differs: $($row.path)"
+        }
+    }
+    foreach ($row in $profile.bridge_files) {
+        if ((Get-AssetHash (Join-Path $bridgeRoot $row.path)) -ne $row.sha256) {
+            throw "Published Bridge differs: $($row.path)"
+        }
+    }
+    if (-not (Test-Path -LiteralPath (Join-Path $runtimeRoot 'source\LICENSE'))) {
+        throw 'Upstream HOMR license is missing.'
+    }
+    Add-Step 'Pinned HOMR 465 profile and runtime hashes' $true "$($assets.Count) runtime assets and $($profile.bridge_files.Count) Bridge files verified."
+} catch {
+    Add-Step 'Pinned HOMR 465 profile and runtime hashes' $false $_.Exception.Message
+}
+if (@($steps | Where-Object { -not $_.Passed }).Count -gt 0) {
+    Stop-Verification 'published asset validation failed'
 }
 
 # --- 5. launch the published exe ---------------------------------------------
