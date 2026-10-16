@@ -1,0 +1,104 @@
+{
+  "adapter_id": "homr_455_explicit_onnx_pair",
+  "aligned_voice_accuracy": 0.8571428571428571,
+  "candidate_id": "homr_455",
+  "cold_start": true,
+  "composition_group": "beethoven/sonata07_4",
+  "coverage": {
+    "chord_completeness": 0.11627906976744186,
+    "complete_chords": 10,
+    "per_staff": {
+      "0": {
+        "matched_notes": 30,
+        "predicted_notes": 212,
+        "recall": 0.0759493670886076,
+        "reference_notes": 395
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 186,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 86,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 9,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 25,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 2,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 7,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "3",
+        "count": 1,
+        "predicted": "2"
+      },
+      {
+        "actual": "3/4",
+        "count": 1,
+        "predicted": "3/4"
+      }
+    ],
+    "unmatched_expected": 349,
+    "unmatched_predicted": 352
+  },
+  "elapsed_seconds": 25.625,
+  "error": null,
+  "extra_note_count": 356,
+  "failure_penalized_omr_ned": 0.2972027972027972,
+  "first_divergent_measure": 4,
+  "input_identity": {
+    "historical_score_sha256": "f4f2356800f9d88447f79aef1a891a1cbba33c4637fb4bd650e1207ecde36528",
+    "reference_sha256": "91cbfe94d2564017aba9e3b385c045a72bb53c18370523d014c7397e5d57abd7",
+    "result_sha256": "92c8a4996ff920b07141f7c15c182f389bd43c19bedf299b01f3f2650db13a19"
+  },
+  "item_id": "test/beethoven/sonata07_4/sonata07_4_1.png",
+  "mean_offset_error": 0.059782608695652176,
+  "missing_note_count": 353,
+  "omr_ned": 0.2972027972027972,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.10592686002522067,
+  "onset_f1": 0.11601513240857503,
+  "peak_ram_bytes": 1427148800,
+  "peak_vram_bytes": 1638924288,
+  "pitch_f1": 0.9886506935687264,
+  "predicted_note_count": 398,
+  "reference_measure_count": 22,
+  "reference_note_count": 395,
+  "reference_quarter_length": "169/2",
+  "schema_version": 2,
+  "scoring_identity_sha256": "ed9e5b7e6f998b5787ae21dfc0b7f545c42fc0bc83b60fc717f002d6b34aa568",
+  "staff_accuracy": 0.7142857142857143,
+  "status": "succeeded",
+  "timeline_length_error": "11/4",
+  "timing_policy": "symmetric-rational-4096-roundoff-v1",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

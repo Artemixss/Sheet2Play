@@ -1,0 +1,77 @@
+{
+  "adapter_id": "shipped_homr_direct",
+  "aligned_voice_accuracy": 0.918918918918919,
+  "candidate_id": "shipped_homr",
+  "cold_start": true,
+  "composition_group": "joplin/lilyqueen",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 9,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 3,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 6,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 27,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 1,
+        "predicted": "3/4"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "3/4"
+      }
+    ],
+    "unmatched_expected": 315,
+    "unmatched_predicted": 322
+  },
+  "elapsed_seconds": 15.687000000001717,
+  "error": null,
+  "extra_note_count": 333,
+  "failure_penalized_omr_ned": 0.24710743801652893,
+  "first_divergent_measure": 1,
+  "item_id": "test/joplin/lilyqueen/lilyqueen_3.png",
+  "mean_offset_error": 0.109375,
+  "missing_note_count": 326,
+  "omr_ned": 0.24710743801652893,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.1009549795361528,
+  "onset_f1": 0.130968622100955,
+  "peak_ram_bytes": 1615577088,
+  "peak_vram_bytes": 1638924288,
+  "pitch_f1": 0.9822646657571624,
+  "predicted_note_count": 370,
+  "reference_measure_count": 23,
+  "reference_note_count": 363,
+  "reference_quarter_length": "46",
+  "schema_version": 1,
+  "staff_accuracy": 0.40540540540540543,
+  "status": "succeeded",
+  "timeline_length_error": "9/4",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

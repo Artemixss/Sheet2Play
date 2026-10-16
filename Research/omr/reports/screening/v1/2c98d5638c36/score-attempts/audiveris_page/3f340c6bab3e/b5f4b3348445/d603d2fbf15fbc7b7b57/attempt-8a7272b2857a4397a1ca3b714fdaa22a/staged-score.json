@@ -1,0 +1,67 @@
+{
+  "adapter_id": "audiveris_unattended",
+  "aligned_voice_accuracy": 0.9565217391304348,
+  "candidate_id": "audiveris",
+  "cold_start": true,
+  "composition_group": "mozart/viennese1_1",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 8,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 3,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 25,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "2",
+        "count": 1,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "2",
+        "count": 13,
+        "predicted": "2"
+      }
+    ],
+    "unmatched_expected": 273,
+    "unmatched_predicted": 260
+  },
+  "elapsed_seconds": 25.57799999999952,
+  "error": null,
+  "extra_note_count": 264,
+  "failure_penalized_omr_ned": 0.17298578199052134,
+  "first_divergent_measure": 5,
+  "item_id": "test/mozart/viennese1_1/viennese1_1_1.png",
+  "mean_offset_error": 0.1,
+  "missing_note_count": 277,
+  "omr_ned": 0.17298578199052134,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.14533965244865715,
+  "onset_f1": 0.15797788309636654,
+  "peak_ram_bytes": 948232192,
+  "peak_vram_bytes": 0,
+  "pitch_f1": 0.957345971563981,
+  "predicted_note_count": 310,
+  "reference_measure_count": 29,
+  "reference_note_count": 323,
+  "reference_quarter_length": "116",
+  "schema_version": 1,
+  "staff_accuracy": 0.5434782608695652,
+  "status": "succeeded",
+  "timeline_length_error": "-9/2",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

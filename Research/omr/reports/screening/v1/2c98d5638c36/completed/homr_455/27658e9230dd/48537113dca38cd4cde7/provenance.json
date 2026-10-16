@@ -1,0 +1,17 @@
+{
+  "attempt_path": "Research\\omr\\reports\\screening\\v1\\2c98d5638c36\\attempts\\homr_455\\27658e9230dd\\2137f9050f127562b75f\\attempt-a7fb259f36d043dd828fd748689f0073",
+  "attempt_sha256": "1f35f4121e72a5321675af2044012bf35e6d4fa0498b64d30547c5381ae33298",
+  "identity": {
+    "adapter_config_sha256": "3cbb740e7cc134c7fae18077467a23a5fa5ef4a027d67e16f3efd0787b76fc8d",
+    "candidate": "homr_455",
+    "configuration_sha256": "27658e9230dd0cbfe6e02263cc870d3a8468f271b8d27ab4fec50604dc19cf25",
+    "image_sha256": "e1a094154fa9a38cba31f0b65ea4cf1c69808b709d42b798d978e13a54d182ad",
+    "item_id": "test/liszt/etude10_05/etude10_05_1.png",
+    "reference_sha256": "3ac193dfa069ffcda760257151e3b7daafefb049a2ac2ddca758c76dcfb74cc9",
+    "sample_sha256": "2c98d5638c368b1a53bdb3440177d04fa585f9b1ca6ce6adbe65af64cd8e27d1",
+    "schema_version": 1
+  },
+  "origin": "completed_attempt",
+  "result_sha256": "e5c4b86b2fe9d0bbc525881a4ef5ba6d71e8e839dd53e474b530dee14a6f6249",
+  "timing_source": "screening_complete_path"
+}

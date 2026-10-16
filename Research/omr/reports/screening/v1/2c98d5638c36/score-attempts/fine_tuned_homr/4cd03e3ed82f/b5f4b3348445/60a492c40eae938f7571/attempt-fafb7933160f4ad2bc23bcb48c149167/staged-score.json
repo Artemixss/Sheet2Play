@@ -1,0 +1,82 @@
+{
+  "adapter_id": "epoch14_verified_onnx",
+  "aligned_voice_accuracy": 1.0,
+  "candidate_id": "fine_tuned_homr",
+  "cold_start": true,
+  "composition_group": "mozart/sonata08_2",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 7,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/2",
+        "count": 5,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/4",
+        "count": 8,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/6",
+        "count": 3,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/8",
+        "count": 6,
+        "predicted": "1/8"
+      },
+      {
+        "actual": "3/4",
+        "count": 1,
+        "predicted": "3/4"
+      }
+    ],
+    "unmatched_expected": 512,
+    "unmatched_predicted": 496
+  },
+  "elapsed_seconds": 25.625,
+  "error": null,
+  "extra_note_count": 501,
+  "failure_penalized_omr_ned": 0.8382326090925689,
+  "first_divergent_measure": 2,
+  "item_id": "test/mozart/sonata08_2/sonata08_2_3.png",
+  "mean_offset_error": 0.0390625,
+  "missing_note_count": 517,
+  "omr_ned": 0.8382326090925689,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.050373134328358216,
+  "onset_f1": 0.05970149253731344,
+  "peak_ram_bytes": 1599098880,
+  "peak_vram_bytes": 1638924288,
+  "pitch_f1": 0.9776119402985075,
+  "predicted_note_count": 528,
+  "reference_measure_count": 18,
+  "reference_note_count": 544,
+  "reference_quarter_length": "54",
+  "schema_version": 1,
+  "staff_accuracy": 0.6296296296296297,
+  "status": "succeeded",
+  "timeline_length_error": "2333333333333333/100000000000000",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

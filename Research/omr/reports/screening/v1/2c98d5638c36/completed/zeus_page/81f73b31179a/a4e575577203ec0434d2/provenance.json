@@ -1,0 +1,17 @@
+{
+  "attempt_path": "Research\\omr\\reports\\screening\\v1\\2c98d5638c36\\attempts\\zeus_page\\81f73b31179a\\16736a19a47e57b9c2fd\\attempt-119a148fc07445baa95ab997c57284a3",
+  "attempt_sha256": "c59850f27f40d2ca7decafcb6c6898da7191cc89043161b473e1d50e43d42cb1",
+  "identity": {
+    "adapter_config_sha256": "e798b17dc339f6a42ea50f4dcf6c54a72cbcfa97d1461b083d282ea59502ce93",
+    "candidate": "zeus_page",
+    "configuration_sha256": "81f73b31179a40bf63c608d9adea99f546dac49e57722d436dae205a1b135821",
+    "image_sha256": "812521f0427fde5cdc2700cdb5cf05c2a3e8e97e5181f5c070e13eadd7bb7782",
+    "item_id": "test/beethoven/sonata07_4/sonata07_4_2.png",
+    "reference_sha256": "b899663d74ccedf53d3be1be0198fbfbca66e282d2de3bd07146188bf5deb92d",
+    "sample_sha256": "2c98d5638c368b1a53bdb3440177d04fa585f9b1ca6ce6adbe65af64cd8e27d1",
+    "schema_version": 1
+  },
+  "origin": "completed_attempt",
+  "result_sha256": "b7c2f7c6f0f75c94e4d80cb534905875b6e3df12c256c4410d3249d81c0160cb",
+  "timing_source": "screening_complete_path"
+}

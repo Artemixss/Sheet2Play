@@ -1,0 +1,87 @@
+{
+  "adapter_id": "audiveris_unattended",
+  "aligned_voice_accuracy": 0.8305084745762712,
+  "candidate_id": "audiveris",
+  "cold_start": true,
+  "composition_group": "beethoven/sonata02_2",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 11,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 22,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 2,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/4",
+        "count": 3,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/4",
+        "count": 6,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 25,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "2"
+      },
+      {
+        "actual": "3",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "3/2",
+        "count": 1,
+        "predicted": "3/2"
+      }
+    ],
+    "unmatched_expected": 403,
+    "unmatched_predicted": 426
+  },
+  "elapsed_seconds": 40.60900000000038,
+  "error": null,
+  "extra_note_count": 439,
+  "failure_penalized_omr_ned": 0.40989304812834226,
+  "first_divergent_measure": 2,
+  "item_id": "test/beethoven/sonata02_2/sonata02_2_3.png",
+  "mean_offset_error": 0.1284722222222222,
+  "missing_note_count": 416,
+  "omr_ned": 0.40989304812834226,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.12127440904419322,
+  "onset_f1": 0.14799588900308325,
+  "peak_ram_bytes": 1141678080,
+  "peak_vram_bytes": 0,
+  "pitch_f1": 0.9126413155190133,
+  "predicted_note_count": 498,
+  "reference_measure_count": 26,
+  "reference_note_count": 475,
+  "reference_quarter_length": "78",
+  "schema_version": 1,
+  "staff_accuracy": 0.5084745762711864,
+  "status": "succeeded",
+  "timeline_length_error": "197/8",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

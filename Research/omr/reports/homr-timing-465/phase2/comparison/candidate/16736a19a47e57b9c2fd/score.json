@@ -1,0 +1,202 @@
+{
+  "aligned_voice_accuracy": 0.9690721649484536,
+  "candidate": "homr-465-upstream",
+  "capture_status": "complete",
+  "comparison_identity": "91e7256cd902a6ea2adb9fb415e6847b2ba0b9e94fb03fe8f5f1570ae6544fb9",
+  "composition_group": "beethoven/sonata07_4",
+  "configuration_identity": "9e619e47fd0317b6a7d1da5207985e1120acefc499a111649c5b7cdb1e339122",
+  "conversion_error": null,
+  "coverage": {
+    "chord_completeness": 0.7573529411764706,
+    "complete_chords": 103,
+    "per_staff": {
+      "0": {
+        "matched_notes": 131,
+        "predicted_notes": 201,
+        "recall": 0.30969267139479906,
+        "reference_notes": 423
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 224,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 136,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 5,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/2",
+        "count": 70,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 207,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "1/8"
+      },
+      {
+        "actual": "15/2",
+        "count": 2,
+        "predicted": "15/2"
+      },
+      {
+        "actual": "2",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "3/2",
+        "count": 3,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "3/4",
+        "count": 1,
+        "predicted": "3/4"
+      },
+      {
+        "actual": "5/4",
+        "count": 1,
+        "predicted": "5/4"
+      },
+      {
+        "actual": "7/2",
+        "count": 2,
+        "predicted": "7/2"
+      }
+    ],
+    "unmatched_expected": 129,
+    "unmatched_predicted": 131
+  },
+  "elapsed_seconds": 17.625,
+  "extra_notes": 134,
+  "item_id": "16736a19a47e57b9c2fd",
+  "mean_offset_error": 0.008928571428571428,
+  "metrics": {
+    "aligned_voice_accuracy": 0.9690721649484536,
+    "coverage": {
+      "chord_completeness": 0.7573529411764706,
+      "complete_chords": 103,
+      "per_staff": {
+        "0": {
+          "matched_notes": 131,
+          "predicted_notes": 201,
+          "recall": 0.30969267139479906,
+          "reference_notes": 423
+        },
+        "1": {
+          "matched_notes": 0,
+          "predicted_notes": 224,
+          "recall": null,
+          "reference_notes": 0
+        }
+      },
+      "reference_chords": 136,
+      "staff_interpretation": "notation staff index; not validated hand labels"
+    },
+    "duration": {
+      "confusion": [
+        {
+          "actual": "1",
+          "count": 5,
+          "predicted": "1"
+        },
+        {
+          "actual": "1",
+          "count": 1,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/2",
+          "count": 70,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/4",
+          "count": 207,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/4",
+          "count": 1,
+          "predicted": "1/8"
+        },
+        {
+          "actual": "15/2",
+          "count": 2,
+          "predicted": "15/2"
+        },
+        {
+          "actual": "2",
+          "count": 1,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "3/2",
+          "count": 3,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "3/4",
+          "count": 1,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "5/4",
+          "count": 1,
+          "predicted": "5/4"
+        },
+        {
+          "actual": "7/2",
+          "count": 2,
+          "predicted": "7/2"
+        }
+      ],
+      "unmatched_expected": 129,
+      "unmatched_predicted": 131
+    },
+    "extra_notes": 134,
+    "mean_offset_error": 0.008928571428571428,
+    "missing_notes": 132,
+    "onset_duration_f1": 0.6863207547169812,
+    "onset_f1": 0.6933962264150944,
+    "pitch_f1": 0.9882075471698113,
+    "predicted_notes": 425,
+    "reference_notes": 423,
+    "staff_accuracy": 0.45017182130584193,
+    "timeline_predicted": "88",
+    "timeline_reference": "88"
+  },
+  "missing_notes": 132,
+  "onset_duration_f1": 0.6863207547169812,
+  "onset_f1": 0.6933962264150944,
+  "original_item_id": "test/beethoven/sonata07_4/sonata07_4_2.png",
+  "pitch_f1": 0.9882075471698113,
+  "predicted_notes": 425,
+  "receipt_sha256": "757ae3cfb26ba676fbefa2ee84c25d7c125a6c653630d0a453575d757fe40e37",
+  "reference_notes": 423,
+  "reference_sha256": "b899663d74ccedf53d3be1be0198fbfbca66e282d2de3bd07146188bf5deb92d",
+  "staff_accuracy": 0.45017182130584193,
+  "status": "complete",
+  "timeline_predicted": "88",
+  "timeline_reference": "88"
+}

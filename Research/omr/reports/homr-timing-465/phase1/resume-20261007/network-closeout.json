@@ -1,0 +1,13 @@
+{
+  "UTC": "2026-10-07T15:19:36.9688496Z",
+  "RequestedResearchNetworkTransfers": 0,
+  "HardLimitBytes": 2000000000,
+  "Scope": "Cumulative original and resumed task; no requested download, install, remote job or other research transfer",
+  "AccountingLimitation": "Original Wi-Fi counter reset prevents proof of host-wide traffic totals; offline Python gate blocks sockets and Git",
+  "RootWorkerLockPresent": false,
+  "Processes": [],
+  "BlockedActionsPresent": false,
+  "GPU": [
+    "6141, 0"
+  ]
+}

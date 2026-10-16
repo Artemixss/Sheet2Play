@@ -1,0 +1,92 @@
+{
+  "adapter_id": "homr_455_explicit_onnx_pair",
+  "aligned_voice_accuracy": 0.7054263565891473,
+  "candidate_id": "homr_455",
+  "cold_start": true,
+  "composition_group": "beethoven/sonata05_1",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 108,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 2,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 3,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "2",
+        "count": 2,
+        "predicted": "1"
+      },
+      {
+        "actual": "2",
+        "count": 8,
+        "predicted": "2"
+      },
+      {
+        "actual": "3",
+        "count": 1,
+        "predicted": "3"
+      },
+      {
+        "actual": "3/2",
+        "count": 7,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "3/4",
+        "count": 2,
+        "predicted": "3/4"
+      },
+      {
+        "actual": "3/4",
+        "count": 1,
+        "predicted": "7/8"
+      },
+      {
+        "actual": "5",
+        "count": 4,
+        "predicted": "3"
+      }
+    ],
+    "unmatched_expected": 172,
+    "unmatched_predicted": 201
+  },
+  "elapsed_seconds": 20.625,
+  "error": null,
+  "extra_note_count": 210,
+  "failure_penalized_omr_ned": 0.47761194029850745,
+  "first_divergent_measure": 2,
+  "item_id": "test/beethoven/sonata05_1/sonata05_1_4.png",
+  "mean_offset_error": 0.0806159420289855,
+  "missing_note_count": 181,
+  "omr_ned": 0.47761194029850745,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.3975346687211094,
+  "onset_f1": 0.4252696456086287,
+  "peak_ram_bytes": 1367343104,
+  "peak_vram_bytes": 1641021440,
+  "pitch_f1": 0.9522342064714946,
+  "predicted_note_count": 339,
+  "reference_measure_count": 49,
+  "reference_note_count": 310,
+  "reference_quarter_length": "147",
+  "schema_version": 1,
+  "staff_accuracy": 1.0,
+  "status": "succeeded",
+  "timeline_length_error": "4",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

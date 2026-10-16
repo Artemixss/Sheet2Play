@@ -1,0 +1,138 @@
+{
+  "differences": [
+    {
+      "path": "runtime.python_distributions.homr.certifi",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.homr.chardet",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.homr.contourpy",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.homr.cycler",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.homr.fonttools",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.homr.idna",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.homr.joblib",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.homr.jsonpickle",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.homr.kiwisolver",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.homr.more-itertools",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.homr.pyparsing",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.homr.python-dateutil",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.homr.requests",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.homr.six",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.homr.urllib3",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.homr.webcolors",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.research.certifi",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.research.chardet",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.research.contourpy",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.research.cycler",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.research.fonttools",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.research.idna",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.research.joblib",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.research.jsonpickle",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.research.kiwisolver",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.research.more-itertools",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.research.protobuf",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.research.pyparsing",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.research.python-dateutil",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.research.requests",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.research.six",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.research.urllib3",
+      "kind": "added"
+    },
+    {
+      "path": "runtime.python_distributions.research.webcolors",
+      "kind": "added"
+    }
+  ],
+  "git_invocations": 0,
+  "limitation": "Git prohibited; this is a freeze comparison, not a revision attestation"
+}

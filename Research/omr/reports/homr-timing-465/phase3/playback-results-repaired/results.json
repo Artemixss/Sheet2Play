@@ -1,0 +1,514 @@
+[
+  {
+    "id": "candidate-generated-baseline-piano-001",
+    "notes": 56,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 0,
+    "maxDurationErrorSeconds": 0,
+    "quantizationBoundSeconds": 0.0010576666666666666,
+    "playback": {
+      "samplePositions": 34,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 56,
+      "noteOffCalls": 56,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "candidate-generated-homophonic",
+    "notes": 8,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 0,
+    "maxDurationErrorSeconds": 0,
+    "quantizationBoundSeconds": 0.0010436666666666667,
+    "playback": {
+      "samplePositions": 6,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 8,
+      "noteOffCalls": 8,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "candidate-generated-offset_entry",
+    "notes": 7,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 0,
+    "maxDurationErrorSeconds": 0,
+    "quantizationBoundSeconds": 0.0010436666666666667,
+    "playback": {
+      "samplePositions": 7,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 7,
+      "noteOffCalls": 7,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "candidate-generated-quintuplet_vs_duple",
+    "notes": 8,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 0,
+    "maxDurationErrorSeconds": 0,
+    "quantizationBoundSeconds": 0.0010436666666666667,
+    "playback": {
+      "samplePositions": 6,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 8,
+      "noteOffCalls": 8,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "candidate-generated-same_position_sustain",
+    "notes": 4,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 0,
+    "maxDurationErrorSeconds": 0,
+    "quantizationBoundSeconds": 0.0010441666666666666,
+    "playback": {
+      "samplePositions": 6,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 4,
+      "noteOffCalls": 4,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "candidate-generated-septuplet_vs_duple",
+    "notes": 11,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 0,
+    "maxDurationErrorSeconds": 0,
+    "quantizationBoundSeconds": 0.0010444166666666666,
+    "playback": {
+      "samplePositions": 9,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 11,
+      "noteOffCalls": 11,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "candidate-generated-syncopation",
+    "notes": 8,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 0,
+    "maxDurationErrorSeconds": 0,
+    "quantizationBoundSeconds": 0.0010454166666666667,
+    "playback": {
+      "samplePositions": 10,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 8,
+      "noteOffCalls": 8,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "candidate-generated-three_voices",
+    "notes": 8,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 0,
+    "maxDurationErrorSeconds": 0,
+    "quantizationBoundSeconds": 0.0010436666666666667,
+    "playback": {
+      "samplePositions": 6,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 8,
+      "noteOffCalls": 8,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "candidate-generated-tie_across_barline",
+    "notes": 3,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 0,
+    "maxDurationErrorSeconds": 0,
+    "quantizationBoundSeconds": 0.0010456666666666667,
+    "playback": {
+      "samplePositions": 5,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 3,
+      "noteOffCalls": 3,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "candidate-generated-triplet_vs_duple",
+    "notes": 5,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 3.33333333379926E-07,
+    "maxDurationErrorSeconds": 6.666666667043408E-07,
+    "quantizationBoundSeconds": 0.0010426666666666666,
+    "playback": {
+      "samplePositions": 6,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 5,
+      "noteOffCalls": 5,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "candidate-generated-triplet_vs_quadruple",
+    "notes": 7,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 0,
+    "maxDurationErrorSeconds": 0,
+    "quantizationBoundSeconds": 0.0010426666666666666,
+    "playback": {
+      "samplePositions": 6,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 7,
+      "noteOffCalls": 7,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "candidate-generated-tuplet_aligned",
+    "notes": 24,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 3.33333333379926E-07,
+    "maxDurationErrorSeconds": 6.666666666765853E-07,
+    "quantizationBoundSeconds": 0.0010429166666666666,
+    "playback": {
+      "samplePositions": 16,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 24,
+      "noteOffCalls": 24,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "source-generated-homophonic",
+    "notes": 8,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 0,
+    "maxDurationErrorSeconds": 0,
+    "quantizationBoundSeconds": 0.0020873333333333334,
+    "playback": {
+      "samplePositions": 6,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 8,
+      "noteOffCalls": 8,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "source-generated-offset_entry",
+    "notes": 7,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 0,
+    "maxDurationErrorSeconds": 0,
+    "quantizationBoundSeconds": 0.0020873333333333334,
+    "playback": {
+      "samplePositions": 7,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 7,
+      "noteOffCalls": 7,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "source-generated-quintuplet_vs_duple",
+    "notes": 9,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 0,
+    "maxDurationErrorSeconds": 2.220446049250313E-16,
+    "quantizationBoundSeconds": 0.0020873333333333334,
+    "playback": {
+      "samplePositions": 11,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 9,
+      "noteOffCalls": 9,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "source-generated-same_position_sustain",
+    "notes": 6,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 0,
+    "maxDurationErrorSeconds": 0,
+    "quantizationBoundSeconds": 0.0020873333333333334,
+    "playback": {
+      "samplePositions": 6,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 5,
+      "noteOffCalls": 5,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "source-generated-septuplet_vs_duple",
+    "notes": 11,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 0.0008928571428572507,
+    "maxDurationErrorSeconds": 0.0005955714285715841,
+    "quantizationBoundSeconds": 0.0020873333333333334,
+    "playback": {
+      "samplePositions": 16,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 11,
+      "noteOffCalls": 11,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "source-generated-syncopation",
+    "notes": 8,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 0,
+    "maxDurationErrorSeconds": 0,
+    "quantizationBoundSeconds": 0.0020873333333333334,
+    "playback": {
+      "samplePositions": 10,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 8,
+      "noteOffCalls": 8,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "source-generated-three_voices",
+    "notes": 7,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 0,
+    "maxDurationErrorSeconds": 0,
+    "quantizationBoundSeconds": 0.0020873333333333334,
+    "playback": {
+      "samplePositions": 6,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 7,
+      "noteOffCalls": 7,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "source-generated-tie_across_barline",
+    "notes": 3,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 0,
+    "maxDurationErrorSeconds": 0,
+    "quantizationBoundSeconds": 0.0020913333333333335,
+    "playback": {
+      "samplePositions": 5,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 3,
+      "noteOffCalls": 3,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "source-generated-triplet_vs_duple",
+    "notes": 5,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 3.33333333379926E-07,
+    "maxDurationErrorSeconds": 6.666666666488297E-07,
+    "quantizationBoundSeconds": 0.002085333333333333,
+    "playback": {
+      "samplePositions": 6,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 5,
+      "noteOffCalls": 5,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "source-generated-triplet_vs_quadruple",
+    "notes": 7,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 3.33333333379926E-07,
+    "maxDurationErrorSeconds": 6.666666666488297E-07,
+    "quantizationBoundSeconds": 0.002085333333333333,
+    "playback": {
+      "samplePositions": 8,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 7,
+      "noteOffCalls": 7,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "source-generated-tuplet_aligned",
+    "notes": 24,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 3.33333333379926E-07,
+    "maxDurationErrorSeconds": 6.66666666759852E-07,
+    "quantizationBoundSeconds": 0.0020873333333333334,
+    "playback": {
+      "samplePositions": 17,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 24,
+      "noteOffCalls": 24,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "known-monophonic_melody",
+    "notes": 3,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 0,
+    "maxDurationErrorSeconds": 0,
+    "quantizationBoundSeconds": 0.0010436666666666667,
+    "playback": {
+      "samplePositions": 5,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 3,
+      "noteOffCalls": 3,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "known-dotted_notes_and_ties",
+    "notes": 2,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 0,
+    "maxDurationErrorSeconds": 0,
+    "quantizationBoundSeconds": 0.0010436666666666667,
+    "playback": {
+      "samplePositions": 4,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 2,
+      "noteOffCalls": 2,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "known-triplet_tuplets",
+    "notes": 3,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 3.333333333521704E-07,
+    "maxDurationErrorSeconds": 6.666666666488297E-07,
+    "quantizationBoundSeconds": 0.0010421666666666667,
+    "playback": {
+      "samplePositions": 5,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 3,
+      "noteOffCalls": 3,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "known-piano_grand_staff_chords",
+    "notes": 5,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 0,
+    "maxDurationErrorSeconds": 6.66666666759852E-07,
+    "quantizationBoundSeconds": 0.0013902222222222222,
+    "playback": {
+      "samplePositions": 3,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 5,
+      "noteOffCalls": 5,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "known-multiple_voices_repeats_accidentals",
+    "notes": 4,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 0,
+    "maxDurationErrorSeconds": 0,
+    "quantizationBoundSeconds": 0.0010436666666666667,
+    "playback": {
+      "samplePositions": 6,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 4,
+      "noteOffCalls": 4,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "known-piecewise_tempo",
+    "notes": 2,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 0,
+    "maxDurationErrorSeconds": 0,
+    "quantizationBoundSeconds": 0.002085333333333333,
+    "playback": {
+      "samplePositions": 4,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 2,
+      "noteOffCalls": 2,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "known-pickup-tempo",
+    "notes": 2,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 0,
+    "maxDurationErrorSeconds": 0,
+    "quantizationBoundSeconds": 0.0020863333333333333,
+    "playback": {
+      "samplePositions": 4,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 2,
+      "noteOffCalls": 2,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "known-four-positions",
+    "notes": 4,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 0,
+    "maxDurationErrorSeconds": 0,
+    "quantizationBoundSeconds": 0.0010436666666666667,
+    "playback": {
+      "samplePositions": 3,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 4,
+      "noteOffCalls": 4,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  },
+  {
+    "id": "known-independent-voice-tie-limitation",
+    "notes": 6,
+    "bridgeMatchesResearch": true,
+    "maxStartErrorSeconds": 3.333333333521704E-07,
+    "maxDurationErrorSeconds": 3.33333333379926E-07,
+    "quantizationBoundSeconds": 0.0010433333333333334,
+    "playback": {
+      "samplePositions": 5,
+      "audioOffsetSeconds": 0.055,
+      "noteOnCalls": 6,
+      "noteOffCalls": 6,
+      "completed": true,
+      "physicalAudioTested": false
+    }
+  }
+]

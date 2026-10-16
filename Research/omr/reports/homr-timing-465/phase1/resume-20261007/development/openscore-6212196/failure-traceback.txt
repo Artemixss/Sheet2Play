@@ -1,0 +1,51 @@
+Traceback (most recent call last):
+  File "C:\Users\bur4x\Desktop\lecture\big_projects\Sheet2Play\Bridge\.venv-homr-gpu\Lib\site-packages\rapidocr\inference_engine\onnxruntime\main.py", line 98, in __call__
+    return self.session.run(self.get_output_names(), input_dict)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bur4x\Desktop\lecture\big_projects\Sheet2Play\Bridge\.venv-homr-gpu\Lib\site-packages\onnxruntime\capi\onnxruntime_inference_collection.py", line 296, in run
+    return self._sess.run(output_names, input_feed, run_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+onnxruntime.capi.onnxruntime_pybind11_state.RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Conv node. Name:'Add.57_nchwc' Status Message: bad allocation
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\bur4x\Desktop\lecture\big_projects\Sheet2Play\Research\omr\homr_baseline_infer.py", line 168, in main
+    native.process_image(str(image), config, export_args)
+  File "C:\Users\bur4x\Desktop\lecture\big_projects\Sheet2Play\Bridge\.venv-homr-gpu\Lib\site-packages\homr\main.py", line 217, in process_image
+    title = title_future.result(60)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bur4x\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bur4x\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\bur4x\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bur4x\Desktop\lecture\big_projects\Sheet2Play\Bridge\.venv-homr-gpu\Lib\site-packages\homr\title_detection.py", line 59, in _detect_title_task
+    ocr_results = _reader(ocr_input)
+                  ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bur4x\Desktop\lecture\big_projects\Sheet2Play\Bridge\.venv-homr-gpu\Lib\site-packages\rapidocr\main.py", line 120, in __call__
+    det_res, cls_res, rec_res, cropped_img_list = self.run_ocr_steps(img, op_record)
+                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bur4x\Desktop\lecture\big_projects\Sheet2Play\Bridge\.venv-homr-gpu\Lib\site-packages\rapidocr\main.py", line 130, in run_ocr_steps
+    cropped_img_list, det_res = self.detect_and_crop(img, op_record)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bur4x\Desktop\lecture\big_projects\Sheet2Play\Bridge\.venv-homr-gpu\Lib\site-packages\rapidocr\main.py", line 301, in detect_and_crop
+    det_res = self.text_det(img)
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bur4x\Desktop\lecture\big_projects\Sheet2Play\Bridge\.venv-homr-gpu\Lib\site-packages\rapidocr\ch_ppocr_det\main.py", line 61, in __call__
+    preds = self.session(prepro_img)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bur4x\Desktop\lecture\big_projects\Sheet2Play\Bridge\.venv-homr-gpu\Lib\site-packages\rapidocr\inference_engine\onnxruntime\main.py", line 101, in __call__
+    raise ONNXRuntimeError(error_info) from e
+rapidocr.inference_engine.onnxruntime.main.ONNXRuntimeError: Traceback (most recent call last):
+  File "C:\Users\bur4x\Desktop\lecture\big_projects\Sheet2Play\Bridge\.venv-homr-gpu\Lib\site-packages\rapidocr\inference_engine\onnxruntime\main.py", line 98, in __call__
+    return self.session.run(self.get_output_names(), input_dict)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bur4x\Desktop\lecture\big_projects\Sheet2Play\Bridge\.venv-homr-gpu\Lib\site-packages\onnxruntime\capi\onnxruntime_inference_collection.py", line 296, in run
+    return self._sess.run(output_names, input_feed, run_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+onnxruntime.capi.onnxruntime_pybind11_state.RuntimeException: [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Conv node. Name:'Add.57_nchwc' Status Message: bad allocation
+

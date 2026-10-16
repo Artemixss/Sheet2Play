@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "engine": "MusicXml",
+  "engine_revision": "direct-xml",
+  "tempo_changes": [
+    {
+      "start_beat": 0,
+      "bpm": 120
+    }
+  ],
+  "notes": [
+    {
+      "pitch": "C3",
+      "midi_pitch": 48,
+      "start_beat": 0,
+      "duration_beats": 1,
+      "start_seconds": 0,
+      "duration_seconds": 0.5,
+      "part_index": 0,
+      "staff_index": 0,
+      "voice_identifier": "1"
+    },
+    {
+      "pitch": "A-3",
+      "midi_pitch": 56,
+      "start_beat": 1,
+      "duration_beats": 1,
+      "start_seconds": 0.5,
+      "duration_seconds": 0.5,
+      "part_index": 0,
+      "staff_index": 0,
+      "voice_identifier": "1"
+    },
+    {
+      "pitch": "C4",
+      "midi_pitch": 60,
+      "start_beat": 2,
+      "duration_beats": 1,
+      "start_seconds": 1,
+      "duration_seconds": 0.5,
+      "part_index": 0,
+      "staff_index": 0,
+      "voice_identifier": "1"
+    },
+    {
+      "pitch": "E-4",
+      "midi_pitch": 63,
+      "start_beat": 3,
+      "duration_beats": 2,
+      "start_seconds": 1.5,
+      "duration_seconds": 1,
+      "part_index": 0,
+      "staff_index": 0,
+      "voice_identifier": "1"
+    }
+  ]
+}

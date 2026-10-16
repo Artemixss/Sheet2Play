@@ -1,0 +1,15 @@
+{
+  "adapter_config_sha256": "3cbb740e7cc134c7fae18077467a23a5fa5ef4a027d67e16f3efd0787b76fc8d",
+  "attempt": "Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/homr_455/stage4-homr455-dev-01-d8c2f9a9c9c7473296102cf9ded3bdc1",
+  "compatibility_report": {
+    "path": "Research/omr/reports/screening/v1/compatibility/homr455-3c9f495122d6.json",
+    "sha256": "14c6ad366d41a48afb6323b7356cac62296c31dc6d9751d7af1ecd34514e3303"
+  },
+  "cpu_affinity_count": 8,
+  "development_ram_admission_percent": 90,
+  "input_sha256": "b368dd864dc235272728822a578551fbed619cce02265cc52043dea3051c57c8",
+  "item_id": "openscore-6211535-page-1",
+  "priority": "below_normal",
+  "report_sha256": "5a974bb0c8e61ca986e7b771e761b082b7b90a6f6c33896a22b3d5b76bda3aa9",
+  "resource_policy_sha256": "7295130be2109e160d38d0e5117a45e9d85aa1da8560a841bccbed808d05fce0"
+}

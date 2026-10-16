@@ -1,0 +1,32 @@
+[
+  {
+    "artifact": "eval_zeus_on_olimpic.py console averages",
+    "ranking_eligible": false,
+    "reason": "random 20-item sample, per-engine success denominators, asymmetric extraction, and no captured provenance-complete report",
+    "retained_as": "exploratory evidence only"
+  },
+  {
+    "artifact": "reports/diagnosis/diagnosis.json",
+    "ranking_eligible": false,
+    "reason": "identifiable canary inputs and failures, but no immutable checkpoint/environment record and not the frozen Phase-1 scoring protocol",
+    "retained_as": "HOMR failure diagnosis only"
+  },
+  {
+    "artifact": "reports/phase3/canary-report.json",
+    "ranking_eligible": false,
+    "reason": "identifiable manifest and decoder state, but belongs to the removed Transcoda experiment and uses superseded gates",
+    "retained_as": "historical regression evidence only"
+  },
+  {
+    "artifact": "reports/*/comparison.json",
+    "ranking_eligible": false,
+    "reason": "reports do not jointly pin code revision, checkpoint, preprocessing, scorer settings, and common failure denominator",
+    "retained_as": "exploratory evidence only"
+  },
+  {
+    "artifact": "reports/library/*.json",
+    "ranking_eligible": false,
+    "reason": "private diagnostic material is not an untouched evaluation collection and report provenance predates this protocol",
+    "retained_as": "application diagnostics only"
+  }
+]

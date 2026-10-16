@@ -1,0 +1,114 @@
+{
+  "adapter_id": "homr_455_explicit_onnx_pair",
+  "aligned_voice_accuracy": 0.7543859649122807,
+  "candidate_id": "homr_455",
+  "cold_start": true,
+  "composition_group": "mozart/sonata08_2",
+  "coverage": {
+    "chord_completeness": 0.12345679012345678,
+    "complete_chords": 10,
+    "per_staff": {
+      "0": {
+        "matched_notes": 32,
+        "predicted_notes": 196,
+        "recall": 0.0835509138381201,
+        "reference_notes": 383
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 148,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 81,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 6,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "1/8"
+      },
+      {
+        "actual": "1/2",
+        "count": 6,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 1,
+        "predicted": "1/8"
+      },
+      {
+        "actual": "1/4",
+        "count": 38,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/6",
+        "count": 1,
+        "predicted": "1/5"
+      },
+      {
+        "actual": "1/8",
+        "count": 6,
+        "predicted": "1/8"
+      },
+      {
+        "actual": "3",
+        "count": 1,
+        "predicted": "1/8"
+      },
+      {
+        "actual": "6",
+        "count": 1,
+        "predicted": "6"
+      }
+    ],
+    "unmatched_expected": 322,
+    "unmatched_predicted": 283
+  },
+  "elapsed_seconds": 25.610000000000582,
+  "error": null,
+  "extra_note_count": 287,
+  "failure_penalized_omr_ned": 0.407656341320865,
+  "first_divergent_measure": 2,
+  "input_identity": {
+    "historical_score_sha256": "521e211a48f8b6e779c33dade65a84150852b8c31493615207ca912dbd7c67aa",
+    "reference_sha256": "81e073782da5ac518dd4409e5b24582ea16da06d55720a7cb2990f99d7bafd06",
+    "result_sha256": "6f29dfa7c09313dd66faf8b159e62ca923f03f3a522daeee1d52c945adbfe3b2"
+  },
+  "item_id": "test/mozart/sonata08_2/sonata08_2_5.png",
+  "mean_offset_error": 0.06816939890710383,
+  "missing_note_count": 326,
+  "omr_ned": 0.407656341320865,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.15680880330123798,
+  "onset_f1": 0.16781292984869325,
+  "peak_ram_bytes": 1749876736,
+  "peak_vram_bytes": 1643118592,
+  "pitch_f1": 0.9463548830811555,
+  "predicted_note_count": 344,
+  "reference_measure_count": 17,
+  "reference_note_count": 383,
+  "reference_quarter_length": "101/2",
+  "schema_version": 2,
+  "scoring_identity_sha256": "ed9e5b7e6f998b5787ae21dfc0b7f545c42fc0bc83b60fc717f002d6b34aa568",
+  "staff_accuracy": 0.5614035087719298,
+  "status": "succeeded",
+  "timeline_length_error": "-19/8",
+  "timing_policy": "symmetric-rational-4096-roundoff-v1",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

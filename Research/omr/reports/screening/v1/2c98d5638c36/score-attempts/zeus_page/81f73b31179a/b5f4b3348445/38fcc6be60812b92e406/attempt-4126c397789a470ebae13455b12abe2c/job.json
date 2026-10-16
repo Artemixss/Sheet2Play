@@ -1,0 +1,16 @@
+{
+  "command": [
+    "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.venv\\Scripts\\python.exe",
+    "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\screening_cpu_score.py",
+    "--manifest",
+    "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\screening\\v1\\manifest-v5-607ff64134da.json",
+    "--candidate",
+    "zeus_page",
+    "--worker-index",
+    "4",
+    "--attempt",
+    "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\screening\\v1\\2c98d5638c36\\score-attempts\\zeus_page\\81f73b31179a\\b5f4b3348445\\38fcc6be60812b92e406\\attempt-4126c397789a470ebae13455b12abe2c"
+  ],
+  "status": "pending",
+  "working_directory": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play"
+}

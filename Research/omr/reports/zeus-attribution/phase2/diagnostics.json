@@ -1,0 +1,5279 @@
+{
+  "audiveris_page": {
+    "reference_chords": 5894,
+    "complete_chords": 399,
+    "pooled_chord_completeness": 0.06769596199524941,
+    "pooled_notation_staff_coverage": {
+      "0": {
+        "reference_notes": 21963,
+        "predicted_notes": 10529,
+        "matched_notes": 873,
+        "recall": 0.03974866821472477
+      },
+      "1": {
+        "reference_notes": 0,
+        "predicted_notes": 8364,
+        "matched_notes": 0,
+        "recall": null
+      }
+    },
+    "missing_notes": 20152,
+    "extra_notes": 17082,
+    "failed_complete_pages": 8,
+    "failure_classes": {
+      "AUDIVERIS_FAILED:recognition": 5,
+      "AUDIVERIS_OUTPUT_INVALID:artifact_capture": 3
+    },
+    "latency_seconds": {
+      "includes_failures": true,
+      "median": 40.5630000000001,
+      "p95": 45.580499999999844
+    },
+    "duration": {
+      "balanced_accuracy": 0.3939728738199116,
+      "confusion_matrix": [
+        {
+          "actual": "1",
+          "count": 481,
+          "predicted": "1"
+        },
+        {
+          "actual": "1",
+          "count": 42,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1",
+          "count": 2,
+          "predicted": "1/3"
+        },
+        {
+          "actual": "1",
+          "count": 2,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1",
+          "count": 11,
+          "predicted": "2"
+        },
+        {
+          "actual": "1",
+          "count": 1,
+          "predicted": "2/3"
+        },
+        {
+          "actual": "1",
+          "count": 1,
+          "predicted": "3"
+        },
+        {
+          "actual": "1",
+          "count": 1,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "1",
+          "count": 1,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "1/2",
+          "count": 75,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/2",
+          "count": 801,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/2",
+          "count": 1,
+          "predicted": "1/3"
+        },
+        {
+          "actual": "1/2",
+          "count": 30,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/2",
+          "count": 1,
+          "predicted": "1/8"
+        },
+        {
+          "actual": "1/2",
+          "count": 6,
+          "predicted": "2"
+        },
+        {
+          "actual": "1/2",
+          "count": 7,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "1/2",
+          "count": 2,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "1/3",
+          "count": 7,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/3",
+          "count": 1,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/4",
+          "count": 38,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/4",
+          "count": 25,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/4",
+          "count": 420,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/4",
+          "count": 2,
+          "predicted": "2"
+        },
+        {
+          "actual": "1/4",
+          "count": 1,
+          "predicted": "2/3"
+        },
+        {
+          "actual": "1/4",
+          "count": 1,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "1/4",
+          "count": 1,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "1/5",
+          "count": 2,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/6",
+          "count": 7,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/6",
+          "count": 2,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/6",
+          "count": 37,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/6",
+          "count": 7,
+          "predicted": "1/6"
+        },
+        {
+          "actual": "1/8",
+          "count": 1,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/8",
+          "count": 6,
+          "predicted": "1/8"
+        },
+        {
+          "actual": "15/4",
+          "count": 1,
+          "predicted": "2"
+        },
+        {
+          "actual": "2",
+          "count": 6,
+          "predicted": "1"
+        },
+        {
+          "actual": "2",
+          "count": 6,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "2",
+          "count": 1,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "2",
+          "count": 55,
+          "predicted": "2"
+        },
+        {
+          "actual": "2",
+          "count": 1,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "3",
+          "count": 6,
+          "predicted": "1"
+        },
+        {
+          "actual": "3",
+          "count": 3,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "3",
+          "count": 1,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "3",
+          "count": 15,
+          "predicted": "2"
+        },
+        {
+          "actual": "3",
+          "count": 19,
+          "predicted": "3"
+        },
+        {
+          "actual": "3/2",
+          "count": 6,
+          "predicted": "1"
+        },
+        {
+          "actual": "3/2",
+          "count": 5,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "3/2",
+          "count": 1,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "3/2",
+          "count": 1,
+          "predicted": "3"
+        },
+        {
+          "actual": "3/2",
+          "count": 13,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "3/4",
+          "count": 3,
+          "predicted": "1"
+        },
+        {
+          "actual": "3/4",
+          "count": 2,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "3/4",
+          "count": 2,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "3/4",
+          "count": 3,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "3/8",
+          "count": 1,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "4",
+          "count": 2,
+          "predicted": "4"
+        },
+        {
+          "actual": "5",
+          "count": 1,
+          "predicted": "4"
+        },
+        {
+          "actual": "5",
+          "count": 1,
+          "predicted": "5"
+        },
+        {
+          "actual": "5/2",
+          "count": 2,
+          "predicted": "2"
+        },
+        {
+          "actual": "5/4",
+          "count": 1,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "5/4",
+          "count": 1,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "6",
+          "count": 2,
+          "predicted": "2"
+        },
+        {
+          "actual": "6",
+          "count": 1,
+          "predicted": "6"
+        },
+        {
+          "actual": "7",
+          "count": 1,
+          "predicted": "2"
+        },
+        {
+          "actual": "7/2",
+          "count": 1,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "7/2",
+          "count": 3,
+          "predicted": "3"
+        },
+        {
+          "actual": "7/2",
+          "count": 1,
+          "predicted": "7/2"
+        },
+        {
+          "actual": "7/4",
+          "count": 1,
+          "predicted": "7/4"
+        },
+        {
+          "actual": "7/6",
+          "count": 1,
+          "predicted": "3"
+        }
+      ],
+      "degenerate_single_class_predictor": false,
+      "labels": [
+        "1",
+        "1/2",
+        "1/3",
+        "1/4",
+        "1/5",
+        "1/6",
+        "1/8",
+        "15/4",
+        "2",
+        "2/3",
+        "3",
+        "3/2",
+        "3/4",
+        "3/8",
+        "4",
+        "5",
+        "5/2",
+        "5/4",
+        "6",
+        "7",
+        "7/2",
+        "7/4",
+        "7/6"
+      ],
+      "macro_f1": 0.39278385963780515,
+      "majority_baseline_accuracy": 0.4208846329229366,
+      "majority_baseline_macro_f1": 0.02575766032259865,
+      "majority_class": "1/2",
+      "matched_pitch_onset_notes": 2193,
+      "matrix_rows_actual_columns_predicted": [
+        [
+          481,
+          42,
+          2,
+          2,
+          0,
+          0,
+          0,
+          0,
+          11,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          75,
+          801,
+          1,
+          30,
+          0,
+          0,
+          1,
+          0,
+          6,
+          0,
+          0,
+          7,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          7,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          38,
+          25,
+          0,
+          420,
+          0,
+          0,
+          0,
+          0,
+          2,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          7,
+          2,
+          0,
+          37,
+          0,
+          7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          6,
+          6,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          55,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          6,
+          3,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          15,
+          0,
+          19,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          6,
+          5,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          13,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          3,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "unmatched_expected": 16855,
+      "unmatched_predicted": 16700
+    }
+  },
+  "fine_tuned_homr": {
+    "reference_chords": 5894,
+    "complete_chords": 1700,
+    "pooled_chord_completeness": 0.28842891075670174,
+    "pooled_notation_staff_coverage": {
+      "0": {
+        "reference_notes": 21963,
+        "predicted_notes": 11876,
+        "matched_notes": 3490,
+        "recall": 0.1589036106178573
+      },
+      "1": {
+        "reference_notes": 0,
+        "predicted_notes": 10089,
+        "matched_notes": 0,
+        "recall": null
+      }
+    },
+    "missing_notes": 15247,
+    "extra_notes": 15249,
+    "failed_complete_pages": 0,
+    "failure_classes": {},
+    "latency_seconds": {
+      "includes_failures": true,
+      "median": 25.609999999998763,
+      "p95": 30.60900000000038
+    },
+    "duration": {
+      "balanced_accuracy": 0.6655942634374528,
+      "confusion_matrix": [
+        {
+          "actual": "1",
+          "count": 1942,
+          "predicted": "1"
+        },
+        {
+          "actual": "1",
+          "count": 40,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1",
+          "count": 1,
+          "predicted": "1/3"
+        },
+        {
+          "actual": "1",
+          "count": 10,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1",
+          "count": 3,
+          "predicted": "2"
+        },
+        {
+          "actual": "1",
+          "count": 2,
+          "predicted": "3"
+        },
+        {
+          "actual": "1",
+          "count": 2,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "1",
+          "count": 3,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "1/16",
+          "count": 1,
+          "predicted": "1/8"
+        },
+        {
+          "actual": "1/2",
+          "count": 32,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/2",
+          "count": 2888,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/2",
+          "count": 30,
+          "predicted": "1/3"
+        },
+        {
+          "actual": "1/2",
+          "count": 22,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/2",
+          "count": 1,
+          "predicted": "1/6"
+        },
+        {
+          "actual": "1/2",
+          "count": 1,
+          "predicted": "1/8"
+        },
+        {
+          "actual": "1/2",
+          "count": 5,
+          "predicted": "2"
+        },
+        {
+          "actual": "1/2",
+          "count": 6,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "1/2",
+          "count": 9,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "1/2",
+          "count": 1,
+          "predicted": "5/4"
+        },
+        {
+          "actual": "1/3",
+          "count": 1,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/3",
+          "count": 41,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/3",
+          "count": 51,
+          "predicted": "1/3"
+        },
+        {
+          "actual": "1/4",
+          "count": 4,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/4",
+          "count": 41,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/4",
+          "count": 946,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/4",
+          "count": 17,
+          "predicted": "1/6"
+        },
+        {
+          "actual": "1/4",
+          "count": 9,
+          "predicted": "1/8"
+        },
+        {
+          "actual": "1/4",
+          "count": 7,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "1/4",
+          "count": 2,
+          "predicted": "7/4"
+        },
+        {
+          "actual": "1/5",
+          "count": 1,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/6",
+          "count": 1,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/6",
+          "count": 2,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/6",
+          "count": 1,
+          "predicted": "1/3"
+        },
+        {
+          "actual": "1/6",
+          "count": 32,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/6",
+          "count": 136,
+          "predicted": "1/6"
+        },
+        {
+          "actual": "1/6",
+          "count": 1,
+          "predicted": "1/8"
+        },
+        {
+          "actual": "1/8",
+          "count": 46,
+          "predicted": "1/8"
+        },
+        {
+          "actual": "15/2",
+          "count": 2,
+          "predicted": "15/2"
+        },
+        {
+          "actual": "2",
+          "count": 18,
+          "predicted": "1"
+        },
+        {
+          "actual": "2",
+          "count": 7,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "2",
+          "count": 1,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "2",
+          "count": 318,
+          "predicted": "2"
+        },
+        {
+          "actual": "2",
+          "count": 2,
+          "predicted": "3"
+        },
+        {
+          "actual": "2",
+          "count": 2,
+          "predicted": "4"
+        },
+        {
+          "actual": "3",
+          "count": 2,
+          "predicted": "1"
+        },
+        {
+          "actual": "3",
+          "count": 5,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "3",
+          "count": 9,
+          "predicted": "2"
+        },
+        {
+          "actual": "3",
+          "count": 126,
+          "predicted": "3"
+        },
+        {
+          "actual": "3",
+          "count": 1,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "3",
+          "count": 1,
+          "predicted": "4"
+        },
+        {
+          "actual": "3",
+          "count": 2,
+          "predicted": "5"
+        },
+        {
+          "actual": "3/2",
+          "count": 7,
+          "predicted": "1"
+        },
+        {
+          "actual": "3/2",
+          "count": 2,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "3/2",
+          "count": 108,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "3/4",
+          "count": 1,
+          "predicted": "1"
+        },
+        {
+          "actual": "3/4",
+          "count": 20,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "3/4",
+          "count": 4,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "3/4",
+          "count": 57,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "3/8",
+          "count": 3,
+          "predicted": "3/8"
+        },
+        {
+          "actual": "4",
+          "count": 1,
+          "predicted": "1"
+        },
+        {
+          "actual": "4",
+          "count": 2,
+          "predicted": "2"
+        },
+        {
+          "actual": "4",
+          "count": 1,
+          "predicted": "3"
+        },
+        {
+          "actual": "4",
+          "count": 48,
+          "predicted": "4"
+        },
+        {
+          "actual": "5",
+          "count": 2,
+          "predicted": "4"
+        },
+        {
+          "actual": "5",
+          "count": 4,
+          "predicted": "5"
+        },
+        {
+          "actual": "5/2",
+          "count": 5,
+          "predicted": "2"
+        },
+        {
+          "actual": "5/2",
+          "count": 1,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "5/4",
+          "count": 1,
+          "predicted": "5/4"
+        },
+        {
+          "actual": "6",
+          "count": 7,
+          "predicted": "3"
+        },
+        {
+          "actual": "6",
+          "count": 10,
+          "predicted": "6"
+        },
+        {
+          "actual": "7",
+          "count": 1,
+          "predicted": "2"
+        },
+        {
+          "actual": "7",
+          "count": 5,
+          "predicted": "4"
+        },
+        {
+          "actual": "7/2",
+          "count": 3,
+          "predicted": "3"
+        },
+        {
+          "actual": "7/2",
+          "count": 16,
+          "predicted": "7/2"
+        },
+        {
+          "actual": "7/4",
+          "count": 1,
+          "predicted": "7/4"
+        },
+        {
+          "actual": "7/6",
+          "count": 1,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "8",
+          "count": 3,
+          "predicted": "4"
+        },
+        {
+          "actual": "8",
+          "count": 7,
+          "predicted": "8"
+        },
+        {
+          "actual": "9",
+          "count": 1,
+          "predicted": "3"
+        },
+        {
+          "actual": "9/2",
+          "count": 6,
+          "predicted": "9/2"
+        }
+      ],
+      "degenerate_single_class_predictor": false,
+      "labels": [
+        "1",
+        "1/16",
+        "1/2",
+        "1/3",
+        "1/4",
+        "1/5",
+        "1/6",
+        "1/8",
+        "15/2",
+        "2",
+        "3",
+        "3/2",
+        "3/4",
+        "3/8",
+        "4",
+        "5",
+        "5/2",
+        "5/4",
+        "6",
+        "7",
+        "7/2",
+        "7/4",
+        "7/6",
+        "8",
+        "9",
+        "9/2"
+      ],
+      "macro_f1": 0.6440037745009705,
+      "majority_baseline_accuracy": 0.4181792795308573,
+      "majority_baseline_macro_f1": 0.022682348664429988,
+      "majority_class": "1/2",
+      "matched_pitch_onset_notes": 7162,
+      "matrix_rows_actual_columns_predicted": [
+        [
+          1942,
+          0,
+          40,
+          1,
+          10,
+          0,
+          0,
+          0,
+          0,
+          3,
+          2,
+          2,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          32,
+          0,
+          2888,
+          30,
+          22,
+          0,
+          1,
+          1,
+          0,
+          5,
+          0,
+          6,
+          9,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          41,
+          51,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          41,
+          0,
+          946,
+          0,
+          17,
+          9,
+          0,
+          0,
+          0,
+          0,
+          7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          2,
+          1,
+          32,
+          0,
+          136,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          46,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          18,
+          0,
+          7,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          318,
+          2,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          9,
+          126,
+          1,
+          0,
+          0,
+          1,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          7,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          108,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          20,
+          0,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          57,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          1,
+          0,
+          0,
+          0,
+          48,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          5,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          10,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          16,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          7,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6
+        ]
+      ],
+      "unmatched_expected": 14801,
+      "unmatched_predicted": 14803
+    }
+  },
+  "homr_455": {
+    "reference_chords": 5894,
+    "complete_chords": 1759,
+    "pooled_chord_completeness": 0.2984390906006108,
+    "pooled_notation_staff_coverage": {
+      "0": {
+        "reference_notes": 21963,
+        "predicted_notes": 11611,
+        "matched_notes": 3459,
+        "recall": 0.15749214588171015
+      },
+      "1": {
+        "reference_notes": 0,
+        "predicted_notes": 9940,
+        "matched_notes": 0,
+        "recall": null
+      }
+    },
+    "missing_notes": 15414,
+    "extra_notes": 15002,
+    "failed_complete_pages": 1,
+    "failure_classes": {
+      "HOMR_OUTPUT_MISSING:conversion": 1
+    },
+    "latency_seconds": {
+      "includes_failures": true,
+      "median": 25.610000000000582,
+      "p95": 30.610000000000582
+    },
+    "duration": {
+      "balanced_accuracy": 0.6311441378003025,
+      "confusion_matrix": [
+        {
+          "actual": "1",
+          "count": 1083,
+          "predicted": "1"
+        },
+        {
+          "actual": "1",
+          "count": 39,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1",
+          "count": 13,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1",
+          "count": 1,
+          "predicted": "1/8"
+        },
+        {
+          "actual": "1",
+          "count": 8,
+          "predicted": "2"
+        },
+        {
+          "actual": "1",
+          "count": 2,
+          "predicted": "3"
+        },
+        {
+          "actual": "1",
+          "count": 9,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "1/2",
+          "count": 64,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/2",
+          "count": 2651,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/2",
+          "count": 6,
+          "predicted": "1/3"
+        },
+        {
+          "actual": "1/2",
+          "count": 23,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/2",
+          "count": 1,
+          "predicted": "1/8"
+        },
+        {
+          "actual": "1/2",
+          "count": 8,
+          "predicted": "2"
+        },
+        {
+          "actual": "1/2",
+          "count": 11,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "1/2",
+          "count": 11,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "1/3",
+          "count": 2,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/3",
+          "count": 43,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/3",
+          "count": 7,
+          "predicted": "1/3"
+        },
+        {
+          "actual": "1/3",
+          "count": 1,
+          "predicted": "1/6"
+        },
+        {
+          "actual": "1/4",
+          "count": 7,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/4",
+          "count": 19,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/4",
+          "count": 1,
+          "predicted": "1/3"
+        },
+        {
+          "actual": "1/4",
+          "count": 2413,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/4",
+          "count": 1,
+          "predicted": "1/5"
+        },
+        {
+          "actual": "1/4",
+          "count": 4,
+          "predicted": "1/8"
+        },
+        {
+          "actual": "1/4",
+          "count": 4,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "1/4",
+          "count": 5,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "1/4",
+          "count": 1,
+          "predicted": "7/2"
+        },
+        {
+          "actual": "1/5",
+          "count": 10,
+          "predicted": "1/5"
+        },
+        {
+          "actual": "1/6",
+          "count": 1,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/6",
+          "count": 1,
+          "predicted": "1/3"
+        },
+        {
+          "actual": "1/6",
+          "count": 33,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/6",
+          "count": 1,
+          "predicted": "1/5"
+        },
+        {
+          "actual": "1/6",
+          "count": 3,
+          "predicted": "1/6"
+        },
+        {
+          "actual": "1/8",
+          "count": 1,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/8",
+          "count": 1,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/8",
+          "count": 49,
+          "predicted": "1/8"
+        },
+        {
+          "actual": "15/2",
+          "count": 2,
+          "predicted": "15/2"
+        },
+        {
+          "actual": "15/4",
+          "count": 1,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "15/4",
+          "count": 2,
+          "predicted": "15/4"
+        },
+        {
+          "actual": "2",
+          "count": 14,
+          "predicted": "1"
+        },
+        {
+          "actual": "2",
+          "count": 10,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "2",
+          "count": 2,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "2",
+          "count": 1,
+          "predicted": "1/6"
+        },
+        {
+          "actual": "2",
+          "count": 105,
+          "predicted": "2"
+        },
+        {
+          "actual": "2",
+          "count": 2,
+          "predicted": "3"
+        },
+        {
+          "actual": "2",
+          "count": 2,
+          "predicted": "4"
+        },
+        {
+          "actual": "3",
+          "count": 8,
+          "predicted": "1"
+        },
+        {
+          "actual": "3",
+          "count": 7,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "3",
+          "count": 1,
+          "predicted": "1/8"
+        },
+        {
+          "actual": "3",
+          "count": 2,
+          "predicted": "2"
+        },
+        {
+          "actual": "3",
+          "count": 72,
+          "predicted": "3"
+        },
+        {
+          "actual": "3",
+          "count": 1,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "3/2",
+          "count": 6,
+          "predicted": "1"
+        },
+        {
+          "actual": "3/2",
+          "count": 4,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "3/2",
+          "count": 2,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "3/2",
+          "count": 56,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "3/4",
+          "count": 2,
+          "predicted": "1"
+        },
+        {
+          "actual": "3/4",
+          "count": 4,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "3/4",
+          "count": 2,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "3/4",
+          "count": 38,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "3/4",
+          "count": 1,
+          "predicted": "7/4"
+        },
+        {
+          "actual": "3/4",
+          "count": 1,
+          "predicted": "7/8"
+        },
+        {
+          "actual": "3/8",
+          "count": 3,
+          "predicted": "3/8"
+        },
+        {
+          "actual": "4",
+          "count": 1,
+          "predicted": "1"
+        },
+        {
+          "actual": "4",
+          "count": 1,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "4",
+          "count": 3,
+          "predicted": "2"
+        },
+        {
+          "actual": "4",
+          "count": 1,
+          "predicted": "3"
+        },
+        {
+          "actual": "4",
+          "count": 33,
+          "predicted": "4"
+        },
+        {
+          "actual": "5",
+          "count": 4,
+          "predicted": "4"
+        },
+        {
+          "actual": "5",
+          "count": 4,
+          "predicted": "5"
+        },
+        {
+          "actual": "5/2",
+          "count": 1,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "5/4",
+          "count": 2,
+          "predicted": "5/4"
+        },
+        {
+          "actual": "6",
+          "count": 4,
+          "predicted": "3"
+        },
+        {
+          "actual": "6",
+          "count": 8,
+          "predicted": "6"
+        },
+        {
+          "actual": "7",
+          "count": 6,
+          "predicted": "4"
+        },
+        {
+          "actual": "7/2",
+          "count": 1,
+          "predicted": "2"
+        },
+        {
+          "actual": "7/2",
+          "count": 2,
+          "predicted": "3"
+        },
+        {
+          "actual": "7/2",
+          "count": 5,
+          "predicted": "7/2"
+        },
+        {
+          "actual": "7/4",
+          "count": 1,
+          "predicted": "1"
+        },
+        {
+          "actual": "7/4",
+          "count": 2,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "7/4",
+          "count": 1,
+          "predicted": "7/4"
+        },
+        {
+          "actual": "7/6",
+          "count": 1,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "9/2",
+          "count": 2,
+          "predicted": "9/2"
+        },
+        {
+          "actual": "9/4",
+          "count": 1,
+          "predicted": "1/4"
+        }
+      ],
+      "degenerate_single_class_predictor": false,
+      "labels": [
+        "1",
+        "1/2",
+        "1/3",
+        "1/4",
+        "1/5",
+        "1/6",
+        "1/8",
+        "15/2",
+        "15/4",
+        "2",
+        "3",
+        "3/2",
+        "3/4",
+        "3/8",
+        "4",
+        "5",
+        "5/2",
+        "5/4",
+        "6",
+        "7",
+        "7/2",
+        "7/4",
+        "7/6",
+        "7/8",
+        "9/2",
+        "9/4"
+      ],
+      "macro_f1": 0.6240462843806328,
+      "majority_baseline_accuracy": 0.39796357378459774,
+      "majority_baseline_macro_f1": 0.02189798301821281,
+      "majority_class": "1/2",
+      "matched_pitch_onset_notes": 6973,
+      "matrix_rows_actual_columns_predicted": [
+        [
+          1083,
+          39,
+          0,
+          13,
+          0,
+          0,
+          1,
+          0,
+          0,
+          8,
+          2,
+          9,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          64,
+          2651,
+          6,
+          23,
+          0,
+          0,
+          1,
+          0,
+          0,
+          8,
+          0,
+          11,
+          11,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          43,
+          7,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          7,
+          19,
+          1,
+          2413,
+          1,
+          0,
+          4,
+          0,
+          0,
+          0,
+          0,
+          4,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          10,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          33,
+          1,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          49,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          14,
+          10,
+          0,
+          2,
+          0,
+          1,
+          0,
+          0,
+          0,
+          105,
+          2,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          8,
+          7,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          2,
+          72,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          6,
+          4,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          56,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          4,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          38,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          33,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          4,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          8,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "unmatched_expected": 14526,
+      "unmatched_predicted": 14578
+    }
+  },
+  "homr_page": {
+    "reference_chords": 5894,
+    "complete_chords": 1860,
+    "pooled_chord_completeness": 0.3155751611808619,
+    "pooled_notation_staff_coverage": {
+      "0": {
+        "reference_notes": 21963,
+        "predicted_notes": 11680,
+        "matched_notes": 3842,
+        "recall": 0.17493056504120566
+      },
+      "1": {
+        "reference_notes": 0,
+        "predicted_notes": 9914,
+        "matched_notes": 0,
+        "recall": null
+      }
+    },
+    "missing_notes": 14658,
+    "extra_notes": 14289,
+    "failed_complete_pages": 1,
+    "failure_classes": {
+      "HOMR_OUTPUT_MISSING:conversion": 1
+    },
+    "latency_seconds": {
+      "includes_failures": true,
+      "median": 20.610000000000582,
+      "p95": 20.639999999999418
+    },
+    "duration": {
+      "balanced_accuracy": 0.6251687799903428,
+      "confusion_matrix": [
+        {
+          "actual": "1",
+          "count": 1702,
+          "predicted": "1"
+        },
+        {
+          "actual": "1",
+          "count": 40,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1",
+          "count": 6,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1",
+          "count": 1,
+          "predicted": "1/6"
+        },
+        {
+          "actual": "1",
+          "count": 4,
+          "predicted": "2"
+        },
+        {
+          "actual": "1",
+          "count": 2,
+          "predicted": "3"
+        },
+        {
+          "actual": "1",
+          "count": 4,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "1",
+          "count": 2,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "1",
+          "count": 2,
+          "predicted": "5/4"
+        },
+        {
+          "actual": "1/16",
+          "count": 1,
+          "predicted": "1/8"
+        },
+        {
+          "actual": "1/2",
+          "count": 38,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/2",
+          "count": 3476,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/2",
+          "count": 32,
+          "predicted": "1/3"
+        },
+        {
+          "actual": "1/2",
+          "count": 6,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/2",
+          "count": 2,
+          "predicted": "1/6"
+        },
+        {
+          "actual": "1/2",
+          "count": 7,
+          "predicted": "2"
+        },
+        {
+          "actual": "1/2",
+          "count": 8,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "1/2",
+          "count": 10,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "1/2",
+          "count": 1,
+          "predicted": "4"
+        },
+        {
+          "actual": "1/3",
+          "count": 2,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/3",
+          "count": 31,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/3",
+          "count": 14,
+          "predicted": "1/3"
+        },
+        {
+          "actual": "1/3",
+          "count": 1,
+          "predicted": "2"
+        },
+        {
+          "actual": "1/4",
+          "count": 2,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/4",
+          "count": 31,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/4",
+          "count": 1244,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/4",
+          "count": 23,
+          "predicted": "1/6"
+        },
+        {
+          "actual": "1/4",
+          "count": 3,
+          "predicted": "1/8"
+        },
+        {
+          "actual": "1/4",
+          "count": 10,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "1/5",
+          "count": 1,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/6",
+          "count": 1,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/6",
+          "count": 38,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/6",
+          "count": 231,
+          "predicted": "1/6"
+        },
+        {
+          "actual": "1/6",
+          "count": 1,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "1/8",
+          "count": 1,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/8",
+          "count": 63,
+          "predicted": "1/8"
+        },
+        {
+          "actual": "15/2",
+          "count": 2,
+          "predicted": "15/2"
+        },
+        {
+          "actual": "2",
+          "count": 25,
+          "predicted": "1"
+        },
+        {
+          "actual": "2",
+          "count": 5,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "2",
+          "count": 1,
+          "predicted": "1/3"
+        },
+        {
+          "actual": "2",
+          "count": 1,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "2",
+          "count": 211,
+          "predicted": "2"
+        },
+        {
+          "actual": "2",
+          "count": 2,
+          "predicted": "3"
+        },
+        {
+          "actual": "2",
+          "count": 2,
+          "predicted": "4"
+        },
+        {
+          "actual": "3",
+          "count": 3,
+          "predicted": "1"
+        },
+        {
+          "actual": "3",
+          "count": 5,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "3",
+          "count": 1,
+          "predicted": "10/3"
+        },
+        {
+          "actual": "3",
+          "count": 8,
+          "predicted": "2"
+        },
+        {
+          "actual": "3",
+          "count": 105,
+          "predicted": "3"
+        },
+        {
+          "actual": "3",
+          "count": 1,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "3",
+          "count": 2,
+          "predicted": "4"
+        },
+        {
+          "actual": "3",
+          "count": 1,
+          "predicted": "5"
+        },
+        {
+          "actual": "3/2",
+          "count": 9,
+          "predicted": "1"
+        },
+        {
+          "actual": "3/2",
+          "count": 3,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "3/2",
+          "count": 97,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "3/2",
+          "count": 1,
+          "predicted": "5/2"
+        },
+        {
+          "actual": "3/4",
+          "count": 2,
+          "predicted": "1"
+        },
+        {
+          "actual": "3/4",
+          "count": 9,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "3/4",
+          "count": 3,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "3/4",
+          "count": 72,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "3/8",
+          "count": 3,
+          "predicted": "3/8"
+        },
+        {
+          "actual": "4",
+          "count": 1,
+          "predicted": "1"
+        },
+        {
+          "actual": "4",
+          "count": 1,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "4",
+          "count": 3,
+          "predicted": "2"
+        },
+        {
+          "actual": "4",
+          "count": 1,
+          "predicted": "3"
+        },
+        {
+          "actual": "4",
+          "count": 44,
+          "predicted": "4"
+        },
+        {
+          "actual": "5",
+          "count": 1,
+          "predicted": "1"
+        },
+        {
+          "actual": "5",
+          "count": 2,
+          "predicted": "4"
+        },
+        {
+          "actual": "5",
+          "count": 4,
+          "predicted": "5"
+        },
+        {
+          "actual": "5/2",
+          "count": 4,
+          "predicted": "2"
+        },
+        {
+          "actual": "5/2",
+          "count": 1,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "5/4",
+          "count": 1,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "5/4",
+          "count": 1,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "5/4",
+          "count": 4,
+          "predicted": "5/4"
+        },
+        {
+          "actual": "6",
+          "count": 6,
+          "predicted": "3"
+        },
+        {
+          "actual": "6",
+          "count": 10,
+          "predicted": "6"
+        },
+        {
+          "actual": "7",
+          "count": 1,
+          "predicted": "2"
+        },
+        {
+          "actual": "7",
+          "count": 6,
+          "predicted": "4"
+        },
+        {
+          "actual": "7/2",
+          "count": 3,
+          "predicted": "3"
+        },
+        {
+          "actual": "7/2",
+          "count": 16,
+          "predicted": "7/2"
+        },
+        {
+          "actual": "7/4",
+          "count": 1,
+          "predicted": "1"
+        },
+        {
+          "actual": "7/6",
+          "count": 1,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "9/2",
+          "count": 7,
+          "predicted": "9/2"
+        }
+      ],
+      "degenerate_single_class_predictor": false,
+      "labels": [
+        "1",
+        "1/16",
+        "1/2",
+        "1/3",
+        "1/4",
+        "1/5",
+        "1/6",
+        "1/8",
+        "10/3",
+        "15/2",
+        "2",
+        "3",
+        "3/2",
+        "3/4",
+        "3/8",
+        "4",
+        "5",
+        "5/2",
+        "5/4",
+        "6",
+        "7",
+        "7/2",
+        "7/4",
+        "7/6",
+        "9/2"
+      ],
+      "macro_f1": 0.6099289756369323,
+      "majority_baseline_accuracy": 0.46289113007499355,
+      "majority_baseline_macro_f1": 0.025313770549761357,
+      "majority_class": "1/2",
+      "matched_pitch_onset_notes": 7734,
+      "matrix_rows_actual_columns_predicted": [
+        [
+          1702,
+          0,
+          40,
+          0,
+          6,
+          0,
+          1,
+          0,
+          0,
+          0,
+          4,
+          2,
+          4,
+          2,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          38,
+          0,
+          3476,
+          32,
+          6,
+          0,
+          2,
+          0,
+          0,
+          0,
+          7,
+          0,
+          8,
+          10,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          31,
+          14,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          31,
+          0,
+          1244,
+          0,
+          23,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          10,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          38,
+          0,
+          231,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          63,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          25,
+          0,
+          5,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          211,
+          2,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          3,
+          0,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          8,
+          105,
+          1,
+          0,
+          0,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          9,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          97,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          9,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          72,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          1,
+          0,
+          0,
+          0,
+          44,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          4,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          10,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          6,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          16,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          7
+        ]
+      ],
+      "unmatched_expected": 13858,
+      "unmatched_predicted": 13860
+    }
+  },
+  "zeus_page": {
+    "reference_chords": 5894,
+    "complete_chords": 26,
+    "pooled_chord_completeness": 0.004411265693926026,
+    "pooled_notation_staff_coverage": {
+      "0": {
+        "reference_notes": 21963,
+        "predicted_notes": 13098,
+        "matched_notes": 250,
+        "recall": 0.011382780130219004
+      },
+      "1": {
+        "reference_notes": 0,
+        "predicted_notes": 11037,
+        "matched_notes": 0,
+        "recall": null
+      }
+    },
+    "missing_notes": 21345,
+    "extra_notes": 23517,
+    "failed_complete_pages": 0,
+    "failure_classes": {},
+    "latency_seconds": {
+      "includes_failures": true,
+      "median": 70.57800000000134,
+      "p95": 71.19209999999954
+    },
+    "duration": {
+      "balanced_accuracy": 0.32202148721233115,
+      "confusion_matrix": [
+        {
+          "actual": "1",
+          "count": 147,
+          "predicted": "1"
+        },
+        {
+          "actual": "1",
+          "count": 40,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1",
+          "count": 2,
+          "predicted": "1/3"
+        },
+        {
+          "actual": "1",
+          "count": 7,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1",
+          "count": 3,
+          "predicted": "1/6"
+        },
+        {
+          "actual": "1",
+          "count": 3,
+          "predicted": "2"
+        },
+        {
+          "actual": "1",
+          "count": 1,
+          "predicted": "2/3"
+        },
+        {
+          "actual": "1",
+          "count": 2,
+          "predicted": "3"
+        },
+        {
+          "actual": "1",
+          "count": 9,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "1",
+          "count": 2,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "1/2",
+          "count": 36,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/2",
+          "count": 281,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/2",
+          "count": 8,
+          "predicted": "1/3"
+        },
+        {
+          "actual": "1/2",
+          "count": 56,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/2",
+          "count": 3,
+          "predicted": "1/6"
+        },
+        {
+          "actual": "1/2",
+          "count": 1,
+          "predicted": "2"
+        },
+        {
+          "actual": "1/2",
+          "count": 3,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "1/2",
+          "count": 9,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "1/2",
+          "count": 1,
+          "predicted": "3/8"
+        },
+        {
+          "actual": "1/3",
+          "count": 10,
+          "predicted": "1/3"
+        },
+        {
+          "actual": "1/3",
+          "count": 2,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/3",
+          "count": 5,
+          "predicted": "1/6"
+        },
+        {
+          "actual": "1/4",
+          "count": 7,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/4",
+          "count": 1,
+          "predicted": "1/12"
+        },
+        {
+          "actual": "1/4",
+          "count": 21,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/4",
+          "count": 1,
+          "predicted": "1/3"
+        },
+        {
+          "actual": "1/4",
+          "count": 147,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/4",
+          "count": 6,
+          "predicted": "1/6"
+        },
+        {
+          "actual": "1/4",
+          "count": 4,
+          "predicted": "1/8"
+        },
+        {
+          "actual": "1/4",
+          "count": 1,
+          "predicted": "2"
+        },
+        {
+          "actual": "1/4",
+          "count": 2,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "1/4",
+          "count": 1,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "1/4",
+          "count": 1,
+          "predicted": "3/8"
+        },
+        {
+          "actual": "1/6",
+          "count": 1,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/6",
+          "count": 1,
+          "predicted": "1/12"
+        },
+        {
+          "actual": "1/6",
+          "count": 3,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/6",
+          "count": 8,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/6",
+          "count": 20,
+          "predicted": "1/6"
+        },
+        {
+          "actual": "1/6",
+          "count": 3,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "1/8",
+          "count": 1,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/8",
+          "count": 4,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "2",
+          "count": 7,
+          "predicted": "1"
+        },
+        {
+          "actual": "2",
+          "count": 3,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "2",
+          "count": 1,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "2",
+          "count": 6,
+          "predicted": "2"
+        },
+        {
+          "actual": "2",
+          "count": 1,
+          "predicted": "3"
+        },
+        {
+          "actual": "2",
+          "count": 1,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "2",
+          "count": 1,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "3",
+          "count": 3,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "3",
+          "count": 1,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "3",
+          "count": 3,
+          "predicted": "2"
+        },
+        {
+          "actual": "3",
+          "count": 1,
+          "predicted": "3"
+        },
+        {
+          "actual": "3",
+          "count": 1,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "3/2",
+          "count": 4,
+          "predicted": "1"
+        },
+        {
+          "actual": "3/2",
+          "count": 1,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "3/2",
+          "count": 3,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "3/2",
+          "count": 1,
+          "predicted": "1/6"
+        },
+        {
+          "actual": "3/2",
+          "count": 1,
+          "predicted": "2"
+        },
+        {
+          "actual": "3/2",
+          "count": 5,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "3/2",
+          "count": 1,
+          "predicted": "4"
+        },
+        {
+          "actual": "3/4",
+          "count": 1,
+          "predicted": "1"
+        },
+        {
+          "actual": "3/4",
+          "count": 1,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "3/4",
+          "count": 1,
+          "predicted": "1/6"
+        },
+        {
+          "actual": "3/4",
+          "count": 1,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "3/4",
+          "count": 1,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "3/4",
+          "count": 1,
+          "predicted": "5/4"
+        },
+        {
+          "actual": "4",
+          "count": 2,
+          "predicted": "1"
+        },
+        {
+          "actual": "4",
+          "count": 1,
+          "predicted": "3"
+        },
+        {
+          "actual": "5/2",
+          "count": 1,
+          "predicted": "1"
+        },
+        {
+          "actual": "5/2",
+          "count": 1,
+          "predicted": "3"
+        },
+        {
+          "actual": "5/4",
+          "count": 1,
+          "predicted": "1/4"
+        }
+      ],
+      "degenerate_single_class_predictor": false,
+      "labels": [
+        "1",
+        "1/12",
+        "1/2",
+        "1/3",
+        "1/4",
+        "1/6",
+        "1/8",
+        "2",
+        "2/3",
+        "3",
+        "3/2",
+        "3/4",
+        "3/8",
+        "4",
+        "5/2",
+        "5/4"
+      ],
+      "macro_f1": 0.25166621061970834,
+      "majority_baseline_accuracy": 0.43213897937024975,
+      "majority_baseline_macro_f1": 0.03771796815769522,
+      "majority_class": "1/2",
+      "matched_pitch_onset_notes": 921,
+      "matrix_rows_actual_columns_predicted": [
+        [
+          147,
+          0,
+          40,
+          2,
+          7,
+          3,
+          0,
+          3,
+          1,
+          2,
+          9,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          36,
+          0,
+          281,
+          8,
+          56,
+          3,
+          0,
+          1,
+          0,
+          0,
+          3,
+          9,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          10,
+          2,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          7,
+          1,
+          21,
+          1,
+          147,
+          6,
+          4,
+          1,
+          0,
+          0,
+          2,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          3,
+          0,
+          8,
+          20,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          7,
+          0,
+          3,
+          0,
+          1,
+          0,
+          0,
+          6,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          3,
+          0,
+          1,
+          0,
+          0,
+          3,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          1,
+          0,
+          3,
+          1,
+          0,
+          1,
+          0,
+          0,
+          5,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "unmatched_expected": 21042,
+      "unmatched_predicted": 23214
+    }
+  }
+}

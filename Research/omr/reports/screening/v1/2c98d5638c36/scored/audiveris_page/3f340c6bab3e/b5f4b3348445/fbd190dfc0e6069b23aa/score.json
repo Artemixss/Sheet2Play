@@ -1,0 +1,62 @@
+{
+  "adapter_id": "audiveris_unattended",
+  "aligned_voice_accuracy": 0.96,
+  "candidate_id": "audiveris",
+  "cold_start": true,
+  "composition_group": "chopin/mazurka68_4",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 69,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 28,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "3/2",
+        "count": 2,
+        "predicted": "1"
+      },
+      {
+        "actual": "3/2",
+        "count": 3,
+        "predicted": "3/2"
+      }
+    ],
+    "unmatched_expected": 75,
+    "unmatched_predicted": 82
+  },
+  "elapsed_seconds": 25.561999999999898,
+  "error": null,
+  "extra_note_count": 84,
+  "failure_penalized_omr_ned": 0.1952941176470588,
+  "first_divergent_measure": 1,
+  "item_id": "test/chopin/mazurka68_4/mazurka68_4_1.png",
+  "mean_offset_error": 0.00980392156862745,
+  "missing_note_count": 77,
+  "omr_ned": 0.1952941176470588,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.554016620498615,
+  "onset_f1": 0.5650969529085872,
+  "peak_ram_bytes": 833765376,
+  "peak_vram_bytes": 0,
+  "pitch_f1": 0.9418282548476454,
+  "predicted_note_count": 184,
+  "reference_measure_count": 17,
+  "reference_note_count": 177,
+  "reference_quarter_length": "51",
+  "schema_version": 1,
+  "staff_accuracy": 0.39,
+  "status": "succeeded",
+  "timeline_length_error": "1",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

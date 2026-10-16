@@ -1,0 +1,17 @@
+{
+  "attempt_path": "Research\\omr\\reports\\screening\\v1\\2c98d5638c36\\attempts\\zeus_page\\81f73b31179a\\47cb0f412e238877c16f\\attempt-e86cbf0925f2462fbdd97f9590294257",
+  "attempt_sha256": "b7b7bfd2e079aedf7aa8c9fd1b78428d6b8fa329cbffa1cd6acee0ab50cb192d",
+  "identity": {
+    "adapter_config_sha256": "e798b17dc339f6a42ea50f4dcf6c54a72cbcfa97d1461b083d282ea59502ce93",
+    "candidate": "zeus_page",
+    "configuration_sha256": "81f73b31179a40bf63c608d9adea99f546dac49e57722d436dae205a1b135821",
+    "image_sha256": "0fe292f8913214db85a4a327cebe3bd2f9fd64f45f0eb1f8d318238322d9b1cb",
+    "item_id": "test/scarlatti/L056K281/L056K281_1.png",
+    "reference_sha256": "9f1b16cb5ccb90bf32f5a4099716ba447ee509be17e7f1c80073c76829ad4d33",
+    "sample_sha256": "2c98d5638c368b1a53bdb3440177d04fa585f9b1ca6ce6adbe65af64cd8e27d1",
+    "schema_version": 1
+  },
+  "origin": "completed_attempt",
+  "result_sha256": "cf908bddd11c069e00dd6fc4c9f30448091c1c11785ba224b3d98699cdc20e2e",
+  "timing_source": "screening_complete_path"
+}

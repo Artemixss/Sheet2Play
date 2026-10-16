@@ -1,0 +1,434 @@
+{
+  "configuration_sha256": "81f73b31179a40bf63c608d9adea99f546dac49e57722d436dae205a1b135821",
+  "manifest_sha256": "c3f28ec525ada8902203caf919da3ecdf4e75db30b84fd2379a4edb30483bc22",
+  "records": [
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/beethoven/sonata02_2/sonata02_2_1.png",
+      "result_sha256": "40a011e07249bae036eb6b37b29be1d94b251b129ed2b693829a62c7ae2e1c88",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/beethoven/sonata02_2/sonata02_2_2.png",
+      "result_sha256": "c7d0f40552de38800b149b4bdb1683faae74ea42abf445c2a04cf68c56a2413c",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/beethoven/sonata02_2/sonata02_2_3.png",
+      "result_sha256": "bee06f79637a6c863ed2fb6cac7ce9931213e9a523f4bd1698bdb286195af747",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/beethoven/sonata05_1/sonata05_1_2.png",
+      "result_sha256": "1e40abcfdd674aca6f6dbe7d2341edae2b648c6551c89c44c17f89b21bceae7c",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/beethoven/sonata05_1/sonata05_1_3.png",
+      "result_sha256": "10157fbfecd548d3d84bd90090fb6601551e4f6fcd67d73f90cd5b8b0ab60334",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/beethoven/sonata05_1/sonata05_1_4.png",
+      "result_sha256": "0781451fa320d1b757f73d6ab88479482f0029b230c5830ce19211889424281b",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/beethoven/sonata05_1/sonata05_1_5.png",
+      "result_sha256": "6acfbcef51350bfcfeda0f8cca0e96082524d8a754d0dc8ceb8f5bb6c8359872",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/beethoven/sonata05_1/sonata05_1_6.png",
+      "result_sha256": "cda0123775420855555661626d4627be75b1b5aa50dc1b4e4aa4ec4074ca1aef",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/beethoven/sonata07_4/sonata07_4_1.png",
+      "result_sha256": "30de1830eaf97317e68f5b99da8fd0e9f01ad74eefc810ff3d6f8abe53a7b32d",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/beethoven/sonata07_4/sonata07_4_2.png",
+      "result_sha256": "b7c2f7c6f0f75c94e4d80cb534905875b6e3df12c256c4410d3249d81c0160cb",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/beethoven/sonata07_4/sonata07_4_3.png",
+      "result_sha256": "eb6c6db6e6409675f509b532decb82dd6be6902b24751bef9620a7233e6b3937",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/beethoven/sonata07_4/sonata07_4_4.png",
+      "result_sha256": "405636d976a6e5ca61e072b1c0027a9bba86988deadf8d0239d610be49965d33",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/beethoven/sonata17_1/sonata17_1_1.png",
+      "result_sha256": "4c1c1d527a4250fc934275c27cbd798d5e6dff7ffcf09d41d85b4ac086274192",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/beethoven/sonata17_1/sonata17_1_2.png",
+      "result_sha256": "b20ea592e3ffffbbc9c30b4bd5945307f3718d49ed60ac05ec334da44c73540e",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/beethoven/sonata17_1/sonata17_1_3.png",
+      "result_sha256": "67d9412ea53e82ac7a2abf14bf8baa0556e3ff719fc9c5341231720fc5fa89fc",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/beethoven/sonata17_1/sonata17_1_4.png",
+      "result_sha256": "1f7acde4493e58edf065bb66136392dd340ad200178cfe606e526adb1f1a275c",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/beethoven/sonata17_1/sonata17_1_6.png",
+      "result_sha256": "05a1422aadf5fbca8656f9b6b41ab31d45a76f07ab1e2c6a8ff998d500ca9fa7",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/beethoven/sonata22_2/sonata22_2_1.png",
+      "result_sha256": "318838d51ebc19bf97f5448aee89f6bad17c2fbaf77001865fbcf643b7adb23e",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/beethoven/sonata22_2/sonata22_2_2.png",
+      "result_sha256": "e4f1fd58aa073a710f25e060a647b635ff92970de9b466821b0c5367947deb0e",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/beethoven/sonata22_2/sonata22_2_3.png",
+      "result_sha256": "f0cd956b2b51327bb7a2cf9b35fe0cf915ec8b62cf3832972b44cc10708e32be",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/beethoven/sonata22_2/sonata22_2_4.png",
+      "result_sha256": "e4eec4a48ca99ae875de06a87ea14b0181bf07397c7e4bbf4cd728aee4e1207e",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/beethoven/sonata22_2/sonata22_2_5.png",
+      "result_sha256": "458062a55f60e9dcbf72b006a4603e370e6d53a5cc57a134a008aa792ade30e9",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/beethoven/sonata22_2/sonata22_2_6.png",
+      "result_sha256": "f506e0837e07a7310eea7e312ed299f25cebb54672f63926ee5e983c05fff072",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/beethoven/sonata26_1/sonata26_1_1.png",
+      "result_sha256": "2264aad777ee6b9d937b352d959865fe20494847be4d1af9bacadd7d4d41c313",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/beethoven/sonata26_1/sonata26_1_2.png",
+      "result_sha256": "cbad8aea9426100a9a589859b6d3d15ca3a063a702217df6d56288377fda10cf",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/beethoven/sonata26_1/sonata26_1_4.png",
+      "result_sha256": "6821baf17af0e081414b86af34ed0b22b01dd8b6a5c702125c55428b74a8283f",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/beethoven/sonata26_1/sonata26_1_5.png",
+      "result_sha256": "bbe4b811d0201b6cc8d9b01f645cfb0da91d6bf94a16fbfc77f161c1372b44dc",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/chopin/mazurka68_4/mazurka68_4_1.png",
+      "result_sha256": "44bfcf0425f07bda1e31e497146a9b0edc09ce03da44418b71d2ec820204576e",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/chopin/mazurka68_4/mazurka68_4_2.png",
+      "result_sha256": "4d15de5deab44ec9717c6054fd3ccca405874d27516c366c0999d1debb900d65",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/chopin/mazurka_51/mazurka_51_1.png",
+      "result_sha256": "72979d5b15668eba747831df60a58f8f405f611ddf36e1e54ab5f70bdb1ba903",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/chopin/mazurka_51/mazurka_51_4.png",
+      "result_sha256": "b76c4cea95c787029211fb7840414238409c314b2dae0359945061d10c1ad751",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/hummel/prelude67_14/prelude67_14_1.png",
+      "result_sha256": "2b5207163e8bb6dc0a08e5cc6b933ef051ff9f39a739a271805338bebe9793c6",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/joplin/breeze/breeze_1.png",
+      "result_sha256": "f55e1ba30a806db516bba2b59ec88ae8e7f1df2a4620a5804563c07e0733e912",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/joplin/breeze/breeze_2.png",
+      "result_sha256": "bebf454e9aa41f8a08c220f947aca4874922ed21bd6b2a445f6875b5e75fb581",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/joplin/breeze/breeze_3.png",
+      "result_sha256": "af37667b0943aa66e11bcd902d66e318ac8c8d402f2268667ebe69cc85c562b6",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/joplin/breeze/breeze_4.png",
+      "result_sha256": "1a627e9e2acd73453c82557763c0c338f6f024d53124a5a42bbf2550f38d0400",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/joplin/lilyqueen/lilyqueen_1.png",
+      "result_sha256": "e9907a44743591ba4bd12236e99771eb1743a8d6ebf5c863b96316a33451bcaf",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/joplin/lilyqueen/lilyqueen_2.png",
+      "result_sha256": "b98c46980f4aba01da19cf4c63cd91e2158e05dfd37c725f2f05d23136eff4c1",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/joplin/lilyqueen/lilyqueen_3.png",
+      "result_sha256": "d9f70021cc6418acf869d2ad91390584f6ac57cf7489e86f53e036b0b5fab322",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/joplin/lilyqueen/lilyqueen_4.png",
+      "result_sha256": "b750466e8f5ef9d61c20131d2cc3cdcd300ddef8b6f057e5d9ce792ae82dc186",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/joplin/pleasant/pleasant_1.png",
+      "result_sha256": "cd0a13e90722f0bf34d2009f3fc3e27882e14febb96506fc9ff09a15e85994f6",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/joplin/pleasant/pleasant_2.png",
+      "result_sha256": "de5c64e134d15348f260d9e4c6d18f6ab846120f2653353b087892c435cf6065",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/joplin/pleasant/pleasant_3.png",
+      "result_sha256": "4137b53fd9813c24ba79381d7c6f6511a7f9f03f1c5a66e302b10dd8ed0c4074",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/joplin/pleasant/pleasant_4.png",
+      "result_sha256": "b132a4e81b4c73dc91dc15c9b89ba64a89cfff13fdf7ae51af380f2e3fbff884",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/liszt/etude10_05/etude10_05_1.png",
+      "result_sha256": "1c4922efa6c2eb3c70a23960dc687c18f861fb2f3105ab010386a51fcbd15c41",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/liszt/etude10_05/etude10_05_2.png",
+      "result_sha256": "17208a5ae5526c92b085fb8f30269f612d67b6703a98f9483c2caa7b2176be99",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/liszt/etude10_05/etude10_05_3.png",
+      "result_sha256": "b41f0741d6682048e468e46656be61a15353e911d69159568796f385ae673f92",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/liszt/etude10_05/etude10_05_4.png",
+      "result_sha256": "7effa75a24ab3f3575b1f72f3fada06d99f09427ede8c22fe48bb6accf8b4ecc",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/mozart/sonata06_3j/sonata06_3j_1.png",
+      "result_sha256": "76c5e70a56ab8bddb412e39f957481f975cf5b5f9d323db353023aaa1ffdee79",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/mozart/sonata08_2/sonata08_2_1.png",
+      "result_sha256": "77fa6e1fc8f05196d0338399fff5044b813cf2f52c118a8fac9472f789b9f555",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/mozart/sonata08_2/sonata08_2_2.png",
+      "result_sha256": "e6867c418a632ce53c3680574e889da535cd4c6e11f433410315ba60f5610ad1",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/mozart/sonata08_2/sonata08_2_3.png",
+      "result_sha256": "ff0ab830e47a5874351ca03ec4eb49f80b0b095c9c445e9085226491e57ade48",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/mozart/sonata08_2/sonata08_2_5.png",
+      "result_sha256": "3554cc860d493fec987ca9b2bfde13d63e58a5f6938033b98250e046eda32c0d",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/mozart/viennese1_1/viennese1_1_1.png",
+      "result_sha256": "d01a943d3970e002aa32d13d3845ad153abe3222eb514be49d92209965e9daea",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/mozart/viennese1_1/viennese1_1_2.png",
+      "result_sha256": "85455c9e270f29bf5255eecfc69d24921d35b15a806f3bdc0e87f194670bb564",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/scarlatti/L055K330/L055K330_1.png",
+      "result_sha256": "8905f15dd41435e53341f19b0bcd19e782915f671f3080a2051e69f679d123e3",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/scarlatti/L055K330/L055K330_2.png",
+      "result_sha256": "fcd351a74547293b8bde3e4c0e2c53cf303930aa5d0fde749ae405c92841e1e4",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/scarlatti/L056K281/L056K281_1.png",
+      "result_sha256": "cf908bddd11c069e00dd6fc4c9f30448091c1c11785ba224b3d98699cdc20e2e",
+      "status": "succeeded"
+    },
+    {
+      "artifact_count": 4,
+      "error": null,
+      "item_id": "test/scarlatti/L056K281/L056K281_3.png",
+      "result_sha256": "7827650627e84877e0e0fd62e8df875a7fd713280d3756e5cc57962e2e7c252f",
+      "status": "succeeded"
+    }
+  ],
+  "result_count": 59,
+  "sample_sha256": "2c98d5638c368b1a53bdb3440177d04fa585f9b1ca6ce6adbe65af64cd8e27d1",
+  "session": {
+    "active_since_utc": null,
+    "session_id": "stage3-zeus-screen-01",
+    "used_seconds": 7011.924000000002
+  },
+  "status_counts": {
+    "succeeded": 59
+  },
+  "summary": {
+    "path": "Research\\omr\\reports\\screening\\v1\\2c98d5638c36\\summaries\\zeus_page\\81f73b31179a\\summary-106f918dd791.json",
+    "sha256": "bea1ff52d402e4a8adb3dda97c4c4cfbd696bdd24db2fcacb9bd2f11979272ef"
+  },
+  "verified_scores": 59
+}

@@ -1,0 +1,3807 @@
+{
+  "audited_count": 402,
+  "collection": "smb-pianoform",
+  "eligible_count": 402,
+  "full_collection": true,
+  "identity": {
+    "builder_sha256": "1001ca94138001790aceb0c6565447d81b4a480b3e989f8c7f7361b85c4949d0",
+    "manifest_sha256": "f73419cb60019d0bfbaf7ce0efaf2fdea66d89648eec3d2552c606f2172d9a81",
+    "metadata_sha256": "3a1f727011fb6a468dbdaa45052f4b35e7282c4002fe4e395d98d369a7101c52",
+    "normalizer_sha256": "2e56906636a7164784492ac47c0f0fd628e4f15e172390b58e2792160f819c8e",
+    "parser_sha256": "0bea9cdb67f60110ff53305904909ddb56de9d965958b344aa824244ef900c8d"
+  },
+  "invalid_count": 58,
+  "items": [
+    {
+      "id": "test/bach/bwv978_3/bwv978_3_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 471,
+      "reference_musicxml_sha256": "67a13a591a0b0d94ba0cc493e3f69b8abc625d723a01aa721561bd986affc185",
+      "reference_path": "Research/omr/.runtime/phase3/references/cca383dfd3d4fb6d453b3dae.json",
+      "reference_sha256": "bf2dd6db620a473fe405ac980b474d8f150aa1a03e914953db3a8d4ef6958463",
+      "state": "verified_cache",
+      "status": "valid"
+    },
+    {
+      "id": "test/bach/bwv978_3/bwv978_3_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 473,
+      "reference_musicxml_sha256": "fe54bb515bcb0e0e5af1a12ca8fce68c4682e87e62e872132071806217989864",
+      "reference_path": "Research/omr/.runtime/phase3/references/2a8c0f642eeff37830602dd5.json",
+      "reference_sha256": "8297073b7c1509629e27bfc9daa6532a88a96b3b1619d3f94076a0c3846ebdaa",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 63 missing, 63 extra",
+      "error_type": "ValueError",
+      "id": "test/bach/bwv978_3/bwv978_3_3.png",
+      "status": "invalid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 118 missing, 118 extra",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata01_2/sonata01_2_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata01_2/sonata01_2_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 413,
+      "reference_musicxml_sha256": "ff4c73da37c9c1bba22245e3f51e4c4b80d912e5c488263b42084ffcb915916f",
+      "reference_path": "Research/omr/.runtime/phase3/references/d7f591a0872f5fd49c1204e0.json",
+      "reference_sha256": "bdbcb87ff6111ae85a4b5704c1c7605a25e7d3ebf9a064696975ce07e3e7fe56",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata01_2/sonata01_2_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 371,
+      "reference_musicxml_sha256": "ae5c4f3deef28bb5d17c8ea4aea3c49dfdbb19f12651a1294777dc7082cd64ce",
+      "reference_path": "Research/omr/.runtime/phase3/references/5da232c2c5130d760c218376.json",
+      "reference_sha256": "0b54b047862b409dac671eff05c710b7c5ef18813123edf219877a76fd345877",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 243 missing, 243 extra",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata01_4/sonata01_4_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata01_4/sonata01_4_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 455,
+      "reference_musicxml_sha256": "f2bbb826db89185ca7de02814c07d991f9dbf40e80a7f9913576d68b636d98e2",
+      "reference_path": "Research/omr/.runtime/phase3/references/5d8dd813176ea3aa81be8ffe.json",
+      "reference_sha256": "e303bda3493494b5d83fe9237642a7c7c0d74432412741156bd0c04c2c5100d4",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 155 missing, 155 extra",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata01_4/sonata01_4_3.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata01_4/sonata01_4_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 525,
+      "reference_musicxml_sha256": "35332ef5599bcff38f216bd652f84d76271a3ad32b587dc2c8d8aaa84c4165fc",
+      "reference_path": "Research/omr/.runtime/phase3/references/98eb20586de7a52b527506a4.json",
+      "reference_sha256": "353ce1c6b73429e0206f39f4d62f7ae35c63e85fe8d40a565200a1ed7e131c79",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata01_4/sonata01_4_5.png",
+      "normalization_warning_count": 0,
+      "note_count": 419,
+      "reference_musicxml_sha256": "6e4187bf8dbe52ada5872a8542c25bf1800871b84a3899601fd442b5d759ea87",
+      "reference_path": "Research/omr/.runtime/phase3/references/18d16e5fecad3b2849223b05.json",
+      "reference_sha256": "9018cbce6818ef65a895ce5cfb05652044c82f2ec1e796a5aae9ff9e11fdf54b",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata01_4/sonata01_4_6.png",
+      "normalization_warning_count": 0,
+      "note_count": 440,
+      "reference_musicxml_sha256": "64ac5b5ecca3bde33853302fb40ab21a9faff3ab85291fd57891cdd051d20a86",
+      "reference_path": "Research/omr/.runtime/phase3/references/cd338428d4d9320076f13591.json",
+      "reference_sha256": "6db18ac5ae1e4d0f9505231d24a477fb10d91c10d16c879e359bc8981c007eb7",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata01_4/sonata01_4_7.png",
+      "normalization_warning_count": 0,
+      "note_count": 457,
+      "reference_musicxml_sha256": "b6a27da7fe14f69b60e3974f44b47c3f0c315dff3a726fe42987195e1a2245da",
+      "reference_path": "Research/omr/.runtime/phase3/references/c7dbea14b9b7aa551e4cbaed.json",
+      "reference_sha256": "065be93d8d61aa32e8c9d5e4d8efa31686174f374b04cfec074ac58ce2dd4d4a",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 373 missing, 373 extra",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata02_1/sonata02_1_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata02_1/sonata02_1_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 363,
+      "reference_musicxml_sha256": "0d5f7fad9222960113491879f0b1152b4b7f8f2a99a35aa27033528500c506b8",
+      "reference_path": "Research/omr/.runtime/phase3/references/085f01a4043629123ac8c04b.json",
+      "reference_sha256": "e984839026f20e5ddc308c8b4b611877f3d520b3de7a1f54f10b1bab0cabe61c",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 76 missing, 76 extra",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata02_1/sonata02_1_3.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata02_1/sonata02_1_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 477,
+      "reference_musicxml_sha256": "6a02eb19ad74117a4b42671ba3e7a37ea8c1bbe585c3e0f2525cd7666d533855",
+      "reference_path": "Research/omr/.runtime/phase3/references/9a40dd7fe8af50a88401ad98.json",
+      "reference_sha256": "15a6b9d3c78044f19c7ceac77fb91bb442690f7aee16cfd3b7427eef334d7dcf",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata02_1/sonata02_1_5.png",
+      "normalization_warning_count": 0,
+      "note_count": 395,
+      "reference_musicxml_sha256": "ea89a9af69e6df83660e0c497df9c562a854eb2efda8dfe45530748f3bbd76f5",
+      "reference_path": "Research/omr/.runtime/phase3/references/6c40ed3e0c166e7104b1a70e.json",
+      "reference_sha256": "feb59dbfde29a24872e2d5b7a5552a5869d95424c310a993a0c937797c05852a",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 217 missing, 217 extra",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata02_1/sonata02_1_6.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata02_1/sonata02_1_7.png",
+      "normalization_warning_count": 0,
+      "note_count": 361,
+      "reference_musicxml_sha256": "94ab9d1b0d92f7a6c4efb5cad0a6dcd672f575d38f2018e257696f4259ece83e",
+      "reference_path": "Research/omr/.runtime/phase3/references/3aa8313d25d52df817b98bcd.json",
+      "reference_sha256": "a29ceda17ba691accff60bc5dfbb5a522910d67d61e879dd035aeea09afdbd9a",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata02_1/sonata02_1_8.png",
+      "normalization_warning_count": 0,
+      "note_count": 323,
+      "reference_musicxml_sha256": "aaa50ac8d4bb966b22b655433b79bfb43d2f227a892694ddad878521bdc8cd7c",
+      "reference_path": "Research/omr/.runtime/phase3/references/479caab6a68b65cecea9b367.json",
+      "reference_sha256": "a3fd2ddcc61e3bba95065f9cb699723f3afd98a6d15eea14befd0cdf2e3df284",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata02_2/sonata02_2_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 414,
+      "reference_musicxml_sha256": "285f0eda2f23c69a8cf7260af94672d132c325fc6d803b544a7abe00de5706d2",
+      "reference_path": "Research/omr/.runtime/phase3/references/b05592e61a208c6bbb6af98c.json",
+      "reference_sha256": "2a2303f82eae569d4cabbf7f540a2f95d8ef0eaab1c06ebd9a1c58f5e96aadb7",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata02_2/sonata02_2_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 444,
+      "reference_musicxml_sha256": "a8abe5a75671a03ffbd990d11d0753fd50a3da1d0dd527668736ea7cb31f9430",
+      "reference_path": "Research/omr/.runtime/phase3/references/4c69e9d072399d44604e772d.json",
+      "reference_sha256": "349a3911d73dc14c32ad23c02da076d2ccf98a921bd22c1132730d57e928ff26",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata02_2/sonata02_2_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 475,
+      "reference_musicxml_sha256": "eb94ed97543254eb5252dbbfd43edc2df85b43bd73f03d1d0d95acc250c19edf",
+      "reference_path": "Research/omr/.runtime/phase3/references/a2b01ae84b83cb2272eacd0e.json",
+      "reference_sha256": "acdbf1227dabafd39b624faa665b96491fc60bb6680d4e65d4cc35df6fd7989b",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata03_1/sonata03_1_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 450,
+      "reference_musicxml_sha256": "b9ac6944de5db99d4a28dafadab0f9bcec85e20519b867e603f63d43ed671eda",
+      "reference_path": "Research/omr/.runtime/phase3/references/d6120def592a738699a6dacb.json",
+      "reference_sha256": "5384edb73cf80366bd924bfa9c190730d968a837481f454911f98627abfbb3ce",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata03_1/sonata03_1_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 466,
+      "reference_musicxml_sha256": "385935ab68a312ba73effff21abb81f7473c24a3a085b1feb502f842b9b73e0b",
+      "reference_path": "Research/omr/.runtime/phase3/references/17aeab12cc228038e1693e22.json",
+      "reference_sha256": "e8af12e61fea7a70ab2670e4a73cef89f0109463ec20e4c7b56a39a585127c8d",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata03_1/sonata03_1_5.png",
+      "normalization_warning_count": 0,
+      "note_count": 399,
+      "reference_musicxml_sha256": "5ecfb9b6d4b45a1818d88c528eebcf9c0d7655fa11a356010b369b82409b0f10",
+      "reference_path": "Research/omr/.runtime/phase3/references/cb8142afbbfbb00928f990b9.json",
+      "reference_sha256": "588becb149316ddabd4c187941b38f3d8d6c2c9e836bfb27fe51256d135275e1",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata03_1/sonata03_1_6.png",
+      "normalization_warning_count": 0,
+      "note_count": 479,
+      "reference_musicxml_sha256": "e047321453df2f3863f829b1c302fc99c8e66369e70a6d6bb99b490fe1c563da",
+      "reference_path": "Research/omr/.runtime/phase3/references/3d2e188637160b97e7acd1bc.json",
+      "reference_sha256": "87aac63646cbc17390a2345dba138819f0d3029fa1c733acf373a9f158da93e5",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata03_1/sonata03_1_7.png",
+      "normalization_warning_count": 0,
+      "note_count": 507,
+      "reference_musicxml_sha256": "fccc58469b6ea6ad7d0d23e896199e5455df303a4813af97dce7a0573c2f5d24",
+      "reference_path": "Research/omr/.runtime/phase3/references/86d411adace865b8299d286f.json",
+      "reference_sha256": "536b7d2b5a1b69a8bbde0e3b768afb41387846ba8756910a94f0e3708a4b07cc",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata03_1/sonata03_1_9.png",
+      "normalization_warning_count": 0,
+      "note_count": 592,
+      "reference_musicxml_sha256": "f08213356ed10e026aba2efcec489617f7f7ba81fbbe8fc3912b0ae5764d2a1a",
+      "reference_path": "Research/omr/.runtime/phase3/references/4f912b28d225a4d4a571d66c.json",
+      "reference_sha256": "988e8d13fe09160e58af0eb34c00eec8ed1d3a189bfb983a117d225e58ffb79b",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata05_1/sonata05_1_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 443,
+      "reference_musicxml_sha256": "8749f587537381437f5564ebfd6344339cb4927a5d244f3ee7eba4335c93be75",
+      "reference_path": "Research/omr/.runtime/phase3/references/6b3fb59e6b6eb7e588764549.json",
+      "reference_sha256": "d083b23c4e295e9591315adfeb39162d8f97a6c914561c03ffe08a5b2b4ccdd5",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata05_1/sonata05_1_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 329,
+      "reference_musicxml_sha256": "12e49ed99d4e6a6f27ac431c79d89c803cf95c84b88668e0e936e1a5e71ff2c9",
+      "reference_path": "Research/omr/.runtime/phase3/references/20fd458be1691e4ba3ead2ff.json",
+      "reference_sha256": "28c7349fa5a0b0eb322f38a8dabaf28b2711cb42671e55f181cca53a59898c23",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata05_1/sonata05_1_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 310,
+      "reference_musicxml_sha256": "68b57e03a08b486f8723990f73e6960ed9edb47bfe52a711832ce2cc68bea901",
+      "reference_path": "Research/omr/.runtime/phase3/references/e8968cb0830a9f0c3f38f33c.json",
+      "reference_sha256": "ce827f4f78c99af7a50984a7cf829a3046ccde0169ebf1d6e1a550a89c6d16fe",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata05_1/sonata05_1_5.png",
+      "normalization_warning_count": 0,
+      "note_count": 307,
+      "reference_musicxml_sha256": "bb29e92da8318ddc7a0e7f4d3a04ef1df1f90784d4e576db6049bbcaa11f880d",
+      "reference_path": "Research/omr/.runtime/phase3/references/e9e6a31760245faa99516367.json",
+      "reference_sha256": "a2e83e220bfc2b0e65a083a326bf4339294e67acc3c8aecd8fb15c251a1df134",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata05_1/sonata05_1_6.png",
+      "normalization_warning_count": 0,
+      "note_count": 356,
+      "reference_musicxml_sha256": "f49789bbc06c5db9f9c25d0f462059415b9d3c08aa1c59dc097896645c8d4c4d",
+      "reference_path": "Research/omr/.runtime/phase3/references/3b602c51bafe326bf17ae16e.json",
+      "reference_sha256": "9bed34c86d78e857d831bb990a07c85e5ed9489c450d69170fc83ee66ae93a13",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 361 missing, 361 extra",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata07_4/sonata07_4_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata07_4/sonata07_4_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 423,
+      "reference_musicxml_sha256": "1045c4e93f9c9ed9c6b4ec1df11dda9ae069767df785e73300f8ac790464cd88",
+      "reference_path": "Research/omr/.runtime/phase3/references/14fa6490bfb91382585b66ca.json",
+      "reference_sha256": "377bcc8eeb30f5ac2fc15e7f2b4a66cddf8b385c10f4ce2757b14ab738dd1a2c",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 257 missing, 257 extra",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata07_4/sonata07_4_3.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata07_4/sonata07_4_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 417,
+      "reference_musicxml_sha256": "b653c919e581762ed35ab369c22596e4a107e54b242d4c8344648042b22e5191",
+      "reference_path": "Research/omr/.runtime/phase3/references/6447b14d47b5a09208521af4.json",
+      "reference_sha256": "8170d1211ef39a6fac02d51c9d675303fafbd04c6fdbf8a67188137936df49f0",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 403 missing, 403 extra",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata08_3/sonata08_3_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata08_3/sonata08_3_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 427,
+      "reference_musicxml_sha256": "d5af5af26d31454b25a5cd28f85a13c0100c1767d76b4f1d14ade05b8ac6e556",
+      "reference_path": "Research/omr/.runtime/phase3/references/72123aaa640a8bd4724673e7.json",
+      "reference_sha256": "3d467e2b6adabe428d5ae628249574ab9a90f7d85f1ef686cb5e1fbb8897886b",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata08_3/sonata08_3_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 414,
+      "reference_musicxml_sha256": "fea88b34a1e8ede7a9fb16ce73eae322abdb8717874693d55575ef883c0c39f2",
+      "reference_path": "Research/omr/.runtime/phase3/references/19d6336822f85391b260873c.json",
+      "reference_sha256": "4509cc5308d83df05dd892ae8c59ab62e136894ac17f3a334d19ae15ff48880a",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata08_3/sonata08_3_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 362,
+      "reference_musicxml_sha256": "fc4f1800482686fc027901f1121ce5f18c284c5b406d76a0996127bfe672e55b",
+      "reference_path": "Research/omr/.runtime/phase3/references/d97a67296546e8f150b7b293.json",
+      "reference_sha256": "84780df36ccf07707eac2fa1c059088cffe796257a66a63299bdb7ff92b7f3af",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata08_3/sonata08_3_5.png",
+      "normalization_warning_count": 0,
+      "note_count": 353,
+      "reference_musicxml_sha256": "1a7e8dbdd720dc6009566dcf99778113d3b99b079940529d4a6569b4721db45e",
+      "reference_path": "Research/omr/.runtime/phase3/references/c0c399da497a5fd6e6f44370.json",
+      "reference_sha256": "ecbb3458e19985bb2eef3e35b5e10b7c7a3979b351baa52ef72bd21900e210d0",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata08_3/sonata08_3_6.png",
+      "normalization_warning_count": 0,
+      "note_count": 390,
+      "reference_musicxml_sha256": "3f5c763453af63dc57a2925b3d3f19e2c305c6d9eafb60edefd84b38701d0b20",
+      "reference_path": "Research/omr/.runtime/phase3/references/67023d4b9ef29b6c1395c311.json",
+      "reference_sha256": "0e0c5042efa9e54a8877c20479608e744e74cb857b52465a5229efc8a9616b95",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata09_2/sonata09_2_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 204,
+      "reference_musicxml_sha256": "985bea6c8193681163e9b054146acaffa9215a95ab84e23e39e9f9a9dd1da92c",
+      "reference_path": "Research/omr/.runtime/phase3/references/ce5a4604833a33dd0c5632fe.json",
+      "reference_sha256": "37482b597b7f4177025ab483129c6522a1e1f836b75974e72148023de0a3ee56",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata09_2/sonata09_2_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 370,
+      "reference_musicxml_sha256": "19688ac78fbbce38b9baf21d4075d1fb6f437f2db1709326d280dac3a025610c",
+      "reference_path": "Research/omr/.runtime/phase3/references/32c2004398690181fa2d5218.json",
+      "reference_sha256": "a0fe408462fb95826652fabd6ae52d0e4f956d9cc4656a3bf0f40b3d32bd5ebe",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata09_2/sonata09_2_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 356,
+      "reference_musicxml_sha256": "9996b7fb05b1b032e0835dd9c3d48fbaaa2cb2e3e393bffe20125ea01064fee1",
+      "reference_path": "Research/omr/.runtime/phase3/references/fe568c74f04ad484e498bfec.json",
+      "reference_sha256": "95ad5198c8c816b70c6fdbdae43423c32f939f89cd27560efd1629822625605c",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata09_2/sonata09_2_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 302,
+      "reference_musicxml_sha256": "366ae142a9a2828cc35df2237620599d93fe4fa8990ebb94eadfa793d455872c",
+      "reference_path": "Research/omr/.runtime/phase3/references/7509ef6ee27dc4af20149c51.json",
+      "reference_sha256": "13ba609ddd773b33d1cf86b451d8a520038c81bcb5d0567d02ac5767821ed844",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 296 missing, 296 extra",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata10_2/sonata10_2_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata10_2/sonata10_2_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 307,
+      "reference_musicxml_sha256": "5c100504f73ca187b991cca89be0bfc98197bf6938d25ccb51cca6fc742f0f72",
+      "reference_path": "Research/omr/.runtime/phase3/references/18d9bfeea3e142a323a6aa93.json",
+      "reference_sha256": "ee772fc1734fe425e354effdb0ae815eb06ccdf7fa7bf6528d9895f19ddcb530",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 256 missing, 256 extra",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata10_3/sonata10_3_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata10_3/sonata10_3_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 268,
+      "reference_musicxml_sha256": "00851b2ec43f70e2951f00efc74cdcbaaecbccf2c08a6737146f24073ee49105",
+      "reference_path": "Research/omr/.runtime/phase3/references/8805d5eb98336c3a2f1882c3.json",
+      "reference_sha256": "bece3d168472a98fa039219adf0e2f8e80f635ed617eda713c1b8f3c3917a213",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata10_3/sonata10_3_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 399,
+      "reference_musicxml_sha256": "549d58f3ad319c7903f8b576f6065b8f8128065c9c34b68ad43eabdb46e3fc52",
+      "reference_path": "Research/omr/.runtime/phase3/references/a5d29a8d47c236b2583c8df7.json",
+      "reference_sha256": "79f1f382bd6cd125a6b7b9f2d9b49d61b92c30d043c4292b4d3c8be661c20af6",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata10_3/sonata10_3_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 292,
+      "reference_musicxml_sha256": "803f47b3a5359c4fffca20e52766ee7c3d22f2224fe34206117a62c4a5075de8",
+      "reference_path": "Research/omr/.runtime/phase3/references/ad5a7ffa3e934dfc0db5c163.json",
+      "reference_sha256": "ec37c65fbf60d1a93da4e5d6c9d09166b7d960500fcb80154af113e6a98302c1",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata10_3/sonata10_3_5.png",
+      "normalization_warning_count": 0,
+      "note_count": 369,
+      "reference_musicxml_sha256": "ed91a029450bb6cdf5704956728fa4617ee8601649641d8801f36b5de1b46600",
+      "reference_path": "Research/omr/.runtime/phase3/references/6b6f2df9bc3a1d249192bc89.json",
+      "reference_sha256": "dadff4d79d357f55baa3b1be54151057ed374ceea52982d774ed4560a3886517",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata10_3/sonata10_3_6.png",
+      "normalization_warning_count": 0,
+      "note_count": 418,
+      "reference_musicxml_sha256": "ed1e7fed9ad3ac128de9a5f6fc116c806970ca22aa46fede27c3dbb64185e447",
+      "reference_path": "Research/omr/.runtime/phase3/references/8331b9e7c38b0140c0e39b44.json",
+      "reference_sha256": "970112382ba21cd83e39bb53505adeb589912778e3c5967f5c208efccc0c98cb",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 327 missing, 327 extra",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata11_1/sonata11_1_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata11_1/sonata11_1_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 435,
+      "reference_musicxml_sha256": "664d2896a2d0e2ce456d0ae0bf80472e67c6b430929cd3d520c09f9fb9646960",
+      "reference_path": "Research/omr/.runtime/phase3/references/18fba6695ee05e555ca46519.json",
+      "reference_sha256": "366324194f078000040e016a93c9e94ccd053a69c763f6bb1fb65e008b57041f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata11_1/sonata11_1_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 445,
+      "reference_musicxml_sha256": "1e0e2bb1579e4484fafc879c7da3f42c21b202c48b788c39bb6e49e4143e2a5c",
+      "reference_path": "Research/omr/.runtime/phase3/references/10bddc395e26f5808ebd90f1.json",
+      "reference_sha256": "e1d34fc539b3b6751db07fba188844176ee4a44e47df18e8969db33498933090",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata11_1/sonata11_1_5.png",
+      "normalization_warning_count": 0,
+      "note_count": 378,
+      "reference_musicxml_sha256": "c927ee02e2d63f132d34ab7b5c01c5b5728eb6a8d1cc7cb32012cc55c4aac245",
+      "reference_path": "Research/omr/.runtime/phase3/references/7b481d08de23b574ee868f2a.json",
+      "reference_sha256": "05b218c3423ce2871a3046228b4de46e9b22f8d8ef8abb7ca161469daf105938",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata11_1/sonata11_1_6.png",
+      "normalization_warning_count": 0,
+      "note_count": 324,
+      "reference_musicxml_sha256": "f8fbcb847a58ba92b95bfb9bbf5dde768738b65b412ae49d133d8b3ba2e23169",
+      "reference_path": "Research/omr/.runtime/phase3/references/3c302b94daeae71ec7960062.json",
+      "reference_sha256": "a1a2109877b509d490162de50dc89466be480ceb8fb8ccb18ac1df1ac0b51ca6",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata11_1/sonata11_1_7.png",
+      "normalization_warning_count": 0,
+      "note_count": 454,
+      "reference_musicxml_sha256": "45c24ad5d76662e35555c8ce720ffae431ea70b7df8626e4b9e15f64e5c0b92a",
+      "reference_path": "Research/omr/.runtime/phase3/references/42cd301b41ced06981b2fac3.json",
+      "reference_sha256": "fee912c0094993376059a16bebc0cb185d852f7b885ce7bfdcdefabac5ebfa7f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 90 missing, 90 extra",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata11_3/sonata11_3_1.png",
+      "status": "invalid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 221 missing, 221 extra",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata11_3/sonata11_3_3.png",
+      "status": "invalid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 110 missing, 110 extra",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata11_4/sonata11_4_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata11_4/sonata11_4_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 449,
+      "reference_musicxml_sha256": "dbaa9bbebb23fd2f9d8dd471ab8a2ab1bc83b2e9241e50dea7aaeb5e05c212da",
+      "reference_path": "Research/omr/.runtime/phase3/references/4674a8680a3321862d771689.json",
+      "reference_sha256": "90017502a482ca0a83f93611b60b56ab2d0cae12d8c17258fcf9a01332188983",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata11_4/sonata11_4_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 375,
+      "reference_musicxml_sha256": "5ad383c2e775fc8e846927d6740828ffc93fd97bb1094f0b42046ac3b233cefc",
+      "reference_path": "Research/omr/.runtime/phase3/references/73f444dfa393da2232bd1be3.json",
+      "reference_sha256": "0e268cdcfeeb25f9d7c25c83d51517287c963014ad6bd75c01db0fb60664f05b",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata11_4/sonata11_4_6.png",
+      "normalization_warning_count": 0,
+      "note_count": 378,
+      "reference_musicxml_sha256": "a035f6ce7b6fa376858d2c5987b42926e04818c983312d62f08101c10ee6ea99",
+      "reference_path": "Research/omr/.runtime/phase3/references/aa80afc0dd01b386788ef95d.json",
+      "reference_sha256": "b4cdaece0e2078eb843fe074383b02fc2cdba1ce87cc99923fefc2f43d0e81c0",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata11_4/sonata11_4_7.png",
+      "normalization_warning_count": 0,
+      "note_count": 402,
+      "reference_musicxml_sha256": "a2dca962931eb9c5df4399d56c006a051d59031c53e0aaaac2d6721895ea795f",
+      "reference_path": "Research/omr/.runtime/phase3/references/f3d881d94e16f5f92e1778a8.json",
+      "reference_sha256": "058c0475c5e3f7aa423fc10d9657df6eb5e2cf775cbe896bb2eb3f73993ce1f9",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata11_4/sonata11_4_8.png",
+      "normalization_warning_count": 0,
+      "note_count": 414,
+      "reference_musicxml_sha256": "17de11def67409ae4b45228a6b33d5f248dbbf2aad8b54d2f81d37960c5bf74d",
+      "reference_path": "Research/omr/.runtime/phase3/references/039feea467ebf3722a6e7705.json",
+      "reference_sha256": "abc8eccfb16cfbd8ee49f6f65fbfed73ed5c42db2540a13fb9c3ab0baa3eefe6",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata11_4/sonata11_4_9.png",
+      "normalization_warning_count": 0,
+      "note_count": 492,
+      "reference_musicxml_sha256": "8f8a8b223466d2155488472417d744b77c40ecaa7bef48f9d79aaebb0acb0b16",
+      "reference_path": "Research/omr/.runtime/phase3/references/fbeebc83f7a62690b310a69e.json",
+      "reference_sha256": "b50a315e7e42eb896ed67b72c0d80140ed1628cf7f95c1b95ba697cca329b0d1",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata13_1/sonata13_1_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 555,
+      "reference_musicxml_sha256": "5a90182f8fe911f354b5eadf2f6c98f86f82949c4d9b1ee3afe254be02214eac",
+      "reference_path": "Research/omr/.runtime/phase3/references/b16c25b6c11ad302888c1cbd.json",
+      "reference_sha256": "ea6dfe414e11d13ea3d3c7b8c394cb776ccbe52a4162bc59581feab15146d806",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 146 missing, 146 extra",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata13_1/sonata13_1_2.png",
+      "status": "invalid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 400 missing, 400 extra",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata13_1/sonata13_1_3.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata15_3/sonata15_3_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 260,
+      "reference_musicxml_sha256": "95ae12b66d6cea7cdffb3f372b9f507041b4ea8fc2ebb75781ccd73b198168db",
+      "reference_path": "Research/omr/.runtime/phase3/references/81bbcc2e6cc4a50a36694f68.json",
+      "reference_sha256": "3934032cf84259d6cf3fcc86156be9943dcbda1788101029b3b37fa40f5b2842",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata15_3/sonata15_3_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 308,
+      "reference_musicxml_sha256": "d82c3cab8105f316fde2d70ddd17853b654028fb47c0c9baa628a8c7c75474e7",
+      "reference_path": "Research/omr/.runtime/phase3/references/bac10d0fe877a2cc92bfcf53.json",
+      "reference_sha256": "e64f560eeda9ce391b3cdea0ff5b06552911ada65bc445c48c50a3b720a864b1",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata17_1/sonata17_1_1.png",
+      "normalization_warning_count": 4,
+      "note_count": 376,
+      "reference_musicxml_sha256": "5160c7746b31ce92ab50e23445b5862c0abaa91426f495c90bfeba95295ec4f1",
+      "reference_path": "Research/omr/.runtime/phase3/references/8ed96c193639f8ab8dd6d621.json",
+      "reference_sha256": "8d1fe11527d62ed003571b6e8591898470af109abf6bdd5bfe627ecdfc0ed2d8",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata17_1/sonata17_1_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 406,
+      "reference_musicxml_sha256": "5c641a75a6ae92b2041b84385a7a6834bcc3ed2eee44459d7786795876bc61f0",
+      "reference_path": "Research/omr/.runtime/phase3/references/ccc5a30144343f9d4c4272fa.json",
+      "reference_sha256": "5d68d48ab12bf439b05f14815130c5cd421f2a2860e6b4e3116f9ed26ba4de0c",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata17_1/sonata17_1_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 368,
+      "reference_musicxml_sha256": "68d3624871f936c966fbfe0202250f3be0cc340ca5309ca93eeadfcc7026f6df",
+      "reference_path": "Research/omr/.runtime/phase3/references/038e3916517698830555cda2.json",
+      "reference_sha256": "fc9f500ad41cd89c3340b281280a025449a070f90c84580562b5294e78c2db4c",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata17_1/sonata17_1_4.png",
+      "normalization_warning_count": 6,
+      "note_count": 424,
+      "reference_musicxml_sha256": "ed748f7b46ec19fef1d69c9462204910051a1b0b3bb28e33fd451dad2afc1b0c",
+      "reference_path": "Research/omr/.runtime/phase3/references/d4e044eca91249a6c3c441ae.json",
+      "reference_sha256": "7e9809023e13a265e98b2a390ad193b4111636953c72741aef411b9aca55f79e",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata17_1/sonata17_1_6.png",
+      "normalization_warning_count": 0,
+      "note_count": 371,
+      "reference_musicxml_sha256": "f8a2637275785cd5deaa156aa0853d4b5d1e08bcc07d3905df0ebf145f1b1718",
+      "reference_path": "Research/omr/.runtime/phase3/references/0afcc32508e17673226b87cb.json",
+      "reference_sha256": "1abe1453d9f7990069e27457c9dfeb9b343bef0f42e667f2c7d650dee08de6f8",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 85 missing, 85 extra",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata20_2/sonata20_2_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata20_2/sonata20_2_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 370,
+      "reference_musicxml_sha256": "34027c573562bca092e3f578e958ffd036642ba22d3453f270f0813164c11586",
+      "reference_path": "Research/omr/.runtime/phase3/references/291bacc0a4065f338a5beedd.json",
+      "reference_sha256": "cb7215646b095ec7782490d51cfdc6783e7f9532f374a1e03d55c5fc252a98ad",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata20_2/sonata20_2_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 414,
+      "reference_musicxml_sha256": "7f4b0acdbd9d620fa13b891eceda60980bbc6f3c40e2ff08f036fabae31b8678",
+      "reference_path": "Research/omr/.runtime/phase3/references/199a65dcf54dcddb111620cb.json",
+      "reference_sha256": "7cf088c3fc74565fb1f37df8f8ce23a4721770039641eec07838ab5ab5d93596",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata20_2/sonata20_2_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 365,
+      "reference_musicxml_sha256": "e21110348c621259b39f383c3372ba4e72b90dd327fe2de4fd69d0128f4c50d1",
+      "reference_path": "Research/omr/.runtime/phase3/references/35439b94af7a192a3f8cf288.json",
+      "reference_sha256": "8190ddd14e0785aca4efb39e9f077e374fd2a07eb8e1d47ccbe7c260c5b333e0",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata21_1/sonata21_1_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 570,
+      "reference_musicxml_sha256": "c57341b06ade4924f5d2933ecee94c80984691f14ee9304cf9460a273e6995b6",
+      "reference_path": "Research/omr/.runtime/phase3/references/26202a14869c8d42d319f369.json",
+      "reference_sha256": "1393f6d58a9375a115b2948ab1b10b3ebebc4208191a770533ee56506230ef05",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata21_1/sonata21_1_11.png",
+      "normalization_warning_count": 0,
+      "note_count": 465,
+      "reference_musicxml_sha256": "fd3f9b94288aea1f549bdb91da210325dd49accadf07eb151d13ec71d3d3e764",
+      "reference_path": "Research/omr/.runtime/phase3/references/763de704b20720e19618f3a3.json",
+      "reference_sha256": "d5fd14d990c6b63bb22fbda04049bdfa55e7d651fbd3d26595c4e059a5c16aec",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata21_1/sonata21_1_12.png",
+      "normalization_warning_count": 0,
+      "note_count": 619,
+      "reference_musicxml_sha256": "8b9ba4848bfa0a6a288b2b5ab8f2104b6ed99225debbdfb3498dffc80b858b7d",
+      "reference_path": "Research/omr/.runtime/phase3/references/13c7f889b00ea676f1f89c30.json",
+      "reference_sha256": "501a49c52c6822b2a6996c4f21ea2637d9a93c340b06792865027a0bcd8b71b3",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata21_1/sonata21_1_14.png",
+      "normalization_warning_count": 0,
+      "note_count": 101,
+      "reference_musicxml_sha256": "96c6781b8cf731735aa6a2ffa34da16f598a2997e37a95aacd64166f5bb4e3ad",
+      "reference_path": "Research/omr/.runtime/phase3/references/243684de9e0a54c322956d7e.json",
+      "reference_sha256": "b6225bbb7d67803ce8411f8348c0daf1ec33c8dc0e207cc8ac117cfff528bfe2",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata21_1/sonata21_1_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 551,
+      "reference_musicxml_sha256": "34048697558984e9015ec978690237068e69aaf495b8f99a2288939ec22fc37f",
+      "reference_path": "Research/omr/.runtime/phase3/references/dcc535e1c8a55a16b758ef2f.json",
+      "reference_sha256": "507eca90fd560d9f0d0654000add39fa67fbf910c774858dd3dba488133919ad",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata21_1/sonata21_1_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 494,
+      "reference_musicxml_sha256": "511336a0c793791e825603d7e49bcb24b7fa06ac1b0d0ca13200b2bc5185d21d",
+      "reference_path": "Research/omr/.runtime/phase3/references/f1b3f1e2ed9c63e11cf8ee52.json",
+      "reference_sha256": "ade39f629921292d5bf9d397d2e1cdfaa2f6247fdbbbae68b2740be2ffe8ca75",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata21_1/sonata21_1_5.png",
+      "normalization_warning_count": 0,
+      "note_count": 439,
+      "reference_musicxml_sha256": "a2f2a93386eaf8e58abebcb56ff74cae7cf04f17feb88c79c1ca451a4fc539b4",
+      "reference_path": "Research/omr/.runtime/phase3/references/5aefecde1567ee44c5af1af8.json",
+      "reference_sha256": "79ea2ddda27e3269800cd22e0c58c2a0cb3b8d483d4938c13f18885902487919",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata21_1/sonata21_1_6.png",
+      "normalization_warning_count": 0,
+      "note_count": 535,
+      "reference_musicxml_sha256": "3a4d528ea303b61f3f6fce9249cb09056ce9d599fc29f390f123d0009aacdb23",
+      "reference_path": "Research/omr/.runtime/phase3/references/8ab25830f14982015003259b.json",
+      "reference_sha256": "4f362052d1a030f28d810a2ca39b0781ef7c17deae348ad6843920cb7865e7e5",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata21_1/sonata21_1_7.png",
+      "normalization_warning_count": 0,
+      "note_count": 439,
+      "reference_musicxml_sha256": "054c8120365ff33e89c4b68dc2bb44e62826dc0140451d2cbb9d9f2443db9777",
+      "reference_path": "Research/omr/.runtime/phase3/references/0f7ee7e1c8383b6d110d290d.json",
+      "reference_sha256": "7bbdae86164c38bbda0741bbaa75dd47f5487f2730c46cedb13c53de3c4e6a8e",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata21_1/sonata21_1_8.png",
+      "normalization_warning_count": 0,
+      "note_count": 541,
+      "reference_musicxml_sha256": "ec5f4fc97a1189dc9795d1aa12937fad5a129d8aea15fc42e8db029c217c52ca",
+      "reference_path": "Research/omr/.runtime/phase3/references/408f379ee8d29c1d7f343f45.json",
+      "reference_sha256": "7e4cde845f925de1cfb82e893dcf70d6f54e63cf0504cfdc1b6ad16c71f1c03a",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata21_1/sonata21_1_9.png",
+      "normalization_warning_count": 0,
+      "note_count": 543,
+      "reference_musicxml_sha256": "5965299b949d34390f30c1f52f4542e573c653b8390e94a00dcf9adf15fa4167",
+      "reference_path": "Research/omr/.runtime/phase3/references/c6ed2c2c11b30aadf6575892.json",
+      "reference_sha256": "2e2a507db793d7588a31e001f08b17515398d2dbedaf912318b3b218851a2b56",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 405 missing, 405 extra",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata22_1/sonata22_1_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata22_1/sonata22_1_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 757,
+      "reference_musicxml_sha256": "f18530b29832dac8d7adafcd81125f8b2f4808014c748224b8cc12af585b3d66",
+      "reference_path": "Research/omr/.runtime/phase3/references/43ae55f9bf9376a7421e489a.json",
+      "reference_sha256": "6c9b44fbf118d7fcb6f2c8643bde1537075dd876c2fa3af77400aec48e8dcb96",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata22_1/sonata22_1_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 269,
+      "reference_musicxml_sha256": "0bb010bc98fd4e2ff9adaa677e2c7167c8dea33353c9f1d110beb258cddf8901",
+      "reference_path": "Research/omr/.runtime/phase3/references/759c43f054ee3fc635f93b34.json",
+      "reference_sha256": "0e594285680c56ba976e2bc84b961706e5c9f311ae83d968c612a55ff52c6cb2",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata22_1/sonata22_1_5.png",
+      "normalization_warning_count": 0,
+      "note_count": 405,
+      "reference_musicxml_sha256": "11ef13d11977a7c5cea475d9fc1f391ea9770f0ad3b748a616cf91499903e90e",
+      "reference_path": "Research/omr/.runtime/phase3/references/91f955d0d3d6be13f958e3c6.json",
+      "reference_sha256": "2364741807239f9d61464d171a50c17bc67c3f68f98f365883247742aed6e27a",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata22_1/sonata22_1_6.png",
+      "normalization_warning_count": 2,
+      "note_count": 535,
+      "reference_musicxml_sha256": "32af5050b9ca10440d23150cd319ba1d7f7ad13963995c588f7cb48ea2067cc9",
+      "reference_path": "Research/omr/.runtime/phase3/references/7c21e479a058e9eca68910e1.json",
+      "reference_sha256": "0488d36780d4cbd8e46998ce8b6645fc7fdf95b4c6a49ae208574917ed66d530",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata22_2/sonata22_2_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 366,
+      "reference_musicxml_sha256": "98014183c475dc048f327c1dd74d8d50273570afbff37a0f5da664031b5b503d",
+      "reference_path": "Research/omr/.runtime/phase3/references/f5490f707d9839c95b08809f.json",
+      "reference_sha256": "a995617f5edeefa8f395da36e8224a009d63bef99e2d1981abf125b3f906e3ab",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata22_2/sonata22_2_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 407,
+      "reference_musicxml_sha256": "ed667be0ca30fe00e64639e75b3bb5aa1396cd9e0798537650e5e4ffb48bdf6c",
+      "reference_path": "Research/omr/.runtime/phase3/references/a975cd9ea54a18c379e46bc2.json",
+      "reference_sha256": "13d15ed5328dd2dd8710c088f954d158ebe67ada69d88bc8602a3cd795fd4b36",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata22_2/sonata22_2_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 389,
+      "reference_musicxml_sha256": "f82bca9bb4410084aef757b3235d706163c7d238cb38dc940d47b4c71911e0f4",
+      "reference_path": "Research/omr/.runtime/phase3/references/5c602bce42812887c6839621.json",
+      "reference_sha256": "b8f7debb76b2f225f9c01f5b9cd1988ce3ffe36ff392fc50db2a94199f41771f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata22_2/sonata22_2_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 444,
+      "reference_musicxml_sha256": "0944439531ac43e3381223774a37124d34a9e2fb968e779e74fb74570ba6eb1d",
+      "reference_path": "Research/omr/.runtime/phase3/references/356bfa04bbb27bb87cbcbac7.json",
+      "reference_sha256": "dd65279a219cafb925104b34ae19e8f78db790a6ca7f1992b1233c57aa0bfdd7",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata22_2/sonata22_2_5.png",
+      "normalization_warning_count": 0,
+      "note_count": 441,
+      "reference_musicxml_sha256": "e6b58e62ef1f96bdafdf1d13d584cbd94658859263ca6b7fe61dcc4424125fc4",
+      "reference_path": "Research/omr/.runtime/phase3/references/b76e7c57356351751fe61ea8.json",
+      "reference_sha256": "e6c6ab4ad6dab640f7a5908c87a3a80254247718a9dd308fe19b7de523390276",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata22_2/sonata22_2_6.png",
+      "normalization_warning_count": 0,
+      "note_count": 482,
+      "reference_musicxml_sha256": "2b1f40a732f9da78079e13851f1138c002432031f9a4e4e4c9f7551a030d34b8",
+      "reference_path": "Research/omr/.runtime/phase3/references/30976e0cd7a109df7d7d5ffe.json",
+      "reference_sha256": "d34711103ccfb2a217d97cd744b2d4aa8742e8b169a2393d12b58326d28c181f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata23_3/sonata23_3_1.png",
+      "normalization_warning_count": 2,
+      "note_count": 100,
+      "reference_musicxml_sha256": "21c375772c4347ba3e4fc5fb8f6fb5a05a8e326de509e6d5c573a81ba0736119",
+      "reference_path": "Research/omr/.runtime/phase3/references/185123a4b2c961e32c95c38a.json",
+      "reference_sha256": "18395c4b96e36da61c98cad6139e1b140adf1a90b118d843c3fc51ff55009475",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata23_3/sonata23_3_10.png",
+      "normalization_warning_count": 0,
+      "note_count": 470,
+      "reference_musicxml_sha256": "976ca7cb19da9baee4b17fb375b6f2cf018cc9e8fc3551626e965187aafa6c43",
+      "reference_path": "Research/omr/.runtime/phase3/references/d592664dc358683f1f1ebb1f.json",
+      "reference_sha256": "507c4e361f1eeab2b5b612916fe08e71b7ed3f6ea463e0fbd0ee73af9a4a4074",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata23_3/sonata23_3_11.png",
+      "normalization_warning_count": 0,
+      "note_count": 552,
+      "reference_musicxml_sha256": "e1da47ce91f4a7269d3fd0b39e037f902a4dfce85e63a64cf5aa7265449612cd",
+      "reference_path": "Research/omr/.runtime/phase3/references/b83b47770306c0e69cb67896.json",
+      "reference_sha256": "011da69ef53eb64ed509770b4bc12544aa3506d466e2a4a8f9032e844017e094",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata23_3/sonata23_3_12.png",
+      "normalization_warning_count": 0,
+      "note_count": 378,
+      "reference_musicxml_sha256": "c689c8720f68fc6ff430aed9bd3293346e962246babfc38f84ce5aa67373ac03",
+      "reference_path": "Research/omr/.runtime/phase3/references/44a4bd924ef00a7b088d7250.json",
+      "reference_sha256": "ad6e6be5e02971ac4059f8a700bef66bb73d95541cc04be38b69e41e3ad47603",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata23_3/sonata23_3_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 473,
+      "reference_musicxml_sha256": "ba0318a7ad07345d690ae3b8f0ca7d2e284777718b60d8d1abddc46aac370414",
+      "reference_path": "Research/omr/.runtime/phase3/references/d0da297aae40c5388da187c9.json",
+      "reference_sha256": "d16211c89ad894df0a1bd6192cc5f3ef3bba650199bc2d376df5d222d3e08103",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata23_3/sonata23_3_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 422,
+      "reference_musicxml_sha256": "c7bfbc56242cdfb62f731bca654fa821a8edd1dc241bc9fd4fe6390d417beb36",
+      "reference_path": "Research/omr/.runtime/phase3/references/705bfb2420953b460cbb97cd.json",
+      "reference_sha256": "e7c0c570dbe765b6c649d382db3cf7f624c801bf5a460c94f04aea9b929f0f56",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata23_3/sonata23_3_5.png",
+      "normalization_warning_count": 0,
+      "note_count": 430,
+      "reference_musicxml_sha256": "f3e76582d4e1b98d9d83e7bf1daf117a78d839f70041e198879d2179e8478696",
+      "reference_path": "Research/omr/.runtime/phase3/references/3df51843c960a648545ae363.json",
+      "reference_sha256": "b0f5163118b992d5cc81ecdf7d913a2cca0c4916a555698521ee5359c2077c0d",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata23_3/sonata23_3_6.png",
+      "normalization_warning_count": 0,
+      "note_count": 509,
+      "reference_musicxml_sha256": "85ffe395efdf04a2bd82bd96b5de7cdb6fa9edfa6eaf8e2183b28e98d2e19d39",
+      "reference_path": "Research/omr/.runtime/phase3/references/68515c0189a4858643d2cd19.json",
+      "reference_sha256": "b3fafc05cfaa54b113440635534ab8a3d59923d52eee574bbd138d8ab880c01e",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata23_3/sonata23_3_7.png",
+      "normalization_warning_count": 10,
+      "note_count": 303,
+      "reference_musicxml_sha256": "72df176dd3e04e18aaf94e69febfa2ba672c03c86784b9d7c92afcd886bab4ae",
+      "reference_path": "Research/omr/.runtime/phase3/references/1adbafee2745853c3831c73f.json",
+      "reference_sha256": "e1952f7a3dfab24c2a55bc5d399331accbea205a8daf8a310dd7c16238a2610d",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata23_3/sonata23_3_8.png",
+      "normalization_warning_count": 0,
+      "note_count": 363,
+      "reference_musicxml_sha256": "4f6264c8938ba6a982bb12ca4b4c0a878b853ac733d6a7c48a36f7acac0d3cba",
+      "reference_path": "Research/omr/.runtime/phase3/references/15c8b218a90f015ac7b4d3c8.json",
+      "reference_sha256": "77c49c54d7605e50f6feb945a9f05690c18573426c8d0685e018e971550667c7",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata25_1/sonata25_1_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 338,
+      "reference_musicxml_sha256": "039f4b44d4e4cc18f89a34c51fda02e0f0008b1be93ae38980d99d0b08e387c0",
+      "reference_path": "Research/omr/.runtime/phase3/references/63fdca124de3844e1fabb469.json",
+      "reference_sha256": "dd943e5faccf00dc0dbd0a98a5b85ec793578b5088e9224075e827003b41cf06",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata25_1/sonata25_1_3.png",
+      "normalization_warning_count": 10,
+      "note_count": 380,
+      "reference_musicxml_sha256": "6313f4245fea2c4aae59832ce381ca49bfc132d44b5308a63519e1ee148484de",
+      "reference_path": "Research/omr/.runtime/phase3/references/c081ccc7c24b014006c0bca7.json",
+      "reference_sha256": "daa6d597394ebb0abc0c1e36dfa9399dc90c59bc10ff960427381dfd7d283988",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata25_1/sonata25_1_4.png",
+      "normalization_warning_count": 2,
+      "note_count": 404,
+      "reference_musicxml_sha256": "1b474c1eb46a9d147ac1a90e38f05477a435084776f4a14f506f9e1774da3ec7",
+      "reference_path": "Research/omr/.runtime/phase3/references/f076915f6e774a739b9e3604.json",
+      "reference_sha256": "bb10ee6eb744f6142ada5f3794e3389e441c1b20ada92442dbd5145282980d3f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata25_1/sonata25_1_5.png",
+      "normalization_warning_count": 2,
+      "note_count": 490,
+      "reference_musicxml_sha256": "39376d268f78537eceed73d9ed4f5dd0d4dd492028c8cf8b7709ba22281784b9",
+      "reference_path": "Research/omr/.runtime/phase3/references/17e39b59218f06aaf8714414.json",
+      "reference_sha256": "a789f4903c4556b216812326fa1786f90bb45a0eb16fb9dedb3f3ac7bab0a601",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata26_1/sonata26_1_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 515,
+      "reference_musicxml_sha256": "54f1419ea88d3e727fb77359eeb621947f8c9f1e00952e80dbfab1df8b53a798",
+      "reference_path": "Research/omr/.runtime/phase3/references/0f96a47d47d43a4373724ce8.json",
+      "reference_sha256": "be5e6b2a50856bd743f27c2ab108f1cf91337524c69d8f70e0fe29d869739439",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata26_1/sonata26_1_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 393,
+      "reference_musicxml_sha256": "e931ed321674d230e0d83a6d5b5dcb03a45a898c0606237b51ad7552badbdf5d",
+      "reference_path": "Research/omr/.runtime/phase3/references/8166e658941e1f90b371eaf2.json",
+      "reference_sha256": "c73765272b9f1d2c981535117a0c8f4dc39c9ac01f766ec0c3b16b6c96144c7d",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata26_1/sonata26_1_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 448,
+      "reference_musicxml_sha256": "e8710cc23ba9030e9df7a3b43fbe80012e422a5844c4ec13acf04a5f05bd380a",
+      "reference_path": "Research/omr/.runtime/phase3/references/3b9d2497b159e7b7ce05b038.json",
+      "reference_sha256": "387a19f9bb2eae1ad5642ec8ea387597b074c68741c4f8c38b3d86e592e0e8de",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata26_1/sonata26_1_5.png",
+      "normalization_warning_count": 0,
+      "note_count": 441,
+      "reference_musicxml_sha256": "1cb6fa0e2052448d6de957f3148e34cae393986ed283b367bc74c8162aa777c3",
+      "reference_path": "Research/omr/.runtime/phase3/references/802121e4d9ef90118286acec.json",
+      "reference_sha256": "bed0e7ee2f20aa6784ab84917039aa2c1dc08f2d63e1315cf14a867be021733c",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata28_4/sonata28_4_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 448,
+      "reference_musicxml_sha256": "b20145933d7d4cc36bd172df9d15bc3cbfb0022b735353aae1cc5ec2668d323c",
+      "reference_path": "Research/omr/.runtime/phase3/references/67716e182d29412dd9e79cfb.json",
+      "reference_sha256": "c33199f80c460b0b60a909b5435c1a429633811c9c386b704592208e73c16f6c",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata28_4/sonata28_4_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 541,
+      "reference_musicxml_sha256": "652625663c5760787a4a882bcba871b73148421ab0003b998915de386a5be4a2",
+      "reference_path": "Research/omr/.runtime/phase3/references/9a36af0a8ac6a41e7c63f21d.json",
+      "reference_sha256": "b3c4e66efb90bf716a26b4e839a644c727695e6a7e247d9a9cea8b724eaa16e1",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata28_4/sonata28_4_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 357,
+      "reference_musicxml_sha256": "b135cc55a2e767137d08a24356a97754aa5a255591e166c2e2f713848b9ffdc3",
+      "reference_path": "Research/omr/.runtime/phase3/references/23e09d53cf185d7196ef4840.json",
+      "reference_sha256": "c553307773e8749d28ae65270a0777add7b68d107407679588a374a0d6c72dab",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata28_4/sonata28_4_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 397,
+      "reference_musicxml_sha256": "4ade028b8c6c63d2615b9f687af4ba8de8a92e5a43c8915cec7f00e5acd02d77",
+      "reference_path": "Research/omr/.runtime/phase3/references/efddc10350df28df85987359.json",
+      "reference_sha256": "974a4675de8e1720804329e0452274fa0651b98a6ed1a5e87d405ab1b8c5f5ad",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata28_4/sonata28_4_5.png",
+      "normalization_warning_count": 0,
+      "note_count": 441,
+      "reference_musicxml_sha256": "4c62ede7c62c01455a63faa97887f01b1931c3b6ec1dcb8b512a06553a83a7be",
+      "reference_path": "Research/omr/.runtime/phase3/references/5d12c6e15150cb90849e66fc.json",
+      "reference_sha256": "50f0be67a20345eefd9d858f16865bd3f44025628b7c3414214244954a9462e6",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata28_4/sonata28_4_8.png",
+      "normalization_warning_count": 0,
+      "note_count": 364,
+      "reference_musicxml_sha256": "4b6883d070ba9758c87cc1793f5d7e7744467f0b611c4bb11c4e37992ee41483",
+      "reference_path": "Research/omr/.runtime/phase3/references/9c5c306772cdeb313d481d6a.json",
+      "reference_sha256": "7e6d58f7c5b2c2a884bc372f1338d94ccd2e55001d9e03b4673810762c8e66c3",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata31_1/sonata31_1_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 423,
+      "reference_musicxml_sha256": "707a884795c5c30a99650cb924f504d025d43e31b16f9c84e88f7d9a5cf3b383",
+      "reference_path": "Research/omr/.runtime/phase3/references/36f8da9ba092449308949066.json",
+      "reference_sha256": "d7f37f33ebe6b2f14d2a44d97f7c5825273341ed87fbccb31739fd9fd67e32fb",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata31_1/sonata31_1_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 470,
+      "reference_musicxml_sha256": "1516e9b8cd2b81a2fe0925b50882732f018c4dd5196c30afbf2403abf5d0c124",
+      "reference_path": "Research/omr/.runtime/phase3/references/2339a14ea4665d788459fc65.json",
+      "reference_sha256": "802a6549eff58e48afe2972f4e6475f44775b8af0d4819899e3b12d6ca5a170b",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata31_1/sonata31_1_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 455,
+      "reference_musicxml_sha256": "f23d191e12bd2849a7919bc050c40dff82b05641515180aa9e096acdb672aab0",
+      "reference_path": "Research/omr/.runtime/phase3/references/02b8a30b7c8225a7321e1c8e.json",
+      "reference_sha256": "085f9969fe16b9f1456f5860cfb43fd2f3d409f75ccdef86cdc4cbfe2d71422b",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata31_1/sonata31_1_6.png",
+      "normalization_warning_count": 0,
+      "note_count": 424,
+      "reference_musicxml_sha256": "c108877ea32d69617ebe33a48697265af46c91b2ec13c9f8d5ed3ec4d220bbc8",
+      "reference_path": "Research/omr/.runtime/phase3/references/f6935e14cac3bebce2741eda.json",
+      "reference_sha256": "1ebc2068cac7c8c98c3e88805ed5ec5650d000629e24ea539b72a825d09e79d0",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/etude10_09/etude10_09_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 385,
+      "reference_musicxml_sha256": "92db45c865cb5a72b2fc6c86ff66bedf5a990e586bc8f31ce941e45bca0b1e90",
+      "reference_path": "Research/omr/.runtime/phase3/references/a67be758a6751d7e973ff901.json",
+      "reference_sha256": "0186814f5c03a358036ec5528f2541cab2be91b584e138fab0cb5ba22aab61e4",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/etude10_09/etude10_09_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 455,
+      "reference_musicxml_sha256": "c48467a065f5c7e9cacdd8db326401bf4e6441fd0b27be0fba38479c4ab8bce2",
+      "reference_path": "Research/omr/.runtime/phase3/references/727658ccc69740e0b4503429.json",
+      "reference_sha256": "c2080a79c224f7171ed232aeef0edab72f3f6e03b83e2371825b2874a2389359",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/etude10_09/etude10_09_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 384,
+      "reference_musicxml_sha256": "dc64ed3420597740cc2d794078394fe560616c80a604a2212ec43acf624cc367",
+      "reference_path": "Research/omr/.runtime/phase3/references/7186186286caa504c7598325.json",
+      "reference_sha256": "04708a71a56b860c369903f2cc019f0dbb770553d84df60648b5e1e0c94ed426",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/mazurka06_3/mazurka06_3_1.png",
+      "normalization_warning_count": 2,
+      "note_count": 398,
+      "reference_musicxml_sha256": "b1587e7a7b80042dc5d912d31702fd665ebd84d845bf1bd6c398d0687545deec",
+      "reference_path": "Research/omr/.runtime/phase3/references/a8616433db432b6571d9bb24.json",
+      "reference_sha256": "71e595a484c6bf2cfd558ffac137c16adf9ffdf8a127f2ff6bf3f557627e63ae",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/mazurka06_3/mazurka06_3_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 365,
+      "reference_musicxml_sha256": "a31c030b5691933c17f023924d7973a2e9e27378db30975ae06ebfa4deeb2461",
+      "reference_path": "Research/omr/.runtime/phase3/references/bde00295d3394695381aff76.json",
+      "reference_sha256": "4988beaa8135671fbe888fd630726b73cd95fb9929762cdacdab2c52e4a2d6fe",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/mazurka07_3/mazurka07_3_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 407,
+      "reference_musicxml_sha256": "47f4fe255fa2de9681d9eca27fd67061afc23267887a8f4dd2705468140ba71a",
+      "reference_path": "Research/omr/.runtime/phase3/references/9cf3696a3a4d89c458458ddc.json",
+      "reference_sha256": "04c62353ebc274ebed483d00a865f3cd07222a648a21b1ab77ca20d9ba7aa681",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/mazurka07_3/mazurka07_3_3.png",
+      "normalization_warning_count": 2,
+      "note_count": 515,
+      "reference_musicxml_sha256": "4aed083217b59ec0cc41dc9855f811dcb1a0d570d9f77d12a7667eb29d6efe1c",
+      "reference_path": "Research/omr/.runtime/phase3/references/5c2713eddcf63276ce820898.json",
+      "reference_sha256": "e108a28c84f784cf1b618bd2e2b16ebf4800e80c4c04e2c6229448f57bee38f3",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/mazurka07_3/mazurka07_3_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 279,
+      "reference_musicxml_sha256": "09b4ba2500bc5d62cbad219ac2608d4390ad5c6905549949af76771eec1e5f80",
+      "reference_path": "Research/omr/.runtime/phase3/references/a51b6743907357edc681f969.json",
+      "reference_sha256": "edbe5689ae5c4b08d95d3c10cec75d076de0bc3169487c2e0c6307574a3a48cc",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 367 missing, 367 extra",
+      "error_type": "ValueError",
+      "id": "test/chopin/mazurka07_4/mazurka07_4_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/chopin/mazurka07_4/mazurka07_4_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 287,
+      "reference_musicxml_sha256": "07f8532b3cf631edf3f1fb265b873e9d5d91c42862eff5596b8f555f2ecfca5b",
+      "reference_path": "Research/omr/.runtime/phase3/references/32c5dba4c9b26565e483e1fc.json",
+      "reference_sha256": "a2f207d8d61e8ef6a1cbe796445a68d370f5360df7a6e6c586841f2fe1a70b95",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 323 missing, 323 extra",
+      "error_type": "ValueError",
+      "id": "test/chopin/mazurka17_2/mazurka17_2_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/chopin/mazurka17_2/mazurka17_2_2.png",
+      "normalization_warning_count": 8,
+      "note_count": 412,
+      "reference_musicxml_sha256": "0f69bacc555e7aa6839f84eefbd3794c1b0353aebb4c61b7ccc44163a52de577",
+      "reference_path": "Research/omr/.runtime/phase3/references/87845df6afee38fac4f502f9.json",
+      "reference_sha256": "c04a033db842c0215095be0a1d0faf2c22ee545722a1c76c901138d64fc34b23",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 260 missing, 260 extra",
+      "error_type": "ValueError",
+      "id": "test/chopin/mazurka24_1/mazurka24_1_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/chopin/mazurka24_1/mazurka24_1_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 418,
+      "reference_musicxml_sha256": "505c49c11f5e39a8df49eb18e755bb7a68f6f0a62b8fcc4f1c68ff5d39ff2e8a",
+      "reference_path": "Research/omr/.runtime/phase3/references/7ab7babe77f6c0d37904395c.json",
+      "reference_sha256": "2e4d0642da74fa227fb864967fe33151a013fa11a9a0a04de0b33b9ef38191b8",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 320 missing, 320 extra",
+      "error_type": "ValueError",
+      "id": "test/chopin/mazurka30_2/mazurka30_2_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/chopin/mazurka41_1/mazurka41_1_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 348,
+      "reference_musicxml_sha256": "48c3d2aa14fa0ae3e831d8c1643a5963a7ac46032fb3da0f783fe4ae791f8578",
+      "reference_path": "Research/omr/.runtime/phase3/references/67432ef7961c58cc3a96c785.json",
+      "reference_sha256": "6bb52c40415701bcb3fc9d0610d73d576d75ea1bece4a72505841f5a02fb35ba",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/mazurka41_1/mazurka41_1_2.png",
+      "normalization_warning_count": 6,
+      "note_count": 352,
+      "reference_musicxml_sha256": "982efb1a355f255280ad2d28e77d73dff37bdb6bc92cb1490a2b609e6f007ac0",
+      "reference_path": "Research/omr/.runtime/phase3/references/6da0f732ade864bf45c52408.json",
+      "reference_sha256": "eec84b616d62699b89e83efe4dd1a574adb3546a540f67580232587c93bf9107",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/mazurka41_1/mazurka41_1_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 443,
+      "reference_musicxml_sha256": "a97fa4439cd8cf4cb952510d051b5fcdbbea7049b746f7a503902766c136d238",
+      "reference_path": "Research/omr/.runtime/phase3/references/53f77d8e95447e4c89a99906.json",
+      "reference_sha256": "e593ba6c97ae0e21729da7eaf298c9cd1c9241bad124ffd4eae6b6f80b5d8cfc",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/mazurka67_1/mazurka67_1_1.png",
+      "normalization_warning_count": 14,
+      "note_count": 349,
+      "reference_musicxml_sha256": "7f8d1d636776a0930488d9122cf667c0d406e107ecd231eac21178df18d6db18",
+      "reference_path": "Research/omr/.runtime/phase3/references/be072ecd4618511a07379345.json",
+      "reference_sha256": "87e1423e8729707d5424e814aaf80ec573ea38a3470c20ae15531527343e1d54",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/mazurka67_1/mazurka67_1_2.png",
+      "normalization_warning_count": 10,
+      "note_count": 415,
+      "reference_musicxml_sha256": "6bbe4c7b8125db4b8d002ccbbea665b084098f227b570c602639f1a3f7528fd8",
+      "reference_path": "Research/omr/.runtime/phase3/references/35ca2040a487629766f293c3.json",
+      "reference_sha256": "c7aa6a833b6ba3f9b6ec48dd3d17dad04a9a8386287bd720ec40dc4513b58592",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 246 missing, 246 extra",
+      "error_type": "ValueError",
+      "id": "test/chopin/mazurka67_2/mazurka67_2_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/chopin/mazurka67_2/mazurka67_2_2.png",
+      "normalization_warning_count": 6,
+      "note_count": 294,
+      "reference_musicxml_sha256": "b4558a55a2d1765cc554f7dc1803a51fe98d318e12ff049bdddf02a5dc5cd703",
+      "reference_path": "Research/omr/.runtime/phase3/references/17f1238a93d2d7149af2369f.json",
+      "reference_sha256": "9474acd1c78ed8d3cbe63ed628864fb1d37ae824d08fd054985f651ad5773dc4",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/mazurka68_4/mazurka68_4_1.png",
+      "normalization_warning_count": 2,
+      "note_count": 177,
+      "reference_musicxml_sha256": "323e22a78bb1443ded86296534a7e4a6e1a62272a6372a5cd380886ecff3182b",
+      "reference_path": "Research/omr/.runtime/phase3/references/3237c2285db94f83cdd952a9.json",
+      "reference_sha256": "54af584f33dc930de9f6320286c7eac64c7684fdb478ff3b4168e884e7ea3be9",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/mazurka68_4/mazurka68_4_2.png",
+      "normalization_warning_count": 4,
+      "note_count": 245,
+      "reference_musicxml_sha256": "d57607a418668110bfe84b8ed97309ef458eced815bfcd4a645eed950b5f9109",
+      "reference_path": "Research/omr/.runtime/phase3/references/46152f54b95e44e2c71e9929.json",
+      "reference_sha256": "0a1ff51b631be21a72d0eed485b692e7104b41934a9f49577a3d9829c80acf15",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 343 missing, 343 extra",
+      "error_type": "ValueError",
+      "id": "test/chopin/mazurka_51/mazurka_51_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/chopin/mazurka_51/mazurka_51_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 331,
+      "reference_musicxml_sha256": "23971c480b516632a2720d36d4ec09ba865f6ca876faa5bd7c76c05a0e0a5317",
+      "reference_path": "Research/omr/.runtime/phase3/references/6c5edb9a84ef7f0d64f2110e.json",
+      "reference_sha256": "c0c10a1835e75bbef2a4129930f5fa55e7f69e6f4ac0f87526fc03eaab952785",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/prelude28_02/prelude28_02_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 338,
+      "reference_musicxml_sha256": "cad0e44c0eb709c32081216f868220633a23006a0bfb3f8b7ab581819c36008a",
+      "reference_path": "Research/omr/.runtime/phase3/references/50c52a30390bc16b638531c0.json",
+      "reference_sha256": "940657fc2c77df57d201ee9e2d9fee46e77c582b2817e2486503699c64266eb9",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/prelude28_23/prelude28_23_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 228,
+      "reference_musicxml_sha256": "bff5435f5ce6d9433acc4d3784d0c98dc79764ada9915f265a2b4c2b4de80f4d",
+      "reference_path": "Research/omr/.runtime/phase3/references/50fc4121c5f3e0c1f9e124bc.json",
+      "reference_sha256": "47ae6767262b2a88bc6e578c8570288b140fb9c3b086d2a158d7eb6186b97b77",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/grieg/op12_2/op12_2_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 313,
+      "reference_musicxml_sha256": "0049407beaf3e2f4a4040269831aecf64862b845e666e90853805b531d6c5bc8",
+      "reference_path": "Research/omr/.runtime/phase3/references/17bf98d85836088cb4a905e9.json",
+      "reference_sha256": "243f100d1cbdd845cf49c1c8c42f4d0112454765a7f0b982774385c12e93fbb7",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 138 missing, 138 extra",
+      "error_type": "ValueError",
+      "id": "test/haydn/sonata03_4/sonata03_4_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/haydn/sonata03_4/sonata03_4_10.png",
+      "normalization_warning_count": 0,
+      "note_count": 416,
+      "reference_musicxml_sha256": "6b7374c18b90d9f06a3dafa3bcf2745e3e6081021403a924f9b3a6443f12c9b5",
+      "reference_path": "Research/omr/.runtime/phase3/references/fe1637d78dbb7a846393127b.json",
+      "reference_sha256": "a6c837c936b46d2aff08f6e7161cf610bd038bad377e9514849fa728435c5cf5",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata03_4/sonata03_4_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 403,
+      "reference_musicxml_sha256": "f868f786df2a0a1a9cf4b0d7ef1d8ffa392c3b50690ee50e6cbbcdfc3455cb10",
+      "reference_path": "Research/omr/.runtime/phase3/references/7b32ca7c24eaccb47c912afc.json",
+      "reference_sha256": "66f8f82115759b3c6b0eae88ed4e085e1445b56193a389dadef0ba8719911b07",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata03_4/sonata03_4_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 489,
+      "reference_musicxml_sha256": "b6c2602d91e4b5ce0618694845692ebf03a83933a0dc5c14fddf0a9abc3960b6",
+      "reference_path": "Research/omr/.runtime/phase3/references/afa879948cb491e703fde83a.json",
+      "reference_sha256": "90b52016560e4efcf3bbf21256d61b90f05ae3132634583f9ac4fb1da8af053c",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata03_4/sonata03_4_5.png",
+      "normalization_warning_count": 0,
+      "note_count": 336,
+      "reference_musicxml_sha256": "87a023c26e2b6c0c8b2522c21b9741c7ef8e16e4083a20c1e5d9874fc5ba4c80",
+      "reference_path": "Research/omr/.runtime/phase3/references/2937fef7971b43651341dadc.json",
+      "reference_sha256": "8adba9418102e9c2ef89116b97f569c9b366ede8b1151dd72ba19f113faae616",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata03_4/sonata03_4_6.png",
+      "normalization_warning_count": 0,
+      "note_count": 332,
+      "reference_musicxml_sha256": "4595a114386735ad3b0ba0c567ab65d078eb969bae27df0b4a02c28eebe4bcac",
+      "reference_path": "Research/omr/.runtime/phase3/references/59b0d969992701619c8ee115.json",
+      "reference_sha256": "7fdb74a9e0e684206f256a043051788131229c7fbabffbef91556224b8580a8b",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata03_4/sonata03_4_7.png",
+      "normalization_warning_count": 0,
+      "note_count": 408,
+      "reference_musicxml_sha256": "0c05d46464f412ad05e834081a840891f85c033cb07c093bb8620db9f2c4d3fa",
+      "reference_path": "Research/omr/.runtime/phase3/references/d459af94bd471a073bb24178.json",
+      "reference_sha256": "3d297664b325048ac372b8fbf617417ccb2393c0f080b71c80777b3708758a77",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata03_4/sonata03_4_9.png",
+      "normalization_warning_count": 0,
+      "note_count": 356,
+      "reference_musicxml_sha256": "7f2d5fbba3e4f2894cb6dceb3a52d1c5d5840e759f45105a1e837b2090a08305",
+      "reference_path": "Research/omr/.runtime/phase3/references/6b37fa551d0bb0c79e061a24.json",
+      "reference_sha256": "615988a7fcf6ecac0e1dfb2b89e941d8acda0fc9beec34bec0362aefa9c5e020",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata15_1/sonata15_1_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 462,
+      "reference_musicxml_sha256": "f86c63224cbfb1109ce064cda6d49ef83f04eb0c661962df781eea25b4bf3bbd",
+      "reference_path": "Research/omr/.runtime/phase3/references/82d1da33ba7140248bd76c4c.json",
+      "reference_sha256": "e77d2132fd020119ee86b5cb153add55cf47e67a96f5987100aa804950d4be27",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata16_2/sonata16_2_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 427,
+      "reference_musicxml_sha256": "9ca909f489e1ec22759cd0b245f1d2594d6c0161588ae9a1943626fb0b730db4",
+      "reference_path": "Research/omr/.runtime/phase3/references/7b2d56be6b2d2042f479e18f.json",
+      "reference_sha256": "29748b1ce83e749a441bf3deb4bc6ff5838f31678fb98a332ab9dcc89825edbe",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata16_2/sonata16_2_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 69,
+      "reference_musicxml_sha256": "aa63352c17e1e93eee1ee3bdd25f742f846058b6216579147af80e519bbea7dc",
+      "reference_path": "Research/omr/.runtime/phase3/references/54af5709f349a87021f260e2.json",
+      "reference_sha256": "fcfd3e81e1e2d80bbe768820ae7ea613a1fba62c2d7184da5c21ae262240d2ef",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata29_3/sonata29_3_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 380,
+      "reference_musicxml_sha256": "fc51526642a27c02518462b42a2f30ef22d1b8641b6d377c672f06d620f9d804",
+      "reference_path": "Research/omr/.runtime/phase3/references/df378a2002eea3c27983d69b.json",
+      "reference_sha256": "f4a68d5b289e205a5b0a06999251ce8c1a8c886c5d17e3bf5627c5b9ea9e2f47",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata29_3/sonata29_3_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 446,
+      "reference_musicxml_sha256": "23de771b87a8e44c1b4a4bdb0430c4dbdef7fec42b5c9218c3de8ddd4bf55250",
+      "reference_path": "Research/omr/.runtime/phase3/references/551a76ed93b81c73bd855bdf.json",
+      "reference_sha256": "9ca0eb1b68e88a996a8d50c3e9bc9c2bf96c6df583cac078550f268b20ba0db1",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata29_3/sonata29_3_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 449,
+      "reference_musicxml_sha256": "57ec4e61afa7e9558b72a17348a2c0e52f9af2d626c701a64085f9f50ad101ca",
+      "reference_path": "Research/omr/.runtime/phase3/references/1b39e9ac90be8695990f4815.json",
+      "reference_sha256": "bc039ccad0807f2d5531e574bc046ce960fe59fabc8fd2eb21fd2a6b376a93fa",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 352 missing, 352 extra",
+      "error_type": "ValueError",
+      "id": "test/haydn/sonata53_3/sonata53_3_1.png",
+      "status": "invalid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 325 missing, 325 extra",
+      "error_type": "ValueError",
+      "id": "test/haydn/sonata53_3/sonata53_3_2.png",
+      "status": "invalid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 280 missing, 280 extra",
+      "error_type": "ValueError",
+      "id": "test/haydn/sonata53_3/sonata53_3_3.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/haydn/sonata53_3/sonata53_3_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 350,
+      "reference_musicxml_sha256": "6be700af651c28457eb9218ffd2b34994774d4f7b373662c4802cffd083cee22",
+      "reference_path": "Research/omr/.runtime/phase3/references/bbaccec828c1a84daf8cd596.json",
+      "reference_sha256": "3480b4e247ef74f3916a383d40ab63c403976e56490a4c3fdc0a18fc960fc97f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata61_1/sonata61_1_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 269,
+      "reference_musicxml_sha256": "0c1f8d25cc193cf7c26842ea7118f706a454a5e0a4c84d9d9c27ba7ef9a92641",
+      "reference_path": "Research/omr/.runtime/phase3/references/7f7ab308dfe22cf51231445e.json",
+      "reference_sha256": "3c1473a10e83c586971d93b7db02492363ca8b07e3e6f2a1ecc43777026291d4",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata61_1/sonata61_1_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 413,
+      "reference_musicxml_sha256": "9b2c556560bd52c582ac4a0097446f8c96370fbcb805ea07d6e7d02d24bd29de",
+      "reference_path": "Research/omr/.runtime/phase3/references/c3719e917f47b02cc8407167.json",
+      "reference_sha256": "97fcc784659a6a782adc7268e125721492af651a67e8fc8eeab8ef65a749a8c2",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata61_1/sonata61_1_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 344,
+      "reference_musicxml_sha256": "000ca412b8ac8a94d01533b888bba32b05c9bdd8086afcbcd0f2ba574ddc5213",
+      "reference_path": "Research/omr/.runtime/phase3/references/b11367f42833766ac09175ef.json",
+      "reference_sha256": "f648a18200fa5e8b5ef3dfafee9080500a766f9c56a75002056c1473cb5be085",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata61_1/sonata61_1_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 373,
+      "reference_musicxml_sha256": "4a8a49b1d5f413a10cff53e0a4d6d9ab1a18ba7e535483a5025135dbac95e7dd",
+      "reference_path": "Research/omr/.runtime/phase3/references/1534f3d1d63f2fde851d7e43.json",
+      "reference_sha256": "9e93a02083487c0304bb33feb34f7def37207506c4fe63ce024887efda9f1d34",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata61_1/sonata61_1_5.png",
+      "normalization_warning_count": 0,
+      "note_count": 441,
+      "reference_musicxml_sha256": "ddc0d5adf221992ca6b0c3da513d00d92265a4a32c161689a4f70fa62ecd1df2",
+      "reference_path": "Research/omr/.runtime/phase3/references/6458a7b39d01029e578bc86f.json",
+      "reference_sha256": "b2b4a4fbf670137e7b59b01ae5c354c37116d774e383b495ecbed09c8e829a5a",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/hummel/prelude67_13/prelude67_13_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 105,
+      "reference_musicxml_sha256": "83dcff991227c0a44060f6821579c65ad0c7e3891b20934d0ea3c5ad794ed1ec",
+      "reference_path": "Research/omr/.runtime/phase3/references/af31db41c093dc3339996541.json",
+      "reference_sha256": "1711292daf2234d5a544dd048090e9fdfb75fb135ae74b1abc3ecd695eb27750",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/hummel/prelude67_14/prelude67_14_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 70,
+      "reference_musicxml_sha256": "e1f8e96a55d004f9cd164f9136db70a36b14c2e30a0df689cfde7a0a8c120406",
+      "reference_path": "Research/omr/.runtime/phase3/references/ead156627225017ab8c1d591.json",
+      "reference_sha256": "d9b876d704afafe904ea5b4f66ae77ffee9d264e3e6dde80ad31e80a0a9c8991",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/hummel/prelude67_20/prelude67_20_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 97,
+      "reference_musicxml_sha256": "d6f3a51f815fe93169c6537cc32851b4e560e88f289d950f1b4dc75db59a890e",
+      "reference_path": "Research/omr/.runtime/phase3/references/6e08219541926bcec9bb46c8.json",
+      "reference_sha256": "8e6a312061ad0d6f164637a09445fd9f1f7ce48fcd7860154d4cbfa25a644c36",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/augustan/augustan_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 360,
+      "reference_musicxml_sha256": "b7fba538c622a3fbdd3e1584c58859bcd492f62250e83f3a63360396503af41d",
+      "reference_path": "Research/omr/.runtime/phase3/references/fe24f6fc45dbdb2e4a5ebaf0.json",
+      "reference_sha256": "11d5950b4ff415865e0142061ed7a736b036019daa55f19c824720d5ed774bd1",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/augustan/augustan_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 413,
+      "reference_musicxml_sha256": "081821db15d47caed268ef3bb071c927006a16ad0abe283bdc33f216757701df",
+      "reference_path": "Research/omr/.runtime/phase3/references/b045a9ccef94f0f4655f2031.json",
+      "reference_sha256": "7ceae85684bf448ee2becef731d5e7c9a5922f085d119d3f7b217bc7258a3ada",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/augustan/augustan_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 355,
+      "reference_musicxml_sha256": "7df4efd9b88c243163ed298207f24836379a1c7ea09b6ec0ccf0333aa62159b2",
+      "reference_path": "Research/omr/.runtime/phase3/references/0bc713bc9cf77864d15d4060.json",
+      "reference_sha256": "f16c02483e6072322d2be3ed943fad4235e98e05f53d4852f765f7c1f7d9e8d2",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/augustan/augustan_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 370,
+      "reference_musicxml_sha256": "8f67fd591b56a6e092f653538e9cd92d97cd21e0ba4d14a9b4d5cb340f941eb7",
+      "reference_path": "Research/omr/.runtime/phase3/references/b9755231e42cc9f0a8fed678.json",
+      "reference_sha256": "593828c857d9da3290bf5da10cf161f3a5cfd11e2a3f6579e33bca84856ece9a",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/binks/binks_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 266,
+      "reference_musicxml_sha256": "5594c9618eba303a8288d5d5f44987d674304b454f96ca10ebd9be47c10c6d7c",
+      "reference_path": "Research/omr/.runtime/phase3/references/befedc84a04f56b9e2407d1d.json",
+      "reference_sha256": "71d508b2d53ce2e8e4fc16786ec8906eb3339c332885108f01bf7679e657dba9",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/binks/binks_2.png",
+      "normalization_warning_count": 4,
+      "note_count": 420,
+      "reference_musicxml_sha256": "52b68fb0b5e86ee0772196156ee50b17caadf9cdb7fe6169b378401422196602",
+      "reference_path": "Research/omr/.runtime/phase3/references/b2d9923ccc65b4de1942e68b.json",
+      "reference_sha256": "168db94ff1fb4189c2e27176fc6396b8a0492cc4fd7ea8142e947c8f863a21da",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/binks/binks_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 298,
+      "reference_musicxml_sha256": "04344e1b28992d170aa87bdbf7198cc9934f36fb5a5700483b31c74046ee4a49",
+      "reference_path": "Research/omr/.runtime/phase3/references/33e5fc8e68da21398fbf2e31.json",
+      "reference_sha256": "9738ddd4ad662d9250a030c4752a360c6b1cdf46103942d0a19fb4321e05b7b1",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/binks/binks_5.png",
+      "normalization_warning_count": 0,
+      "note_count": 212,
+      "reference_musicxml_sha256": "f400882de82f961876b1556ec7f4144ba7f0e76f63b084f5e492710bcaaa7e97",
+      "reference_path": "Research/omr/.runtime/phase3/references/b9eaa216ef845000f22ce6fe.json",
+      "reference_sha256": "fe62fa2f8a3cad1a4770319c179848fd572608e566d9e35e0be07b144ca76e1d",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/binks/binks_6.png",
+      "normalization_warning_count": 0,
+      "note_count": 203,
+      "reference_musicxml_sha256": "de0dbcf0243a6afa13119b0c43b27bfe9de6e7e8549960ffc7ed3e3a22c1584f",
+      "reference_path": "Research/omr/.runtime/phase3/references/026ac8dccb5b58dc6987683f.json",
+      "reference_sha256": "2cdbe8f0a6a9501217b7bf8750881e8c118de219eaf055687e7386eae6b4350e",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 405 missing, 405 extra",
+      "error_type": "ValueError",
+      "id": "test/joplin/breeze/breeze_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/joplin/breeze/breeze_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 464,
+      "reference_musicxml_sha256": "1f7e724d8ec30a613822edea7ca53b4893a90c43080d65d946cd664793c00245",
+      "reference_path": "Research/omr/.runtime/phase3/references/9119911f77b522c22fd070b6.json",
+      "reference_sha256": "29f02aea34a01ba4a064688bd1f19a84ceb42a4c033b4ad8649c2b5caf0e9dae",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/breeze/breeze_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 395,
+      "reference_musicxml_sha256": "3aa43d0f2787eb1014f9e49a3d199da7a607083df40776c75de950375b42d157",
+      "reference_path": "Research/omr/.runtime/phase3/references/c3467796844be0ecf84733d9.json",
+      "reference_sha256": "ab07f027d1cbbba197a42f855d15cad4de0842ae3e79144819a8067cbf8380e2",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/breeze/breeze_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 393,
+      "reference_musicxml_sha256": "5d04a857fcd457ddc7ea5b326b672693481d3fc8efa0a819a9cdf0e587e31b42",
+      "reference_path": "Research/omr/.runtime/phase3/references/2bbc4d3586e4a684ab9110a1.json",
+      "reference_sha256": "fee6537b393da603b72e9b18e4a1cec16761f1b693353f55ff47dfb3c1115f09",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 254 missing, 254 extra",
+      "error_type": "ValueError",
+      "id": "test/joplin/leola/leola_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/joplin/leola/leola_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 362,
+      "reference_musicxml_sha256": "ca1d5fc0ae4c9681f097ed18b6fa7a799cd8f79dcbcb925a89d213fb95f9f5d9",
+      "reference_path": "Research/omr/.runtime/phase3/references/6276d1555f8450c540c70c71.json",
+      "reference_sha256": "1850607ebc188a49eeab7a9950ea4518487769d264f4e077e1fe03e166c40a80",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/leola/leola_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 419,
+      "reference_musicxml_sha256": "ebee43d91f4646facea2dfa3a916da060891d422e7462da7102d6089b86471a8",
+      "reference_path": "Research/omr/.runtime/phase3/references/e397b84bc4772bef53de2a81.json",
+      "reference_sha256": "735b004e450a0ab1c73d611e24bea236b2ed63777245e7583abd18f0b5b5470c",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/leola/leola_4.png",
+      "normalization_warning_count": 2,
+      "note_count": 429,
+      "reference_musicxml_sha256": "e6c556b52eaa5f8316c9d84c84cffe66a5f33f42f79e961f6a633f5b1717166a",
+      "reference_path": "Research/omr/.runtime/phase3/references/154d4606bb89e19ba69f7c72.json",
+      "reference_sha256": "5f80f3b5f84dc67a47fa93dd8a604c6611a319bcb469883c4eb24722f860906c",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/lilyqueen/lilyqueen_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 363,
+      "reference_musicxml_sha256": "2eebd2713db2a095ee7f059cd87f7ea89183e082da1bf402163b2c8017adad91",
+      "reference_path": "Research/omr/.runtime/phase3/references/f0f1658653ec988e0fa88977.json",
+      "reference_sha256": "cce98ab36f0a69ad55f3c78e1a78e450b52e8a57fa2759f081a9e2964f93e96e",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/lilyqueen/lilyqueen_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 385,
+      "reference_musicxml_sha256": "dee9986e2379d3e0276b2a2376c20f9d5fce58637400a4312ad754304f212844",
+      "reference_path": "Research/omr/.runtime/phase3/references/3f900935c44342b8dab0ac84.json",
+      "reference_sha256": "a30a6b7a081ad9fd0197afe70d3976702eb37fec0a4a9ed519fd55d8d882bc12",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/lilyqueen/lilyqueen_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 363,
+      "reference_musicxml_sha256": "ef540df8d186b4513dd058f1ba6112e55e64c3d78a0af2a1150f354670001187",
+      "reference_path": "Research/omr/.runtime/phase3/references/a50d415654e73c9e01a87265.json",
+      "reference_sha256": "bcefa87cb5fb28420ee3515584b7286983252973ab9fe210127837fb779fc45a",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/lilyqueen/lilyqueen_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 392,
+      "reference_musicxml_sha256": "02e7291d4a46dfd4c08d01153f67fed32c521fe7f9851dec097be9bcafbe8ef4",
+      "reference_path": "Research/omr/.runtime/phase3/references/38d4ccd0b82dd34f5eed9779.json",
+      "reference_sha256": "fe049e58e9d2f651727a77fdcbd71bc82932f8117908561d2f26eb49737af511",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 240 missing, 240 extra",
+      "error_type": "ValueError",
+      "id": "test/joplin/mapleleaf/mapleleaf_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/joplin/mapleleaf/mapleleaf_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 616,
+      "reference_musicxml_sha256": "3127938ffa3384d62b7337b3046b9da45cb2844cd985cfc668d116e15ee15f51",
+      "reference_path": "Research/omr/.runtime/phase3/references/3a65eaa735511c07f0b46408.json",
+      "reference_sha256": "111546d292820edc712311487112e8704ac5211f58e60eb5db8161c9a8a8c887",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/newrag/newrag_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 343,
+      "reference_musicxml_sha256": "fd6a656db724adecc4732089ee653c0cbcbb2ac342617718e6445995d2091341",
+      "reference_path": "Research/omr/.runtime/phase3/references/bdf1cde70a3c5b4fca175684.json",
+      "reference_sha256": "79dac982b3d4b80f69a8f60ecd94dd9362092799c9a3bccab12deae3f4f1358e",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/newrag/newrag_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 492,
+      "reference_musicxml_sha256": "21c265e333535df467fca9b36a16a78f657a9cf7067bfd87cda827c66565d2ff",
+      "reference_path": "Research/omr/.runtime/phase3/references/0f9e495706057c6eaff62523.json",
+      "reference_sha256": "78c5d7fa31f94876055cd653742674236399d95460e6f12c0ba14f15b5cdc261",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 102 missing, 102 extra",
+      "error_type": "ValueError",
+      "id": "test/joplin/newrag/newrag_3.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/joplin/newrag/newrag_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 423,
+      "reference_musicxml_sha256": "8ce53cd7f80717b920fb2622e911fde8426c110d189481ccf5cc2cbc0639648a",
+      "reference_path": "Research/omr/.runtime/phase3/references/891c8d77666ba75269db60e8.json",
+      "reference_sha256": "9ad92a77e8245ed88fa53a0fb5f4eea9c5fb864e2900043581d47a5b4e005b49",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/nonpareil/nonpareil_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 245,
+      "reference_musicxml_sha256": "ad283c89667ca5e785a17e3fa216199c70442404c4acf35ad136a753a1268b98",
+      "reference_path": "Research/omr/.runtime/phase3/references/7f4526f927e8605fc0010745.json",
+      "reference_sha256": "2c5e561f4c4fedbaf95755412b08e8a44c4b5bf2476d92f034b95dd1fbb77a32",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/nonpareil/nonpareil_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 386,
+      "reference_musicxml_sha256": "212da5506ffe2d83ae63cc3f8a590e61937475220bdb20cf70b8bb30f6fa3432",
+      "reference_path": "Research/omr/.runtime/phase3/references/392d3167276ceea25651c7f2.json",
+      "reference_sha256": "2b7cbcd3c7eeb9490da33599972c0628551e94063683e872faab1e2283e44b04",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/nonpareil/nonpareil_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 382,
+      "reference_musicxml_sha256": "326af0ff7fada681ef769c1f20dacb73ca1f31aa0a4f1fcf62387dd37d65ba22",
+      "reference_path": "Research/omr/.runtime/phase3/references/17a06f43aa11d355c4fd82e0.json",
+      "reference_sha256": "1f4a083ea557faabbb6304613834dc019e8923a410a6ea49bf3944301422d2a5",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/nonpareil/nonpareil_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 306,
+      "reference_musicxml_sha256": "71b4668824e8288f7a4758981e4bea2558aff7748f195849dbafada3dac4bff6",
+      "reference_path": "Research/omr/.runtime/phase3/references/7bb2db9102b9545c361bb968.json",
+      "reference_sha256": "88616f6094a56841652d3a4f1a935b4f253fbae0e8c21c61b87e2da33f844ae9",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/pleasant/pleasant_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 273,
+      "reference_musicxml_sha256": "a25c214130b745dcd74e1cc036fb98beeb7cc8a3e24b9afbc92913fc7d162332",
+      "reference_path": "Research/omr/.runtime/phase3/references/04ab90ea21d36ebe7cfdc50f.json",
+      "reference_sha256": "2746cd7d75502429a58b1a2597e64360c2604a74526f851c0a73c40f60ac803c",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/pleasant/pleasant_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 338,
+      "reference_musicxml_sha256": "a728840774e9109e37d5c05c08e3ef7ab32bca7f6ec8aea69d09c8d2a3a65166",
+      "reference_path": "Research/omr/.runtime/phase3/references/d9963acc651c19c0e1a368ab.json",
+      "reference_sha256": "fbb8f1fe5764a394ba32a7f98d4e07e4dfc57728cebd9bc5764910b9b1f450e1",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/pleasant/pleasant_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 309,
+      "reference_musicxml_sha256": "b63292f07764f3a87f9a04c749361410539b1f7daccc0354bff10ec4acd0614f",
+      "reference_path": "Research/omr/.runtime/phase3/references/4a139519338e6e1ed8be2d33.json",
+      "reference_sha256": "ca690fef18ef937762e66fb89b7f58f387a06241b588165de5ab951c95639a7a",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/pleasant/pleasant_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 334,
+      "reference_musicxml_sha256": "9beff125d4bb34481a9409dc704817b8c5bf816a903cc06a3641d903f3fbfca2",
+      "reference_path": "Research/omr/.runtime/phase3/references/9d1fc4e1a9afe6d11904a9bb.json",
+      "reference_sha256": "c0dfd22ee505bd3c3ed5c25fc39d7c359ce51f6b1f496dd6da6cedd30bc85bd0",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 293 missing, 293 extra",
+      "error_type": "ValueError",
+      "id": "test/joplin/reflection/reflection_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/joplin/reflection/reflection_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 671,
+      "reference_musicxml_sha256": "f1eaa817185d79dac010b9f63336d54b13d28259e1781e03afdb89789b3394cc",
+      "reference_path": "Research/omr/.runtime/phase3/references/b4909fa73e4d5f5ea6a2853f.json",
+      "reference_sha256": "9bff6693a6cd69b737397da1778c7ca6c0a23ed24a45aadde908c3855e5fd989",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/rosebud/rosebud_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 288,
+      "reference_musicxml_sha256": "b27c234dab83d21c6cdc12b83dd272132efc1a8015ffc5f0a9d97599df9d27c4",
+      "reference_path": "Research/omr/.runtime/phase3/references/e7b9b4e066fa98fb661c56e6.json",
+      "reference_sha256": "32c086ca9a1e10df5e4572154e5df4861671b43f271d345bd53514109d777d18",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/rosebud/rosebud_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 427,
+      "reference_musicxml_sha256": "aa8964ecf494b2f7981b38e86500f6b3717dd741c018dbed239aa2f92485250d",
+      "reference_path": "Research/omr/.runtime/phase3/references/3984ca22bbb68241354969c3.json",
+      "reference_sha256": "0bf2400f7cb4611e9db854983520b1fa38bc99fd1ba65e54efed7fca3c335827",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/rosebud/rosebud_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 454,
+      "reference_musicxml_sha256": "1846453d1ad1cb365b083c191780f122bae8e0e015f598422afdd2d1e127c1e6",
+      "reference_path": "Research/omr/.runtime/phase3/references/ecec8265e508fdc74be90797.json",
+      "reference_sha256": "aedae1f845bc395d6bcecb56136a20848ddac808d5ef4c7c3b11dc03bbbdf219",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/roseleaf/roseleaf_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 259,
+      "reference_musicxml_sha256": "2f856e1bc839d326c62eba851c98a162e832789c086b7caa2667ed7dd5747095",
+      "reference_path": "Research/omr/.runtime/phase3/references/dc70ae59e3408d2a1eb867dc.json",
+      "reference_sha256": "abb129e6d8a49f48b2721b6181189d797aaef5fdecb4bb317af875fc9749300c",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/roseleaf/roseleaf_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 429,
+      "reference_musicxml_sha256": "1b9d77d3813895da606623d2f0e1f02805332e0a7cacdf2dc9f788a7f44b665e",
+      "reference_path": "Research/omr/.runtime/phase3/references/18b6e3527c2ec8e9c72fa923.json",
+      "reference_sha256": "b49aae9a4b1e7606c66c9c9d98134d956728e332eb9c2df1b2c2b6eec66fd153",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/roseleaf/roseleaf_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 487,
+      "reference_musicxml_sha256": "a29748d2daad3f8045d2767abb910a82c38e227cbba4993a4ba0c50962727117",
+      "reference_path": "Research/omr/.runtime/phase3/references/9570c78480082ec4a807c2cc.json",
+      "reference_sha256": "9c5318eeeb8b5904cd014f037bda063a0a911cfe2f4346a7ba852f18bcc0f601",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/roseleaf/roseleaf_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 462,
+      "reference_musicxml_sha256": "f4e83470b328542960a472c5ab342edd3d6bffc3c2000bdc75363e9169420ae5",
+      "reference_path": "Research/omr/.runtime/phase3/references/336fa37594ef1899f5254f44.json",
+      "reference_sha256": "340c12d88800e0277cde8d77887be4bfd26a9b925a09ca6925c7bb7bc5e6306a",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 270 missing, 270 extra",
+      "error_type": "ValueError",
+      "id": "test/joplin/searchlight/searchlight_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/joplin/searchlight/searchlight_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 282,
+      "reference_musicxml_sha256": "ea017a87591a72e0d7eab62cdbcc693919fb594ec49dbe635ec122f96764d9a6",
+      "reference_path": "Research/omr/.runtime/phase3/references/1cf9a736fe8779fc7b062a08.json",
+      "reference_sha256": "3facb9fbf40f35b9bceb67aa638cb4bd3e68f655a5fd51d6c97c6cc9424ee8d2",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/searchlight/searchlight_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 443,
+      "reference_musicxml_sha256": "35c425a81e667816d88faa065385f61bab056599d366a96e4bb5a6cb35a60470",
+      "reference_path": "Research/omr/.runtime/phase3/references/465589777772905d1db8bb6d.json",
+      "reference_sha256": "12931ad6601bcc18e05045329b0de97fd21b61e0ba0a75e27737cec2d7ee31e4",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/searchlight/searchlight_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 513,
+      "reference_musicxml_sha256": "2a5d72790b3dba09f7280c0c94cbee59c83f3259f5298a33d61a73d605a9b9cc",
+      "reference_path": "Research/omr/.runtime/phase3/references/984db45545815bf0455f6b96.json",
+      "reference_sha256": "a1b7add5b2f85d1fa3a8317eafd9ddec01b0a094808d3254d042aaed84f86c92",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/liszt/etude10_05/etude10_05_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 478,
+      "reference_musicxml_sha256": "aab442b18449bb08647a2f92105051c27b0be463301605d052884a9f8ed8b8bd",
+      "reference_path": "Research/omr/.runtime/phase3/references/5e516cf6d1b067631052bd36.json",
+      "reference_sha256": "853fdcd755f9b6a402c18cae1d6befb5496e771d96129c123cbceb1ff41cc13f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/liszt/etude10_05/etude10_05_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 425,
+      "reference_musicxml_sha256": "cdda618064d701500efbad97c0b73c8fbb1a1d8c48dc54d0c6a4f13cac56ce8f",
+      "reference_path": "Research/omr/.runtime/phase3/references/66327aaf5bb481fdd7d7d772.json",
+      "reference_sha256": "82b03f1287f77d70872b46c73013502ff6793890409d29fd8f4f7d9f72aaef1e",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/liszt/etude10_05/etude10_05_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 452,
+      "reference_musicxml_sha256": "a4c3e57b89e3b4b7127f6043b8ffc29297bef6c6c3bda92a20d314ceb3c341b5",
+      "reference_path": "Research/omr/.runtime/phase3/references/88e4c9af480682d60bf6ee84.json",
+      "reference_sha256": "3c0182d6528db05ceb0ead4482a8ca180f8f1b059e5b81b337a583649d6bb4b6",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/liszt/etude10_05/etude10_05_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 273,
+      "reference_musicxml_sha256": "27a61b87b7e960eb49df5c7606383787af8fdbfe8750d67eb6bdcb5b01249fd0",
+      "reference_path": "Research/omr/.runtime/phase3/references/b8e5e5a762e1b0a1062ceaf7.json",
+      "reference_sha256": "ad79fbef3e5e0e473d884715ee04aef3a4283d7ba7d09610fb18bb493fe57480",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_B_-_KV_281/26.png",
+      "normalization_warning_count": 0,
+      "note_count": 338,
+      "reference_musicxml_sha256": "2862af3a5b081add8e886c71651bbaed47d15ce63ce3f7770dfa8a5e59103840",
+      "reference_path": "Research/omr/.runtime/phase3/references/4378140c75accded5706976e.json",
+      "reference_sha256": "741ff2b9fb2f1ff1636b7c0e4d85f37224a35c8f74e4e10f5ccbefe9761a110b",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_B_-_KV_281/27.png",
+      "normalization_warning_count": 0,
+      "note_count": 370,
+      "reference_musicxml_sha256": "c49585028dfaffd8676385755e1bd0a06af6773916bdf9f20273ae2a39767552",
+      "reference_path": "Research/omr/.runtime/phase3/references/1209e65f4dd77893bcb75495.json",
+      "reference_sha256": "2a86ef149e28d973b8f07b6c14fc7ff5e5d0c915c3c78786cdc36ff6893d6ac1",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_B_-_KV_281/29.png",
+      "normalization_warning_count": 0,
+      "note_count": 404,
+      "reference_musicxml_sha256": "041711bb6dfa31a06e28320a704fdcf5958c060c0360a0a31c7f8763120486ee",
+      "reference_path": "Research/omr/.runtime/phase3/references/5bf88178ecffdb4de8da02a9.json",
+      "reference_sha256": "bbfb2008f2e6734cef72005c8370380bb27edb119b90e76e98da4527d4d6da85",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_B_-_KV_281/30.png",
+      "normalization_warning_count": 0,
+      "note_count": 371,
+      "reference_musicxml_sha256": "7b93bc9895b46cf8dcfd0abf8f34b76ac7327260a25b254699303eac8ff46502",
+      "reference_path": "Research/omr/.runtime/phase3/references/102e7327cfbb05d90a26f4cd.json",
+      "reference_sha256": "de12af903f0dc4db2eac9bae53511a68d80e8fd452d68fc381e9147c601f5efe",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_C_-_KV_545/122.png",
+      "normalization_warning_count": 0,
+      "note_count": 291,
+      "reference_musicxml_sha256": "3e13682cee253af7e1d524bb7d0fbe6d52d7f7b7c886bb0c8cf1b819091bf01e",
+      "reference_path": "Research/omr/.runtime/phase3/references/5557ad5455cf429d5c630170.json",
+      "reference_sha256": "5d2704480d901697650dd5cce065962043e5787acc64e91ff0b10dd1f6f24751",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_C_-_KV_545/123.png",
+      "normalization_warning_count": 0,
+      "note_count": 316,
+      "reference_musicxml_sha256": "bb1fc5218ca48d2d0c466325b2d6825cc88a03da311bb6a7fafb202916673d1e",
+      "reference_path": "Research/omr/.runtime/phase3/references/d1c988ba962b571f0be1c7fa.json",
+      "reference_sha256": "fc80a0e8e2d06abf9caad6e16f2806d8d3c9210c02d46a6c3740eb04c3e4a600",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_C_-_KV_545/124.png",
+      "normalization_warning_count": 0,
+      "note_count": 312,
+      "reference_musicxml_sha256": "9d8fbaa290424614379d1a65a32d459eb1802635c4085f818ea8adb14a5b079e",
+      "reference_path": "Research/omr/.runtime/phase3/references/c15ba3b3e1e15fac9d73552a.json",
+      "reference_sha256": "3f93c0c110add18e738efcd7a6fdde7e489033b3bb540a241d63d4193007e9a6",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_C_-_KV_545/125.png",
+      "normalization_warning_count": 0,
+      "note_count": 351,
+      "reference_musicxml_sha256": "8c69915d531d16fcdbb41db13805e91e0d7217c16f64a885a2d2b13e4bea14a3",
+      "reference_path": "Research/omr/.runtime/phase3/references/dbc338d230ca1a282668f706.json",
+      "reference_sha256": "525a57a8b30338d652fe982f088e4314f4e02f1b04587268309d77a5a1130d56",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 351 missing, 351 extra",
+      "error_type": "ValueError",
+      "id": "test/mozart/Sonate_in_D_-_KV_576/148.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_D_-_KV_576/149.png",
+      "normalization_warning_count": 0,
+      "note_count": 443,
+      "reference_musicxml_sha256": "2bfa3117b6590ebcd0ce1bc7ed8becfccf94d8716801d29edc6a387f85be4268",
+      "reference_path": "Research/omr/.runtime/phase3/references/815304bbf7c187b492cebb87.json",
+      "reference_sha256": "0a0ffc62c3ef26a8a5a6c21d23cf6d14d0da2a078c4b9d64d973ef7b1131c7cf",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 354 missing, 354 extra",
+      "error_type": "ValueError",
+      "id": "test/mozart/Sonate_in_D_-_KV_576/150.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_D_-_KV_576/151.png",
+      "normalization_warning_count": 0,
+      "note_count": 403,
+      "reference_musicxml_sha256": "af2fc26ff843c9d15abbe50ea157eacc94e438ec92a6e7751f10f23e4126918e",
+      "reference_path": "Research/omr/.runtime/phase3/references/a40236085b66eb8a101c1f8f.json",
+      "reference_sha256": "69dce5fce5849c9983498ac3b2ba3477dce0d0ff1d595843d462c115f316c950",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_D_-_KV_576/153.png",
+      "normalization_warning_count": 0,
+      "note_count": 254,
+      "reference_musicxml_sha256": "994df7623c33abcb80c8751c0b5a3b859e8b8e171a212c3d689f7d05253c9cff",
+      "reference_path": "Research/omr/.runtime/phase3/references/68ed34ccadb0d8b1c9616974.json",
+      "reference_sha256": "0705bc81dae7be3153d9f7402ef7803b4c524be3ef7f8069e6293e2a8bba880a",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_Es_-_KV_282/40.png",
+      "normalization_warning_count": 0,
+      "note_count": 342,
+      "reference_musicxml_sha256": "9f5ee5cfb192b166eae0c9659609018aa9b8ceace31360ba7094836a42c3745f",
+      "reference_path": "Research/omr/.runtime/phase3/references/02adf245a9c0b9b0fc6e9521.json",
+      "reference_sha256": "d0a3421d3766b5e3a1579fa15f474fdf4199183a5bd25c80da259f843826b476",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_Es_-_KV_282/41.png",
+      "normalization_warning_count": 0,
+      "note_count": 312,
+      "reference_musicxml_sha256": "84c3bb5a5aaebe45be6c59159c0f9f54e4082b7f54f13217badb68b0a0f8d662",
+      "reference_path": "Research/omr/.runtime/phase3/references/ca44e7bcc1cabce2395f6a7a.json",
+      "reference_sha256": "bc1ee90dc7c48283f6b75af443775d87cfe0c74fd43c999404820ea2237955db",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_Es_-_KV_282/42.png",
+      "normalization_warning_count": 0,
+      "note_count": 304,
+      "reference_musicxml_sha256": "8a100dbfd79333d03fbf4f2364c99ac0bb11ee400abcd9635e6837534de6c012",
+      "reference_path": "Research/omr/.runtime/phase3/references/27639468bbdbe82b0db8ee90.json",
+      "reference_sha256": "6eb9716f5c309e1db7807ec516afe0a475d38fab4ec26eb9826ada43ae8f6aad",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 243 missing, 243 extra",
+      "error_type": "ValueError",
+      "id": "test/mozart/Sonate_in_G_-_KV_283/48.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_G_-_KV_283/49.png",
+      "normalization_warning_count": 0,
+      "note_count": 431,
+      "reference_musicxml_sha256": "f15d3339552d990659bb0245622f17bcfef1f2f08514f5f32dd1ac275dcc6fb7",
+      "reference_path": "Research/omr/.runtime/phase3/references/920f073f53602f4cb258a20a.json",
+      "reference_sha256": "f0294a2cdd1dae3a2511462e85e211009690aaebecb1765814535e35866220df",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 343 missing, 343 extra",
+      "error_type": "ValueError",
+      "id": "test/mozart/Sonate_in_G_-_KV_283/50.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_G_-_KV_283/51.png",
+      "normalization_warning_count": 0,
+      "note_count": 469,
+      "reference_musicxml_sha256": "d8c09f79af8a4e20308d84712b37267120248a83aa11b3e926d0e9899e8a3ca0",
+      "reference_path": "Research/omr/.runtime/phase3/references/4af9f5f41e80a20b9e796d40.json",
+      "reference_sha256": "946112c751d444aece21bc26826bd97ab71ec9c64e5dadfe537381502df99869",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata02_1/sonata02_1_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 474,
+      "reference_musicxml_sha256": "9a0a78dc6dea75844e09e17b3b73130099dce449ac6379ec03343717c36e33ff",
+      "reference_path": "Research/omr/.runtime/phase3/references/71246b4e218b1be16ef276af.json",
+      "reference_sha256": "aeeb259f7def262e04cc9454ca0b800564c067700a10f14f95804700ec4295c6",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata02_1/sonata02_1_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 452,
+      "reference_musicxml_sha256": "e88d2442f985ebbfa8664cabb33809aa0080fc645b6d7ee85505810e2da4b1fe",
+      "reference_path": "Research/omr/.runtime/phase3/references/26eafdd3d9e3490a17e61c69.json",
+      "reference_sha256": "1671873f63c6eb238a06103b4157dd0a921aafe12b830d2b1cd31bb0661810b9",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata02_1/sonata02_1_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 591,
+      "reference_musicxml_sha256": "29de463846d640ed6d2fc419f2e6f907a45aed6ec975aed7da44b9be8b0d5f5b",
+      "reference_path": "Research/omr/.runtime/phase3/references/b124854e72f4a6973441d74d.json",
+      "reference_sha256": "0ee7bb8737cbfb775239f6d37bb24643a4cebca7141215d9c7822d630ff76ad8",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata02_1/sonata02_1_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 248,
+      "reference_musicxml_sha256": "54fd369a81f175c53d2c70c2cd8276e04e712ada104a1360f3a2c37478bf7fed",
+      "reference_path": "Research/omr/.runtime/phase3/references/c4a2f684cba3d76cc7cbd0b5.json",
+      "reference_sha256": "ca336670b028459fd670a5d6b00bd5eab69418b1a821073a1927805dcb61683a",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata03_1/sonata03_1_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 418,
+      "reference_musicxml_sha256": "8156abb68e5db1c9be322ce166a46177a04337bb2578a7c37b460192be90400d",
+      "reference_path": "Research/omr/.runtime/phase3/references/9884e5e51a1bb0a3c953a087.json",
+      "reference_sha256": "f8dc639aa14240ac3eaa092d19d180c982a20f3a718c4dabf375f70bbaa132f1",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata03_1/sonata03_1_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 516,
+      "reference_musicxml_sha256": "467e6e622a00100db1e44f53bab7839074ac7b955b26f5cdf8b9be8a1ab593cc",
+      "reference_path": "Research/omr/.runtime/phase3/references/cae2fd67401fed08172e9907.json",
+      "reference_sha256": "c79c168e3a6474449eb9441c41c661b5da2704e35165dca765332582c008b8bb",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata03_1/sonata03_1_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 500,
+      "reference_musicxml_sha256": "e3ca038729aa900c78b37042974a7b7ee7a826b3cdfa44e4803542d9dc08c173",
+      "reference_path": "Research/omr/.runtime/phase3/references/15be22f120c07254e443f892.json",
+      "reference_sha256": "3898a3b92c465818bfd20f9699fed47dffadd9799deedc26d767d73000ff6406",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata03_1/sonata03_1_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 487,
+      "reference_musicxml_sha256": "fc817dbf7ca5f20e18eaf86c0f18507e062c0491cbf69e01a26470fa423f67d1",
+      "reference_path": "Research/omr/.runtime/phase3/references/d77828f91762933c78de4446.json",
+      "reference_sha256": "7d3918b4c9b7b45f2abde6522eeb81dbf49061b701c76c203077a59fd1fbaabe",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata03_2/sonata03_2_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 544,
+      "reference_musicxml_sha256": "cdefddd1f5bc6fcad5b6e18509abfaf6f36f6fb3acb0dd7186aec98ea9c6bbbc",
+      "reference_path": "Research/omr/.runtime/phase3/references/43cc626fb4888ca64a13ae63.json",
+      "reference_sha256": "f12d81ba49f0ee20790a94ee9b448483ece02db44ad7612779150533324f9512",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 309 missing, 309 extra",
+      "error_type": "ValueError",
+      "id": "test/mozart/sonata03_3/sonata03_3_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/mozart/sonata03_3/sonata03_3_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 459,
+      "reference_musicxml_sha256": "6e76d5a86cbef1d9a11e08052944a350cdacee7f35ffc6e53be87f4b25d21d34",
+      "reference_path": "Research/omr/.runtime/phase3/references/64d2b4b12cfffc38a6be5eb7.json",
+      "reference_sha256": "7cbb7306494730f25c08282fd960f907f701953d54b8f64c056b4ad1e85768f8",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata03_3/sonata03_3_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 592,
+      "reference_musicxml_sha256": "8b8c208e74ae13e3a6f54c87e1cfe2c7d3fa067b5eac42e7bc6547c7406dd650",
+      "reference_path": "Research/omr/.runtime/phase3/references/2c84be3aa4a16d9c18da06a7.json",
+      "reference_sha256": "33edaa92a2146a98169c92ae7d38327db1a50a4255a4bd57ef2b8d6b0d5c5707",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata03_3/sonata03_3_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 556,
+      "reference_musicxml_sha256": "6c988a6a9eeb58a3b507fdf21533f7ab164bb9d5e6351da03b168795a693a66d",
+      "reference_path": "Research/omr/.runtime/phase3/references/6ac1d1408afc075072ad3ab0.json",
+      "reference_sha256": "26dc63a893d72b43a840fb88732709c9ccb6202930e5122d74b509c4aa3fae6c",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata04_1/sonata04_1_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 408,
+      "reference_musicxml_sha256": "e734a0774cfe9030e79279432730c84bf9e3ea54314891ff3dbd53232d311a5e",
+      "reference_path": "Research/omr/.runtime/phase3/references/deaa11e37172fa58a8d3ba04.json",
+      "reference_sha256": "7ee6048dca9ca9ffb787c4ea4f6ba6671e7b9d744d41f0020971a21d47498f5c",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata04_1/sonata04_1_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 554,
+      "reference_musicxml_sha256": "317b71de8f6b96dd6e55c469676a57bc81b123b8cb42e23779fbbdc3a477f432",
+      "reference_path": "Research/omr/.runtime/phase3/references/75f617f5ad56e7dbd9ae20de.json",
+      "reference_sha256": "d2e75a5dfd4cc69836174fa8aef3ed60773780694fadf2661f443ff665972a3c",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 314 missing, 314 extra",
+      "error_type": "ValueError",
+      "id": "test/mozart/sonata04_2/sonata04_2_1.png",
+      "status": "invalid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 228 missing, 228 extra",
+      "error_type": "ValueError",
+      "id": "test/mozart/sonata04_2/sonata04_2_2.png",
+      "status": "invalid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 442 missing, 442 extra",
+      "error_type": "ValueError",
+      "id": "test/mozart/sonata04_3/sonata04_3_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/mozart/sonata04_3/sonata04_3_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 497,
+      "reference_musicxml_sha256": "e29c1674626e187bad524dd9fe4571faaf9ba65547ecc8e9e9c27379788bf238",
+      "reference_path": "Research/omr/.runtime/phase3/references/d105a450a7adc70a274e6989.json",
+      "reference_sha256": "9008fa0c6561d8e22461c9e22c0c27ea947999a8a148f90097e006e94864a600",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 245 missing, 245 extra",
+      "error_type": "ValueError",
+      "id": "test/mozart/sonata06_3f/sonata06_3f_1.png",
+      "status": "invalid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 255 missing, 255 extra",
+      "error_type": "ValueError",
+      "id": "test/mozart/sonata06_3j/sonata06_3j_1.png",
+      "status": "invalid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 118 missing, 118 extra",
+      "error_type": "ValueError",
+      "id": "test/mozart/sonata06_3l/sonata06_3l_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/mozart/sonata06_3l/sonata06_3l_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 335,
+      "reference_musicxml_sha256": "7205e93de34270e86087e6787c45bb706a6e40ddc0f2decbfebad44111a08865",
+      "reference_path": "Research/omr/.runtime/phase3/references/93a927a2a0d89f63f12695ae.json",
+      "reference_sha256": "d344a95a4b9df74c33d7e31ee0a97595f9da209ef5247aa0e2f83e3a6d38dea6",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata07_2/sonata07_2_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 364,
+      "reference_musicxml_sha256": "6d6c0315b32b21a2fc8ec2e3b75beda88bff08e209b18b84ac4004f446af641a",
+      "reference_path": "Research/omr/.runtime/phase3/references/c22316d3499c5cb927901be3.json",
+      "reference_sha256": "b5c5b2269926b7bf29d576b6bdc6d43baa1be280c3cf9be391e1fff88afe7ee6",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata07_2/sonata07_2_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 515,
+      "reference_musicxml_sha256": "8cb235a6d73a1d991b6f1e3d4c8891ab5391895dfa57050275e542b90f7476da",
+      "reference_path": "Research/omr/.runtime/phase3/references/52be65e2168b7b940ba69513.json",
+      "reference_sha256": "73b6593b095c5d28f8836529b89c57f7917654246294c3faa2eece0502db0462",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata07_2/sonata07_2_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 78,
+      "reference_musicxml_sha256": "fa945d48225574931647f436a06ac087e25237670df8245099f692604acb8e43",
+      "reference_path": "Research/omr/.runtime/phase3/references/db0729a62e4cb94b6368ea40.json",
+      "reference_sha256": "effbaecd52abc71009963ee74a06b13b6d2fd834e625f1c2f5613ebdca84ee07",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata07_3/sonata07_3_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 573,
+      "reference_musicxml_sha256": "a4a8577ea1f147e911662101f63769b18e5840ae2480bb8289e66c853907db73",
+      "reference_path": "Research/omr/.runtime/phase3/references/d946bfe5d37c41739c2990a7.json",
+      "reference_sha256": "4d204ce06a9f1815fdd51c823d0aa3aa8bb9675a62d11842dff7524d65f4f1e4",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata07_3/sonata07_3_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 605,
+      "reference_musicxml_sha256": "58e36f6014eb952fa09f50cc8250a1bd5f5a7aa3c1f4e2071398690ef87e50c6",
+      "reference_path": "Research/omr/.runtime/phase3/references/cee05788d9eca049251ee371.json",
+      "reference_sha256": "5cc0bb8fa677ded1e322fd59396fc5141db8dda2e854dd69044f4ae42cf62ffb",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata07_3/sonata07_3_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 538,
+      "reference_musicxml_sha256": "3093a253e854525128ac6277ffc0acdf5312af1d856e8c053d63159d0ac56d6a",
+      "reference_path": "Research/omr/.runtime/phase3/references/7881b76258104de9bff2cb10.json",
+      "reference_sha256": "fce6d01206d557d7fc713223f3f6b7b95fa32af7e6eb508ec646fbef345d1feb",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata07_3/sonata07_3_5.png",
+      "normalization_warning_count": 0,
+      "note_count": 450,
+      "reference_musicxml_sha256": "45f90f4fb024845df3bc40c0e0fd29bdd830b587c10007a112255d5edb616d19",
+      "reference_path": "Research/omr/.runtime/phase3/references/f9cc5729140a433d4f5df1a6.json",
+      "reference_sha256": "6aa6b8f79b5927f21ddb3e43ba6aa56aadf77879c19ed1f6d59f9a59d72aee44",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata07_3/sonata07_3_6.png",
+      "normalization_warning_count": 0,
+      "note_count": 449,
+      "reference_musicxml_sha256": "c74d2c5aa331d0e958a6e19475c08ffa945817d469f2fc41d13703d0d418e9eb",
+      "reference_path": "Research/omr/.runtime/phase3/references/6d5acc152285adc73d57cfd8.json",
+      "reference_sha256": "f46836edc0ec9996ada34201b471dd6c0af5e9b9fc32e55252dceef6ab0ad8aa",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata07_3/sonata07_3_7.png",
+      "normalization_warning_count": 0,
+      "note_count": 472,
+      "reference_musicxml_sha256": "41284de2d5d5cfb8dc7308025c62f28337b69aeda7715216521d6f5d3259f699",
+      "reference_path": "Research/omr/.runtime/phase3/references/ded82a93eb3389308abf01a4.json",
+      "reference_sha256": "64010bcf78523ec44d0e019542ff238413a712562e60ee0fd217b3e7234654a8",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 299 missing, 299 extra",
+      "error_type": "ValueError",
+      "id": "test/mozart/sonata08_2/sonata08_2_1.png",
+      "status": "invalid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 106 missing, 106 extra",
+      "error_type": "ValueError",
+      "id": "test/mozart/sonata08_2/sonata08_2_2.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/mozart/sonata08_2/sonata08_2_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 544,
+      "reference_musicxml_sha256": "aafc21c2b354901f5135a3205a79cb04a4f517ce43b5fb6f15e8f95671719e9b",
+      "reference_path": "Research/omr/.runtime/phase3/references/fa5778a1a7202c44c5939595.json",
+      "reference_sha256": "c8bf19b1f1cbb50e8ff63a69a793e535b77db5b2d13ce956bfe017a22898e6b3",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata08_2/sonata08_2_5.png",
+      "normalization_warning_count": 0,
+      "note_count": 383,
+      "reference_musicxml_sha256": "aff08b17b84691c8866cfde6ec7e6d61d8950e5c1ab87bf129d71e3f463f9e98",
+      "reference_path": "Research/omr/.runtime/phase3/references/04d04c6c4d4509a535eb5eeb.json",
+      "reference_sha256": "075dbb43c7c34b2251f0451d3df3f255f7b87ded51242d6d2458296e8e765625",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata09_2/sonata09_2_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 471,
+      "reference_musicxml_sha256": "1a51050920692ff833bdf14220643a7f492b8feb286f4dca0a4b2a560c71f0a2",
+      "reference_path": "Research/omr/.runtime/phase3/references/391cfc242f22510fbffaf438.json",
+      "reference_sha256": "d6ac72c4740d568874c4eea10e3af816d7a1a7413beb14e8f965453c36ba5b35",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata09_2/sonata09_2_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 300,
+      "reference_musicxml_sha256": "64687a5c73427a0bd3af7cc1433cd1f508f4bff81a75a10188fe28010077b8d1",
+      "reference_path": "Research/omr/.runtime/phase3/references/4d8527a445f78548ab6a55a9.json",
+      "reference_sha256": "f677e8d1010d625674b70e15d41d57e1c387078020e6cdb71e40a8557975826a",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata09_3/sonata09_3_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 503,
+      "reference_musicxml_sha256": "6a3386b81f505a7bef7a0d3b266f5c1266f6d07561df058f4607a96f74091bce",
+      "reference_path": "Research/omr/.runtime/phase3/references/692ea79c2edf26bf2b4f1a5c.json",
+      "reference_sha256": "62dcab9be15810f59822875dd7de03019ab4d708d401a1645cff1408b1713416",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata09_3/sonata09_3_5.png",
+      "normalization_warning_count": 0,
+      "note_count": 458,
+      "reference_musicxml_sha256": "f505e3e3e5d3cb9db1e8313a1f4ec38ed6cff6babe87405bdbed8abea0851c39",
+      "reference_path": "Research/omr/.runtime/phase3/references/368b25ad37960fc92cae7687.json",
+      "reference_sha256": "1d2f8a5266c00a66fd7a0b8b5ae7197db93d4d851bdd713b7d3b91ec80b99fcf",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 244 missing, 245 extra",
+      "error_type": "ValueError",
+      "id": "test/mozart/sonata09_3/sonata09_3_6.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/mozart/sonata09_3/sonata09_3_7.png",
+      "normalization_warning_count": 0,
+      "note_count": 492,
+      "reference_musicxml_sha256": "f46ec43cb39798a3bf469fcf0fbaf31ae745a80f2c303a21b8f86a3d0836fed6",
+      "reference_path": "Research/omr/.runtime/phase3/references/dad0cfa603c39c72ba9542ee.json",
+      "reference_sha256": "1d60b0b0078094631139e32b0fa47983b162954d529e6c91ccdf5907f0d889e5",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata09_3/sonata09_3_8.png",
+      "normalization_warning_count": 0,
+      "note_count": 461,
+      "reference_musicxml_sha256": "e8cd3d1b18b3ca8e747b05dec80a6dfc959595570237c1ddf64f19b7452b424d",
+      "reference_path": "Research/omr/.runtime/phase3/references/c2d758359393f022e05c6a74.json",
+      "reference_sha256": "139aacb741dab7f336cb8005aec19e104991ed3ca90e38a7885320fb48bad202",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata11_1b/sonata11_1b_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 236,
+      "reference_musicxml_sha256": "7f038d6b28ccb29ee62a9ed9e0fc7f8547fb53ce66e7f85e93cd9efdc79c933c",
+      "reference_path": "Research/omr/.runtime/phase3/references/8fa3fe75c1768207cdf16534.json",
+      "reference_sha256": "c5798a7eeec1319cd2af4b37e1805dcd386306b62dc7d6054c604cf3cd55089d",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata11_1b/sonata11_1b_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 100,
+      "reference_musicxml_sha256": "e702f25dc3ec0129aa42f674585f4d97d0e02a240251ca6b2900f32a6e4aad55",
+      "reference_path": "Research/omr/.runtime/phase3/references/016decd4ef8db87ff773f306.json",
+      "reference_sha256": "1403116fe49e841932ef31361d25be6684477c600ee2686cb112adb3919555ff",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata14_1/sonata14_1_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 422,
+      "reference_musicxml_sha256": "6d5421011fe0f8629bab0d97f96b43a82b9d1331f540659212be1868a4ec5945",
+      "reference_path": "Research/omr/.runtime/phase3/references/d5638b630bad97104867910b.json",
+      "reference_sha256": "c645602539418fb46e3986d80e4a15cc61e19b531f1fd62b1cff02778de81b82",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata14_1/sonata14_1_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 422,
+      "reference_musicxml_sha256": "0523f5d8bd9b3fb7e4afb87cfbf21db80b093bf21bef21f3a614311107f0c596",
+      "reference_path": "Research/omr/.runtime/phase3/references/68a27ab56d949edf259d6235.json",
+      "reference_sha256": "2ce5ff631b11e48aa781ff5f88bb5335eb11495b234e06aea078af50ee2b4e91",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata14_1/sonata14_1_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 437,
+      "reference_musicxml_sha256": "b29000a573a0bc558a929b3678a9e48f3d0674ac0f3a3412cbd0358e95661842",
+      "reference_path": "Research/omr/.runtime/phase3/references/b4955ec8eb342431491cd727.json",
+      "reference_sha256": "535b63ebe6d0657d802f2f345d68e2ea0d31b7fa3914ea342b9534b8c623507e",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata14_1/sonata14_1_5.png",
+      "normalization_warning_count": 0,
+      "note_count": 435,
+      "reference_musicxml_sha256": "0e3b2c8459c59bf23c10fd9a4d7ff20ebb37ebe3ec0bbc5b5393bec3c7d6ff4f",
+      "reference_path": "Research/omr/.runtime/phase3/references/9523d06eb4d4616df46c49a6.json",
+      "reference_sha256": "edcf8eb1703b05596bfab3a4ade243e19f9a6b1100b9a33138abe49c71dfe5fc",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata14_2/sonata14_2_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 483,
+      "reference_musicxml_sha256": "9ab5677ab1f068041327d70abc2a34240ab10dce6d9c539c37bb20390ef10f67",
+      "reference_path": "Research/omr/.runtime/phase3/references/03c7acd30ce5593d988dd2db.json",
+      "reference_sha256": "318ce8d95c156dbf271b6b4d958fd0aa10b629c26dda32318d3c28fb887818ce",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 97 missing, 103 extra",
+      "error_type": "ValueError",
+      "id": "test/mozart/sonata14_2/sonata14_2_2.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/mozart/sonata14_2/sonata14_2_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 430,
+      "reference_musicxml_sha256": "963a3eb34f983a38b1510472d41e419273c623d2309cfa80a7034741704a27b7",
+      "reference_path": "Research/omr/.runtime/phase3/references/032b9928ccfae45535c5feb7.json",
+      "reference_sha256": "3f654b507c7dbc3a894e3eea10d65ce7b44eafcd7af628a4130aaf47ced1734c",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 148 missing, 150 extra",
+      "error_type": "ValueError",
+      "id": "test/mozart/sonata14_2/sonata14_2_4.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/mozart/sonata15_1/sonata15_1_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 425,
+      "reference_musicxml_sha256": "c47320d6667135a02fb50ef851811bb04a8e7ab24b272b06f05d4689faf3624e",
+      "reference_path": "Research/omr/.runtime/phase3/references/783e13de993bfe4960d2adf9.json",
+      "reference_sha256": "586f25fbea5d98ca5fc5b890a8e46c93480fae4d4bb706b8104bd9b3445d36d9",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata15_1/sonata15_1_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 404,
+      "reference_musicxml_sha256": "773a1c5b4731f0be93ff61d9f8366c01ae1f584b7423effb61565d925cbc5854",
+      "reference_path": "Research/omr/.runtime/phase3/references/26157d693007dc66b82b1f93.json",
+      "reference_sha256": "1322ccb35dcd4181cf9ea2c5b7000e3937e791d5e257bc4db6d420030306def2",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata15_1/sonata15_1_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 449,
+      "reference_musicxml_sha256": "b391277a2c3796cb364bf71ed3fb39b2e4e318592fcb0a0a6fb3679ecf1f4b8c",
+      "reference_path": "Research/omr/.runtime/phase3/references/e41b0cfe4ec5a66428f463bb.json",
+      "reference_sha256": "311f0cb7b45a6c9685afd06ea6665eeac791b7dfbb05c4c7d5ace045a2907b5f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata15_3/sonata15_3_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 463,
+      "reference_musicxml_sha256": "d336080b0e3a5c9dddcd2f5c9a8eb073f642733a8e31ecb3000c859c3790ef58",
+      "reference_path": "Research/omr/.runtime/phase3/references/a3dbdf677ce37b5d24a234be.json",
+      "reference_sha256": "2cf58c54a0722f5f6af6077867014a95c8becb5bfc9055121c38151bfbc2890b",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 315 missing, 315 extra",
+      "error_type": "ValueError",
+      "id": "test/mozart/sonata16_3/sonata16_3_1.png",
+      "status": "invalid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 232 missing, 232 extra",
+      "error_type": "ValueError",
+      "id": "test/mozart/sonata16_3/sonata16_3_2.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/mozart/sonata16_3/sonata16_3_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 288,
+      "reference_musicxml_sha256": "062abf5a67f1de2410b777803177f93d310a1fea6c0b044ae0c2338fa6d34fe9",
+      "reference_path": "Research/omr/.runtime/phase3/references/73c9acdc9db3324bea6fb4d8.json",
+      "reference_sha256": "caa91653ca233376723a98d93d8a938883014449b6d101d69062fc4cbf4c82dc",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata16_3/sonata16_3_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 371,
+      "reference_musicxml_sha256": "2c1d033aadb13b0335f146ce81f0fc7ca4a595a91f2b68eef41968dd658b610f",
+      "reference_path": "Research/omr/.runtime/phase3/references/8d53b3c608c1fa9f2d6cdc0f.json",
+      "reference_sha256": "7c7ae38295b126752cac248dad8f8c32d739b4be232c255655461be9d99f8dcf",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata17_2/sonata17_2_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 247,
+      "reference_musicxml_sha256": "d165d9ed58193701bf6b94c2112c32b3f599e96ca73dca9494cd841291ae99aa",
+      "reference_path": "Research/omr/.runtime/phase3/references/71930a892b5e7e2a89a35817.json",
+      "reference_sha256": "9fc929d5c7fbcf6a0c0cdbb000583d83a6409e8d6536197c5beeb14df179f829",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata17_2/sonata17_2_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 498,
+      "reference_musicxml_sha256": "8c5836603eeef234001e11afc181346e7b7080ae629aba4d439caa0437f22a43",
+      "reference_path": "Research/omr/.runtime/phase3/references/d99fda45361e653a12a4fda8.json",
+      "reference_sha256": "b3bdfc658c357edfeddcc5b06ed893971f2d7bbca446964d0ca1806ac9c5791f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata17_2/sonata17_2_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 540,
+      "reference_musicxml_sha256": "405668381a5d16a5d0ba5ecd17facab4905acc0069a8a00466c90833eb9cb5f0",
+      "reference_path": "Research/omr/.runtime/phase3/references/fd1b73fae06306d80cf4a63d.json",
+      "reference_sha256": "5d8ad8cfc337cb2e74333d8abffcbbc0bfde0c6c3944d4327ce769ce95eb8624",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata17_2/sonata17_2_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 151,
+      "reference_musicxml_sha256": "db7ffde4ff6c33b30fd3c9448a651e0348866db514326812dd21d65007c52990",
+      "reference_path": "Research/omr/.runtime/phase3/references/af05379de4dd60eaaf318772.json",
+      "reference_sha256": "732a779145c98ef0552302df1306ed15fb7d8de7d3bd26197926f22417fc1d02",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/viennese1_1/viennese1_1_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 323,
+      "reference_musicxml_sha256": "ef4ec097a0981a3d71caec837c5834297ce42e14472aa00e9860b34850039bf2",
+      "reference_path": "Research/omr/.runtime/phase3/references/558667740c3cd9f3ed8a2066.json",
+      "reference_sha256": "52cd31c821f084ee6ff46cf4c9cfc806225d889a7bb96a88b6f285da6da9782a",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/viennese1_1/viennese1_1_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 333,
+      "reference_musicxml_sha256": "5446350e2c977c040241e927fd3b29a0f50c257c486fb0c34c13ee011090f9f1",
+      "reference_path": "Research/omr/.runtime/phase3/references/b10ab38b6d257dc8489d7a6f.json",
+      "reference_sha256": "17704f0213a057c9b9bb1131ca13a7cecb9628e427186ae52ca1b730338ff28f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/viennese6_1/viennese6_1_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 461,
+      "reference_musicxml_sha256": "5ac6a28f7e43da4c9a16aa0f0af7f455db653789b23279295bfca9c6fc6bc514",
+      "reference_path": "Research/omr/.runtime/phase3/references/67bf0da5c30fec3e4c834192.json",
+      "reference_sha256": "fab17bb6d6d38361f685552c2d9c77d4a9d499a781d30e677e722056f771a92c",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/viennese6_1/viennese6_1_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 397,
+      "reference_musicxml_sha256": "a588341acceedba44762923d60a8818bfae0524376a652088ac2e92dd81065fc",
+      "reference_path": "Research/omr/.runtime/phase3/references/f696f9c498d8d9da20da8a4a.json",
+      "reference_sha256": "1996ad9a15e1eee024bd975c29cb9092c79290608cdad76bfc6abe233b4cb5d2",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 286 missing, 286 extra",
+      "error_type": "ValueError",
+      "id": "test/mozart/viennese6_2/viennese6_2_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/mozart/viennese6_2/viennese6_2_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 187,
+      "reference_musicxml_sha256": "575fd901cad08da7ff6c2484d0154742c17390ccf91fa4e0ff31f84b1304c945",
+      "reference_path": "Research/omr/.runtime/phase3/references/2f52a65d8c480956a9df5458.json",
+      "reference_sha256": "b8cbb432f0981583c8004ac39ffb9f2800b5eaa961e505ee9ea20b84b68e81e6",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/ravel/sonatine_1/sonatine_1_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 340,
+      "reference_musicxml_sha256": "18988c05dfe1d75d26f29a9016e590af30730da0e76a684962b950dd99662c97",
+      "reference_path": "Research/omr/.runtime/phase3/references/2cc6fe52727300e0ad405d7d.json",
+      "reference_sha256": "db665cab2d0dba13ac604d482ce137efe8a6d4ce3eb352ed1e35548716319ac8",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/ravel/sonatine_1/sonatine_1_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 381,
+      "reference_musicxml_sha256": "b54b002506b313e19280232b9e7f3f6007969bccc988bc9113990cfc6ca0e698",
+      "reference_path": "Research/omr/.runtime/phase3/references/cd719bf6aed53e4dabb7d361.json",
+      "reference_sha256": "4931fa7a7c94649e4a0764994e458628798c46a9fcd2c5f5ea571974d61ebbf9",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L003K502/L003K502_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 338,
+      "reference_musicxml_sha256": "64e52005f467dc4e6b817d03e54443059dbd5f23a137a06cacb923214b645e5e",
+      "reference_path": "Research/omr/.runtime/phase3/references/7a195254cd70515b52194b9f.json",
+      "reference_sha256": "81002c5fc2247f5cb85b3eb662294c0189e0627c2caa1d91f054ff578250e692",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L008K461/L008K461_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 215,
+      "reference_musicxml_sha256": "145aec19b2357c0e6921bbdee90dd3aa7c72afe5d071a85dfef4a38dfff27df2",
+      "reference_path": "Research/omr/.runtime/phase3/references/1c3f99ea4b2b6bcefbedba87.json",
+      "reference_sha256": "24ae962c3e13d3d2bc5a71dbba28ccb80d8afc3e67357a68d42456d15529b9a3",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L008K461/L008K461_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 258,
+      "reference_musicxml_sha256": "44aa4f3f93962bfd1eee049ad966b16dba76dbfbca00e06da7ad5262fed2ace0",
+      "reference_path": "Research/omr/.runtime/phase3/references/1a8bb58fdba2bc669ceac4e0.json",
+      "reference_sha256": "482166bb441c124189c4c2933eea31f404447072fe58ceeb449c6f9bec8fecdc",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L008K461/L008K461_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 340,
+      "reference_musicxml_sha256": "19e88c093fb521e84e08be76a6b7964a9e03de0c5a9d817924953e38ff6bb551",
+      "reference_path": "Research/omr/.runtime/phase3/references/95784ea8a8fe70380f3f23f3.json",
+      "reference_sha256": "f9aac825c7112ce694c880a76a00ac7ae72ede2a8b8c552cf217c5f534161b11",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L008K461/L008K461_5.png",
+      "normalization_warning_count": 0,
+      "note_count": 187,
+      "reference_musicxml_sha256": "89d7a7bfa9ef367a45814b5a99d13e7e38c908763c96e7c37b9954c8fe775e0d",
+      "reference_path": "Research/omr/.runtime/phase3/references/a35a68b31a16497c14497490.json",
+      "reference_sha256": "24b3f0256e2371b8896fa49c5254857f2d2ce18caf0628e29a065a7e39601fce",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L016K306/L016K306_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 262,
+      "reference_musicxml_sha256": "d8817aa8d46cfbf6f223dac858524a1905ad9aee813afb741fccb7a701e6aa6b",
+      "reference_path": "Research/omr/.runtime/phase3/references/cf62634c645095599281af75.json",
+      "reference_sha256": "e7e4e6f47f34b8172af8c45cc99cc87c93eccae131782ff45138790e842e27f9",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L016K306/L016K306_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 362,
+      "reference_musicxml_sha256": "fb92cedad46b3ed1e9a78fcd2edddd68ffbe6cd50da31ac5a2b0d43bb298e801",
+      "reference_path": "Research/omr/.runtime/phase3/references/8181491dc2e956a4a6de5019.json",
+      "reference_sha256": "2990f60fa73e98b225a3d3f312246e90922e6fd99195c0f75a054251eec68abe",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L016K306/L016K306_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 348,
+      "reference_musicxml_sha256": "d70e608b8a9993ac73ce7ff15d99c180fa2254e1ac34a36974420e9987b56b05",
+      "reference_path": "Research/omr/.runtime/phase3/references/10ddba25b3f4bfaffefaac47.json",
+      "reference_sha256": "b1ef242d9ba8fe497d1c286536b22a6c562d49fdc30336bd3e210b2034225678",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L016K306/L016K306_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 305,
+      "reference_musicxml_sha256": "ccf7a530c6acee97e7e07a8049b239a466bf637ea967cff58ffb0d1b8fb2beb7",
+      "reference_path": "Research/omr/.runtime/phase3/references/90ac39f856a3490791163792.json",
+      "reference_sha256": "51d03715cb3209e0155cd151bee1812b0c11f6d237e36d55cb1fe113ecdcb21a",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L053K075/L053K075_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 193,
+      "reference_musicxml_sha256": "c8681b00655f704d3fb2052acd9015c544e0c8a0882553e0666d33b2fa58de13",
+      "reference_path": "Research/omr/.runtime/phase3/references/f0a9c57b2f2d1661091226ec.json",
+      "reference_sha256": "23fb4ecc18cfcde8ac038c06ecb01aee99ebaec64c2c5077a9e92af109ac02ac",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L053K075/L053K075_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 263,
+      "reference_musicxml_sha256": "7f7fd69258f835d221fb615059b9bbaf48cc96e76983b80cbaaa1ce3cb9381ce",
+      "reference_path": "Research/omr/.runtime/phase3/references/9a291e84ea099cb259894e5f.json",
+      "reference_sha256": "1d49750dec8b9cb05a110f826cfbc7a589550718a112e2606fdddf0d5cf16804",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L055K330/L055K330_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 302,
+      "reference_musicxml_sha256": "ccf64d730e8758fc49d04a23ccc947cbaee8b9572a45e8bc26d631c208a974ea",
+      "reference_path": "Research/omr/.runtime/phase3/references/1e98fefcd1563edc5666005f.json",
+      "reference_sha256": "587a0ae73ae551fe65aa9f23e55dc2963bb727b38f93848f4c00628c5ef134c8",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L055K330/L055K330_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 277,
+      "reference_musicxml_sha256": "f7cde8667e8005f31720fce39c53388f46e9c9124a1798deab5eac9c1d39f67e",
+      "reference_path": "Research/omr/.runtime/phase3/references/2d83f500292c33cd785c9130.json",
+      "reference_sha256": "834f8d80c5668f33a67c85e9203b6feeb61b4e0a02b53e77ed6969a431801fb6",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L056K281/L056K281_1.png",
+      "normalization_warning_count": 14,
+      "note_count": 203,
+      "reference_musicxml_sha256": "0db9256422890c7688042d6c96453fba142c029928a1de98937201be0efe2285",
+      "reference_path": "Research/omr/.runtime/phase3/references/b1aac11e8b9b2af202c06f4f.json",
+      "reference_sha256": "15986cd01c0f23c172c8aa907bb036f2594dacdb13f6ec5731b088906fbbaae8",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L056K281/L056K281_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 288,
+      "reference_musicxml_sha256": "97908a574d4d8a0a1146af4aa445981ea72986da22ac23870a72fed029c7710a",
+      "reference_path": "Research/omr/.runtime/phase3/references/81d6c9a3891c8fa27f0b3532.json",
+      "reference_sha256": "292eeca3adf85835c77a1ef46b310b3b2726052ea2881658c0f513bba1070a8d",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L064K148/L064K148_1.png",
+      "normalization_warning_count": 14,
+      "note_count": 305,
+      "reference_musicxml_sha256": "bc8a6fd28fd148967172fe6d68b043f2e4f0e8e641124ce2ec8b0806a48cc751",
+      "reference_path": "Research/omr/.runtime/phase3/references/2965fb928892333ed64841e9.json",
+      "reference_sha256": "190e22deb0e2a28d04f06db2b85c2bd8d0b1e1d23ba047e9188b76b0b2fb5426",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L064K148/L064K148_2.png",
+      "normalization_warning_count": 2,
+      "note_count": 292,
+      "reference_musicxml_sha256": "7147c69d1d89e2661f82bd91a66cac8a0b74d26ec6eee4609c9f82411981beb3",
+      "reference_path": "Research/omr/.runtime/phase3/references/c88aaa9d73414d02cdcf903b.json",
+      "reference_sha256": "1d5c0a4c47db5328069aa8783f9d283373986bf7152a61653c21fb979eb06de3",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L154K235/L154K235_2.png",
+      "normalization_warning_count": 4,
+      "note_count": 255,
+      "reference_musicxml_sha256": "0aba2340cc52928b356df3aee41e1cd01e063bc51d5075f65fe024d545c90dd4",
+      "reference_path": "Research/omr/.runtime/phase3/references/f7242303081582acd54ccc72.json",
+      "reference_sha256": "519ce01be1b489820126ffbb218cb07fec4cb88be5c03537f7629c59f619be2f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L154K235/L154K235_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 204,
+      "reference_musicxml_sha256": "c12155c9b9fb5d7dd6019270ceb85df6525f58f10858d0527e1307cfa46f9e69",
+      "reference_path": "Research/omr/.runtime/phase3/references/1ef65bffbbc63ac44aeb1ccc.json",
+      "reference_sha256": "370cca334cad628fd1bd354570dcaa9b7f184c45b09781db0fe05f98ec12fa91",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 244 missing, 244 extra",
+      "error_type": "ValueError",
+      "id": "test/scarlatti/L166K085/L166K085_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/scarlatti/L166K085/L166K085_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 359,
+      "reference_musicxml_sha256": "79cff7680c53b7cafef3f0818e87efd14d1f6543c0498b8ca666f1a6c5873a39",
+      "reference_path": "Research/omr/.runtime/phase3/references/f6e15d969fb599e59af24f34.json",
+      "reference_sha256": "e5c8349fae32b185fc6546b2fb1ecb4035d84d87b5f00fd96c5b2e45ba9a1beb",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L166K085/L166K085_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 331,
+      "reference_musicxml_sha256": "cda666001cb306c44b326f2badde25077f05299144a5eafbcac9a5a28c9f4d0e",
+      "reference_path": "Research/omr/.runtime/phase3/references/c1aa8d14db070d68e773a306.json",
+      "reference_sha256": "5c9ec02f627ae8375f8831277d6c98e410ece13593cfd26f39fbd778d2ad1cf9",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L240K369/L240K369_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 231,
+      "reference_musicxml_sha256": "ed07e8d45f3062ff954f66d33f3b1af884e83a942d78f2f35b8ceffcafcd09c3",
+      "reference_path": "Research/omr/.runtime/phase3/references/60032e819a4db0c07ad7a440.json",
+      "reference_sha256": "2c19a0f481dbd25c3be42a3d940f59a1995b7e61cab165559b15684ba42e75a5",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L267K052/L267K052_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 271,
+      "reference_musicxml_sha256": "5c2eb99d1b8267ba7392381c0de37ee89719ec43bb1f71aa1328f0f7fb9ed161",
+      "reference_path": "Research/omr/.runtime/phase3/references/51db7fbe64c9e6f7488aa2bb.json",
+      "reference_sha256": "15bd5849ae898a7eae35241ca419471212cb17ac027b5fcbb160e191944eb9ac",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L267K052/L267K052_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 359,
+      "reference_musicxml_sha256": "2a2b512345573ea49af520519c495881a76f5642566486099470dadcf7d7e0cb",
+      "reference_path": "Research/omr/.runtime/phase3/references/d9ad384b2baa60ee91d4ced5.json",
+      "reference_sha256": "139b85283b99d2db4e9a68764f2d4f68f203330ed7218566b9c2ef628b8d7a3d",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L267K052/L267K052_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 355,
+      "reference_musicxml_sha256": "6280633e346f65baa0b260982342ca6bb2941ce2a7ee987201a1890da999e358",
+      "reference_path": "Research/omr/.runtime/phase3/references/f5b708bb4e59e6e081cfc27d.json",
+      "reference_sha256": "03e29c449ec5c3ff7277ceb594edd14f57ad93f515ebb60a64a1d32227c0ee6c",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L267K052/L267K052_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 298,
+      "reference_musicxml_sha256": "8e63807ad15a15be0c37c593ed224e9a6c115bb28fa759590bd171f8fc77e2f2",
+      "reference_path": "Research/omr/.runtime/phase3/references/242f307f6527abcf67150ec8.json",
+      "reference_sha256": "975a118540628edfbb18def748e6ed1108c43969141508fe8abef05885cf5b88",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L301K049/L301K049_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 139,
+      "reference_musicxml_sha256": "ad849501fa86767f1a250a426398c170c5c080754183c5eefcdd417d9b3c154e",
+      "reference_path": "Research/omr/.runtime/phase3/references/1799ccef1abb0b89e81cfbd4.json",
+      "reference_sha256": "aa1e532f53e870c243a6a795885ea0e232de8b73aefbca53527863fdb7c9a37e",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L301K049/L301K049_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 228,
+      "reference_musicxml_sha256": "0a87f115776984f91a7d87515187fd06875207f3c37c09deddf9005563f6b75a",
+      "reference_path": "Research/omr/.runtime/phase3/references/9650862c893ead383bb57f03.json",
+      "reference_sha256": "834d61c2e6aae6cc183db90369a898b92a310100bd11fd3fbe5b9d6cdb0fa5aa",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L301K049/L301K049_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 324,
+      "reference_musicxml_sha256": "eb8ba683b5dfeadd35a1a3182ed62f6f1ba316b19f6738bbb93562040ef2e9de",
+      "reference_path": "Research/omr/.runtime/phase3/references/8ac62928f46b4ac6c41c8e20.json",
+      "reference_sha256": "c1ebfd7873a50534ea3b15823e27da845bd9cc64359235448c56b1005a9f6e97",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L301K049/L301K049_6.png",
+      "normalization_warning_count": 0,
+      "note_count": 207,
+      "reference_musicxml_sha256": "7bee926a79dd83c10326559df26b201e5ef4467e069ebcfb76798ba41dca644c",
+      "reference_path": "Research/omr/.runtime/phase3/references/26d6276140a5a156db53f384.json",
+      "reference_sha256": "1ca2787d8f72355fcfa056d38500c72b640364c19cdd82345599ebe10b67f012",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 324 missing, 324 extra",
+      "error_type": "ValueError",
+      "id": "test/scarlatti/L304K470/L304K470_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/scarlatti/L304K470/L304K470_2.png",
+      "normalization_warning_count": 12,
+      "note_count": 287,
+      "reference_musicxml_sha256": "a2e74356889caeeb65802a00c0b1c4032ee1d3feaed35a080a614bdd39c00529",
+      "reference_path": "Research/omr/.runtime/phase3/references/77c0c3d2a3602ff21c7dd7d8.json",
+      "reference_sha256": "1b715da9f1ebae1332669f2b5d567b86df6cc257bfc0dfd7b0607cf6486d0b32",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "SMB reference MusicXML changed raw note timing: 73 missing, 73 extra",
+      "error_type": "ValueError",
+      "id": "test/scarlatti/L304K470/L304K470_3.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/scarlatti/L304K470/L304K470_5.png",
+      "normalization_warning_count": 8,
+      "note_count": 237,
+      "reference_musicxml_sha256": "a35291beb23a06ae223d732a04b4d0e671b3aa732b91e6a26a93fab5de353e59",
+      "reference_path": "Research/omr/.runtime/phase3/references/543423bab8161f15155c0d30.json",
+      "reference_sha256": "71fb94f52955817d56c4ad2e0f89f396a74ae1c3e1ae986f0a7f00540c731220",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L304K470/L304K470_6.png",
+      "normalization_warning_count": 6,
+      "note_count": 217,
+      "reference_musicxml_sha256": "b627cbfeee34d8d208caa7dc608a8777a5a490e3cb25c9cdadd8792aa9265f54",
+      "reference_path": "Research/omr/.runtime/phase3/references/eba5f6a416c9742a7f17dd14.json",
+      "reference_sha256": "f3003cbedfd4af369a2e40fe8fe71db8c4bdf7c410680e2b69451571c885169a",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L319K442/L319K442_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 198,
+      "reference_musicxml_sha256": "3644a9976795ec6de0355d20839dba90c90f5613103532b99d136e70750ca844",
+      "reference_path": "Research/omr/.runtime/phase3/references/824a42c406dab2b85d089f98.json",
+      "reference_sha256": "dd4c5fec6985a0a5199bee0bfbb7f7d04bd4ae9f291e4b1065700e72d1be2ef0",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L319K442/L319K442_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 231,
+      "reference_musicxml_sha256": "ffc5ab91275e12ad8f63fc8763032fd0d6126d0fe6ca5d5150931edb13a4cc96",
+      "reference_path": "Research/omr/.runtime/phase3/references/ac4bdd281d2f7ff7d0b7257e.json",
+      "reference_sha256": "6ce8cf53b84c56bf890ae8229a36b22357b48789dc37fed5373398dfc01e4bca",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L319K442/L319K442_3.png",
+      "normalization_warning_count": 2,
+      "note_count": 198,
+      "reference_musicxml_sha256": "fe6d8a964116e45a51093948626c039a9422812f91faddda8544b17c6e5aff3a",
+      "reference_path": "Research/omr/.runtime/phase3/references/9a5482927c4ae2b3b79f5750.json",
+      "reference_sha256": "7b6711a46f0124c99a2f0e229ed072fdb8edc147e45d439d5da76cae45afbeb4",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L319K442/L319K442_4.png",
+      "normalization_warning_count": 8,
+      "note_count": 215,
+      "reference_musicxml_sha256": "4fbb674a390876e5dbba5b1c0faf8cc3e49eaf37b7cd9c8f4fbb335309961acf",
+      "reference_path": "Research/omr/.runtime/phase3/references/a0c9826a7370444bfd8ab9bd.json",
+      "reference_sha256": "0c738a2c1a674f73e9b76bc60c740c4e74cf51ba6b5d9797abee3e8e081779d9",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L334K122/L334K122_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 251,
+      "reference_musicxml_sha256": "263abd87d258e49894a683c3e944af195ab9d643cbe6d9d177e4ec3bb43bb466",
+      "reference_path": "Research/omr/.runtime/phase3/references/6ef75aee3aa59989d2986458.json",
+      "reference_sha256": "4f45fbdc1a075ec0350820a46f6650f15b736fa87b52234dbac92840970de080",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L334K122/L334K122_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 318,
+      "reference_musicxml_sha256": "6845553f09a2d25af92bf013bed397192a5411046950f8c86a1269848ea29473",
+      "reference_path": "Research/omr/.runtime/phase3/references/a6a49e5f5460c62caddfb162.json",
+      "reference_sha256": "20ec1a12e91f86cc0b83f9dfb36061b126f52338d95fe7850baf5bbae8c042b9",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L334K122/L334K122_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 280,
+      "reference_musicxml_sha256": "98f1134d40a2742ea3e3cefa144a8d2a00b2bba247bf79126213c242685f8604",
+      "reference_path": "Research/omr/.runtime/phase3/references/56bf3c06e1b8f7f71f42530d.json",
+      "reference_sha256": "fdb93cfc96df443d006658f82c7572254434496d868f12995b8f172580295a7e",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L336K093/L336K093_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 235,
+      "reference_musicxml_sha256": "68db03a30013c2e637fc0feb932537d76d51d4303d47771d71fb9f344523165d",
+      "reference_path": "Research/omr/.runtime/phase3/references/0edef81c28d05da41479713b.json",
+      "reference_sha256": "4a35faba82911e1cb7bd0f95fb7b427703f6871b6215c6f2c918f1b58843986f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L336K093/L336K093_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 237,
+      "reference_musicxml_sha256": "93378068f1ff1ca3a2b3ba3af4cdd1c84b17068ffa72d74e7b8352dca3ddafd2",
+      "reference_path": "Research/omr/.runtime/phase3/references/90f642fae706f831342e490a.json",
+      "reference_sha256": "e03a3962db6beb0dc6add8b0529ea933b6990fbb03d85044ee419597d1c3208a",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L336K093/L336K093_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 237,
+      "reference_musicxml_sha256": "9a7830ddb5453aeb1d1d17b3efadc61375cb15075952072b60e219ea2a9d0655",
+      "reference_path": "Research/omr/.runtime/phase3/references/07e5663799f3b9309038b39e.json",
+      "reference_sha256": "23ab8a554dc4b94f49115332380feeb4ecd505405d8bf2fda80b9783ff393f93",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L336K093/L336K093_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 256,
+      "reference_musicxml_sha256": "5ec11595680eef5cf24eaa6bc10272f0e331e40892c0111e78c86058ccd48837",
+      "reference_path": "Research/omr/.runtime/phase3/references/ad067f2d968d812a737a3683.json",
+      "reference_sha256": "d1c78769d92152e4043a953031df09ee80b5de11c5137159af1efcc6f71d4a06",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L336K093/L336K093_5.png",
+      "normalization_warning_count": 0,
+      "note_count": 341,
+      "reference_musicxml_sha256": "1804940e217d6e4ddfec12d2040fd2f9e1fdc1f0c7aeede94659213055ac2e34",
+      "reference_path": "Research/omr/.runtime/phase3/references/0abadefaf13edde4cbb02a61.json",
+      "reference_sha256": "1665d7c21237222f58e4848fed06183d26b192e6ac7226e56604fcbb966c1c0c",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L336K093/L336K093_6.png",
+      "normalization_warning_count": 0,
+      "note_count": 313,
+      "reference_musicxml_sha256": "fca5c1f48403592550ec8e9d165b5c011ece606f58c901380c344810699ccb2b",
+      "reference_path": "Research/omr/.runtime/phase3/references/53201ef626c3111477ac34ce.json",
+      "reference_sha256": "38d5a03129f6166f0b52ad419efc4241e3e9e48f81f72646748b10b364233c8f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L339K512/L339K512_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 197,
+      "reference_musicxml_sha256": "2f352086f435bdc427c429857324e41a038fac7cb7020107cdeeecf8f355f867",
+      "reference_path": "Research/omr/.runtime/phase3/references/e82d1d918b2124212fa04e09.json",
+      "reference_sha256": "7068a16be757b5e32286a4122aca0f6dce36f90b3fe0f28b2738639e72d4f98b",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L339K512/L339K512_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 198,
+      "reference_musicxml_sha256": "1de2f7e3792fd133dd59ad40595a4870a80f6e6e10fe24b92eff0d715a089248",
+      "reference_path": "Research/omr/.runtime/phase3/references/ddbc507486d856445dc0709d.json",
+      "reference_sha256": "0cd894f0b26e8042910767f40b72ec6bef23cc77982984aa6d7a492b94c96dec",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L339K512/L339K512_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 255,
+      "reference_musicxml_sha256": "42084ffdf21d5d39c831197d0e9528b263e4b957a8001f8aa491735269974a25",
+      "reference_path": "Research/omr/.runtime/phase3/references/241b3286153120fee22daf49.json",
+      "reference_sha256": "1d1ecd72849635384555fa2051bccb3a98b30a190d0c19e4120ba51c88be64ac",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L339K512/L339K512_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 236,
+      "reference_musicxml_sha256": "092a0b22aff176fb2f5651ad6b2cb768cbd1a60581fb106f48b74e4beabb9596",
+      "reference_path": "Research/omr/.runtime/phase3/references/607bb746026d44c9b6886b46.json",
+      "reference_sha256": "7ff50fc5038de72b041cf1f902f21e6191f6f53a648060d40d79e19828d23dec",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L348K244/L348K244_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 307,
+      "reference_musicxml_sha256": "d1931068da2e908e4e137c84979fc3946b153b4bca8aa673f753d421779cdd35",
+      "reference_path": "Research/omr/.runtime/phase3/references/315427d92bd2004c3ad839f1.json",
+      "reference_sha256": "387930b5533ddf79437d14996f2fce65d9e8434a34d1dacf993f24bf2aa8a33e",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L348K244/L348K244_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 272,
+      "reference_musicxml_sha256": "ddaa4e19722d83ee9251af92fedfded60cf713445278827793a10a91503b0c96",
+      "reference_path": "Research/omr/.runtime/phase3/references/569b059644bf8e3f49803398.json",
+      "reference_sha256": "c5cb7594427c0248bbbee80499e5e41e5cb5074278fed6da369089ac5f621b06",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L400K360/L400K360_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 173,
+      "reference_musicxml_sha256": "b94c882e9565ee43936ff13b6ea543b1dde32501181441c976bde1d0ebb84c07",
+      "reference_path": "Research/omr/.runtime/phase3/references/4ed1e95e26648b9bcc145c4e.json",
+      "reference_sha256": "65cac4c0cf82e5e0de56cfddb48db979f46b0e2dc52c9b57e1b978cf8cf14815",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L400K360/L400K360_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 185,
+      "reference_musicxml_sha256": "aa680104ec4382d94a7ab041fcf6a296fe088ca49c2e1f1e52838359f227834b",
+      "reference_path": "Research/omr/.runtime/phase3/references/090081b041da61d1761b5530.json",
+      "reference_sha256": "81f6e5ef37455459410b97abad96f2f406d33dbee135d427fff26f14358d48da",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L400K360/L400K360_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 171,
+      "reference_musicxml_sha256": "6eae6a646e5d1ab472f2f144e20b8cea0216a6430c3b8dea7a5d2fd9562edea5",
+      "reference_path": "Research/omr/.runtime/phase3/references/21a4364a20ff12515c58a7f8.json",
+      "reference_sha256": "478f12441e2ed295910a92ab9e61db5740260d78096d7119f1d6a6dfffeba168",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L400K360/L400K360_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 188,
+      "reference_musicxml_sha256": "9ebd8f5fe31e11866d117ff4a30d2fc86e0fd13b0453d61fb06c4d45a8802075",
+      "reference_path": "Research/omr/.runtime/phase3/references/f46114f4be54f1da1e787024.json",
+      "reference_sha256": "76c15c8c3fd5604ec7ad3c2bdd827427aa6b12ddf1d04e1ec4a8828cd72236c0",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L400K360/L400K360_5.png",
+      "normalization_warning_count": 0,
+      "note_count": 240,
+      "reference_musicxml_sha256": "0cfb7e1efc25ae4efc74734d269319bc8a585cc810be3c156f4ca77db3cddf49",
+      "reference_path": "Research/omr/.runtime/phase3/references/ef3336dd6fd1f608f7acbef6.json",
+      "reference_sha256": "dbbfa53efe0d4818120de94a82f5f6f2fa31f7131204035702a6b9a7e1cd1286",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L481K025/L481K025_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 233,
+      "reference_musicxml_sha256": "440fd6b19a2fb7d825a7a4b3c76bf74705d30d40350efe58cd4dd2e6c4687c8d",
+      "reference_path": "Research/omr/.runtime/phase3/references/1de37c97752cd0e88bb1283e.json",
+      "reference_sha256": "f9649c64df1fce9b72c962598b58f14a632f07e71e619ac0e939c3b0a18569f4",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L481K025/L481K025_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 328,
+      "reference_musicxml_sha256": "3e338d1e307eec31e0cd848235d3981c5d134ace5c62953db44e332fea381ca1",
+      "reference_path": "Research/omr/.runtime/phase3/references/3667cf30876cc3d4a30ead6e.json",
+      "reference_sha256": "73401c63071220025e20f0371cc8bfaf9b9bf4ce71b094dedc9a0bd62791184a",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L481K025/L481K025_3.png",
+      "normalization_warning_count": 0,
+      "note_count": 275,
+      "reference_musicxml_sha256": "3eb4a8e28c6b131b20dfb9709599afd78a5b224c046464edf41bcb69dbab6de9",
+      "reference_path": "Research/omr/.runtime/phase3/references/ebd21fe3b7e2873982430765.json",
+      "reference_sha256": "3768fb219546b5a7921d197cae300334fb876df59baf00d73bb212ab4c9a6d3d",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L481K025/L481K025_4.png",
+      "normalization_warning_count": 0,
+      "note_count": 302,
+      "reference_musicxml_sha256": "409571d2404bda496d0fb110ede7c5f2ba5f416674f8b7fefc1c196ee480a157",
+      "reference_path": "Research/omr/.runtime/phase3/references/e13fa5a4a40d66195d089124.json",
+      "reference_sha256": "913d5255b1d2bb6be83673855730b0b3d56dde748cfcf5235d13aa656682ab08",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/sousa/venus_transit/venus_transit_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 324,
+      "reference_musicxml_sha256": "916205e5157f996f8593c5e872bd8d4cb4b934435653e5c301f274b84d30f3f1",
+      "reference_path": "Research/omr/.runtime/phase3/references/e0f70a60b1b73ffed142ad3d.json",
+      "reference_sha256": "fb3195791692c26891418262d632ba2c4e1e56c6fbac1922ea9f25bcdb63f3e6",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/sousa/venus_transit/venus_transit_2.png",
+      "normalization_warning_count": 0,
+      "note_count": 434,
+      "reference_musicxml_sha256": "47ebaf8d1f0484a5fb9d435abe0ec2b37669f8a75ad6bee681b1e1e9ed1a6696",
+      "reference_path": "Research/omr/.runtime/phase3/references/aba0e571b4fb75cbd184962d.json",
+      "reference_sha256": "af954411385847c6ea631f5fd828defda26f37ad92618e521cf18a0839c68a4c",
+      "state": "generated",
+      "status": "valid"
+    }
+  ],
+  "schema_version": 1,
+  "scope": "complete_page_reference_preflight",
+  "valid_count": 344
+}

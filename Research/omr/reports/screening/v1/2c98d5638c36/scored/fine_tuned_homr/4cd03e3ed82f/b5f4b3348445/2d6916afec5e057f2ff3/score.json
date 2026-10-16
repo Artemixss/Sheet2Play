@@ -1,0 +1,67 @@
+{
+  "adapter_id": "epoch14_verified_onnx",
+  "aligned_voice_accuracy": 0.8475609756097561,
+  "candidate_id": "fine_tuned_homr",
+  "cold_start": true,
+  "composition_group": "joplin/pleasant",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 208,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 91,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/3",
+        "count": 2,
+        "predicted": "3333333333333333/10000000000000000"
+      },
+      {
+        "actual": "2",
+        "count": 17,
+        "predicted": "2"
+      },
+      {
+        "actual": "3",
+        "count": 12,
+        "predicted": "3"
+      }
+    ],
+    "unmatched_expected": 4,
+    "unmatched_predicted": 4
+  },
+  "elapsed_seconds": 25.625,
+  "error": null,
+  "extra_note_count": 6,
+  "failure_penalized_omr_ned": 0.10416666666666667,
+  "first_divergent_measure": 24,
+  "item_id": "test/joplin/pleasant/pleasant_4.png",
+  "mean_offset_error": 2.0202020202020203e-19,
+  "missing_note_count": 6,
+  "omr_ned": 0.10416666666666667,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.9820359281437125,
+  "onset_f1": 0.9880239520958084,
+  "peak_ram_bytes": 1547677696,
+  "peak_vram_bytes": 1487929344,
+  "pitch_f1": 1.0,
+  "predicted_note_count": 334,
+  "reference_measure_count": 27,
+  "reference_note_count": 334,
+  "reference_quarter_length": "79",
+  "schema_version": 1,
+  "staff_accuracy": 0.5670731707317073,
+  "status": "succeeded",
+  "timeline_length_error": "0",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

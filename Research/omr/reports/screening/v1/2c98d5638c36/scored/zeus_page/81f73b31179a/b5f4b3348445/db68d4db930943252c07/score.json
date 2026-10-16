@@ -1,0 +1,87 @@
+{
+  "adapter_id": "zeus_app_integration",
+  "aligned_voice_accuracy": 0.7333333333333333,
+  "candidate_id": "zeus",
+  "cold_start": true,
+  "composition_group": "joplin/lilyqueen",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 2,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 3,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/2",
+        "count": 2,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 12,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 6,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "1/4"
+      }
+    ],
+    "unmatched_expected": 334,
+    "unmatched_predicted": 396
+  },
+  "elapsed_seconds": 60.57800000000134,
+  "error": null,
+  "extra_note_count": 410,
+  "failure_penalized_omr_ned": 0.762954796030871,
+  "first_divergent_measure": 1,
+  "item_id": "test/joplin/lilyqueen/lilyqueen_3.png",
+  "mean_offset_error": 0.19827586206896552,
+  "missing_note_count": 348,
+  "omr_ned": 0.762954796030871,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.03807106598984772,
+  "onset_f1": 0.07360406091370558,
+  "peak_ram_bytes": 1065717760,
+  "peak_vram_bytes": 244318208,
+  "pitch_f1": 0.6142131979695432,
+  "predicted_note_count": 425,
+  "reference_measure_count": 23,
+  "reference_note_count": 363,
+  "reference_quarter_length": "46",
+  "schema_version": 1,
+  "staff_accuracy": 0.2,
+  "status": "succeeded",
+  "timeline_length_error": "11/4",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

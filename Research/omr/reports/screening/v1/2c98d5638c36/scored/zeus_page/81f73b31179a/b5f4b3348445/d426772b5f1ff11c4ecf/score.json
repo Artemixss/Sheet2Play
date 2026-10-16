@@ -1,0 +1,67 @@
+{
+  "adapter_id": "zeus_app_integration",
+  "aligned_voice_accuracy": 0.8181818181818182,
+  "candidate_id": "zeus",
+  "cold_start": true,
+  "composition_group": "mozart/viennese1_1",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 2,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 2,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 8,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "2",
+        "count": 1,
+        "predicted": "2"
+      }
+    ],
+    "unmatched_expected": 319,
+    "unmatched_predicted": 329
+  },
+  "elapsed_seconds": 70.5630000000001,
+  "error": null,
+  "extra_note_count": 332,
+  "failure_penalized_omr_ned": 0.8214285714285714,
+  "first_divergent_measure": 1,
+  "item_id": "test/mozart/viennese1_1/viennese1_1_2.png",
+  "mean_offset_error": 0.10714285714285714,
+  "missing_note_count": 322,
+  "omr_ned": 0.8214285714285714,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.032544378698224845,
+  "onset_f1": 0.04142011834319527,
+  "peak_ram_bytes": 1056751616,
+  "peak_vram_bytes": 246415360,
+  "pitch_f1": 0.5680473372781064,
+  "predicted_note_count": 343,
+  "reference_measure_count": 34,
+  "reference_note_count": 333,
+  "reference_quarter_length": "135",
+  "schema_version": 1,
+  "staff_accuracy": 0.6363636363636364,
+  "status": "succeeded",
+  "timeline_length_error": "9",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

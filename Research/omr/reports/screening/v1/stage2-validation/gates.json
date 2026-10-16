@@ -1,0 +1,62 @@
+{
+  "prepare_idempotent": {
+    "command": [
+      "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.venv\\Scripts\\python.exe",
+      "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\screening_prepare.py"
+    ],
+    "working_directory": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "exit_code": 0,
+    "excerpt": "{\"manifest\": \"C:\\\\Users\\\\bur4x\\\\Desktop\\\\lecture\\\\big_projects\\\\Sheet2Play\\\\Research\\\\omr\\\\reports\\\\screening\\\\v1\\\\manifest-v1-9126bc5feefc.json\", \"identity_sha256\": \"9126bc5feefc1cf919831716f045cc00b1b71347c02503f10c3a86d1ca2c6c7c\", \"file_sha256\": \"1cf36e06b12a0ce72f7bb1e8e358ea9a8b374449f807f11e4a843f351158e1ee\", \"groups\": 18, \"pages\": 59, \"candidate_inference_started\": false}",
+    "expected": true
+  },
+  "run_rejects_missing_admission": {
+    "command": [
+      "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.venv\\Scripts\\python.exe",
+      "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\screening_run.py",
+      "--manifest",
+      "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\screening\\v1\\manifest-v1-9126bc5feefc.json",
+      "--candidate",
+      "homr_page",
+      "--session-id",
+      "stage2-validation",
+      "--max-items",
+      "1"
+    ],
+    "working_directory": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "exit_code": 1,
+    "excerpt": "Traceback (most recent call last):\n  File \"C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\screening_run.py\", line 398, in <module>\n    main()\n  File \"C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\screening_run.py\", line 390, in main\n    raise ValueError(\"A verified development admission and session ID are required\")\nValueError: A verified development admission and session ID are required",
+    "expected": true
+  },
+  "score_rejects_pending": {
+    "command": [
+      "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.venv\\Scripts\\python.exe",
+      "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\screening_score.py",
+      "--manifest",
+      "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\screening\\v1\\manifest-v1-9126bc5feefc.json",
+      "--candidate",
+      "homr_page",
+      "--session-id",
+      "stage2-validation"
+    ],
+    "working_directory": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "exit_code": 1,
+    "excerpt": "^\n  File \"C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\screening_score.py\", line 187, in score\n    require_complete_results(root, manifest, candidate)\n  File \"C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\screening_score.py\", line 77, in require_complete_results\n    raise RuntimeError(f\"Screening result pending at {index}/{len(manifest['items'])}: {item['id']}\")\nRuntimeError: Screening result pending at 1/59: test/beethoven/sonata02_2/sonata02_2_1.png",
+    "expected": true
+  },
+  "report_rejects_missing_scores": {
+    "command": [
+      "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.venv\\Scripts\\python.exe",
+      "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\screening_report.py",
+      "--manifest",
+      "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\screening\\v1\\manifest-v1-9126bc5feefc.json",
+      "--kind",
+      "interim-homr",
+      "--candidates",
+      "homr_page"
+    ],
+    "working_directory": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "exit_code": 1,
+    "excerpt": "n build_report\n    all_rows[candidate], summaries[candidate], sources[candidate] = verified_candidate(\n                                                                    ^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\screening_report.py\", line 77, in verified_candidate\n    raise RuntimeError(f\"Candidate score is incomplete: {candidate} {item['id']}\")\nRuntimeError: Candidate score is incomplete: homr_page test/beethoven/sonata02_2/sonata02_2_1.png",
+    "expected": true
+  }
+}

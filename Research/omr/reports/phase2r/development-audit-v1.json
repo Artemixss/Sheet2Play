@@ -1,0 +1,1458 @@
+{
+  "comparison_config_sha256": "05888ddcf6614f33ee1b1334ba271a876f7a0832d5050d35cd6c8dff35933837",
+  "converter_success_count": 12,
+  "development_item_count": 32,
+  "development_items": [
+    {
+      "abc_sha256": "6d63e7d4572eebfc1471ce4457e5b663cdb6f10218b5506c3adad30bbd8b49e3",
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "generated",
+      "composition_group": "baseline-piano-001",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "succeeded",
+      "declared_traits": {
+        "polyrhythm": false,
+        "tuplet": false
+      },
+      "features": {
+        "engraved_system_changes": 0,
+        "independent_voices": false,
+        "meter_changes": false,
+        "multi_page": false,
+        "page_count": 1,
+        "ties": false,
+        "tuplets": false
+      },
+      "image_sha256": "2cbe267a15f2f5791943523413ce6c3d25dee32e283f43af156c7eeee5f08805",
+      "item_id": "generated-baseline-piano-001",
+      "reference_format": "kern",
+      "reference_note_count": 56,
+      "reference_sha256": "03a48bf5f047943af61f451fabf4f1eb835eff559da36faa38fe3349bc03eef5",
+      "roundtrip_exact_event_f1": 1.0,
+      "roundtrip_musicxml_sha256": "ef2c4ab1320d5c0e5234e49be57bf22b37b8b6fdcb182c80c90921091e73fc60"
+    },
+    {
+      "abc_sha256": "afe60607ea40b2e460db7a1212439824027cf0d741099db4a52129735bbbbb0b",
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "generated",
+      "composition_group": "homophonic",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "succeeded",
+      "declared_traits": {
+        "polyrhythm": false,
+        "tuplet": false
+      },
+      "features": {
+        "engraved_system_changes": 0,
+        "independent_voices": true,
+        "meter_changes": false,
+        "multi_page": false,
+        "page_count": 1,
+        "ties": false,
+        "tuplets": false
+      },
+      "image_sha256": "298bf62eaa8c2b822a3d9ec173154caa1cb1981de5704f6799828a2ec239fc79",
+      "item_id": "generated-homophonic",
+      "reference_format": "musicxml",
+      "reference_note_count": 8,
+      "reference_sha256": "84922d9757a5be7b9877fc9737032d9f297b773698e1d9f50f7764d46ab8eaab",
+      "roundtrip_exact_event_f1": 1.0,
+      "roundtrip_musicxml_sha256": "b03648b3b81063c336b39a37c2de062900e558bad861a476281a9a799b2af790"
+    },
+    {
+      "abc_sha256": "1a523f59c37cd43c0f8b801086837b38fc5c37da6ba71ad411919a1fcabbcba5",
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "generated",
+      "composition_group": "offset_entry",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "succeeded",
+      "declared_traits": {
+        "polyrhythm": true,
+        "tuplet": false
+      },
+      "features": {
+        "engraved_system_changes": 0,
+        "independent_voices": true,
+        "meter_changes": false,
+        "multi_page": false,
+        "page_count": 1,
+        "ties": false,
+        "tuplets": false
+      },
+      "image_sha256": "9dd714781e3fe710c07f7b3b95e75a049c400b5f66c951013704798719f9dbf8",
+      "item_id": "generated-offset_entry",
+      "reference_format": "musicxml",
+      "reference_note_count": 7,
+      "reference_sha256": "7e9a04bca94dfb1265ffd52470876acb8fe58ff5f343b8d978e0d3934c2b3217",
+      "roundtrip_exact_event_f1": 1.0,
+      "roundtrip_musicxml_sha256": "fa53cb09edc8534fbbe52d34e06026eac0b669374acffa35678f8d35dd381933"
+    },
+    {
+      "abc_sha256": "6cacf6f324f8d7679bb49ffce8f2df6b5dd69b703c578456f9bbb66387ca4968",
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "generated",
+      "composition_group": "quintuplet_vs_duple",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "succeeded",
+      "declared_traits": {
+        "polyrhythm": true,
+        "tuplet": true
+      },
+      "features": {
+        "engraved_system_changes": 0,
+        "independent_voices": true,
+        "meter_changes": false,
+        "multi_page": false,
+        "page_count": 1,
+        "ties": false,
+        "tuplets": true
+      },
+      "image_sha256": "b57f0e85b624a4be1e9a6484bbd2c6088612831ba77875c640e0b1111eaff79d",
+      "item_id": "generated-quintuplet_vs_duple",
+      "reference_format": "musicxml",
+      "reference_note_count": 9,
+      "reference_sha256": "bf0d92a4c3639690ac43e87f54f93bf0ef12e8b9760d0d6ba21596bdfa580931",
+      "roundtrip_exact_event_f1": 1.0,
+      "roundtrip_musicxml_sha256": "339738aba6ba3c9b13932c34d56ff499ba9cff27cf2d088a281656c7b4d5a581"
+    },
+    {
+      "abc_sha256": "9357601a867baabfc45d95d36e4d8d9b30d3c5d340397a04c8729c78583f3b6e",
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "generated",
+      "composition_group": "same_position_sustain",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "succeeded",
+      "declared_traits": {
+        "polyrhythm": true,
+        "tuplet": false
+      },
+      "features": {
+        "engraved_system_changes": 0,
+        "independent_voices": true,
+        "meter_changes": false,
+        "multi_page": false,
+        "page_count": 1,
+        "ties": false,
+        "tuplets": false
+      },
+      "image_sha256": "74c1ba126d212f5c7ef3e7f3ef763dda2e35871f23add62d58f6daa3604cf624",
+      "item_id": "generated-same_position_sustain",
+      "reference_format": "musicxml",
+      "reference_note_count": 6,
+      "reference_sha256": "98708dc156bafa3093697b433310e77332595560512edbf2522c989e572e3e26",
+      "roundtrip_exact_event_f1": 1.0,
+      "roundtrip_musicxml_sha256": "3389bbcebae4eeaefff26dc12a1891cb8ef137398e23deaf571be87cec649899"
+    },
+    {
+      "abc_sha256": "840c831fd14d91617752425ce87ba5b67cc52c1ae30d1f95c2b7a8186d435419",
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "generated",
+      "composition_group": "septuplet_vs_duple",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "succeeded",
+      "declared_traits": {
+        "polyrhythm": true,
+        "tuplet": true
+      },
+      "features": {
+        "engraved_system_changes": 0,
+        "independent_voices": true,
+        "meter_changes": false,
+        "multi_page": false,
+        "page_count": 1,
+        "ties": false,
+        "tuplets": true
+      },
+      "image_sha256": "f8f9caca9f95b1a94cef6452cb2850d91e509a7465794e4e6c927bdfcf4c5791",
+      "item_id": "generated-septuplet_vs_duple",
+      "reference_format": "musicxml",
+      "reference_note_count": 11,
+      "reference_sha256": "12243b6a57e88281408481c8cdc419a852174920dbde8b3f3cc2e9af2fa79bcb",
+      "roundtrip_exact_event_f1": 1.0,
+      "roundtrip_musicxml_sha256": "4a6ba80e64dd6235060bd8ee911462eff365920b0b9a299e452ea072b2f28729"
+    },
+    {
+      "abc_sha256": "6128992c9ac061c2de0df2456a0f1d2165c4c67ada39a716de3602c0576bf1e6",
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "generated",
+      "composition_group": "syncopation",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "succeeded",
+      "declared_traits": {
+        "polyrhythm": true,
+        "tuplet": false
+      },
+      "features": {
+        "engraved_system_changes": 0,
+        "independent_voices": true,
+        "meter_changes": false,
+        "multi_page": false,
+        "page_count": 1,
+        "ties": false,
+        "tuplets": false
+      },
+      "image_sha256": "b81f65fe8faa3a2d2517aaf22b362ba613441388e79335f18ffb5839d4e5a4e7",
+      "item_id": "generated-syncopation",
+      "reference_format": "musicxml",
+      "reference_note_count": 8,
+      "reference_sha256": "c603832b1189a6a8539e4ab180220b8f5e54601f5881615061fc798ffd3bd1b3",
+      "roundtrip_exact_event_f1": 1.0,
+      "roundtrip_musicxml_sha256": "59c276ab8108900d9c52d90c346446bf28c6a8f4a717be5d5139c72fdfe2ac03"
+    },
+    {
+      "abc_sha256": "0e03877eb1d675c24750157638a471c2cc718151a565fb481b5592c313934537",
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "generated",
+      "composition_group": "three_voices",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "succeeded",
+      "declared_traits": {
+        "polyrhythm": true,
+        "tuplet": false
+      },
+      "features": {
+        "engraved_system_changes": 0,
+        "independent_voices": true,
+        "meter_changes": false,
+        "multi_page": false,
+        "page_count": 1,
+        "ties": false,
+        "tuplets": false
+      },
+      "image_sha256": "6a5fb87a643858e21b4be6c8637acc69259b19b052c486b1c85e057a0828203d",
+      "item_id": "generated-three_voices",
+      "reference_format": "musicxml",
+      "reference_note_count": 7,
+      "reference_sha256": "6534855228913d7897c671ff2e1ee88528859e6111b9315ef7e013044f652214",
+      "roundtrip_exact_event_f1": 1.0,
+      "roundtrip_musicxml_sha256": "9505122cd687f0c03e8f4a4647038259526da36e5ddcece89e974ae4497a0818"
+    },
+    {
+      "abc_sha256": "986157118d9c968dc0343a3a04fbfa6e308b51e16826a9d64b6108093c9ff775",
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "generated",
+      "composition_group": "tie_across_barline",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "succeeded",
+      "declared_traits": {
+        "polyrhythm": false,
+        "tuplet": false
+      },
+      "features": {
+        "engraved_system_changes": 0,
+        "independent_voices": false,
+        "meter_changes": false,
+        "multi_page": false,
+        "page_count": 1,
+        "ties": true,
+        "tuplets": false
+      },
+      "image_sha256": "5651dc3756ad48f8963570e0b8f6cbe67f63fc3c6790bf2fabadc84f9eda4b71",
+      "item_id": "generated-tie_across_barline",
+      "reference_format": "musicxml",
+      "reference_note_count": 3,
+      "reference_sha256": "678260f1a5c7eb3d8f49cc3475b3d3bff0d0912debbb0352b404e37be8cd9d0c",
+      "roundtrip_exact_event_f1": 1.0,
+      "roundtrip_musicxml_sha256": "a5d0f071af9f7a2f62d5b9730e30c8a4f88aff340d1cf3492afc7e6aeff76d22"
+    },
+    {
+      "abc_sha256": "b503c4e63bd22896481b374a57583e3b47b6e346df946333af001ec291dcb570",
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "generated",
+      "composition_group": "triplet_vs_duple",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "succeeded",
+      "declared_traits": {
+        "polyrhythm": true,
+        "tuplet": true
+      },
+      "features": {
+        "engraved_system_changes": 0,
+        "independent_voices": true,
+        "meter_changes": false,
+        "multi_page": false,
+        "page_count": 1,
+        "ties": false,
+        "tuplets": true
+      },
+      "image_sha256": "aad2dfdb6e0719b2e1a85cbf9d198473ab1c608aa9f720e2ed91bfbb7f785970",
+      "item_id": "generated-triplet_vs_duple",
+      "reference_format": "musicxml",
+      "reference_note_count": 5,
+      "reference_sha256": "a7c9656f91daec641a0eb12bf5d24e411b8aac0bc34d0f06e7d2d57e44f8a4cc",
+      "roundtrip_exact_event_f1": 1.0,
+      "roundtrip_musicxml_sha256": "677daa15a7b17dae2ca4fd7a605684446d1add40f44b17d4319a97ac9d2241f3"
+    },
+    {
+      "abc_sha256": "ce843efe1f0d11ea116a77342a65eb39a84ccc12982fb47bc5673861b42c4b64",
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "generated",
+      "composition_group": "triplet_vs_quadruple",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "succeeded",
+      "declared_traits": {
+        "polyrhythm": true,
+        "tuplet": true
+      },
+      "features": {
+        "engraved_system_changes": 0,
+        "independent_voices": true,
+        "meter_changes": false,
+        "multi_page": false,
+        "page_count": 1,
+        "ties": false,
+        "tuplets": true
+      },
+      "image_sha256": "9cb1565f8a69326d456910653549d46a784fa30d4060770e8539958d4830ed04",
+      "item_id": "generated-triplet_vs_quadruple",
+      "reference_format": "musicxml",
+      "reference_note_count": 7,
+      "reference_sha256": "5fc483dc3a1a056d98742e8797235e5598e6c0ca9c75ab399acbafbd873b0bdc",
+      "roundtrip_exact_event_f1": 1.0,
+      "roundtrip_musicxml_sha256": "64cfcc37d2f2f8e2cbe8994e45e3137a2d735f6e490f2b37507f1e5100e4744c"
+    },
+    {
+      "abc_sha256": "2be65ab31a1613c6ec13305dbafff724fc4a5fd01e369dccb9c5b6a5bb23d411",
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "generated",
+      "composition_group": "tuplet_aligned",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "succeeded",
+      "declared_traits": {
+        "polyrhythm": false,
+        "tuplet": true
+      },
+      "features": {
+        "engraved_system_changes": 0,
+        "independent_voices": true,
+        "meter_changes": false,
+        "multi_page": false,
+        "page_count": 1,
+        "ties": false,
+        "tuplets": true
+      },
+      "image_sha256": "6a37b7d11e0d090fec743c04b42511f814b860f554aeb8abae1182ba46456f45",
+      "item_id": "generated-tuplet_aligned",
+      "reference_format": "musicxml",
+      "reference_note_count": 24,
+      "reference_sha256": "7e913ab9fad842cc43bacc070adbbb2c2b4323dec2e86790683ca2d0b16c5d55",
+      "roundtrip_exact_event_f1": 1.0,
+      "roundtrip_musicxml_sha256": "b32cbc8261ee8349ddf9f29118484b1bc39d6e12f47484f256e0cb8f5e8ffc36"
+    },
+    {
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "open",
+      "composition_group": "6211535",
+      "converter_error": "ResearchError:  | D E D E D E D E | G E G E G E G E | G A G A G A G A | G E G E G E G E | D E D E D E D E | G E G E G E G E) | (G A G A G A G A | c A c A c A c A | c d c d c d c d | c A c A c A c A) | (G A G A G A G A | G E G E G E G A | c) z z2 z4 | z8 | (A,,, D,, E,, G,,) (A,, D, E, G,) | (A, D E G e d e g | a g e d (A G E D)) | (A, G, E, D,) (A,, G,, E,, D,,) | (C,, G,, C, E, G, _B, D E) | (E D _B, G, E, C, G,, C,,) | (C,, G,, C, E, G, _B, D E) | (E D _B, G, E, C, G,, C,,) | (F,, C, F, A, C _E G A) | (A G _E C A, F, C, F,,) | (F,, C, F, A, C _E G A) | (A G _E C A, F, C, F,,) | (=E,, G,, A,, C,) (=E, G, A, C) | ([EA]4 [DG]4 | [G,C]4) ([E,A,]4 | [D,G,]4 [E,A,]4) | z8 | z8 | (A,, D, E, G,) (A, D E G) | (G E D A,) (G, E, D, A,,) | (A,, D, E, G,) (A, D E G) | (G E D A,) (G, E, D, A,,) | (A,, D, E, G,) (A, D E G) | (G E D A,) (G, E, D, A,,) | (_B,, D, E, A,) (_B, D E G) | (G E D _B,) (A, E, D, _B,,) | !arpeggio![A,,!arpeggio!D,!arpeggio!^F,!arpeggio!C]4 z4 | z8 | z8 | z8 | z2 ([I:croma-direction-placement placement=below]!p![DG]2 [EA]2 [DG]2) | z2 [Q:\"dim.\"] ([dg]2 [ea]2 [dg]2 | [ea]4) ([gc']4 | [ad']4 [I:croma-direction-placement placement=below]!crescendo)![I:croma-direction-placeme",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "failed",
+      "declared_traits": {},
+      "features": {
+        "engraved_system_changes": 32,
+        "independent_voices": true,
+        "meter_changes": false,
+        "multi_page": true,
+        "page_count": 7,
+        "ties": true,
+        "tuplets": true
+      },
+      "image_sha256": "b368dd864dc235272728822a578551fbed619cce02265cc52043dea3051c57c8",
+      "item_id": "openscore-6211535",
+      "reference_format": "musicxml",
+      "reference_note_count": 1013,
+      "reference_sha256": "7752257515ec8ec575f1cd5c05e7aba9b52b743032494f162b93e57959792951"
+    },
+    {
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "open",
+      "composition_group": "6211549",
+      "converter_error": "ResearchError: , =A, G, ^F, E, | ^D, B,,) [I:croma-musicxml-forward]x6 | [I:croma-musicxml-forward]x2 (B,,6 | B,,) z B,,6- | y | y | y | [I:croma-musicxml-forward]x2 !staccato![B,,,B,,] [I:croma-musicxml-forward]x5 | y | [I:croma-musicxml-forward]x2 !staccato![=B,,,=B,,] [I:croma-musicxml-forward]x5 | [^F,A,]2) !staccato![B,,,B,,] z [F,A,]2 !staccato![B,,,B,,] z | [^F,A,]2 !staccato![=C,,=C,] z z2 !staccato![B,,,B,,] z | y | y | y | y | y | y | y | y | y | y | ([A,,,A,,]3 [=B,,,=B,,]) ([D,,D,]3 [^C,,^C,]) | ([=C,,=C,]3 [=B,,,=B,,]) ([_B,,,_B,,]3 [E,,,E,,]) | ([A,,,A,,]3 [C,,C,]) ([E,,E,]3 [^D,,^D,]) | ([=D,,=D,]3 [^C,,^C,]) !staccato![=C,,=C,] !staccato![=B,,,=B,,] [I:croma-musicxml-forward]x !staccato![E,,,E,,] | [A,,,A,,]3 [C,,C,] ([F,,F,]3 [E,,E,]) | ([^D,,^D,]3 [^F,,^F,]) ([A,,A,]3 [^G,,^G,]) | ([=G,,=G,]3 [_B,,_B,]) ([^C,^C]3 [=C,=C]) | !staccato![=B,,=B,] [I:croma-musicxml-forward]x2 !accent!A, !accent!G,3 !accent!^F, | y | y | z8 | z2 ([_B,,,_B,,]2 [E,,,E,,]2 [D,,D,]2) | z2 ([A,,,A,,]2 [F,,,F,,]2 [E,,E,]2) | y | [E,,,E,,]8 | ([A,,,A,,]3 [B,,,B,,] [D,,D,]4) | ([A,,,A,,]3 [B,,,B,,] [D,,D,]4) | ([^C,,^C,]4 [=C,,=C,]4 | [B,,,B,,]2 [C,,C,]2 [_B,,,_B,,]4 | [A,,,A,,]) [I:croma-musi",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "failed",
+      "declared_traits": {},
+      "features": {
+        "engraved_system_changes": 34,
+        "independent_voices": true,
+        "meter_changes": false,
+        "multi_page": true,
+        "page_count": 7,
+        "ties": true,
+        "tuplets": true
+      },
+      "image_sha256": "2fb2928d51c8bb08303dc3ebabec82e665a41ed89406037650d7a8c2f0ae1bef",
+      "item_id": "openscore-6211549",
+      "reference_format": "musicxml",
+      "reference_note_count": 1370,
+      "reference_sha256": "9d746b490220f25cfc0bba1b6a18cde0e445b09607a65b3655484b9a705ac897"
+    },
+    {
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "open",
+      "composition_group": "6211555",
+      "converter_error": "ResearchError:                                                                                                                                                                                                                                                                                                                                                                                                                                                  ^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-0_wewse6\\roundtrip.abc:29:670-29:671: warning[abc.music.unmatched_tie]: Tie marker does not connect two matching notes\n  byte span 6382..6383\n  | C,- !arpeggio![C,-!arpeggio!^G,-!arpeggio!C-!arpeggio!E-] [Q:\"sost.\"] [C,-G,-C-E-]4 | [C,^G,CE]6 | z6 | z6 | z2 (_A,2 [Q:\"espress.\"] E,2 | C,2 _A,,2 E,,2) | z2 [Q:\"sost.\"] z2 (_A,2- | _A,2 _B,2 C2) | x6 | x4 x2 | z2 (_B,2 [Q:\"espress.\"] ^F,2 | D,2 _B,,2 ^F,,2) | z2 z2 (_B,2- | _B,2 C2 D2) | x6 | x6 | !staccato![D,,D,] ([^F,_B,D]2 [F,B,D]2 [F,B,D]) | !staccato![_E,,_E,] ([G,=B,_E]2 [G,B,E]2 [G,B,E]) | !staccato![=E,,=E,] ([^G,C=E]2 [G,CE]2 [G,CE]) | !staccato![=F,,=F,] ([A,^C=F]2 [A,CF]2 [A,CF]) | z2 ([_B,,_B,]2 [^F,,^F,]2 | [D,,D,]2 [_B,,,_B,,]2 ",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "failed",
+      "declared_traits": {},
+      "features": {
+        "engraved_system_changes": 12,
+        "independent_voices": true,
+        "meter_changes": false,
+        "multi_page": true,
+        "page_count": 4,
+        "ties": true,
+        "tuplets": true
+      },
+      "image_sha256": "8787a0a691a6118d66fe41c3f0cf160d5f641ffde05ffe1824218d7fb27cc9fb",
+      "item_id": "openscore-6211555",
+      "reference_format": "musicxml",
+      "reference_note_count": 359,
+      "reference_sha256": "634f9047f31bd272f056963d7643d208dbd19599351ba81d92a22da3d0f01eca"
+    },
+    {
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "open",
+      "composition_group": "6211559",
+      "converter_error": "ResearchError:                                    ^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-0q0om6i3\\roundtrip.abc:31:13-31:14: warning[abc.music.unmatched_tie]: Tie marker does not connect two matching notes\n  byte span 19658..19659\n  | y | ^C z (E2- =C2-) | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | D z (B,2 D2- | [_B,-D-]2) [B,D] [I:croma-xvoice-slur pair=2 role=start]E D _B, | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | y | !staccato!^C,, [I:croma-musicxml-forward]x (^E,4 | =E,6) | [D,,D,] D,- D,4 | y | {/D,,}(!musicxml-tremolo-start-3-tm-2-1!D,3 !musicxml-tremolo-stop-3-tm-2-1!^F,3) | y | y | y | z2 !staccato![^C,,^C,] z !staccato![^F,,,^F,,] z | y | z2 !staccato![^C,,^C,] z !staccato![^F,,,^F,,] z | y | z2 !staccato![^C,,^C,] z !staccato![^F,,,^F,,] z | y | y | z2 !staccato!^F,,, z z2 | z2 !staccato!^F,,, z z2\n  |             ^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-0q0om6i3\\roundtrip.abc:31:18-31:19: warning[abc.music.unmatched_tie]: Tie marker does not connect two matching notes\n",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "failed",
+      "declared_traits": {},
+      "features": {
+        "engraved_system_changes": 32,
+        "independent_voices": true,
+        "meter_changes": false,
+        "multi_page": true,
+        "page_count": 8,
+        "ties": true,
+        "tuplets": true
+      },
+      "image_sha256": "4123491db1d7c742793af359fa29e17c909eea98f728ab7d209759f5697112ab",
+      "item_id": "openscore-6211559",
+      "reference_format": "musicxml",
+      "reference_note_count": 1224,
+      "reference_sha256": "a91acbb23c644c87896dde4cab65f0fe6e05653af543d0f2ac099112453983ac"
+    },
+    {
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "open",
+      "composition_group": "6211561",
+      "converter_error": "ResearchError:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "failed",
+      "declared_traits": {},
+      "features": {
+        "engraved_system_changes": 32,
+        "independent_voices": true,
+        "meter_changes": false,
+        "multi_page": true,
+        "page_count": 8,
+        "ties": true,
+        "tuplets": false
+      },
+      "image_sha256": "989caaffd513afd7f6430ab3676cc0486219be7b68d7f338749781806cccb059",
+      "item_id": "openscore-6211561",
+      "reference_format": "musicxml",
+      "reference_note_count": 972,
+      "reference_sha256": "de75048c7c17c73cb32c7bd689d4d622a25c7f93f3278038eccef0cea4e7127c"
+    },
+    {
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "open",
+      "composition_group": "6212179",
+      "converter_error": "ResearchError:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "failed",
+      "declared_traits": {},
+      "features": {
+        "engraved_system_changes": 14,
+        "independent_voices": true,
+        "meter_changes": true,
+        "multi_page": true,
+        "page_count": 5,
+        "ties": true,
+        "tuplets": true
+      },
+      "image_sha256": "6831bc8e2a6bc9fd60f15f3e0cba20d54f6b919df4ad9a5b86fd1654eb7d2c89",
+      "item_id": "openscore-6212179",
+      "reference_format": "musicxml",
+      "reference_note_count": 998,
+      "reference_sha256": "ddeed95a90fa11918998bb18ff77969cea187c0985d7b1f60e18488477e01c5d"
+    },
+    {
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "open",
+      "composition_group": "6212193",
+      "converter_error": "ResearchError:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "failed",
+      "declared_traits": {},
+      "features": {
+        "engraved_system_changes": 32,
+        "independent_voices": true,
+        "meter_changes": true,
+        "multi_page": true,
+        "page_count": 6,
+        "ties": true,
+        "tuplets": true
+      },
+      "image_sha256": "e6472308c8b1bc07dcaa50fa1f95ac33cfaab61b32e564aea7040ce64dfca0c3",
+      "item_id": "openscore-6212193",
+      "reference_format": "musicxml",
+      "reference_note_count": 1503,
+      "reference_sha256": "c3a79485cc2cf8cc259b972126a133ae54bc03aaf9c1e9fde1ca45b39e4191df"
+    },
+    {
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "open",
+      "composition_group": "6212196",
+      "converter_error": "ResearchError:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "failed",
+      "declared_traits": {},
+      "features": {
+        "engraved_system_changes": 63,
+        "independent_voices": true,
+        "meter_changes": false,
+        "multi_page": true,
+        "page_count": 9,
+        "ties": true,
+        "tuplets": true
+      },
+      "image_sha256": "5e8ede2e03b0e8b9563429e9a813f34c6ca315af8ce8133423e38280540ef5f3",
+      "item_id": "openscore-6212196",
+      "reference_format": "musicxml",
+      "reference_note_count": 1161,
+      "reference_sha256": "d01878590c52994e7ad37528175011ffb2607af2f21638f2ef30006981c8600d"
+    },
+    {
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "open",
+      "composition_group": "6478624",
+      "converter_error": "ResearchError:                                                                                            ^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-42u_ro0g\\roundtrip.abc:26:717-26:718: warning[abc.music.unmatched_tie]: Tie marker does not connect two matching notes\n  byte span 13951..13952\n  | [I:croma-measure-number n=0] z4 | y | [I:croma-measure-number n=2] [A,,,A,,]4 z4 | [I:croma-measure-number n=3] A,,4 z4 | [I:croma-measure-number n=4] D,4 [I:croma-musicxml-forward]x4 | [I:croma-measure-number n=5] (D,4 C,2) [I:croma-musicxml-forward]x2 | [I:croma-measure-number n=6] (D,4 C,2) z2 | [I:croma-measure-number n=7] (E,4 D,2) [I:croma-musicxml-forward]x2 | [I:croma-measure-number n=8] E, E, E, E, E, E, E, E, | [I:croma-measure-number n=9] !arpeggio![A,,!arpeggio!F,]2 [I:croma-musicxml-forward]x6 | y | y | y | [I:croma-measure-number n=13] D,2 z2 z2 D,2 | [I:croma-measure-number n=14] D,2 z2 z2 D,2 | y | y | y | [I:croma-measure-number n=18] A,,4 z2 F,,2 | y | y | [I:croma-measure-number n=21] D,8- | y | y | y | y | y | y | y | y | y | y | y | y | y | y | [I:croma-measure-number n=36] [A,,,A,,]4 z4 | [I:croma-measure-number n=37] A,,4 z4 | y | y | y | y | y | y | [I:cro",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "failed",
+      "declared_traits": {},
+      "features": {
+        "engraved_system_changes": 24,
+        "independent_voices": true,
+        "meter_changes": false,
+        "multi_page": true,
+        "page_count": 6,
+        "ties": true,
+        "tuplets": false
+      },
+      "image_sha256": "034dbe01a5c8ac6216934322cd0ef3bf3fd9d13e193e59411d598a5aa159e16a",
+      "item_id": "openscore-6478624",
+      "reference_format": "musicxml",
+      "reference_note_count": 1059,
+      "reference_sha256": "2cc0a378a38c72f1b4a8146b246dd7d206d3d11d8b6cc2ef1fec3dc3589e9036"
+    },
+    {
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "open",
+      "composition_group": "6479829",
+      "converter_error": "ResearchError: tive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 162..187\n  | %%croma-musicxml-instrument id=\"P1-I1\" name=\"Voice\" channel=1 program=68 volume-cc=100 pan-cc=64\n  |   ^^^^^^^^^^^^^^^^^^^^^^^^^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-j5yo2_3c\\roundtrip.abc:11:3-11:7: warning[abc.directive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 260..264\n  | %%MIDI program 1 68\n  |   ^^^^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-j5yo2_3c\\roundtrip.abc:12:3-12:7: warning[abc.directive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 281..285\n  | %%MIDI control 7 100\n  |   ^^^^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-j5yo2_3c\\roundtrip.abc:13:3-13:7: warning[abc.directive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 303..307\n  | %%MIDI control 10 64\n  |   ^^^^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-j5yo2_3c\\roundtrip.abc:17:3-17:28: warning[abc.directive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 6322..6347\n  | %%croma-musicxml-instrument id=",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "failed",
+      "declared_traits": {},
+      "features": {
+        "engraved_system_changes": 30,
+        "independent_voices": true,
+        "meter_changes": false,
+        "multi_page": true,
+        "page_count": 4,
+        "ties": true,
+        "tuplets": false
+      },
+      "image_sha256": "550eed25ce37d6c018cca02e2a485f934e905f8b45999485d6c6e52751d22b4d",
+      "item_id": "openscore-6479829",
+      "reference_format": "musicxml",
+      "reference_note_count": 1123,
+      "reference_sha256": "cf2f421dba8301b389d659187cd8cd3560e64879ddba7c5d7970b00aad361b78"
+    },
+    {
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "open",
+      "composition_group": "6564424",
+      "converter_error": "ResearchError: to!F z | z2 ([Dc]2 | [GB]2) D, D, | [G,,D,]2 G, G,- | [G,,G,]2 G, G, | [G,,D,]2 D, D, | [G,,D,]2 D2 | [G,B,]2 B, D | C,2 E,2 | (A,, E, A,) z | [D,=C]2 ^G, G, | [D,A,]2 D D | [D,C]2 [Q:\"ritenuto\"] F, G, | [D,E,]2 !staccato!F, !staccato!G, | [A,,E,]3 z | [^CGB]4 | [EG^c] z [E,^C]2 | [D,D]2 [^C,B,]2 | [D,B,]2 !staccato!C !staccato!D | C2 D,2 | [G,B,]2 !staccato![B,G] !staccato![B,G] | [DB]2 (B, A,/ B,/) | C2 (G, F,/ G,/) | A,2 [E,C]2 | [C,C]4 | (A,, [Q:\"colla voce\"] E,) z2 | !tenuto!D,2 !tenuto!D,2 | !tenuto!D,,2 !tenuto!D,2 | [G,,D,]2 ([E,C]2 | [D,B,]2) ([Ec]2 | [DB]) z [Q:\"rall.\"] !accent![G,,,G,,] !accent![G,,,G,,] | !fermata![D,G,B,D]4\n  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "failed",
+      "declared_traits": {},
+      "features": {
+        "engraved_system_changes": 28,
+        "independent_voices": true,
+        "meter_changes": false,
+        "multi_page": true,
+        "page_count": 6,
+        "ties": true,
+        "tuplets": true
+      },
+      "image_sha256": "f3ce43b8e2e28b771ae0e39528a9b55efea2d5c43054b0d3d58d272bdffe8833",
+      "item_id": "openscore-6564424",
+      "reference_format": "musicxml",
+      "reference_note_count": 1207,
+      "reference_sha256": "a9c67e8f616d9a39a0ef3438a9d27aa7addcba1e965b75646fec9d36d5ff5430"
+    },
+    {
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "open",
+      "composition_group": "6583477",
+      "converter_error": "ResearchError: tive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 144..169\n  | %%croma-musicxml-instrument id=\"P1-I1\" name=\"Voice\" channel=1 program=68 volume-cc=100 pan-cc=47\n  |   ^^^^^^^^^^^^^^^^^^^^^^^^^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-u5_x3lhb\\roundtrip.abc:10:3-10:7: warning[abc.directive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 242..246\n  | %%MIDI program 1 68\n  |   ^^^^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-u5_x3lhb\\roundtrip.abc:11:3-11:7: warning[abc.directive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 263..267\n  | %%MIDI control 7 100\n  |   ^^^^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-u5_x3lhb\\roundtrip.abc:12:3-12:7: warning[abc.directive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 285..289\n  | %%MIDI control 10 47\n  |   ^^^^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-u5_x3lhb\\roundtrip.abc:19:3-19:28: warning[abc.directive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 2598..2623\n  | %%croma-musicxml-instrument id=",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "failed",
+      "declared_traits": {},
+      "features": {
+        "engraved_system_changes": 16,
+        "independent_voices": true,
+        "meter_changes": false,
+        "multi_page": true,
+        "page_count": 3,
+        "ties": true,
+        "tuplets": false
+      },
+      "image_sha256": "0e460c58a92d90ea3e3a4ec225f49be3a2a23af33f7bb5b04ddae4e86e6a21b4",
+      "item_id": "openscore-6583477",
+      "reference_format": "musicxml",
+      "reference_note_count": 586,
+      "reference_sha256": "b2bd96fa80e49b82e3a3c8591b8977132e7b33aba3f4488ebf816fbb4953b6fe"
+    },
+    {
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "open",
+      "composition_group": "6583512",
+      "converter_error": "ResearchError: [A,,E,]4 | [I:croma-measure-number n=22] [A,,-F,]4 E,2 z2 | [I:croma-measure-number n=23] [A,,-E,]4 [A,,E,]4 | [I:croma-measure-number n=24] [A,,E,]6 A,,2 | [I:croma-measure-number n=25] C,4 C,4 | [I:croma-measure-number n=26] F,,4 F,,4 | [I:croma-measure-number n=27] [F,,F,]4 [F,,F,]4 | [I:croma-measure-number n=28] [^F,,^F,]4 [F,=A,C]4 | [I:croma-measure-number n=29] G,,6 z2 | [I:croma-measure-number n=30] G,,6 z2 | [I:croma-measure-number n=31] [_B,,,_B,,]6 z2 | [I:croma-measure-number n=32] [E,,E,]6 z2 | [I:croma-measure-number n=33] A,,4- [A,,E,-]4 | [I:croma-measure-number n=34] [A,,-E,]4 [A,,E,]4 | [I:croma-measure-number n=35] [A,,F,]4 [A,,=D,]4 | [I:croma-measure-number n=36] [A,,E,]6 z2 | [I:croma-measure-number n=37] E,2 =E,2 F,2 [=D,A,]2 | [I:croma-measure-number n=38] [_D,G,]4 E,4 | [I:croma-measure-number n=39] [B,,E,]4 E,,4 | [I:croma-measure-number n=40] A,,8\n  |                                                                                                                                                                                                                                                                                                      ",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "failed",
+      "declared_traits": {},
+      "features": {
+        "engraved_system_changes": 18,
+        "independent_voices": true,
+        "meter_changes": false,
+        "multi_page": true,
+        "page_count": 5,
+        "ties": true,
+        "tuplets": false
+      },
+      "image_sha256": "7da3c01d87298c1c75f95a1b104ff95e091e5ec6650e8d8176139584621612d2",
+      "item_id": "openscore-6583512",
+      "reference_format": "musicxml",
+      "reference_note_count": 603,
+      "reference_sha256": "64692a2393cdfd77c6098c8ef227be7f24d0b1f0c6f59611437ede4738a98113"
+    },
+    {
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "open",
+      "composition_group": "6583907",
+      "converter_error": "ResearchError:  n=44] [A,CF]2 z2 [DF]3/2 [DB]/ | [I:croma-measure-number n=45] [FA]2 z [FB] [Fc] [Fd] | [I:croma-measure-number n=46] [FAce]2 [FBd]2 [FBdf]3/2 B/ | [I:croma-measure-number n=47] [EG] [ce] [Bd]2 [Fc]3/2 B/ | [I:croma-measure-number n=48] [DFB]2 z2 | [I:croma-measure-number n=X4] [DF] [DB] | [I:croma-measure-number n=49] [DB]2 [FA] [FB] [Fc] [Fd] | [I:croma-measure-number n=50] [FAce]2 [FBd]2 [FBdf]3/2 B/ | [I:croma-measure-number n=51] {[GB]}[CFA]3 [GB] [FA] [=EG] | [I:croma-measure-number n=52] F3/2 G/ F E [DF] [DB] | [I:croma-measure-number n=53] [FA]2 z [FB] [Fc] [Fd] | [I:croma-measure-number n=54] [Fc] [Fe] [Fd]2 [FBdf]3/2 B/ | [I:croma-measure-number n=55] [EG] [ce] [Bd]2 [Fc]3/2 B/ | [I:croma-measure-number n=56] [DFB]2 z2 [FA] [GB] | [I:croma-measure-number n=57] [Ac]3 [Af] [Bd] B | [I:croma-measure-number n=58] [Ac] [FA] F2 [FA]3/2 [GB]/ | [I:croma-measure-number n=59] [Ac] [GB] [FA]2 [B,G]3/2 F/ | [I:croma-measure-number n=60] !fermata![A,CF]4 [DF] [DB] | [I:croma-measure-number n=61] [DB]2 [FA] [FB] [Fc] [Fd] | [I:croma-measure-number n=62] [FAce]2 [FBd]2 !fermata![FBdf] z/ B/ | [I:croma-measure-number n=63] [EG] [ce] [Bd]2 [Fc]3/2 B/ | [I:croma-measure-nu",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "failed",
+      "declared_traits": {},
+      "features": {
+        "engraved_system_changes": 28,
+        "independent_voices": true,
+        "meter_changes": false,
+        "multi_page": true,
+        "page_count": 4,
+        "ties": false,
+        "tuplets": true
+      },
+      "image_sha256": "62921480449a9ae123b91a6e75f5c73b9aeb0ae59c8f20d87e2f8d621ec268d4",
+      "item_id": "openscore-6583907",
+      "reference_format": "musicxml",
+      "reference_note_count": 1108,
+      "reference_sha256": "50e207b7493b10f853b8b9b6ced445192de59ad47b4aa06e4e3ad9b565c041c6"
+    },
+    {
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "open",
+      "composition_group": "6583966",
+      "converter_error": "ResearchError: ective.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 128..153\n  | %%croma-musicxml-instrument id=\"P1-I1\" name=\"Voice\" channel=1 program=68 volume-cc=81 pan-cc=42\n  |   ^^^^^^^^^^^^^^^^^^^^^^^^^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-_0optc6z\\roundtrip.abc:10:3-10:7: warning[abc.directive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 225..229\n  | %%MIDI program 1 68\n  |   ^^^^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-_0optc6z\\roundtrip.abc:11:3-11:7: warning[abc.directive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 246..250\n  | %%MIDI control 7 81\n  |   ^^^^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-_0optc6z\\roundtrip.abc:12:3-12:7: warning[abc.directive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 267..271\n  | %%MIDI control 10 42\n  |   ^^^^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-_0optc6z\\roundtrip.abc:16:3-16:28: warning[abc.directive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 7523..7548\n  | %%croma-musicxml-instrument id=",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "failed",
+      "declared_traits": {},
+      "features": {
+        "engraved_system_changes": 32,
+        "independent_voices": true,
+        "meter_changes": false,
+        "multi_page": true,
+        "page_count": 8,
+        "ties": true,
+        "tuplets": true
+      },
+      "image_sha256": "12642442af20d8b68cb6fd3dbf3c0b3cb2f69c68226eb69c473c201d00607b4f",
+      "item_id": "openscore-6583966",
+      "reference_format": "musicxml",
+      "reference_note_count": 1418,
+      "reference_sha256": "785935f66e226bac1884ccc4c5a537a86cd1724a0351d953f3551bf4f8b73321"
+    },
+    {
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "open",
+      "composition_group": "6585571",
+      "converter_error": "ResearchError: tive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 166..191\n  | %%croma-musicxml-instrument id=\"P1-I1\" name=\"Voice\" channel=1 program=68 volume-cc=100 pan-cc=44\n  |   ^^^^^^^^^^^^^^^^^^^^^^^^^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-60u5cjo2\\roundtrip.abc:10:3-10:7: warning[abc.directive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 264..268\n  | %%MIDI program 1 68\n  |   ^^^^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-60u5cjo2\\roundtrip.abc:11:3-11:7: warning[abc.directive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 285..289\n  | %%MIDI control 7 100\n  |   ^^^^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-60u5cjo2\\roundtrip.abc:12:3-12:7: warning[abc.directive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 307..311\n  | %%MIDI control 10 44\n  |   ^^^^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-60u5cjo2\\roundtrip.abc:16:3-16:28: warning[abc.directive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 2763..2788\n  | %%croma-musicxml-instrument id=",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "failed",
+      "declared_traits": {},
+      "features": {
+        "engraved_system_changes": 28,
+        "independent_voices": true,
+        "meter_changes": false,
+        "multi_page": true,
+        "page_count": 5,
+        "ties": false,
+        "tuplets": false
+      },
+      "image_sha256": "4c8318420224f5a78993de3673c02e0874f28a9e42e4ae8d7d475375bba5b10c",
+      "item_id": "openscore-6585571",
+      "reference_format": "musicxml",
+      "reference_note_count": 997,
+      "reference_sha256": "5acc0b1e95900040d2a6c332ef24e39c91c55cb21893b27588494324d3cf75f6"
+    },
+    {
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "open",
+      "composition_group": "6586675",
+      "converter_error": "ResearchError: tive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 121..146\n  | %%croma-musicxml-instrument id=\"P1-I1\" name=\"Voice\" channel=1 program=68 volume-cc=101 pan-cc=66\n  |   ^^^^^^^^^^^^^^^^^^^^^^^^^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-bmpf6gs8\\roundtrip.abc:10:3-10:7: warning[abc.directive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 219..223\n  | %%MIDI program 1 68\n  |   ^^^^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-bmpf6gs8\\roundtrip.abc:11:3-11:7: warning[abc.directive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 240..244\n  | %%MIDI control 7 101\n  |   ^^^^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-bmpf6gs8\\roundtrip.abc:12:3-12:7: warning[abc.directive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 262..266\n  | %%MIDI control 10 66\n  |   ^^^^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-bmpf6gs8\\roundtrip.abc:16:3-16:28: warning[abc.directive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 4368..4393\n  | %%croma-musicxml-instrument id=",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "failed",
+      "declared_traits": {},
+      "features": {
+        "engraved_system_changes": 70,
+        "independent_voices": true,
+        "meter_changes": false,
+        "multi_page": true,
+        "page_count": 12,
+        "ties": true,
+        "tuplets": true
+      },
+      "image_sha256": "2f40b9956eb1c5bc10a16a10f14b0c5390c2fc5b65fdf38b30f6f78bd01f8386",
+      "item_id": "openscore-6586675",
+      "reference_format": "musicxml",
+      "reference_note_count": 1893,
+      "reference_sha256": "21a194f3213b9f451f9314d8d03a4eb006a9005966b7d9b612a7146dee3d324d"
+    },
+    {
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "open",
+      "composition_group": "6622814",
+      "converter_error": "ResearchError: tive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 152..177\n  | %%croma-musicxml-instrument id=\"P1-I1\" name=\"Voice\" channel=1 program=68 volume-cc=100 pan-cc=42\n  |   ^^^^^^^^^^^^^^^^^^^^^^^^^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-nn63cfc0\\roundtrip.abc:10:3-10:7: warning[abc.directive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 250..254\n  | %%MIDI program 1 68\n  |   ^^^^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-nn63cfc0\\roundtrip.abc:11:3-11:7: warning[abc.directive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 271..275\n  | %%MIDI control 7 100\n  |   ^^^^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-nn63cfc0\\roundtrip.abc:12:3-12:7: warning[abc.directive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 293..297\n  | %%MIDI control 10 42\n  |   ^^^^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-nn63cfc0\\roundtrip.abc:16:3-16:28: warning[abc.directive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 6949..6974\n  | %%croma-musicxml-instrument id=",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "failed",
+      "declared_traits": {},
+      "features": {
+        "engraved_system_changes": 30,
+        "independent_voices": true,
+        "meter_changes": false,
+        "multi_page": true,
+        "page_count": 4,
+        "ties": true,
+        "tuplets": false
+      },
+      "image_sha256": "988b35f5b272d2446b469ab798ad173edfcb6dfc89695daadc885576532ff83d",
+      "item_id": "openscore-6622814",
+      "reference_format": "musicxml",
+      "reference_note_count": 1533,
+      "reference_sha256": "22780b5ad36034fad55e7aac7507ca2e9b5d02189418f0eb82b42ed1c9346363"
+    },
+    {
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "open",
+      "composition_group": "6623145",
+      "converter_error": "ResearchError: tive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 180..205\n  | %%croma-musicxml-instrument id=\"P1-I1\" name=\"Voice\" channel=1 program=68 volume-cc=100 pan-cc=44\n  |   ^^^^^^^^^^^^^^^^^^^^^^^^^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-ou15gikb\\roundtrip.abc:10:3-10:7: warning[abc.directive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 278..282\n  | %%MIDI program 1 68\n  |   ^^^^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-ou15gikb\\roundtrip.abc:11:3-11:7: warning[abc.directive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 299..303\n  | %%MIDI control 7 100\n  |   ^^^^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-ou15gikb\\roundtrip.abc:12:3-12:7: warning[abc.directive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 321..325\n  | %%MIDI control 10 44\n  |   ^^^^\nC:\\Users\\bur4x\\AppData\\Local\\Temp\\s2p-phase2r-audit-ou15gikb\\roundtrip.abc:18:3-18:28: warning[abc.directive.unsupported]: Unsupported stylesheet directive was preserved as metadata\n  byte span 6165..6190\n  | %%croma-musicxml-instrument id=",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "failed",
+      "declared_traits": {},
+      "features": {
+        "engraved_system_changes": 26,
+        "independent_voices": true,
+        "meter_changes": false,
+        "multi_page": true,
+        "page_count": 7,
+        "ties": false,
+        "tuplets": false
+      },
+      "image_sha256": "b5430eec26f18c8400f681dd714ca037fae20fc6a5c04dbd74170e6e9ccc2af9",
+      "item_id": "openscore-6623145",
+      "reference_format": "musicxml",
+      "reference_note_count": 1285,
+      "reference_sha256": "409bc909f3064b6620bb29b868811f2d9ab976211218bdc45887c012e74242d7"
+    },
+    {
+      "audit_revision": "d7d6e7d1d25fa6c106bdde45adcca1b6c532ec057fabde2168ad9d24b1061698",
+      "collection": "open",
+      "composition_group": "6623221",
+      "converter_error": "ResearchError:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ",
+      "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+      "converter_status": "failed",
+      "declared_traits": {},
+      "features": {
+        "engraved_system_changes": 45,
+        "independent_voices": true,
+        "meter_changes": false,
+        "multi_page": true,
+        "page_count": 4,
+        "ties": true,
+        "tuplets": false
+      },
+      "image_sha256": "335382bbf9ed1b734e6690f21111d4d033bd048ebd823ea43276e366a35314e2",
+      "item_id": "openscore-6623221",
+      "reference_format": "musicxml",
+      "reference_note_count": 1287,
+      "reference_sha256": "82c98237f94155d42e7ea97c28cc2bdd0d9aba540e0326412f7217c11aee7b49"
+    }
+  ],
+  "feature_counts": {
+    "independent_voices": 30,
+    "meter_changes": 2,
+    "multi_page": 20,
+    "ties": 18,
+    "tuplets": 16
+  },
+  "fixtures": [
+    {
+      "evidence": {
+        "aligned_voice_accuracy": 1.0,
+        "expected_span": "4",
+        "extra": 0,
+        "mean_offset_error": 0.0,
+        "missing": 0,
+        "onset_duration_f1": 1.0,
+        "onset_f1": 1.0,
+        "pitch_f1": 1.0,
+        "predicted_span": "4",
+        "staff_accuracy": 1.0
+      },
+      "name": "identical score",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "aligned_voice_accuracy": 1.0,
+        "expected_span": "4",
+        "extra": 0,
+        "mean_offset_error": 0.0,
+        "missing": 1,
+        "onset_duration_f1": 0.8,
+        "onset_f1": 0.8,
+        "pitch_f1": 0.8,
+        "predicted_span": "2",
+        "staff_accuracy": 1.0
+      },
+      "name": "omitted note",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "aligned_voice_accuracy": 1.0,
+        "expected_span": "4",
+        "extra": 1,
+        "mean_offset_error": 0.0,
+        "missing": 0,
+        "onset_duration_f1": 0.8571428571428571,
+        "onset_f1": 0.8571428571428571,
+        "pitch_f1": 0.8571428571428571,
+        "predicted_span": "5",
+        "staff_accuracy": 1.0
+      },
+      "name": "inserted note",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "aligned_voice_accuracy": 0.0,
+        "expected_span": "4",
+        "extra": 3,
+        "mean_offset_error": null,
+        "missing": 3,
+        "onset_duration_f1": 0.0,
+        "onset_f1": 0.0,
+        "pitch_f1": 1.0,
+        "predicted_span": "12",
+        "staff_accuracy": 0.0
+      },
+      "name": "shifted onsets",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "aligned_voice_accuracy": 1.0,
+        "expected_span": "2",
+        "extra": 0,
+        "mean_offset_error": 0.0,
+        "missing": 0,
+        "onset_duration_f1": 1.0,
+        "onset_f1": 1.0,
+        "pitch_f1": 1.0,
+        "predicted_span": "2",
+        "staff_accuracy": 1.0
+      },
+      "name": "overlapping voices",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "aligned_voice_accuracy": 1.0,
+        "expected_span": "1",
+        "extra": 0,
+        "mean_offset_error": 0.0,
+        "missing": 0,
+        "onset_duration_f1": 1.0,
+        "onset_f1": 1.0,
+        "pitch_f1": 1.0,
+        "predicted_span": "1",
+        "staff_accuracy": 1.0
+      },
+      "name": "tuplets",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "aligned_voice_accuracy": 1.0,
+        "expected_span": "3/2",
+        "extra": 0,
+        "mean_offset_error": 0.0,
+        "missing": 0,
+        "onset_duration_f1": 1.0,
+        "onset_f1": 1.0,
+        "pitch_f1": 1.0,
+        "predicted_span": "3/2",
+        "staff_accuracy": 1.0
+      },
+      "name": "pickup",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "aligned_voice_accuracy": 1.0,
+        "expected_span": "10",
+        "extra": 2,
+        "first_divergent_measure": 2,
+        "mean_offset_error": 0.5,
+        "missing": 2,
+        "onset_duration_f1": 0.3333333333333333,
+        "onset_f1": 0.6666666666666666,
+        "pitch_f1": 1.0,
+        "predicted_span": "11",
+        "staff_accuracy": 1.0
+      },
+      "name": "meter change",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "expanded_playback_diagnostic": {
+          "aligned_voice_accuracy": 1.0,
+          "expected_span": "2",
+          "extra": 2,
+          "mean_offset_error": 0.0,
+          "missing": 0,
+          "onset_duration_f1": 0.6666666666666666,
+          "onset_f1": 0.6666666666666666,
+          "pitch_f1": 0.6666666666666666,
+          "predicted_span": "4",
+          "staff_accuracy": 1.0
+        },
+        "printed_page": {
+          "aligned_voice_accuracy": 1.0,
+          "expected_span": "2",
+          "extra": 0,
+          "mean_offset_error": 0.0,
+          "missing": 0,
+          "onset_duration_f1": 1.0,
+          "onset_f1": 1.0,
+          "pitch_f1": 1.0,
+          "predicted_span": "2",
+          "staff_accuracy": 1.0
+        }
+      },
+      "name": "repeats",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "expected_systems": null,
+        "failure_code": "ADAPTER_OUTPUT_INVALID",
+        "failure_stage": "normalization",
+        "observed_systems": null,
+        "primary_f1": 0.0,
+        "status": "failed"
+      },
+      "name": "empty output",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "expected_systems": [
+          1,
+          2,
+          3
+        ],
+        "failure_code": "MISSING_SYSTEM",
+        "failure_stage": "stitching",
+        "observed_systems": [
+          1,
+          3
+        ],
+        "primary_f1": 0.0,
+        "status": "failed"
+      },
+      "name": "missing middle system",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "sustained": [
+          [
+            60,
+            "0.0",
+            "4.0",
+            0,
+            "1"
+          ],
+          [
+            48,
+            "0.0",
+            "4.0",
+            0,
+            "1"
+          ]
+        ],
+        "tied": [
+          [
+            60,
+            "0.0",
+            "4.0",
+            0,
+            "1"
+          ],
+          [
+            48,
+            "0.0",
+            "4.0",
+            0,
+            "1"
+          ]
+        ]
+      },
+      "name": "tied versus sustained equivalent",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "status": "failure"
+      },
+      "name": "malformed XML",
+      "passed": true
+    },
+    {
+      "evidence": {
+        "fields": [
+          "pitch",
+          "midi_pitch",
+          "onset",
+          "duration",
+          "part",
+          "staff",
+          "voice"
+        ],
+        "path": "direct bridge musicxml engine"
+      },
+      "name": "source MusicXML to app control",
+      "passed": true
+    }
+  ],
+  "frozen_artifacts": {
+    "phase1": {
+      "artifact_count": 15,
+      "hash_mismatches": [],
+      "passed": true,
+      "phase1_report_sha256": "96266247b0ed475f7a9dfec8248d813cb867ba7a16c6f56e00c321b3de93b211"
+    },
+    "phase2_artifact_count": 4,
+    "phase2_hash_mismatches": []
+  },
+  "generated_control_count": 12,
+  "open_composition_count": 20,
+  "phase": "2R",
+  "runtime_identity": {
+    "converter_version": {
+      "exit_status": 0,
+      "status": "verified",
+      "version_output": "croma 1.2.1"
+    },
+    "files": {
+      "audiveris_installer": {
+        "bytes": 11730944,
+        "expected_bytes": 85062430,
+        "path": "Research/omr/.runtime/phase2r/audiveris/Audiveris-5.11.0-windowsConsole-x86_64.msi",
+        "status": "incomplete"
+      },
+      "croma": {
+        "bytes": 2983936,
+        "expected_sha256": null,
+        "path": "Research/omr/.runtime/phase2r/croma/croma-windows-x86_64.exe",
+        "sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+        "status": "verified"
+      },
+      "legato_converter": {
+        "expected_bytes": null,
+        "expected_sha256": null,
+        "path": "Research/omr/.runtime/phase2r/legato-source/utils/abc2xml.py",
+        "status": "missing"
+      },
+      "llama_cli": {
+        "expected_bytes": null,
+        "expected_sha256": null,
+        "path": "Research/omr/.runtime/phase2r/llama-b11124/llama-mtmd-cli.exe",
+        "status": "missing"
+      },
+      "musescore": {
+        "bytes": 95614976,
+        "expected_sha256": null,
+        "path": "<external>/MuseScore4.exe",
+        "sha256": "bce47e72a3e3258b80b0e6a0f04f16d9446fd977eba9ab4cdffd12b978cf4b67",
+        "status": "verified"
+      },
+      "qwen_projector": {
+        "expected_bytes": null,
+        "expected_sha256": "f9a68fabba69c3b81e153367b2c7521030b0fa8bb0de400c9599c8e6725f9c82",
+        "path": "Research/omr/.runtime/phase2r/qwen/mmproj-Qwen3VL-2B-Instruct-Q8_0.gguf",
+        "status": "missing"
+      },
+      "qwen_q8": {
+        "expected_bytes": null,
+        "expected_sha256": "1e8db19207c8ce0733ddd78c2eff8a9e22c27c82f4443df94c25792ed8fe04f2",
+        "path": "Research/omr/.runtime/phase2r/qwen/Qwen3VL-2B-Instruct-Q8_0.gguf",
+        "status": "missing"
+      },
+      "rokot_projector": {
+        "bytes": 819394752,
+        "expected_sha256": "1074d47f6fd864bffa9d8843bbae30e6aa696ad0d55535ebd77053d81c699bd0",
+        "path": "Research/omr/.runtime/phase2r/rokot/mmproj-rokot-omr-2b-f16.gguf",
+        "sha256": "1074d47f6fd864bffa9d8843bbae30e6aa696ad0d55535ebd77053d81c699bd0",
+        "status": "verified"
+      },
+      "rokot_q8": {
+        "expected_bytes": null,
+        "expected_sha256": "df53948ada1a4a584b4c7c81cc7e3293d3457f2e5ec9688271693459eb950f25",
+        "path": "Research/omr/.runtime/phase2r/rokot/rokot-omr-2b-Q8_0.gguf",
+        "status": "missing"
+      }
+    },
+    "homr": {
+      "bridge_patch": {
+        "bytes": 3936,
+        "expected_sha256": null,
+        "path": "Bridge/homr_gpu.py",
+        "sha256": "e0b4c4f95031713c73507d7bc14bee00a10355746a107e49cbdf8999704a4f97",
+        "status": "verified"
+      },
+      "local_source": {
+        "file_count": 40,
+        "files": [
+          {
+            "path": "__init__.py",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "path": "autocrop.py",
+            "sha256": "8d898b51d4a892052eea695c8b95d7262ed1c4b5180ff0b99cb2c53a3ddf12ce"
+          },
+          {
+            "path": "bar_line_detection.py",
+            "sha256": "0fd0ec988d240842a72348770769ef1a2c3a47a95da8996017aed04455589a6d"
+          },
+          {
+            "path": "bounding_boxes.py",
+            "sha256": "cf5c27212f3b9763dd460cbefe99fd0a66e8f7bf53ea50d02d8849482a02a51f"
+          },
+          {
+            "path": "brace_dot_detection.py",
+            "sha256": "ab5aade1a8653b3a44b300217404618f2bd8319d34173e7cd4dc26d66d45a7b7"
+          },
+          {
+            "path": "circle_of_fifths.py",
+            "sha256": "3974ab21de851225a3f23f27868165c9b9ea9730984c3589ef180f1162056ae9"
+          },
+          {
+            "path": "color_adjust.py",
+            "sha256": "01d971bded1397042bfa76ab9d691e6a3e6bf9bb4283f9d1dab382b0088d96fc"
+          },
+          {
+            "path": "constants.py",
+            "sha256": "98d7114ec0509575e2b61ede66d7f42e8c0a90eb25aaa82ab7dd0e92e10fefa0"
+          },
+          {
+            "path": "debug.py",
+            "sha256": "dc9e208c605389a967b58a4edee955bfa8ab559d2ac66cd3f677877c8c42b5b3"
+          },
+          {
+            "path": "download_utils.py",
+            "sha256": "a1c73e044e093095212bab6905213db4427e3980fbcc957a01013c9cdcee3bdb"
+          },
+          {
+            "path": "find_peaks.py",
+            "sha256": "61443dc0c58ef8a2dadc659ed46cb1547ef9c2c23fa46ea9a7631de2aee75180"
+          },
+          {
+            "path": "image_utils.py",
+            "sha256": "b293ffad901fee69e11fcee672f2fc7aa61a44216143b95b8a916655400eea06"
+          },
+          {
+            "path": "main.py",
+            "sha256": "11994ea9448ddc03c8cfe17165ec1b3093ed223e8b86dc5aa63934c6a8b492b8"
+          },
+          {
+            "path": "model.py",
+            "sha256": "c46a69c711d9eb8b1bf9d00f7046031ecd73a7788e8caaaa3c53ee08fe16f59e"
+          },
+          {
+            "path": "music_xml_generator.py",
+            "sha256": "c01415ed218a29326e207b9c21c9ff46fa6b2403c02e90f0b8e73399ac7afd83"
+          },
+          {
+            "path": "noise_filtering.py",
+            "sha256": "0752bba4acca214407408b8f4e4f0540893e07a288f1272f3bfbd4395eca724b"
+          },
+          {
+            "path": "note_detection.py",
+            "sha256": "7dc0b3f8038c47d5b4f263ae16b241ac358e12e2d13055aaa6593aaf0be1014b"
+          },
+          {
+            "path": "onnx_providers.py",
+            "sha256": "fc677bd0ec701fd4d09f85d46121575647a28c6e05020a2be10d014e0e374b25"
+          },
+          {
+            "path": "pdf_utils.py",
+            "sha256": "9a05d6f81979567bf9ee9939931c260e4ff275118132d11aeeea8711536bf3e3"
+          },
+          {
+            "path": "relieur.py",
+            "sha256": "a29ac70c7b23ff2dab8f2cff14d33663597597401e98be9cd0b6db2d01f08fc8"
+          },
+          {
+            "path": "resize.py",
+            "sha256": "b4e40105552a3a165f6fc1bf42e192455c842b5c7605165156538dd405c92b81"
+          },
+          {
+            "path": "segmentation/__init__.py",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "path": "segmentation/config.py",
+            "sha256": "22dbb71d4e066f1ea03d1af526c57dc2014e2a04c37264b68cb4d7d919d3089c"
+          },
+          {
+            "path": "segmentation/inference_segnet.py",
+            "sha256": "80bf3354f292b323183534ed5517c5c2e67f1ec5c229291aa125184666ba707c"
+          },
+          {
+            "path": "simple_logging.py",
+            "sha256": "0a289e6deb8d55e0bcd709f4651246a417efb744447a9340b3cd5eb5669271ed"
+          },
+          {
+            "path": "staff_detection.py",
+            "sha256": "5f0b0a4faff6275ca4a47e2f4a0a32e2c436321d2cf41fe2cd303747a032589e"
+          },
+          {
+            "path": "staff_dewarping.py",
+            "sha256": "6fc9efd2549343712f94141997c8fa4e522c27a0c93ee5e6fef921bc29c6e31c"
+          },
+          {
+            "path": "staff_parsing.py",
+            "sha256": "fe35057fc723bbcf2d6b7296490efa1d0f29fccc0199d20019eb882fbf39f850"
+          },
+          {
+            "path": "staff_parsing_tromr.py",
+            "sha256": "bf4664ff0a32378fd841bd2af915e5e00a470daadaca8d44246450ea896fd109"
+          },
+          {
+            "path": "staff_position_save_load.py",
+            "sha256": "63c671944f79c20727ebcb37e20835604a0e3d7d31cabe8df6fb605514b3f69f"
+          },
+          {
+            "path": "staff_regions.py",
+            "sha256": "a77ab00fec757961ae8492f6f5f9b5bc0a26b883c585703a28588200bc02502e"
+          },
+          {
+            "path": "title_detection.py",
+            "sha256": "086ca3f1117654f1897b0849d67fa4ebe1cee5dfa7a526318f42c8f92a02642c"
+          },
+          {
+            "path": "transformer/__init__.py",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "path": "transformer/configs.py",
+            "sha256": "b9dbe459f64dfd3a993cfbf620cb18a63d05d5d1062ff86705cbe7d3057cd629"
+          },
+          {
+            "path": "transformer/decoder_inference.py",
+            "sha256": "2a2fac58915bd63059052e2f91799f1008fb9a56af136e1e8fba137338b199d3"
+          },
+          {
+            "path": "transformer/encoder_inference.py",
+            "sha256": "d7248e7f2271849f22addf9c14ed87bc84eec6471a2917d98376c5cc27e092cd"
+          },
+          {
+            "path": "transformer/staff2score.py",
+            "sha256": "5c440f9547c2f29883a9a6eaa67dbcde940acb8f580743a28b9406f50c254fc8"
+          },
+          {
+            "path": "transformer/utils.py",
+            "sha256": "e5b8a54c585b190562d7848381a42c740b86b626c3987f5715485ee15917158f"
+          },
+          {
+            "path": "transformer/vocabulary.py",
+            "sha256": "48b39832a6882dc73b83b80df44b3b79d7d88188d02ff4808ff536605edb0693"
+          },
+          {
+            "path": "type_definitions.py",
+            "sha256": "ef479171ac083ce2ed8e4945099f281571c932a51548ba466a340e0e2d8b263e"
+          }
+        ],
+        "root": "Bridge/.venv-homr-gpu/Lib/site-packages/homr",
+        "source_tree_sha256": "f038ae83d0dac572e3abaa6b9a6077b39c2ff3cb55fb8b6bd495b0ae7208c02a"
+      },
+      "package_source": {
+        "url": "https://github.com/liebharc/homr.git",
+        "vcs_info": {
+          "commit_id": "457e7c6518a10ba755db2e60883419e56c4d7369",
+          "requested_revision": "457e7c6518a10ba755db2e60883419e56c4d7369",
+          "vcs": "git"
+        }
+      },
+      "source_revision_verified": true,
+      "tokenizer_count": 4,
+      "tokenizers": [
+        {
+          "bytes": 331,
+          "expected_sha256": null,
+          "path": "Bridge/.venv-homr-gpu/Lib/site-packages/homr/transformer/tokenizer_lift.json",
+          "sha256": "5ab78e27bb6f296fc43ff9b64f87abc959b16984440b1523823b10ddd44289da",
+          "status": "verified"
+        },
+        {
+          "bytes": 275,
+          "expected_sha256": null,
+          "path": "Bridge/.venv-homr-gpu/Lib/site-packages/homr/transformer/tokenizer_note.json",
+          "sha256": "43df5138227acea24f7b4bf48407ae0dda31c518f9c6efe5ccbade0775debb92",
+          "status": "verified"
+        },
+        {
+          "bytes": 1581,
+          "expected_sha256": null,
+          "path": "Bridge/.venv-homr-gpu/Lib/site-packages/homr/transformer/tokenizer_pitch.json",
+          "sha256": "d6ff2edecbbd9d6ed8256fc09c1a907cbf58215e337582e630b2987a800837c7",
+          "status": "verified"
+        },
+        {
+          "bytes": 2556,
+          "expected_sha256": null,
+          "path": "Bridge/.venv-homr-gpu/Lib/site-packages/homr/transformer/tokenizer_rhythm.json",
+          "sha256": "3f041e7b711fba5651b7b83f745404569ddeb5e101a7e9aa4edb232cd3c59926",
+          "status": "verified"
+        }
+      ],
+      "weight_count": 5,
+      "weights": [
+        {
+          "bytes": 28667207,
+          "expected_sha256": null,
+          "path": "Bridge/.venv-homr-gpu/Lib/site-packages/homr/segmentation/segnet_308-3296ccd40960f90ca6ab9c035cca945675d30a0f_fp16.onnx",
+          "sha256": "60f495496cb41473c0521d0811d8f44b9d5cff892d287974a8aebb3eaee2fa83",
+          "status": "verified"
+        },
+        {
+          "bytes": 93946388,
+          "expected_sha256": null,
+          "path": "Bridge/.venv-homr-gpu/Lib/site-packages/homr/transformer/decoder_pytorch_model_396-f6feedb42ff90087d898b0941a55d040fa6b2903_fp16.onnx",
+          "sha256": "5f69d7552f795e7515540db7a96ee1164bb9f70d140d7135a46e0fe872aaba92",
+          "status": "verified"
+        },
+        {
+          "bytes": 93962788,
+          "expected_sha256": null,
+          "path": "Bridge/.venv-homr-gpu/Lib/site-packages/homr/transformer/decoder_pytorch_model_426-b6fd20809a8dcaf10dfd39a4ca4f64c6f056e644_fp16.onnx",
+          "sha256": "58d55eebe22788ce98f0fc7730480a79c9f56534db064e8d32b1d5fe2579904a",
+          "status": "verified"
+        },
+        {
+          "bytes": 26466256,
+          "expected_sha256": null,
+          "path": "Bridge/.venv-homr-gpu/Lib/site-packages/homr/transformer/encoder_pytorch_model_396-f6feedb42ff90087d898b0941a55d040fa6b2903_fp16.onnx",
+          "sha256": "9db62d5a6a13c8df2df321af3bcf72c7f81a95d4f876d4f0c202b28f8658087e",
+          "status": "verified"
+        },
+        {
+          "bytes": 26466256,
+          "expected_sha256": null,
+          "path": "Bridge/.venv-homr-gpu/Lib/site-packages/homr/transformer/encoder_pytorch_model_426-b6fd20809a8dcaf10dfd39a4ca4f64c6f056e644_fp16.onnx",
+          "sha256": "cd2da3ddec91af046d274506947f01da079c4ec5908ba0dd4c0c5985f780c82a",
+          "status": "verified"
+        }
+      ]
+    },
+    "legato_source": {
+      "status": "missing"
+    },
+    "llama_version": {
+      "status": "missing"
+    },
+    "schema_version": 1,
+    "zeus": {
+      "checkpoint": {
+        "expected_bytes": null,
+        "expected_sha256": null,
+        "path": "Research/omr/zeus/weights/zeus-olimpic-1.0-2024-02-12.model",
+        "status": "missing"
+      },
+      "detector": {
+        "bytes": 1750,
+        "expected_sha256": null,
+        "path": "Bridge/detect_systems.py",
+        "sha256": "b1aac6372d1cbce32dc8e00a7e6c6d809cb9d6eb1fb82ad382cfb42a8b2e6c86",
+        "status": "verified"
+      },
+      "local_source": {
+        "file_count": 4,
+        "files": [
+          {
+            "path": "benchmark_zeus.py",
+            "sha256": "9c65ce8d846d6779420c121f3465b862d21c4f5a90e651e15aa67bdd3c1437f9"
+          },
+          {
+            "path": "infer_batch.py",
+            "sha256": "6c95239dc9f8a0dbd44f93ea87d5528575d9d3d715d891ff477eef97423cc53c"
+          },
+          {
+            "path": "test_zeus.py",
+            "sha256": "b7b334669e8308043c30e18fdfde7edd557e0caca8f94f99b8a2f7ed64c23ce9"
+          },
+          {
+            "path": "zeus_runner.py",
+            "sha256": "e797067e768aa8757ddaed782c806e7f5e4781b560439b848049b8368ac799aa"
+          }
+        ],
+        "root": "Research/omr/zeus",
+        "source_tree_sha256": "8283fb91380f6177bb88e0b0ad2cdd1a21318cffac83109a055cb0011117e008"
+      },
+      "runner": {
+        "bytes": 5128,
+        "expected_sha256": null,
+        "path": "Research/omr/phase2_zeus_runner.py",
+        "sha256": "967845fbdca927cb1600e059523629cb18b0123140366a91c9c9d99c3bd4e2d8",
+        "status": "verified"
+      }
+    }
+  },
+  "schema_version": 1,
+  "scope": {
+    "development_only": true,
+    "olimpic_inference_count": 0,
+    "phase3_started": false,
+    "private_diagnostic_inference_count": 0,
+    "smb_inference_count": 0,
+    "training_started": false
+  },
+  "status": "conversion_gaps"
+}

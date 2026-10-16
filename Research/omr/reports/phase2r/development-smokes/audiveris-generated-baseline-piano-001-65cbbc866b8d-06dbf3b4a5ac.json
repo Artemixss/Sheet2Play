@@ -1,0 +1,116 @@
+{
+  "adapter_config_sha256": "65cbbc866b8d90895b671961c7c6145a5a7995110aaada16432c43517b6373a9",
+  "adapter_id": "audiveris_unattended",
+  "artifacts": [
+    {
+      "bytes": 38514,
+      "media_type": "application/vnd.audiveris.omr",
+      "path": "Research/omr/.runtime/phase2r/smokes/audiveris-generated-baseline-piano-001-65cbbc866b8d-06dbf3b4a5ac/audiveris.omr",
+      "role": "native",
+      "sha256": "ab3db0fc74db1fcfd1c180d4ce925d5b5e4af42aaf41cf78a5a672970b2d96f4"
+    },
+    {
+      "bytes": 2424,
+      "media_type": "application/vnd.recordare.musicxml",
+      "path": "Research/omr/.runtime/phase2r/smokes/audiveris-generated-baseline-piano-001-65cbbc866b8d-06dbf3b4a5ac/score.mxl",
+      "role": "musicxml",
+      "sha256": "78eded10babc41fd190ffc05bef47bf5be071793a7e9990d1f7ca6a9d11ba344"
+    },
+    {
+      "bytes": 9730,
+      "media_type": "application/json",
+      "path": "Research/omr/.runtime/phase2r/smokes/audiveris-generated-baseline-piano-001-65cbbc866b8d-06dbf3b4a5ac/canonical-events.json",
+      "role": "canonical_events",
+      "sha256": "aca03dc5fcef6a6e869b784f85f43a3bf6dfeb3e098bd6516175ca28645131c7"
+    },
+    {
+      "bytes": 9377,
+      "media_type": "text/plain",
+      "path": "Research/omr/.runtime/phase2r/smokes/audiveris-generated-baseline-piano-001-65cbbc866b8d-06dbf3b4a5ac/engine.log",
+      "role": "engine_log",
+      "sha256": "3a448eed0d21ecccfe15fb5faf2d2cda93499462f07346119b576c0e17236928"
+    },
+    {
+      "bytes": 182008,
+      "media_type": "image/png",
+      "path": "Research/omr/.runtime/phase2r/smokes/audiveris-generated-baseline-piano-001-65cbbc866b8d-06dbf3b4a5ac/audiveris-input-300dpi.png",
+      "role": "prepared_input",
+      "sha256": "373ba96e0e0759d05ccbc41edd592ab729c13132a40064f7026ddbdc90cbd48f"
+    }
+  ],
+  "candidate_id": "audiveris",
+  "composition_group": "baseline-piano-001",
+  "error": null,
+  "exit_status": 0,
+  "item_id": "generated-baseline-piano-001",
+  "measurement_path": "complete_document",
+  "provenance": {
+    "adapter_config": {
+      "adapter_id": "audiveris_unattended",
+      "adapter_revision": "614faf6ddc1d8f0f6580ec1f1772574e55f8b1d27f566026f829ca99f3bdc2b4",
+      "candidate_id": "audiveris",
+      "checkpoint": "Audiveris 5.11.0 classifiers",
+      "checkpoint_revision": "5.11.0",
+      "input_granularity": "complete document",
+      "native_format": "Audiveris OMR project",
+      "settings": {
+        "batch": true,
+        "export": "MusicXML",
+        "manual_corrections": false,
+        "small_image_preprocessing": "lanczos-width-at-least-2000px-300dpi-v1"
+      },
+      "source_repository": "https://github.com/Audiveris/audiveris",
+      "source_revision": "9e1e55cd2746037d059345881c53e6a6754bffbd",
+      "supported_paths": [
+        "complete_document"
+      ]
+    },
+    "adapter_config_sha256": "65cbbc866b8d90895b671961c7c6145a5a7995110aaada16432c43517b6373a9",
+    "checkpoint": "Audiveris 5.11.0 classifiers",
+    "checkpoint_revision": "5.11.0",
+    "command": [
+      "Research/omr/.runtime/phase2r/audiveris-extract/Audiveris/Audiveris.exe",
+      "-batch",
+      "-save",
+      "-export",
+      "-output",
+      "Research/omr/.runtime/phase2r/smokes/audiveris-generated-baseline-piano-001-65cbbc866b8d-06dbf3b4a5ac/audiveris-output",
+      "--",
+      "Research/omr/.runtime/phase2r/smokes/audiveris-generated-baseline-piano-001-65cbbc866b8d-06dbf3b4a5ac/audiveris-input-300dpi.png"
+    ],
+    "input_path": "Research/omr/tests/fixtures/transcoda-baseline/baseline-piano.png",
+    "input_scale": 2,
+    "input_sha256": "2cbe267a15f2f5791943523413ce6c3d25dee32e283f43af156c7eeee5f08805",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "prepared_input_sha256": "373ba96e0e0759d05ccbc41edd592ab729c13132a40064f7026ddbdc90cbd48f",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "source_repository": "https://github.com/Audiveris/audiveris",
+    "source_revision": "9e1e55cd2746037d059345881c53e6a6754bffbd"
+  },
+  "resources": {
+    "cold_start": true,
+    "measurement_notes": [
+      "VRAM measurement: device-wide WDDM fallback"
+    ],
+    "peak_ram_bytes": 672288768,
+    "peak_vram_bytes": null,
+    "sample_interval_seconds": 0.2
+  },
+  "schema_version": 1,
+  "status": "succeeded",
+  "timings": [
+    {
+      "seconds": 0.18313789999956498,
+      "stage": "input_preprocessing"
+    },
+    {
+      "seconds": 13.432033900000533,
+      "stage": "recognition_and_native_conversion"
+    },
+    {
+      "seconds": 1.1637388000017381,
+      "stage": "shared_normalization"
+    }
+  ],
+  "warnings": []
+}

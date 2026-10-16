@@ -1,0 +1,192 @@
+{
+  "aligned_voice_accuracy": 0.9333333333333333,
+  "candidate": "homr-465-upstream",
+  "capture_status": "complete",
+  "comparison_identity": "91e7256cd902a6ea2adb9fb415e6847b2ba0b9e94fb03fe8f5f1570ae6544fb9",
+  "composition_group": "mozart/sonata08_2",
+  "configuration_identity": "9e619e47fd0317b6a7d1da5207985e1120acefc499a111649c5b7cdb1e339122",
+  "conversion_error": null,
+  "coverage": {
+    "chord_completeness": 0.1111111111111111,
+    "complete_chords": 9,
+    "per_staff": {
+      "0": {
+        "matched_notes": 3,
+        "predicted_notes": 196,
+        "recall": 0.007832898172323759,
+        "reference_notes": 383
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 149,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 81,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 2,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 2,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/2",
+        "count": 10,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 1,
+        "predicted": "1/8"
+      },
+      {
+        "actual": "1/4",
+        "count": 2,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 20,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "1/8"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "3/4"
+      },
+      {
+        "actual": "1/8",
+        "count": 12,
+        "predicted": "1/8"
+      },
+      {
+        "actual": "6",
+        "count": 1,
+        "predicted": "6"
+      }
+    ],
+    "unmatched_expected": 331,
+    "unmatched_predicted": 293
+  },
+  "elapsed_seconds": 12.45399999999995,
+  "extra_notes": 300,
+  "item_id": "0967e6d41c58797f3ddc",
+  "mean_offset_error": 0.057692307692307696,
+  "metrics": {
+    "aligned_voice_accuracy": 0.9333333333333333,
+    "coverage": {
+      "chord_completeness": 0.1111111111111111,
+      "complete_chords": 9,
+      "per_staff": {
+        "0": {
+          "matched_notes": 3,
+          "predicted_notes": 196,
+          "recall": 0.007832898172323759,
+          "reference_notes": 383
+        },
+        "1": {
+          "matched_notes": 0,
+          "predicted_notes": 149,
+          "recall": null,
+          "reference_notes": 0
+        }
+      },
+      "reference_chords": 81,
+      "staff_interpretation": "notation staff index; not validated hand labels"
+    },
+    "duration": {
+      "confusion": [
+        {
+          "actual": "1",
+          "count": 2,
+          "predicted": "1"
+        },
+        {
+          "actual": "1",
+          "count": 2,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/2",
+          "count": 10,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/2",
+          "count": 1,
+          "predicted": "1/8"
+        },
+        {
+          "actual": "1/4",
+          "count": 2,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/4",
+          "count": 20,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/4",
+          "count": 1,
+          "predicted": "1/8"
+        },
+        {
+          "actual": "1/4",
+          "count": 1,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "1/8",
+          "count": 12,
+          "predicted": "1/8"
+        },
+        {
+          "actual": "6",
+          "count": 1,
+          "predicted": "6"
+        }
+      ],
+      "unmatched_expected": 331,
+      "unmatched_predicted": 293
+    },
+    "extra_notes": 300,
+    "mean_offset_error": 0.057692307692307696,
+    "missing_notes": 338,
+    "onset_duration_f1": 0.12362637362637363,
+    "onset_f1": 0.1428571428571429,
+    "pitch_f1": 0.945054945054945,
+    "predicted_notes": 345,
+    "reference_notes": 383,
+    "staff_accuracy": 0.06666666666666667,
+    "timeline_predicted": "89/2",
+    "timeline_reference": "101/2"
+  },
+  "missing_notes": 338,
+  "onset_duration_f1": 0.12362637362637363,
+  "onset_f1": 0.1428571428571429,
+  "original_item_id": "test/mozart/sonata08_2/sonata08_2_5.png",
+  "pitch_f1": 0.945054945054945,
+  "predicted_notes": 345,
+  "receipt_sha256": "b50022185a86ca8439495d648193074c0ede3fc66ce6a1badcfbf55a1825e8f3",
+  "reference_notes": 383,
+  "reference_sha256": "81e073782da5ac518dd4409e5b24582ea16da06d55720a7cb2990f99d7bafd06",
+  "staff_accuracy": 0.06666666666666667,
+  "status": "complete",
+  "timeline_predicted": "89/2",
+  "timeline_reference": "101/2"
+}

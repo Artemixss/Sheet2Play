@@ -1,0 +1,172 @@
+{
+  "aligned_voice_accuracy": 0.9130434782608695,
+  "candidate": "shipped-426-phase2-control",
+  "capture_status": "complete",
+  "comparison_identity": "91e7256cd902a6ea2adb9fb415e6847b2ba0b9e94fb03fe8f5f1570ae6544fb9",
+  "composition_group": "beethoven/sonata26_1",
+  "configuration_identity": "31512f54e60c2e1cff049c60a7f68ceb0366eb49d4aeacf13368de17a0ec430d",
+  "conversion_error": null,
+  "coverage": {
+    "chord_completeness": 0.13829787234042554,
+    "complete_chords": 13,
+    "per_staff": {
+      "0": {
+        "matched_notes": 57,
+        "predicted_notes": 229,
+        "recall": 0.1292517006802721,
+        "reference_notes": 441
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 210,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 94,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 25,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 41,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 7,
+        "predicted": "1/3"
+      },
+      {
+        "actual": "2",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "2",
+        "count": 10,
+        "predicted": "2"
+      },
+      {
+        "actual": "3",
+        "count": 2,
+        "predicted": "3"
+      },
+      {
+        "actual": "4",
+        "count": 1,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "4",
+        "count": 14,
+        "predicted": "4"
+      }
+    ],
+    "unmatched_expected": 340,
+    "unmatched_predicted": 338
+  },
+  "elapsed_seconds": 16.98400000000038,
+  "extra_notes": 347,
+  "item_id": "e68f46165d93aec03b12",
+  "mean_offset_error": 0.17491749174917492,
+  "metrics": {
+    "aligned_voice_accuracy": 0.9130434782608695,
+    "coverage": {
+      "chord_completeness": 0.13829787234042554,
+      "complete_chords": 13,
+      "per_staff": {
+        "0": {
+          "matched_notes": 57,
+          "predicted_notes": 229,
+          "recall": 0.1292517006802721,
+          "reference_notes": 441
+        },
+        "1": {
+          "matched_notes": 0,
+          "predicted_notes": 210,
+          "recall": null,
+          "reference_notes": 0
+        }
+      },
+      "reference_chords": 94,
+      "staff_interpretation": "notation staff index; not validated hand labels"
+    },
+    "duration": {
+      "confusion": [
+        {
+          "actual": "1",
+          "count": 25,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/2",
+          "count": 41,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/2",
+          "count": 7,
+          "predicted": "1/3"
+        },
+        {
+          "actual": "2",
+          "count": 1,
+          "predicted": "1"
+        },
+        {
+          "actual": "2",
+          "count": 10,
+          "predicted": "2"
+        },
+        {
+          "actual": "3",
+          "count": 2,
+          "predicted": "3"
+        },
+        {
+          "actual": "4",
+          "count": 1,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "4",
+          "count": 14,
+          "predicted": "4"
+        }
+      ],
+      "unmatched_expected": 340,
+      "unmatched_predicted": 338
+    },
+    "extra_notes": 347,
+    "mean_offset_error": 0.17491749174917492,
+    "missing_notes": 349,
+    "onset_duration_f1": 0.20909090909090913,
+    "onset_f1": 0.22954545454545455,
+    "pitch_f1": 0.9750000000000001,
+    "predicted_notes": 439,
+    "reference_notes": 441,
+    "staff_accuracy": 0.6195652173913043,
+    "timeline_predicted": "841/6",
+    "timeline_reference": "136"
+  },
+  "missing_notes": 349,
+  "onset_duration_f1": 0.20909090909090913,
+  "onset_f1": 0.22954545454545455,
+  "original_item_id": "test/beethoven/sonata26_1/sonata26_1_5.png",
+  "pitch_f1": 0.9750000000000001,
+  "predicted_notes": 439,
+  "receipt_sha256": "aaa626e28a28ef23068c04a2a0b6b06e344b6e4d851d654d798593cf37a6ba21",
+  "reference_notes": 441,
+  "reference_sha256": "cdb0c9860f92224d5a06e7691fb8dfaa01511a17e29b78cefd0f2dfe967c563c",
+  "staff_accuracy": 0.6195652173913043,
+  "status": "complete",
+  "timeline_predicted": "841/6",
+  "timeline_reference": "136"
+}

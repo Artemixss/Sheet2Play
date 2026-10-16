@@ -1,0 +1,719 @@
+{
+  "actual_cloud_cost_usd": 0.0,
+  "candidate": "homr_455",
+  "cold_start_seconds": [
+    25.609999999998763,
+    25.60900000000038,
+    25.610000000000582,
+    30.625,
+    25.60900000000038,
+    25.625,
+    25.60900000000038,
+    25.610000000000582,
+    25.625,
+    25.625,
+    30.625,
+    25.610000000000582,
+    25.610000000000582,
+    25.65599999999904,
+    25.625,
+    25.610000000000582,
+    25.610000000000582,
+    30.610000000000582,
+    25.625,
+    25.625,
+    25.625,
+    25.625,
+    25.610000000000582,
+    30.610000000000582,
+    25.59299999999712,
+    25.625,
+    25.60900000000038,
+    20.60900000000038,
+    25.60900000000038,
+    25.610000000000582,
+    25.60900000000038,
+    15.578000000001339,
+    25.60900000000038,
+    25.60900000000038,
+    25.59400000000096,
+    25.610000000000582,
+    25.59400000000096,
+    25.625,
+    25.56300000000192,
+    25.59400000000096,
+    20.610000000000582,
+    25.625,
+    25.60900000000038,
+    25.625,
+    25.60900000000038,
+    25.59400000000096,
+    25.60900000000038,
+    20.593999999997322,
+    20.60900000000038,
+    20.625,
+    25.610000000000582,
+    25.610000000000582,
+    25.610000000000582,
+    25.625,
+    25.60900000000038,
+    25.610000000000582,
+    25.610000000000582,
+    20.625,
+    25.60900000000038
+  ],
+  "collection": "smb-pianoform",
+  "composition_count": 18,
+  "composition_macro": {
+    "onset_duration_f1": 0.28565482075028986,
+    "onset_f1": 0.3060339058240235,
+    "pitch_f1": 0.9678189682136396
+  },
+  "configuration_sha256": "27658e9230dd0cbfe6e02263cc870d3a8468f271b8d27ab4fec50604dc19cf25",
+  "duration_classification": {
+    "balanced_accuracy": 0.622784195855455,
+    "confusion_matrix": [
+      {
+        "actual": "1",
+        "count": 1083,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 39,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1",
+        "count": 13,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "1/8"
+      },
+      {
+        "actual": "1",
+        "count": 8,
+        "predicted": "2"
+      },
+      {
+        "actual": "1",
+        "count": 2,
+        "predicted": "3"
+      },
+      {
+        "actual": "1",
+        "count": 9,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 64,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 2651,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 23,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/2",
+        "count": 1,
+        "predicted": "1/8"
+      },
+      {
+        "actual": "1/2",
+        "count": 8,
+        "predicted": "2"
+      },
+      {
+        "actual": "1/2",
+        "count": 11,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 11,
+        "predicted": "3/4"
+      },
+      {
+        "actual": "1/2",
+        "count": 6,
+        "predicted": "3333333333333333/10000000000000000"
+      },
+      {
+        "actual": "1/3",
+        "count": 2,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/3",
+        "count": 36,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/3",
+        "count": 3,
+        "predicted": "3333333333333333/10000000000000000"
+      },
+      {
+        "actual": "1/4",
+        "count": 7,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/4",
+        "count": 19,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 2413,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "1/5"
+      },
+      {
+        "actual": "1/4",
+        "count": 4,
+        "predicted": "1/8"
+      },
+      {
+        "actual": "1/4",
+        "count": 4,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 5,
+        "predicted": "3/4"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "3333333333333333/10000000000000000"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "7/2"
+      },
+      {
+        "actual": "1/5",
+        "count": 10,
+        "predicted": "1/5"
+      },
+      {
+        "actual": "1/6",
+        "count": 1,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/6",
+        "count": 33,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/6",
+        "count": 1,
+        "predicted": "8333333333333333/50000000000000000"
+      },
+      {
+        "actual": "1/8",
+        "count": 1,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/8",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/8",
+        "count": 49,
+        "predicted": "1/8"
+      },
+      {
+        "actual": "15/2",
+        "count": 2,
+        "predicted": "15/2"
+      },
+      {
+        "actual": "15/4",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "15/4",
+        "count": 2,
+        "predicted": "15/4"
+      },
+      {
+        "actual": "2",
+        "count": 14,
+        "predicted": "1"
+      },
+      {
+        "actual": "2",
+        "count": 10,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "2",
+        "count": 2,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "2",
+        "count": 105,
+        "predicted": "2"
+      },
+      {
+        "actual": "2",
+        "count": 2,
+        "predicted": "3"
+      },
+      {
+        "actual": "2",
+        "count": 2,
+        "predicted": "4"
+      },
+      {
+        "actual": "2",
+        "count": 1,
+        "predicted": "8333333333333333/50000000000000000"
+      },
+      {
+        "actual": "3",
+        "count": 8,
+        "predicted": "1"
+      },
+      {
+        "actual": "3",
+        "count": 7,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "3",
+        "count": 1,
+        "predicted": "1/8"
+      },
+      {
+        "actual": "3",
+        "count": 2,
+        "predicted": "2"
+      },
+      {
+        "actual": "3",
+        "count": 72,
+        "predicted": "3"
+      },
+      {
+        "actual": "3",
+        "count": 1,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "3/2",
+        "count": 6,
+        "predicted": "1"
+      },
+      {
+        "actual": "3/2",
+        "count": 4,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "3/2",
+        "count": 2,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "3/2",
+        "count": 56,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "3/4",
+        "count": 2,
+        "predicted": "1"
+      },
+      {
+        "actual": "3/4",
+        "count": 4,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "3/4",
+        "count": 2,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "3/4",
+        "count": 38,
+        "predicted": "3/4"
+      },
+      {
+        "actual": "3/4",
+        "count": 1,
+        "predicted": "7/4"
+      },
+      {
+        "actual": "3/4",
+        "count": 1,
+        "predicted": "7/8"
+      },
+      {
+        "actual": "3/8",
+        "count": 3,
+        "predicted": "3/8"
+      },
+      {
+        "actual": "4",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "4",
+        "count": 1,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "4",
+        "count": 3,
+        "predicted": "2"
+      },
+      {
+        "actual": "4",
+        "count": 1,
+        "predicted": "3"
+      },
+      {
+        "actual": "4",
+        "count": 33,
+        "predicted": "4"
+      },
+      {
+        "actual": "5",
+        "count": 4,
+        "predicted": "4"
+      },
+      {
+        "actual": "5",
+        "count": 4,
+        "predicted": "5"
+      },
+      {
+        "actual": "5/2",
+        "count": 1,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "5/4",
+        "count": 2,
+        "predicted": "5/4"
+      },
+      {
+        "actual": "6",
+        "count": 4,
+        "predicted": "3"
+      },
+      {
+        "actual": "6",
+        "count": 8,
+        "predicted": "6"
+      },
+      {
+        "actual": "7",
+        "count": 6,
+        "predicted": "4"
+      },
+      {
+        "actual": "7/2",
+        "count": 1,
+        "predicted": "2"
+      },
+      {
+        "actual": "7/2",
+        "count": 2,
+        "predicted": "3"
+      },
+      {
+        "actual": "7/2",
+        "count": 5,
+        "predicted": "7/2"
+      },
+      {
+        "actual": "7/4",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "7/4",
+        "count": 2,
+        "predicted": "3/4"
+      },
+      {
+        "actual": "7/4",
+        "count": 1,
+        "predicted": "7/4"
+      },
+      {
+        "actual": "7/6",
+        "count": 1,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "9/2",
+        "count": 2,
+        "predicted": "9/2"
+      },
+      {
+        "actual": "9/4",
+        "count": 1,
+        "predicted": "1/4"
+      }
+    ],
+    "degenerate_single_class_predictor": false,
+    "labels": [
+      "1",
+      "1/2",
+      "1/3",
+      "1/4",
+      "1/5",
+      "1/6",
+      "1/8",
+      "15/2",
+      "15/4",
+      "2",
+      "3",
+      "3/2",
+      "3/4",
+      "3/8",
+      "3333333333333333/10000000000000000",
+      "4",
+      "5",
+      "5/2",
+      "5/4",
+      "6",
+      "7",
+      "7/2",
+      "7/4",
+      "7/6",
+      "7/8",
+      "8333333333333333/50000000000000000",
+      "9/2",
+      "9/4"
+    ],
+    "macro_f1": 0.5688375452069654,
+    "majority_baseline_accuracy": 0.3988788270806382,
+    "majority_baseline_macro_f1": 0.020367271446186365,
+    "majority_class": "1/2",
+    "matched_pitch_onset_notes": 6957,
+    "unmatched_expected": 14542,
+    "unmatched_predicted": 14594
+  },
+  "eligible_page_count": 59,
+  "error_code_stage_counts": {
+    "HOMR_OUTPUT_MISSING:conversion": 1
+  },
+  "extra_note_count": 15012,
+  "failure_class_rates": {
+    "complete_document": 0.01694915254237288,
+    "invalid_output": 0.0,
+    "missing_system": 0.0,
+    "timeout": 0.0
+  },
+  "failure_penalized_omr_ned_complete": true,
+  "failure_penalized_omr_ned_count": 59,
+  "failure_penalized_omr_ned_mean": 0.38513985027257247,
+  "failure_penalty_omr_ned": 1.0,
+  "failure_rate": 0.01694915254237288,
+  "feature_breakdowns": {
+    "cross_staff": {
+      "unknown": {
+        "composition_count": 18,
+        "composition_macro_primary_f1": 0.28565482075028986,
+        "page_count": 59
+      }
+    },
+    "density_notes_per_quarter": {
+      "ge4": {
+        "composition_macro_primary_f1": 0.21013007074319562,
+        "page_count": 37
+      },
+      "lt4": {
+        "composition_macro_primary_f1": 0.3390975348137726,
+        "page_count": 22
+      }
+    },
+    "document_measure_count": {
+      "gt32": {
+        "composition_macro_primary_f1": 0.3384728375101411,
+        "page_count": 16
+      },
+      "le32": {
+        "composition_macro_primary_f1": 0.27433623570214444,
+        "page_count": 43
+      }
+    },
+    "has_independent_voices": {
+      "False": {
+        "composition_count": 7,
+        "composition_macro_primary_f1": 0.3220193038281597,
+        "page_count": 14
+      },
+      "True": {
+        "composition_count": 16,
+        "composition_macro_primary_f1": 0.3421333667826379,
+        "page_count": 45
+      }
+    },
+    "has_meter_changes": {
+      "False": {
+        "composition_count": 18,
+        "composition_macro_primary_f1": 0.2908487998794847,
+        "page_count": 58
+      },
+      "True": {
+        "composition_count": 1,
+        "composition_macro_primary_f1": 0.07907425265188042,
+        "page_count": 1
+      }
+    },
+    "has_repeats": {
+      "False": {
+        "composition_count": 14,
+        "composition_macro_primary_f1": 0.37619279007583445,
+        "page_count": 35
+      },
+      "True": {
+        "composition_count": 12,
+        "composition_macro_primary_f1": 0.2494523564001197,
+        "page_count": 24
+      }
+    },
+    "has_ties": {
+      "True": {
+        "composition_count": 18,
+        "composition_macro_primary_f1": 0.28565482075028986,
+        "page_count": 59
+      }
+    },
+    "has_tuplets": {
+      "False": {
+        "composition_count": 15,
+        "composition_macro_primary_f1": 0.32004056000864634,
+        "page_count": 40
+      },
+      "True": {
+        "composition_count": 8,
+        "composition_macro_primary_f1": 0.18423389426570286,
+        "page_count": 19
+      }
+    }
+  },
+  "item_score_sha256": {
+    "test/beethoven/sonata02_2/sonata02_2_1.png": "307ba9a60efac008765d862220a5a21067ee0f164c10ea8182f3a009a9fcaf32",
+    "test/beethoven/sonata02_2/sonata02_2_2.png": "cfa8e55cffb74183e1861cacb7f6a2732f186ec4a560e4b2db0fbcad4d294ae0",
+    "test/beethoven/sonata02_2/sonata02_2_3.png": "87fbfb18509a27d9adb63bf1f3023e34670294a5e69e3b48325cffda97f4d6ad",
+    "test/beethoven/sonata05_1/sonata05_1_2.png": "12bde390002a834600026ba1c76e6a2e23d62c157c53a00640c80f484ff252b9",
+    "test/beethoven/sonata05_1/sonata05_1_3.png": "abfaa49fc745979f7e938852d048a1808b3cc972f967996e24169616da326fd9",
+    "test/beethoven/sonata05_1/sonata05_1_4.png": "5d634e4eba83ebccdc6f1ff9a8ef9d0cb5a36bf90fed4fbdf8d445c747a798cf",
+    "test/beethoven/sonata05_1/sonata05_1_5.png": "90e662352c481af56ae30de0441bd6108d86eb26149a319bfd87bde951c0742e",
+    "test/beethoven/sonata05_1/sonata05_1_6.png": "394ab7bb536161631e20635c9a9ef47517c45034af57c24b34f02799b30cbf39",
+    "test/beethoven/sonata07_4/sonata07_4_1.png": "f4f2356800f9d88447f79aef1a891a1cbba33c4637fb4bd650e1207ecde36528",
+    "test/beethoven/sonata07_4/sonata07_4_2.png": "0e2f6d9906414554680697f40242f0246c7ae7d8e54b892d5c26b9214da553b3",
+    "test/beethoven/sonata07_4/sonata07_4_3.png": "d5cef134cf258dfb64d8fe82f9ad5d70ccfbef141af20d6b4d715eee8a8ee4f8",
+    "test/beethoven/sonata07_4/sonata07_4_4.png": "f5f5cfb3b849becf55628aecc6d5628453afe2e25c27a46d8d7844a7324075de",
+    "test/beethoven/sonata17_1/sonata17_1_1.png": "094039a3f8f099358ef029f80e3b7d3cc1938fc9bb5d05430d3cc0b695ae8a93",
+    "test/beethoven/sonata17_1/sonata17_1_2.png": "794a0be9ad6fd5fd97ef630a7e4f8aa237eba05797452898ca91e2c8e9dade16",
+    "test/beethoven/sonata17_1/sonata17_1_3.png": "173e2a2fb40361740b3fc39730031911396e1e9a6ef1df20cd60511618f85511",
+    "test/beethoven/sonata17_1/sonata17_1_4.png": "f87404203204c5ee5cb2432e252f5e1b50cd3417a9085847f667252689110650",
+    "test/beethoven/sonata17_1/sonata17_1_6.png": "8f6f73c7a30a4b5219c3487053c43293d3c7f3879b63d1130dc8a8d381c7ff50",
+    "test/beethoven/sonata22_2/sonata22_2_1.png": "dbbb5ca96e76c733a5a0b4bbc0f8167fad75d61fdb5abdac9acd29784afe4a40",
+    "test/beethoven/sonata22_2/sonata22_2_2.png": "6741ba7e43d3f320b03b16c32d802b648427e1d2b2421e85945d6eb896c866a6",
+    "test/beethoven/sonata22_2/sonata22_2_3.png": "c541d0beb870b7f90a6e2fecda00e199aa6fc0a715564e4b2c0938197dfce73f",
+    "test/beethoven/sonata22_2/sonata22_2_4.png": "3ee76f8c055e836220c456aec94ad37986c4410f8beeb86e545142b0d617f6a3",
+    "test/beethoven/sonata22_2/sonata22_2_5.png": "8b4b205cfd19964f87dd4f92ed60fc3aa2a3aff75bbeb3faa92ea3c02470b968",
+    "test/beethoven/sonata22_2/sonata22_2_6.png": "437aa445726a653c7e0057ca23383b5ee69b294e0838728fd4c17b5cd06cdb18",
+    "test/beethoven/sonata26_1/sonata26_1_1.png": "dede70131e59994fcdbd6e0ce0f8c28c422def5b197fefb129e0bc903d850c5a",
+    "test/beethoven/sonata26_1/sonata26_1_2.png": "4330fd2da909160262770f1430187fea22fe5264f28b00dd8dc442cbc1236c1a",
+    "test/beethoven/sonata26_1/sonata26_1_4.png": "36b65088fed0133a3bca1184f027c8efb21a7d4fe995813480d7f1da563068a7",
+    "test/beethoven/sonata26_1/sonata26_1_5.png": "1fcffb69910aff44d249a341d2602ba02def80c385ecf54e0587c59547f79a27",
+    "test/chopin/mazurka68_4/mazurka68_4_1.png": "ebab0e5fe323b0cee1e94c6f4b98edbcce8c3bb732f5013efc8815355abfd7cf",
+    "test/chopin/mazurka68_4/mazurka68_4_2.png": "ecf8e996e9a3ce69f3b7d1d4627dd1509505d004c02e1ffd55a850cd9d330ad7",
+    "test/chopin/mazurka_51/mazurka_51_1.png": "7b85e94d5e98e0f42e4de333a2676cb72e31ad16170381f570a584a9f02cb500",
+    "test/chopin/mazurka_51/mazurka_51_4.png": "ddf5943d09c78bc2f23e9db5722c3ae593214964493fc11d555e31c6fc8e92d0",
+    "test/hummel/prelude67_14/prelude67_14_1.png": "027f6c6d07d0f0a16b79ffcf4da07c39eb030b8763afd66971d6078fcaeaa147",
+    "test/joplin/breeze/breeze_1.png": "ac11f388f8c8c61f5068d5cacfd4935b1042fe7f707808802acee70c8cdb4667",
+    "test/joplin/breeze/breeze_2.png": "89a8cf20eb6762da456897b1aed17ebb287ba3a94406fa6855a21bc56b0ae87e",
+    "test/joplin/breeze/breeze_3.png": "36472a79d395703aa3264292fb5d25a72e2042fe9cf1db1d24615505523809ac",
+    "test/joplin/breeze/breeze_4.png": "b14b092516ea7458d8a8bd24670df162231c2a59caccbfd483125d10e374b60b",
+    "test/joplin/lilyqueen/lilyqueen_1.png": "b605be406e852303bc9b4d31e23b114f19877e278850fddc5ae2c20d94ab5ed1",
+    "test/joplin/lilyqueen/lilyqueen_2.png": "8c5016b4b127ebe2b0565f7de48a1a17f60acaa6ab8b4f6a6911dc01dcc8171c",
+    "test/joplin/lilyqueen/lilyqueen_3.png": "e86bb4aed818120d8b2baa23975827acdca144ea44e4a0836c8e65f6ae817941",
+    "test/joplin/lilyqueen/lilyqueen_4.png": "798bb2985af4e4141dd2a0201af7390aa80130bfa80514f4155bda9fc34c0b9c",
+    "test/joplin/pleasant/pleasant_1.png": "513ff7b925abc1201d9bd3e1be8e9c78196397a4f6ac2dd790acfddd6708eed6",
+    "test/joplin/pleasant/pleasant_2.png": "a8d9c1f06e7100be67928947fcbb87b456765ad52521bffadfa4b0b78fb9bab8",
+    "test/joplin/pleasant/pleasant_3.png": "874cf716c7e5f97a46adac815d24fdb52ca2672af62abb876888def9bb75cd1b",
+    "test/joplin/pleasant/pleasant_4.png": "12391a136de0eab3de212339138c86c7ac90500d52ad0072a8a39727e5f6c8a1",
+    "test/liszt/etude10_05/etude10_05_1.png": "7877dffa49f4ac476e0e89da0079ee79c5e27c9432b5fc669df2a2fe9b68dd58",
+    "test/liszt/etude10_05/etude10_05_2.png": "1044118c2d423d77a39357c145adc97ac7d4cb18b3115653c6edbc3b7eb64dab",
+    "test/liszt/etude10_05/etude10_05_3.png": "3054b360d832399a955148224510a28070fa26781d974c14108923eab2f2bc89",
+    "test/liszt/etude10_05/etude10_05_4.png": "72dd06b191561e5061cc565fc4d03803166c8378212fa06d2d56e5ffa1a2b114",
+    "test/mozart/sonata06_3j/sonata06_3j_1.png": "0ca7af6ac3138891d7e2befe8a39bbfcfc68089936f6269e6031a7b7de4e7217",
+    "test/mozart/sonata08_2/sonata08_2_1.png": "d19e9835fe2a8f3c49e01cf45599f7fe6b8a9f4a11c03e5d11baff9e3f22c242",
+    "test/mozart/sonata08_2/sonata08_2_2.png": "87a8ae9c43a1d284c61d9d7f326bb61bbac63f62936e6dd8af6ae1989135ed8b",
+    "test/mozart/sonata08_2/sonata08_2_3.png": "211f97b7466753e07f38b9770d19b4ca0dfa023186cd2b9c62f8513c854e93ee",
+    "test/mozart/sonata08_2/sonata08_2_5.png": "521e211a48f8b6e779c33dade65a84150852b8c31493615207ca912dbd7c67aa",
+    "test/mozart/viennese1_1/viennese1_1_1.png": "22fb332e664fc42ba7e6cfc14dda94bb463752e2d5ae1b6ef6f1158a6ee614c5",
+    "test/mozart/viennese1_1/viennese1_1_2.png": "ac1a90f0416fc609b7179afcc540cb5796083a4b6b0273ac0329d7cc50386764",
+    "test/scarlatti/L055K330/L055K330_1.png": "8596922c58efcd8e9cb7e0e16b0f5b80e3eaefe0ac6cbf6aeb163369c7bf82cd",
+    "test/scarlatti/L055K330/L055K330_2.png": "13bd33e2142653cf2ac7e19c99af8f0783db7d942f114d0a147afe489a01471a",
+    "test/scarlatti/L056K281/L056K281_1.png": "90714642af4fc75632b15008a55dd151c3911205cb64ceac4e92d5ec28185ba7",
+    "test/scarlatti/L056K281/L056K281_3.png": "3c4d01fd6c50eaa1683300c6405be3e30c3baf8e189a643ccdb1c5bdf66053dd"
+  },
+  "latency_seconds": {
+    "comparable_page_count": 59,
+    "excluded_noncomparable_page_count": 0,
+    "includes_failures": true,
+    "median": 25.610000000000582,
+    "p95": 30.610000000000582
+  },
+  "missing_note_count": 15424,
+  "omr_ned_scoring_error_count": 0,
+  "peak_ram_bytes_max": 1833390080,
+  "peak_vram_bytes_max": 1645215744,
+  "reference_interpretation": "Combined SMB region truth exported to MusicXML; OMR-NED is not directly comparable to native **kern published scores",
+  "sample_sha256": "2c98d5638c368b1a53bdb3440177d04fa585f9b1ca6ce6adbe65af64cd8e27d1",
+  "schema_version": 1,
+  "scope": "bounded_59_page_screen_descriptive",
+  "scored_page_count": 59,
+  "scorer_sha256": "b5f4b33484454e7e0e1affb008a0ae47d791af127f283cc76ac09b8da31c2e97",
+  "status_counts": {
+    "failed": 1,
+    "succeeded": 58
+  },
+  "training_overlap": {
+    "homr_455": [
+      "unknown"
+    ]
+  },
+  "valid_output_omr_ned_count": 58,
+  "valid_output_omr_ned_mean": 0.37453881320830645,
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

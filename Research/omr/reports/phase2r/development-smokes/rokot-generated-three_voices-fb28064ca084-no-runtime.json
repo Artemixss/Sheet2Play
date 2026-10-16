@@ -1,0 +1,135 @@
+{
+  "adapter_config_sha256": "fb28064ca084659406c8926cf4eadd7ad952f99376f618bc12e1eb789026111f",
+  "adapter_id": "rokot_q8_system_and_page",
+  "artifacts": [
+    {
+      "bytes": 209,
+      "media_type": "application/json",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-generated-three_voices-fb28064ca084-no-runtime/native-systems.json",
+      "role": "native",
+      "sha256": "e5bd5d81449cfb59dfcc86d4c800dbce78264c7ebc3e397a6d8c25ffe881ccf3"
+    },
+    {
+      "bytes": 55,
+      "media_type": "text/plain",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-generated-three_voices-fb28064ca084-no-runtime/score.abc",
+      "role": "merged_abc",
+      "sha256": "851e308602262e7836a1c53f47797db5f95de3d3fa63d9a6cc13b9df2d63e902"
+    },
+    {
+      "bytes": 1839,
+      "media_type": "application/vnd.recordare.musicxml+xml",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-generated-three_voices-fb28064ca084-no-runtime/score.musicxml",
+      "role": "musicxml",
+      "sha256": "51c19db00481449d044e1e45e08769991db1585ee30d99b24e2793ed95c2f9b1"
+    },
+    {
+      "bytes": 1124,
+      "media_type": "application/json",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-generated-three_voices-fb28064ca084-no-runtime/canonical-events.json",
+      "role": "canonical_events",
+      "sha256": "0d459fc67637dd25869233ef249ed9316054d995e03ed8517b82de2e27db0970"
+    },
+    {
+      "bytes": 55,
+      "media_type": "text/plain",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-generated-three_voices-fb28064ca084-no-runtime/system-0001.abc",
+      "role": "system_1_abc",
+      "sha256": "851e308602262e7836a1c53f47797db5f95de3d3fa63d9a6cc13b9df2d63e902"
+    },
+    {
+      "bytes": 999,
+      "media_type": "text/plain",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-generated-three_voices-fb28064ca084-no-runtime/system-0001.raw.txt",
+      "role": "system_1_raw",
+      "sha256": "2944fa777cf7796782215e0ba286ad35fa69ce9dc4357364c2b0501335c4d92d"
+    }
+  ],
+  "candidate_id": "rokot",
+  "composition_group": "three_voices",
+  "error": null,
+  "exit_status": 0,
+  "item_id": "generated-three_voices",
+  "measurement_path": "annotated_crop",
+  "provenance": {
+    "adapter_config": {
+      "adapter_id": "rokot_q8_system_and_page",
+      "adapter_revision": "c48b2b6c969ed3a4e9c37c08ab76251b8fef8bec81da5bb3079b51b3bfcec1e0",
+      "candidate_id": "rokot",
+      "checkpoint": "rokot-omr-2b-Q8_0.gguf",
+      "checkpoint_revision": "7add305aade6fb3a64ad4dde77d410fa68381089",
+      "input_granularity": "detected system",
+      "native_format": "ABC",
+      "settings": {
+        "cli_sha256": "252d8c9a02c20aa7263a38fea69182e3658779f368baaeb57610bfd90e084b9e",
+        "converter": "croma 1.2.1 strict ABC to MusicXML",
+        "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+        "cuda_runtime_sha256": {
+          "cublas64_12.dll": "e40202fe4223c1cd2d2dce7beec59e1ed61c7801bd827309183be9b50e358f4c",
+          "cublasLt64_12.dll": "2a896460bef60ed57ef32b0875812f355a6984e671d638bb632f5e8c1d7a831f",
+          "cudart64_12.dll": "d28e42265da7462162a54da6b7a99ea4fa2caf8139d862bb500db875d0b32dfc"
+        },
+        "detector_sha256": "b1aac6372d1cbce32dc8e00a7e6c6d809cb9d6eb1fb82ad382cfb42a8b2e6c86",
+        "image_min_tokens": 1024,
+        "max_new_tokens": 1600,
+        "model_sha256": "df53948ada1a4a584b4c7c81cc7e3293d3457f2e5ec9688271693459eb950f25",
+        "precision": "Q8_0 text; f16 projector",
+        "projector_sha256": "1074d47f6fd864bffa9d8843bbae30e6aa696ad0d55535ebd77053d81c699bd0",
+        "prompt": "Transcribe this sheet music to rokot-ABC.",
+        "seed": 0,
+        "segmentation": "Bridge/detect_systems.py with full-width, vertical-margin crops",
+        "temperature": 0
+      },
+      "source_repository": "https://huggingface.co/rokotmidi/rokot-omr-2b",
+      "source_revision": "7add305aade6fb3a64ad4dde77d410fa68381089",
+      "supported_paths": [
+        "annotated_crop",
+        "complete_document"
+      ]
+    },
+    "adapter_config_sha256": "fb28064ca084659406c8926cf4eadd7ad952f99376f618bc12e1eb789026111f",
+    "checkpoint": "rokot-omr-2b-Q8_0.gguf",
+    "checkpoint_revision": "7add305aade6fb3a64ad4dde77d410fa68381089",
+    "converter_version": "croma 1.2.1",
+    "device_probe": "Available devices:\n  CUDA0: NVIDIA GeForce RTX 4050 Laptop GPU (6140 MiB, 5072 MiB free)",
+    "input_path": "Research/omr/data/polyrhythm/three_voices.png",
+    "input_sha256": "6a5fb87a643858e21b4be6c8637acc69259b19b052c486b1c85e057a0828203d",
+    "joining_strategy": "validated voice/state ABC merge before strict MusicXML conversion",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "runtime": "Research/omr/.runtime/phase2r/llama-b11124/llama-mtmd-cli.exe",
+    "source_repository": "https://huggingface.co/rokotmidi/rokot-omr-2b",
+    "source_revision": "7add305aade6fb3a64ad4dde77d410fa68381089",
+    "system_count": 1
+  },
+  "resources": {
+    "cold_start": true,
+    "measurement_notes": [
+      "device-wide WDDM fallback"
+    ],
+    "peak_ram_bytes": 2664456192,
+    "peak_vram_bytes": 5984223232,
+    "sample_interval_seconds": 0.2
+  },
+  "schema_version": 1,
+  "status": "succeeded",
+  "timings": [
+    {
+      "seconds": 0.0,
+      "stage": "segmentation"
+    },
+    {
+      "seconds": 8.753723099998751,
+      "stage": "recognition"
+    },
+    {
+      "seconds": 0.03411009999763337,
+      "stage": "native_to_musicxml_and_stitching"
+    },
+    {
+      "seconds": 0.014767399999982445,
+      "stage": "shared_normalization"
+    }
+  ],
+  "warnings": []
+}

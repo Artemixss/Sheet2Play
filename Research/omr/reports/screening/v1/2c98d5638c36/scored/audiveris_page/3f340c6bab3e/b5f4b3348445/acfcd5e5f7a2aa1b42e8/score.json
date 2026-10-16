@@ -1,0 +1,41 @@
+{
+  "adapter_id": "audiveris_unattended",
+  "aligned_voice_accuracy": 0.0,
+  "candidate_id": "audiveris",
+  "cold_start": true,
+  "composition_group": "beethoven/sonata17_1",
+  "duration": {
+    "confusion": [],
+    "unmatched_expected": 424,
+    "unmatched_predicted": 633
+  },
+  "elapsed_seconds": 40.57800000000134,
+  "error": null,
+  "extra_note_count": 633,
+  "failure_penalized_omr_ned": 0.8676056338028169,
+  "first_divergent_measure": 1,
+  "item_id": "test/beethoven/sonata17_1/sonata17_1_4.png",
+  "mean_offset_error": null,
+  "missing_note_count": 424,
+  "omr_ned": 0.8676056338028169,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.0,
+  "onset_f1": 0.0,
+  "peak_ram_bytes": 1320448000,
+  "peak_vram_bytes": 0,
+  "pitch_f1": 0.5714285714285714,
+  "predicted_note_count": 633,
+  "reference_measure_count": 26,
+  "reference_note_count": 424,
+  "reference_quarter_length": "104",
+  "schema_version": 1,
+  "staff_accuracy": 0.0,
+  "status": "succeeded",
+  "timeline_length_error": "271/2",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "adapter_config_sha256": "61b9370dfa1600068887c63a9e3c72fd4b587d17f59308d4d8c5016f40a12880",
+  "adapter_id": "rokot_q8_system_and_page",
+  "artifacts": [
+    {
+      "bytes": 209,
+      "media_type": "application/json",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-generated-same_position_sustain-61b9370dfa16-252d8c9a02c2/native-systems.json",
+      "role": "native",
+      "sha256": "8aa7639f4ba746a5b9a66368bacf41f3a38f056d3654f8ea6c86c7f35eb6b081"
+    },
+    {
+      "bytes": 54,
+      "media_type": "text/plain",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-generated-same_position_sustain-61b9370dfa16-252d8c9a02c2/score.abc",
+      "role": "merged_abc",
+      "sha256": "cb28dd55916b47f8c378700b265474d0365d15dd1ebec22cb0a65849ca1d9c8e"
+    },
+    {
+      "bytes": 1821,
+      "media_type": "application/vnd.recordare.musicxml+xml",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-generated-same_position_sustain-61b9370dfa16-252d8c9a02c2/score.musicxml",
+      "role": "musicxml",
+      "sha256": "79cd9107becc0abdfce6d18ee738500259db3951f57d48b133d4d92915672c0e"
+    },
+    {
+      "bytes": 959,
+      "media_type": "application/json",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-generated-same_position_sustain-61b9370dfa16-252d8c9a02c2/canonical-events.json",
+      "role": "canonical_events",
+      "sha256": "a628fe02de118b6718f5af9e2af5114ac08df41544df83f4c81ea0b1cbcc19a1"
+    },
+    {
+      "bytes": 577,
+      "media_type": "application/json",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-generated-same_position_sustain-61b9370dfa16-252d8c9a02c2/attempt-measurements.json",
+      "role": "attempt_measurements",
+      "sha256": "0cc0320dbbf6a1ea0ca6f9802fe8caceb9934e68dcc1571b012ca2290acea6c9"
+    },
+    {
+      "bytes": 54,
+      "media_type": "text/plain",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-generated-same_position_sustain-61b9370dfa16-252d8c9a02c2/system-0001.abc",
+      "role": "system_1_abc",
+      "sha256": "cb28dd55916b47f8c378700b265474d0365d15dd1ebec22cb0a65849ca1d9c8e"
+    },
+    {
+      "bytes": 998,
+      "media_type": "text/plain",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-generated-same_position_sustain-61b9370dfa16-252d8c9a02c2/system-0001.raw.txt",
+      "role": "system_1_raw",
+      "sha256": "1b54ae4d62969075e8e3ed8b1b14c12a6d9b8ac4740f27cacb8299f924989d8f"
+    }
+  ],
+  "candidate_id": "rokot",
+  "composition_group": "same_position_sustain",
+  "error": null,
+  "exit_status": 0,
+  "item_id": "generated-same_position_sustain",
+  "measurement_path": "annotated_crop",
+  "provenance": {
+    "adapter_config": {
+      "adapter_id": "rokot_q8_system_and_page",
+      "adapter_revision": "b4ffcc4f75ba5b0243db3c1314ba421d75e6b69c3c80502ce45e6172626302d5",
+      "candidate_id": "rokot",
+      "checkpoint": "rokot-omr-2b-Q8_0.gguf",
+      "checkpoint_revision": "7add305aade6fb3a64ad4dde77d410fa68381089",
+      "input_granularity": "detected system",
+      "native_format": "ABC",
+      "settings": {
+        "cli_sha256": "252d8c9a02c20aa7263a38fea69182e3658779f368baaeb57610bfd90e084b9e",
+        "converter": "croma 1.2.1 strict ABC to MusicXML",
+        "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+        "cuda_runtime_sha256": {
+          "cublas64_12.dll": "e40202fe4223c1cd2d2dce7beec59e1ed61c7801bd827309183be9b50e358f4c",
+          "cublasLt64_12.dll": "2a896460bef60ed57ef32b0875812f355a6984e671d638bb632f5e8c1d7a831f",
+          "cudart64_12.dll": "d28e42265da7462162a54da6b7a99ea4fa2caf8139d862bb500db875d0b32dfc"
+        },
+        "detector_sha256": "4ad2a8c2cf88d19db46349fda84c76dc8a60dbad2cac6df9f3405b2ad7b26bc2",
+        "image_min_tokens": 1024,
+        "max_new_tokens": 1600,
+        "model_sha256": "df53948ada1a4a584b4c7c81cc7e3293d3457f2e5ec9688271693459eb950f25",
+        "precision": "Q8_0 text; f16 projector",
+        "projector_sha256": "1074d47f6fd864bffa9d8843bbae30e6aa696ad0d55535ebd77053d81c699bd0",
+        "prompt": "Transcribe this sheet music to rokot-ABC.",
+        "seed": 0,
+        "segmentation": "HOMR detector boxes on exact returned preprocessed image; full-width vertical-margin crops",
+        "temperature": 0
+      },
+      "source_repository": "https://huggingface.co/rokotmidi/rokot-omr-2b",
+      "source_revision": "7add305aade6fb3a64ad4dde77d410fa68381089",
+      "supported_paths": [
+        "annotated_crop",
+        "complete_document"
+      ]
+    },
+    "adapter_config_sha256": "61b9370dfa1600068887c63a9e3c72fd4b587d17f59308d4d8c5016f40a12880",
+    "checkpoint": "rokot-omr-2b-Q8_0.gguf",
+    "checkpoint_revision": "7add305aade6fb3a64ad4dde77d410fa68381089",
+    "converter_version": "croma 1.2.1",
+    "device_probe": "Available devices:\n  CUDA0: NVIDIA GeForce RTX 4050 Laptop GPU (6140 MiB, 5072 MiB free)",
+    "input_path": "Research/omr/data/polyrhythm/same_position_sustain.png",
+    "input_sha256": "74c1ba126d212f5c7ef3e7f3ef763dda2e35871f23add62d58f6daa3604cf624",
+    "joining_strategy": "validated voice/state ABC merge before strict MusicXML conversion",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "runtime": "Research/omr/.runtime/phase2r/llama-b11124/llama-mtmd-cli.exe",
+    "source_repository": "https://huggingface.co/rokotmidi/rokot-omr-2b",
+    "source_revision": "7add305aade6fb3a64ad4dde77d410fa68381089",
+    "system_count": 1
+  },
+  "resources": {
+    "cold_start": true,
+    "measurement_notes": [
+      "device-wide WDDM fallback"
+    ],
+    "peak_ram_bytes": 2664751104,
+    "peak_vram_bytes": 5984223232,
+    "sample_interval_seconds": 0.2
+  },
+  "schema_version": 1,
+  "status": "succeeded",
+  "timings": [
+    {
+      "seconds": 0.0,
+      "stage": "segmentation"
+    },
+    {
+      "seconds": 8.688917200000105,
+      "stage": "recognition"
+    },
+    {
+      "seconds": 0.029856000000108907,
+      "stage": "native_to_musicxml_and_stitching"
+    },
+    {
+      "seconds": 0.013984700000037265,
+      "stage": "shared_normalization"
+    }
+  ],
+  "warnings": []
+}

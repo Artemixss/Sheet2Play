@@ -1,0 +1,43 @@
+{
+  "context": "fully_readable_local",
+  "cpu_candidates": {
+    "audiveris_page": "3f340c6bab3e8884240da3a2ffdec61b0bd98ebcf81788d3725d08a9aa5ef137",
+    "zeus_page": "81f73b31179a40bf63c608d9adea99f546dac49e57722d436dae205a1b135821"
+  },
+  "effective_environment": {
+    "JAVA_TOOL_OPTIONS": "-XX:ActiveProcessorCount=8",
+    "JDK_JAVA_OPTIONS": "",
+    "MKL_NUM_THREADS": "8",
+    "NUMEXPR_NUM_THREADS": "8",
+    "OMP_NUM_THREADS": "8",
+    "OPENBLAS_NUM_THREADS": "8",
+    "TF_NUM_INTEROP_THREADS": "1",
+    "TF_NUM_INTRAOP_THREADS": "8",
+    "_JAVA_OPTIONS": ""
+  },
+  "evidence": "Manifest/admission verified before every worker; source hashes remain unchanged since admission",
+  "manifest": "Research\\omr\\reports\\screening\\v1\\manifest-v5-607ff64134da.json",
+  "manifest_sha256": "c3f28ec525ada8902203caf919da3ecdf4e75db30b84fd2379a4edb30483bc22",
+  "policy": {
+    "concurrent_scoring": false,
+    "device_vram_admission_percent": 90,
+    "max_pages_per_chunk": 5,
+    "one_candidate_worker": true,
+    "pressure_seconds": 30,
+    "priority": "below_normal",
+    "ram_admission_percent": 90,
+    "sample_seconds": 5,
+    "session_seconds": 14400,
+    "shutdown_reserve_seconds": 30
+  },
+  "runtime_inventory_sha256": "5aaf04bcda93602b51fd85b56480a4b3d87e7a760a64f31e41df80877056fcfe",
+  "sample_sha256": "2c98d5638c368b1a53bdb3440177d04fa585f9b1ca6ce6adbe65af64cd8e27d1",
+  "source_sha256": {
+    "screening_cpu_admit.py": "8d6a4ddaee5de1b75b596f7755dfc51fd5de0bb81b50eed656d034f603d3c8f9",
+    "screening_cpu_development.py": "2e137bd3d9c40c2c8532471d1c03c4865f449051b3e42ec551caa22ecbe223b0",
+    "screening_cpu_manifest.py": "c21c2f09773ef4896befb98093c06380c3569fa37ab6ebf2ccb40a11fbee4e27",
+    "screening_cpu_profile.py": "56388ee1250f7e8057488c88a9698304bc4510882b5e41d9a5c502ce1874eb12",
+    "screening_cpu_run.py": "8bfbdc1ed6ce7fbe5b4181b35dcc78bbc15a724c592fe46f0a2b440c5c0b0123",
+    "screening_cpu_score.py": "0363e68ca585d580d9da3bc51f13fc84cfdd8ad0bf16d652b38bbeb772a9b627"
+  }
+}

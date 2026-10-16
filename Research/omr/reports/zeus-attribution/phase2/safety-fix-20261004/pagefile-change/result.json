@@ -1,0 +1,12 @@
+{
+    "Status":  "configured_pending_reboot",
+    "Apply":  true,
+    "RebootPerformed":  false,
+    "DesiredPagingFiles":  [
+                               "C:\\pagefile.sys 0 0"
+                           ],
+    "OriginalPagingFiles":  [
+                                "C:\\pagefile.sys 16384 32768"
+                            ],
+    "RuntimeCapacityVerifiedAfterReboot":  false
+}

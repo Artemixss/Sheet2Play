@@ -1,0 +1,39 @@
+{
+  "schema_version": 2,
+  "engine": "MusicXml",
+  "engine_revision": "direct-xml",
+  "tempo_changes": [
+    {
+      "start_beat": 0,
+      "bpm": 60
+    },
+    {
+      "start_beat": 1,
+      "bpm": 120
+    }
+  ],
+  "notes": [
+    {
+      "pitch": "C4",
+      "midi_pitch": 60,
+      "start_beat": 0,
+      "duration_beats": 1,
+      "start_seconds": 0,
+      "duration_seconds": 1,
+      "part_index": 0,
+      "staff_index": 0,
+      "voice_identifier": "1"
+    },
+    {
+      "pitch": "D4",
+      "midi_pitch": 62,
+      "start_beat": 1,
+      "duration_beats": 4,
+      "start_seconds": 1,
+      "duration_seconds": 2,
+      "part_index": 0,
+      "staff_index": 0,
+      "voice_identifier": "1"
+    }
+  ]
+}

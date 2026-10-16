@@ -1,0 +1,192 @@
+{
+  "aligned_voice_accuracy": 0.9090909090909091,
+  "candidate": "shipped-426-phase2-control",
+  "capture_status": "complete",
+  "comparison_identity": "91e7256cd902a6ea2adb9fb415e6847b2ba0b9e94fb03fe8f5f1570ae6544fb9",
+  "composition_group": "chopin/mazurka_51",
+  "configuration_identity": "31512f54e60c2e1cff049c60a7f68ceb0366eb49d4aeacf13368de17a0ec430d",
+  "conversion_error": null,
+  "coverage": {
+    "chord_completeness": 0.047058823529411764,
+    "complete_chords": 4,
+    "per_staff": {
+      "0": {
+        "matched_notes": 12,
+        "predicted_notes": 169,
+        "recall": 0.03625377643504532,
+        "reference_notes": 331
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 155,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 85,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 21,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 2,
+        "predicted": "2"
+      },
+      {
+        "actual": "1/2",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 1,
+        "predicted": "2"
+      },
+      {
+        "actual": "1/2",
+        "count": 2,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "1/3",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "3",
+        "count": 1,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "3/2",
+        "count": 2,
+        "predicted": "1"
+      },
+      {
+        "actual": "3/2",
+        "count": 1,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "3/4",
+        "count": 1,
+        "predicted": "1"
+      }
+    ],
+    "unmatched_expected": 298,
+    "unmatched_predicted": 291
+  },
+  "elapsed_seconds": 15.65599999999904,
+  "extra_notes": 302,
+  "item_id": "937ea5b97ec962b3a22e",
+  "mean_offset_error": 0.28535353535353536,
+  "metrics": {
+    "aligned_voice_accuracy": 0.9090909090909091,
+    "coverage": {
+      "chord_completeness": 0.047058823529411764,
+      "complete_chords": 4,
+      "per_staff": {
+        "0": {
+          "matched_notes": 12,
+          "predicted_notes": 169,
+          "recall": 0.03625377643504532,
+          "reference_notes": 331
+        },
+        "1": {
+          "matched_notes": 0,
+          "predicted_notes": 155,
+          "recall": null,
+          "reference_notes": 0
+        }
+      },
+      "reference_chords": 85,
+      "staff_interpretation": "notation staff index; not validated hand labels"
+    },
+    "duration": {
+      "confusion": [
+        {
+          "actual": "1",
+          "count": 21,
+          "predicted": "1"
+        },
+        {
+          "actual": "1",
+          "count": 2,
+          "predicted": "2"
+        },
+        {
+          "actual": "1/2",
+          "count": 1,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/2",
+          "count": 1,
+          "predicted": "2"
+        },
+        {
+          "actual": "1/2",
+          "count": 2,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "1/3",
+          "count": 1,
+          "predicted": "1"
+        },
+        {
+          "actual": "3",
+          "count": 1,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "3/2",
+          "count": 2,
+          "predicted": "1"
+        },
+        {
+          "actual": "3/2",
+          "count": 1,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "3/4",
+          "count": 1,
+          "predicted": "1"
+        }
+      ],
+      "unmatched_expected": 298,
+      "unmatched_predicted": 291
+    },
+    "extra_notes": 302,
+    "mean_offset_error": 0.28535353535353536,
+    "missing_notes": 309,
+    "onset_duration_f1": 0.06717557251908396,
+    "onset_f1": 0.10076335877862594,
+    "pitch_f1": 0.9862595419847328,
+    "predicted_notes": 324,
+    "reference_notes": 331,
+    "staff_accuracy": 0.5454545454545454,
+    "timeline_predicted": "122",
+    "timeline_reference": "96"
+  },
+  "missing_notes": 309,
+  "onset_duration_f1": 0.06717557251908396,
+  "onset_f1": 0.10076335877862594,
+  "original_item_id": "test/chopin/mazurka_51/mazurka_51_4.png",
+  "pitch_f1": 0.9862595419847328,
+  "predicted_notes": 324,
+  "receipt_sha256": "b0143200ce5228bb3c96edf16f41fc1be6a9392e21ca4b26f6aa62c6ef960053",
+  "reference_notes": 331,
+  "reference_sha256": "04d9ee7c8cf5364dda262c0be1051b57d6234ff5ef2d9bca5e0358b85eb419ab",
+  "staff_accuracy": 0.5454545454545454,
+  "status": "complete",
+  "timeline_predicted": "122",
+  "timeline_reference": "96"
+}

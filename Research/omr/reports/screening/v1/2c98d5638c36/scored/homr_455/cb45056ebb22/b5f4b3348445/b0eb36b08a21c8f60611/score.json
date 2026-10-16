@@ -1,0 +1,77 @@
+{
+  "adapter_id": "homr_455_explicit_onnx_pair",
+  "aligned_voice_accuracy": 0.5626822157434402,
+  "candidate_id": "homr_455",
+  "cold_start": true,
+  "composition_group": "joplin/breeze",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 2,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 169,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/2",
+        "count": 1,
+        "predicted": "3/4"
+      },
+      {
+        "actual": "1/4",
+        "count": 172,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "3/2",
+        "count": 2,
+        "predicted": "1"
+      },
+      {
+        "actual": "3/4",
+        "count": 2,
+        "predicted": "5/4"
+      }
+    ],
+    "unmatched_expected": 59,
+    "unmatched_predicted": 59
+  },
+  "elapsed_seconds": 25.64099999999962,
+  "error": null,
+  "extra_note_count": 65,
+  "failure_penalized_omr_ned": 0.5472679965307893,
+  "first_divergent_measure": 2,
+  "item_id": "test/joplin/breeze/breeze_1.png",
+  "mean_offset_error": 0.0071633237822349575,
+  "missing_note_count": 65,
+  "omr_ned": 0.5472679965307893,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.8406862745098039,
+  "onset_f1": 0.8553921568627451,
+  "peak_ram_bytes": 1447178240,
+  "peak_vram_bytes": 1641021440,
+  "pitch_f1": 0.9901960784313726,
+  "predicted_note_count": 408,
+  "reference_measure_count": 25,
+  "reference_note_count": 408,
+  "reference_quarter_length": "48",
+  "schema_version": 1,
+  "staff_accuracy": 1.0,
+  "status": "succeeded",
+  "timeline_length_error": "7/4",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

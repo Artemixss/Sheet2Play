@@ -1,0 +1,13 @@
+{
+  "observed_utc": "2026-10-04T08:55:48.701Z",
+  "source_call_id": "call_QAPHD5f0DGKqlKqaznNY99v1",
+  "source": "Saved tool output; truncated, counts are lower bounds",
+  "counts_in_returned_rows": {
+    "git": 108,
+    "conhost": 6,
+    "python": 0
+  },
+  "git_working_set_bytes_in_returned_rows": 860745728,
+  "git_paged_memory_bytes_in_returned_rows": 1840259072,
+  "limitation": "Observed after the first exhaustion warning; no parent PID or complete process-commit snapshot"
+}

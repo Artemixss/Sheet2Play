@@ -1,0 +1,57 @@
+{
+  "adapter_id": "audiveris_unattended",
+  "aligned_voice_accuracy": 1.0,
+  "candidate_id": "audiveris",
+  "cold_start": true,
+  "composition_group": "mozart/sonata06_3j",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 3,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 6,
+        "predicted": "1"
+      },
+      {
+        "actual": "3/2",
+        "count": 1,
+        "predicted": "1"
+      }
+    ],
+    "unmatched_expected": 233,
+    "unmatched_predicted": 215
+  },
+  "elapsed_seconds": 25.593000000000757,
+  "error": null,
+  "extra_note_count": 222,
+  "failure_penalized_omr_ned": 0.6008522727272727,
+  "first_divergent_measure": 1,
+  "item_id": "test/mozart/sonata06_3j/sonata06_3j_1.png",
+  "mean_offset_error": 0.35,
+  "missing_note_count": 240,
+  "omr_ned": 0.6008522727272727,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.01282051282051282,
+  "onset_f1": 0.042735042735042736,
+  "peak_ram_bytes": 830025728,
+  "peak_vram_bytes": 0,
+  "pitch_f1": 0.9017094017094017,
+  "predicted_note_count": 225,
+  "reference_measure_count": 19,
+  "reference_note_count": 243,
+  "reference_quarter_length": "68",
+  "schema_version": 1,
+  "staff_accuracy": 0.6666666666666666,
+  "status": "succeeded",
+  "timeline_length_error": "4",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "aligned_voice_accuracy": 0.918918918918919,
+  "candidate": "shipped-426-phase2-control",
+  "capture_status": "complete",
+  "comparison_identity": "91e7256cd902a6ea2adb9fb415e6847b2ba0b9e94fb03fe8f5f1570ae6544fb9",
+  "composition_group": "joplin/lilyqueen",
+  "configuration_identity": "31512f54e60c2e1cff049c60a7f68ceb0366eb49d4aeacf13368de17a0ec430d",
+  "conversion_error": null,
+  "coverage": {
+    "chord_completeness": 0.010526315789473684,
+    "complete_chords": 1,
+    "per_staff": {
+      "0": {
+        "matched_notes": 15,
+        "predicted_notes": 171,
+        "recall": 0.04132231404958678,
+        "reference_notes": 363
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 199,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 95,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 9,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 3,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 6,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 27,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 1,
+        "predicted": "3/4"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "3/4"
+      }
+    ],
+    "unmatched_expected": 315,
+    "unmatched_predicted": 322
+  },
+  "elapsed_seconds": 13.812000000001717,
+  "extra_notes": 333,
+  "item_id": "87fba7953bedfee1362b",
+  "mean_offset_error": 0.109375,
+  "metrics": {
+    "aligned_voice_accuracy": 0.918918918918919,
+    "coverage": {
+      "chord_completeness": 0.010526315789473684,
+      "complete_chords": 1,
+      "per_staff": {
+        "0": {
+          "matched_notes": 15,
+          "predicted_notes": 171,
+          "recall": 0.04132231404958678,
+          "reference_notes": 363
+        },
+        "1": {
+          "matched_notes": 0,
+          "predicted_notes": 199,
+          "recall": null,
+          "reference_notes": 0
+        }
+      },
+      "reference_chords": 95,
+      "staff_interpretation": "notation staff index; not validated hand labels"
+    },
+    "duration": {
+      "confusion": [
+        {
+          "actual": "1",
+          "count": 9,
+          "predicted": "1"
+        },
+        {
+          "actual": "1",
+          "count": 3,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/2",
+          "count": 6,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/2",
+          "count": 27,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/2",
+          "count": 1,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "1/4",
+          "count": 1,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/4",
+          "count": 1,
+          "predicted": "3/4"
+        }
+      ],
+      "unmatched_expected": 315,
+      "unmatched_predicted": 322
+    },
+    "extra_notes": 333,
+    "mean_offset_error": 0.109375,
+    "missing_notes": 326,
+    "onset_duration_f1": 0.1009549795361528,
+    "onset_f1": 0.130968622100955,
+    "pitch_f1": 0.9822646657571624,
+    "predicted_notes": 370,
+    "reference_notes": 363,
+    "staff_accuracy": 0.40540540540540543,
+    "timeline_predicted": "193/4",
+    "timeline_reference": "46"
+  },
+  "missing_notes": 326,
+  "onset_duration_f1": 0.1009549795361528,
+  "onset_f1": 0.130968622100955,
+  "original_item_id": "test/joplin/lilyqueen/lilyqueen_3.png",
+  "pitch_f1": 0.9822646657571624,
+  "predicted_notes": 370,
+  "receipt_sha256": "c64421a446b56077f02218eb4aba8eea913de315d942bbd0d767c14d69eeef11",
+  "reference_notes": 363,
+  "reference_sha256": "4debdfd1b19e48141be16101990c043a4380ce7ff8dd8909ad7c0c432409c231",
+  "staff_accuracy": 0.40540540540540543,
+  "status": "complete",
+  "timeline_predicted": "193/4",
+  "timeline_reference": "46"
+}

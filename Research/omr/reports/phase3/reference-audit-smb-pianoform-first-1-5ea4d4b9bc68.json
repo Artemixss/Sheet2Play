@@ -1,0 +1,29 @@
+{
+  "audited_count": 1,
+  "collection": "smb-pianoform",
+  "eligible_count": 402,
+  "full_collection": false,
+  "identity": {
+    "builder_sha256": "5ea4d4b9bc682eaa74bc26e225f93782808faf17614c0044592b091a1ee3b48c",
+    "manifest_sha256": "f73419cb60019d0bfbaf7ce0efaf2fdea66d89648eec3d2552c606f2172d9a81",
+    "metadata_sha256": "3a1f727011fb6a468dbdaa45052f4b35e7282c4002fe4e395d98d369a7101c52",
+    "normalizer_sha256": "2e56906636a7164784492ac47c0f0fd628e4f15e172390b58e2792160f819c8e",
+    "parser_sha256": "0bea9cdb67f60110ff53305904909ddb56de9d965958b344aa824244ef900c8d"
+  },
+  "invalid_count": 0,
+  "items": [
+    {
+      "id": "test/bach/bwv978_3/bwv978_3_1.png",
+      "normalization_warning_count": 0,
+      "note_count": 471,
+      "reference_musicxml_sha256": "7ccf585a1f88362cc114fc74edceccf0d570be53ea9cd0ddcd8bad22378e38a3",
+      "reference_path": "Research/omr/.runtime/phase3/references/673de4cf34a8356b5df77335.json",
+      "reference_sha256": "5173ab5e17a20a9e36e9926f0962ad9185bfe490bf77e0418d6b780d646067ea",
+      "state": "generated",
+      "status": "valid"
+    }
+  ],
+  "schema_version": 1,
+  "scope": "complete_page_reference_preflight",
+  "valid_count": 1
+}

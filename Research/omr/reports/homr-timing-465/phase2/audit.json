@@ -1,0 +1,106 @@
+{
+  "acquisition_archives_verified": 3,
+  "comparison_identity": "91e7256cd902a6ea2adb9fb415e6847b2ba0b9e94fb03fe8f5f1570ae6544fb9",
+  "composition_macro_and_paired_statistics_reproduced": true,
+  "declared_capture_artifacts_verified": 6608,
+  "gpu_peak_mib": 1569,
+  "job_statuses": {
+    "blocked": 1,
+    "complete": 161,
+    "failed": 9
+  },
+  "native_receipts": 150,
+  "native_statuses": {
+    "complete": 149,
+    "failed": 1
+  },
+  "network": {
+    "blocked_offline_actions": 0,
+    "cap_bytes": 3000000000,
+    "charged_payload_upper_bound_bytes": 200512129,
+    "complete_download_payload_bytes": 113959839,
+    "reserved_bytes": 804216858,
+    "retained_partial_bytes": 5308416,
+    "retained_payload_bytes": 119268255,
+    "scope": "Task-controlled transfers plus conservative protocol/control reservations; unrelated host traffic unavailable"
+  },
+  "peak_system_commit_percent": 55.99118070771206,
+  "peak_system_ram_percent": 71.48726363998736,
+  "protected_assets_verified": 51,
+  "recomputed_scores": 118,
+  "report_sha256": "653aa1f778e76c959de89c7b70233925d97207143fb20b35f332e6aec209d199",
+  "reproduction_numpy_version": "2.2.6",
+  "reproduction_python": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.venv\\Scripts\\python.exe",
+  "research_sources": [
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\homr_465_analyze.py",
+      "sha256": "2a76832832baff7ac5c3f729e44a2434171481fff328b21e51d3c23550266ee4"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\homr_465_audit.py",
+      "sha256": "204836d13bab4dd1fab55dc2f6fe570569d9f06fba1f719a42f471b8c803e2b7"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\homr_465_capture.py",
+      "sha256": "363261270b9a97246b2fb9247f848edab77a7983f73ce44783d5824091f41e30"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\homr_465_common.py",
+      "sha256": "e889efbee50e5b033636197aaa8e060f7a8ab8375ce2271e9496e75020362aad"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\homr_465_compatibility.py",
+      "sha256": "f6076cb53b03e8daeddb4f5213fae1517f18d27b1c8eff01168787120d67f8af"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\homr_465_download.py",
+      "sha256": "88683e79867656fc9c238bcd3d7ca48b732df58d93ad0120844e38fcd05b8d25"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\homr_465_prepare.py",
+      "sha256": "fbde9d62ef7207ef607e3e883e55fc87c6bb6f54cfd5c101426dc621bc7c6cd6"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\homr_465_resume.py",
+      "sha256": "3b3425f3d4691c751caadba6ee5026406088566550aa41a50f511af51c00af0c"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\run-homr-465-phase2.ps1",
+      "sha256": "be62d84c77e69d03c9196f3ff3da5f3ee2b5dfade16c76b944e940d695ec6b1c"
+    }
+  ],
+  "resumption_and_runtime": {
+    "cohorts": {
+      "after_ram_upgrade": {
+        "candidate_mean_seconds": 15.650916666666697,
+        "candidate_median_seconds": 14.804500000000075,
+        "control_mean_seconds": 15.026083333333323,
+        "control_median_seconds": 14.38250000000005,
+        "pairs": 12,
+        "successful_pairs": 12
+      },
+      "before_ram_upgrade": {
+        "candidate_mean_seconds": 15.690377777778405,
+        "candidate_median_seconds": 15.953000000001339,
+        "control_mean_seconds": 15.54197777777768,
+        "control_median_seconds": 15.73399999999674,
+        "pairs": 46,
+        "successful_pairs": 45
+      },
+      "cross_transition": {
+        "candidate_mean_seconds": 15.75,
+        "candidate_median_seconds": 15.75,
+        "control_mean_seconds": 27.702999999999975,
+        "control_median_seconds": 27.702999999999975,
+        "pairs": 1,
+        "successful_pairs": 1
+      }
+    },
+    "interpretation": "Descriptive native capture times for successful pairs; cross-transition pair excluded from matched performance claims; no causal RAM speedup claim",
+    "post_upgrade_physical_total_bytes": 33549094912,
+    "preserved_interrupted_artifacts_verified": 42
+  },
+  "scoring_environment_sha256": "24d8c30faab61b3e41bf74a7d10089a87d702c29922e6f14b25727dfd02102d6",
+  "source_identity_note": "Current download helper includes the diagnosed journal fix; earlier failed receipts are preserved",
+  "status": "verified"
+}

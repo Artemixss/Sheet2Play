@@ -1,0 +1,116 @@
+{
+  "adapter_config_sha256": "93a7470cb86b06ab9f91bfc48661754ebadb3b573653e0c3dc66a042649f02e2",
+  "adapter_id": "qwen_q8_system_and_page",
+  "artifacts": [
+    {
+      "bytes": 414,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/qwen-openscore-6211535-page-1-93a7470cb86b-252d8c9a02c2/attempt-measurements.json",
+      "role": "partial_attempt-measurements.json",
+      "sha256": "719af030511c930b84e780c01633a85b7d4e87b6b57a225ce1242ec700adef06"
+    },
+    {
+      "bytes": 1151,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/qwen-openscore-6211535-page-1-93a7470cb86b-252d8c9a02c2/detected-systems.json",
+      "role": "partial_detected-systems.json",
+      "sha256": "f363b1854c3dde445461822341e44cfa5d4d98c7543ada05dd9f12d76558f044"
+    },
+    {
+      "bytes": 297658,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/qwen-openscore-6211535-page-1-93a7470cb86b-252d8c9a02c2/detector-preprocessed.png",
+      "role": "partial_detector-preprocessed.png",
+      "sha256": "31bb9cf7a855fe07d56236182b290723d8ceb5660310d1103346dfa708270b57"
+    },
+    {
+      "bytes": 3061,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/qwen-openscore-6211535-page-1-93a7470cb86b-252d8c9a02c2/system-0001.raw.txt",
+      "role": "partial_system-0001.raw.txt",
+      "sha256": "ac7621717800cd747f98fcbe9285915d7cde79f60d15bd3e1afc95f446330d62"
+    }
+  ],
+  "candidate_id": "qwen3_vl_2b_instruct",
+  "composition_group": "6211535",
+  "error": {
+    "code": "INVALID_NOTATION",
+    "message": "ABC has no barline",
+    "stage": "recognition"
+  },
+  "exit_status": 1,
+  "item_id": "openscore-6211535-page-1",
+  "measurement_path": "complete_document",
+  "provenance": {
+    "adapter_config": {
+      "adapter_id": "qwen_q8_system_and_page",
+      "adapter_revision": "b4ffcc4f75ba5b0243db3c1314ba421d75e6b69c3c80502ce45e6172626302d5",
+      "candidate_id": "qwen3_vl_2b_instruct",
+      "checkpoint": "Qwen3VL-2B-Instruct-Q8_0.gguf",
+      "checkpoint_revision": "52d6c8ffea26cc873ac5ad116f8631268d7eb503",
+      "input_granularity": "detected system",
+      "native_format": "ABC",
+      "settings": {
+        "cli_sha256": "252d8c9a02c20aa7263a38fea69182e3658779f368baaeb57610bfd90e084b9e",
+        "converter": "croma 1.2.1 strict ABC to MusicXML",
+        "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+        "cuda_runtime_sha256": {
+          "cublas64_12.dll": "e40202fe4223c1cd2d2dce7beec59e1ed61c7801bd827309183be9b50e358f4c",
+          "cublasLt64_12.dll": "2a896460bef60ed57ef32b0875812f355a6984e671d638bb632f5e8c1d7a831f",
+          "cudart64_12.dll": "d28e42265da7462162a54da6b7a99ea4fa2caf8139d862bb500db875d0b32dfc"
+        },
+        "detector_sha256": "4ad2a8c2cf88d19db46349fda84c76dc8a60dbad2cac6df9f3405b2ad7b26bc2",
+        "image_min_tokens": 1024,
+        "max_new_tokens": 1600,
+        "model_sha256": "1e8db19207c8ce0733ddd78c2eff8a9e22c27c82f4443df94c25792ed8fe04f2",
+        "precision": "Q8_0 text and projector",
+        "projector_sha256": "f9a68fabba69c3b81e153367b2c7521030b0fa8bb0de400c9599c8e6725f9c82",
+        "prompt": "Transcribe only the notation visible in this single system into one ABC 2.1 tune. Start with X:1, then M:, L:, K:, and V: lines for each staff or independent voice. Preserve pitches, durations, rests, ties, tuplets, key and meter changes. End with a closing barline. Output ABC only: no LilyPond, prose, Markdown, or repeated staff metadata.",
+        "seed": 0,
+        "segmentation": "HOMR detector boxes on exact returned preprocessed image; full-width vertical-margin crops",
+        "temperature": 0
+      },
+      "source_repository": "https://huggingface.co/Qwen/Qwen3-VL-2B-Instruct-GGUF",
+      "source_revision": "52d6c8ffea26cc873ac5ad116f8631268d7eb503",
+      "supported_paths": [
+        "annotated_crop",
+        "complete_document"
+      ]
+    },
+    "adapter_config_sha256": "93a7470cb86b06ab9f91bfc48661754ebadb3b573653e0c3dc66a042649f02e2",
+    "checkpoint": "Qwen3VL-2B-Instruct-Q8_0.gguf",
+    "checkpoint_revision": "52d6c8ffea26cc873ac5ad116f8631268d7eb503",
+    "input_path": "Research/omr/data/phase1-development/open/6211535/page-1.png",
+    "input_sha256": "b368dd864dc235272728822a578551fbed619cce02265cc52043dea3051c57c8",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "source_repository": "https://huggingface.co/Qwen/Qwen3-VL-2B-Instruct-GGUF",
+    "source_revision": "52d6c8ffea26cc873ac5ad116f8631268d7eb503"
+  },
+  "resources": {
+    "cold_start": true,
+    "measurement_notes": [
+      "device-wide WDDM fallback"
+    ],
+    "peak_ram_bytes": 2439204864,
+    "peak_vram_bytes": 4996464640,
+    "sample_interval_seconds": 0.2
+  },
+  "schema_version": 1,
+  "status": "failed",
+  "timings": [
+    {
+      "seconds": 35.01433780000002,
+      "stage": "total_failed_attempt"
+    },
+    {
+      "seconds": 7.236981899999819,
+      "stage": "segmentation"
+    },
+    {
+      "seconds": 24.404072799999994,
+      "stage": "recognition_system_1"
+    }
+  ],
+  "warnings": []
+}

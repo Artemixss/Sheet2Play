@@ -1,0 +1,17 @@
+{
+  "attempt_path": "Research\\omr\\reports\\screening\\v1\\2c98d5638c36\\attempts\\homr_page\\0a0004e3c354\\1d60e6f27650974b766a\\attempt-23cd6e1d96e648ecbc9ff40968e0d4fc",
+  "attempt_sha256": "9a7bba2ce5b1b1f55260e31ee01c04ddd7df07d076f894318668fe558dc5ba1e",
+  "identity": {
+    "adapter_config_sha256": "55cac626633391aa6c277f1d271e11df79dabc095aafde902ee52f38f15b05b6",
+    "candidate": "homr_page",
+    "configuration_sha256": "0a0004e3c354793271a4298ec7a8c14ff68653acd1704d2cf9e0ffa30250ce51",
+    "image_sha256": "a6275cbb975a57d075c2b7d33c19615b3488f7cec8a249fcb8ef75a2c21fa220",
+    "item_id": "test/mozart/sonata08_2/sonata08_2_1.png",
+    "reference_sha256": "46004d726f80e94ba0b1989094663da630c25b66d93aa9be28dc5340381eb6c4",
+    "sample_sha256": "2c98d5638c368b1a53bdb3440177d04fa585f9b1ca6ce6adbe65af64cd8e27d1",
+    "schema_version": 1
+  },
+  "origin": "completed_attempt",
+  "result_sha256": "694b0ea33f4a2c904ba25b1bff3a55226c1ead154edffaf0c6640c4690bf76a4",
+  "timing_source": "screening_complete_path"
+}

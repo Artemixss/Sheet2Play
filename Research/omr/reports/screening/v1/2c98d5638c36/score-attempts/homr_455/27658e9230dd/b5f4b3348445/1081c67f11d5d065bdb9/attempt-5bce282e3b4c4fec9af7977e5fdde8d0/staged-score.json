@@ -1,0 +1,92 @@
+{
+  "adapter_id": "homr_455_explicit_onnx_pair",
+  "aligned_voice_accuracy": 1.0,
+  "candidate_id": "homr_455",
+  "cold_start": true,
+  "composition_group": "mozart/viennese1_1",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 6,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 5,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 2,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 36,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "2",
+        "count": 2,
+        "predicted": "1"
+      },
+      {
+        "actual": "2",
+        "count": 2,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "2",
+        "count": 2,
+        "predicted": "4"
+      },
+      {
+        "actual": "3/2",
+        "count": 1,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "4",
+        "count": 2,
+        "predicted": "2"
+      }
+    ],
+    "unmatched_expected": 274,
+    "unmatched_predicted": 300
+  },
+  "elapsed_seconds": 25.60900000000038,
+  "error": null,
+  "extra_note_count": 316,
+  "failure_penalized_omr_ned": 0.2081174438687392,
+  "first_divergent_measure": 1,
+  "item_id": "test/mozart/viennese1_1/viennese1_1_2.png",
+  "mean_offset_error": 0.288135593220339,
+  "missing_note_count": 290,
+  "omr_ned": 0.2081174438687392,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.12427745664739884,
+  "onset_f1": 0.17052023121387283,
+  "peak_ram_bytes": 1391157248,
+  "peak_vram_bytes": 1645215744,
+  "pitch_f1": 0.9624277456647399,
+  "predicted_note_count": 359,
+  "reference_measure_count": 34,
+  "reference_note_count": 333,
+  "reference_quarter_length": "135",
+  "schema_version": 1,
+  "staff_accuracy": 0.27906976744186046,
+  "status": "succeeded",
+  "timeline_length_error": "4",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

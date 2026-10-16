@@ -1,0 +1,152 @@
+{
+  "aligned_voice_accuracy": 0.7733333333333333,
+  "candidate": "homr-465-upstream",
+  "capture_status": "complete",
+  "comparison_identity": "91e7256cd902a6ea2adb9fb415e6847b2ba0b9e94fb03fe8f5f1570ae6544fb9",
+  "composition_group": "beethoven/sonata05_1",
+  "configuration_identity": "9e619e47fd0317b6a7d1da5207985e1120acefc499a111649c5b7cdb1e339122",
+  "conversion_error": null,
+  "coverage": {
+    "chord_completeness": 0.3645833333333333,
+    "complete_chords": 35,
+    "per_staff": {
+      "0": {
+        "matched_notes": 43,
+        "predicted_notes": 114,
+        "recall": 0.12078651685393259,
+        "reference_notes": 356
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 249,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 96,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 9,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 133,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 2,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "2",
+        "count": 2,
+        "predicted": "2"
+      },
+      {
+        "actual": "3",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "3",
+        "count": 6,
+        "predicted": "3"
+      }
+    ],
+    "unmatched_expected": 203,
+    "unmatched_predicted": 210
+  },
+  "elapsed_seconds": 16.5470000000023,
+  "extra_notes": 213,
+  "item_id": "90c78d67b19651c3d098",
+  "mean_offset_error": 0.016339869281045753,
+  "metrics": {
+    "aligned_voice_accuracy": 0.7733333333333333,
+    "coverage": {
+      "chord_completeness": 0.3645833333333333,
+      "complete_chords": 35,
+      "per_staff": {
+        "0": {
+          "matched_notes": 43,
+          "predicted_notes": 114,
+          "recall": 0.12078651685393259,
+          "reference_notes": 356
+        },
+        "1": {
+          "matched_notes": 0,
+          "predicted_notes": 249,
+          "recall": null,
+          "reference_notes": 0
+        }
+      },
+      "reference_chords": 96,
+      "staff_interpretation": "notation staff index; not validated hand labels"
+    },
+    "duration": {
+      "confusion": [
+        {
+          "actual": "1",
+          "count": 9,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/2",
+          "count": 133,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/2",
+          "count": 2,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "2",
+          "count": 2,
+          "predicted": "2"
+        },
+        {
+          "actual": "3",
+          "count": 1,
+          "predicted": "1"
+        },
+        {
+          "actual": "3",
+          "count": 6,
+          "predicted": "3"
+        }
+      ],
+      "unmatched_expected": 203,
+      "unmatched_predicted": 210
+    },
+    "extra_notes": 213,
+    "mean_offset_error": 0.016339869281045753,
+    "missing_notes": 206,
+    "onset_duration_f1": 0.4172461752433936,
+    "onset_f1": 0.4255910987482615,
+    "pitch_f1": 0.9819193324061197,
+    "predicted_notes": 363,
+    "reference_notes": 356,
+    "staff_accuracy": 0.2866666666666667,
+    "timeline_predicted": "253/2",
+    "timeline_reference": "127"
+  },
+  "missing_notes": 206,
+  "onset_duration_f1": 0.4172461752433936,
+  "onset_f1": 0.4255910987482615,
+  "original_item_id": "test/beethoven/sonata05_1/sonata05_1_6.png",
+  "pitch_f1": 0.9819193324061197,
+  "predicted_notes": 363,
+  "receipt_sha256": "1fd6ae83074b87e99f24c99d7a4edc70bb53a1134154a240e6a4f8d4dfb46ad0",
+  "reference_notes": 356,
+  "reference_sha256": "7a04968b9494033da3e074bc4a6fde3b307e8424f0d3f6aea4b1262f230bdecd",
+  "staff_accuracy": 0.2866666666666667,
+  "status": "complete",
+  "timeline_predicted": "253/2",
+  "timeline_reference": "127"
+}

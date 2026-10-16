@@ -1,0 +1,162 @@
+{
+  "aligned_voice_accuracy": 0.9227642276422764,
+  "candidate": "homr-465-upstream",
+  "capture_status": "complete",
+  "comparison_identity": "91e7256cd902a6ea2adb9fb415e6847b2ba0b9e94fb03fe8f5f1570ae6544fb9",
+  "composition_group": "beethoven/sonata05_1",
+  "configuration_identity": "9e619e47fd0317b6a7d1da5207985e1120acefc499a111649c5b7cdb1e339122",
+  "conversion_error": null,
+  "coverage": {
+    "chord_completeness": 0.5641025641025641,
+    "complete_chords": 66,
+    "per_staff": {
+      "0": {
+        "matched_notes": 79,
+        "predicted_notes": 192,
+        "recall": 0.17832957110609482,
+        "reference_notes": 443
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 256,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 117,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 41,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 191,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 2,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "2",
+        "count": 1,
+        "predicted": "2"
+      },
+      {
+        "actual": "3",
+        "count": 9,
+        "predicted": "3"
+      },
+      {
+        "actual": "6",
+        "count": 2,
+        "predicted": "3"
+      },
+      {
+        "actual": "9/2",
+        "count": 2,
+        "predicted": "9/2"
+      }
+    ],
+    "unmatched_expected": 195,
+    "unmatched_predicted": 200
+  },
+  "elapsed_seconds": 19.18699999999808,
+  "extra_notes": 202,
+  "item_id": "5551bc1bb29486f5208e",
+  "mean_offset_error": 0.024193548387096774,
+  "metrics": {
+    "aligned_voice_accuracy": 0.9227642276422764,
+    "coverage": {
+      "chord_completeness": 0.5641025641025641,
+      "complete_chords": 66,
+      "per_staff": {
+        "0": {
+          "matched_notes": 79,
+          "predicted_notes": 192,
+          "recall": 0.17832957110609482,
+          "reference_notes": 443
+        },
+        "1": {
+          "matched_notes": 0,
+          "predicted_notes": 256,
+          "recall": null,
+          "reference_notes": 0
+        }
+      },
+      "reference_chords": 117,
+      "staff_interpretation": "notation staff index; not validated hand labels"
+    },
+    "duration": {
+      "confusion": [
+        {
+          "actual": "1",
+          "count": 41,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/2",
+          "count": 191,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/4",
+          "count": 2,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "2",
+          "count": 1,
+          "predicted": "2"
+        },
+        {
+          "actual": "3",
+          "count": 9,
+          "predicted": "3"
+        },
+        {
+          "actual": "6",
+          "count": 2,
+          "predicted": "3"
+        },
+        {
+          "actual": "9/2",
+          "count": 2,
+          "predicted": "9/2"
+        }
+      ],
+      "unmatched_expected": 195,
+      "unmatched_predicted": 200
+    },
+    "extra_notes": 202,
+    "mean_offset_error": 0.024193548387096774,
+    "missing_notes": 197,
+    "onset_duration_f1": 0.5521885521885521,
+    "onset_f1": 0.5566778900112234,
+    "pitch_f1": 0.9943883277216611,
+    "predicted_notes": 448,
+    "reference_notes": 443,
+    "staff_accuracy": 0.32113821138211385,
+    "timeline_predicted": "166",
+    "timeline_reference": "163"
+  },
+  "missing_notes": 197,
+  "onset_duration_f1": 0.5521885521885521,
+  "onset_f1": 0.5566778900112234,
+  "original_item_id": "test/beethoven/sonata05_1/sonata05_1_2.png",
+  "pitch_f1": 0.9943883277216611,
+  "predicted_notes": 448,
+  "receipt_sha256": "2c3e6152e2c8f1467550cb9cbd39d23af15e71dd984676895bcce940fafd00bc",
+  "reference_notes": 443,
+  "reference_sha256": "b267b349bf9b2758c8cc9f4da4ddbd8abb44edb5bf59ee38cba6995412ff5c22",
+  "staff_accuracy": 0.32113821138211385,
+  "status": "complete",
+  "timeline_predicted": "166",
+  "timeline_reference": "163"
+}

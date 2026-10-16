@@ -1,0 +1,272 @@
+{
+  "artifacts": [
+    {
+      "bytes": 390,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\gpu-resources.jsonl",
+      "sha256": "eae0562c17dcc9705b4f31965f4b9b928a347d816f264fd9f40efa59512e9bd7"
+    },
+    {
+      "bytes": 51061,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input.musicxml",
+      "sha256": "925a1f028d81fa910efa13a125a0f1a16cd5c1296e8f1342b3b878e0c442118f"
+    },
+    {
+      "bytes": 204987,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input.png",
+      "sha256": "0fe292f8913214db85a4a327cebe3bd2f9fd64f45f0eb1f8d318238322d9b1cb"
+    },
+    {
+      "bytes": 390,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input.txt",
+      "sha256": "a8f3e013f4d855c22ca10f10737f3466d085ac9b0c45a07bc296c465a5a7f825"
+    },
+    {
+      "bytes": 2221301,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_debug_10_notehead_with_stems.png",
+      "sha256": "112d0ed96135c5842be8eb7a3c13d8dcd4d78f5f510d17c20968f98a4040cf8c"
+    },
+    {
+      "bytes": 2252027,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_debug_11_bar_lines.png",
+      "sha256": "df4076295a1eb61644970d4112fad3d486aac92ae91fbed4e680b2a839d15053"
+    },
+    {
+      "bytes": 1718824,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_debug_12_anchor_input.png",
+      "sha256": "768e4a1142de5af30be44b22a76820adc313a806e84dfc72b60d6cba99814d57"
+    },
+    {
+      "bytes": 2096446,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_debug_13_staff_anchors.png",
+      "sha256": "8ed7345fad713c3ee43b37375c8e7d21bfafffd9d38dda067dfec2845410ac39"
+    },
+    {
+      "bytes": 1764756,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_debug_14_raw_staffs.png",
+      "sha256": "47318b99356ccd70ca3defdbc0b38a2c1345fb75856324db95d04124bd3f6872"
+    },
+    {
+      "bytes": 1974438,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_debug_15_staffs.png",
+      "sha256": "cd0afebf40899be240ad9c81c1a64074ac4c4b0a2600f036759d1dabc1d9669f"
+    },
+    {
+      "bytes": 31541,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_debug_16_brace_dot.png",
+      "sha256": "b2bb8cf46cfc8a646b07918f3feaa4b877c2a932e01421fbc8666b9371f05ccd"
+    },
+    {
+      "bytes": 2232307,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_debug_17_notes.png",
+      "sha256": "18f3ffe89ace0722ca7c741c3e029863074ac0ed390950f3925c85f30ef4a9ed"
+    },
+    {
+      "bytes": 889413,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_debug_1_color_adjust.png",
+      "sha256": "e236a0e48d4f1667ef8fbc57ea6375e8809e9e6a5afeddaa09691a2a6755b93e"
+    },
+    {
+      "bytes": 219522,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_debug_2_noise_crop.png",
+      "sha256": "0cf149bbc85bc63a6949c55ee7e76e17a74fe78e97ca961148391a1c5edabdad"
+    },
+    {
+      "bytes": 29554,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_debug_3_staff.png",
+      "sha256": "420839b2f5c914ed1da45353adf6f1afb2c5242153b26d3753d7ce6f40b6eded"
+    },
+    {
+      "bytes": 25664,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_debug_4_symbols.png",
+      "sha256": "d962b4615147004c890f8d34435bc4f1fcd227e8c77f21b8ec0a0e0fb03dc33f"
+    },
+    {
+      "bytes": 44562,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_debug_5_stems_rest.png",
+      "sha256": "ec2bc7f3be68e922c1d635f9874f648b5cca9601d601ab3f296fd8f201f61860"
+    },
+    {
+      "bytes": 27302,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_debug_6_notehead.png",
+      "sha256": "a49c860850a2e7a1dad85881e2fbe8090d4d8e5d8805794074b566d4064dd113"
+    },
+    {
+      "bytes": 22231,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_debug_7_clefs_keys.png",
+      "sha256": "d17f57c9390cf026485fa88d595c2d5c9a3934f36ec06c6017275ca13d7d6e6b"
+    },
+    {
+      "bytes": 59354,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_debug_8_bar_line_img.png",
+      "sha256": "aa4607258b4bbfae3c0daaf8af91d30f5021d80b0afbd296a5e0cc81da5f7ff4"
+    },
+    {
+      "bytes": 1741124,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_debug_9_staff_fragments.png",
+      "sha256": "78d3e7b16d1a0c26aebced4f727ca288fa7f1c76964cb65b2b1b8af6d3afac2a"
+    },
+    {
+      "bytes": 113992,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_staff-0_debug_annotated.jpg",
+      "sha256": "a42a7f8fcdf28dfb2f8a8e8f22c00f79aacc298c3e75df2722d50ea57e8ca1a4"
+    },
+    {
+      "bytes": 88909,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_staff-0_debug_span_points.png",
+      "sha256": "4829428bc755c11982902c0044f39d80a545128f23b74f198fa0469b039846a9"
+    },
+    {
+      "bytes": 110160,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_staff-0_input.jpg",
+      "sha256": "2a6f2a4d4c399b2e44d664a919eb046479dc21c4d3bc39bb9d9bf49ec2fd9a3e"
+    },
+    {
+      "bytes": 129388,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_staff-0_output.jpg",
+      "sha256": "23b63c0f30c563274cd7bd0c95d735098033e98d6535dd47a9973b39ed77301b"
+    },
+    {
+      "bytes": 117595,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_staff-1_debug_annotated.jpg",
+      "sha256": "4cae9532b115fe427f1fb2d542b8129df609a6380e8343c56fc9b81c86ef25ee"
+    },
+    {
+      "bytes": 101030,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_staff-1_debug_span_points.png",
+      "sha256": "cbeab45ea23b674dbcc841fed1db338795ecdb4d00fccd78b079a0862e1b54af"
+    },
+    {
+      "bytes": 112366,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_staff-1_input.jpg",
+      "sha256": "a6ddfd16fa6088f5125348c818c264692ec46976f7d7eb398973c848cbd64793"
+    },
+    {
+      "bytes": 132383,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_staff-1_output.jpg",
+      "sha256": "04b7f3f4fa75503264e894a06e0b126ed5b6bebc3e28a21e846628f0f39551a0"
+    },
+    {
+      "bytes": 122162,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_staff-2_debug_annotated.jpg",
+      "sha256": "5b36fb18eeda3a044903a0d3f96511875510cb7fe4992aaa300855d2e08c33e3"
+    },
+    {
+      "bytes": 107459,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_staff-2_debug_span_points.png",
+      "sha256": "095fdcf5f232b27c0c6a52025b44b32c5c655877ae460ca1830b126a3022b74f"
+    },
+    {
+      "bytes": 116604,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_staff-2_input.jpg",
+      "sha256": "b72224c81ecefa6fab7a1e31061bf8128d60a1bd3d2590ec02ce71599496f64a"
+    },
+    {
+      "bytes": 136223,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_staff-2_output.jpg",
+      "sha256": "317eec3de1bb485eccdf02e0e4e8a47a8674c06e5de49999224e1860aa37ed33"
+    },
+    {
+      "bytes": 119441,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_staff-3_debug_annotated.jpg",
+      "sha256": "e08d666479f1e343dd6df3c692d115a3371602559ae7c19381f9f7be23efe5c1"
+    },
+    {
+      "bytes": 104297,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_staff-3_debug_span_points.png",
+      "sha256": "dfa8c181f5132ae7ab8a510bf3ff9d0043f0ba6d7ca71a2d974fd4b1195a1e46"
+    },
+    {
+      "bytes": 113772,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_staff-3_input.jpg",
+      "sha256": "2e09780d73199587bc006ece279e42c0aeb08c43ec397e153aa888e05be3591a"
+    },
+    {
+      "bytes": 134399,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_staff-3_output.jpg",
+      "sha256": "c16344521b33871b995751cee46f8336ba3ad9fa9847fad737084eedc449bd86"
+    },
+    {
+      "bytes": 110034,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_staff-4_debug_annotated.jpg",
+      "sha256": "09de297ef6c6c7453c4c7525e6a21545eb7dcc4d2f99baced99f8bf587d2167a"
+    },
+    {
+      "bytes": 82966,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_staff-4_debug_span_points.png",
+      "sha256": "2efa3c8e34f774b1807a27d734858143a13f94c327cf4de28e98b370c3b947da"
+    },
+    {
+      "bytes": 103968,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_staff-4_input.jpg",
+      "sha256": "7c13b2b6517068229b7c95ffd806e9a21554edb216cbca994c2f53e042d338f7"
+    },
+    {
+      "bytes": 125707,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_staff-4_output.jpg",
+      "sha256": "ad0d3d946c5034b753029959319c9206a6caf48b2f019b7cd5bcf75d8f973bc2"
+    },
+    {
+      "bytes": 1956031,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\input_teaser.png",
+      "sha256": "30361b8ba17c2391a13c5dcf235b70dc0b4d7d4aa31371ad0e7ea0724c094b06"
+    },
+    {
+      "bytes": 27262,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\comparison\\candidate\\47cb0f412e238877c16f\\tokens.json",
+      "sha256": "4f03bed84da3e63125f1f2641b8a8d0a423d8402e323ec323701382eb669c88d"
+    }
+  ],
+  "candidate": "homr-465-upstream",
+  "configuration_identity": "9e619e47fd0317b6a7d1da5207985e1120acefc499a111649c5b7cdb1e339122",
+  "configuration_sha256": "d7088172b5fa7d7254fe57a9b716259d9457e8728e57ff87fe033c8bc95668bc",
+  "elapsed_seconds": 11.421999999999798,
+  "homr_origin": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\main.py",
+  "input_sha256": "0fe292f8913214db85a4a327cebe3bd2f9fd64f45f0eb1f8d318238322d9b1cb",
+  "inputs_sha256": "f63c3e8f08769d3392bf04a41c47e60b05da779dbdedfeb911e7d459bb6cd8ee",
+  "item_id": "47cb0f412e238877c16f",
+  "module_origins": {
+    "homr": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\__init__.py",
+    "homr.autocrop": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\autocrop.py",
+    "homr.bar_line_detection": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\bar_line_detection.py",
+    "homr.bounding_boxes": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\bounding_boxes.py",
+    "homr.brace_dot_detection": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\brace_dot_detection.py",
+    "homr.color_adjust": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\color_adjust.py",
+    "homr.constants": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\constants.py",
+    "homr.debug": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\debug.py",
+    "homr.download_utils": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\download_utils.py",
+    "homr.find_peaks": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\find_peaks.py",
+    "homr.image_utils": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\image_utils.py",
+    "homr.main": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\main.py",
+    "homr.model": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\model.py",
+    "homr.music_xml_generator": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\music_xml_generator.py",
+    "homr.noise_filtering": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\noise_filtering.py",
+    "homr.note_detection": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\note_detection.py",
+    "homr.onnx_providers": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\onnx_providers.py",
+    "homr.pdf_utils": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\pdf_utils.py",
+    "homr.point_mapping": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\point_mapping.py",
+    "homr.relieur": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\relieur.py",
+    "homr.resize": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\resize.py",
+    "homr.segmentation": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\segmentation\\__init__.py",
+    "homr.segmentation.config": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\segmentation\\config.py",
+    "homr.segmentation.inference_segnet": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\segmentation\\inference_segnet.py",
+    "homr.simple_logging": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\simple_logging.py",
+    "homr.staff_detection": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\staff_detection.py",
+    "homr.staff_dewarping": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\staff_dewarping.py",
+    "homr.staff_parsing": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\staff_parsing.py",
+    "homr.staff_parsing_tromr": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\staff_parsing_tromr.py",
+    "homr.staff_position_save_load": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\staff_position_save_load.py",
+    "homr.staff_regions": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\staff_regions.py",
+    "homr.title_detection": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\title_detection.py",
+    "homr.transformer": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\transformer\\__init__.py",
+    "homr.transformer.configs": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\transformer\\configs.py",
+    "homr.transformer.decoder_inference": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\transformer\\decoder_inference.py",
+    "homr.transformer.encoder_inference": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\transformer\\encoder_inference.py",
+    "homr.transformer.staff2score": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\transformer\\staff2score.py",
+    "homr.transformer.vocabulary": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\transformer\\vocabulary.py",
+    "homr.type_definitions": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\type_definitions.py"
+  },
+  "numeric_accuracy_eligible": true,
+  "python_executable": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-455\\venv\\Scripts\\python.exe",
+  "status": "complete",
+  "title_detection": false
+}

@@ -1,0 +1,58 @@
+{
+  "adapter_id": "audiveris_unattended",
+  "candidate_id": "audiveris",
+  "cold_start": true,
+  "composition_group": "scarlatti/L055K330",
+  "coverage": {
+    "chord_completeness": 0.0,
+    "complete_chords": 0,
+    "per_staff": {
+      "0": {
+        "matched_notes": 0,
+        "predicted_notes": 0,
+        "recall": 0.0,
+        "reference_notes": 277
+      }
+    },
+    "reference_chords": 113,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": null,
+  "elapsed_seconds": 60.59400000000096,
+  "error": {
+    "code": "AUDIVERIS_OUTPUT_INVALID",
+    "message": "Expected one OMR project and one MusicXML export; found 1 and 2",
+    "stage": "artifact_capture"
+  },
+  "extra_note_count": 0,
+  "failure_penalized_omr_ned": 1.0,
+  "first_divergent_measure": 1,
+  "input_identity": {
+    "historical_score_sha256": "583c6f5b194ceff2bd77293d1257a323b131f18ae542ba4884f4a26a94e723ef",
+    "reference_sha256": "f7fabb1252901cb0242a58be1b9b1d617028d2d8de55ecca9b15e0c526caed27",
+    "result_sha256": "e3136a1cce57fb086ab6e1b20b2b1e67a5aaf089836c5fa306a30c65ba4125e6"
+  },
+  "item_id": "test/scarlatti/L055K330/L055K330_2.png",
+  "missing_note_count": 277,
+  "omr_ned": null,
+  "omr_ned_status": "engine_failed",
+  "onset_duration_f1": 0.0,
+  "onset_f1": 0.0,
+  "peak_ram_bytes": 1308368896,
+  "peak_vram_bytes": 0,
+  "pitch_f1": 0.0,
+  "predicted_note_count": 0,
+  "reference_measure_count": 43,
+  "reference_note_count": 277,
+  "reference_quarter_length": "129/2",
+  "schema_version": 2,
+  "scoring_identity_sha256": "ed9e5b7e6f998b5787ae21dfc0b7f545c42fc0bc83b60fc717f002d6b34aa568",
+  "status": "failed",
+  "timeline_length_error": null,
+  "timing_policy": "symmetric-rational-4096-roundoff-v1",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

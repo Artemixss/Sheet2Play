@@ -1,0 +1,39 @@
+{
+  "command": [
+    "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\zeus\\.venv\\Scripts\\python.exe",
+    "-B",
+    "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\zeus_provenance_probe.py",
+    "--zeus-root",
+    "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\zeus",
+    "--output",
+    "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase1\\probe-v2\\import-probe.json"
+  ],
+  "cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+  "pid": 27876,
+  "creation_time": 1791038446.998124,
+  "utc": "2026-10-03T14:40:47.008922+00:00",
+  "policy": {
+    "max_pages_per_chunk": 5,
+    "session_seconds": 14400,
+    "shutdown_reserve_seconds": 30,
+    "sample_seconds": 5,
+    "pressure_seconds": 30,
+    "ram_admission_percent": 90,
+    "device_vram_admission_percent": 90,
+    "priority": "below_normal",
+    "one_candidate_worker": true,
+    "concurrent_scoring": false
+  },
+  "environment": {
+    "OMP_NUM_THREADS": "8",
+    "MKL_NUM_THREADS": "8",
+    "OPENBLAS_NUM_THREADS": "8",
+    "NUMEXPR_NUM_THREADS": "8",
+    "TF_NUM_INTRAOP_THREADS": "8",
+    "TF_NUM_INTEROP_THREADS": "1",
+    "JAVA_TOOL_OPTIONS": "-XX:ActiveProcessorCount=8",
+    "_JAVA_OPTIONS": "",
+    "JDK_JAVA_OPTIONS": ""
+  },
+  "inference_started": false
+}

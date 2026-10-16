@@ -1,0 +1,17 @@
+{
+  "attempt_path": "Research\\omr\\reports\\screening\\v1\\2c98d5638c36\\attempts\\homr_455\\27658e9230dd\\937ea5b97ec962b3a22e\\attempt-214d0226e8124161bddad459dc747982",
+  "attempt_sha256": "78eccd50bf2381da5f3c5aae78c1fcae07d0a23cd29562ea979309347e3274a0",
+  "identity": {
+    "adapter_config_sha256": "3cbb740e7cc134c7fae18077467a23a5fa5ef4a027d67e16f3efd0787b76fc8d",
+    "candidate": "homr_455",
+    "configuration_sha256": "27658e9230dd0cbfe6e02263cc870d3a8468f271b8d27ab4fec50604dc19cf25",
+    "image_sha256": "6d38f6a9c83609575df39fcd8e1a0a63d6769cbddcb4d0fbec28bf4d95d9ee4d",
+    "item_id": "test/chopin/mazurka_51/mazurka_51_4.png",
+    "reference_sha256": "04d9ee7c8cf5364dda262c0be1051b57d6234ff5ef2d9bca5e0358b85eb419ab",
+    "sample_sha256": "2c98d5638c368b1a53bdb3440177d04fa585f9b1ca6ce6adbe65af64cd8e27d1",
+    "schema_version": 1
+  },
+  "origin": "completed_attempt",
+  "result_sha256": "b4a2c2960db7b6571434b759373418d7179f61c06c6c8fffee6362a130d0d524",
+  "timing_source": "screening_complete_path"
+}

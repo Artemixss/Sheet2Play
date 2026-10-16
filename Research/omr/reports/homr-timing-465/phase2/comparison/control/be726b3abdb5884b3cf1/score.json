@@ -1,0 +1,172 @@
+{
+  "aligned_voice_accuracy": 1.0,
+  "candidate": "shipped-426-phase2-control",
+  "capture_status": "complete",
+  "comparison_identity": "91e7256cd902a6ea2adb9fb415e6847b2ba0b9e94fb03fe8f5f1570ae6544fb9",
+  "composition_group": "mozart/sonata06_3j",
+  "configuration_identity": "31512f54e60c2e1cff049c60a7f68ceb0366eb49d4aeacf13368de17a0ec430d",
+  "conversion_error": null,
+  "coverage": {
+    "chord_completeness": 0.04,
+    "complete_chords": 3,
+    "per_staff": {
+      "0": {
+        "matched_notes": 10,
+        "predicted_notes": 130,
+        "recall": 0.0411522633744856,
+        "reference_notes": 243
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 113,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 75,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 2,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 5,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 3,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 10,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 3,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "3/2",
+        "count": 1,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "3/2",
+        "count": 2,
+        "predicted": "3/2"
+      }
+    ],
+    "unmatched_expected": 216,
+    "unmatched_predicted": 216
+  },
+  "elapsed_seconds": 12.563000000000102,
+  "extra_notes": 229,
+  "item_id": "be726b3abdb5884b3cf1",
+  "mean_offset_error": 0.3148148148148148,
+  "metrics": {
+    "aligned_voice_accuracy": 1.0,
+    "coverage": {
+      "chord_completeness": 0.04,
+      "complete_chords": 3,
+      "per_staff": {
+        "0": {
+          "matched_notes": 10,
+          "predicted_notes": 130,
+          "recall": 0.0411522633744856,
+          "reference_notes": 243
+        },
+        "1": {
+          "matched_notes": 0,
+          "predicted_notes": 113,
+          "recall": null,
+          "reference_notes": 0
+        }
+      },
+      "reference_chords": 75,
+      "staff_interpretation": "notation staff index; not validated hand labels"
+    },
+    "duration": {
+      "confusion": [
+        {
+          "actual": "1",
+          "count": 2,
+          "predicted": "1"
+        },
+        {
+          "actual": "1",
+          "count": 5,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1",
+          "count": 1,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "1/2",
+          "count": 3,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/2",
+          "count": 10,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/2",
+          "count": 3,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "3/2",
+          "count": 1,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "3/2",
+          "count": 2,
+          "predicted": "3/2"
+        }
+      ],
+      "unmatched_expected": 216,
+      "unmatched_predicted": 216
+    },
+    "extra_notes": 229,
+    "mean_offset_error": 0.3148148148148148,
+    "missing_notes": 229,
+    "onset_duration_f1": 0.05761316872427984,
+    "onset_f1": 0.1111111111111111,
+    "pitch_f1": 1.0,
+    "predicted_notes": 243,
+    "reference_notes": 243,
+    "staff_accuracy": 0.7142857142857143,
+    "timeline_predicted": "173/2",
+    "timeline_reference": "68"
+  },
+  "missing_notes": 229,
+  "onset_duration_f1": 0.05761316872427984,
+  "onset_f1": 0.1111111111111111,
+  "original_item_id": "test/mozart/sonata06_3j/sonata06_3j_1.png",
+  "pitch_f1": 1.0,
+  "predicted_notes": 243,
+  "receipt_sha256": "f1f2f430cf5156a821ddfe5dea3dd39739ea78a16d4a0e6a1a65d14b3dd1d956",
+  "reference_notes": 243,
+  "reference_sha256": "2718cf98d2cbc593a078a1097eda7dda518e8e38e4820582dba4631a31aff18d",
+  "staff_accuracy": 0.7142857142857143,
+  "status": "complete",
+  "timeline_predicted": "173/2",
+  "timeline_reference": "68"
+}

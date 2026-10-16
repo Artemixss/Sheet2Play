@@ -1,0 +1,77 @@
+{
+  "adapter_id": "epoch14_verified_onnx",
+  "aligned_voice_accuracy": 0.9111111111111111,
+  "candidate_id": "fine_tuned_homr",
+  "cold_start": true,
+  "composition_group": "beethoven/sonata07_4",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 9,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 31,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "15/2",
+        "count": 2,
+        "predicted": "15/2"
+      },
+      {
+        "actual": "2",
+        "count": 1,
+        "predicted": "2"
+      },
+      {
+        "actual": "3/2",
+        "count": 1,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "7/2",
+        "count": 1,
+        "predicted": "7/2"
+      }
+    ],
+    "unmatched_expected": 377,
+    "unmatched_predicted": 374
+  },
+  "elapsed_seconds": 25.609999999998763,
+  "error": null,
+  "extra_note_count": 375,
+  "failure_penalized_omr_ned": 0.36782246879334257,
+  "first_divergent_measure": 4,
+  "item_id": "test/beethoven/sonata07_4/sonata07_4_2.png",
+  "mean_offset_error": 0.010869565217391304,
+  "missing_note_count": 378,
+  "omr_ned": 0.36782246879334257,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.10676156583629894,
+  "onset_f1": 0.10913404507710558,
+  "peak_ram_bytes": 1560834048,
+  "peak_vram_bytes": 1641021440,
+  "pitch_f1": 0.9893238434163701,
+  "predicted_note_count": 420,
+  "reference_measure_count": 22,
+  "reference_note_count": 423,
+  "reference_quarter_length": "88",
+  "schema_version": 1,
+  "staff_accuracy": 0.7111111111111111,
+  "status": "succeeded",
+  "timeline_length_error": "558333333333333/100000000000000",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

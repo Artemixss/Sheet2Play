@@ -1,0 +1,241 @@
+{
+  "measures": null,
+  "normalized_notes": [
+    {
+      "duration": "1",
+      "onset": "0",
+      "pitch": 69,
+      "staff": 0,
+      "voice": "5"
+    },
+    {
+      "duration": "1",
+      "onset": "1",
+      "pitch": 40,
+      "staff": 1,
+      "voice": "5"
+    },
+    {
+      "duration": "1",
+      "onset": "1",
+      "pitch": 50,
+      "staff": 1,
+      "voice": "5"
+    },
+    {
+      "duration": "1/2",
+      "onset": "2",
+      "pitch": 60,
+      "staff": 0,
+      "voice": "5"
+    },
+    {
+      "duration": "1/2",
+      "onset": "2",
+      "pitch": 64,
+      "staff": 0,
+      "voice": "5"
+    },
+    {
+      "duration": "1/2",
+      "onset": "2",
+      "pitch": 68,
+      "staff": 0,
+      "voice": "5"
+    },
+    {
+      "duration": "3/4",
+      "onset": "4",
+      "pitch": 56,
+      "staff": 1,
+      "voice": "1"
+    },
+    {
+      "duration": "3/4",
+      "onset": "19/4",
+      "pitch": 42,
+      "staff": 1,
+      "voice": "1"
+    },
+    {
+      "duration": "3/16",
+      "onset": "11/2",
+      "pitch": 52,
+      "staff": 0,
+      "voice": "1"
+    },
+    {
+      "duration": "3/16",
+      "onset": "91/16",
+      "pitch": 44,
+      "staff": 1,
+      "voice": "1"
+    },
+    {
+      "duration": "1/12",
+      "onset": "47/8",
+      "pitch": 43,
+      "staff": 1,
+      "voice": "1"
+    },
+    {
+      "duration": "1/12",
+      "onset": "143/24",
+      "pitch": 47,
+      "staff": 0,
+      "voice": "1"
+    },
+    {
+      "duration": "1/12",
+      "onset": "145/24",
+      "pitch": 53,
+      "staff": 0,
+      "voice": "1"
+    },
+    {
+      "duration": "3/2",
+      "onset": "145/24",
+      "pitch": 47,
+      "staff": 1,
+      "voice": "5"
+    },
+    {
+      "duration": "1/12",
+      "onset": "49/8",
+      "pitch": 59,
+      "staff": 0,
+      "voice": "1"
+    },
+    {
+      "duration": "1/12",
+      "onset": "149/24",
+      "pitch": 62,
+      "staff": 0,
+      "voice": "1"
+    },
+    {
+      "duration": "1/12",
+      "onset": "151/24",
+      "pitch": 48,
+      "staff": 1,
+      "voice": "1"
+    },
+    {
+      "duration": "1/12",
+      "onset": "51/8",
+      "pitch": 54,
+      "staff": 1,
+      "voice": "1"
+    },
+    {
+      "duration": "1/12",
+      "onset": "155/24",
+      "pitch": 57,
+      "staff": 1,
+      "voice": "1"
+    },
+    {
+      "duration": "1/8",
+      "onset": "181/24",
+      "pitch": 49,
+      "staff": 1,
+      "voice": "1"
+    },
+    {
+      "duration": "1/4",
+      "onset": "23/3",
+      "pitch": 52,
+      "staff": 1,
+      "voice": "1"
+    },
+    {
+      "duration": "1/7",
+      "onset": "95/12",
+      "pitch": 45,
+      "staff": 1,
+      "voice": "1"
+    },
+    {
+      "duration": "1/7",
+      "onset": "677/84",
+      "pitch": 52,
+      "staff": 1,
+      "voice": "1"
+    },
+    {
+      "duration": "1/7",
+      "onset": "689/84",
+      "pitch": 53,
+      "staff": 1,
+      "voice": "1"
+    },
+    {
+      "duration": "1/7",
+      "onset": "701/84",
+      "pitch": 52,
+      "staff": 1,
+      "voice": "1"
+    },
+    {
+      "duration": "1/7",
+      "onset": "713/84",
+      "pitch": 50,
+      "staff": 1,
+      "voice": "1"
+    },
+    {
+      "duration": "2/15",
+      "onset": "725/84",
+      "pitch": 52,
+      "staff": 1,
+      "voice": "1"
+    },
+    {
+      "duration": "1/7",
+      "onset": "1227/140",
+      "pitch": 47,
+      "staff": 1,
+      "voice": "1"
+    },
+    {
+      "duration": "2/15",
+      "onset": "1247/140",
+      "pitch": 52,
+      "staff": 1,
+      "voice": "1"
+    },
+    {
+      "duration": "2/15",
+      "onset": "3797/420",
+      "pitch": 47,
+      "staff": 1,
+      "voice": "1"
+    },
+    {
+      "duration": "2/15",
+      "onset": "3853/420",
+      "pitch": 74,
+      "staff": 1,
+      "voice": "1"
+    },
+    {
+      "duration": "4/15",
+      "onset": "1303/140",
+      "pitch": 52,
+      "staff": 1,
+      "voice": "1"
+    },
+    {
+      "duration": "1/6",
+      "onset": "4021/420",
+      "pitch": 47,
+      "staff": 1,
+      "voice": "1"
+    }
+  ],
+  "notes": null,
+  "trace_failure": {
+    "error": "ValueError: Non-grace note requires positive duration",
+    "stage": "xml_trace"
+  }
+}

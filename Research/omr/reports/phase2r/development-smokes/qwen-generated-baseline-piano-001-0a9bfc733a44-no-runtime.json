@@ -1,0 +1,73 @@
+{
+  "adapter_config_sha256": "0a9bfc733a44e949699a3e510615c7a4d285c3a63752c38245f9fa965ef8731e",
+  "adapter_id": "qwen_q8_system_and_page",
+  "artifacts": [
+    {
+      "bytes": 6427,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/qwen-generated-baseline-piano-001-0a9bfc733a44-no-runtime/system-0001.raw.txt",
+      "role": "partial_system-0001.raw.txt",
+      "sha256": "dc803d5d57cc0a89eb2d3107164c08f9818d6351131d2c0f5a142a2a40d192d8"
+    }
+  ],
+  "candidate_id": "qwen3_vl_2b_instruct",
+  "composition_group": "baseline-piano-001",
+  "error": {
+    "code": "INVALID_NOTATION",
+    "message": "Expected one ABC X: header",
+    "stage": "recognition"
+  },
+  "exit_status": 1,
+  "item_id": "generated-baseline-piano-001",
+  "measurement_path": "annotated_crop",
+  "provenance": {
+    "adapter_config": {
+      "adapter_id": "qwen_q8_system_and_page",
+      "adapter_revision": "cd15bc720949a2be4739ccf9508e7dc4be7645d482837666c01b2422f575e25b",
+      "candidate_id": "qwen3_vl_2b_instruct",
+      "checkpoint": "Qwen3VL-2B-Instruct-Q8_0.gguf",
+      "checkpoint_revision": "52d6c8ffea26cc873ac5ad116f8631268d7eb503",
+      "input_granularity": "detected system",
+      "native_format": "ABC",
+      "settings": {
+        "cli_sha256": "252d8c9a02c20aa7263a38fea69182e3658779f368baaeb57610bfd90e084b9e",
+        "converter": "croma 1.2.1 strict ABC to MusicXML",
+        "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+        "detector_sha256": "b1aac6372d1cbce32dc8e00a7e6c6d809cb9d6eb1fb82ad382cfb42a8b2e6c86",
+        "max_new_tokens": 1600,
+        "model_sha256": "1e8db19207c8ce0733ddd78c2eff8a9e22c27c82f4443df94c25792ed8fe04f2",
+        "precision": "Q8_0 text and projector",
+        "projector_sha256": "f9a68fabba69c3b81e153367b2c7521030b0fa8bb0de400c9599c8e6725f9c82",
+        "prompt": "Transcribe this single system of printed sheet music into ABC notation. Preserve each staff and independent voice, exact pitches and rhythm, ties, tuplets, rests, key and meter changes. Return only a complete ABC tune.",
+        "segmentation": "Bridge/detect_systems.py with full-width, vertical-margin crops",
+        "temperature": 0
+      },
+      "source_repository": "https://huggingface.co/Qwen/Qwen3-VL-2B-Instruct-GGUF",
+      "source_revision": "52d6c8ffea26cc873ac5ad116f8631268d7eb503",
+      "supported_paths": [
+        "annotated_crop",
+        "complete_document"
+      ]
+    },
+    "adapter_config_sha256": "0a9bfc733a44e949699a3e510615c7a4d285c3a63752c38245f9fa965ef8731e",
+    "checkpoint": "Qwen3VL-2B-Instruct-Q8_0.gguf",
+    "checkpoint_revision": "52d6c8ffea26cc873ac5ad116f8631268d7eb503",
+    "input_path": "Research/omr/tests/fixtures/transcoda-baseline/baseline-piano.png",
+    "input_sha256": "2cbe267a15f2f5791943523413ce6c3d25dee32e283f43af156c7eeee5f08805",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "source_repository": "https://huggingface.co/Qwen/Qwen3-VL-2B-Instruct-GGUF",
+    "source_revision": "52d6c8ffea26cc873ac5ad116f8631268d7eb503"
+  },
+  "resources": {
+    "cold_start": true,
+    "measurement_notes": [],
+    "peak_ram_bytes": null,
+    "peak_vram_bytes": null,
+    "sample_interval_seconds": null
+  },
+  "schema_version": 1,
+  "status": "failed",
+  "timings": [],
+  "warnings": []
+}

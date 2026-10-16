@@ -1,0 +1,47 @@
+{
+  "adapter_id": "zeus_app_integration",
+  "aligned_voice_accuracy": 1.0,
+  "candidate_id": "zeus",
+  "cold_start": true,
+  "composition_group": "scarlatti/L055K330",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1/2",
+        "count": 1,
+        "predicted": "1/2"
+      }
+    ],
+    "unmatched_expected": 301,
+    "unmatched_predicted": 374
+  },
+  "elapsed_seconds": 70.57799999999952,
+  "error": null,
+  "extra_note_count": 374,
+  "failure_penalized_omr_ned": 0.8495795702273435,
+  "first_divergent_measure": 1,
+  "item_id": "test/scarlatti/L055K330/L055K330_1.png",
+  "mean_offset_error": 0.0,
+  "missing_note_count": 301,
+  "omr_ned": 0.8495795702273435,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.002954209748892171,
+  "onset_f1": 0.002954209748892171,
+  "peak_ram_bytes": 1133395968,
+  "peak_vram_bytes": 240123904,
+  "pitch_f1": 0.4490398818316101,
+  "predicted_note_count": 375,
+  "reference_measure_count": 43,
+  "reference_note_count": 302,
+  "reference_quarter_length": "129/2",
+  "schema_version": 1,
+  "staff_accuracy": 0.0,
+  "status": "succeeded",
+  "timeline_length_error": "95/8",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "collection": "generated",
+  "detected_systems": 1,
+  "item_id": "generated-triplet_vs_duple",
+  "reference_normalizer_matches_exact": true,
+  "reference_notes": 5,
+  "reference_part_staff_counts": [
+    {
+      "global_staff": 0,
+      "notes": 5,
+      "part": "P0d065387df589442a482c43353761803"
+    }
+  ],
+  "reference_systems": 1,
+  "reference_tie_issues": [],
+  "staff_coverage_policy": "normalized staff indices reset per part; coverage is historical-index diagnostic, not hand accuracy; XML counts preserve distinct parts/staves",
+  "system_local_policy": "ordinal system pairing; reference origins reset separately at each part's boundary; primary global scoring unchanged",
+  "variants": {
+    "upstream": {
+      "conversion_diagnostic_count": 0,
+      "global": {
+        "aligned_voice_accuracy": 0.0,
+        "coverage": {
+          "chord_completeness": 0.0,
+          "complete_chords": 0,
+          "per_staff": {
+            "0": {
+              "matched_notes": 0,
+              "predicted_notes": 10,
+              "recall": 0.0,
+              "reference_notes": 5
+            },
+            "1": {
+              "matched_notes": 0,
+              "predicted_notes": 15,
+              "recall": null,
+              "reference_notes": 0
+            }
+          },
+          "reference_chords": 1,
+          "staff_interpretation": "notation staff index; not validated hand labels"
+        },
+        "duration": {
+          "confusion": [
+            {
+              "actual": "1",
+              "count": 1,
+              "predicted": "2/7"
+            }
+          ],
+          "unmatched_expected": 4,
+          "unmatched_predicted": 24
+        },
+        "extra_notes": 25,
+        "mean_offset_error": 0.7142857142857143,
+        "missing_notes": 5,
+        "onset_duration_f1": 0.0,
+        "onset_f1": 0.06666666666666667,
+        "pitch_f1": 0.19999999999999998,
+        "predicted_notes": 25,
+        "reference_notes": 5,
+        "staff_accuracy": 0.0,
+        "timeline_predicted": "251/24",
+        "timeline_reference": "2"
+      },
+      "measure_local": null,
+      "normalizer_vs_exact_segments": null,
+      "part_staff_counts": null,
+      "raw_global": null,
+      "seconds": 0.21900000000096043,
+      "status": "succeeded",
+      "stitch_raw_note_count_preserved": null,
+      "system_boundary_starts": null,
+      "systems": [
+        {
+          "conversion": {
+            "diagnostics": "",
+            "musicxml_sha256": "e8978abc613935bb05f018dfe1ded21e7b175fd7bd8c735eeaea30cb1272ac0c",
+            "policy": "Native output unchanged; diagnostics do not change acceptance",
+            "status": "succeeded"
+          },
+          "index": 1,
+          "normalized_notes": 25,
+          "termination": "EOS",
+          "token_count": 218,
+          "trace_failure": {
+            "error": "ValueError: Non-grace note requires positive duration",
+            "stage": "xml_trace"
+          },
+          "unknown_token_count": 0
+        }
+      ],
+      "tie_issues": null,
+      "trace_failure": {
+        "error": "ValueError: Non-grace note requires positive duration",
+        "stage": "xml_trace"
+      },
+      "trace_policy": "Diagnostic validation never substitutes for unchanged stitched-page normalization failure policy"
+    },
+    "wrapper": {
+      "conversion_diagnostic_count": 0,
+      "global": {
+        "aligned_voice_accuracy": 0.0,
+        "coverage": {
+          "chord_completeness": 0.0,
+          "complete_chords": 0,
+          "per_staff": {
+            "0": {
+              "matched_notes": 0,
+              "predicted_notes": 13,
+              "recall": 0.0,
+              "reference_notes": 5
+            },
+            "1": {
+              "matched_notes": 0,
+              "predicted_notes": 13,
+              "recall": null,
+              "reference_notes": 0
+            }
+          },
+          "reference_chords": 1,
+          "staff_interpretation": "notation staff index; not validated hand labels"
+        },
+        "duration": {
+          "confusion": [],
+          "unmatched_expected": 5,
+          "unmatched_predicted": 26
+        },
+        "extra_notes": 26,
+        "mean_offset_error": null,
+        "missing_notes": 5,
+        "onset_duration_f1": 0.0,
+        "onset_f1": 0.0,
+        "pitch_f1": 0.1935483870967742,
+        "predicted_notes": 26,
+        "reference_notes": 5,
+        "staff_accuracy": 0.0,
+        "timeline_predicted": "1183/120",
+        "timeline_reference": "2"
+      },
+      "measure_local": null,
+      "normalizer_vs_exact_segments": null,
+      "part_staff_counts": null,
+      "raw_global": null,
+      "seconds": 1.2659999999996217,
+      "status": "succeeded",
+      "stitch_raw_note_count_preserved": null,
+      "system_boundary_starts": null,
+      "systems": [
+        {
+          "conversion": {
+            "diagnostics": "",
+            "musicxml_sha256": "62d394b271f468cfefa650d25c253d41d4dd4fadd28f29756470be12bbdda2eb",
+            "policy": "Native output unchanged; diagnostics do not change acceptance",
+            "status": "succeeded"
+          },
+          "index": 1,
+          "normalized_notes": 26,
+          "termination": "EOS",
+          "token_count": 202,
+          "trace_failure": {
+            "error": "ValueError: Non-grace note requires positive duration",
+            "stage": "xml_trace"
+          },
+          "unknown_token_count": 0
+        }
+      ],
+      "tie_issues": null,
+      "trace_failure": {
+        "error": "ValueError: Non-grace note requires positive duration",
+        "stage": "xml_trace"
+      },
+      "trace_policy": "Diagnostic validation never substitutes for unchanged stitched-page normalization failure policy"
+    },
+    "wrapper_valid_mask": {
+      "conversion_diagnostic_count": 0,
+      "global": {
+        "aligned_voice_accuracy": 0.0,
+        "coverage": {
+          "chord_completeness": 0.0,
+          "complete_chords": 0,
+          "per_staff": {
+            "0": {
+              "matched_notes": 0,
+              "predicted_notes": 13,
+              "recall": 0.0,
+              "reference_notes": 5
+            },
+            "1": {
+              "matched_notes": 0,
+              "predicted_notes": 17,
+              "recall": null,
+              "reference_notes": 0
+            }
+          },
+          "reference_chords": 1,
+          "staff_interpretation": "notation staff index; not validated hand labels"
+        },
+        "duration": {
+          "confusion": [],
+          "unmatched_expected": 5,
+          "unmatched_predicted": 30
+        },
+        "extra_notes": 30,
+        "mean_offset_error": null,
+        "missing_notes": 5,
+        "onset_duration_f1": 0.0,
+        "onset_f1": 0.0,
+        "pitch_f1": 0.2857142857142857,
+        "predicted_notes": 30,
+        "reference_notes": 5,
+        "staff_accuracy": 0.0,
+        "timeline_predicted": "37/3",
+        "timeline_reference": "2"
+      },
+      "measure_local": null,
+      "normalizer_vs_exact_segments": null,
+      "part_staff_counts": null,
+      "raw_global": null,
+      "seconds": 1.1720000000004802,
+      "status": "succeeded",
+      "stitch_raw_note_count_preserved": null,
+      "system_boundary_starts": null,
+      "systems": [
+        {
+          "conversion": {
+            "diagnostics": "",
+            "musicxml_sha256": "fefd6accc1c1d0058e420ab0b94496af6a9bdd223267f380e0029e2e94d01111",
+            "policy": "Native output unchanged; diagnostics do not change acceptance",
+            "status": "succeeded"
+          },
+          "index": 1,
+          "normalized_notes": 30,
+          "termination": "EOS",
+          "token_count": 258,
+          "trace_failure": {
+            "error": "ValueError: Non-grace note requires positive duration",
+            "stage": "xml_trace"
+          },
+          "unknown_token_count": 0
+        }
+      ],
+      "tie_issues": null,
+      "trace_failure": {
+        "error": "ValueError: Non-grace note requires positive duration",
+        "stage": "xml_trace"
+      },
+      "trace_policy": "Diagnostic validation never substitutes for unchanged stitched-page normalization failure policy"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "command": [
+    "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.venv\\Scripts\\python.exe",
+    "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\screening_cpu_score.py",
+    "--manifest",
+    "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\screening\\v1\\manifest-v5-607ff64134da.json",
+    "--candidate",
+    "audiveris_page",
+    "--worker-index",
+    "5",
+    "--attempt",
+    "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\screening\\v1\\2c98d5638c36\\score-attempts\\audiveris_page\\3f340c6bab3e\\b5f4b3348445\\34d1df3f42629b2b6de6\\attempt-a0626f2a971b4806ac43ce4d573e113a"
+  ],
+  "creation_time": 1790679186.9557576,
+  "executable": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.venv\\Scripts\\python.exe",
+  "pid": 30092
+}

@@ -1,0 +1,1800 @@
+[
+  {
+    "artifacts": [
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\input.png",
+        "sha256": "9dd714781e3fe710c07f7b3b95e75a049c400b5f66c951013704798719f9dbf8"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\input_staff-0_input.jpg",
+        "sha256": "00cb27b7971fba92124f4eb5b91e3453255784776c5f525b077c96ef3eb57a15"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\tokens.json",
+        "sha256": "ec100f98ef05b557b921cb10d464abb81c2fc7f6b0b1f21db38880d6a393e61e"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\input.musicxml",
+        "sha256": "032a71364a04fe108b440d0d676328248ade5d00c4e4e5de102c2b7e24ee9a07"
+      }
+    ],
+    "earliest_demonstrated_stage": "MusicXML onset placement",
+    "finding": "Source and crop retain the independent stems. Decoder/exporter inputs retain the expected pitches and durations, but lack explicit independent voice IDs. XML places A5 at 2 instead of 3/2, B5 and E4 at 5/2 instead of 2, and F4 at 7/2 instead of 3. This establishes a representation/export boundary defect, not exporter-only causal attribution.",
+    "first_difference": {
+      "extra": [
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "5/2",
+          "pitch": 64
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "7/2",
+          "pitch": 65
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "2",
+          "pitch": 81
+        },
+        {
+          "count": 1,
+          "duration": "2",
+          "onset": "5/2",
+          "pitch": 83
+        }
+      ],
+      "missing": [
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "2",
+          "pitch": 64
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "3",
+          "pitch": 65
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "3/2",
+          "pitch": 81
+        },
+        {
+          "count": 1,
+          "duration": "2",
+          "onset": "2",
+          "pitch": 83
+        }
+      ],
+      "reference_measure_ordinal": 1,
+      "start": "0"
+    },
+    "item_id": "generated-offset_entry",
+    "method": "Visual source/crop review plus captured token and literal XML/event comparison; no reference-driven token correction or alignment",
+    "reference": {
+      "bytes": 2898,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\offset_entry.musicxml",
+      "sha256": "7e9a04bca94dfb1265ffd52470876acb8fe58ff5f343b8d978e0d3934c2b3217"
+    }
+  },
+  {
+    "artifacts": [
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-quintuplet_vs_duple\\input.png",
+        "sha256": "b57f0e85b624a4be1e9a6484bbd2c6088612831ba77875c640e0b1111eaff79d"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-quintuplet_vs_duple\\input_staff-0_input.jpg",
+        "sha256": "637a96716ed3d64417eea924a7baa73071c9c6aab4efcf1c5af40c9df2dc31e2"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-quintuplet_vs_duple\\tokens.json",
+        "sha256": "3d8acbe1abb5e9d1db92da58b7cd14a17d0d860f774bce8c0ae01710955c302a"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-quintuplet_vs_duple\\input.musicxml",
+        "sha256": "073bfde8103ad7772819e6803c0178f81a7fe6f505fada227e9737d5b3d4be3e"
+      }
+    ],
+    "earliest_demonstrated_stage": "Decoder output",
+    "finding": "The crop retains five upper notes and the visible tuplet numeral 5. The pre-cleanup decoder emits plain quarters, omits upper G5 and loses lower F4; malformed trailing symbols are retained in tokens.json. XML/timed events propagate the wrong rhythm.",
+    "first_difference": {
+      "extra": [
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "0",
+          "pitch": 72
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "1",
+          "pitch": 74
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "2",
+          "pitch": 76
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "3",
+          "pitch": 77
+        }
+      ],
+      "missing": [
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "3",
+          "pitch": 65
+        },
+        {
+          "count": 1,
+          "duration": "4/5",
+          "onset": "0",
+          "pitch": 72
+        },
+        {
+          "count": 1,
+          "duration": "4/5",
+          "onset": "4/5",
+          "pitch": 74
+        },
+        {
+          "count": 1,
+          "duration": "4/5",
+          "onset": "8/5",
+          "pitch": 76
+        },
+        {
+          "count": 1,
+          "duration": "4/5",
+          "onset": "12/5",
+          "pitch": 77
+        },
+        {
+          "count": 1,
+          "duration": "4/5",
+          "onset": "16/5",
+          "pitch": 79
+        }
+      ],
+      "reference_measure_ordinal": 1,
+      "start": "0"
+    },
+    "item_id": "generated-quintuplet_vs_duple",
+    "method": "Visual source/crop review plus captured token and literal XML/event comparison; no reference-driven token correction or alignment",
+    "reference": {
+      "bytes": 4735,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\quintuplet_vs_duple.musicxml",
+      "sha256": "bf0d92a4c3639690ac43e87f54f93bf0ef12e8b9760d0d6ba21596bdfa580931"
+    }
+  },
+  {
+    "artifacts": [
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-same_position_sustain\\input.png",
+        "sha256": "74c1ba126d212f5c7ef3e7f3ef763dda2e35871f23add62d58f6daa3604cf624"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-same_position_sustain\\input_staff-0_input.jpg",
+        "sha256": "6b71a52c16c6051705328865e54d9e885326f080170fa8abe8b5c0c64c4141cb"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-same_position_sustain\\tokens.json",
+        "sha256": "eb9613266367782edc14910a381ca4ec7a0ed54b24d0d6e4aac57a97ee07aff1"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-same_position_sustain\\input.musicxml",
+        "sha256": "c2e141faf4d6c29d47adf443baf559e0e554ac6092ed23d3dd0a32aa928f1431"
+      }
+    ],
+    "earliest_demonstrated_stage": "Staff crop",
+    "finding": "The source has two simultaneous low Ab2 notes of durations 2 and 1/2 quarter beats. Native staff crop cuts off their low ledger-line noteheads at its bottom edge. Decoder begins C3 and lacks the sustained unison; XML cannot recover omitted content. Crop loss is demonstrated before decoding; its initiating detector/geometry cause is unverified.",
+    "first_difference": {
+      "extra": [
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "0",
+          "pitch": 48
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "1",
+          "pitch": 56
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "2",
+          "pitch": 60
+        },
+        {
+          "count": 1,
+          "duration": "2",
+          "onset": "3",
+          "pitch": 63
+        }
+      ],
+      "missing": [
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "0",
+          "pitch": 44
+        },
+        {
+          "count": 1,
+          "duration": "2",
+          "onset": "0",
+          "pitch": 44
+        },
+        {
+          "count": 1,
+          "duration": "2",
+          "onset": "2",
+          "pitch": 46
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "1/2",
+          "pitch": 56
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "1",
+          "pitch": 60
+        },
+        {
+          "count": 1,
+          "duration": "2",
+          "onset": "2",
+          "pitch": 63
+        }
+      ],
+      "reference_measure_ordinal": 1,
+      "start": "0"
+    },
+    "item_id": "generated-same_position_sustain",
+    "method": "Visual source/crop review plus captured token and literal XML/event comparison; no reference-driven token correction or alignment",
+    "reference": {
+      "bytes": 3075,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\same_position_sustain.musicxml",
+      "sha256": "98708dc156bafa3093697b433310e77332595560512edbf2522c989e572e3e26"
+    }
+  },
+  {
+    "artifacts": [
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-septuplet_vs_duple\\input.png",
+        "sha256": "f8f9caca9f95b1a94cef6452cb2850d91e509a7465794e4e6c927bdfcf4c5791"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-septuplet_vs_duple\\input_staff-0_input.jpg",
+        "sha256": "f69d97c80bcad72e0d34378382065ad045c97afa95a8950425705bd5f253b462"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-septuplet_vs_duple\\tokens.json",
+        "sha256": "9d79af3d5aef932a76d5c6983f4ccbdef8047eed861fe751f1ae795bcdf52557"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-septuplet_vs_duple\\input.musicxml",
+        "sha256": "300a495168011ee24d2fd3491054931ccfbf30728f2714dd23b34875ff381130"
+      }
+    ],
+    "earliest_demonstrated_stage": "Decoder output",
+    "finding": "The crop retains seven upper notes and numeral 7. Pre-cleanup tokens use ordinary quarters and timeSignature/2; source requires seven 4/7-quarter durations in 4/4. Wrong rhythm is already demonstrated before exporter cleanup.",
+    "first_difference": {
+      "extra": [
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "2",
+          "pitch": 62
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "4",
+          "pitch": 64
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "6",
+          "pitch": 65
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "0",
+          "pitch": 72
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "1",
+          "pitch": 74
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "2",
+          "pitch": 76
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "3",
+          "pitch": 77
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "5",
+          "pitch": 79
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "6",
+          "pitch": 81
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "7",
+          "pitch": 83
+        }
+      ],
+      "missing": [
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "1",
+          "pitch": 62
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "2",
+          "pitch": 64
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "3",
+          "pitch": 65
+        },
+        {
+          "count": 1,
+          "duration": "4/7",
+          "onset": "0",
+          "pitch": 72
+        },
+        {
+          "count": 1,
+          "duration": "4/7",
+          "onset": "4/7",
+          "pitch": 74
+        },
+        {
+          "count": 1,
+          "duration": "4/7",
+          "onset": "8/7",
+          "pitch": 76
+        },
+        {
+          "count": 1,
+          "duration": "4/7",
+          "onset": "12/7",
+          "pitch": 77
+        },
+        {
+          "count": 1,
+          "duration": "4/7",
+          "onset": "16/7",
+          "pitch": 79
+        },
+        {
+          "count": 1,
+          "duration": "4/7",
+          "onset": "20/7",
+          "pitch": 81
+        },
+        {
+          "count": 1,
+          "duration": "4/7",
+          "onset": "24/7",
+          "pitch": 83
+        }
+      ],
+      "reference_measure_ordinal": 1,
+      "start": "0"
+    },
+    "item_id": "generated-septuplet_vs_duple",
+    "method": "Visual source/crop review plus captured token and literal XML/event comparison; no reference-driven token correction or alignment",
+    "reference": {
+      "bytes": 5507,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\septuplet_vs_duple.musicxml",
+      "sha256": "12243b6a57e88281408481c8cdc419a852174920dbde8b3f3cc2e9af2fa79bcb"
+    }
+  },
+  {
+    "artifacts": [
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-syncopation\\input.png",
+        "sha256": "b81f65fe8faa3a2d2517aaf22b362ba613441388e79335f18ffb5839d4e5a4e7"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-syncopation\\input_staff-0_input.jpg",
+        "sha256": "a739df54396623c82f730fe5602780bcff23223c652f350521bd04cbcd51ca74"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-syncopation\\tokens.json",
+        "sha256": "1ec8ec5b1035dc8c5f4199d0292da32d55a8e2260cf14edd3a0afb29afd932ae"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-syncopation\\input.musicxml",
+        "sha256": "de72df9455af57b0a72133ccb2b781b607397b10fe63891ba763af8aa45d0210"
+      }
+    ],
+    "earliest_demonstrated_stage": "Decoder output",
+    "finding": "The crop retains the source noteheads/stems. Pre-cleanup tokens use timeSignature/2 instead of the visible 4/4 and lack chord separators/independent voice information. Individual note pitches and durations are retained, but XML serializes them and shifts onsets. The source deliberately hides the initial voice-1 eighth rest (print-object=no), so omission is not proof of rest recognition failure; spatial voice reconstruction remains ambiguous. Crop margins also clip parts of stems/tempo marks.",
+    "first_difference": {
+      "extra": [
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "2",
+          "pitch": 62
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "4",
+          "pitch": 64
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "6",
+          "pitch": 65
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "1",
+          "pitch": 79
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "3",
+          "pitch": 81
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "5",
+          "pitch": 83
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "7",
+          "pitch": 84
+        }
+      ],
+      "missing": [
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "1",
+          "pitch": 62
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "2",
+          "pitch": 64
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "3",
+          "pitch": 65
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "1/2",
+          "pitch": 79
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "3/2",
+          "pitch": 81
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "5/2",
+          "pitch": 83
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "7/2",
+          "pitch": 84
+        }
+      ],
+      "reference_measure_ordinal": 1,
+      "start": "0"
+    },
+    "item_id": "generated-syncopation",
+    "method": "Visual source/crop review plus captured token and literal XML/event comparison; no reference-driven token correction or alignment",
+    "reference": {
+      "bytes": 3257,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\syncopation.musicxml",
+      "sha256": "c603832b1189a6a8539e4ab180220b8f5e54601f5881615061fc798ffd3bd1b3"
+    }
+  },
+  {
+    "artifacts": [
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_duple\\input.png",
+        "sha256": "aad2dfdb6e0719b2e1a85cbf9d198473ab1c608aa9f720e2ed91bfbb7f785970"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_duple\\input_staff-0_input.jpg",
+        "sha256": "70b7414f521038d8d5173348a33da2f33998246b78fd26854ba46848f97e0b1d"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_duple\\tokens.json",
+        "sha256": "85b9c57ce1c982fe41978608ada45c04c5f939365a95ffe27cfebb14286fb803"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_duple\\input.musicxml",
+        "sha256": "ddc80e699004faa77b638cdf40eea37898aeb96b48bd37c7d28ecdb2bd9890ec"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_duple\\result.json",
+        "sha256": "3455585af26deaa661f0932abdd2ea5fcf23b0fb6afeecf8280e2732e32db001"
+      }
+    ],
+    "diagnostic_only": false,
+    "earliest_demonstrated_stage": "Decoder output",
+    "finding": "The source and native crop retain the triplet bracket and all five note pitches. Source meter is 2/4; pre-cleanup tokens use timeSignature/4. Upper C5/E5 become ordinary quarters instead of 2/3-quarter durations, while D5 retains note_6. Lower D4 also becomes note_6 instead of a quarter. XML propagates these durations and shifts lower D4 to 5/3 instead of 1. Rhythm errors are demonstrated before cleanup/export; clipped tempo text does not explain the note-duration evidence.",
+    "first_difference": {
+      "extra": [
+        {
+          "count": 1,
+          "duration": "2/3",
+          "onset": "5/3",
+          "pitch": 62
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "0",
+          "pitch": 72
+        },
+        {
+          "count": 1,
+          "duration": "2/3",
+          "onset": "1",
+          "pitch": 74
+        },
+        {
+          "count": 1,
+          "duration": "1/3",
+          "onset": "7/3",
+          "pitch": 76
+        }
+      ],
+      "missing": [
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "1",
+          "pitch": 62
+        },
+        {
+          "count": 1,
+          "duration": "2/3",
+          "onset": "0",
+          "pitch": 72
+        },
+        {
+          "count": 1,
+          "duration": "2/3",
+          "onset": "2/3",
+          "pitch": 74
+        },
+        {
+          "count": 1,
+          "duration": "2/3",
+          "onset": "4/3",
+          "pitch": 76
+        }
+      ],
+      "reference_measure_ordinal": 1,
+      "start": "0"
+    },
+    "item_id": "generated-triplet_vs_duple",
+    "method": "Visual source/native crop review, pre-cleanup and cleaned tokens, literal XML and timed events; no reference-driven correction",
+    "reference": {
+      "bytes": 3557,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\triplet_vs_duple.musicxml",
+      "sha256": "a7c9656f91daec641a0eb12bf5d24e411b8aac0bc34d0f06e7d2d57e44f8a4cc"
+    }
+  },
+  {
+    "artifacts": [
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\input.png",
+        "sha256": "9cb1565f8a69326d456910653549d46a784fa30d4060770e8539958d4830ed04"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\input_staff-0_input.jpg",
+        "sha256": "5fb8d81a1945832b210c6e3cb899a6f76cfe82700354ce8d982906c66fbaa073"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\tokens.json",
+        "sha256": "4a77402b7f1e6a3f1d736933f0b31404caf910b9a5764eba2244109f5b3afc59"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\input.musicxml",
+        "sha256": "7a4698d438b91930eb01af9a00fd53fef76f40ecc892d45338c421e410dad88e"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\result.json",
+        "sha256": "7751b3f8519f2f8c3caed83f1f95cf07448cbc920505861cf00f09405abf7bc9"
+      }
+    ],
+    "diagnostic_only": false,
+    "earliest_demonstrated_stage": "Decoder output",
+    "finding": "Source/crop retain three upper quarter-note triplets, the triplet bracket, and four lower eighth notes in 2/4. Pre-cleanup tokens use timeSignature/4; upper C5/E5 use ordinary quarters instead of 2/3-quarter durations, while D5 retains note_6. XML/timed events propagate the wrong durations and onsets. The first incorrect measure is 1; no reference-derived token correction was performed.",
+    "first_difference": {
+      "extra": [
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "5/3",
+          "pitch": 64
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "13/6",
+          "pitch": 65
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "0",
+          "pitch": 72
+        },
+        {
+          "count": 1,
+          "duration": "2/3",
+          "onset": "1",
+          "pitch": 74
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "13/6",
+          "pitch": 76
+        }
+      ],
+      "missing": [
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "1",
+          "pitch": 64
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "3/2",
+          "pitch": 65
+        },
+        {
+          "count": 1,
+          "duration": "2/3",
+          "onset": "0",
+          "pitch": 72
+        },
+        {
+          "count": 1,
+          "duration": "2/3",
+          "onset": "2/3",
+          "pitch": 74
+        },
+        {
+          "count": 1,
+          "duration": "2/3",
+          "onset": "4/3",
+          "pitch": 76
+        }
+      ],
+      "reference_measure_ordinal": 1,
+      "start": "0"
+    },
+    "item_id": "generated-triplet_vs_quadruple",
+    "method": "Visual source/native crop review, pre-cleanup and cleaned tokens, literal XML and timed events; no reference-driven correction",
+    "reference": {
+      "bytes": 4103,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\triplet_vs_quadruple.musicxml",
+      "sha256": "5fc483dc3a1a056d98742e8797235e5598e6c0ca9c75ab399acbafbd873b0bdc"
+    }
+  },
+  {
+    "artifacts": [
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6211535\\input.png",
+        "sha256": "b368dd864dc235272728822a578551fbed619cce02265cc52043dea3051c57c8"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6211535\\input_staff-2_input.jpg",
+        "sha256": "9237e810f4890c1671bf837ce6417c39c61e452493e1101918f712c58bac4e85"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6211535\\tokens.json",
+        "sha256": "b231472e12bcb06064b5bc095336bdd2ee436c524fb255147b193953c04b068e"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6211535\\input.musicxml",
+        "sha256": "7ed2f9c526ced0521e4fb030a200bf661aecb0bbe576d11dfbaff616384a7921"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6211535\\result.json",
+        "sha256": "991a1842fa2caedc7ae009732f1ce3974d402241c2d0fe538138c4e1de3a56d9"
+      }
+    ],
+    "diagnostic_only": true,
+    "earliest_demonstrated_stage": "Decoder output",
+    "finding": "First differing measure 14 lies in the native system beginning at measure 11. The full page and crop retain three lower half-note chords and printed triplet numeral 3. Pre-cleanup tokens serialize these as ordinary note_2 durations (2 quarter beats), rather than the reference's 4/3-quarter durations. MusicXML/timed notes propagate the tuplet loss. This is a first-page diagnostic, not a numerical accuracy claim.",
+    "first_difference": {
+      "extra": [
+        {
+          "count": 1,
+          "duration": "2",
+          "onset": "54",
+          "pitch": 64
+        },
+        {
+          "count": 1,
+          "duration": "2",
+          "onset": "52",
+          "pitch": 67
+        },
+        {
+          "count": 1,
+          "duration": "2",
+          "onset": "54",
+          "pitch": 69
+        },
+        {
+          "count": 1,
+          "duration": "2",
+          "onset": "52",
+          "pitch": 72
+        }
+      ],
+      "missing": [
+        {
+          "count": 1,
+          "duration": "4/3",
+          "onset": "164/3",
+          "pitch": 62
+        },
+        {
+          "count": 1,
+          "duration": "4/3",
+          "onset": "160/3",
+          "pitch": 64
+        },
+        {
+          "count": 1,
+          "duration": "4/3",
+          "onset": "52",
+          "pitch": 67
+        },
+        {
+          "count": 1,
+          "duration": "4/3",
+          "onset": "164/3",
+          "pitch": 67
+        },
+        {
+          "count": 1,
+          "duration": "4/3",
+          "onset": "160/3",
+          "pitch": 69
+        },
+        {
+          "count": 1,
+          "duration": "4/3",
+          "onset": "52",
+          "pitch": 72
+        }
+      ],
+      "reference_measure_ordinal": 14,
+      "start": "52"
+    },
+    "item_id": "openscore-6211535",
+    "method": "Visual source/native crop review, pre-cleanup and cleaned tokens, literal XML and timed events; no reference-driven correction",
+    "reference": {
+      "bytes": 477817,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6211535.musicxml",
+      "sha256": "7752257515ec8ec575f1cd5c05e7aba9b52b743032494f162b93e57959792951"
+    }
+  },
+  {
+    "artifacts": [
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6211549\\input.png",
+        "sha256": "2fb2928d51c8bb08303dc3ebabec82e665a41ed89406037650d7a8c2f0ae1bef"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6211549\\input_staff-0_input.jpg",
+        "sha256": "77dfb5e5d227abaa8285e455d58f371b1887c9b410f143dc3ae1d253728b62cf"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6211549\\tokens.json",
+        "sha256": "a75b70ac743943b71542d6eb3689da0d021cee512b990224a4166b7c96f3e53e"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6211549\\input.musicxml",
+        "sha256": "cfd9558c3c139f65dc99cef12510dd4288f3421502e81f5bc475500c67b146fd"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6211549\\result.json",
+        "sha256": "9be7dedc22c95b842d162302a429daf6db266fd13fe11366f5a097e6f8c98428"
+      }
+    ],
+    "diagnostic_only": true,
+    "earliest_demonstrated_stage": "MusicXML onset placement; representation/export boundary",
+    "finding": "First differing measure 1 has independent voices retained in the source and crop. Raw tokens retain bass A octaves as dotted quarters, B octaves as eighths, D octaves as dotted quarters, and C-sharp octaves as eighths. Reference onsets are 0, 3/2, 2 and 7/2; exported B/D onsets become 2 and 5/2. Token streams lack explicit independent voice IDs, so onset placement is demonstrated at XML but exporter-only causal attribution is unsupported.",
+    "first_difference": {
+      "extra": [
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "2",
+          "pitch": 35
+        },
+        {
+          "count": 1,
+          "duration": "3/2",
+          "onset": "5/2",
+          "pitch": 38
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "2",
+          "pitch": 47
+        },
+        {
+          "count": 1,
+          "duration": "3/2",
+          "onset": "5/2",
+          "pitch": 50
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "3",
+          "pitch": 52
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "2",
+          "pitch": 59
+        },
+        {
+          "count": 1,
+          "duration": "3/2",
+          "onset": "5/2",
+          "pitch": 62
+        },
+        {
+          "count": 1,
+          "duration": "3/2",
+          "onset": "7/2",
+          "pitch": 64
+        }
+      ],
+      "missing": [
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "3/2",
+          "pitch": 35
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "7/2",
+          "pitch": 37
+        },
+        {
+          "count": 1,
+          "duration": "3/2",
+          "onset": "2",
+          "pitch": 38
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "3/2",
+          "pitch": 47
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "7/2",
+          "pitch": 49
+        },
+        {
+          "count": 1,
+          "duration": "3/2",
+          "onset": "2",
+          "pitch": 50
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "5/2",
+          "pitch": 52
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "3/2",
+          "pitch": 59
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "7/2",
+          "pitch": 61
+        },
+        {
+          "count": 1,
+          "duration": "3/2",
+          "onset": "2",
+          "pitch": 62
+        },
+        {
+          "count": 1,
+          "duration": "3/2",
+          "onset": "3",
+          "pitch": 64
+        }
+      ],
+      "reference_measure_ordinal": 1,
+      "start": "0"
+    },
+    "item_id": "openscore-6211549",
+    "method": "Visual source/native crop review, pre-cleanup and cleaned tokens, literal XML and timed events; no reference-driven correction",
+    "reference": {
+      "bytes": 779318,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6211549.musicxml",
+      "sha256": "9d746b490220f25cfc0bba1b6a18cde0e445b09607a65b3655484b9a705ac897"
+    }
+  },
+  {
+    "artifacts": [
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6211555\\input.png",
+        "sha256": "8787a0a691a6118d66fe41c3f0cf160d5f641ffde05ffe1824218d7fb27cc9fb"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6211555\\input_staff-1_input.jpg",
+        "sha256": "b87cb98a439efbc901d025cf7f5abb0b715dafd8f6f3239b9b183fa7cffd3559"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6211555\\tokens.json",
+        "sha256": "fa5a4d4a4116e098fe91d83bab7de14591feff9a21da9456dd583b8c512ac976"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6211555\\input.musicxml",
+        "sha256": "4f7fee8a6a83e311d47dbe4a2cbba05b73bfade1b8e30cfccdc6b644cfb00ee4"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6211555\\result.json",
+        "sha256": "8f1147af827a3fd870662efa90be690c49387c05fe2f4f511fe0d2cfbbf9aeb4"
+      }
+    ],
+    "diagnostic_only": true,
+    "earliest_demonstrated_stage": "Staff crop",
+    "finding": "First differing measure 1: the first piano upper-staff crop contains only its left clef/meter, initial eighth rest and arpeggio; the right-hand music is cut off and the remainder is white. The full frozen page contains those notes. Decoder output for this crop is clef_G2/keySignature0/timeSignature4/rest_8/barline and cannot retain the missing notes. Horizontal crop loss is demonstrated before decoding; its initiating detection/geometry cause remains unverified.",
+    "first_difference": {
+      "extra": [],
+      "missing": [
+        {
+          "count": 1,
+          "duration": "6",
+          "onset": "0",
+          "pitch": 48
+        },
+        {
+          "count": 1,
+          "duration": "11/2",
+          "onset": "1/2",
+          "pitch": 56
+        },
+        {
+          "count": 1,
+          "duration": "11/2",
+          "onset": "1/2",
+          "pitch": 60
+        },
+        {
+          "count": 1,
+          "duration": "11/2",
+          "onset": "1/2",
+          "pitch": 64
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "5/2",
+          "pitch": 76
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "2",
+          "pitch": 78
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "3/2",
+          "pitch": 80
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "5/2",
+          "pitch": 80
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "1",
+          "pitch": 82
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "2",
+          "pitch": 82
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "1/2",
+          "pitch": 84
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "3/2",
+          "pitch": 84
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "1",
+          "pitch": 86
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "1/2",
+          "pitch": 88
+        }
+      ],
+      "reference_measure_ordinal": 1,
+      "start": "0"
+    },
+    "item_id": "openscore-6211555",
+    "method": "Visual source/native crop review, pre-cleanup and cleaned tokens, literal XML and timed events; no reference-driven correction",
+    "reference": {
+      "bytes": 226209,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6211555.musicxml",
+      "sha256": "634f9047f31bd272f056963d7643d208dbd19599351ba81d92a22da3d0f01eca"
+    }
+  },
+  {
+    "artifacts": [
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6211559\\input.png",
+        "sha256": "4123491db1d7c742793af359fa29e17c909eea98f728ab7d209759f5697112ab"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6211559\\input_staff-3_input.jpg",
+        "sha256": "255e5c3624251caefcaf9b2f1cc7556b516bb0f7b7d70ed4495824b96a220423"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6211559\\tokens.json",
+        "sha256": "6565d68abaf05fbf8fe9c7288feb8f105f6b7dda36f2ac04dcb61b579b033acc"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6211559\\input.musicxml",
+        "sha256": "f6ac6b2f8b3661cf834b3cd409b5c50455d2c8c56abaaf9193434517973571a2"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6211559\\result.json",
+        "sha256": "9686e02d145264ae2bf322aae0553c4c32215acb7f9a46a8bf6e21b57a6e5534"
+      }
+    ],
+    "diagnostic_only": true,
+    "earliest_demonstrated_stage": "MusicXML voice/tie conversion",
+    "finding": "First differing measure 2: source and crop retain F-sharp5/F-sharp4 dotted halves tied into measure 3, and raw tokens retain the pitches/durations and slur-start/stop markers. The model intentionally shares slur/tie vocabulary. Exported measure 2 assigns voices 2/6, while the continuing measure-3 notes use voices 1/5; measure-2 XML contains slurs but no tie starts. The installed convert_ties pairs adjacent events by staff/voice, so this voice discontinuity prevents the cross-measure tie. The expected 9/2-quarter sustain becomes 3. This establishes an XML representation/tie boundary defect; it does not establish an exporter-only initiating cause.",
+    "first_difference": {
+      "extra": [
+        {
+          "count": 1,
+          "duration": "3",
+          "onset": "3",
+          "pitch": 66
+        },
+        {
+          "count": 1,
+          "duration": "3",
+          "onset": "3",
+          "pitch": 78
+        }
+      ],
+      "missing": [
+        {
+          "count": 1,
+          "duration": "9/2",
+          "onset": "3",
+          "pitch": 66
+        },
+        {
+          "count": 1,
+          "duration": "9/2",
+          "onset": "3",
+          "pitch": 78
+        }
+      ],
+      "reference_measure_ordinal": 2,
+      "start": "3"
+    },
+    "item_id": "openscore-6211559",
+    "method": "Visual source/native crop review, pre-cleanup and cleaned tokens, literal XML and timed events; no reference-driven correction",
+    "reference": {
+      "bytes": 732088,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6211559.musicxml",
+      "sha256": "a91acbb23c644c87896dde4cab65f0fe6e05653af543d0f2ac099112453983ac"
+    }
+  },
+  {
+    "artifacts": [
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6211561\\input.png",
+        "sha256": "989caaffd513afd7f6430ab3676cc0486219be7b68d7f338749781806cccb059"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6211561\\input_staff-3_input.jpg",
+        "sha256": "d294b436025baaa90c0fd610c24dc42a40436a60739ab73bfc40287846f63d76"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6211561\\tokens.json",
+        "sha256": "4b8f28ba7ba64c3f479d36c4aae4ec43ee214c0cb56cf91e4791c204aedcc20d"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6211561\\input.musicxml",
+        "sha256": "aa29ef446c2a1a3c0ffdcc407c38ad86fba30bc268b6bf40538017c0c5c79ff4"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6211561\\result.json",
+        "sha256": "a60c29bf413c0b5a371f74cd7c1b6f5799e74126004ce605798277fa7548cf2d"
+      }
+    ],
+    "diagnostic_only": true,
+    "earliest_demonstrated_stage": "Staff crop",
+    "finding": "First differing measure 1: the first piano crop begins partway through the measure and omits initial clefs, meter and opening notes present on the full frozen page. The source uses two treble clefs. Tokens assume a bass clef on the lower staff and emit a register two octaves too low; omitted opening content and subsequent onset errors also propagate to XML. Missing left notation is demonstrated before decoding; the initiating detector/geometry cause is unverified.",
+    "first_difference": {
+      "extra": [
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "1/2",
+          "pitch": 41
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "0",
+          "pitch": 43
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "3/4",
+          "pitch": 43
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "1/4",
+          "pitch": 47
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "3/2",
+          "pitch": 57
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "1",
+          "pitch": 59
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "7/4",
+          "pitch": 59
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "5/4",
+          "pitch": 62
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "3/2",
+          "pitch": 69
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "1",
+          "pitch": 71
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "7/4",
+          "pitch": 71
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "1/2",
+          "pitch": 74
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "5/4",
+          "pitch": 74
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "0",
+          "pitch": 76
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "3/4",
+          "pitch": 76
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "1/4",
+          "pitch": 79
+        }
+      ],
+      "missing": [
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "3/2",
+          "pitch": 67
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "1",
+          "pitch": 69
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "7/4",
+          "pitch": 69
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "1/2",
+          "pitch": 71
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "5/4",
+          "pitch": 71
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "0",
+          "pitch": 74
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "3/4",
+          "pitch": 74
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "1/4",
+          "pitch": 76
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "3/2",
+          "pitch": 79
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "1",
+          "pitch": 81
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "7/4",
+          "pitch": 81
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "1/2",
+          "pitch": 83
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "5/4",
+          "pitch": 83
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "0",
+          "pitch": 86
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "3/4",
+          "pitch": 86
+        },
+        {
+          "count": 1,
+          "duration": "1/4",
+          "onset": "1/4",
+          "pitch": 88
+        }
+      ],
+      "reference_measure_ordinal": 1,
+      "start": "0"
+    },
+    "item_id": "openscore-6211561",
+    "method": "Visual source/native crop review, pre-cleanup and cleaned tokens, literal XML and timed events; no reference-driven correction",
+    "reference": {
+      "bytes": 538002,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6211561.musicxml",
+      "sha256": "de75048c7c17c73cb32c7bd689d4d622a25c7f93f3278038eccef0cea4e7127c"
+    }
+  },
+  {
+    "artifacts": [
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6212179\\input.png",
+        "sha256": "6831bc8e2a6bc9fd60f15f3e0cba20d54f6b919df4ad9a5b86fd1654eb7d2c89"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6212179\\input_staff-3_input.jpg",
+        "sha256": "7e7c511ad31afb67668b2955315fc533096f99cfbef10cbaad27ccbcbe8844b6"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6212179\\tokens.json",
+        "sha256": "3d61d2375fd1dfb3c03b4385b08bae5f55b79554156d6268bf0b6f6560a13f65"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6212179\\input.musicxml",
+        "sha256": "c8840255c7242de2ffc9925d4ca1b950179f36e0a44b9d71afe58e3b037d490b"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6212179\\result.json",
+        "sha256": "b24ce76ab086cf36898c87b43d1decf2a6e98e6bfbaeb7f43113fb009ecd08bf"
+      }
+    ],
+    "diagnostic_only": true,
+    "earliest_demonstrated_stage": "Decoder output",
+    "finding": "First differing measure 1: the first piano crop retains nine beamed upper chords and visible 3/4 meter. Its piano triplet numerals are not printed; the separate voice staff has a visible triplet mark. Source MusicXML specifies 1/3-quarter durations for the nine piano chords. Raw tokens use timeSignature/4 and ordinary note_8 durations (1/2 quarter). XML propagates wrong durations and shifts the lower Db3 onset to 1/2 instead of 0. Reference semantics are explicit but the piano's tuplet notation is implicit; no numerical accuracy claim is made.",
+    "first_difference": {
+      "extra": [
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "1/2",
+          "pitch": 49
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "0",
+          "pitch": 56
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "3/2",
+          "pitch": 56
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "2",
+          "pitch": 56
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "5/2",
+          "pitch": 56
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "0",
+          "pitch": 65
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "3/2",
+          "pitch": 65
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "2",
+          "pitch": 65
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "5/2",
+          "pitch": 65
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "0",
+          "pitch": 68
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "3/2",
+          "pitch": 68
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "2",
+          "pitch": 68
+        },
+        {
+          "count": 1,
+          "duration": "1/2",
+          "onset": "5/2",
+          "pitch": 68
+        }
+      ],
+      "missing": [
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "0",
+          "pitch": 49
+        },
+        {
+          "count": 1,
+          "duration": "1/3",
+          "onset": "0",
+          "pitch": 56
+        },
+        {
+          "count": 1,
+          "duration": "1/3",
+          "onset": "1/3",
+          "pitch": 56
+        },
+        {
+          "count": 1,
+          "duration": "1/3",
+          "onset": "2/3",
+          "pitch": 56
+        },
+        {
+          "count": 1,
+          "duration": "1/3",
+          "onset": "1",
+          "pitch": 56
+        },
+        {
+          "count": 1,
+          "duration": "1/3",
+          "onset": "4/3",
+          "pitch": 56
+        },
+        {
+          "count": 1,
+          "duration": "1/3",
+          "onset": "5/3",
+          "pitch": 56
+        },
+        {
+          "count": 1,
+          "duration": "1/3",
+          "onset": "2",
+          "pitch": 56
+        },
+        {
+          "count": 1,
+          "duration": "1/3",
+          "onset": "7/3",
+          "pitch": 56
+        },
+        {
+          "count": 1,
+          "duration": "1/3",
+          "onset": "8/3",
+          "pitch": 56
+        },
+        {
+          "count": 1,
+          "duration": "1/3",
+          "onset": "0",
+          "pitch": 65
+        },
+        {
+          "count": 1,
+          "duration": "1/3",
+          "onset": "1/3",
+          "pitch": 65
+        },
+        {
+          "count": 1,
+          "duration": "1/3",
+          "onset": "2/3",
+          "pitch": 65
+        },
+        {
+          "count": 1,
+          "duration": "1/3",
+          "onset": "1",
+          "pitch": 65
+        },
+        {
+          "count": 1,
+          "duration": "1/3",
+          "onset": "4/3",
+          "pitch": 65
+        },
+        {
+          "count": 1,
+          "duration": "1/3",
+          "onset": "5/3",
+          "pitch": 65
+        },
+        {
+          "count": 1,
+          "duration": "1/3",
+          "onset": "2",
+          "pitch": 65
+        },
+        {
+          "count": 1,
+          "duration": "1/3",
+          "onset": "7/3",
+          "pitch": 65
+        },
+        {
+          "count": 1,
+          "duration": "1/3",
+          "onset": "8/3",
+          "pitch": 65
+        },
+        {
+          "count": 1,
+          "duration": "1/3",
+          "onset": "0",
+          "pitch": 68
+        },
+        {
+          "count": 1,
+          "duration": "1/3",
+          "onset": "1/3",
+          "pitch": 68
+        },
+        {
+          "count": 1,
+          "duration": "1/3",
+          "onset": "2/3",
+          "pitch": 68
+        },
+        {
+          "count": 1,
+          "duration": "1/3",
+          "onset": "1",
+          "pitch": 68
+        },
+        {
+          "count": 1,
+          "duration": "1/3",
+          "onset": "4/3",
+          "pitch": 68
+        },
+        {
+          "count": 1,
+          "duration": "1/3",
+          "onset": "5/3",
+          "pitch": 68
+        },
+        {
+          "count": 1,
+          "duration": "1/3",
+          "onset": "2",
+          "pitch": 68
+        },
+        {
+          "count": 1,
+          "duration": "1/3",
+          "onset": "7/3",
+          "pitch": 68
+        },
+        {
+          "count": 1,
+          "duration": "1/3",
+          "onset": "8/3",
+          "pitch": 68
+        }
+      ],
+      "reference_measure_ordinal": 1,
+      "start": "0"
+    },
+    "item_id": "openscore-6212179",
+    "method": "Visual source/native crop review, pre-cleanup and cleaned tokens, literal XML and timed events; no reference-driven correction",
+    "reference": {
+      "bytes": 550678,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6212179.musicxml",
+      "sha256": "ddeed95a90fa11918998bb18ff77969cea187c0985d7b1f60e18488477e01c5d"
+    }
+  },
+  {
+    "artifacts": [
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6212193\\input.png",
+        "sha256": "e6472308c8b1bc07dcaa50fa1f95ac33cfaab61b32e564aea7040ce64dfca0c3"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6212193\\input_staff-3_input.jpg",
+        "sha256": "c2a03c3aa335e3750d5c5d4262d7b000e9f78850fdb5915feefefbe0128993ed"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6212193\\tokens.json",
+        "sha256": "b553d7591149c9ba6b8948c147194557a79c1f1ae21904d0a71de2831b79a63c"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6212193\\input.musicxml",
+        "sha256": "5e2b310abb98b1d5f76f958afe594bf734c00765091da0774210607f72ebe44d"
+      },
+      {
+        "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\openscore-6212193\\result.json",
+        "sha256": "1a0db032c492c7310aaecfb67584f0e7474ef2beaf57b267e3b42b6fadcfb860"
+      }
+    ],
+    "diagnostic_only": true,
+    "earliest_demonstrated_stage": "Decoder slur attachment",
+    "finding": "First differing measure 2: the reference has two separate C5 half notes with no ties/slurs; its lower upper-staff voice has an Ab4-to-F4 slur and tied G4 quarters. The crop retains both C5 heads and the curve. Pre-cleanup tokens attach slurStart/slurStop to the two C5 notes. Installed conversion interprets the same-pitch adjacent slur pair as a tie, fusing C5 into 4 quarter beats instead of two 2-quarter events. G4's true tie is also lost. Incorrect attachment is demonstrated in raw tokens before XML conversion; slurStart itself is valid shared model vocabulary.",
+    "first_difference": {
+      "extra": [
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "5",
+          "pitch": 67
+        },
+        {
+          "count": 1,
+          "duration": "1",
+          "onset": "6",
+          "pitch": 67
+        },
+        {
+          "count": 1,
+          "duration": "4",
+          "onset": "4",
+          "pitch": 72
+        }
+      ],
+      "missing": [
+        {
+          "count": 1,
+          "duration": "2",
+          "onset": "5",
+          "pitch": 67
+        },
+        {
+          "count": 1,
+          "duration": "2",
+          "onset": "4",
+          "pitch": 72
+        },
+        {
+          "count": 1,
+          "duration": "2",
+          "onset": "6",
+          "pitch": 72
+        }
+      ],
+      "reference_measure_ordinal": 2,
+      "start": "4"
+    },
+    "item_id": "openscore-6212193",
+    "method": "Visual source/native crop review, pre-cleanup and cleaned tokens, literal XML and timed events; no reference-driven correction",
+    "reference": {
+      "bytes": 754701,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6212193.musicxml",
+      "sha256": "c3a79485cc2cf8cc259b972126a133ae54bc03aaf9c1e9fde1ca45b39e4191df"
+    }
+  }
+]

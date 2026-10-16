@@ -1,0 +1,202 @@
+{
+  "aligned_voice_accuracy": 0.8,
+  "candidate": "homr-465-upstream",
+  "capture_status": "complete",
+  "comparison_identity": "91e7256cd902a6ea2adb9fb415e6847b2ba0b9e94fb03fe8f5f1570ae6544fb9",
+  "composition_group": "joplin/lilyqueen",
+  "configuration_identity": "9e619e47fd0317b6a7d1da5207985e1120acefc499a111649c5b7cdb1e339122",
+  "conversion_error": null,
+  "coverage": {
+    "chord_completeness": 0.2087912087912088,
+    "complete_chords": 19,
+    "per_staff": {
+      "0": {
+        "matched_notes": 52,
+        "predicted_notes": 196,
+        "recall": 0.14325068870523416,
+        "reference_notes": 363
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 164,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 91,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 14,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1",
+        "count": 2,
+        "predicted": "3/4"
+      },
+      {
+        "actual": "1/2",
+        "count": 7,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 42,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 1,
+        "predicted": "3/4"
+      },
+      {
+        "actual": "1/4",
+        "count": 2,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 27,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "3/4",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "3/4",
+        "count": 1,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "3/4",
+        "count": 2,
+        "predicted": "3/4"
+      }
+    ],
+    "unmatched_expected": 263,
+    "unmatched_predicted": 260
+  },
+  "elapsed_seconds": 13.718000000000757,
+  "extra_notes": 275,
+  "item_id": "839b14b2c2a880d17563",
+  "mean_offset_error": 0.06,
+  "metrics": {
+    "aligned_voice_accuracy": 0.8,
+    "coverage": {
+      "chord_completeness": 0.2087912087912088,
+      "complete_chords": 19,
+      "per_staff": {
+        "0": {
+          "matched_notes": 52,
+          "predicted_notes": 196,
+          "recall": 0.14325068870523416,
+          "reference_notes": 363
+        },
+        "1": {
+          "matched_notes": 0,
+          "predicted_notes": 164,
+          "recall": null,
+          "reference_notes": 0
+        }
+      },
+      "reference_chords": 91,
+      "staff_interpretation": "notation staff index; not validated hand labels"
+    },
+    "duration": {
+      "confusion": [
+        {
+          "actual": "1",
+          "count": 14,
+          "predicted": "1"
+        },
+        {
+          "actual": "1",
+          "count": 1,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1",
+          "count": 2,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "1/2",
+          "count": 7,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/2",
+          "count": 42,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/2",
+          "count": 1,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "1/4",
+          "count": 2,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/4",
+          "count": 27,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "3/4",
+          "count": 1,
+          "predicted": "1"
+        },
+        {
+          "actual": "3/4",
+          "count": 1,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "3/4",
+          "count": 2,
+          "predicted": "3/4"
+        }
+      ],
+      "unmatched_expected": 263,
+      "unmatched_predicted": 260
+    },
+    "extra_notes": 275,
+    "mean_offset_error": 0.06,
+    "missing_notes": 278,
+    "onset_duration_f1": 0.23513139695712312,
+    "onset_f1": 0.2766251728907331,
+    "pitch_f1": 0.9930843706777317,
+    "predicted_notes": 360,
+    "reference_notes": 363,
+    "staff_accuracy": 0.611764705882353,
+    "timeline_predicted": "46",
+    "timeline_reference": "44"
+  },
+  "missing_notes": 278,
+  "onset_duration_f1": 0.23513139695712312,
+  "onset_f1": 0.2766251728907331,
+  "original_item_id": "test/joplin/lilyqueen/lilyqueen_1.png",
+  "pitch_f1": 0.9930843706777317,
+  "predicted_notes": 360,
+  "receipt_sha256": "cbb52b98431250912215b56b22de2c4dd2f22b1ab3ff72e844b620195a6835b8",
+  "reference_notes": 363,
+  "reference_sha256": "062fe60745de0a716f458f5fc96cc2a96379a323b4e1bee37be8e22ea380eb5f",
+  "staff_accuracy": 0.611764705882353,
+  "status": "complete",
+  "timeline_predicted": "46",
+  "timeline_reference": "44"
+}

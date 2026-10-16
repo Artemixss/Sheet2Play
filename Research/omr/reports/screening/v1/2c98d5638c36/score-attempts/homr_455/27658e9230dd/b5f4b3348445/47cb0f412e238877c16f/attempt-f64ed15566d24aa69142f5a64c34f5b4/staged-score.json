@@ -1,0 +1,82 @@
+{
+  "adapter_id": "homr_455_explicit_onnx_pair",
+  "aligned_voice_accuracy": 1.0,
+  "candidate_id": "homr_455",
+  "cold_start": true,
+  "composition_group": "scarlatti/L056K281",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 44,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 131,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 8,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "2",
+        "count": 2,
+        "predicted": "2"
+      },
+      {
+        "actual": "3/2",
+        "count": 6,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "3/4",
+        "count": 2,
+        "predicted": "3/4"
+      },
+      {
+        "actual": "6",
+        "count": 2,
+        "predicted": "3"
+      },
+      {
+        "actual": "6",
+        "count": 6,
+        "predicted": "6"
+      }
+    ],
+    "unmatched_expected": 2,
+    "unmatched_predicted": 14
+  },
+  "elapsed_seconds": 20.625,
+  "error": null,
+  "extra_note_count": 16,
+  "failure_penalized_omr_ned": 0.22184531886024422,
+  "first_divergent_measure": 1,
+  "item_id": "test/scarlatti/L056K281/L056K281_1.png",
+  "mean_offset_error": 0.029850746268656716,
+  "missing_note_count": 4,
+  "omr_ned": 0.22184531886024422,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.9521531100478469,
+  "onset_f1": 0.9617224880382774,
+  "peak_ram_bytes": 1424015360,
+  "peak_vram_bytes": 1643118592,
+  "pitch_f1": 0.9617224880382774,
+  "predicted_note_count": 215,
+  "reference_measure_count": 24,
+  "reference_note_count": 203,
+  "reference_quarter_length": "72",
+  "schema_version": 1,
+  "staff_accuracy": 0.6331658291457286,
+  "status": "succeeded",
+  "timeline_length_error": "0",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

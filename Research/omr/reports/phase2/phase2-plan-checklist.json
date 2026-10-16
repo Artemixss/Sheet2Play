@@ -1,0 +1,38 @@
+[
+  {
+    "requirement": "Phase-1 artifacts remain immutable",
+    "status": "passed"
+  },
+  {
+    "requirement": "candidate-neutral artifact contract",
+    "status": "passed"
+  },
+  {
+    "requirement": "shipped HOMR adapter added first",
+    "status": "passed"
+  },
+  {
+    "requirement": "candidate adapters added one at a time",
+    "status": "passed"
+  },
+  {
+    "requirement": "native, MusicXML, canonical, timing, memory, warning, exit, and provenance fields",
+    "status": "passed"
+  },
+  {
+    "requirement": "frozen fixture matrix executed",
+    "status": "passed"
+  },
+  {
+    "requirement": "development data only",
+    "status": "passed"
+  },
+  {
+    "requirement": "frozen evaluation inference",
+    "status": "not_started_phase_3"
+  },
+  {
+    "requirement": "candidate ranking or promotion",
+    "status": "not_started"
+  }
+]

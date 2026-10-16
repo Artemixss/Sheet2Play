@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "name": "shipped-426-no-title-phase1",
+  "baseline_runtime_identity": "e61db08610fe9b475d42a822a9ea265fed780e095758944b71cb2c0b17b0ec66",
+  "processing_config_delta": {
+    "title_detection": false
+  },
+  "musical_settings": "Unchanged native CUDA pipeline, weights, images, tuplets cleanup and XML arguments",
+  "safeguards": {
+    "system_stop_percent": 85,
+    "reserve_bytes": 4294967296,
+    "worker_bytes": 4294967296,
+    "active_processes": 16,
+    "gpu_stop_percent": 90,
+    "one_heavy_worker": true
+  },
+  "network_limit_bytes": 2000000000,
+  "phase": 1,
+  "identity_sha256": "a6cab9a5ac91aa7cd31be843b8cb37a189cd1bc564857dc235a82db8da054c32"
+}

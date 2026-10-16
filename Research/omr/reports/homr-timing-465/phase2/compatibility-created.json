@@ -1,0 +1,18 @@
+{
+  "status": "compatible",
+  "contract_sha256": "14ed2826521a2b7e6d97fa9b9e9101d64fe16419be9061baf1320cfa31e12344",
+  "validator_sha256": "f6076cb53b03e8daeddb4f5213fae1517f18d27b1c8eff01168787120d67f8af",
+  "source_revision": "33baa326900faa12702df8c4bdcbea034a3d6a34",
+  "six_heads": {
+    "rhythm": 260,
+    "pitch": 72,
+    "lift": 7,
+    "position": 5,
+    "articulation": 62,
+    "slur": 5
+  },
+  "model_sha256": {
+    "encoder": "50823c061533328f5e64df016d3ed16eb9071a9f5c5ee8621646cf9ac9c8a992",
+    "decoder": "aaac38c4f4be13ec587325486f29a60a919924f0eb82d35b52d4a2e7126dfbe0"
+  }
+}

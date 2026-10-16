@@ -1,0 +1,175 @@
+{
+  "started_unix": 1790420142.226825,
+  "samples": [
+    {
+      "time": "2026-09-26T13:55:43+0300",
+      "elapsed_seconds": 1.655999999999949,
+      "ram_percent": 81.9,
+      "ram_total_bytes": 16369225728,
+      "ram_available_bytes": 2957893632,
+      "cpu_percent": 14.1,
+      "gpu_used_mib": 0,
+      "gpu_total_mib": 6141,
+      "gpu_utilization_percent": 0,
+      "gpu_temperature_c": 54,
+      "disk_free_bytes": 62224707584
+    },
+    {
+      "time": "2026-09-26T13:55:47+0300",
+      "elapsed_seconds": 5.5779999999999745,
+      "ram_percent": 82.2,
+      "ram_total_bytes": 16369225728,
+      "ram_available_bytes": 2917957632,
+      "cpu_percent": 8.5,
+      "gpu_used_mib": 0,
+      "gpu_total_mib": 6141,
+      "gpu_utilization_percent": 0,
+      "gpu_temperature_c": 54,
+      "disk_free_bytes": 62224707584
+    },
+    {
+      "time": "2026-09-26T13:55:52+0300",
+      "elapsed_seconds": 10.594000000000051,
+      "ram_percent": 82.2,
+      "ram_total_bytes": 16369225728,
+      "ram_available_bytes": 2911846400,
+      "cpu_percent": 12.0,
+      "gpu_used_mib": 0,
+      "gpu_total_mib": 6141,
+      "gpu_utilization_percent": 0,
+      "gpu_temperature_c": 55,
+      "disk_free_bytes": 62224728064
+    },
+    {
+      "time": "2026-09-26T13:55:57+0300",
+      "elapsed_seconds": 15.577999999999975,
+      "ram_percent": 82.2,
+      "ram_total_bytes": 16369225728,
+      "ram_available_bytes": 2919895040,
+      "cpu_percent": 10.3,
+      "gpu_used_mib": 0,
+      "gpu_total_mib": 6141,
+      "gpu_utilization_percent": 0,
+      "gpu_temperature_c": 55,
+      "disk_free_bytes": 62224728064
+    },
+    {
+      "time": "2026-09-26T13:56:02+0300",
+      "elapsed_seconds": 20.577999999999975,
+      "ram_percent": 82.0,
+      "ram_total_bytes": 16369225728,
+      "ram_available_bytes": 2940649472,
+      "cpu_percent": 10.1,
+      "gpu_used_mib": 0,
+      "gpu_total_mib": 6141,
+      "gpu_utilization_percent": 0,
+      "gpu_temperature_c": 55,
+      "disk_free_bytes": 62224769024
+    },
+    {
+      "time": "2026-09-26T13:56:07+0300",
+      "elapsed_seconds": 25.561999999999898,
+      "ram_percent": 81.9,
+      "ram_total_bytes": 16369225728,
+      "ram_available_bytes": 2955292672,
+      "cpu_percent": 9.6,
+      "gpu_used_mib": 0,
+      "gpu_total_mib": 6141,
+      "gpu_utilization_percent": 0,
+      "gpu_temperature_c": 55,
+      "disk_free_bytes": 62224744448
+    },
+    {
+      "time": "2026-09-26T13:56:12+0300",
+      "elapsed_seconds": 30.577999999999975,
+      "ram_percent": 81.8,
+      "ram_total_bytes": 16369225728,
+      "ram_available_bytes": 2972778496,
+      "cpu_percent": 9.6,
+      "gpu_used_mib": 0,
+      "gpu_total_mib": 6141,
+      "gpu_utilization_percent": 0,
+      "gpu_temperature_c": 55,
+      "disk_free_bytes": 62224744448
+    }
+  ],
+  "top_process_rss": [
+    {
+      "pid": 5904,
+      "name": "MemCompression",
+      "rss_bytes": 1128554496
+    },
+    {
+      "pid": 26596,
+      "name": "ChatGPT.exe",
+      "rss_bytes": 712839168
+    },
+    {
+      "pid": 22280,
+      "name": "opera.exe",
+      "rss_bytes": 662343680
+    },
+    {
+      "pid": 2228,
+      "name": "dwm.exe",
+      "rss_bytes": 528113664
+    },
+    {
+      "pid": 23688,
+      "name": "opera.exe",
+      "rss_bytes": 434286592
+    },
+    {
+      "pid": 25480,
+      "name": "opera.exe",
+      "rss_bytes": 424636416
+    },
+    {
+      "pid": 25416,
+      "name": "Discord.exe",
+      "rss_bytes": 423989248
+    },
+    {
+      "pid": 27616,
+      "name": "opera.exe",
+      "rss_bytes": 405704704
+    },
+    {
+      "pid": 27496,
+      "name": "opera.exe",
+      "rss_bytes": 402718720
+    },
+    {
+      "pid": 25312,
+      "name": "opera.exe",
+      "rss_bytes": 399163392
+    },
+    {
+      "pid": 23532,
+      "name": "opera.exe",
+      "rss_bytes": 395382784
+    },
+    {
+      "pid": 25300,
+      "name": "opera.exe",
+      "rss_bytes": 393465856
+    },
+    {
+      "pid": 9752,
+      "name": "opera.exe",
+      "rss_bytes": 392970240
+    },
+    {
+      "pid": 5928,
+      "name": "opera.exe",
+      "rss_bytes": 388964352
+    },
+    {
+      "pid": 7676,
+      "name": "MsMpEng.exe",
+      "rss_bytes": 374964224
+    }
+  ],
+  "gpu_measurement": "device-wide, not per-process",
+  "inference_started": false
+}

@@ -1,0 +1,129 @@
+{
+  "configuration_sha256": "81f73b31179a40bf63c608d9adea99f546dac49e57722d436dae205a1b135821",
+  "manifest_sha256": "c3f28ec525ada8902203caf919da3ecdf4e75db30b84fd2379a4edb30483bc22",
+  "pending_item": "test/beethoven/sonata26_1/sonata26_1_1.png",
+  "records": [
+    {
+      "item_id": "test/beethoven/sonata02_2/sonata02_2_1.png",
+      "omr_ned_status": "valid",
+      "score_sha256": "cc7d8d62baeb62c957edd5bde6fd82e29b7491ee912c5f8f91eafa828cd35a3f"
+    },
+    {
+      "item_id": "test/beethoven/sonata02_2/sonata02_2_2.png",
+      "omr_ned_status": "valid",
+      "score_sha256": "0701763f7acfa8b271f591817d9c7337a157aac6d357108df743137b661a4c26"
+    },
+    {
+      "item_id": "test/beethoven/sonata02_2/sonata02_2_3.png",
+      "omr_ned_status": "valid",
+      "score_sha256": "43d0d81172d39c91729c7e2e7c015331a1641a5c1a1c27355c6affa7264d7ea4"
+    },
+    {
+      "item_id": "test/beethoven/sonata05_1/sonata05_1_2.png",
+      "omr_ned_status": "valid",
+      "score_sha256": "331567e9b490a724eeb13e7276d004035a52c88e79756ceaf0dcaf21dffcbfff"
+    },
+    {
+      "item_id": "test/beethoven/sonata05_1/sonata05_1_3.png",
+      "omr_ned_status": "valid",
+      "score_sha256": "c4728ed9e46bf6fa46619df1368aa50f0bee64d104b8d0cf24de409fc0d91615"
+    },
+    {
+      "item_id": "test/beethoven/sonata05_1/sonata05_1_4.png",
+      "omr_ned_status": "valid",
+      "score_sha256": "278ceaeee28026ed185800ae82cdf4c7607f89029a73426df9e158827674da04"
+    },
+    {
+      "item_id": "test/beethoven/sonata05_1/sonata05_1_5.png",
+      "omr_ned_status": "valid",
+      "score_sha256": "3ce8f81ccb7cee60f1f63c7cde2a5cc3c312747f34ae94de34813e7dc1fd14d7"
+    },
+    {
+      "item_id": "test/beethoven/sonata05_1/sonata05_1_6.png",
+      "omr_ned_status": "valid",
+      "score_sha256": "89027bffef5bfe42c60603045dd60ce2f6d57ff180995419eaf33b1c9b8e69e9"
+    },
+    {
+      "item_id": "test/beethoven/sonata07_4/sonata07_4_1.png",
+      "omr_ned_status": "valid",
+      "score_sha256": "5592bc789c49076587111296e28cbfa8246bdf432e34d5d137b3c88ab2fa241b"
+    },
+    {
+      "item_id": "test/beethoven/sonata07_4/sonata07_4_2.png",
+      "omr_ned_status": "valid",
+      "score_sha256": "df4b4e72ee8dc1bc2b6ff3ff26d070505695c9e73f06389019d3dee9c35ef524"
+    },
+    {
+      "item_id": "test/beethoven/sonata07_4/sonata07_4_3.png",
+      "omr_ned_status": "valid",
+      "score_sha256": "5d2fb70ca01ffe36ad3737b231558d26d54064d84d17f875bce642ccd0b885b5"
+    },
+    {
+      "item_id": "test/beethoven/sonata07_4/sonata07_4_4.png",
+      "omr_ned_status": "valid",
+      "score_sha256": "fd7df5569183b3bb3f80aa23b7fbf4aeebe16add36de528ad3353653f502f2d9"
+    },
+    {
+      "item_id": "test/beethoven/sonata17_1/sonata17_1_1.png",
+      "omr_ned_status": "valid",
+      "score_sha256": "7a99053bfa761dd3748406169fbb3f4e0d6cbda43e2e2912be5f595135376fb4"
+    },
+    {
+      "item_id": "test/beethoven/sonata17_1/sonata17_1_2.png",
+      "omr_ned_status": "valid",
+      "score_sha256": "4e0d201ef9945cd88d8783c57fe6d84294f036985955df0db549cd7d1ed00b1c"
+    },
+    {
+      "item_id": "test/beethoven/sonata17_1/sonata17_1_3.png",
+      "omr_ned_status": "valid",
+      "score_sha256": "0daea8a44e9751adef267621b06c5d1796b8d3e45b7ab845f30d675dee25b001"
+    },
+    {
+      "item_id": "test/beethoven/sonata17_1/sonata17_1_4.png",
+      "omr_ned_status": "valid",
+      "score_sha256": "59f2d8e48983ebcc001e2a783f5c442d6e031cd4965bbc22cafcbd092d38dd18"
+    },
+    {
+      "item_id": "test/beethoven/sonata17_1/sonata17_1_6.png",
+      "omr_ned_status": "valid",
+      "score_sha256": "bd0b161fe28064a28e0f4d28f6f4f6166245d6fd6a7b34d9dcf6d598e9003178"
+    },
+    {
+      "item_id": "test/beethoven/sonata22_2/sonata22_2_1.png",
+      "omr_ned_status": "valid",
+      "score_sha256": "1c5e552de5eb031259a6614f230681b882ac0ad1bb9a21958b39575fe0698e4e"
+    },
+    {
+      "item_id": "test/beethoven/sonata22_2/sonata22_2_2.png",
+      "omr_ned_status": "valid",
+      "score_sha256": "1e996055c05864dc0ed444e75f391a8ae2dff061457040ab4cdac40bc0c1d49e"
+    },
+    {
+      "item_id": "test/beethoven/sonata22_2/sonata22_2_3.png",
+      "omr_ned_status": "valid",
+      "score_sha256": "7682ece9c4d112cc2f90eebe7f76f4410ffaace2ea214b83c6e50b9083ed77b2"
+    },
+    {
+      "item_id": "test/beethoven/sonata22_2/sonata22_2_4.png",
+      "omr_ned_status": "valid",
+      "score_sha256": "f2dd2afca8346d69a226596670ac9f88163f1f7877e10491aeb12cfb233a02c7"
+    },
+    {
+      "item_id": "test/beethoven/sonata22_2/sonata22_2_5.png",
+      "omr_ned_status": "valid",
+      "score_sha256": "9adaa6ad2ce6d1b5f0d922e4b157e2ee042542da4a339efc103ad72af1a34af8"
+    },
+    {
+      "item_id": "test/beethoven/sonata22_2/sonata22_2_6.png",
+      "omr_ned_status": "valid",
+      "score_sha256": "b6dd3d2b9eb6e07c02ae7c181f02e522d97c5e50f98807fea8816832f18f2fb5"
+    }
+  ],
+  "sample_sha256": "2c98d5638c368b1a53bdb3440177d04fa585f9b1ca6ce6adbe65af64cd8e27d1",
+  "session": {
+    "active_since_utc": null,
+    "session_id": "stage3-zeus-screen-01",
+    "used_seconds": 5432.674000000002
+  },
+  "verified_score_count": 23
+}

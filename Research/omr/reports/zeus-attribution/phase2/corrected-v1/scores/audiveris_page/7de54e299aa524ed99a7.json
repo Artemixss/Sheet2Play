@@ -1,0 +1,94 @@
+{
+  "adapter_id": "audiveris_unattended",
+  "aligned_voice_accuracy": 0.9565217391304348,
+  "candidate_id": "audiveris",
+  "cold_start": true,
+  "composition_group": "mozart/viennese1_1",
+  "coverage": {
+    "chord_completeness": 0.17117117117117117,
+    "complete_chords": 19,
+    "per_staff": {
+      "0": {
+        "matched_notes": 25,
+        "predicted_notes": 135,
+        "recall": 0.07739938080495357,
+        "reference_notes": 323
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 175,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 111,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 8,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 3,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 25,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "2",
+        "count": 1,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "2",
+        "count": 13,
+        "predicted": "2"
+      }
+    ],
+    "unmatched_expected": 273,
+    "unmatched_predicted": 260
+  },
+  "elapsed_seconds": 25.57799999999952,
+  "error": null,
+  "extra_note_count": 264,
+  "failure_penalized_omr_ned": 0.17298578199052134,
+  "first_divergent_measure": 5,
+  "input_identity": {
+    "historical_score_sha256": "6b02e84c82b686502aa60c70474b9327f72b5db32d5349545e96d06fc26bd8fa",
+    "reference_sha256": "50e26091b7c760c457f03422a7e987b8ff3d691b69830c3908c573283ab519ea",
+    "result_sha256": "ba07dd878750948ed6a058c371539d1e1852c7fafdc8177397b26e9f7fb52c4e"
+  },
+  "item_id": "test/mozart/viennese1_1/viennese1_1_1.png",
+  "mean_offset_error": 0.1,
+  "missing_note_count": 277,
+  "omr_ned": 0.17298578199052134,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.14533965244865715,
+  "onset_f1": 0.15797788309636654,
+  "peak_ram_bytes": 948232192,
+  "peak_vram_bytes": 0,
+  "pitch_f1": 0.957345971563981,
+  "predicted_note_count": 310,
+  "reference_measure_count": 29,
+  "reference_note_count": 323,
+  "reference_quarter_length": "116",
+  "schema_version": 2,
+  "scoring_identity_sha256": "ed9e5b7e6f998b5787ae21dfc0b7f545c42fc0bc83b60fc717f002d6b34aa568",
+  "staff_accuracy": 0.5434782608695652,
+  "status": "succeeded",
+  "timeline_length_error": "-9/2",
+  "timing_policy": "symmetric-rational-4096-roundoff-v1",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

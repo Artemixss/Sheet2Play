@@ -1,0 +1,120 @@
+{
+  "freeze_sha256": "3fdd3d76aeab4188244795ea7b5eb310b2129d8d50131290297aeb1a32020633",
+  "schema_version": 1,
+  "stage_order": [
+    "primary_homr_page_infer",
+    "primary_homr_page_score",
+    "primary_audiveris_page_infer",
+    "primary_audiveris_page_score",
+    "primary_zeus_page_infer",
+    "primary_zeus_page_score",
+    "olimpic_zeus_infer",
+    "olimpic_zeus_score",
+    "secondary_homr_page_infer",
+    "secondary_homr_page_score",
+    "secondary_audiveris_page_infer",
+    "secondary_audiveris_page_score",
+    "secondary_zeus_page_infer",
+    "secondary_zeus_page_score",
+    "private_homr_page_infer",
+    "private_homr_page_summarize",
+    "private_audiveris_page_infer",
+    "private_audiveris_page_summarize",
+    "private_zeus_page_infer",
+    "private_zeus_page_summarize"
+  ],
+  "stages": {
+    "olimpic_zeus_infer": {
+      "status": "pending"
+    },
+    "olimpic_zeus_score": {
+      "status": "pending"
+    },
+    "primary_audiveris_page_infer": {
+      "status": "pending"
+    },
+    "primary_audiveris_page_score": {
+      "status": "pending"
+    },
+    "primary_homr_page_infer": {
+      "command": [
+        "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.venv\\Scripts\\python.exe",
+        "Research/omr/phase3_infer.py",
+        "--freeze",
+        "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\phase3\\phase3-config-freeze-v1-89f385c8790b.json",
+        "--candidate",
+        "homr_page",
+        "--collection",
+        "smb-pianoform"
+      ],
+      "interrupted_attempt": {
+        "command": [
+          "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.venv\\Scripts\\python.exe",
+          "Research/omr/phase3_infer.py",
+          "--freeze",
+          "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\phase3\\phase3-config-freeze-v1-89f385c8790b.json",
+          "--candidate",
+          "homr_page",
+          "--collection",
+          "smb-pianoform"
+        ],
+        "pid": 14012,
+        "status": "running",
+        "stderr": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\phase3\\sequence\\3fdd3d76aeab\\primary_homr_page_infer.err.log",
+        "stdout": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\phase3\\sequence\\3fdd3d76aeab\\primary_homr_page_infer.out.log",
+        "working_directory": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play"
+      },
+      "pid": 26892,
+      "recovery": "2026-09-26: 76 immutable results verified; empty page-77 output and old logs preserved",
+      "status": "running",
+      "stderr": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\phase3\\sequence\\3fdd3d76aeab\\primary_homr_page_infer.err.log",
+      "stdout": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\phase3\\sequence\\3fdd3d76aeab\\primary_homr_page_infer.out.log",
+      "working_directory": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play"
+    },
+    "primary_homr_page_score": {
+      "status": "pending"
+    },
+    "primary_zeus_page_infer": {
+      "status": "pending"
+    },
+    "primary_zeus_page_score": {
+      "status": "pending"
+    },
+    "private_audiveris_page_infer": {
+      "status": "pending"
+    },
+    "private_audiveris_page_summarize": {
+      "status": "pending"
+    },
+    "private_homr_page_infer": {
+      "status": "pending"
+    },
+    "private_homr_page_summarize": {
+      "status": "pending"
+    },
+    "private_zeus_page_infer": {
+      "status": "pending"
+    },
+    "private_zeus_page_summarize": {
+      "status": "pending"
+    },
+    "secondary_audiveris_page_infer": {
+      "status": "pending"
+    },
+    "secondary_audiveris_page_score": {
+      "status": "pending"
+    },
+    "secondary_homr_page_infer": {
+      "status": "pending"
+    },
+    "secondary_homr_page_score": {
+      "status": "pending"
+    },
+    "secondary_zeus_page_infer": {
+      "status": "pending"
+    },
+    "secondary_zeus_page_score": {
+      "status": "pending"
+    }
+  }
+}

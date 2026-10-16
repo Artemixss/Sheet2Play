@@ -1,0 +1,87 @@
+{
+  "adapter_id": "shipped_homr_direct",
+  "aligned_voice_accuracy": 1.0,
+  "candidate_id": "shipped_homr",
+  "cold_start": true,
+  "composition_group": "liszt/etude10_05",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 4,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/2",
+        "count": 55,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/6",
+        "count": 5,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/6",
+        "count": 32,
+        "predicted": "8333333333333333/50000000000000000"
+      },
+      {
+        "actual": "2",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "2",
+        "count": 2,
+        "predicted": "2"
+      },
+      {
+        "actual": "3/4",
+        "count": 1,
+        "predicted": "1/4"
+      }
+    ],
+    "unmatched_expected": 323,
+    "unmatched_predicted": 324
+  },
+  "elapsed_seconds": 20.625,
+  "error": null,
+  "extra_note_count": 364,
+  "failure_penalized_omr_ned": 0.4044201412622465,
+  "first_divergent_measure": 1,
+  "item_id": "test/liszt/etude10_05/etude10_05_2.png",
+  "mean_offset_error": 0.03349673202614379,
+  "missing_note_count": 363,
+  "omr_ned": 0.4044201412622465,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.14571092831962396,
+  "onset_f1": 0.23971797884841362,
+  "peak_ram_bytes": 1620291584,
+  "peak_vram_bytes": 1636827136,
+  "pitch_f1": 0.9800235017626322,
+  "predicted_note_count": 426,
+  "reference_measure_count": 24,
+  "reference_note_count": 425,
+  "reference_quarter_length": "48",
+  "schema_version": 1,
+  "staff_accuracy": 0.016129032258064516,
+  "status": "succeeded",
+  "timeline_length_error": "1166666666666667/125000000000000",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

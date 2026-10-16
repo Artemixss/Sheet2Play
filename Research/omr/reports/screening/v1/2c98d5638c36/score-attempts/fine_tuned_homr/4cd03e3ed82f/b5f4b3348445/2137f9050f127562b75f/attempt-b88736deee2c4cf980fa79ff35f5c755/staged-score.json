@@ -1,0 +1,62 @@
+{
+  "adapter_id": "epoch14_verified_onnx",
+  "aligned_voice_accuracy": 1.0,
+  "candidate_id": "fine_tuned_homr",
+  "cold_start": true,
+  "composition_group": "liszt/etude10_05",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1/2",
+        "count": 29,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/6",
+        "count": 1,
+        "predicted": "1/8"
+      },
+      {
+        "actual": "1/6",
+        "count": 12,
+        "predicted": "8333333333333333/50000000000000000"
+      },
+      {
+        "actual": "3/2",
+        "count": 1,
+        "predicted": "3/2"
+      }
+    ],
+    "unmatched_expected": 435,
+    "unmatched_predicted": 436
+  },
+  "elapsed_seconds": 25.625,
+  "error": null,
+  "extra_note_count": 449,
+  "failure_penalized_omr_ned": 0.39519331243469175,
+  "first_divergent_measure": 1,
+  "item_id": "test/liszt/etude10_05/etude10_05_1.png",
+  "mean_offset_error": 0.0009689922480620173,
+  "missing_note_count": 448,
+  "omr_ned": 0.39519331243469175,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.06269592476489028,
+  "onset_f1": 0.08986415882967608,
+  "peak_ram_bytes": 1568415744,
+  "peak_vram_bytes": 1641021440,
+  "pitch_f1": 0.9968652037617555,
+  "predicted_note_count": 479,
+  "reference_measure_count": 24,
+  "reference_note_count": 478,
+  "reference_quarter_length": "48",
+  "schema_version": 1,
+  "staff_accuracy": 0.0,
+  "status": "succeeded",
+  "timeline_length_error": "381250000000000133/50000000000000000",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "command": [
+    "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.venv\\Scripts\\python.exe",
+    "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\screening_score.py",
+    "--manifest",
+    "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\screening\\v1\\manifest-v2-0de561e2ae9d.json",
+    "--candidate",
+    "homr_455",
+    "--worker-index",
+    "37",
+    "--attempt",
+    "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\screening\\v1\\2c98d5638c36\\score-attempts\\homr_455\\cb45056ebb22\\b5f4b3348445\\591b47a107122a45416d\\attempt-0eb73ea3cb3f46fcb1e7f65bcfdcacb6"
+  ],
+  "creation_time": 1790447673.8132572,
+  "executable": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.venv\\Scripts\\python.exe",
+  "pid": 30388
+}

@@ -1,0 +1,163 @@
+{
+  "adapter_config_sha256": "61b9370dfa1600068887c63a9e3c72fd4b587d17f59308d4d8c5016f40a12880",
+  "adapter_id": "rokot_q8_system_and_page",
+  "artifacts": [
+    {
+      "bytes": 1019,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-openscore-6583512-page-1-61b9370dfa16-252d8c9a02c2/attempt-measurements.json",
+      "role": "partial_attempt-measurements.json",
+      "sha256": "c7447edbd95c2f26685e715e4931ff3029e98937d407c88b3888363a61038b6d"
+    },
+    {
+      "bytes": 889,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-openscore-6583512-page-1-61b9370dfa16-252d8c9a02c2/detected-systems.json",
+      "role": "partial_detected-systems.json",
+      "sha256": "ca5028324ff74288135bbb7e9c7e670e79a529f5ed3e5d7c27fc6e415359e0c0"
+    },
+    {
+      "bytes": 200323,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-openscore-6583512-page-1-61b9370dfa16-252d8c9a02c2/detector-preprocessed.png",
+      "role": "partial_detector-preprocessed.png",
+      "sha256": "13678f37acc1a447c0a94b8c05bb9f701f56d98b7fe16494b3318078ff18c0ee"
+    },
+    {
+      "bytes": 327,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-openscore-6583512-page-1-61b9370dfa16-252d8c9a02c2/system-0001.abc",
+      "role": "partial_system-0001.abc",
+      "sha256": "02a59e979e9dca21fa79c97c8434959475b55c893335385ce5c18e4ef7d32b32"
+    },
+    {
+      "bytes": 1270,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-openscore-6583512-page-1-61b9370dfa16-252d8c9a02c2/system-0001.raw.txt",
+      "role": "partial_system-0001.raw.txt",
+      "sha256": "d5515ec0b15dac3bbf6556f88bf265c9586fb60e8230546fe71b80f1027d5e9a"
+    },
+    {
+      "bytes": 275,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-openscore-6583512-page-1-61b9370dfa16-252d8c9a02c2/system-0002.abc",
+      "role": "partial_system-0002.abc",
+      "sha256": "a0640e56d1d6ec3ff16b7a84b558531380b7c8d8bf8fd1de517e46c156a66bf0"
+    },
+    {
+      "bytes": 1218,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-openscore-6583512-page-1-61b9370dfa16-252d8c9a02c2/system-0002.raw.txt",
+      "role": "partial_system-0002.raw.txt",
+      "sha256": "a847f6e819e17420e8abb1614c4146f403be2a1b502af114612e301fed832a5f"
+    },
+    {
+      "bytes": 135,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-openscore-6583512-page-1-61b9370dfa16-252d8c9a02c2/system-0003.abc",
+      "role": "partial_system-0003.abc",
+      "sha256": "f8836754be791ae8a1e9b262f6099c76293ac7bd760d40362f5865ef930c8699"
+    },
+    {
+      "bytes": 1078,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-openscore-6583512-page-1-61b9370dfa16-252d8c9a02c2/system-0003.raw.txt",
+      "role": "partial_system-0003.raw.txt",
+      "sha256": "f5af57c2f391c6f9ae8c3aeb9cb82837150376f342dc4f61e904212a935c66ba"
+    }
+  ],
+  "candidate_id": "rokot",
+  "composition_group": "6583512",
+  "error": {
+    "code": "STITCH_INVALID",
+    "message": "Voice identities or clefs changed between systems",
+    "stage": "stitching"
+  },
+  "exit_status": 1,
+  "item_id": "openscore-6583512-page-1",
+  "measurement_path": "complete_document",
+  "provenance": {
+    "adapter_config": {
+      "adapter_id": "rokot_q8_system_and_page",
+      "adapter_revision": "b4ffcc4f75ba5b0243db3c1314ba421d75e6b69c3c80502ce45e6172626302d5",
+      "candidate_id": "rokot",
+      "checkpoint": "rokot-omr-2b-Q8_0.gguf",
+      "checkpoint_revision": "7add305aade6fb3a64ad4dde77d410fa68381089",
+      "input_granularity": "detected system",
+      "native_format": "ABC",
+      "settings": {
+        "cli_sha256": "252d8c9a02c20aa7263a38fea69182e3658779f368baaeb57610bfd90e084b9e",
+        "converter": "croma 1.2.1 strict ABC to MusicXML",
+        "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+        "cuda_runtime_sha256": {
+          "cublas64_12.dll": "e40202fe4223c1cd2d2dce7beec59e1ed61c7801bd827309183be9b50e358f4c",
+          "cublasLt64_12.dll": "2a896460bef60ed57ef32b0875812f355a6984e671d638bb632f5e8c1d7a831f",
+          "cudart64_12.dll": "d28e42265da7462162a54da6b7a99ea4fa2caf8139d862bb500db875d0b32dfc"
+        },
+        "detector_sha256": "4ad2a8c2cf88d19db46349fda84c76dc8a60dbad2cac6df9f3405b2ad7b26bc2",
+        "image_min_tokens": 1024,
+        "max_new_tokens": 1600,
+        "model_sha256": "df53948ada1a4a584b4c7c81cc7e3293d3457f2e5ec9688271693459eb950f25",
+        "precision": "Q8_0 text; f16 projector",
+        "projector_sha256": "1074d47f6fd864bffa9d8843bbae30e6aa696ad0d55535ebd77053d81c699bd0",
+        "prompt": "Transcribe this sheet music to rokot-ABC.",
+        "seed": 0,
+        "segmentation": "HOMR detector boxes on exact returned preprocessed image; full-width vertical-margin crops",
+        "temperature": 0
+      },
+      "source_repository": "https://huggingface.co/rokotmidi/rokot-omr-2b",
+      "source_revision": "7add305aade6fb3a64ad4dde77d410fa68381089",
+      "supported_paths": [
+        "annotated_crop",
+        "complete_document"
+      ]
+    },
+    "adapter_config_sha256": "61b9370dfa1600068887c63a9e3c72fd4b587d17f59308d4d8c5016f40a12880",
+    "checkpoint": "rokot-omr-2b-Q8_0.gguf",
+    "checkpoint_revision": "7add305aade6fb3a64ad4dde77d410fa68381089",
+    "input_path": "Research/omr/data/phase1-development/open/6583512/page-1.png",
+    "input_sha256": "7da3c01d87298c1c75f95a1b104ff95e091e5ec6650e8d8176139584621612d2",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "source_repository": "https://huggingface.co/rokotmidi/rokot-omr-2b",
+    "source_revision": "7add305aade6fb3a64ad4dde77d410fa68381089"
+  },
+  "resources": {
+    "cold_start": true,
+    "measurement_notes": [
+      "device-wide WDDM fallback"
+    ],
+    "peak_ram_bytes": 2464788480,
+    "peak_vram_bytes": 5392826368,
+    "sample_interval_seconds": 0.2
+  },
+  "schema_version": 1,
+  "status": "failed",
+  "timings": [
+    {
+      "seconds": 28.22657009999989,
+      "stage": "total_failed_attempt"
+    },
+    {
+      "seconds": 4.617087899999888,
+      "stage": "segmentation"
+    },
+    {
+      "seconds": 7.259209999999939,
+      "stage": "recognition_system_1"
+    },
+    {
+      "seconds": 6.511821100000134,
+      "stage": "recognition_system_2"
+    },
+    {
+      "seconds": 5.443350100000089,
+      "stage": "recognition_system_3"
+    },
+    {
+      "seconds": 0.00017019999995682156,
+      "stage": "native_to_musicxml_and_stitching"
+    }
+  ],
+  "warnings": []
+}

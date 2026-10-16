@@ -1,0 +1,152 @@
+{
+  "aligned_voice_accuracy": 0.9371859296482412,
+  "candidate": "homr-465-upstream",
+  "capture_status": "complete",
+  "comparison_identity": "91e7256cd902a6ea2adb9fb415e6847b2ba0b9e94fb03fe8f5f1570ae6544fb9",
+  "composition_group": "joplin/breeze",
+  "configuration_identity": "9e619e47fd0317b6a7d1da5207985e1120acefc499a111649c5b7cdb1e339122",
+  "conversion_error": null,
+  "coverage": {
+    "chord_completeness": 0.9655172413793104,
+    "complete_chords": 112,
+    "per_staff": {
+      "0": {
+        "matched_notes": 228,
+        "predicted_notes": 230,
+        "recall": 0.5588235294117647,
+        "reference_notes": 408
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 176,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 116,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 12,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 200,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/4",
+        "count": 180,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "3/2",
+        "count": 2,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "3/4",
+        "count": 4,
+        "predicted": "3/4"
+      }
+    ],
+    "unmatched_expected": 9,
+    "unmatched_predicted": 7
+  },
+  "elapsed_seconds": 15.406999999999243,
+  "extra_notes": 8,
+  "item_id": "249969db017a7b45ade1",
+  "mean_offset_error": 0.0006265664160401002,
+  "metrics": {
+    "aligned_voice_accuracy": 0.9371859296482412,
+    "coverage": {
+      "chord_completeness": 0.9655172413793104,
+      "complete_chords": 112,
+      "per_staff": {
+        "0": {
+          "matched_notes": 228,
+          "predicted_notes": 230,
+          "recall": 0.5588235294117647,
+          "reference_notes": 408
+        },
+        "1": {
+          "matched_notes": 0,
+          "predicted_notes": 176,
+          "recall": null,
+          "reference_notes": 0
+        }
+      },
+      "reference_chords": 116,
+      "staff_interpretation": "notation staff index; not validated hand labels"
+    },
+    "duration": {
+      "confusion": [
+        {
+          "actual": "1",
+          "count": 12,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/2",
+          "count": 200,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/2",
+          "count": 1,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/4",
+          "count": 180,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "3/2",
+          "count": 2,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "3/4",
+          "count": 4,
+          "predicted": "3/4"
+        }
+      ],
+      "unmatched_expected": 9,
+      "unmatched_predicted": 7
+    },
+    "extra_notes": 8,
+    "mean_offset_error": 0.0006265664160401002,
+    "missing_notes": 10,
+    "onset_duration_f1": 0.9778869778869779,
+    "onset_f1": 0.9803439803439804,
+    "pitch_f1": 0.995085995085995,
+    "predicted_notes": 406,
+    "reference_notes": 408,
+    "staff_accuracy": 0.5728643216080402,
+    "timeline_predicted": "97/2",
+    "timeline_reference": "48"
+  },
+  "missing_notes": 10,
+  "onset_duration_f1": 0.9778869778869779,
+  "onset_f1": 0.9803439803439804,
+  "original_item_id": "test/joplin/breeze/breeze_1.png",
+  "pitch_f1": 0.995085995085995,
+  "predicted_notes": 406,
+  "receipt_sha256": "e2cd16b8f98b8a03fa016ad89c2f08df585789c50352fb371143650e71e4537a",
+  "reference_notes": 408,
+  "reference_sha256": "5ecba5c46bd70f6542b5f90377f857995b1331c44bf5089327ac105b214abae2",
+  "staff_accuracy": 0.5728643216080402,
+  "status": "complete",
+  "timeline_predicted": "97/2",
+  "timeline_reference": "48"
+}

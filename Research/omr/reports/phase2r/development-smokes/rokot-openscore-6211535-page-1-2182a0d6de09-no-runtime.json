@@ -1,0 +1,145 @@
+{
+  "adapter_config_sha256": "2182a0d6de09ffa85419996d81bffbfff7bfdf1ad26a18922e66a19a7d157ca4",
+  "adapter_id": "rokot_q8_system_and_page",
+  "artifacts": [
+    {
+      "bytes": 681,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-openscore-6211535-page-1-2182a0d6de09-no-runtime/detected-systems.json",
+      "role": "partial_detected-systems.json",
+      "sha256": "f3c90cb48bc790abbb0ad6fc40db5799fdd50d57ddf0a65dcf5a9299cfd00ab7"
+    },
+    {
+      "bytes": 212,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-openscore-6211535-page-1-2182a0d6de09-no-runtime/system-0001.abc",
+      "role": "partial_system-0001.abc",
+      "sha256": "e6be237f106be62973dce10a79e485ec5bbaf3505326e87c57919c9a834a6bf3"
+    },
+    {
+      "bytes": 1157,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-openscore-6211535-page-1-2182a0d6de09-no-runtime/system-0001.raw.txt",
+      "role": "partial_system-0001.raw.txt",
+      "sha256": "8ca1f1bb273061fdf7145f406c003f4eb5c3546026ad3a3a0f8b3772df8a4299"
+    },
+    {
+      "bytes": 195,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-openscore-6211535-page-1-2182a0d6de09-no-runtime/system-0002.abc",
+      "role": "partial_system-0002.abc",
+      "sha256": "89777d08f4aa3e56e738be3107ae4b555d8c08286c9f92fdee4f4233cb35e0a6"
+    },
+    {
+      "bytes": 1140,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-openscore-6211535-page-1-2182a0d6de09-no-runtime/system-0002.raw.txt",
+      "role": "partial_system-0002.raw.txt",
+      "sha256": "777bba9e48d764a7951b26783922ed76c5120e7f386fd5d587f58a455c2abdac"
+    },
+    {
+      "bytes": 174,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-openscore-6211535-page-1-2182a0d6de09-no-runtime/system-0003.abc",
+      "role": "partial_system-0003.abc",
+      "sha256": "51b2c38818b9b7fbf4b0280a141f33182de17c871ed6848750a9809d01b6e332"
+    },
+    {
+      "bytes": 1119,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-openscore-6211535-page-1-2182a0d6de09-no-runtime/system-0003.raw.txt",
+      "role": "partial_system-0003.raw.txt",
+      "sha256": "39ab889595b89ca471095b6a59893cd8d6376b14caa921b3bb15dba487c9163b"
+    },
+    {
+      "bytes": 268,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-openscore-6211535-page-1-2182a0d6de09-no-runtime/system-0004.abc",
+      "role": "partial_system-0004.abc",
+      "sha256": "47a1807b48c635e69521fa0d91d7010e349132b0d023225f9928e2e41fdfb23f"
+    },
+    {
+      "bytes": 1213,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-openscore-6211535-page-1-2182a0d6de09-no-runtime/system-0004.raw.txt",
+      "role": "partial_system-0004.raw.txt",
+      "sha256": "299ffa134a3eb955dcbadc0a78a7c45811fa47de8118f81b4ce0c97627a8f8eb"
+    },
+    {
+      "bytes": 128,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-openscore-6211535-page-1-2182a0d6de09-no-runtime/system-0005.abc",
+      "role": "partial_system-0005.abc",
+      "sha256": "eb72e84bbd07ce51292189b192f2de24d60be6501a9d5a7d41e32f18fb0fcaa5"
+    },
+    {
+      "bytes": 1073,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-openscore-6211535-page-1-2182a0d6de09-no-runtime/system-0005.raw.txt",
+      "role": "partial_system-0005.raw.txt",
+      "sha256": "63111ab5781e481cbecdc29c156df945c77c945d5dabdd8f3282655318e6e21b"
+    }
+  ],
+  "candidate_id": "rokot",
+  "composition_group": "6211535",
+  "error": {
+    "code": "STITCH_INVALID",
+    "message": "One or more declared voices have no music",
+    "stage": "stitching"
+  },
+  "exit_status": 1,
+  "item_id": "openscore-6211535-page-1",
+  "measurement_path": "complete_document",
+  "provenance": {
+    "adapter_config": {
+      "adapter_id": "rokot_q8_system_and_page",
+      "adapter_revision": "9dbfd637d8477a2380f24060d094a1d60a82774ac7a0c24fe807d2950e68800b",
+      "candidate_id": "rokot",
+      "checkpoint": "rokot-omr-2b-Q8_0.gguf",
+      "checkpoint_revision": "7add305aade6fb3a64ad4dde77d410fa68381089",
+      "input_granularity": "detected system",
+      "native_format": "ABC",
+      "settings": {
+        "cli_sha256": "252d8c9a02c20aa7263a38fea69182e3658779f368baaeb57610bfd90e084b9e",
+        "converter": "croma 1.2.1 strict ABC to MusicXML",
+        "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+        "detector_sha256": "b1aac6372d1cbce32dc8e00a7e6c6d809cb9d6eb1fb82ad382cfb42a8b2e6c86",
+        "image_min_tokens": 1024,
+        "max_new_tokens": 1600,
+        "model_sha256": "df53948ada1a4a584b4c7c81cc7e3293d3457f2e5ec9688271693459eb950f25",
+        "precision": "Q8_0 text; f16 projector",
+        "projector_sha256": "1074d47f6fd864bffa9d8843bbae30e6aa696ad0d55535ebd77053d81c699bd0",
+        "prompt": "Transcribe this sheet music to rokot-ABC.",
+        "seed": 0,
+        "segmentation": "Bridge/detect_systems.py with full-width, vertical-margin crops",
+        "temperature": 0
+      },
+      "source_repository": "https://huggingface.co/rokotmidi/rokot-omr-2b",
+      "source_revision": "7add305aade6fb3a64ad4dde77d410fa68381089",
+      "supported_paths": [
+        "annotated_crop",
+        "complete_document"
+      ]
+    },
+    "adapter_config_sha256": "2182a0d6de09ffa85419996d81bffbfff7bfdf1ad26a18922e66a19a7d157ca4",
+    "checkpoint": "rokot-omr-2b-Q8_0.gguf",
+    "checkpoint_revision": "7add305aade6fb3a64ad4dde77d410fa68381089",
+    "input_path": "Research/omr/data/phase1-development/open/6211535/page-1.png",
+    "input_sha256": "b368dd864dc235272728822a578551fbed619cce02265cc52043dea3051c57c8",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "source_repository": "https://huggingface.co/rokotmidi/rokot-omr-2b",
+    "source_revision": "7add305aade6fb3a64ad4dde77d410fa68381089"
+  },
+  "resources": {
+    "cold_start": true,
+    "measurement_notes": [],
+    "peak_ram_bytes": null,
+    "peak_vram_bytes": null,
+    "sample_interval_seconds": null
+  },
+  "schema_version": 1,
+  "status": "failed",
+  "timings": [],
+  "warnings": []
+}

@@ -1,0 +1,102 @@
+{
+  "adapter_config_sha256": "65cbbc866b8d90895b671961c7c6145a5a7995110aaada16432c43517b6373a9",
+  "adapter_id": "audiveris_unattended",
+  "artifacts": [
+    {
+      "bytes": 6329,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/audiveris-generated-syncopation-65cbbc866b8d-06dbf3b4a5ac/engine.log",
+      "role": "partial_1_engine.log",
+      "sha256": "3105f27a372f5e2e122261cfa6632439bce093647ed24c35be9322801e2aa4f7"
+    },
+    {
+      "bytes": 6553,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/audiveris-generated-syncopation-65cbbc866b8d-06dbf3b4a5ac/audiveris-output/syncopation-20260924T2118.log",
+      "role": "partial_2_syncopation-20260924T2118.log",
+      "sha256": "fe13405f6e8278788e6dc41ea60e41c55ba3438bc7009fc81e2d173c2056fadf"
+    },
+    {
+      "bytes": 11504,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/audiveris-generated-syncopation-65cbbc866b8d-06dbf3b4a5ac/audiveris-output/syncopation.omr",
+      "role": "partial_3_syncopation.omr",
+      "sha256": "1493e328bbf50e80b295e15209a96ef0ee45c098239c05518131e2ee94dad40f"
+    }
+  ],
+  "candidate_id": "audiveris",
+  "composition_group": "syncopation",
+  "error": {
+    "code": "AUDIVERIS_FAILED",
+    "message": "da$doOneStep$0(SheetStub.java:503)\n\tat java.base/java.util.concurrent.FutureTask.run(Unknown Source)\n\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)\n\tat java.base/java.lang.Thread.run(Unknown Source)\nINFO  [syncopation]                      Book 2584 | Book{syncopation} storing\nINFO  [syncopation]                      Book 2565 | Stored /book.xml\nINFO  [syncopation]                     Sheet 1583 | Stored /sheet#1/sheet#1.xml\nINFO  [syncopation]                      Book 2525 | Book stored as ${WORKSPACE}\\Research\\omr\\.runtime\\phase2r\\smokes\\audiveris-generated-syncopation-65cbbc866b8d-06dbf3b4a5ac\\audiveris-output\\syncopation.omr\nINFO  [syncopation]                 SheetStub 1655 | Sheet disposed\nINFO  [syncopation]                      Book 2050 | End of Stub#1\nINFO  [syncopation]                      Book 2057 | End of Book{syncopation}\nINFO  [syncopation]                      Book 596  | Could not export since transcription did not complete successfully\nWARN  [syncopation]                       CLI 956  | Exception occurred java.lang.Exception: Error in export\njava.lang.Exception: Error in export\n\tat org.audiveris.omr.CLI$ProcessingTask.processBook(CLI.java:930)\n\tat org.audiveris.omr.CLI$CliTask.call(CLI.java:513)\n\tat org.audiveris.omr.Main.runBatchTasks(Main.java:370)\n\tat org.audiveris.omr.Main.main(Main.java:272)\n\tat Audiveris.main(Audiveris.java:50)\nWARN  []                      Main 373  | Exception on syncopation, java.lang.Exception: Error in export\njava.lang.Exception: Error in export\n\tat org.audiveris.omr.CLI$ProcessingTask.processBook(CLI.java:930)\n\tat org.audiveris.omr.CLI$CliTask.call(CLI.java:513)\n\tat org.audiveris.omr.Main.runBatchTasks(Main.java:370)\n\tat org.audiveris.omr.Main.main(Main.java:272)\n\tat Audiveris.main(Audiveris.java:50)\nWARN  []                      Main 307  | Exit forced. Failure\n",
+    "stage": "recognition"
+  },
+  "exit_status": 1,
+  "item_id": "generated-syncopation",
+  "measurement_path": "complete_document",
+  "provenance": {
+    "adapter_config": {
+      "adapter_id": "audiveris_unattended",
+      "adapter_revision": "614faf6ddc1d8f0f6580ec1f1772574e55f8b1d27f566026f829ca99f3bdc2b4",
+      "candidate_id": "audiveris",
+      "checkpoint": "Audiveris 5.11.0 classifiers",
+      "checkpoint_revision": "5.11.0",
+      "input_granularity": "complete document",
+      "native_format": "Audiveris OMR project",
+      "settings": {
+        "batch": true,
+        "export": "MusicXML",
+        "manual_corrections": false,
+        "small_image_preprocessing": "lanczos-width-at-least-2000px-300dpi-v1"
+      },
+      "source_repository": "https://github.com/Audiveris/audiveris",
+      "source_revision": "9e1e55cd2746037d059345881c53e6a6754bffbd",
+      "supported_paths": [
+        "complete_document"
+      ]
+    },
+    "adapter_config_sha256": "65cbbc866b8d90895b671961c7c6145a5a7995110aaada16432c43517b6373a9",
+    "checkpoint": "Audiveris 5.11.0 classifiers",
+    "checkpoint_revision": "5.11.0",
+    "command": [
+      "Research/omr/.runtime/phase2r/audiveris-extract/Audiveris/Audiveris.exe",
+      "-batch",
+      "-save",
+      "-export",
+      "-output",
+      "Research/omr/.runtime/phase2r/smokes/audiveris-generated-syncopation-65cbbc866b8d-06dbf3b4a5ac/audiveris-output",
+      "--",
+      "Research/omr/data/polyrhythm/syncopation.png"
+    ],
+    "input_path": "Research/omr/data/polyrhythm/syncopation.png",
+    "input_scale": 1,
+    "input_sha256": "b81f65fe8faa3a2d2517aaf22b362ba613441388e79335f18ffb5839d4e5a4e7",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "prepared_input_sha256": "b81f65fe8faa3a2d2517aaf22b362ba613441388e79335f18ffb5839d4e5a4e7",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "source_repository": "https://github.com/Audiveris/audiveris",
+    "source_revision": "9e1e55cd2746037d059345881c53e6a6754bffbd"
+  },
+  "resources": {
+    "cold_start": true,
+    "measurement_notes": [
+      "VRAM measurement: device-wide WDDM fallback"
+    ],
+    "peak_ram_bytes": 412991488,
+    "peak_vram_bytes": null,
+    "sample_interval_seconds": 0.2
+  },
+  "schema_version": 1,
+  "status": "failed",
+  "timings": [
+    {
+      "seconds": 0.00020479999875533395,
+      "stage": "input_preprocessing"
+    },
+    {
+      "seconds": 3.6325758999992104,
+      "stage": "recognition"
+    }
+  ],
+  "warnings": []
+}

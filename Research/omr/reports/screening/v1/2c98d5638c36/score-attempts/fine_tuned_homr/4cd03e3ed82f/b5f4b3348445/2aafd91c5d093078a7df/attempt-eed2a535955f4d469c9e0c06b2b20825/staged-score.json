@@ -1,0 +1,77 @@
+{
+  "adapter_id": "epoch14_verified_onnx",
+  "aligned_voice_accuracy": 0.7283950617283951,
+  "candidate_id": "fine_tuned_homr",
+  "cold_start": true,
+  "composition_group": "mozart/sonata08_2",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/2",
+        "count": 23,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 38,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/4",
+        "count": 2,
+        "predicted": "1/8"
+      },
+      {
+        "actual": "1/8",
+        "count": 19,
+        "predicted": "1/8"
+      },
+      {
+        "actual": "3/4",
+        "count": 2,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "6",
+        "count": 1,
+        "predicted": "6"
+      }
+    ],
+    "unmatched_expected": 416,
+    "unmatched_predicted": 411
+  },
+  "elapsed_seconds": 25.60900000000038,
+  "error": null,
+  "extra_note_count": 416,
+  "failure_penalized_omr_ned": 0.42797171895713654,
+  "first_divergent_measure": 1,
+  "item_id": "test/mozart/sonata08_2/sonata08_2_2.png",
+  "mean_offset_error": 0.023255813953488372,
+  "missing_note_count": 421,
+  "omr_ned": 0.42797171895713654,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.16216216216216214,
+  "onset_f1": 0.17217217217217215,
+  "peak_ram_bytes": 1536229376,
+  "peak_vram_bytes": 1641021440,
+  "pitch_f1": 0.9809809809809811,
+  "predicted_note_count": 497,
+  "reference_measure_count": 22,
+  "reference_note_count": 502,
+  "reference_quarter_length": "63",
+  "schema_version": 1,
+  "staff_accuracy": 0.4691358024691358,
+  "status": "succeeded",
+  "timeline_length_error": "21/8",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

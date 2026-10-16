@@ -1,0 +1,116 @@
+{
+  "adapter_config_sha256": "935b7fd9e1486971a5ac719a743cfe279d6097c4a2a3aded99a294883e1d648c",
+  "adapter_id": "audiveris_unattended",
+  "artifacts": [
+    {
+      "bytes": 239994,
+      "media_type": "application/vnd.audiveris.omr",
+      "path": "Research/omr/.runtime/phase3/development-entry/audiveris_page-openscore-6211535-page-1-a91f1087c556/audiveris.omr",
+      "role": "native",
+      "sha256": "ee427a4bca037c19d2c56334300961e1f09f30e38247f44de5ac7186e0e67dc5"
+    },
+    {
+      "bytes": 6326,
+      "media_type": "application/vnd.recordare.musicxml",
+      "path": "Research/omr/.runtime/phase3/development-entry/audiveris_page-openscore-6211535-page-1-a91f1087c556/score.mxl",
+      "role": "musicxml",
+      "sha256": "98c6ef578262502a53f31a81c10274de960990047d0c6686bd3bbedb2306f979"
+    },
+    {
+      "bytes": 39034,
+      "media_type": "application/json",
+      "path": "Research/omr/.runtime/phase3/development-entry/audiveris_page-openscore-6211535-page-1-a91f1087c556/canonical-events.json",
+      "role": "canonical_events",
+      "sha256": "3bfbc5bfc8e7a62dd3af5b3c8c603d207a19a201d8022cb638dd135af5cdb1fa"
+    },
+    {
+      "bytes": 8416,
+      "media_type": "text/plain",
+      "path": "Research/omr/.runtime/phase3/development-entry/audiveris_page-openscore-6211535-page-1-a91f1087c556/engine.log",
+      "role": "engine_log",
+      "sha256": "3000ba3e842badbc5e027fd41f9124c353f6f8ddf62b80e149b41a6be0bf644c"
+    },
+    {
+      "bytes": 569,
+      "media_type": "application/json",
+      "path": "Research/omr/.runtime/phase3/development-entry/audiveris_page-openscore-6211535-page-1-a91f1087c556/attempt-measurements.json",
+      "role": "attempt_measurements",
+      "sha256": "bcfe857c2d00514e9a5b38381675ed72ca6a232a415c23bc5e917cb8639a5d16"
+    }
+  ],
+  "candidate_id": "audiveris",
+  "composition_group": "6211535",
+  "error": null,
+  "exit_status": 0,
+  "item_id": "openscore-6211535-page-1",
+  "measurement_path": "complete_document",
+  "provenance": {
+    "adapter_config": {
+      "adapter_id": "audiveris_unattended",
+      "adapter_revision": "9aed6425831c77cf53fc935e30138782757de2de1d2ef66f857254e1b95cfb9b",
+      "candidate_id": "audiveris",
+      "checkpoint": "Audiveris 5.11.0 classifiers",
+      "checkpoint_revision": "5.11.0",
+      "input_granularity": "complete document",
+      "native_format": "Audiveris OMR project",
+      "settings": {
+        "batch": true,
+        "export": "MusicXML",
+        "manual_corrections": false,
+        "small_image_preprocessing": "lanczos-width-at-least-2000px-300dpi-v1"
+      },
+      "source_repository": "https://github.com/Audiveris/audiveris",
+      "source_revision": "9e1e55cd2746037d059345881c53e6a6754bffbd",
+      "supported_paths": [
+        "complete_document"
+      ]
+    },
+    "adapter_config_sha256": "935b7fd9e1486971a5ac719a743cfe279d6097c4a2a3aded99a294883e1d648c",
+    "checkpoint": "Audiveris 5.11.0 classifiers",
+    "checkpoint_revision": "5.11.0",
+    "command": [
+      "Research/omr/.runtime/phase2r/audiveris-extract/Audiveris/Audiveris.exe",
+      "-batch",
+      "-save",
+      "-export",
+      "-output",
+      "Research/omr/.runtime/phase3/development-entry/audiveris_page-openscore-6211535-page-1-a91f1087c556/audiveris-output",
+      "--",
+      "Research/omr/data/phase1-development/open/6211535/page-1.png"
+    ],
+    "input_path": "Research/omr/data/phase1-development/open/6211535/page-1.png",
+    "input_scale": 1,
+    "input_sha256": "b368dd864dc235272728822a578551fbed619cce02265cc52043dea3051c57c8",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "prepared_input_sha256": "b368dd864dc235272728822a578551fbed619cce02265cc52043dea3051c57c8",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "source_repository": "https://github.com/Audiveris/audiveris",
+    "source_revision": "9e1e55cd2746037d059345881c53e6a6754bffbd"
+  },
+  "resources": {
+    "cold_start": true,
+    "measurement_notes": [
+      "VRAM measurement: device-wide WDDM fallback"
+    ],
+    "peak_ram_bytes": 797782016,
+    "peak_vram_bytes": null,
+    "sample_interval_seconds": 0.2
+  },
+  "schema_version": 1,
+  "status": "succeeded",
+  "timings": [
+    {
+      "seconds": 0.013510600000017803,
+      "stage": "input_preprocessing"
+    },
+    {
+      "seconds": 21.908582400000114,
+      "stage": "recognition_and_native_conversion"
+    },
+    {
+      "seconds": 0.6884026000000176,
+      "stage": "shared_normalization"
+    }
+  ],
+  "warnings": []
+}

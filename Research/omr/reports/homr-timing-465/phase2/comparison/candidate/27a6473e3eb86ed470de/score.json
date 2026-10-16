@@ -1,0 +1,212 @@
+{
+  "aligned_voice_accuracy": 0.8910891089108911,
+  "candidate": "homr-465-upstream",
+  "capture_status": "complete",
+  "comparison_identity": "91e7256cd902a6ea2adb9fb415e6847b2ba0b9e94fb03fe8f5f1570ae6544fb9",
+  "composition_group": "joplin/pleasant",
+  "configuration_identity": "9e619e47fd0317b6a7d1da5207985e1120acefc499a111649c5b7cdb1e339122",
+  "conversion_error": null,
+  "coverage": {
+    "chord_completeness": 0.5913978494623656,
+    "complete_chords": 55,
+    "per_staff": {
+      "0": {
+        "matched_notes": 102,
+        "predicted_notes": 182,
+        "recall": 0.3090909090909091,
+        "reference_notes": 330
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 156,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 93,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 119,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 2,
+        "predicted": "3"
+      },
+      {
+        "actual": "1/2",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 65,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "2",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "2",
+        "count": 5,
+        "predicted": "2"
+      },
+      {
+        "actual": "2",
+        "count": 1,
+        "predicted": "4"
+      },
+      {
+        "actual": "3",
+        "count": 1,
+        "predicted": "3"
+      },
+      {
+        "actual": "3/2",
+        "count": 5,
+        "predicted": "1"
+      },
+      {
+        "actual": "3/2",
+        "count": 10,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "4",
+        "count": 2,
+        "predicted": "4"
+      },
+      {
+        "actual": "5/2",
+        "count": 4,
+        "predicted": "3/2"
+      }
+    ],
+    "unmatched_expected": 114,
+    "unmatched_predicted": 122
+  },
+  "elapsed_seconds": 13.578000000001339,
+  "extra_notes": 136,
+  "item_id": "27a6473e3eb86ed470de",
+  "mean_offset_error": 0.06481481481481481,
+  "metrics": {
+    "aligned_voice_accuracy": 0.8910891089108911,
+    "coverage": {
+      "chord_completeness": 0.5913978494623656,
+      "complete_chords": 55,
+      "per_staff": {
+        "0": {
+          "matched_notes": 102,
+          "predicted_notes": 182,
+          "recall": 0.3090909090909091,
+          "reference_notes": 330
+        },
+        "1": {
+          "matched_notes": 0,
+          "predicted_notes": 156,
+          "recall": null,
+          "reference_notes": 0
+        }
+      },
+      "reference_chords": 93,
+      "staff_interpretation": "notation staff index; not validated hand labels"
+    },
+    "duration": {
+      "confusion": [
+        {
+          "actual": "1",
+          "count": 119,
+          "predicted": "1"
+        },
+        {
+          "actual": "1",
+          "count": 2,
+          "predicted": "3"
+        },
+        {
+          "actual": "1/2",
+          "count": 1,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/2",
+          "count": 65,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "2",
+          "count": 1,
+          "predicted": "1"
+        },
+        {
+          "actual": "2",
+          "count": 5,
+          "predicted": "2"
+        },
+        {
+          "actual": "2",
+          "count": 1,
+          "predicted": "4"
+        },
+        {
+          "actual": "3",
+          "count": 1,
+          "predicted": "3"
+        },
+        {
+          "actual": "3/2",
+          "count": 5,
+          "predicted": "1"
+        },
+        {
+          "actual": "3/2",
+          "count": 10,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "4",
+          "count": 2,
+          "predicted": "4"
+        },
+        {
+          "actual": "5/2",
+          "count": 4,
+          "predicted": "3/2"
+        }
+      ],
+      "unmatched_expected": 114,
+      "unmatched_predicted": 122
+    },
+    "extra_notes": 136,
+    "mean_offset_error": 0.06481481481481481,
+    "missing_notes": 128,
+    "onset_duration_f1": 0.6047904191616766,
+    "onset_f1": 0.6467065868263474,
+    "pitch_f1": 0.9820359281437127,
+    "predicted_notes": 338,
+    "reference_notes": 330,
+    "staff_accuracy": 0.504950495049505,
+    "timeline_predicted": "79",
+    "timeline_reference": "75"
+  },
+  "missing_notes": 128,
+  "onset_duration_f1": 0.6047904191616766,
+  "onset_f1": 0.6467065868263474,
+  "original_item_id": "test/joplin/pleasant/pleasant_2.png",
+  "pitch_f1": 0.9820359281437127,
+  "predicted_notes": 338,
+  "receipt_sha256": "c836eb82d50a52555ba29c14b5aa11b7f70ba4f3c4e4da88a93ff0d0cafb78b1",
+  "reference_notes": 330,
+  "reference_sha256": "7e0bc305ac5937f81ab66353a7bf1bf7454f26d10312a743be344c37891a7ead",
+  "staff_accuracy": 0.504950495049505,
+  "status": "complete",
+  "timeline_predicted": "79",
+  "timeline_reference": "75"
+}

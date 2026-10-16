@@ -1,0 +1,57 @@
+{
+  "adapter_id": "audiveris_unattended",
+  "aligned_voice_accuracy": 1.0,
+  "candidate_id": "audiveris",
+  "cold_start": true,
+  "composition_group": "beethoven/sonata26_1",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 4,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 8,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "2",
+        "count": 2,
+        "predicted": "2"
+      }
+    ],
+    "unmatched_expected": 427,
+    "unmatched_predicted": 407
+  },
+  "elapsed_seconds": 40.57799999999952,
+  "error": null,
+  "extra_note_count": 407,
+  "failure_penalized_omr_ned": 0.32560706401766004,
+  "first_divergent_measure": 1,
+  "item_id": "test/beethoven/sonata26_1/sonata26_1_5.png",
+  "mean_offset_error": 0.25,
+  "missing_note_count": 427,
+  "omr_ned": 0.32560706401766004,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.03248259860788863,
+  "onset_f1": 0.03248259860788863,
+  "peak_ram_bytes": 1105989632,
+  "peak_vram_bytes": 0,
+  "pitch_f1": 0.8747099767981438,
+  "predicted_note_count": 421,
+  "reference_measure_count": 34,
+  "reference_note_count": 441,
+  "reference_quarter_length": "136",
+  "schema_version": 1,
+  "staff_accuracy": 0.5714285714285714,
+  "status": "succeeded",
+  "timeline_length_error": "21/4",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

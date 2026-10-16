@@ -1,0 +1,47 @@
+{
+  "generated-triplet_vs_duple": {
+    "crop_index": 0,
+    "stage": "Decoder output",
+    "finding": "The source and native crop retain the triplet bracket and all five note pitches. Source meter is 2/4; pre-cleanup tokens use timeSignature/4. Upper C5/E5 become ordinary quarters instead of 2/3-quarter durations, while D5 retains note_6. Lower D4 also becomes note_6 instead of a quarter. XML propagates these durations and shifts lower D4 to 5/3 instead of 1. Rhythm errors are demonstrated before cleanup/export; clipped tempo text does not explain the note-duration evidence."
+  },
+  "generated-triplet_vs_quadruple": {
+    "crop_index": 0,
+    "stage": "Decoder output",
+    "finding": "Source/crop retain three upper quarter-note triplets, the triplet bracket, and four lower eighth notes in 2/4. Pre-cleanup tokens use timeSignature/4; upper C5/E5 use ordinary quarters instead of 2/3-quarter durations, while D5 retains note_6. XML/timed events propagate the wrong durations and onsets. The first incorrect measure is 1; no reference-derived token correction was performed."
+  },
+  "openscore-6211535": {
+    "crop_index": 2,
+    "stage": "Decoder output",
+    "finding": "First differing measure 14 lies in the native system beginning at measure 11. The full page and crop retain three lower half-note chords and printed triplet numeral 3. Pre-cleanup tokens serialize these as ordinary note_2 durations (2 quarter beats), rather than the reference's 4/3-quarter durations. MusicXML/timed notes propagate the tuplet loss. This is a first-page diagnostic, not a numerical accuracy claim."
+  },
+  "openscore-6211549": {
+    "crop_index": 0,
+    "stage": "MusicXML onset placement; representation/export boundary",
+    "finding": "First differing measure 1 has independent voices retained in the source and crop. Raw tokens retain bass A octaves as dotted quarters, B octaves as eighths, D octaves as dotted quarters, and C-sharp octaves as eighths. Reference onsets are 0, 3/2, 2 and 7/2; exported B/D onsets become 2 and 5/2. Token streams lack explicit independent voice IDs, so onset placement is demonstrated at XML but exporter-only causal attribution is unsupported."
+  },
+  "openscore-6211555": {
+    "crop_index": 1,
+    "stage": "Staff crop",
+    "finding": "First differing measure 1: the first piano upper-staff crop contains only its left clef/meter, initial eighth rest and arpeggio; the right-hand music is cut off and the remainder is white. The full frozen page contains those notes. Decoder output for this crop is clef_G2/keySignature0/timeSignature4/rest_8/barline and cannot retain the missing notes. Horizontal crop loss is demonstrated before decoding; its initiating detection/geometry cause remains unverified."
+  },
+  "openscore-6211559": {
+    "crop_index": 3,
+    "stage": "MusicXML voice/tie conversion",
+    "finding": "First differing measure 2: source and crop retain F-sharp5/F-sharp4 dotted halves tied into measure 3, and raw tokens retain the pitches/durations and slur-start/stop markers. The model intentionally shares slur/tie vocabulary. Exported measure 2 assigns voices 2/6, while the continuing measure-3 notes use voices 1/5; measure-2 XML contains slurs but no tie starts. The installed convert_ties pairs adjacent events by staff/voice, so this voice discontinuity prevents the cross-measure tie. The expected 9/2-quarter sustain becomes 3. This establishes an XML representation/tie boundary defect; it does not establish an exporter-only initiating cause."
+  },
+  "openscore-6211561": {
+    "crop_index": 3,
+    "stage": "Staff crop",
+    "finding": "First differing measure 1: the first piano crop begins partway through the measure and omits initial clefs, meter and opening notes present on the full frozen page. The source uses two treble clefs. Tokens assume a bass clef on the lower staff and emit a register two octaves too low; omitted opening content and subsequent onset errors also propagate to XML. Missing left notation is demonstrated before decoding; the initiating detector/geometry cause is unverified."
+  },
+  "openscore-6212179": {
+    "crop_index": 3,
+    "stage": "Decoder output",
+    "finding": "First differing measure 1: the first piano crop retains nine beamed upper chords and visible 3/4 meter. Its piano triplet numerals are not printed; the separate voice staff has a visible triplet mark. Source MusicXML specifies 1/3-quarter durations for the nine piano chords. Raw tokens use timeSignature/4 and ordinary note_8 durations (1/2 quarter). XML propagates wrong durations and shifts the lower Db3 onset to 1/2 instead of 0. Reference semantics are explicit but the piano's tuplet notation is implicit; no numerical accuracy claim is made."
+  },
+  "openscore-6212193": {
+    "crop_index": 3,
+    "stage": "Decoder slur attachment",
+    "finding": "First differing measure 2: the reference has two separate C5 half notes with no ties/slurs; its lower upper-staff voice has an Ab4-to-F4 slur and tied G4 quarters. The crop retains both C5 heads and the curve. Pre-cleanup tokens attach slurStart/slurStop to the two C5 notes. Installed conversion interprets the same-pitch adjacent slur pair as a tie, fusing C5 into 4 quarter beats instead of two 2-quarter events. G4's true tie is also lost. Incorrect attachment is demonstrated in raw tokens before XML conversion; slurStart itself is valid shared model vocabulary."
+  }
+}

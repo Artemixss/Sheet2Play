@@ -1,0 +1,255 @@
+{
+  "candidate": "homr-465-upstream",
+  "capture_script": {
+    "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\homr_465_capture.py",
+    "sha256": "363261270b9a97246b2fb9247f848edab77a7983f73ce44783d5824091f41e30"
+  },
+  "contract": {
+    "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\homr_465_contract.json",
+    "sha256": "14ed2826521a2b7e6d97fa9b9e9101d64fe16419be9061baf1320cfa31e12344"
+  },
+  "identity_sha256": "9e619e47fd0317b6a7d1da5207985e1120acefc499a111649c5b7cdb1e339122",
+  "inter_op_threads": 1,
+  "metadata_qualification": "Native no-title setting excludes optional OCR; musical pipeline unchanged; no general title-equivalence claim",
+  "models": {
+    "decoder": {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\decoder\\decoder_pytorch_model_465-597144cab54c8f6d0f6c9619df5c5312694eadd6_fp16.onnx",
+      "sha256": "aaac38c4f4be13ec587325486f29a60a919924f0eb82d35b52d4a2e7126dfbe0"
+    },
+    "encoder": {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\encoder\\encoder_pytorch_model_465-597144cab54c8f6d0f6c9619df5c5312694eadd6_fp16.onnx",
+      "sha256": "50823c061533328f5e64df016d3ed16eb9071a9f5c5ee8621646cf9ac9c8a992"
+    }
+  },
+  "package_versions": {
+    "Pillow": "12.3.0",
+    "numpy": "2.4.6",
+    "onnxruntime-gpu": "1.24.1",
+    "opencv-python-headless": "4.14.0.94",
+    "pypdfium2": "5.13.0",
+    "rapidocr": "3.9.2",
+    "requests": "2.34.2",
+    "typing_extensions": "4.16.0"
+  },
+  "phase": 2,
+  "processing": {
+    "coreml_encoder": false,
+    "enable_cache": false,
+    "enable_debug": true,
+    "read_staff_positions": false,
+    "segnet_use_gpu": true,
+    "selected_staff": -1,
+    "title_detection": false,
+    "transformer_use_gpu": true,
+    "write_staff_positions": true
+  },
+  "provider": "CUDAExecutionProvider",
+  "python": {
+    "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-455\\venv\\Scripts\\python.exe",
+    "sha256": "21bb438c0d4a6f1f164b9a646f6ee000340185e5871180aec06db8d3f07c0082"
+  },
+  "safeguards": {
+    "active_processes": 16,
+    "gpu_stop_percent": 90,
+    "reserve_bytes": 4294967296,
+    "system_stop_percent": 85,
+    "worker_bytes": 4294967296
+  },
+  "schema_version": 1,
+  "segnet": {
+    "bytes": 28667207,
+    "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Bridge\\.venv-homr-gpu\\Lib\\site-packages\\homr\\segmentation\\segnet_308-3296ccd40960f90ca6ab9c035cca945675d30a0f_fp16.onnx",
+    "sha256": "60f495496cb41473c0521d0811d8f44b9d5cff892d287974a8aebb3eaee2fa83"
+  },
+  "source": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source",
+  "source_files": [
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\autocrop.py",
+      "sha256": "95a82139febff04a7530e4b074b85c2a52d7ab2a6e668b349799f5af969ed725"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\bar_line_detection.py",
+      "sha256": "0fd0ec988d240842a72348770769ef1a2c3a47a95da8996017aed04455589a6d"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\bounding_boxes.py",
+      "sha256": "cf5c27212f3b9763dd460cbefe99fd0a66e8f7bf53ea50d02d8849482a02a51f"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\brace_dot_detection.py",
+      "sha256": "ab5aade1a8653b3a44b300217404618f2bd8319d34173e7cd4dc26d66d45a7b7"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\circle_of_fifths.py",
+      "sha256": "3974ab21de851225a3f23f27868165c9b9ea9730984c3589ef180f1162056ae9"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\color_adjust.py",
+      "sha256": "01d971bded1397042bfa76ab9d691e6a3e6bf9bb4283f9d1dab382b0088d96fc"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\constants.py",
+      "sha256": "98d7114ec0509575e2b61ede66d7f42e8c0a90eb25aaa82ab7dd0e92e10fefa0"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\debug.py",
+      "sha256": "dc9e208c605389a967b58a4edee955bfa8ab559d2ac66cd3f677877c8c42b5b3"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\download_utils.py",
+      "sha256": "f2cd05ee4f03092da4135ed67404b6c2d3dd0048a41f8e7f3779a859a7b9a925"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\find_peaks.py",
+      "sha256": "6fd390137077cab7d64104931e3d06b0149581d7217b855ae4080addad21e8f2"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\image_utils.py",
+      "sha256": "b293ffad901fee69e11fcee672f2fc7aa61a44216143b95b8a916655400eea06"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\main.py",
+      "sha256": "306baf46ef3327475bf21c27b3452c9302798f84d25fad968f88bac8baaf0dea"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\model.py",
+      "sha256": "c46a69c711d9eb8b1bf9d00f7046031ecd73a7788e8caaaa3c53ee08fe16f59e"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\music_xml_generator.py",
+      "sha256": "77f5a00278869c957850aa0244e49cda88145fb4334be60080c44aee7aa8e576"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\noise_filtering.py",
+      "sha256": "0752bba4acca214407408b8f4e4f0540893e07a288f1272f3bfbd4395eca724b"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\note_detection.py",
+      "sha256": "7dc0b3f8038c47d5b4f263ae16b241ac358e12e2d13055aaa6593aaf0be1014b"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\onnx_providers.py",
+      "sha256": "f25106805b3dbf52878b13c0ef3dd78be63442aaf1ba9c0bae1830e9221d8fa7"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\pdf_utils.py",
+      "sha256": "d2bc574a128758dbdbdbc5ff1d1087a96cc8d3858bd6c8bf8a9e703180a5d017"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\point_mapping.py",
+      "sha256": "cce31c7e1e4d228641cb6503168c59d7e22371e5a361aec8a8029f576a07ad42"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\relieur.py",
+      "sha256": "f26dd41f459b421ba5704a98f4b2cea088fefc835a287fddd8d6af45c318626f"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\resize.py",
+      "sha256": "cc2ff7992ed5c2473529ab686912be8148c2a28059683362a6a346424cc97906"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\segmentation\\__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\segmentation\\config.py",
+      "sha256": "735c9ef5b30b9737221ca0ef31b4c28b04ee865f9885510da31fcad2c59df147"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\segmentation\\inference_segnet.py",
+      "sha256": "ef5ca2cfad5175a3919bcfba5c7375928a9c4be6876fa8aca0496515aabbe813"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\simple_logging.py",
+      "sha256": "0a289e6deb8d55e0bcd709f4651246a417efb744447a9340b3cd5eb5669271ed"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\staff_detection.py",
+      "sha256": "5f0b0a4faff6275ca4a47e2f4a0a32e2c436321d2cf41fe2cd303747a032589e"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\staff_dewarping.py",
+      "sha256": "6b44e0b843e40c1fc7399d88b696707dea17f5b425418da40d66418d41d9752c"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\staff_parsing.py",
+      "sha256": "000c49f20df1a90e9d518907c171d2e807155173195a131ac317acef954ebf77"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\staff_parsing_tromr.py",
+      "sha256": "96456c2feb7c306dd056e5ab59f170b4a19bbee7d22fa214965856cfe85669e4"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\staff_position_save_load.py",
+      "sha256": "5e44ada123fa9dd65fadf0fa684db2cce8468cdeba880f9dfb9367e20f175fb0"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\staff_regions.py",
+      "sha256": "58fb2f8b5fa8a22c8570b1cd2f0a8dde364642b641060434e759892862a85c01"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\title_detection.py",
+      "sha256": "93d8c60bd5c79c989a30ed920e66422f59b25c503872461409614065159b4bea"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\transformer\\__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\transformer\\configs.py",
+      "sha256": "2fdac1d1b961c8a5304d6ff34891848469507217c467aa313e8fd2d98385fc64"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\transformer\\decoder_inference.py",
+      "sha256": "8f91d0062bbd90687fa4c4e7abcd8ebe6fec250b013789b1121de6a4b50d7323"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\transformer\\encoder_inference.py",
+      "sha256": "27851bd0719d703218def26d8c830dbb708788f7e6b968662a6538ce0fd7b602"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\transformer\\staff2score.py",
+      "sha256": "ef6bc035a497c440b52f4d31b2757361a97dcc91ad1c7656d1fda7649a319e0c"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\transformer\\tokenizer_lift.json",
+      "sha256": "acebcd85936f2d2c4b8d67c2a90bb487a327e7eeca3b889896469f34d5157f85"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\transformer\\tokenizer_note.json",
+      "sha256": "be294c8adb4febeb93a1e257c7aa35ac34e5298071afa8f2af8d1cf5a33eae20"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\transformer\\tokenizer_pitch.json",
+      "sha256": "66ce099b2d3fcbdf7269d2600198628af8548bd410ec6a9ac478db7007ec9933"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\transformer\\tokenizer_rhythm.json",
+      "sha256": "3e64ccafd628436439e664aac40ea3820982cbd90171c9895d2c7cf2b9efb76e"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\transformer\\utils.py",
+      "sha256": "4ac26b2a45b94c573c7c1b5d261f8ef49986c18fad508d0cc295812307d340da"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\transformer\\vocabulary.py",
+      "sha256": "51205b457b99e8f267b8a8bdc86639289aa67de7b79c9f8524b95f1381b3d701"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.runtime\\homr-465-upstream\\source\\homr\\type_definitions.py",
+      "sha256": "f98c9ac820aae6c81b384c676a9c7848093723756c2f3628f8950c97a18fa3bb"
+    }
+  ],
+  "source_revision": "33baa326900faa12702df8c4bdcbea034a3d6a34",
+  "threads": 8,
+  "title_detection": false,
+  "xml_args": {
+    "large_page": false,
+    "metronome": null,
+    "tempo": null
+  }
+}

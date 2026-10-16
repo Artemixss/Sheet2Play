@@ -1,0 +1,32 @@
+{
+  "candidates": {
+    "fine_tuned_homr": "4cd03e3ed82f222a3fcfae0e009989e13380de9fcf933c3f3aab5b8effe3b32c",
+    "homr_455": "27658e9230dd0cbfe6e02263cc870d3a8468f271b8d27ab4fec50604dc19cf25"
+  },
+  "lock_exists": false,
+  "manifest": "Research\\omr\\reports\\screening\\v1\\manifest-v4-e31f2e628e16.json",
+  "resources": {
+    "admission_blockers": [],
+    "cpu_percent": 25.5,
+    "device_wide_gpu": [
+      {
+        "driver": "591.86",
+        "index": 0,
+        "name": "NVIDIA GeForce RTX 4050 Laptop GPU",
+        "percent": 0.0,
+        "temperature_c": 50,
+        "total_mib": 6141,
+        "used_mib": 0,
+        "utilization_percent": 0
+      }
+    ],
+    "disk_free_bytes": 61583650816,
+    "gpu_error": null,
+    "ram_available_bytes": 2491703296,
+    "ram_percent": 84.8,
+    "ram_total_bytes": 16369225728,
+    "utc": "2026-09-28T12:07:06.161942+00:00"
+  },
+  "sample_sha256": "2c98d5638c368b1a53bdb3440177d04fa585f9b1ca6ce6adbe65af64cd8e27d1",
+  "workers": []
+}

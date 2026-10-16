@@ -1,0 +1,52 @@
+{
+  "adapter_id": "zeus_app_integration",
+  "aligned_voice_accuracy": 1.0,
+  "candidate_id": "zeus",
+  "cold_start": true,
+  "composition_group": "chopin/mazurka68_4",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 2,
+        "predicted": "1/2"
+      }
+    ],
+    "unmatched_expected": 174,
+    "unmatched_predicted": 175
+  },
+  "elapsed_seconds": 45.61000000000058,
+  "error": null,
+  "extra_note_count": 177,
+  "failure_penalized_omr_ned": 0.7952994692949203,
+  "first_divergent_measure": 1,
+  "item_id": "test/chopin/mazurka68_4/mazurka68_4_1.png",
+  "mean_offset_error": 0.3333333333333333,
+  "missing_note_count": 176,
+  "omr_ned": 0.7952994692949203,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.005633802816901409,
+  "onset_f1": 0.016901408450704227,
+  "peak_ram_bytes": 1055744000,
+  "peak_vram_bytes": 242221056,
+  "pitch_f1": 0.3436619718309859,
+  "predicted_note_count": 178,
+  "reference_measure_count": 17,
+  "reference_note_count": 177,
+  "reference_quarter_length": "51",
+  "schema_version": 1,
+  "staff_accuracy": 0.0,
+  "status": "succeeded",
+  "timeline_length_error": "5/2",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

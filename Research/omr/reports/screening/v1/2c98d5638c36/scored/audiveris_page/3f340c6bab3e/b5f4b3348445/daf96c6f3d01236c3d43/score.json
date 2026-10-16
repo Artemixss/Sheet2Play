@@ -1,0 +1,57 @@
+{
+  "adapter_id": "audiveris_unattended",
+  "aligned_voice_accuracy": 1.0,
+  "candidate_id": "audiveris",
+  "cold_start": true,
+  "composition_group": "scarlatti/L055K330",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1/2",
+        "count": 3,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 9,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "1/4"
+      }
+    ],
+    "unmatched_expected": 289,
+    "unmatched_predicted": 295
+  },
+  "elapsed_seconds": 45.57899999999972,
+  "error": null,
+  "extra_note_count": 298,
+  "failure_penalized_omr_ned": 0.49643423137876386,
+  "first_divergent_measure": 3,
+  "item_id": "test/scarlatti/L055K330/L055K330_1.png",
+  "mean_offset_error": 0.11538461538461539,
+  "missing_note_count": 292,
+  "omr_ned": 0.49643423137876386,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.03278688524590164,
+  "onset_f1": 0.04262295081967213,
+  "peak_ram_bytes": 1100668928,
+  "peak_vram_bytes": 0,
+  "pitch_f1": 0.819672131147541,
+  "predicted_note_count": 308,
+  "reference_measure_count": 43,
+  "reference_note_count": 302,
+  "reference_quarter_length": "129/2",
+  "schema_version": 1,
+  "staff_accuracy": 1.0,
+  "status": "succeeded",
+  "timeline_length_error": "143/8",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

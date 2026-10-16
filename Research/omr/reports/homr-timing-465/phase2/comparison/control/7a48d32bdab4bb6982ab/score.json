@@ -1,0 +1,182 @@
+{
+  "aligned_voice_accuracy": 0.8382352941176471,
+  "candidate": "shipped-426-phase2-control",
+  "capture_status": "complete",
+  "comparison_identity": "91e7256cd902a6ea2adb9fb415e6847b2ba0b9e94fb03fe8f5f1570ae6544fb9",
+  "composition_group": "scarlatti/L056K281",
+  "configuration_identity": "31512f54e60c2e1cff049c60a7f68ceb0366eb49d4aeacf13368de17a0ec430d",
+  "conversion_error": null,
+  "coverage": {
+    "chord_completeness": 0.4943820224719101,
+    "complete_chords": 44,
+    "per_staff": {
+      "0": {
+        "matched_notes": 64,
+        "predicted_notes": 148,
+        "recall": 0.2222222222222222,
+        "reference_notes": 288
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 145,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 89,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 38,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 80,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 9,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "2",
+        "count": 2,
+        "predicted": "2"
+      },
+      {
+        "actual": "3",
+        "count": 2,
+        "predicted": "3"
+      },
+      {
+        "actual": "3/2",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "3/2",
+        "count": 4,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "3/4",
+        "count": 1,
+        "predicted": "3/4"
+      },
+      {
+        "actual": "7/2",
+        "count": 2,
+        "predicted": "3"
+      }
+    ],
+    "unmatched_expected": 149,
+    "unmatched_predicted": 154
+  },
+  "elapsed_seconds": 13.625,
+  "extra_notes": 157,
+  "item_id": "7a48d32bdab4bb6982ab",
+  "mean_offset_error": 0.01079136690647482,
+  "metrics": {
+    "aligned_voice_accuracy": 0.8382352941176471,
+    "coverage": {
+      "chord_completeness": 0.4943820224719101,
+      "complete_chords": 44,
+      "per_staff": {
+        "0": {
+          "matched_notes": 64,
+          "predicted_notes": 148,
+          "recall": 0.2222222222222222,
+          "reference_notes": 288
+        },
+        "1": {
+          "matched_notes": 0,
+          "predicted_notes": 145,
+          "recall": null,
+          "reference_notes": 0
+        }
+      },
+      "reference_chords": 89,
+      "staff_interpretation": "notation staff index; not validated hand labels"
+    },
+    "duration": {
+      "confusion": [
+        {
+          "actual": "1",
+          "count": 38,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/2",
+          "count": 80,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/4",
+          "count": 9,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "2",
+          "count": 2,
+          "predicted": "2"
+        },
+        {
+          "actual": "3",
+          "count": 2,
+          "predicted": "3"
+        },
+        {
+          "actual": "3/2",
+          "count": 1,
+          "predicted": "1"
+        },
+        {
+          "actual": "3/2",
+          "count": 4,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "3/4",
+          "count": 1,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "7/2",
+          "count": 2,
+          "predicted": "3"
+        }
+      ],
+      "unmatched_expected": 149,
+      "unmatched_predicted": 154
+    },
+    "extra_notes": 157,
+    "mean_offset_error": 0.01079136690647482,
+    "missing_notes": 152,
+    "onset_duration_f1": 0.46815834767642,
+    "onset_f1": 0.4784853700516351,
+    "pitch_f1": 0.9913941480206541,
+    "predicted_notes": 293,
+    "reference_notes": 288,
+    "staff_accuracy": 0.47058823529411764,
+    "timeline_predicted": "271/3",
+    "timeline_reference": "90"
+  },
+  "missing_notes": 152,
+  "onset_duration_f1": 0.46815834767642,
+  "onset_f1": 0.4784853700516351,
+  "original_item_id": "test/scarlatti/L056K281/L056K281_3.png",
+  "pitch_f1": 0.9913941480206541,
+  "predicted_notes": 293,
+  "receipt_sha256": "f88e120b84b0ad103c3b8afcb3fdaac0d44dd6862b1839876427e53ca8226b5c",
+  "reference_notes": 288,
+  "reference_sha256": "e30d77d06697747e62ca0ca7df39109d0b083e08f4abafcc446b418afd98e44c",
+  "staff_accuracy": 0.47058823529411764,
+  "status": "complete",
+  "timeline_predicted": "271/3",
+  "timeline_reference": "90"
+}

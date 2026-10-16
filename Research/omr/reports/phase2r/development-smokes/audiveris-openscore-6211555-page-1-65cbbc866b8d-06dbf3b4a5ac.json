@@ -1,0 +1,111 @@
+{
+  "adapter_config_sha256": "65cbbc866b8d90895b671961c7c6145a5a7995110aaada16432c43517b6373a9",
+  "adapter_id": "audiveris_unattended",
+  "artifacts": [
+    {
+      "bytes": 179779,
+      "media_type": "application/vnd.audiveris.omr",
+      "path": "Research/omr/.runtime/phase2r/smokes/audiveris-openscore-6211555-page-1-65cbbc866b8d-06dbf3b4a5ac/audiveris.omr",
+      "role": "native",
+      "sha256": "1d7f7f21d3be76fdae8d037c74cbb7c4f452ea7031874b0f5b3c3fca21db3365"
+    },
+    {
+      "bytes": 4562,
+      "media_type": "application/vnd.recordare.musicxml",
+      "path": "Research/omr/.runtime/phase2r/smokes/audiveris-openscore-6211555-page-1-65cbbc866b8d-06dbf3b4a5ac/score.mxl",
+      "role": "musicxml",
+      "sha256": "872558e35a22eb6b0116b234d963580576fbb42f049cbf4483bbafda6746ac5e"
+    },
+    {
+      "bytes": 12000,
+      "media_type": "application/json",
+      "path": "Research/omr/.runtime/phase2r/smokes/audiveris-openscore-6211555-page-1-65cbbc866b8d-06dbf3b4a5ac/canonical-events.json",
+      "role": "canonical_events",
+      "sha256": "3227d23b35db6d920b93620637f69bdc57dfa051da0b6c992bf35618943bdea2"
+    },
+    {
+      "bytes": 8366,
+      "media_type": "text/plain",
+      "path": "Research/omr/.runtime/phase2r/smokes/audiveris-openscore-6211555-page-1-65cbbc866b8d-06dbf3b4a5ac/engine.log",
+      "role": "engine_log",
+      "sha256": "81895b0f1e393db4a84d55f8c79a8990992f914286c68d75d354a35618083154"
+    }
+  ],
+  "candidate_id": "audiveris",
+  "composition_group": "6211555",
+  "error": null,
+  "exit_status": 0,
+  "item_id": "openscore-6211555-page-1",
+  "measurement_path": "complete_document",
+  "provenance": {
+    "adapter_config": {
+      "adapter_id": "audiveris_unattended",
+      "adapter_revision": "614faf6ddc1d8f0f6580ec1f1772574e55f8b1d27f566026f829ca99f3bdc2b4",
+      "candidate_id": "audiveris",
+      "checkpoint": "Audiveris 5.11.0 classifiers",
+      "checkpoint_revision": "5.11.0",
+      "input_granularity": "complete document",
+      "native_format": "Audiveris OMR project",
+      "settings": {
+        "batch": true,
+        "export": "MusicXML",
+        "manual_corrections": false,
+        "small_image_preprocessing": "lanczos-width-at-least-2000px-300dpi-v1"
+      },
+      "source_repository": "https://github.com/Audiveris/audiveris",
+      "source_revision": "9e1e55cd2746037d059345881c53e6a6754bffbd",
+      "supported_paths": [
+        "complete_document"
+      ]
+    },
+    "adapter_config_sha256": "65cbbc866b8d90895b671961c7c6145a5a7995110aaada16432c43517b6373a9",
+    "checkpoint": "Audiveris 5.11.0 classifiers",
+    "checkpoint_revision": "5.11.0",
+    "command": [
+      "Research/omr/.runtime/phase2r/audiveris-extract/Audiveris/Audiveris.exe",
+      "-batch",
+      "-save",
+      "-export",
+      "-output",
+      "Research/omr/.runtime/phase2r/smokes/audiveris-openscore-6211555-page-1-65cbbc866b8d-06dbf3b4a5ac/audiveris-output",
+      "--",
+      "Research/omr/data/phase1-development/open/6211555/page-1.png"
+    ],
+    "input_path": "Research/omr/data/phase1-development/open/6211555/page-1.png",
+    "input_scale": 1,
+    "input_sha256": "8787a0a691a6118d66fe41c3f0cf160d5f641ffde05ffe1824218d7fb27cc9fb",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "prepared_input_sha256": "8787a0a691a6118d66fe41c3f0cf160d5f641ffde05ffe1824218d7fb27cc9fb",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "source_repository": "https://github.com/Audiveris/audiveris",
+    "source_revision": "9e1e55cd2746037d059345881c53e6a6754bffbd"
+  },
+  "resources": {
+    "cold_start": true,
+    "measurement_notes": [
+      "VRAM measurement: device-wide WDDM fallback"
+    ],
+    "peak_ram_bytes": 776695808,
+    "peak_vram_bytes": 84934656,
+    "sample_interval_seconds": 0.2
+  },
+  "schema_version": 1,
+  "status": "succeeded",
+  "timings": [
+    {
+      "seconds": 0.00017300000035902485,
+      "stage": "input_preprocessing"
+    },
+    {
+      "seconds": 16.688203599998815,
+      "stage": "recognition_and_native_conversion"
+    },
+    {
+      "seconds": 0.11821240000062971,
+      "stage": "shared_normalization"
+    }
+  ],
+  "warnings": [
+    "MusicXMLWarning: Could not import wedge: Error in getting DynamicWedges"
+  ]
+}

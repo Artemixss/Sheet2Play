@@ -1,0 +1,84 @@
+{
+  "adapter_id": "shipped_homr_direct",
+  "aligned_voice_accuracy": 1.0,
+  "candidate_id": "shipped_homr",
+  "cold_start": true,
+  "composition_group": "chopin/mazurka68_4",
+  "coverage": {
+    "chord_completeness": 0.9722222222222222,
+    "complete_chords": 35,
+    "per_staff": {
+      "0": {
+        "matched_notes": 83,
+        "predicted_notes": 83,
+        "recall": 0.4689265536723164,
+        "reference_notes": 177
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 94,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 36,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 102,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 67,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "3/2",
+        "count": 7,
+        "predicted": "3/2"
+      }
+    ],
+    "unmatched_expected": 1,
+    "unmatched_predicted": 1
+  },
+  "elapsed_seconds": 15.625,
+  "error": null,
+  "extra_note_count": 1,
+  "failure_penalized_omr_ned": 0.20854700854700856,
+  "first_divergent_measure": 13,
+  "input_identity": {
+    "historical_score_sha256": "60a27f048eb354ea1af189763de97a3c994948d33e1f143d037a5d5595ddc6b6",
+    "reference_sha256": "dcd8d7742f699b2e74677e16124e718ea6d77843f0c62b71d2161f43dad41f68",
+    "result_sha256": "2ca5eb5e24daf5f389d7eaab2c10a673489b391f7ee8eee9672ec2c303d78188"
+  },
+  "item_id": "test/chopin/mazurka68_4/mazurka68_4_1.png",
+  "mean_offset_error": 0.0,
+  "missing_note_count": 1,
+  "omr_ned": 0.20854700854700856,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.9943502824858758,
+  "onset_f1": 0.9943502824858758,
+  "peak_ram_bytes": 1933824000,
+  "peak_vram_bytes": 1636827136,
+  "pitch_f1": 0.9943502824858758,
+  "predicted_note_count": 177,
+  "reference_measure_count": 17,
+  "reference_note_count": 177,
+  "reference_quarter_length": "51",
+  "schema_version": 2,
+  "scoring_identity_sha256": "ed9e5b7e6f998b5787ae21dfc0b7f545c42fc0bc83b60fc717f002d6b34aa568",
+  "staff_accuracy": 0.4715909090909091,
+  "status": "succeeded",
+  "timeline_length_error": "0",
+  "timing_policy": "symmetric-rational-4096-roundoff-v1",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

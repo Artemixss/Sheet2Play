@@ -1,0 +1,946 @@
+[
+  {
+    "Time": "2026-10-04T07:34:28.319Z",
+    "Command": null,
+    "Cwd": null,
+    "Exit": null,
+    "DurationMs": null,
+    "SnapshotStale": true
+  },
+  {
+    "Time": "2026-10-04T07:38:05.226Z",
+    "Command": null,
+    "Cwd": null,
+    "Exit": null,
+    "DurationMs": null,
+    "SnapshotStale": true
+  },
+  {
+    "Time": "2026-10-04T07:38:05.226Z",
+    "Command": null,
+    "Cwd": null,
+    "Exit": null,
+    "DurationMs": null,
+    "SnapshotStale": true
+  },
+  {
+    "Time": "2026-10-04T08:34:51.711Z",
+    "Command": null,
+    "Cwd": null,
+    "Exit": null,
+    "DurationMs": null,
+    "SnapshotStale": true
+  },
+  {
+    "Time": "2026-10-04T08:34:51.711Z",
+    "Command": null,
+    "Cwd": null,
+    "Exit": null,
+    "DurationMs": null,
+    "SnapshotStale": true
+  },
+  {
+    "Time": "2026-10-04T07:34:22.251Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= config --get remote.origin.url",
+    "Cwd": "C:/Users/bur4x/Documents/ChatGPT/erasmus/.git",
+    "Exit": "1",
+    "DurationMs": "170",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T07:34:24.002Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= config --local --get remote.upstream.url",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "1",
+    "DurationMs": "619",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T07:38:05.211Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= add --sparse --pathspec-from-file=- --pathspec-file-nul",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "1693",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T07:40:05.639Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= config --local --get remote.upstream.url",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "1",
+    "DurationMs": "206",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T07:40:06.230Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= config --get remote.upstream.url",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "1",
+    "DurationMs": "65",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:17:44.493Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "56",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:32:58.907Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= config --name-only --get-regexp '^filter\\\\..*\\\\.(clean|smudge|process|required)$'",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "152",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:32:59.732Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= hash-object --stdin-paths",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "47",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:34:51.697Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= add --sparse --pathspec-from-file=- --pathspec-file-nul",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "451",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:52:13.497Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= hash-object --stdin-paths",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "34",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:22.736Z",
+    "Command": "git -c diff.mnemonicPrefix=false -c diff.noprefix=false -c core.quotePath=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= diff --no-ext-diff --no-textconv --color=never --src-prefix=a/ --dst-prefix=b/ 5235935c2758780354050b1d6c7cab1559cc06f4 --find-renames --raw --no-abbrev --numstat -z -- .gitignore Bridge/detect_systems.py Bridge/musicxml_normalizer.py Bridge/tests/test_bridge.py Bridge/tests/test_musicxml_normalizer.py CLAUDE.md CONTEXT.md README.md Research/omr/README.md Research/omr/download_openscore.py Research/omr/download_smb.py Research/omr/pyproject.toml Research/omr/reports/diagnosis/FINDINGS.md Research/omr/requirements-inference.lock.txt Research/omr/src/sheet2play_omr/zeus_engine.py Research/omr/zeus/infer_batch.py",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "81",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:32.383Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "128",
+    "DurationMs": "453",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:32.541Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "1",
+    "DurationMs": "57",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:32.945Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --no-renames --ignored=matching --untracked-files=all --porcelain=v1 -z -- Research",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "1",
+    "DurationMs": "143",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:32.946Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "403",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:33.686Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "525",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:34.058Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=normal",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "128",
+    "DurationMs": "345",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:34.069Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "9",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:34.070Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --no-renames --ignored=matching --untracked-files=all --porcelain=v1 -z -- Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/937ea5b97ec962b3a22e/attempt-fd50ff223781472987d6bccb9ab29604/raw/canonical-events.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/937ea5b97ec962b3a22e/attempt-fd50ff223781472987d6bccb9ab29604/raw/detector/crop-manifest.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/937ea5b97ec962b3a22e/attempt-fd50ff223781472987d6bccb9ab29604/raw/detector/detector-preprocessed.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/937ea5b97ec962b3a22e/attempt-fd50ff223781472987d6bccb9ab29604/raw/detector/system-0001.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/937ea5b97ec962b3a22e/attempt-fd50ff223781472987d6bccb9ab29604/raw/detector/system-0003.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/937ea5b97ec962b3a22e/attempt-fd50ff223781472987d6bccb9ab29604/raw/system-0001.musicxml Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/937ea5b97ec962b3a22e/attempt-fd50ff223781472987d6bccb9ab29604/raw/detector/system-0005.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/937ea5b97ec962b3a22e/attempt-fd50ff223781472987d6bccb9ab29604/raw/detector/system-0006.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/937ea5b97ec962b3a22e/attempt-fd50ff223781472987d6bccb9ab29604/raw/detector/system-0004.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/937ea5b97ec962b3a22e/attempt-fd50ff223781472987d6bccb9ab29604/raw/native.lmx.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/937ea5b97ec962b3a22e/attempt-fd50ff223781472987d6bccb9ab29604/raw/score.musicxml Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/937ea5b97ec962b3a22e/attempt-fd50ff223781472987d6bccb9ab29604/raw/system-0002.musicxml Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/937ea5b97ec962b3a22e/attempt-fd50ff223781472987d6bccb9ab29604/raw/engine.log Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/937ea5b97ec962b3a22e/attempt-fd50ff223781472987d6bccb9ab29604/raw/system-0003.musicxml Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/937ea5b97ec962b3a22e/attempt-fd50ff223781472987d6bccb9ab29604/raw/system-0004.musicxml Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/937ea5b97ec962b3a22e/attempt-fd50ff223781472987d6bccb9ab29604/raw/system-0006.musicxml Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/937ea5b97ec962b3a22e/attempt-fd50ff223781472987d6bccb9ab29604/raw/system-0005.musicxml Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/96a5b54f1a206b114ddf/attempt-abb522a2150c403a8160e43cab40adc7/attempt.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/96a5b54f1a206b114ddf/attempt-abb522a2150c403a8160e43cab40adc7/outcome.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/96a5b54f1a206b114ddf/attempt-abb522a2150c403a8160e43cab40adc7/raw/detector/detected-systems.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/96a5b54f1a206b114ddf/attempt-abb522a2150c403a8160e43cab40adc7/process.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/96a5b54f1a206b114ddf/attempt-abb522a2150c403a8160e43cab40adc7/raw/detector/crop-manifest.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/96a5b54f1a206b114ddf/attempt-abb522a2150c403a8160e43cab40adc7/raw/canonical-events.json",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225794",
+    "DurationMs": "33",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:34.546Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "128",
+    "DurationMs": "332",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:34.855Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=normal",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225773",
+    "DurationMs": "204",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:35.080Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "8",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:35.219Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --no-renames --ignored=matching --untracked-files=all --porcelain=v1 -z -- Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/96a5b54f1a206b114ddf/attempt-abb522a2150c403a8160e43cab40adc7/raw/detector/system-0004.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/96a5b54f1a206b114ddf/attempt-abb522a2150c403a8160e43cab40adc7/raw/detector/system-0006.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/96a5b54f1a206b114ddf/attempt-abb522a2150c403a8160e43cab40adc7/raw/detector/system-0005.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/96a5b54f1a206b114ddf/attempt-abb522a2150c403a8160e43cab40adc7/raw/system-0002.musicxml Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/96a5b54f1a206b114ddf/attempt-abb522a2150c403a8160e43cab40adc7/raw/system-0001.musicxml Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/96a5b54f1a206b114ddf/attempt-abb522a2150c403a8160e43cab40adc7/staged-result.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/98571e54c20189434f1c/attempt-e4bff05ab74c42998e4550b6161abfb3/raw/detector/system-0006.png",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "1",
+    "DurationMs": "137",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:35.389Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "10",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:35.448Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=normal",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225773",
+    "DurationMs": "57",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:36.199Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225773",
+    "DurationMs": "73",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:36.887Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --no-renames --ignored=matching --untracked-files=all --porcelain=v1 -z -- Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/9f96b1702b4ccf119d91/attempt-fe0e7330f9c34f3db66669a75305f831/raw/detector/system-0003.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/9f96b1702b4ccf119d91/attempt-fe0e7330f9c34f3db66669a75305f831/staged-result.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/aab97227203d7cf8a1cd/attempt-2f1c087027d340d99f6d6291e886a491/attempt.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/aab97227203d7cf8a1cd/attempt-2f1c087027d340d99f6d6291e886a491/raw/detector/system-0001.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/aab97227203d7cf8a1cd/attempt-2f1c087027d340d99f6d6291e886a491/raw/detector/detector-preprocessed.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/aab97227203d7cf8a1cd/attempt-2f1c087027d340d99f6d6291e886a491/raw/native.lmx.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/aab97227203d7cf8a1cd/attempt-2f1c087027d340d99f6d6291e886a491/raw/system-0001.musicxml Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/aab97227203d7cf8a1cd/attempt-2f1c087027d340d99f6d6291e886a491/raw/score.musicxml Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/aab97227203d7cf8a1cd/attempt-2f1c087027d340d99f6d6291e886a491/raw/system-0006.musicxml",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225725",
+    "DurationMs": "57",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:37.234Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "1",
+    "DurationMs": "179",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:39.463Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --no-renames --ignored=matching --untracked-files=all --porcelain=v1 -z -- Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/be726b3abdb5884b3cf1/attempt-e31257fc21e74c15a79ea8ad7cc977b5/raw/engine.log Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/be726b3abdb5884b3cf1/attempt-e31257fc21e74c15a79ea8ad7cc977b5/raw/detector/system-0002.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/be726b3abdb5884b3cf1/attempt-e31257fc21e74c15a79ea8ad7cc977b5/raw/score.musicxml Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/be726b3abdb5884b3cf1/attempt-e31257fc21e74c15a79ea8ad7cc977b5/raw/system-0002.musicxml Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/be726b3abdb5884b3cf1/attempt-e31257fc21e74c15a79ea8ad7cc977b5/raw/native.lmx.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/be726b3abdb5884b3cf1/attempt-e31257fc21e74c15a79ea8ad7cc977b5/resources.jsonl Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/be726b3abdb5884b3cf1/attempt-e31257fc21e74c15a79ea8ad7cc977b5/staged-result.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c24ce1e59c36934b28c2/attempt-f293b8fb3eb84cb990df8025ef6ffbbc/process.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c24ce1e59c36934b28c2/attempt-f293b8fb3eb84cb990df8025ef6ffbbc/raw/detector/crop-manifest.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c24ce1e59c36934b28c2/attempt-f293b8fb3eb84cb990df8025ef6ffbbc/raw/canonical-events.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c24ce1e59c36934b28c2/attempt-f293b8fb3eb84cb990df8025ef6ffbbc/raw/detector/detected-systems.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c24ce1e59c36934b28c2/attempt-f293b8fb3eb84cb990df8025ef6ffbbc/outcome.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c24ce1e59c36934b28c2/attempt-f293b8fb3eb84cb990df8025ef6ffbbc/raw/detector/system-0001.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c24ce1e59c36934b28c2/attempt-f293b8fb3eb84cb990df8025ef6ffbbc/raw/detector/detector-preprocessed.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c24ce1e59c36934b28c2/attempt-f293b8fb3eb84cb990df8025ef6ffbbc/raw/score.musicxml Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c24ce1e59c36934b28c2/attempt-f293b8fb3eb84cb990df8025ef6ffbbc/raw/native.lmx.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c24ce1e59c36934b28c2/attempt-f293b8fb3eb84cb990df8025ef6ffbbc/raw/detector/system-0002.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c24ce1e59c36934b28c2/attempt-f293b8fb3eb84cb990df8025ef6ffbbc/raw/detector/system-0005.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c24ce1e59c36934b28c2/attempt-f293b8fb3eb84cb990df8025ef6ffbbc/raw/detector/system-0003.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c24ce1e59c36934b28c2/attempt-f293b8fb3eb84cb990df8025ef6ffbbc/raw/detector/system-0004.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c24ce1e59c36934b28c2/attempt-f293b8fb3eb84cb990df8025ef6ffbbc/raw/engine.log Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c24ce1e59c36934b28c2/attempt-f293b8fb3eb84cb990df8025ef6ffbbc/raw/system-0004.musicxml Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c24ce1e59c36934b28c2/attempt-f293b8fb3eb84cb990df8025ef6ffbbc/resources.jsonl Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c24ce1e59c36934b28c2/attempt-f293b8fb3eb84cb990df8025ef6ffbbc/raw/system-0005.musicxml Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c7d9ddf52fd88048d156/attempt-40f81323818c4887871720c00c779b1b/outcome.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c7d9ddf52fd88048d156/attempt-40f81323818c4887871720c00c779b1b/process.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c7d9ddf52fd88048d156/attempt-40f81323818c4887871720c00c779b1b/raw/canonical-events.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c7d9ddf52fd88048d156/attempt-40f81323818c4887871720c00c779b1b/raw/detector/crop-manifest.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c7d9ddf52fd88048d156/attempt-40f81323818c4887871720c00c779b1b/raw/detector/detected-systems.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c7d9ddf52fd88048d156/attempt-40f81323818c4887871720c00c779b1b/raw/detector/system-0001.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c7d9ddf52fd88048d156/attempt-40f81323818c4887871720c00c779b1b/raw/detector/system-0002.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c7d9ddf52fd88048d156/attempt-40f81323818c4887871720c00c779b1b/raw/detector/system-0004.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c7d9ddf52fd88048d156/attempt-40f81323818c4887871720c00c779b1b/raw/detector/detector-preprocessed.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c7d9ddf52fd88048d156/attempt-40f81323818c4887871720c00c779b1b/raw/system-0001.musicxml Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c7d9ddf52fd88048d156/attempt-40f81323818c4887871720c00c779b1b/raw/system-0002.musicxml Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c7d9ddf52fd88048d156/attempt-40f81323818c4887871720c00c779b1b/raw/system-0003.musicxml Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c7d9ddf52fd88048d156/attempt-40f81323818c4887871720c00c779b1b/raw/system-0004.musicxml Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/c7d9ddf52fd88048d156/attempt-40f81323818c4887871720c00c779b1b/raw/system-0006.musicxml Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/d603d2fbf15fbc7b7b57/attempt-cd146f6b71284608b444f558c6dcaca9/attempt.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/d603d2fbf15fbc7b7b57/attempt-cd146f6b71284608b444f558c6dcaca9/raw/detector/detected-systems.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/d603d2fbf15fbc7b7b57/attempt-cd146f6b71284608b444f558c6dcaca9/raw/detector/detector-preprocessed.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/d603d2fbf15fbc7b7b57/attempt-cd146f6b71284608b444f558c6dcaca9/raw/detector/system-0001.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/d603d2fbf15fbc7b7b57/attempt-cd146f6b71284608b444f558c6dcaca9/raw/detector/system-0002.png",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225794",
+    "DurationMs": "89",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:40.637Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --no-renames --ignored=matching --untracked-files=all --porcelain=v1 -z -- Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/d603d2fbf15fbc7b7b57/attempt-cd146f6b71284608b444f558c6dcaca9/raw/detector/system-0003.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/d603d2fbf15fbc7b7b57/attempt-cd146f6b71284608b444f558c6dcaca9/raw/detector/system-0005.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/d603d2fbf15fbc7b7b57/attempt-cd146f6b71284608b444f558c6dcaca9/raw/detector/system-0004.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/de9e9f41ead701b13872/attempt-868a77c896b44c6b82302fc6b8298209/outcome.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/de9e9f41ead701b13872/attempt-868a77c896b44c6b82302fc6b8298209/raw/detector/system-0002.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/de9e9f41ead701b13872/attempt-868a77c896b44c6b82302fc6b8298209/raw/system-0003.musicxml Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/e2139c49a0b38b5921a9/attempt-ad692ef07b0843dcb1ae28887463aa01/raw/detector/detector-preprocessed.png",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "1",
+    "DurationMs": "165",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:43.089Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "128",
+    "DurationMs": "362",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:43.613Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --no-renames --ignored=matching --untracked-files=all --porcelain=v1 -z -- Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/e68f46165d93aec03b12/attempt-ccd6465920ac464290528aaaefcc78ae/raw/system-0005.musicxml Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/fa6eafd75b77e377ac91/attempt-d4f70f6618114524972d9ca13f523e03/raw/native.lmx.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/fa6eafd75b77e377ac91/attempt-d4f70f6618114524972d9ca13f523e03/raw/detector/crop-manifest.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/fdcb73170085456420ad/attempt-d433ecd62bb24f45b355608699c2d6c9/outcome.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/fdcb73170085456420ad/attempt-d433ecd62bb24f45b355608699c2d6c9/process.json Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/fdcb73170085456420ad/attempt-d433ecd62bb24f45b355608699c2d6c9/raw/system-0006.musicxml Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/fdcb73170085456420ad/attempt-d433ecd62bb24f45b355608699c2d6c9/raw/detector/system-0003.png Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/fdcb73170085456420ad/attempt-d433ecd62bb24f45b355608699c2d6c9/staged-result.json",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "1",
+    "DurationMs": "313",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:43.614Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "522",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:43.835Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "128",
+    "DurationMs": "220",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:43.869Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225794",
+    "DurationMs": "32",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:44.143Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=normal",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225773",
+    "DurationMs": "180",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:45.033Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --no-renames --ignored=matching --untracked-files=all --porcelain=v1 -z -- Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/0298aa30a6543b5436e1/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/0298aa30a6543b5436e1/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/079892e863932fdf630f/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/06bf0001405b763872af/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/04cb8b698938ca1fa4e8/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/079892e863932fdf630f/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/1848427a3f6b5d2b6802/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/1848427a3f6b5d2b6802/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/1848427a3f6b5d2b6802/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/194aa06f3003b2623e47/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/194aa06f3003b2623e47/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/194aa06f3003b2623e47/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/21b9095501ab2d2cf6e9/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/2d6916afec5e057f2ff3/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/4743a1774935d8eadd8e/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/4743a1774935d8eadd8e/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/48537113dca38cd4cde7/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/48c91321a12d8d17a288/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/499abc0fa26b154eef8d/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/572edfc108729578da94/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/572edfc108729578da94/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/572edfc108729578da94/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/590c2696c5ad30151ccd/provenance.json",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "1",
+    "DurationMs": "327",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:45.034Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "890",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:46.339Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --no-renames --ignored=matching --untracked-files=all --porcelain=v1 -z -- Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/6f4794cb755fa7667e90/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/6f4794cb755fa7667e90/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/6f4794cb755fa7667e90/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/76e8bc50e498bb1eca6f/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/79ee01b0e3a8a44783c2/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/79ee01b0e3a8a44783c2/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/79ee01b0e3a8a44783c2/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/82628af3803d8d808f28/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/7cdaea69a04193b6b3d9/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/885789d6582f722f27c7/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/885789d6582f722f27c7/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/8a03e978b7c0ee9e2e93/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/953dcde035dc883789b2/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/953dcde035dc883789b2/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/a4e575577203ec0434d2/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/a7abde35acc9d451ca9e/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/a4e575577203ec0434d2/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/a7abde35acc9d451ca9e/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/a7abde35acc9d451ca9e/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/audiveris_page/3f340c6bab3e/aad7ba8c593566bc5c05/provenance.json",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "128",
+    "DurationMs": "292",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:46.340Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "1199",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:47.560Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "1219",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:48.972Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "1410",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:50.273Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --no-renames --ignored=matching --untracked-files=all --porcelain=v1 -z -- Research/omr/reports/screening/v1/2c98d5638c36/completed/fine_tuned_homr/4cd03e3ed82f/48c91321a12d8d17a288/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/fine_tuned_homr/4cd03e3ed82f/499abc0fa26b154eef8d/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/fine_tuned_homr/4cd03e3ed82f/572edfc108729578da94/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/fine_tuned_homr/4cd03e3ed82f/48c91321a12d8d17a288/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/fine_tuned_homr/4cd03e3ed82f/499abc0fa26b154eef8d/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/fine_tuned_homr/4cd03e3ed82f/499abc0fa26b154eef8d/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/fine_tuned_homr/4cd03e3ed82f/590c2696c5ad30151ccd/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/fine_tuned_homr/4cd03e3ed82f/63e722b3ae193cf7d7e7/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/fine_tuned_homr/4cd03e3ed82f/63e722b3ae193cf7d7e7/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/fine_tuned_homr/4cd03e3ed82f/63e722b3ae193cf7d7e7/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/fine_tuned_homr/4cd03e3ed82f/6f4794cb755fa7667e90/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/fine_tuned_homr/4cd03e3ed82f/76e8bc50e498bb1eca6f/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/fine_tuned_homr/4cd03e3ed82f/76e8bc50e498bb1eca6f/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/fine_tuned_homr/4cd03e3ed82f/79ee01b0e3a8a44783c2/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/fine_tuned_homr/4cd03e3ed82f/79ee01b0e3a8a44783c2/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/fine_tuned_homr/4cd03e3ed82f/953dcde035dc883789b2/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/fine_tuned_homr/4cd03e3ed82f/9d4f4663239200b318ff/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/fine_tuned_homr/4cd03e3ed82f/aad7ba8c593566bc5c05/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/fine_tuned_homr/4cd03e3ed82f/aad7ba8c593566bc5c05/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/fine_tuned_homr/4cd03e3ed82f/a7abde35acc9d451ca9e/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/fine_tuned_homr/4cd03e3ed82f/a7abde35acc9d451ca9e/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/fine_tuned_homr/4cd03e3ed82f/acfcd5e5f7a2aa1b42e8/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/fine_tuned_homr/4cd03e3ed82f/b8c56c457a1c7f005a22/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/fine_tuned_homr/4cd03e3ed82f/b8c56c457a1c7f005a22/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/fine_tuned_homr/4cd03e3ed82f/b8c56c457a1c7f005a22/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/fine_tuned_homr/4cd03e3ed82f/c36034281f804cb0e903/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/fine_tuned_homr/4cd03e3ed82f/c36034281f804cb0e903/identity.json",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "1",
+    "DurationMs": "286",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:50.276Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "1303",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:51.948Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "1670",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:53.531Z",
+    "Command": "git -c diff.mnemonicPrefix=false -c diff.noprefix=false -c core.quotePath=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= diff --no-ext-diff --no-textconv --color=never --src-prefix=a/ --dst-prefix=b/ 5235935c2758780354050b1d6c7cab1559cc06f4 --find-renames --raw --no-abbrev --numstat -z -- .gitignore Bridge/detect_systems.py Bridge/musicxml_normalizer.py Bridge/tests/test_bridge.py Bridge/tests/test_musicxml_normalizer.py CLAUDE.md CONTEXT.md README.md Research/omr/README.md Research/omr/download_openscore.py Research/omr/download_smb.py Research/omr/pyproject.toml Research/omr/reports/diagnosis/FINDINGS.md Research/omr/requirements-inference.lock.txt Research/omr/src/sheet2play_omr/zeus_engine.py Research/omr/zeus/infer_batch.py",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "179",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:53.906Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "128",
+    "DurationMs": "365",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:54.284Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=normal",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "128",
+    "DurationMs": "375",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:54.634Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --no-renames --ignored=matching --untracked-files=all --porcelain=v1 -z -- Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/46a8d190b2bf0fdc0822/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/46a8d190b2bf0fdc0822/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/46a8d190b2bf0fdc0822/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/4743a1774935d8eadd8e/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/48537113dca38cd4cde7/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/48c91321a12d8d17a288/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/48c91321a12d8d17a288/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/48c91321a12d8d17a288/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/499abc0fa26b154eef8d/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/499abc0fa26b154eef8d/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/572edfc108729578da94/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/63e722b3ae193cf7d7e7/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/63e722b3ae193cf7d7e7/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/63e722b3ae193cf7d7e7/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/6f4794cb755fa7667e90/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/6f4794cb755fa7667e90/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/6f4794cb755fa7667e90/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/6f47a203ffddd86e740e/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/6f47a203ffddd86e740e/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/76e8bc50e498bb1eca6f/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/76e8bc50e498bb1eca6f/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/79ee01b0e3a8a44783c2/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/79ee01b0e3a8a44783c2/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/7cdaea69a04193b6b3d9/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/79ee01b0e3a8a44783c2/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/7cdaea69a04193b6b3d9/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/7cdaea69a04193b6b3d9/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/82628af3803d8d808f28/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/82628af3803d8d808f28/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/885789d6582f722f27c7/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/8a03e978b7c0ee9e2e93/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/8a03e978b7c0ee9e2e93/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/953dcde035dc883789b2/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/953dcde035dc883789b2/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/953dcde035dc883789b2/result.json",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225773",
+    "DurationMs": "74",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:54.637Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "352",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:54.968Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "128",
+    "DurationMs": "318",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:55.369Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=normal",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "128",
+    "DurationMs": "399",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:56.134Z",
+    "Command": "git -c diff.mnemonicPrefix=false -c diff.noprefix=false -c core.quotePath=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= diff --no-ext-diff --no-textconv --color=never --src-prefix=a/ --dst-prefix=b/ 5235935c2758780354050b1d6c7cab1559cc06f4 --find-renames --raw --no-abbrev --numstat -z -- .gitignore Bridge/detect_systems.py Bridge/musicxml_normalizer.py Bridge/tests/test_bridge.py Bridge/tests/test_musicxml_normalizer.py CLAUDE.md CONTEXT.md README.md Research/omr/README.md Research/omr/download_openscore.py Research/omr/download_smb.py Research/omr/pyproject.toml Research/omr/reports/diagnosis/FINDINGS.md Research/omr/requirements-inference.lock.txt Research/omr/src/sheet2play_omr/zeus_engine.py Research/omr/zeus/infer_batch.py",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "20",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:56.174Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225794",
+    "DurationMs": "22",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:56.571Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "128",
+    "DurationMs": "330",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:57.004Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "128",
+    "DurationMs": "337",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:57.779Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --no-renames --ignored=matching --untracked-files=all --porcelain=v1 -z -- Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/daf96c6f3d01236c3d43/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/daf96c6f3d01236c3d43/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/daf96c6f3d01236c3d43/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/db68d4db930943252c07/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/e60fb88562a53e062a16/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/eefa78060e0d49c9fa25/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/f9c5a8f8daa8dadb6251/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/27658e9230dd/fbd190dfc0e6069b23aa/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/cb45056ebb22/0298aa30a6543b5436e1/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/cb45056ebb22/0298aa30a6543b5436e1/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/cb45056ebb22/04cb8b698938ca1fa4e8/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/cb45056ebb22/04cb8b698938ca1fa4e8/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/cb45056ebb22/06bf0001405b763872af/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/cb45056ebb22/0aad608d60374f5068d9/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/cb45056ebb22/0aad608d60374f5068d9/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/cb45056ebb22/11c1e7de53d4ee32d48a/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/cb45056ebb22/11c1e7de53d4ee32d48a/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/cb45056ebb22/194aa06f3003b2623e47/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/cb45056ebb22/194aa06f3003b2623e47/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_455/cb45056ebb22/21b9095501ab2d2cf6e9/identity.json",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "1",
+    "DurationMs": "603",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:57.781Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=normal",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "128",
+    "DurationMs": "775",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:57.899Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225773",
+    "DurationMs": "116",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:58.185Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "128",
+    "DurationMs": "282",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:58.233Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=normal",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225773",
+    "DurationMs": "46",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:58.373Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "1",
+    "DurationMs": "139",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:59.445Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "14",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:53:59.653Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "128",
+    "DurationMs": "205",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:54:00.823Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "1",
+    "DurationMs": "156",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:54:01.898Z",
+    "Command": "git -c diff.mnemonicPrefix=false -c diff.noprefix=false -c core.quotePath=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= diff --no-ext-diff --no-textconv --color=never --src-prefix=a/ --dst-prefix=b/ 5235935c2758780354050b1d6c7cab1559cc06f4 --find-renames --raw --no-abbrev --numstat -z -- .gitignore Bridge/detect_systems.py Bridge/musicxml_normalizer.py Bridge/tests/test_bridge.py Bridge/tests/test_musicxml_normalizer.py CLAUDE.md CONTEXT.md README.md Research/omr/README.md Research/omr/download_openscore.py Research/omr/download_smb.py Research/omr/pyproject.toml Research/omr/reports/diagnosis/FINDINGS.md Research/omr/requirements-inference.lock.txt Research/omr/src/sheet2play_omr/zeus_engine.py Research/omr/zeus/infer_batch.py",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "366",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:54:02.474Z",
+    "Command": "git -c diff.mnemonicPrefix=false -c diff.noprefix=false -c core.quotePath=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= diff --no-ext-diff --no-textconv --color=never --src-prefix=a/ --dst-prefix=b/ --cached 5235935c2758780354050b1d6c7cab1559cc06f4 --no-renames --name-only -z",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225794",
+    "DurationMs": "26",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:54:04.602Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --no-renames --ignored=matching --untracked-files=all --porcelain=v1 -z -- Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/a4e575577203ec0434d2/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/a4e575577203ec0434d2/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/a7abde35acc9d451ca9e/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/a7abde35acc9d451ca9e/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/a7abde35acc9d451ca9e/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/aad7ba8c593566bc5c05/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/aad7ba8c593566bc5c05/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/aad7ba8c593566bc5c05/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/aae0a47be4add40d6235/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/aae0a47be4add40d6235/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/acfcd5e5f7a2aa1b42e8/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/b0eb36b08a21c8f60611/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/b0eb36b08a21c8f60611/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/c36034281f804cb0e903/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/b8c56c457a1c7f005a22/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/c36034281f804cb0e903/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/b8c56c457a1c7f005a22/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/c36034281f804cb0e903/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/ccfa1eb31ed0f0eeb1e6/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/d2df7d25e225957635fc/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/d2df7d25e225957635fc/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/d426772b5f1ff11c4ecf/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/d2df7d25e225957635fc/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/d426772b5f1ff11c4ecf/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/d426772b5f1ff11c4ecf/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/d5d4bdaefad5f46e0e62/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/da3caa6d83589a32c299/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/da3caa6d83589a32c299/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/da48be49386c04f640b6/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/daf96c6f3d01236c3d43/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/daf96c6f3d01236c3d43/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/da48be49386c04f640b6/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/da48be49386c04f640b6/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/db68d4db930943252c07/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/daf96c6f3d01236c3d43/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/db68d4db930943252c07/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/db68d4db930943252c07/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/e54474a0566144404e96/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/e54474a0566144404e96/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/e54474a0566144404e96/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/e60fb88562a53e062a16/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/e60fb88562a53e062a16/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/e60fb88562a53e062a16/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/eefa78060e0d49c9fa25/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/eefa78060e0d49c9fa25/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/f9c5a8f8daa8dadb6251/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/f9c5a8f8daa8dadb6251/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/f9c5a8f8daa8dadb6251/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/fbd190dfc0e6069b23aa/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/fbd190dfc0e6069b23aa/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/fbd190dfc0e6069b23aa/provenance.json",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225773",
+    "DurationMs": "26",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:54:04.606Z",
+    "Command": "git -c diff.mnemonicPrefix=false -c diff.noprefix=false -c core.quotePath=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= diff --no-ext-diff --no-textconv --color=never --src-prefix=a/ --dst-prefix=b/ 5235935c2758780354050b1d6c7cab1559cc06f4 --find-renames --raw --no-abbrev --numstat -z -- .gitignore Bridge/detect_systems.py Bridge/musicxml_normalizer.py Bridge/tests/test_bridge.py Bridge/tests/test_musicxml_normalizer.py CLAUDE.md CONTEXT.md README.md Research/omr/README.md Research/omr/download_openscore.py Research/omr/download_smb.py Research/omr/pyproject.toml Research/omr/reports/diagnosis/FINDINGS.md Research/omr/requirements-inference.lock.txt Research/omr/src/sheet2play_omr/zeus_engine.py Research/omr/zeus/infer_batch.py",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "387",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:54:04.758Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "1",
+    "DurationMs": "141",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:54:06.036Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --no-renames --ignored=matching --untracked-files=all --porcelain=v1 -z -- Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/ff55110912a3f1e0c0ef/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/ff55110912a3f1e0c0ef/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/ff55110912a3f1e0c0ef/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/ffda58063a1135f8ac13/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/homr_page/0a0004e3c354/ffda58063a1135f8ac13/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/0298aa30a6543b5436e1/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/0298aa30a6543b5436e1/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/04cb8b698938ca1fa4e8/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/04cb8b698938ca1fa4e8/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/04cb8b698938ca1fa4e8/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/06bf0001405b763872af/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/079892e863932fdf630f/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/11c1e7de53d4ee32d48a/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/11c1e7de53d4ee32d48a/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/0a8959b0d571fea8b89e/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/0a8959b0d571fea8b89e/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/1848427a3f6b5d2b6802/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/0aad608d60374f5068d9/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/1848427a3f6b5d2b6802/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/1848427a3f6b5d2b6802/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/21b9095501ab2d2cf6e9/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/21b9095501ab2d2cf6e9/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/2536c55ed1dba7d6009a/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/2536c55ed1dba7d6009a/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/2536c55ed1dba7d6009a/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/275116107ea9197004b4/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/275116107ea9197004b4/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/2d6916afec5e057f2ff3/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/33d3fd424a764c883f97/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/33d3fd424a764c883f97/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/33d3fd424a764c883f97/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/3c73f3316eb81bbb6f06/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/3c73f3316eb81bbb6f06/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/3c73f3316eb81bbb6f06/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/46a8d190b2bf0fdc0822/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/46a8d190b2bf0fdc0822/provenance.json",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "128",
+    "DurationMs": "391",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:54:07.306Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --no-renames --ignored=matching --untracked-files=all --porcelain=v1 -z -- Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/46a8d190b2bf0fdc0822/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/48537113dca38cd4cde7/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/4743a1774935d8eadd8e/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/4743a1774935d8eadd8e/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/48537113dca38cd4cde7/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/48537113dca38cd4cde7/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/48c91321a12d8d17a288/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/48c91321a12d8d17a288/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/48c91321a12d8d17a288/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/499abc0fa26b154eef8d/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/499abc0fa26b154eef8d/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/499abc0fa26b154eef8d/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/572edfc108729578da94/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/572edfc108729578da94/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/572edfc108729578da94/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/590c2696c5ad30151ccd/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/590c2696c5ad30151ccd/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/590c2696c5ad30151ccd/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/63e722b3ae193cf7d7e7/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/63e722b3ae193cf7d7e7/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/6f4794cb755fa7667e90/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/6f47a203ffddd86e740e/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/6f47a203ffddd86e740e/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/6f47a203ffddd86e740e/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/76e8bc50e498bb1eca6f/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/76e8bc50e498bb1eca6f/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/76e8bc50e498bb1eca6f/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/79ee01b0e3a8a44783c2/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/79ee01b0e3a8a44783c2/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/79ee01b0e3a8a44783c2/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/7cdaea69a04193b6b3d9/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/7cdaea69a04193b6b3d9/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/7cdaea69a04193b6b3d9/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/82628af3803d8d808f28/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/82628af3803d8d808f28/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/953dcde035dc883789b2/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/885789d6582f722f27c7/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/8a03e978b7c0ee9e2e93/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/9b3e8c1bdedb3a6e6c4d/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/9b3e8c1bdedb3a6e6c4d/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/9d4f4663239200b318ff/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/9d4f4663239200b318ff/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/9d4f4663239200b318ff/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/a4e575577203ec0434d2/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/a7abde35acc9d451ca9e/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/a7abde35acc9d451ca9e/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/a7abde35acc9d451ca9e/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/aad7ba8c593566bc5c05/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/aad7ba8c593566bc5c05/result.json",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225794",
+    "DurationMs": "251",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:54:08.437Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --no-renames --ignored=matching --untracked-files=all --porcelain=v1 -z -- Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/aae0a47be4add40d6235/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/acfcd5e5f7a2aa1b42e8/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/b0eb36b08a21c8f60611/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/b8c56c457a1c7f005a22/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/b8c56c457a1c7f005a22/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/c36034281f804cb0e903/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/cbb99350dce3e07b07bf/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/ccfa1eb31ed0f0eeb1e6/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/ccfa1eb31ed0f0eeb1e6/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/cbb99350dce3e07b07bf/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/ccfa1eb31ed0f0eeb1e6/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/d2df7d25e225957635fc/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/d2df7d25e225957635fc/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/d5d4bdaefad5f46e0e62/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/d426772b5f1ff11c4ecf/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/d5d4bdaefad5f46e0e62/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/d5d4bdaefad5f46e0e62/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/da3caa6d83589a32c299/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/da48be49386c04f640b6/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/da48be49386c04f640b6/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/daf96c6f3d01236c3d43/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/da48be49386c04f640b6/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/daf96c6f3d01236c3d43/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/e54474a0566144404e96/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/e54474a0566144404e96/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/e54474a0566144404e96/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/e60fb88562a53e062a16/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/e60fb88562a53e062a16/identity.json",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225773",
+    "DurationMs": "39",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:54:09.870Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --no-renames --ignored=matching --untracked-files=all --porcelain=v1 -z -- Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/f3544660620bab5501db/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/f3544660620bab5501db/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/f3544660620bab5501db/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/f9c5a8f8daa8dadb6251/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/f9c5a8f8daa8dadb6251/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/ff55110912a3f1e0c0ef/identity.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/ff55110912a3f1e0c0ef/result.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/ff55110912a3f1e0c0ef/provenance.json Research/omr/reports/screening/v1/2c98d5638c36/completed/zeus_page/81f73b31179a/fbd190dfc0e6069b23aa/result.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/audiveris_page/stage3-audiveris-dev-01-24e0fd2b7fd846038a480e75a879b6f0/job.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/audiveris_page/stage3-audiveris-dev-01-24e0fd2b7fd846038a480e75a879b6f0/resources.jsonl Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/audiveris_page/stage3-audiveris-dev-01-24e0fd2b7fd846038a480e75a879b6f0/raw/engine.log Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/audiveris_page/stage3-audiveris-dev-01-24e0fd2b7fd846038a480e75a879b6f0/staged-result.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/audiveris_page/stage3-audiveris-dev-04-9bdf002322a6422aba6ec93dd85d81c6/outcome.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/audiveris_page/stage3-audiveris-dev-04-9bdf002322a6422aba6ec93dd85d81c6/job.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/audiveris_page/stage3-audiveris-dev-04-9bdf002322a6422aba6ec93dd85d81c6/process.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/audiveris_page/stage3-audiveris-dev-04-9bdf002322a6422aba6ec93dd85d81c6/raw/audiveris-output/page-1-20260929T1304.log Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/audiveris_page/stage3-audiveris-dev-04-9bdf002322a6422aba6ec93dd85d81c6/raw/canonical-events.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/audiveris_page/stage3-audiveris-dev-04-9bdf002322a6422aba6ec93dd85d81c6/raw/engine.log Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/audiveris_page/stage3-audiveris-dev-04-9bdf002322a6422aba6ec93dd85d81c6/worker-identity.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/fine_tuned_homr/finetune-dev-01-454699ea1ecc4cc6b6da70bd9447ce51/command-1.stderr.log",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "128",
+    "DurationMs": "402",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:54:12.510Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --no-renames --ignored=matching --untracked-files=all --porcelain=v1 -z -- Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/fine_tuned_homr/finetune-dev-05-1b6930fa3fe3433798af2fc9fa88b89e/job.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/fine_tuned_homr/finetune-dev-05-1b6930fa3fe3433798af2fc9fa88b89e/outcome.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/fine_tuned_homr/finetune-dev-05-1b6930fa3fe3433798af2fc9fa88b89e/worker-identity.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/fine_tuned_homr/finetune-dev-05-1b6930fa3fe3433798af2fc9fa88b89e/resources.jsonl Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/fine_tuned_homr/finetune-dev-05-1b6930fa3fe3433798af2fc9fa88b89e/staged-result.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/fine_tuned_homr/finetune-dev-06-ea20424b3d3246a581c3d83eba4a381f/process.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/fine_tuned_homr/finetune-dev-06-ea20424b3d3246a581c3d83eba4a381f/raw/canonical-events.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/fine_tuned_homr/finetune-dev-06-ea20424b3d3246a581c3d83eba4a381f/raw/engine.log Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/fine_tuned_homr/finetune-dev-06-ea20424b3d3246a581c3d83eba4a381f/raw/homr.tokens.txt Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/fine_tuned_homr/finetune-dev-06-ea20424b3d3246a581c3d83eba4a381f/raw/score.musicxml Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/fine_tuned_homr/finetune-dev-07-cd901a3fdd7a47dc8cd74156041fe8c4/command-1.stderr.log Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/fine_tuned_homr/finetune-dev-07-cd901a3fdd7a47dc8cd74156041fe8c4/outcome.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/fine_tuned_homr/finetune-dev-07-cd901a3fdd7a47dc8cd74156041fe8c4/job.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/fine_tuned_homr/finetune-dev-07-cd901a3fdd7a47dc8cd74156041fe8c4/raw/score.musicxml Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/fine_tuned_homr/finetune-dev-07-cd901a3fdd7a47dc8cd74156041fe8c4/worker-identity.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/fine_tuned_homr/stage4-finetune-dev-01-3bc8c9dc4aa74a278bebd7a87d1f62c1/raw/canonical-events.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/fine_tuned_homr/stage4-finetune-dev-01-3bc8c9dc4aa74a278bebd7a87d1f62c1/raw/engine.log Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/fine_tuned_homr/stage4-finetune-dev-01-3bc8c9dc4aa74a278bebd7a87d1f62c1/raw/homr.tokens.txt Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/fine_tuned_homr/stage4-finetune-dev-01-3bc8c9dc4aa74a278bebd7a87d1f62c1/raw/score.musicxml Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/fine_tuned_homr/stage4-finetune-dev-01-3bc8c9dc4aa74a278bebd7a87d1f62c1/staged-result.json",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225773",
+    "DurationMs": "190",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:54:13.625Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --no-renames --ignored=matching --untracked-files=all --porcelain=v1 -z -- Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/homr_455/homr455-compatible-dev-01-a25b3d74f5a8481bb48d274862ceab82/job.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/homr_455/homr455-compatible-dev-01-a25b3d74f5a8481bb48d274862ceab82/outcome.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/homr_455/homr455-compatible-dev-01-a25b3d74f5a8481bb48d274862ceab82/process.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/homr_455/homr455-compatible-dev-01-a25b3d74f5a8481bb48d274862ceab82/raw/engine.log Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/homr_455/homr455-compatible-dev-01-a25b3d74f5a8481bb48d274862ceab82/raw/canonical-events.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/homr_455/homr455-compatible-dev-01-a25b3d74f5a8481bb48d274862ceab82/worker-identity.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/homr_455/homr455-compatible-dev-02-860241ff7a7b47c590a7cf281384d22b/process.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/homr_455/homr455-compatible-dev-02-860241ff7a7b47c590a7cf281384d22b/raw/engine.log Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/homr_455/homr455-compatible-dev-02-860241ff7a7b47c590a7cf281384d22b/resources.jsonl Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/homr_455/homr455-compatible-dev-03-7bdb155c3914418fbeed36e8c4637a40/command-1.stderr.log Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/homr_455/homr455-compatible-dev-03-7bdb155c3914418fbeed36e8c4637a40/raw/engine.log Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/homr_455/homr455-compatible-dev-03-7bdb155c3914418fbeed36e8c4637a40/raw/canonical-events.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/homr_455/homr455-compatible-dev-03-7bdb155c3914418fbeed36e8c4637a40/raw/homr.tokens.txt",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "36",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:54:14.061Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "128",
+    "DurationMs": "422",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:54:14.303Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "128",
+    "DurationMs": "240",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:54:14.390Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=normal",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225794",
+    "DurationMs": "86",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:54:14.428Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225773",
+    "DurationMs": "36",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:54:14.789Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --no-renames --ignored=matching --untracked-files=all --porcelain=v1 -z -- Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/homr_455/homr455-compatible-final-01-e1dd8c1f9fba4cde9485548237906cce/command-1.stderr.log Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/homr_455/homr455-compatible-final-01-e1dd8c1f9fba4cde9485548237906cce/outcome.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/homr_455/homr455-compatible-final-01-e1dd8c1f9fba4cde9485548237906cce/job.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/homr_455/homr455-compatible-final-01-e1dd8c1f9fba4cde9485548237906cce/raw/score.musicxml Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/homr_455/homr455-compatible-final-01-e1dd8c1f9fba4cde9485548237906cce/resources.jsonl Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/homr_455/homr455-compatible-final-01-e1dd8c1f9fba4cde9485548237906cce/staged-result.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/homr_455/homr455-compatible-final-02-9e78459111d245a68d96ebe9ff81a2c4/job.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/homr_455/homr455-compatible-final-02-9e78459111d245a68d96ebe9ff81a2c4/process.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/homr_455/homr455-compatible-final-02-9e78459111d245a68d96ebe9ff81a2c4/raw/score.musicxml Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/homr_455/homr455-compatible-final-02-9e78459111d245a68d96ebe9ff81a2c4/staged-result.json Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/homr_455/homr455-compatible-final-02-9e78459111d245a68d96ebe9ff81a2c4/resources.jsonl Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/homr_455/homr455-compatible-final-03-b5552e8279484c0daef674b175e7a72e/raw/engine.log Research/omr/reports/screening/v1/2c98d5638c36/development-attempts/homr_455/homr455-compatible-final-03-b5552e8279484c0daef674b175e7a72e/resources.jsonl",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225794",
+    "DurationMs": "56",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:54:20.454Z",
+    "Command": null,
+    "Cwd": null,
+    "Exit": "null",
+    "DurationMs": "48",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:54:39.498Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= hash-object --stdin-paths",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "17",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:54:47.143Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225794",
+    "DurationMs": "411",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:54:47.187Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "40",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:54:48.565Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --no-renames --ignored=matching --untracked-files=all --porcelain=v1 -z -- Research",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225773",
+    "DurationMs": "363",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:54:48.566Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "1316",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:54:49.703Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --no-renames --ignored=matching --untracked-files=all --porcelain=v1 -z -- Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/87fba7953bedfee1362b/attempt-f65e4d5889914a99855029adf3491892/job.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/87fba7953bedfee1362b/attempt-f65e4d5889914a99855029adf3491892/identity.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/87fba7953bedfee1362b/attempt-f65e4d5889914a99855029adf3491892/outcome.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/87fba7953bedfee1362b/attempt-f65e4d5889914a99855029adf3491892/process.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/87fba7953bedfee1362b/attempt-f65e4d5889914a99855029adf3491892/resources.jsonl Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/87fba7953bedfee1362b/attempt-f65e4d5889914a99855029adf3491892/staged-score.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/8a89a3ae485c43a3e1c0/attempt-eb85e7a76bd542e089c06ae22c899dc9/process.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/8a89a3ae485c43a3e1c0/attempt-eb85e7a76bd542e089c06ae22c899dc9/resources.jsonl Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/8a89a3ae485c43a3e1c0/attempt-eb85e7a76bd542e089c06ae22c899dc9/staged-score.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/8da50a611e8ad2a5897b/attempt-b1c7face673f41dda1c97853f5eecdb0/identity.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/8da50a611e8ad2a5897b/attempt-b1c7face673f41dda1c97853f5eecdb0/job.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/8da50a611e8ad2a5897b/attempt-b1c7face673f41dda1c97853f5eecdb0/process.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/8da50a611e8ad2a5897b/attempt-b1c7face673f41dda1c97853f5eecdb0/outcome.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/8da50a611e8ad2a5897b/attempt-b1c7face673f41dda1c97853f5eecdb0/staged-score.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/90c78d67b19651c3d098/attempt-fc625dc5dbdb4e20884b063ace35a0be/identity.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/8da50a611e8ad2a5897b/attempt-b1c7face673f41dda1c97853f5eecdb0/resources.jsonl Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/937ea5b97ec962b3a22e/attempt-b467b3d2949046a68b6c4e4eb8d3858d/outcome.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/90c78d67b19651c3d098/attempt-fc625dc5dbdb4e20884b063ace35a0be/staged-score.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/937ea5b97ec962b3a22e/attempt-b467b3d2949046a68b6c4e4eb8d3858d/identity.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/937ea5b97ec962b3a22e/attempt-b467b3d2949046a68b6c4e4eb8d3858d/job.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/937ea5b97ec962b3a22e/attempt-b467b3d2949046a68b6c4e4eb8d3858d/process.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/96a5b54f1a206b114ddf/attempt-04c0de5e99cc41aab13d270f56cbb5bd/process.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/96a5b54f1a206b114ddf/attempt-04c0de5e99cc41aab13d270f56cbb5bd/resources.jsonl Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/98571e54c20189434f1c/attempt-551e9b52e4d14ae99a1faf65348dcb13/outcome.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/98571e54c20189434f1c/attempt-551e9b52e4d14ae99a1faf65348dcb13/identity.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/96a5b54f1a206b114ddf/attempt-04c0de5e99cc41aab13d270f56cbb5bd/staged-score.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/98571e54c20189434f1c/attempt-551e9b52e4d14ae99a1faf65348dcb13/job.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/98571e54c20189434f1c/attempt-551e9b52e4d14ae99a1faf65348dcb13/process.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/98571e54c20189434f1c/attempt-551e9b52e4d14ae99a1faf65348dcb13/resources.jsonl Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/98571e54c20189434f1c/attempt-551e9b52e4d14ae99a1faf65348dcb13/staged-score.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/9f96b1702b4ccf119d91/attempt-c6d6caa4789c4830a46efcc434b0b618/outcome.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/9f96b1702b4ccf119d91/attempt-c6d6caa4789c4830a46efcc434b0b618/identity.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/9f96b1702b4ccf119d91/attempt-c6d6caa4789c4830a46efcc434b0b618/staged-score.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/9f96b1702b4ccf119d91/attempt-c6d6caa4789c4830a46efcc434b0b618/job.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/9f96b1702b4ccf119d91/attempt-c6d6caa4789c4830a46efcc434b0b618/process.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/9f96b1702b4ccf119d91/attempt-c6d6caa4789c4830a46efcc434b0b618/resources.jsonl Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/aab97227203d7cf8a1cd/attempt-2286635881924a098a235463f74bb89b/resources.jsonl Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/aab97227203d7cf8a1cd/attempt-2286635881924a098a235463f74bb89b/process.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/bc18a4ebec4d03e5d0a8/attempt-96d05fc66a964e0f9e4b7d0295b88d81/outcome.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/bc18a4ebec4d03e5d0a8/attempt-96d05fc66a964e0f9e4b7d0295b88d81/identity.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/bc18a4ebec4d03e5d0a8/attempt-96d05fc66a964e0f9e4b7d0295b88d81/worker.stderr.log Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/be1ce479aa1490d66b01/attempt-8c8661a497414a279a78ff73a91acbf9/identity.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/bc18a4ebec4d03e5d0a8/attempt-96d05fc66a964e0f9e4b7d0295b88d81/job.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/bc18a4ebec4d03e5d0a8/attempt-96d05fc66a964e0f9e4b7d0295b88d81/process.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/bc18a4ebec4d03e5d0a8/attempt-96d05fc66a964e0f9e4b7d0295b88d81/resources.jsonl Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/homr_page/0a0004e3c354/b5f4b3348445/bc18a4ebec4d03e5d0a8/attempt-96d05fc66a964e0f9e4b7d0295b88d81/staged-score.json",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "31",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:54:49.703Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "1126",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:54:51.037Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "1332",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:54:52.175Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "128",
+    "DurationMs": "1084",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:54:55.329Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --no-renames --ignored=matching --untracked-files=all --porcelain=v1 -z -- Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/47cb0f412e238877c16f/attempt-bce83f61e14f4c8aa4061b36457a0d20/resources.jsonl Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/47cb0f412e238877c16f/attempt-bce83f61e14f4c8aa4061b36457a0d20/identity.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/47cb0f412e238877c16f/attempt-bce83f61e14f4c8aa4061b36457a0d20/staged-score.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/47cb0f412e238877c16f/attempt-bce83f61e14f4c8aa4061b36457a0d20/process.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/47cb0f412e238877c16f/attempt-bce83f61e14f4c8aa4061b36457a0d20/outcome.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/47cb0f412e238877c16f/attempt-bce83f61e14f4c8aa4061b36457a0d20/job.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/3faa9cd5750a2b5ef0d3/attempt-5cac0e24381d447db298585df8cb3b78/outcome.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/3faa9cd5750a2b5ef0d3/attempt-5cac0e24381d447db298585df8cb3b78/resources.jsonl Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/4cd50fbc16c30f80fa6f/attempt-79257bfc2a65458a8dac337549a5e444/job.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/4cd50fbc16c30f80fa6f/attempt-79257bfc2a65458a8dac337549a5e444/outcome.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/4cd50fbc16c30f80fa6f/attempt-79257bfc2a65458a8dac337549a5e444/identity.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/4cd50fbc16c30f80fa6f/attempt-79257bfc2a65458a8dac337549a5e444/process.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/51fde6a8190e1d8db024/attempt-f6d973b5f6814ced847c4d817719daa1/outcome.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/51fde6a8190e1d8db024/attempt-f6d973b5f6814ced847c4d817719daa1/resources.jsonl Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/51fde6a8190e1d8db024/attempt-f6d973b5f6814ced847c4d817719daa1/staged-score.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/51fde6a8190e1d8db024/attempt-f6d973b5f6814ced847c4d817719daa1/process.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/51fde6a8190e1d8db024/attempt-f6d973b5f6814ced847c4d817719daa1/job.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/5551bc1bb29486f5208e/attempt-6f16821da6f44b729c4dcc90ed30ea9b/process.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/5551bc1bb29486f5208e/attempt-6f16821da6f44b729c4dcc90ed30ea9b/job.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/5551bc1bb29486f5208e/attempt-6f16821da6f44b729c4dcc90ed30ea9b/outcome.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/51fde6a8190e1d8db024/attempt-f6d973b5f6814ced847c4d817719daa1/identity.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/5551bc1bb29486f5208e/attempt-6f16821da6f44b729c4dcc90ed30ea9b/identity.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/5c26674e5927c760f543/attempt-c8989295d566441d96b1a119b1a420fe/outcome.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/5c26674e5927c760f543/attempt-c8989295d566441d96b1a119b1a420fe/identity.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/5c26674e5927c760f543/attempt-c8989295d566441d96b1a119b1a420fe/staged-score.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/5c26674e5927c760f543/attempt-c8989295d566441d96b1a119b1a420fe/resources.jsonl Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/5c26674e5927c760f543/attempt-c8989295d566441d96b1a119b1a420fe/job.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/591b47a107122a45416d/attempt-fe3a130f6538423388efe8ca05216062/staged-score.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/591b47a107122a45416d/attempt-fe3a130f6538423388efe8ca05216062/job.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/5c26674e5927c760f543/attempt-c8989295d566441d96b1a119b1a420fe/process.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/591b47a107122a45416d/attempt-fe3a130f6538423388efe8ca05216062/outcome.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/5fe65b612a2423c76cde/attempt-1cbcb012e3b64197991cbfaf562a6a06/identity.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/591b47a107122a45416d/attempt-fe3a130f6538423388efe8ca05216062/resources.jsonl Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/591b47a107122a45416d/attempt-fe3a130f6538423388efe8ca05216062/process.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/60a492c40eae938f7571/attempt-71cb7c7c16484d0db6ee0b4058e2794e/identity.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/60a492c40eae938f7571/attempt-71cb7c7c16484d0db6ee0b4058e2794e/job.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/60a492c40eae938f7571/attempt-71cb7c7c16484d0db6ee0b4058e2794e/outcome.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/60a492c40eae938f7571/attempt-71cb7c7c16484d0db6ee0b4058e2794e/process.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/60a492c40eae938f7571/attempt-71cb7c7c16484d0db6ee0b4058e2794e/resources.jsonl Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/60a492c40eae938f7571/attempt-71cb7c7c16484d0db6ee0b4058e2794e/staged-score.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/60a492c40eae938f7571/attempt-71cb7c7c16484d0db6ee0b4058e2794e/worker.stderr.log Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/61492d50698a796874d9/attempt-a679e23c05944cc2ac683e26ae8e2efd/outcome.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/61492d50698a796874d9/attempt-a679e23c05944cc2ac683e26ae8e2efd/job.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/61492d50698a796874d9/attempt-a679e23c05944cc2ac683e26ae8e2efd/identity.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/61492d50698a796874d9/attempt-a679e23c05944cc2ac683e26ae8e2efd/staged-score.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/61492d50698a796874d9/attempt-a679e23c05944cc2ac683e26ae8e2efd/resources.jsonl Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/61492d50698a796874d9/attempt-a679e23c05944cc2ac683e26ae8e2efd/process.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/689f4fdaa5ce1e895da2/attempt-3fdfe07c0647423c8209345886207d8e/outcome.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/689f4fdaa5ce1e895da2/attempt-3fdfe07c0647423c8209345886207d8e/process.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/689f4fdaa5ce1e895da2/attempt-3fdfe07c0647423c8209345886207d8e/resources.jsonl Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/689f4fdaa5ce1e895da2/attempt-3fdfe07c0647423c8209345886207d8e/staged-score.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/689f4fdaa5ce1e895da2/attempt-3fdfe07c0647423c8209345886207d8e/worker.stderr.log Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/694d25958f2e160219da/attempt-c353c6a020444c22a4814c102eb1e7be/identity.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/694d25958f2e160219da/attempt-c353c6a020444c22a4814c102eb1e7be/job.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/694d25958f2e160219da/attempt-c353c6a020444c22a4814c102eb1e7be/outcome.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/694d25958f2e160219da/attempt-c353c6a020444c22a4814c102eb1e7be/process.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/694d25958f2e160219da/attempt-c353c6a020444c22a4814c102eb1e7be/staged-score.json Research/omr/reports/screening/v1/2c98d5638c36/score-attempts/zeus_page/81f73b31179a/b5f4b3348445/694d25958f2e160219da/attempt-c353c6a020444c22a4814c102eb1e7be/resources.jsonl",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225773",
+    "DurationMs": "302",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:55:02.313Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225773",
+    "DurationMs": "260",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:55:03.386Z",
+    "Command": "git -c diff.mnemonicPrefix=false -c diff.noprefix=false -c core.quotePath=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= diff --no-ext-diff --no-textconv --color=never --src-prefix=a/ --dst-prefix=b/ --cached 5235935c2758780354050b1d6c7cab1559cc06f4 --no-renames --name-only -z",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "97",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:55:08.640Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= hash-object --stdin-paths",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "515",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:55:10.121Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --no-renames --ignored=matching --untracked-files=all --porcelain=v1 -z -- Research",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225773",
+    "DurationMs": "476",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:55:10.122Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "1468",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:55:13.077Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --no-renames --ignored=matching --untracked-files=all --porcelain=v1 -z -- Research",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "128",
+    "DurationMs": "1947",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:55:13.078Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "2955",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:55:14.541Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "1449",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:55:14.618Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=normal",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225773",
+    "DurationMs": "74",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:55:15.577Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=normal",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225773",
+    "DurationMs": "94",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:55:15.685Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=normal",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225794",
+    "DurationMs": "105",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:55:17.164Z",
+    "Command": "git -c diff.mnemonicPrefix=false -c diff.noprefix=false -c core.quotePath=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= diff --no-ext-diff --no-textconv --color=never --src-prefix=a/ --dst-prefix=b/ 5235935c2758780354050b1d6c7cab1559cc06f4 --find-renames --raw --no-abbrev --numstat -z -- .gitignore Bridge/detect_systems.py Bridge/musicxml_normalizer.py Bridge/tests/test_bridge.py Bridge/tests/test_musicxml_normalizer.py CLAUDE.md CONTEXT.md README.md Research/omr/README.md Research/omr/download_openscore.py Research/omr/download_smb.py Research/omr/pyproject.toml Research/omr/reports/diagnosis/FINDINGS.md Research/omr/requirements-inference.lock.txt Research/omr/src/sheet2play_omr/zeus_engine.py Research/omr/zeus/infer_batch.py",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225773",
+    "DurationMs": "71",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:55:17.541Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --no-renames --ignored=matching --untracked-files=all --porcelain=v1 -z -- Research",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225794",
+    "DurationMs": "15",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:55:17.662Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "11",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:55:17.680Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=normal",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225773",
+    "DurationMs": "16",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:55:18.184Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "19",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:55:18.568Z",
+    "Command": "git -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --no-renames --ignored=matching --untracked-files=all --porcelain=v1 -z -- Research/omr/reports/zeus-attribution/phase2/corrected-v1/scores/homr_page/d9cc8ab76d5209161bab.json Research/omr/reports/zeus-attribution/phase2/corrected-v1/scores/homr_page/edf8e4fe361376410f8a.json Research/omr/reports/zeus-attribution/phase2/corrected-v1/scores/homr_page/f598b1f8eddf256267cf.json Research/omr/reports/zeus-attribution/phase2/corrected-v1/scores/zeus_page/044fb73df2ef46ce6376.json Research/omr/reports/zeus-attribution/phase2/corrected-v1/scores/zeus_page/0b33e260e50e8ac5f242.json Research/omr/reports/zeus-attribution/phase2/corrected-v1/scores/zeus_page/24e8b29e69944996c3d0.json Research/omr/reports/zeus-attribution/phase2/corrected-v1/scores/zeus_page/38d08fe8bb1ec98a51ca.json Research/omr/reports/zeus-attribution/phase2/corrected-v1/scores/zeus_page/3a0f9c38c9dbb4f2b7f7.json Research/omr/reports/zeus-attribution/phase2/corrected-v1/scores/zeus_page/5f9928066d26eb6766e9.json Research/omr/reports/zeus-attribution/phase2/corrected-v1/scores/zeus_page/a064da89cacbc7266d44.json Research/omr/reports/zeus-attribution/phase2/corrected-v1/scores/zeus_page/bde7df4047d46967e585.json Research/omr/reports/zeus-attribution/phase2/corrected-v1/scores/zeus_page/c8c9f7e03ac255b56999.json",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "9",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:55:18.695Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "9",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:55:18.705Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=normal",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "9",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:55:19.215Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "3221225626",
+    "DurationMs": "25",
+    "SnapshotStale": false
+  },
+  {
+    "Time": "2026-10-04T08:55:20.240Z",
+    "Command": "git -c attr.tree= -c core.attributesFile= -c filter.lfs.clean= -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false -c safe.bareRepository=explicit -c core.hooksPath=NUL -c core.fsmonitor= status --renames --porcelain=v1 -z --untracked-files=no",
+    "Cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+    "Exit": "null",
+    "DurationMs": "19",
+    "SnapshotStale": false
+  }
+]

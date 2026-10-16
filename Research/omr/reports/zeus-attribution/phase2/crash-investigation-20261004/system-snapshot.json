@@ -1,0 +1,124 @@
+{
+  "CapturedAt": "2026-10-04T10:42:54.9802506+03:00",
+  "Disks": [
+    {
+      "Number": 0,
+      "FriendlyName": "Micron_2400_MTFDKBA512QFM",
+      "BusType": "NVMe",
+      "HealthStatus": "Healthy",
+      "OperationalStatus": "Online",
+      "IsBoot": true,
+      "IsSystem": true,
+      "Size": 512110190592
+    },
+    {
+      "Number": 1,
+      "FriendlyName": "Samsung PSSD T9",
+      "BusType": "USB",
+      "HealthStatus": "Healthy",
+      "OperationalStatus": "Online",
+      "IsBoot": false,
+      "IsSystem": false,
+      "Size": 1000204886016
+    }
+  ],
+  "Volumes": [
+    {
+      "DriveLetter": "D",
+      "FileSystemLabel": "T9",
+      "FileSystemType": "exFAT",
+      "HealthStatus": "Warning",
+      "OperationalStatus": "Full Repair Needed",
+      "Size": 1000169668608,
+      "SizeRemaining": 125532372992
+    },
+    {
+      "DriveLetter": "C",
+      "FileSystemLabel": "",
+      "FileSystemType": "NTFS",
+      "HealthStatus": "Healthy",
+      "OperationalStatus": "OK",
+      "Size": 510997295104,
+      "SizeRemaining": 61638692864
+    },
+    {
+      "DriveLetter": null,
+      "FileSystemLabel": "",
+      "FileSystemType": "NTFS",
+      "HealthStatus": "Healthy",
+      "OperationalStatus": "OK",
+      "Size": 988803072,
+      "SizeRemaining": 76226560
+    }
+  ],
+  "PageFileUsage": [
+    {
+      "Name": "C:\\pagefile.sys",
+      "AllocatedBaseSize": 16384,
+      "CurrentUsage": 22,
+      "PeakUsage": 22
+    }
+  ],
+  "PageFileSettings": [
+    {
+      "Name": "C:\\pagefile.sys",
+      "InitialSize": 16384,
+      "MaximumSize": 32768
+    }
+  ],
+  "Computer": {
+    "TotalPhysicalMemory": 16369225728,
+    "AutomaticManagedPagefile": false
+  },
+  "Performance": {
+    "AvailableMBytes": 5816,
+    "CommittedBytes": 13694861312,
+    "CommitLimit": 33549094912,
+    "PercentCommittedBytesInUse": 40
+  },
+  "Partitions": [
+    {
+      "DiskNumber": 0,
+      "PartitionNumber": 1,
+      "DriveLetter": "\u0000"
+    },
+    {
+      "DiskNumber": 0,
+      "PartitionNumber": 2,
+      "DriveLetter": "\u0000"
+    },
+    {
+      "DiskNumber": 0,
+      "PartitionNumber": 3,
+      "DriveLetter": "C"
+    },
+    {
+      "DiskNumber": 0,
+      "PartitionNumber": 4,
+      "DriveLetter": "\u0000"
+    },
+    {
+      "DiskNumber": 1,
+      "PartitionNumber": 1,
+      "DriveLetter": "D"
+    }
+  ],
+  "Drives": [
+    {
+      "DeviceID": "C:",
+      "DriveType": 3,
+      "FileSystem": "NTFS",
+      "Size": 510997295104,
+      "FreeSpace": 61638692864,
+      "VolumeDirty": null
+    },
+    {
+      "DeviceID": "D:",
+      "DriveType": 3,
+      "FileSystem": "exFAT",
+      "Size": 1000169668608,
+      "FreeSpace": 125532372992,
+      "VolumeDirty": true
+    }
+  ]
+}

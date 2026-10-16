@@ -1,0 +1,448 @@
+{
+  "comparison_config_sha256": "05888ddcf6614f33ee1b1334ba271a876f7a0832d5050d35cd6c8dff35933837",
+  "frozen_artifacts": {
+    "phase1": {
+      "artifact_count": 15,
+      "hash_mismatches": [],
+      "passed": true,
+      "phase1_report_sha256": "96266247b0ed475f7a9dfec8248d813cb867ba7a16c6f56e00c321b3de93b211"
+    },
+    "phase2_artifact_count": 4,
+    "phase2_hash_mismatches": []
+  },
+  "identity_collector_sha256": "f05d549c7dbf05de77275acdf2a45c737d61e0b4e54e0dec943451617d8c4aae",
+  "phase": "2R",
+  "runtime_identity": {
+    "audiveris_version": {
+      "exit_status": 0,
+      "status": "verified",
+      "version_output": "Audiveris\n- Version:      5.11.0\n- Commit:       9e1e55cd2746037d059345881c53e6a6754bffbd\n- OS:           Windows 11 10.0\n- Architecture: amd64\n- Java VM:      OpenJDK 64-Bit Server VM (build 25.0.3+9-LTS, mixed mode)\n- OCR Engine:   Tesseract OCR, version 5.5.2"
+    },
+    "converter_version": {
+      "exit_status": 0,
+      "status": "verified",
+      "version_output": "croma 1.2.1"
+    },
+    "files": {
+      "audiveris_executable": {
+        "bytes": 532992,
+        "expected_sha256": "06dbf3b4a5acd4dbbefcf9dfbcef43529ad6afde4ba9330cb856d849cd7fe172",
+        "path": "Research/omr/.runtime/phase2r/audiveris-extract/Audiveris/Audiveris.exe",
+        "sha256": "06dbf3b4a5acd4dbbefcf9dfbcef43529ad6afde4ba9330cb856d849cd7fe172",
+        "status": "verified"
+      },
+      "audiveris_installer": {
+        "bytes": 85062430,
+        "expected_sha256": "5f1b4e96a12c53c7da426814b76e599363c4181e291855996e0a6878dda95f71",
+        "path": "Research/omr/.runtime/phase2r/audiveris/Audiveris-5.11.0-windowsConsole-x86_64.msi",
+        "sha256": "5f1b4e96a12c53c7da426814b76e599363c4181e291855996e0a6878dda95f71",
+        "status": "verified"
+      },
+      "croma": {
+        "bytes": 2983936,
+        "expected_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+        "path": "Research/omr/.runtime/phase2r/croma/croma-windows-x86_64.exe",
+        "sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+        "status": "verified"
+      },
+      "cuda_archive": {
+        "bytes": 391443627,
+        "expected_sha256": "8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6",
+        "path": "Research/omr/.runtime/phase2r/llama-b11124/cudart-llama-bin-win-cuda-12.4-x64.zip",
+        "sha256": "8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6",
+        "status": "verified"
+      },
+      "cuda_blas": {
+        "bytes": 100033536,
+        "expected_sha256": "e40202fe4223c1cd2d2dce7beec59e1ed61c7801bd827309183be9b50e358f4c",
+        "path": "Research/omr/.runtime/phase2r/llama-b11124/cublas64_12.dll",
+        "sha256": "e40202fe4223c1cd2d2dce7beec59e1ed61c7801bd827309183be9b50e358f4c",
+        "status": "verified"
+      },
+      "cuda_blas_lt": {
+        "bytes": 473551360,
+        "expected_sha256": "2a896460bef60ed57ef32b0875812f355a6984e671d638bb632f5e8c1d7a831f",
+        "path": "Research/omr/.runtime/phase2r/llama-b11124/cublasLt64_12.dll",
+        "sha256": "2a896460bef60ed57ef32b0875812f355a6984e671d638bb632f5e8c1d7a831f",
+        "status": "verified"
+      },
+      "cuda_runtime": {
+        "bytes": 553984,
+        "expected_sha256": "d28e42265da7462162a54da6b7a99ea4fa2caf8139d862bb500db875d0b32dfc",
+        "path": "Research/omr/.runtime/phase2r/llama-b11124/cudart64_12.dll",
+        "sha256": "d28e42265da7462162a54da6b7a99ea4fa2caf8139d862bb500db875d0b32dfc",
+        "status": "verified"
+      },
+      "legato_converter": {
+        "bytes": 134148,
+        "expected_sha256": null,
+        "path": "Research/omr/.runtime/phase2r/legato-source/utils/abc2xml.py",
+        "sha256": "ee1146dac904f88e81fc28ef22939a775fd28aaf88b81c49c05ab732cac2fac3",
+        "status": "hashed"
+      },
+      "llama_cli": {
+        "bytes": 90624,
+        "expected_sha256": "252d8c9a02c20aa7263a38fea69182e3658779f368baaeb57610bfd90e084b9e",
+        "path": "Research/omr/.runtime/phase2r/llama-b11124/llama-mtmd-cli.exe",
+        "sha256": "252d8c9a02c20aa7263a38fea69182e3658779f368baaeb57610bfd90e084b9e",
+        "status": "verified"
+      },
+      "musescore": {
+        "bytes": 95614976,
+        "expected_sha256": null,
+        "path": "<external>/MuseScore4.exe",
+        "sha256": "bce47e72a3e3258b80b0e6a0f04f16d9446fd977eba9ab4cdffd12b978cf4b67",
+        "status": "hashed"
+      },
+      "qwen_projector": {
+        "bytes": 445053216,
+        "expected_sha256": "f9a68fabba69c3b81e153367b2c7521030b0fa8bb0de400c9599c8e6725f9c82",
+        "path": "Research/omr/.runtime/phase2r/qwen/mmproj-Qwen3VL-2B-Instruct-Q8_0.gguf",
+        "sha256": "f9a68fabba69c3b81e153367b2c7521030b0fa8bb0de400c9599c8e6725f9c82",
+        "status": "verified"
+      },
+      "qwen_q8": {
+        "bytes": 1834427424,
+        "expected_sha256": "1e8db19207c8ce0733ddd78c2eff8a9e22c27c82f4443df94c25792ed8fe04f2",
+        "path": "Research/omr/.runtime/phase2r/qwen/Qwen3VL-2B-Instruct-Q8_0.gguf",
+        "sha256": "1e8db19207c8ce0733ddd78c2eff8a9e22c27c82f4443df94c25792ed8fe04f2",
+        "status": "verified"
+      },
+      "rokot_projector": {
+        "bytes": 819394752,
+        "expected_sha256": "1074d47f6fd864bffa9d8843bbae30e6aa696ad0d55535ebd77053d81c699bd0",
+        "path": "Research/omr/.runtime/phase2r/rokot/mmproj-rokot-omr-2b-f16.gguf",
+        "sha256": "1074d47f6fd864bffa9d8843bbae30e6aa696ad0d55535ebd77053d81c699bd0",
+        "status": "verified"
+      },
+      "rokot_q8": {
+        "bytes": 1834427296,
+        "expected_sha256": "df53948ada1a4a584b4c7c81cc7e3293d3457f2e5ec9688271693459eb950f25",
+        "path": "Research/omr/.runtime/phase2r/rokot/rokot-omr-2b-Q8_0.gguf",
+        "sha256": "df53948ada1a4a584b4c7c81cc7e3293d3457f2e5ec9688271693459eb950f25",
+        "status": "verified"
+      }
+    },
+    "homr": {
+      "bridge_patch": {
+        "bytes": 3936,
+        "expected_sha256": null,
+        "path": "Bridge/homr_gpu.py",
+        "sha256": "e0b4c4f95031713c73507d7bc14bee00a10355746a107e49cbdf8999704a4f97",
+        "status": "hashed"
+      },
+      "local_source": {
+        "file_count": 40,
+        "files": [
+          {
+            "path": "__init__.py",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "path": "autocrop.py",
+            "sha256": "8d898b51d4a892052eea695c8b95d7262ed1c4b5180ff0b99cb2c53a3ddf12ce"
+          },
+          {
+            "path": "bar_line_detection.py",
+            "sha256": "0fd0ec988d240842a72348770769ef1a2c3a47a95da8996017aed04455589a6d"
+          },
+          {
+            "path": "bounding_boxes.py",
+            "sha256": "cf5c27212f3b9763dd460cbefe99fd0a66e8f7bf53ea50d02d8849482a02a51f"
+          },
+          {
+            "path": "brace_dot_detection.py",
+            "sha256": "ab5aade1a8653b3a44b300217404618f2bd8319d34173e7cd4dc26d66d45a7b7"
+          },
+          {
+            "path": "circle_of_fifths.py",
+            "sha256": "3974ab21de851225a3f23f27868165c9b9ea9730984c3589ef180f1162056ae9"
+          },
+          {
+            "path": "color_adjust.py",
+            "sha256": "01d971bded1397042bfa76ab9d691e6a3e6bf9bb4283f9d1dab382b0088d96fc"
+          },
+          {
+            "path": "constants.py",
+            "sha256": "98d7114ec0509575e2b61ede66d7f42e8c0a90eb25aaa82ab7dd0e92e10fefa0"
+          },
+          {
+            "path": "debug.py",
+            "sha256": "dc9e208c605389a967b58a4edee955bfa8ab559d2ac66cd3f677877c8c42b5b3"
+          },
+          {
+            "path": "download_utils.py",
+            "sha256": "a1c73e044e093095212bab6905213db4427e3980fbcc957a01013c9cdcee3bdb"
+          },
+          {
+            "path": "find_peaks.py",
+            "sha256": "61443dc0c58ef8a2dadc659ed46cb1547ef9c2c23fa46ea9a7631de2aee75180"
+          },
+          {
+            "path": "image_utils.py",
+            "sha256": "b293ffad901fee69e11fcee672f2fc7aa61a44216143b95b8a916655400eea06"
+          },
+          {
+            "path": "main.py",
+            "sha256": "11994ea9448ddc03c8cfe17165ec1b3093ed223e8b86dc5aa63934c6a8b492b8"
+          },
+          {
+            "path": "model.py",
+            "sha256": "c46a69c711d9eb8b1bf9d00f7046031ecd73a7788e8caaaa3c53ee08fe16f59e"
+          },
+          {
+            "path": "music_xml_generator.py",
+            "sha256": "c01415ed218a29326e207b9c21c9ff46fa6b2403c02e90f0b8e73399ac7afd83"
+          },
+          {
+            "path": "noise_filtering.py",
+            "sha256": "0752bba4acca214407408b8f4e4f0540893e07a288f1272f3bfbd4395eca724b"
+          },
+          {
+            "path": "note_detection.py",
+            "sha256": "7dc0b3f8038c47d5b4f263ae16b241ac358e12e2d13055aaa6593aaf0be1014b"
+          },
+          {
+            "path": "onnx_providers.py",
+            "sha256": "fc677bd0ec701fd4d09f85d46121575647a28c6e05020a2be10d014e0e374b25"
+          },
+          {
+            "path": "pdf_utils.py",
+            "sha256": "9a05d6f81979567bf9ee9939931c260e4ff275118132d11aeeea8711536bf3e3"
+          },
+          {
+            "path": "relieur.py",
+            "sha256": "a29ac70c7b23ff2dab8f2cff14d33663597597401e98be9cd0b6db2d01f08fc8"
+          },
+          {
+            "path": "resize.py",
+            "sha256": "b4e40105552a3a165f6fc1bf42e192455c842b5c7605165156538dd405c92b81"
+          },
+          {
+            "path": "segmentation/__init__.py",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "path": "segmentation/config.py",
+            "sha256": "22dbb71d4e066f1ea03d1af526c57dc2014e2a04c37264b68cb4d7d919d3089c"
+          },
+          {
+            "path": "segmentation/inference_segnet.py",
+            "sha256": "80bf3354f292b323183534ed5517c5c2e67f1ec5c229291aa125184666ba707c"
+          },
+          {
+            "path": "simple_logging.py",
+            "sha256": "0a289e6deb8d55e0bcd709f4651246a417efb744447a9340b3cd5eb5669271ed"
+          },
+          {
+            "path": "staff_detection.py",
+            "sha256": "5f0b0a4faff6275ca4a47e2f4a0a32e2c436321d2cf41fe2cd303747a032589e"
+          },
+          {
+            "path": "staff_dewarping.py",
+            "sha256": "6fc9efd2549343712f94141997c8fa4e522c27a0c93ee5e6fef921bc29c6e31c"
+          },
+          {
+            "path": "staff_parsing.py",
+            "sha256": "fe35057fc723bbcf2d6b7296490efa1d0f29fccc0199d20019eb882fbf39f850"
+          },
+          {
+            "path": "staff_parsing_tromr.py",
+            "sha256": "bf4664ff0a32378fd841bd2af915e5e00a470daadaca8d44246450ea896fd109"
+          },
+          {
+            "path": "staff_position_save_load.py",
+            "sha256": "63c671944f79c20727ebcb37e20835604a0e3d7d31cabe8df6fb605514b3f69f"
+          },
+          {
+            "path": "staff_regions.py",
+            "sha256": "a77ab00fec757961ae8492f6f5f9b5bc0a26b883c585703a28588200bc02502e"
+          },
+          {
+            "path": "title_detection.py",
+            "sha256": "086ca3f1117654f1897b0849d67fa4ebe1cee5dfa7a526318f42c8f92a02642c"
+          },
+          {
+            "path": "transformer/__init__.py",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "path": "transformer/configs.py",
+            "sha256": "b9dbe459f64dfd3a993cfbf620cb18a63d05d5d1062ff86705cbe7d3057cd629"
+          },
+          {
+            "path": "transformer/decoder_inference.py",
+            "sha256": "2a2fac58915bd63059052e2f91799f1008fb9a56af136e1e8fba137338b199d3"
+          },
+          {
+            "path": "transformer/encoder_inference.py",
+            "sha256": "d7248e7f2271849f22addf9c14ed87bc84eec6471a2917d98376c5cc27e092cd"
+          },
+          {
+            "path": "transformer/staff2score.py",
+            "sha256": "5c440f9547c2f29883a9a6eaa67dbcde940acb8f580743a28b9406f50c254fc8"
+          },
+          {
+            "path": "transformer/utils.py",
+            "sha256": "e5b8a54c585b190562d7848381a42c740b86b626c3987f5715485ee15917158f"
+          },
+          {
+            "path": "transformer/vocabulary.py",
+            "sha256": "48b39832a6882dc73b83b80df44b3b79d7d88188d02ff4808ff536605edb0693"
+          },
+          {
+            "path": "type_definitions.py",
+            "sha256": "ef479171ac083ce2ed8e4945099f281571c932a51548ba466a340e0e2d8b263e"
+          }
+        ],
+        "root": "Bridge/.venv-homr-gpu/Lib/site-packages/homr",
+        "source_tree_sha256": "f038ae83d0dac572e3abaa6b9a6077b39c2ff3cb55fb8b6bd495b0ae7208c02a"
+      },
+      "package_source": {
+        "url": "https://github.com/liebharc/homr.git",
+        "vcs_info": {
+          "commit_id": "457e7c6518a10ba755db2e60883419e56c4d7369",
+          "requested_revision": "457e7c6518a10ba755db2e60883419e56c4d7369",
+          "vcs": "git"
+        }
+      },
+      "source_revision_verified": true,
+      "tokenizer_count": 4,
+      "tokenizers": [
+        {
+          "bytes": 331,
+          "expected_sha256": null,
+          "path": "Bridge/.venv-homr-gpu/Lib/site-packages/homr/transformer/tokenizer_lift.json",
+          "sha256": "5ab78e27bb6f296fc43ff9b64f87abc959b16984440b1523823b10ddd44289da",
+          "status": "hashed"
+        },
+        {
+          "bytes": 275,
+          "expected_sha256": null,
+          "path": "Bridge/.venv-homr-gpu/Lib/site-packages/homr/transformer/tokenizer_note.json",
+          "sha256": "43df5138227acea24f7b4bf48407ae0dda31c518f9c6efe5ccbade0775debb92",
+          "status": "hashed"
+        },
+        {
+          "bytes": 1581,
+          "expected_sha256": null,
+          "path": "Bridge/.venv-homr-gpu/Lib/site-packages/homr/transformer/tokenizer_pitch.json",
+          "sha256": "d6ff2edecbbd9d6ed8256fc09c1a907cbf58215e337582e630b2987a800837c7",
+          "status": "hashed"
+        },
+        {
+          "bytes": 2556,
+          "expected_sha256": null,
+          "path": "Bridge/.venv-homr-gpu/Lib/site-packages/homr/transformer/tokenizer_rhythm.json",
+          "sha256": "3f041e7b711fba5651b7b83f745404569ddeb5e101a7e9aa4edb232cd3c59926",
+          "status": "hashed"
+        }
+      ],
+      "weight_count": 5,
+      "weights": [
+        {
+          "bytes": 28667207,
+          "expected_sha256": null,
+          "path": "Bridge/.venv-homr-gpu/Lib/site-packages/homr/segmentation/segnet_308-3296ccd40960f90ca6ab9c035cca945675d30a0f_fp16.onnx",
+          "sha256": "60f495496cb41473c0521d0811d8f44b9d5cff892d287974a8aebb3eaee2fa83",
+          "status": "hashed"
+        },
+        {
+          "bytes": 93946388,
+          "expected_sha256": null,
+          "path": "Bridge/.venv-homr-gpu/Lib/site-packages/homr/transformer/decoder_pytorch_model_396-f6feedb42ff90087d898b0941a55d040fa6b2903_fp16.onnx",
+          "sha256": "5f69d7552f795e7515540db7a96ee1164bb9f70d140d7135a46e0fe872aaba92",
+          "status": "hashed"
+        },
+        {
+          "bytes": 93962788,
+          "expected_sha256": null,
+          "path": "Bridge/.venv-homr-gpu/Lib/site-packages/homr/transformer/decoder_pytorch_model_426-b6fd20809a8dcaf10dfd39a4ca4f64c6f056e644_fp16.onnx",
+          "sha256": "58d55eebe22788ce98f0fc7730480a79c9f56534db064e8d32b1d5fe2579904a",
+          "status": "hashed"
+        },
+        {
+          "bytes": 26466256,
+          "expected_sha256": null,
+          "path": "Bridge/.venv-homr-gpu/Lib/site-packages/homr/transformer/encoder_pytorch_model_396-f6feedb42ff90087d898b0941a55d040fa6b2903_fp16.onnx",
+          "sha256": "9db62d5a6a13c8df2df321af3bcf72c7f81a95d4f876d4f0c202b28f8658087e",
+          "status": "hashed"
+        },
+        {
+          "bytes": 26466256,
+          "expected_sha256": null,
+          "path": "Bridge/.venv-homr-gpu/Lib/site-packages/homr/transformer/encoder_pytorch_model_426-b6fd20809a8dcaf10dfd39a4ca4f64c6f056e644_fp16.onnx",
+          "sha256": "cd2da3ddec91af046d274506947f01da079c4ec5908ba0dd4c0c5985f780c82a",
+          "status": "hashed"
+        }
+      ]
+    },
+    "legato_source": {
+      "changed_file_count": 0,
+      "clean": true,
+      "head": "179c228d3d5f67113cf739b44891b3abe046f1dc",
+      "status": "verified"
+    },
+    "llama_devices": {
+      "exit_status": 0,
+      "status": "verified",
+      "version_output": "Available devices:\n  CUDA0: NVIDIA GeForce RTX 4050 Laptop GPU (6140 MiB, 5072 MiB free)"
+    },
+    "llama_version": {
+      "exit_status": 0,
+      "status": "verified",
+      "version_output": "version: 0.4.1-dev (build 11124, commit 1a679828f)\nbuilt with Clang 20.1.8 for Windows x86_64"
+    },
+    "schema_version": 1,
+    "zeus": {
+      "checkpoint": {
+        "expected_bytes": null,
+        "expected_sha256": null,
+        "path": "Research/omr/zeus/weights/zeus-olimpic-1.0-2024-02-12.model",
+        "status": "missing"
+      },
+      "detector": {
+        "bytes": 1750,
+        "expected_sha256": null,
+        "path": "Bridge/detect_systems.py",
+        "sha256": "b1aac6372d1cbce32dc8e00a7e6c6d809cb9d6eb1fb82ad382cfb42a8b2e6c86",
+        "status": "hashed"
+      },
+      "local_source": {
+        "file_count": 4,
+        "files": [
+          {
+            "path": "benchmark_zeus.py",
+            "sha256": "9c65ce8d846d6779420c121f3465b862d21c4f5a90e651e15aa67bdd3c1437f9"
+          },
+          {
+            "path": "infer_batch.py",
+            "sha256": "6c95239dc9f8a0dbd44f93ea87d5528575d9d3d715d891ff477eef97423cc53c"
+          },
+          {
+            "path": "test_zeus.py",
+            "sha256": "b7b334669e8308043c30e18fdfde7edd557e0caca8f94f99b8a2f7ed64c23ce9"
+          },
+          {
+            "path": "zeus_runner.py",
+            "sha256": "e797067e768aa8757ddaed782c806e7f5e4781b560439b848049b8368ac799aa"
+          }
+        ],
+        "root": "Research/omr/zeus",
+        "source_tree_sha256": "8283fb91380f6177bb88e0b0ad2cdd1a21318cffac83109a055cb0011117e008"
+      },
+      "runner": {
+        "bytes": 5128,
+        "expected_sha256": null,
+        "path": "Research/omr/phase2_zeus_runner.py",
+        "sha256": "967845fbdca927cb1600e059523629cb18b0123140366a91c9c9d99c3bd4e2d8",
+        "status": "hashed"
+      }
+    }
+  },
+  "schema_version": 1,
+  "scope": {
+    "development_only": true,
+    "phase3_started": false
+  }
+}

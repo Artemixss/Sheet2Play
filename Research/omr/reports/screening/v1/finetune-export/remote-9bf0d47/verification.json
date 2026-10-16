@@ -1,0 +1,1224 @@
+{
+  "format": "homr-epoch14-parity-verification-v1",
+  "status": "pass",
+  "tolerance": {
+    "atol": 0.02,
+    "rtol": 0.02
+  },
+  "artifacts": {
+    "checkpoint": {
+      "path": "/root/Sheet2Play/Research/omr/vendor/homr/current_training/checkpoint-135674/model.safetensors",
+      "sha256": "bb077e964069145996376c209a035a473986c255143e73e8777bfbbf908a6de0"
+    },
+    "encoder_onnx": {
+      "path": "/root/omr_epoch14_onnx_export/homr_epoch14_encoder_fp16.onnx",
+      "sha256": "7e60796fc1b8702008eabda3c0b737daffa80984d34749edec26b162fda596d5"
+    },
+    "decoder_onnx": {
+      "path": "/root/omr_epoch14_onnx_export/homr_epoch14_decoder_fp16.onnx",
+      "sha256": "54c4940a2c8f8ca2c340744f29ea6a90a1645973ee7195d127d1b2c776609fce"
+    }
+  },
+  "source": {
+    "cwd": "/root/Sheet2Play/Research/omr/vendor/homr",
+    "strict_model_load": "pass",
+    "strict_wrapper_load": "pass",
+    "offline_constructor": true
+  },
+  "runtime": {
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "torch": "2.7.1+cu126",
+    "onnxruntime": "1.24.1",
+    "providers": [
+      "CPUExecutionProvider"
+    ],
+    "provider_mode": "cpu",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39"
+  },
+  "preprocessing": {
+    "source_path": "/root/Sheet2Play/Research/omr/tests/fixtures/transcoda-baseline/baseline-piano.png",
+    "source_sha256": "2cbe267a15f2f5791943523413ce6c3d25dee32e283f43af156c7eeee5f08805",
+    "source_shape_bgr": [
+      1485,
+      1050,
+      3
+    ],
+    "crop_xyxy": [
+      40,
+      50,
+      1010,
+      230
+    ],
+    "resize_wh": [
+      1280,
+      256
+    ],
+    "grayscale": "cv2.COLOR_BGR2GRAY",
+    "normalization": {
+      "input_scale": "uint8 / 255",
+      "mean": 0.7931,
+      "std": 0.1738
+    },
+    "tensor_shape": [
+      1,
+      1,
+      256,
+      1280
+    ],
+    "crop_stddev": 47.18465357299971
+  },
+  "interface": {
+    "encoder": {
+      "inputs": [
+        {
+          "name": "input",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            1,
+            256,
+            1280
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            1280,
+            512
+          ]
+        }
+      ]
+    },
+    "decoder": {
+      "inputs": [
+        {
+          "name": "rhythms",
+          "type": "tensor(int64)",
+          "shape": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "pitchs",
+          "type": "tensor(int64)",
+          "shape": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "lifts",
+          "type": "tensor(int64)",
+          "shape": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "articulations",
+          "type": "tensor(int64)",
+          "shape": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "slurs",
+          "type": "tensor(int64)",
+          "shape": [
+            1,
+            1
+          ]
+        },
+        {
+          "name": "context",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            "cache_exists",
+            512
+          ]
+        },
+        {
+          "name": "cache_len",
+          "type": "tensor(int64)",
+          "shape": [
+            1
+          ]
+        },
+        {
+          "name": "cache_in0",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in1",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in2",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in3",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in4",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in5",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in6",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in7",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in8",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in9",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in10",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in11",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in12",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in13",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in14",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in15",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in16",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in17",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in18",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in19",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in20",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in21",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in22",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in23",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in24",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in25",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in26",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in27",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in28",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in29",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in30",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        },
+        {
+          "name": "cache_in31",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "seq_len",
+            64
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "out_rhythms",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            1,
+            260
+          ]
+        },
+        {
+          "name": "out_pitchs",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            1,
+            72
+          ]
+        },
+        {
+          "name": "out_lifts",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            1,
+            7
+          ]
+        },
+        {
+          "name": "out_positions",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            1,
+            3
+          ]
+        },
+        {
+          "name": "out_articulations",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            1,
+            61
+          ]
+        },
+        {
+          "name": "out_slurs",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            1,
+            5
+          ]
+        },
+        {
+          "name": "attention",
+          "type": "tensor(float16)",
+          "shape": [
+            2
+          ]
+        },
+        {
+          "name": "cache_out0",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out0_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out1",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out1_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out2",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out2_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out3",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out3_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out4",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out4_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out5",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out5_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out6",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out6_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out7",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out7_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out8",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out8_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out9",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out9_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out10",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out10_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out11",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out11_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out12",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out12_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out13",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out13_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out14",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out14_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out15",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out15_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out16",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out16_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out17",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out17_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out18",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out18_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out19",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out19_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out20",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out20_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out21",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out21_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out22",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out22_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out23",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out23_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out24",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out24_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out25",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out25_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out26",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out26_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out27",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out27_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out28",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out28_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out29",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out29_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out30",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out30_dim_2",
+            64
+          ]
+        },
+        {
+          "name": "cache_out31",
+          "type": "tensor(float16)",
+          "shape": [
+            1,
+            8,
+            "Concatcache_out31_dim_2",
+            64
+          ]
+        }
+      ]
+    }
+  },
+  "vocabulary": {
+    "sizes": {
+      "rhythm": 260,
+      "pitch": 72,
+      "lift": 7,
+      "articulation": 61,
+      "slur": 5,
+      "position": 3
+    },
+    "special_ids": {
+      "pad": 0,
+      "bos": 1,
+      "eos": 2,
+      "nonote": 0
+    }
+  },
+  "encoder": {
+    "synthetic_gradient_v1": {
+      "shape": [
+        1,
+        1280,
+        512
+      ],
+      "max_abs": 0.003586292266845703,
+      "mean_abs": 0.0003237144264858216,
+      "max_rel": 396.022216796875,
+      "violations": 0,
+      "elements": 655360,
+      "pass": true
+    },
+    "public_piano_crop_v1": {
+      "shape": [
+        1,
+        1280,
+        512
+      ],
+      "max_abs": 0.0058135986328125,
+      "mean_abs": 0.00040998487384058535,
+      "max_rel": 115.1926498413086,
+      "violations": 0,
+      "elements": 655360,
+      "pass": true
+    }
+  },
+  "decoder_steps": [
+    {
+      "step": 0,
+      "cache_bearing": false,
+      "heads": {
+        "rhythm": {
+          "shape": [
+            1,
+            1,
+            260
+          ],
+          "max_abs": 0.002838611602783203,
+          "mean_abs": 0.0003332716878503561,
+          "max_rel": 0.004841282032430172,
+          "violations": 0,
+          "elements": 260,
+          "pass": true
+        },
+        "pitch": {
+          "shape": [
+            1,
+            1,
+            72
+          ],
+          "max_abs": 0.008302688598632812,
+          "mean_abs": 0.00217757117934525,
+          "max_rel": 0.02497665211558342,
+          "violations": 0,
+          "elements": 72,
+          "pass": true
+        },
+        "lift": {
+          "shape": [
+            1,
+            1,
+            7
+          ],
+          "max_abs": 0.0048732757568359375,
+          "mean_abs": 0.002118519274517894,
+          "max_rel": 0.00041379767935723066,
+          "violations": 0,
+          "elements": 7,
+          "pass": true
+        },
+        "position": {
+          "shape": [
+            1,
+            1,
+            3
+          ],
+          "max_abs": 0.0034956932067871094,
+          "mean_abs": 0.0022808711510151625,
+          "max_rel": 0.0007047019898891449,
+          "violations": 0,
+          "elements": 3,
+          "pass": true
+        },
+        "articulation": {
+          "shape": [
+            1,
+            1,
+            61
+          ],
+          "max_abs": 0.009288787841796875,
+          "mean_abs": 0.0035118665546178818,
+          "max_rel": 0.0006527379737235606,
+          "violations": 0,
+          "elements": 61,
+          "pass": true
+        },
+        "slur": {
+          "shape": [
+            1,
+            1,
+            5
+          ],
+          "max_abs": 0.004092216491699219,
+          "mean_abs": 0.0015145301586017013,
+          "max_rel": 0.0004327083006501198,
+          "violations": 0,
+          "elements": 5,
+          "pass": true
+        },
+        "attention": {
+          "shape": [
+            2
+          ],
+          "max_abs": 0.020648956298828125,
+          "mean_abs": 0.016210556030273438,
+          "max_rel": 0.0003860383003484458,
+          "violations": 0,
+          "elements": 2,
+          "pass": true
+        }
+      },
+      "cache": {
+        "count": 32,
+        "max_abs": 0.0141143798828125,
+        "violations": 0,
+        "pass": true
+      }
+    },
+    {
+      "step": 1,
+      "cache_bearing": true,
+      "heads": {
+        "rhythm": {
+          "shape": [
+            1,
+            1,
+            260
+          ],
+          "max_abs": 0.0014204978942871094,
+          "mean_abs": 0.00029070788878016174,
+          "max_rel": 0.0008179372525773942,
+          "violations": 0,
+          "elements": 260,
+          "pass": true
+        },
+        "pitch": {
+          "shape": [
+            1,
+            1,
+            72
+          ],
+          "max_abs": 0.004473686218261719,
+          "mean_abs": 0.0012946543283760548,
+          "max_rel": 0.0015347072621807456,
+          "violations": 0,
+          "elements": 72,
+          "pass": true
+        },
+        "lift": {
+          "shape": [
+            1,
+            1,
+            7
+          ],
+          "max_abs": 0.002689361572265625,
+          "mean_abs": 0.0008700915495865047,
+          "max_rel": 0.00034589608549140394,
+          "violations": 0,
+          "elements": 7,
+          "pass": true
+        },
+        "position": {
+          "shape": [
+            1,
+            1,
+            3
+          ],
+          "max_abs": 0.001961231231689453,
+          "mean_abs": 0.001101334928534925,
+          "max_rel": 0.0002698606695048511,
+          "violations": 0,
+          "elements": 3,
+          "pass": true
+        },
+        "articulation": {
+          "shape": [
+            1,
+            1,
+            61
+          ],
+          "max_abs": 0.0046901702880859375,
+          "mean_abs": 0.0015943675534799695,
+          "max_rel": 0.0005017062067054212,
+          "violations": 0,
+          "elements": 61,
+          "pass": true
+        },
+        "slur": {
+          "shape": [
+            1,
+            1,
+            5
+          ],
+          "max_abs": 0.0020084381103515625,
+          "mean_abs": 0.0009244441753253341,
+          "max_rel": 0.00037881609750911593,
+          "violations": 0,
+          "elements": 5,
+          "pass": true
+        },
+        "attention": {
+          "shape": [
+            2
+          ],
+          "max_abs": 0.04344940185546875,
+          "mean_abs": 0.0318450927734375,
+          "max_rel": 0.0009430208592675626,
+          "violations": 0,
+          "elements": 2,
+          "pass": true
+        }
+      },
+      "cache": {
+        "count": 32,
+        "max_abs": 0.0141143798828125,
+        "violations": 0,
+        "pass": true
+      }
+    },
+    {
+      "step": 2,
+      "cache_bearing": true,
+      "heads": {
+        "rhythm": {
+          "shape": [
+            1,
+            1,
+            260
+          ],
+          "max_abs": 0.0011435151100158691,
+          "mean_abs": 0.0002409517765045166,
+          "max_rel": 0.001296271220780909,
+          "violations": 0,
+          "elements": 260,
+          "pass": true
+        },
+        "pitch": {
+          "shape": [
+            1,
+            1,
+            72
+          ],
+          "max_abs": 0.003940582275390625,
+          "mean_abs": 0.0015272138407453895,
+          "max_rel": 0.003144186455756426,
+          "violations": 0,
+          "elements": 72,
+          "pass": true
+        },
+        "lift": {
+          "shape": [
+            1,
+            1,
+            7
+          ],
+          "max_abs": 0.005591392517089844,
+          "mean_abs": 0.0021640572231262922,
+          "max_rel": 0.0007558130309917033,
+          "violations": 0,
+          "elements": 7,
+          "pass": true
+        },
+        "position": {
+          "shape": [
+            1,
+            1,
+            3
+          ],
+          "max_abs": 0.002551555633544922,
+          "mean_abs": 0.0018150409450754523,
+          "max_rel": 0.0005173219833523035,
+          "violations": 0,
+          "elements": 3,
+          "pass": true
+        },
+        "articulation": {
+          "shape": [
+            1,
+            1,
+            61
+          ],
+          "max_abs": 0.0081939697265625,
+          "mean_abs": 0.002574877580627799,
+          "max_rel": 0.001129015814512968,
+          "violations": 0,
+          "elements": 61,
+          "pass": true
+        },
+        "slur": {
+          "shape": [
+            1,
+            1,
+            5
+          ],
+          "max_abs": 0.004058837890625,
+          "mean_abs": 0.001368617988191545,
+          "max_rel": 0.00043639037176035345,
+          "violations": 0,
+          "elements": 5,
+          "pass": true
+        },
+        "attention": {
+          "shape": [
+            2
+          ],
+          "max_abs": 0.07965087890625,
+          "mean_abs": 0.042728424072265625,
+          "max_rel": 0.0003764581342693418,
+          "violations": 0,
+          "elements": 2,
+          "pass": true
+        }
+      },
+      "cache": {
+        "count": 32,
+        "max_abs": 0.0141143798828125,
+        "violations": 0,
+        "pass": true
+      }
+    }
+  ],
+  "generation": {
+    "pytorch_repeat_equal": true,
+    "onnx_repeat_equal": true,
+    "cross_tokens_equal": true,
+    "pytorch": {
+      "terminated_eos": true,
+      "steps": 63,
+      "token_count": 63
+    },
+    "onnx": {
+      "terminated_eos": true,
+      "steps": 63,
+      "token_count": 63
+    }
+  }
+}

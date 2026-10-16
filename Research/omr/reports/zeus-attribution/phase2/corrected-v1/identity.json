@@ -1,0 +1,27 @@
+{
+  "baseline_report_sha256": "22423ca7343b5382881577b6b6146066974cfd35710a48d964faa04b1ef8bb85",
+  "historical_freeze_sha256": "3fdd3d76aeab4188244795ea7b5eb310b2129d8d50131290297aeb1a32020633",
+  "identity_sha256": "ed9e5b7e6f998b5787ae21dfc0b7f545c42fc0bc83b60fc717f002d6b34aa568",
+  "matching": "exact pitch/onset/duration; no alignment, onset tolerance or time warping",
+  "omr_ned": "reused only from verified original score identities and identical MusicXML bytes; frozen source and versions verified",
+  "policy": "symmetric denominator limit 4096 within 8 binary64 ULPs; exact fractions retained",
+  "sample_sha256": "2c98d5638c368b1a53bdb3440177d04fa585f9b1ca6ce6adbe65af64cd8e27d1",
+  "schema_version": 1,
+  "scope": "phase2_cached_shared_timing_repair",
+  "scoring_sources": {
+    "Research\\omr\\phase3_score.py": "6b7afe67dfb2e86b0b76a666397cab3e166162bec9abbb8b6587e0a47395fb39",
+    "Research\\omr\\screening_homr_statistics.py": "2f28f17fda3efcea9f3db51eb3d9046af0acc638cc749b0f41c97d51f7931960",
+    "Research\\omr\\screening_report.py": "8e6f1fe7f7f7dbe4a52e5231ce8b9aa860a5a476f431a6ae078eee2e28bdedf4",
+    "Research\\omr\\src\\sheet2play_omr\\corrected_scoring.py": "64c777a956521b4654b7d75bd66bfc8f42e52481f889aef424a0bac81470a58a",
+    "Research\\omr\\src\\sheet2play_omr\\metrics.py": "f708a8f15d56d9c38f534d7dde2895858057bce3a22bbec6b6450a1901638765",
+    "Research\\omr\\src\\sheet2play_omr\\omr_ned.py": "b3753c37d9d8fa30908a078dc06c16987c67d5b7ef9cd516922a5fc44fa36713",
+    "Research\\omr\\src\\sheet2play_omr\\phase3_scoring.py": "b5f4b33484454e7e0e1affb008a0ae47d791af127f283cc76ac09b8da31c2e97",
+    "Research\\omr\\src\\sheet2play_omr\\timing.py": "a5a2812186dcd1f683fa70ee1ad01fb04aaa26987ac392702d2a0c8cd4334515",
+    "Research\\omr\\timing_repair.py": "69cdf7d46baaf6005a33927bc1da265c75e55e6c3696c863064f5979ea03c187"
+  },
+  "scoring_versions": {
+    "converter21": "4.0.1",
+    "music21": "9.9.1",
+    "musicdiff": "5.2"
+  }
+}

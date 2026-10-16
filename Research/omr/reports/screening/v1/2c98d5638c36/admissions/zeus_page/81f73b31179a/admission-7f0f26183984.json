@@ -1,0 +1,14 @@
+{
+  "adapter_config_sha256": "e798b17dc339f6a42ea50f4dcf6c54a72cbcfa97d1461b083d282ea59502ce93",
+  "candidate": "zeus_page",
+  "complete_page": true,
+  "configuration_sha256": "81f73b31179a40bf63c608d9adea99f546dac49e57722d436dae205a1b135821",
+  "development_identity_sha256": "b8295df8e6a2d2ff38e87d827b8cb0c04ee44e9d1af42cae6308f4493ddf0bf7",
+  "development_item_id": "openscore-6211535-page-1",
+  "development_report": "Research/omr/reports/screening/v1/2c98d5638c36/development/zeus_page/81f73b31179a/openscore-6211535-page-1.json",
+  "development_report_sha256": "a069432e663a63e75f9ef9e62a64964cca1619b2f0f9e94d813d7b8be1f6142e",
+  "sample_sha256": "2c98d5638c368b1a53bdb3440177d04fa585f9b1ca6ce6adbe65af64cd8e27d1",
+  "schema_version": 1,
+  "scope": "development_entry_only; does not authorize screening inference",
+  "status": "passed"
+}

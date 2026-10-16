@@ -1,0 +1,112 @@
+{
+  "adapter_id": "shipped_homr_direct",
+  "aligned_voice_accuracy": 0.7560975609756098,
+  "candidate_id": "shipped_homr",
+  "cold_start": true,
+  "composition_group": "beethoven/sonata26_1",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 4,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 23,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 9,
+        "predicted": "3333333333333333/10000000000000000"
+      },
+      {
+        "actual": "1/4",
+        "count": 5,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 2,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/8",
+        "count": 3,
+        "predicted": "1/8"
+      },
+      {
+        "actual": "3",
+        "count": 4,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "3/2",
+        "count": 1,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "3/2",
+        "count": 5,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "3/4",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "3/4",
+        "count": 1,
+        "predicted": "3/4"
+      },
+      {
+        "actual": "3/8",
+        "count": 3,
+        "predicted": "3/8"
+      },
+      {
+        "actual": "7/6",
+        "count": 1,
+        "predicted": "1/2"
+      }
+    ],
+    "unmatched_expected": 452,
+    "unmatched_predicted": 459
+  },
+  "elapsed_seconds": 25.625,
+  "error": null,
+  "extra_note_count": 481,
+  "failure_penalized_omr_ned": 0.5592620672226434,
+  "first_divergent_measure": 4,
+  "item_id": "test/beethoven/sonata26_1/sonata26_1_1.png",
+  "mean_offset_error": 0.2447089947089947,
+  "missing_note_count": 474,
+  "omr_ned": 0.5592620672226434,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.07907425265188042,
+  "onset_f1": 0.1215043394406943,
+  "peak_ram_bytes": 1883193344,
+  "peak_vram_bytes": 1636827136,
+  "pitch_f1": 0.970106075216972,
+  "predicted_note_count": 522,
+  "reference_measure_count": 34,
+  "reference_note_count": 515,
+  "reference_quarter_length": "103",
+  "schema_version": 1,
+  "staff_accuracy": 0.5609756097560976,
+  "status": "succeeded",
+  "timeline_length_error": "-1083333333333333/100000000000000",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

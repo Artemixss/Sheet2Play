@@ -1,0 +1,43 @@
+{
+  "candidate_checks": {
+    "audiveris_page": {
+      "duration_labels": 25,
+      "duration_matrix_cells": 67,
+      "matched_note_support": 2185,
+      "verified_result_count": 59,
+      "verified_score_count": 59
+    },
+    "fine_tuned_homr": {
+      "duration_labels": 28,
+      "duration_matrix_cells": 79,
+      "matched_note_support": 7000,
+      "verified_result_count": 59,
+      "verified_score_count": 59
+    },
+    "homr_455": {
+      "duration_labels": 28,
+      "duration_matrix_cells": 82,
+      "matched_note_support": 6957,
+      "verified_result_count": 59,
+      "verified_score_count": 59
+    },
+    "homr_page": {
+      "duration_labels": 27,
+      "duration_matrix_cells": 81,
+      "matched_note_support": 7551,
+      "verified_result_count": 59,
+      "verified_score_count": 59
+    },
+    "zeus_page": {
+      "duration_labels": 18,
+      "duration_matrix_cells": 70,
+      "matched_note_support": 897,
+      "verified_result_count": 59,
+      "verified_score_count": 59
+    }
+  },
+  "paired_claims": 8,
+  "report_sha256": "22423ca7343b5382881577b6b6146066974cfd35710a48d964faa04b1ef8bb85",
+  "result_count": 295,
+  "score_count": 295
+}

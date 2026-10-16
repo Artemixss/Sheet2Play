@@ -1,0 +1,78 @@
+{
+  "aligned_voice_accuracy": 0.0,
+  "candidate": "shipped-426-phase2-control",
+  "capture_status": "failed",
+  "comparison_identity": "91e7256cd902a6ea2adb9fb415e6847b2ba0b9e94fb03fe8f5f1570ae6544fb9",
+  "composition_group": "beethoven/sonata17_1",
+  "configuration_identity": "31512f54e60c2e1cff049c60a7f68ceb0366eb49d4aeacf13368de17a0ec430d",
+  "conversion_error": null,
+  "coverage": {
+    "chord_completeness": 0.0,
+    "complete_chords": 0,
+    "per_staff": {
+      "0": {
+        "matched_notes": 0,
+        "predicted_notes": 0,
+        "recall": 0.0,
+        "reference_notes": 371
+      }
+    },
+    "reference_chords": 80,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [],
+    "unmatched_expected": 371,
+    "unmatched_predicted": 0
+  },
+  "elapsed_seconds": 15.71900000000096,
+  "extra_notes": 0,
+  "item_id": "e2139c49a0b38b5921a9",
+  "mean_offset_error": null,
+  "metrics": {
+    "aligned_voice_accuracy": 0.0,
+    "coverage": {
+      "chord_completeness": 0.0,
+      "complete_chords": 0,
+      "per_staff": {
+        "0": {
+          "matched_notes": 0,
+          "predicted_notes": 0,
+          "recall": 0.0,
+          "reference_notes": 371
+        }
+      },
+      "reference_chords": 80,
+      "staff_interpretation": "notation staff index; not validated hand labels"
+    },
+    "duration": {
+      "confusion": [],
+      "unmatched_expected": 371,
+      "unmatched_predicted": 0
+    },
+    "extra_notes": 0,
+    "mean_offset_error": null,
+    "missing_notes": 371,
+    "onset_duration_f1": 0.0,
+    "onset_f1": 0.0,
+    "pitch_f1": 0.0,
+    "predicted_notes": 0,
+    "reference_notes": 371,
+    "staff_accuracy": 0.0,
+    "timeline_predicted": "0",
+    "timeline_reference": "116"
+  },
+  "missing_notes": 371,
+  "onset_duration_f1": 0.0,
+  "onset_f1": 0.0,
+  "original_item_id": "test/beethoven/sonata17_1/sonata17_1_6.png",
+  "pitch_f1": 0.0,
+  "predicted_notes": 0,
+  "receipt_sha256": "cd0db00e415ea35950b4331d9c3e34c311cce4abc1b05ee063ce7aacdb63b331",
+  "reference_notes": 371,
+  "reference_sha256": "3cfa0ce1fb2a4e93e0bd2bfb420f7e26b48852bef82473863ad517eb74e32fd0",
+  "staff_accuracy": 0.0,
+  "status": "failed",
+  "timeline_predicted": "0",
+  "timeline_reference": "116"
+}

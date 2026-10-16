@@ -1,0 +1,45 @@
+{
+  "artifacts": [
+    {
+      "path": "Research/omr/.runtime/phase2r/correction/zeus-engine-page-measured-v2/attempt.log",
+      "sha256": "e07f89407705048751ee41b68ee851045edfb5abe9de194e7863fdcbd79fb2dd"
+    },
+    {
+      "path": "Research/omr/.runtime/phase2r/correction/zeus-engine-page-measured-v2/page-0001.musicxml",
+      "sha256": "76e54f3516e07ad17e68775b772d7153c3beb727bf490ec77f249ddd92fd0dea"
+    },
+    {
+      "path": "Research/omr/.runtime/phase2r/correction/zeus-engine-page-measured-v2/page-0002.musicxml",
+      "sha256": "5dcc7106d94bee8b79ce0c314245c8d18d2c3b576384c87bb04720dc9bbda480"
+    },
+    {
+      "path": "Research/omr/.runtime/phase2r/correction/zeus-engine-page-measured-v2/page-0003.musicxml",
+      "sha256": "c17a70c5002bfb6e5f861a934bcdc7a4e507c9fe9b79732b90aa62652b18c5fc"
+    },
+    {
+      "path": "Research/omr/.runtime/phase2r/correction/zeus-engine-page-measured-v2/page-0004.musicxml",
+      "sha256": "393e2bb136ecfd46f7cc16d81d6eb40d8975efeda5317c0280afea266715df8c"
+    },
+    {
+      "path": "Research/omr/.runtime/phase2r/correction/zeus-engine-page-measured-v2/page-0005.musicxml",
+      "sha256": "5d675c5ddd8c369d7738cbe854c49fd2db47ea9760a29b90c6e38eb630b34c8b"
+    },
+    {
+      "path": "Research/omr/.runtime/phase2r/correction/zeus-engine-page-measured-v2/score.musicxml",
+      "sha256": "5c36277a0105c8c730cf70da8234963273d1c81ad5e60585d2387e0ecfcdfc81"
+    }
+  ],
+  "attempt_runner_sha256": "e2ac99d11e15c46f0471d1c9bf01c510239f82c76ae8cf3e43e2f59df78aa16e",
+  "detector_sha256": "4ad2a8c2cf88d19db46349fda84c76dc8a60dbad2cac6df9f3405b2ad7b26bc2",
+  "exit_status": 1,
+  "input_sha256": "b368dd864dc235272728822a578551fbed619cce02265cc52043dea3051c57c8",
+  "peak_ram_bytes": 1201963008,
+  "peak_vram_bytes": 1179648000,
+  "phase": "2R correction",
+  "scope": "one public open-development page; direct Zeus research-engine path",
+  "seconds": 19.995046300000013,
+  "stderr_tail": "Traceback (most recent call last):\n  File \"C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\phase2r_zeus_engine_attempt.py\", line 77, in <module>\n    raise SystemExit(main())\n                     ^^^^^^\n  File \"C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\phase2r_zeus_engine_attempt.py\", line 33, in main\n    print(infer_zeus_document(args.input, args.output), flush=True)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\src\\sheet2play_omr\\zeus_engine.py\", line 183, in infer_zeus_document\n    canonical = extract_canonical_events(combined_score, validate_ties=False, validate_voice_overlap=False)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\src\\sheet2play_omr\\events.py\", line 159, in extract_canonical_events\n    raise ResearchError(\nsheet2play_omr.errors.ResearchError: Measure 0 on staff 0 exceeds its time signature\n",
+  "timed_out": false,
+  "vram_measurement": "device-wide WDDM fallback",
+  "zeus_engine_sha256": "a599df68e2474ea570aa028454f1f4180786e8e7a8f8811890c9f737ed3234a3"
+}

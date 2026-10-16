@@ -1,0 +1,23 @@
+{
+  "coordinate_space": "homr_predictions_preprocessed",
+  "crops": [
+    {
+      "bottom": 488,
+      "height": 90,
+      "sha256": "588f48f345c1b618d643613745c6b446d733fb1dd7cba9e3911a409eafd8bd94",
+      "system": 1,
+      "top": 398,
+      "width": 1920
+    }
+  ],
+  "detector_image": {
+    "height": 2485,
+    "sha256": "955d52cc26ab24d861717c96725528fc38c3c6eb1b481e3b9e4ae85689f36c1d",
+    "width": 1920
+  },
+  "source_image": {
+    "height": 3300,
+    "sha256": "f8f9caca9f95b1a94cef6452cb2850d91e509a7465794e4e6c927bdfcf4c5791",
+    "width": 2550
+  }
+}

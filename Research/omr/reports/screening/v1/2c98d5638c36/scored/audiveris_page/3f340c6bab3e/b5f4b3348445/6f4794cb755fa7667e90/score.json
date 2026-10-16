@@ -1,0 +1,92 @@
+{
+  "adapter_id": "audiveris_unattended",
+  "aligned_voice_accuracy": 0.7058823529411765,
+  "candidate_id": "audiveris",
+  "cold_start": true,
+  "composition_group": "joplin/lilyqueen",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 5,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 4,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 9,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 3,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 3,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "3/2",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "5/4",
+        "count": 1,
+        "predicted": "3/2"
+      }
+    ],
+    "unmatched_expected": 363,
+    "unmatched_predicted": 382
+  },
+  "elapsed_seconds": 35.57799999999952,
+  "error": null,
+  "extra_note_count": 394,
+  "failure_penalized_omr_ned": 0.2468245794713354,
+  "first_divergent_measure": 1,
+  "item_id": "test/joplin/lilyqueen/lilyqueen_4.png",
+  "mean_offset_error": 0.2672413793103448,
+  "missing_note_count": 375,
+  "omr_ned": 0.2468245794713354,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.0423412204234122,
+  "onset_f1": 0.0722291407222914,
+  "peak_ram_bytes": 990527488,
+  "peak_vram_bytes": 0,
+  "pitch_f1": 0.9364881693648817,
+  "predicted_note_count": 411,
+  "reference_measure_count": 23,
+  "reference_note_count": 392,
+  "reference_quarter_length": "91/2",
+  "schema_version": 1,
+  "staff_accuracy": 0.47058823529411764,
+  "status": "succeeded",
+  "timeline_length_error": "85/4",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

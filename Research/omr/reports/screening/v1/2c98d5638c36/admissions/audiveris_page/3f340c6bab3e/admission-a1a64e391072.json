@@ -1,0 +1,14 @@
+{
+  "adapter_config_sha256": "6794f219b928f816a0a0c860f2672cc542560efe5ce9d227511f8757a658ba61",
+  "candidate": "audiveris_page",
+  "complete_page": true,
+  "configuration_sha256": "3f340c6bab3e8884240da3a2ffdec61b0bd98ebcf81788d3725d08a9aa5ef137",
+  "development_identity_sha256": "05703dd979ba20f36ed578f4649e75f3fe440955c898e97074a614ff5675b5bf",
+  "development_item_id": "openscore-6211535-page-1",
+  "development_report": "Research/omr/reports/screening/v1/2c98d5638c36/development/audiveris_page/3f340c6bab3e/openscore-6211535-page-1.json",
+  "development_report_sha256": "814b0108e97a1560c477d5ee5b48b6eabfadff90297c9fc2d05063c92e4ea819",
+  "sample_sha256": "2c98d5638c368b1a53bdb3440177d04fa585f9b1ca6ce6adbe65af64cd8e27d1",
+  "schema_version": 1,
+  "scope": "development_entry_only; does not authorize screening inference",
+  "status": "passed"
+}

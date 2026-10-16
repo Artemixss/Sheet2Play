@@ -1,0 +1,22 @@
+{
+  "scope": "Saved Phase 2 artifacts only; no Git, inference, scoring or tests",
+  "elapsed_seconds": 24.062999999999988,
+  "threshold_percent": 90,
+  "deadline_seconds": 120,
+  "sample_interval_seconds": 0.5,
+  "samples": 49,
+  "initial": {
+    "commit_percent": 54.34952605376563,
+    "physical_percent": 84.2020792249411,
+    "committed_bytes": 18233774080,
+    "commit_limit_bytes": 33549094912
+  },
+  "final": {
+    "commit_percent": 54.60172681274866,
+    "physical_percent": 84.97695296733829,
+    "committed_bytes": 18318385152,
+    "commit_limit_bytes": 33549094912
+  },
+  "peak_commit_percent": 54.70943437414423,
+  "peak_physical_percent": 85.08132208218761
+}

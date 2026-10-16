@@ -1,0 +1,22 @@
+{
+  "item_id": "openscore-6583907",
+  "runtime_identity": "e61db08610fe9b475d42a822a9ea265fed780e095758944b71cb2c0b17b0ec66",
+  "input_sha256": "62921480449a9ae123b91a6e75f5c73b9aeb0ae59c8f20d87e2f8d621ec268d4",
+  "status": "failed",
+  "profile": "native shipped CUDA page pipeline; debug and position capture enabled",
+  "numeric_accuracy_eligible": false,
+  "error": "MemoryError: Unable to allocate 39.8 MiB for an array with shape (2717, 1920) and data type int64",
+  "elapsed_seconds": 0.9530000000004293,
+  "artifacts": [
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\openscore-6583907\\input.png",
+      "sha256": "62921480449a9ae123b91a6e75f5c73b9aeb0ae59c8f20d87e2f8d621ec268d4",
+      "bytes": 255877
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\openscore-6583907\\tokens.json",
+      "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f",
+      "bytes": 4
+    }
+  ]
+}

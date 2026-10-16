@@ -1,0 +1,162 @@
+{
+  "aligned_voice_accuracy": 0.7914893617021277,
+  "candidate": "shipped-426-phase2-control",
+  "capture_status": "complete",
+  "comparison_identity": "91e7256cd902a6ea2adb9fb415e6847b2ba0b9e94fb03fe8f5f1570ae6544fb9",
+  "composition_group": "chopin/mazurka68_4",
+  "configuration_identity": "31512f54e60c2e1cff049c60a7f68ceb0366eb49d4aeacf13368de17a0ec430d",
+  "conversion_error": null,
+  "coverage": {
+    "chord_completeness": 0.9850746268656716,
+    "complete_chords": 66,
+    "per_staff": {
+      "0": {
+        "matched_notes": 111,
+        "predicted_notes": 130,
+        "recall": 0.4530612244897959,
+        "reference_notes": 245
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 124,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 67,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 130,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 98,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "2",
+        "count": 5,
+        "predicted": "1"
+      },
+      {
+        "actual": "2",
+        "count": 7,
+        "predicted": "2"
+      },
+      {
+        "actual": "3",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "3",
+        "count": 2,
+        "predicted": "2"
+      },
+      {
+        "actual": "7/2",
+        "count": 1,
+        "predicted": "3"
+      }
+    ],
+    "unmatched_expected": 1,
+    "unmatched_predicted": 10
+  },
+  "elapsed_seconds": 13.687999999998283,
+  "extra_notes": 19,
+  "item_id": "c24ce1e59c36934b28c2",
+  "mean_offset_error": 0.0389344262295082,
+  "metrics": {
+    "aligned_voice_accuracy": 0.7914893617021277,
+    "coverage": {
+      "chord_completeness": 0.9850746268656716,
+      "complete_chords": 66,
+      "per_staff": {
+        "0": {
+          "matched_notes": 111,
+          "predicted_notes": 130,
+          "recall": 0.4530612244897959,
+          "reference_notes": 245
+        },
+        "1": {
+          "matched_notes": 0,
+          "predicted_notes": 124,
+          "recall": null,
+          "reference_notes": 0
+        }
+      },
+      "reference_chords": 67,
+      "staff_interpretation": "notation staff index; not validated hand labels"
+    },
+    "duration": {
+      "confusion": [
+        {
+          "actual": "1",
+          "count": 130,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/2",
+          "count": 98,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "2",
+          "count": 5,
+          "predicted": "1"
+        },
+        {
+          "actual": "2",
+          "count": 7,
+          "predicted": "2"
+        },
+        {
+          "actual": "3",
+          "count": 1,
+          "predicted": "1"
+        },
+        {
+          "actual": "3",
+          "count": 2,
+          "predicted": "2"
+        },
+        {
+          "actual": "7/2",
+          "count": 1,
+          "predicted": "3"
+        }
+      ],
+      "unmatched_expected": 1,
+      "unmatched_predicted": 10
+    },
+    "extra_notes": 19,
+    "mean_offset_error": 0.0389344262295082,
+    "missing_notes": 10,
+    "onset_duration_f1": 0.9418837675350701,
+    "onset_f1": 0.9779559118236472,
+    "pitch_f1": 0.9819639278557113,
+    "predicted_notes": 254,
+    "reference_notes": 245,
+    "staff_accuracy": 0.4723404255319149,
+    "timeline_predicted": "69",
+    "timeline_reference": "69"
+  },
+  "missing_notes": 10,
+  "onset_duration_f1": 0.9418837675350701,
+  "onset_f1": 0.9779559118236472,
+  "original_item_id": "test/chopin/mazurka68_4/mazurka68_4_2.png",
+  "pitch_f1": 0.9819639278557113,
+  "predicted_notes": 254,
+  "receipt_sha256": "8e5c43cfa3aa9f167f074b41bdcafba65c9dbe4c765f97fc4a13e64f3eb8a125",
+  "reference_notes": 245,
+  "reference_sha256": "3a69c6fe78768d049022421a659358df61d295a3b257d15e43ef69f2296d11c8",
+  "staff_accuracy": 0.4723404255319149,
+  "status": "complete",
+  "timeline_predicted": "69",
+  "timeline_reference": "69"
+}

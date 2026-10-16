@@ -1,0 +1,403 @@
+{
+  "measures": [
+    {
+      "index": 0,
+      "new_system": false,
+      "number": "0",
+      "part": "parsed-part-0000",
+      "start": "0"
+    },
+    {
+      "index": 1,
+      "new_system": false,
+      "number": "0",
+      "part": "parsed-part-0000",
+      "start": "4"
+    },
+    {
+      "index": 2,
+      "new_system": false,
+      "number": "0",
+      "part": "parsed-part-0000",
+      "start": "8"
+    },
+    {
+      "index": 3,
+      "new_system": false,
+      "number": "0",
+      "part": "parsed-part-0000",
+      "start": "12"
+    },
+    {
+      "index": 0,
+      "new_system": false,
+      "number": "0",
+      "part": "parsed-part-0001",
+      "start": "0"
+    },
+    {
+      "index": 1,
+      "new_system": false,
+      "number": "0",
+      "part": "parsed-part-0001",
+      "start": "4"
+    },
+    {
+      "index": 2,
+      "new_system": false,
+      "number": "0",
+      "part": "parsed-part-0001",
+      "start": "8"
+    },
+    {
+      "index": 3,
+      "new_system": false,
+      "number": "0",
+      "part": "parsed-part-0001",
+      "start": "12"
+    }
+  ],
+  "notes": [
+    {
+      "duration": "1",
+      "local_onset": "0",
+      "measure": 0,
+      "onset": "0",
+      "part": "parsed-part-0000",
+      "pitch": 69,
+      "staff": 0,
+      "ties": [],
+      "voice": "5"
+    },
+    {
+      "duration": "1/7",
+      "local_onset": "1/2",
+      "measure": 1,
+      "onset": "9/2",
+      "part": "parsed-part-0000",
+      "pitch": 64,
+      "staff": 0,
+      "ties": [],
+      "voice": "5"
+    },
+    {
+      "duration": "1/7",
+      "local_onset": "9/14",
+      "measure": 1,
+      "onset": "65/14",
+      "part": "parsed-part-0000",
+      "pitch": 65,
+      "staff": 0,
+      "ties": [],
+      "voice": "5"
+    },
+    {
+      "duration": "1/7",
+      "local_onset": "11/14",
+      "measure": 1,
+      "onset": "67/14",
+      "part": "parsed-part-0000",
+      "pitch": 64,
+      "staff": 0,
+      "ties": [],
+      "voice": "5"
+    },
+    {
+      "duration": "1/12",
+      "local_onset": "467/420",
+      "measure": 1,
+      "onset": "2147/420",
+      "part": "parsed-part-0000",
+      "pitch": 57,
+      "staff": 0,
+      "ties": [],
+      "voice": "5"
+    },
+    {
+      "duration": "1/12",
+      "local_onset": "251/210",
+      "measure": 1,
+      "onset": "1091/210",
+      "part": "parsed-part-0000",
+      "pitch": 60,
+      "staff": 0,
+      "ties": [],
+      "voice": "5"
+    },
+    {
+      "duration": "1/12",
+      "local_onset": "607/420",
+      "measure": 1,
+      "onset": "2287/420",
+      "part": "parsed-part-0000",
+      "pitch": 57,
+      "staff": 0,
+      "ties": [],
+      "voice": "5"
+    },
+    {
+      "duration": "1/12",
+      "local_onset": "5/8",
+      "measure": 2,
+      "onset": "69/8",
+      "part": "parsed-part-0000",
+      "pitch": 57,
+      "staff": 0,
+      "ties": [],
+      "voice": "5"
+    },
+    {
+      "duration": "1/12",
+      "local_onset": "19/24",
+      "measure": 2,
+      "onset": "211/24",
+      "part": "parsed-part-0000",
+      "pitch": 57,
+      "staff": 0,
+      "ties": [],
+      "voice": "5"
+    },
+    {
+      "duration": "1/3",
+      "local_onset": "7/8",
+      "measure": 2,
+      "onset": "71/8",
+      "part": "parsed-part-0000",
+      "pitch": 51,
+      "staff": 0,
+      "ties": [],
+      "voice": "5"
+    },
+    {
+      "duration": "1/3",
+      "local_onset": "29/24",
+      "measure": 2,
+      "onset": "221/24",
+      "part": "parsed-part-0000",
+      "pitch": 53,
+      "staff": 0,
+      "ties": [],
+      "voice": "5"
+    },
+    {
+      "duration": "1/3",
+      "local_onset": "37/24",
+      "measure": 2,
+      "onset": "229/24",
+      "part": "parsed-part-0000",
+      "pitch": 57,
+      "staff": 0,
+      "ties": [],
+      "voice": "5"
+    },
+    {
+      "duration": "1/8",
+      "local_onset": "0",
+      "measure": 1,
+      "onset": "4",
+      "part": "parsed-part-0001",
+      "pitch": 49,
+      "staff": 1,
+      "ties": [],
+      "voice": "1"
+    },
+    {
+      "duration": "1/8",
+      "local_onset": "1/8",
+      "measure": 1,
+      "onset": "33/8",
+      "part": "parsed-part-0001",
+      "pitch": 54,
+      "staff": 1,
+      "ties": [],
+      "voice": "1"
+    },
+    {
+      "duration": "1/8",
+      "local_onset": "1/4",
+      "measure": 1,
+      "onset": "17/4",
+      "part": "parsed-part-0001",
+      "pitch": 57,
+      "staff": 1,
+      "ties": [],
+      "voice": "1"
+    },
+    {
+      "duration": "1/8",
+      "local_onset": "3/8",
+      "measure": 1,
+      "onset": "35/8",
+      "part": "parsed-part-0001",
+      "pitch": 60,
+      "staff": 1,
+      "ties": [],
+      "voice": "1"
+    },
+    {
+      "duration": "1/10",
+      "local_onset": "13/14",
+      "measure": 1,
+      "onset": "69/14",
+      "part": "parsed-part-0001",
+      "pitch": 50,
+      "staff": 1,
+      "ties": [],
+      "voice": "1"
+    },
+    {
+      "duration": "1/12",
+      "local_onset": "36/35",
+      "measure": 1,
+      "onset": "176/35",
+      "part": "parsed-part-0001",
+      "pitch": 54,
+      "staff": 1,
+      "ties": [],
+      "voice": "1"
+    },
+    {
+      "duration": "1/12",
+      "local_onset": "179/140",
+      "measure": 1,
+      "onset": "739/140",
+      "part": "parsed-part-0001",
+      "pitch": 50,
+      "staff": 1,
+      "ties": [],
+      "voice": "1"
+    },
+    {
+      "duration": "1/12",
+      "local_onset": "143/105",
+      "measure": 1,
+      "onset": "563/105",
+      "part": "parsed-part-0001",
+      "pitch": 54,
+      "staff": 1,
+      "ties": [],
+      "voice": "1"
+    },
+    {
+      "duration": "7/8",
+      "local_onset": "107/70",
+      "measure": 1,
+      "onset": "387/70",
+      "part": "parsed-part-0001",
+      "pitch": 52,
+      "staff": 1,
+      "ties": [],
+      "voice": "1"
+    },
+    {
+      "duration": "1/8",
+      "local_onset": "0",
+      "measure": 2,
+      "onset": "8",
+      "part": "parsed-part-0001",
+      "pitch": 51,
+      "staff": 1,
+      "ties": [],
+      "voice": "1"
+    },
+    {
+      "duration": "1/8",
+      "local_onset": "1/8",
+      "measure": 2,
+      "onset": "65/8",
+      "part": "parsed-part-0001",
+      "pitch": 53,
+      "staff": 1,
+      "ties": [],
+      "voice": "1"
+    },
+    {
+      "duration": "1/8",
+      "local_onset": "1/4",
+      "measure": 2,
+      "onset": "33/4",
+      "part": "parsed-part-0001",
+      "pitch": 58,
+      "staff": 1,
+      "ties": [],
+      "voice": "1"
+    },
+    {
+      "duration": "1/8",
+      "local_onset": "3/8",
+      "measure": 2,
+      "onset": "67/8",
+      "part": "parsed-part-0001",
+      "pitch": 60,
+      "staff": 1,
+      "ties": [],
+      "voice": "1"
+    },
+    {
+      "duration": "1/8",
+      "local_onset": "1/2",
+      "measure": 2,
+      "onset": "17/2",
+      "part": "parsed-part-0001",
+      "pitch": 51,
+      "staff": 1,
+      "ties": [],
+      "voice": "1"
+    },
+    {
+      "duration": "1/12",
+      "local_onset": "17/24",
+      "measure": 2,
+      "onset": "209/24",
+      "part": "parsed-part-0001",
+      "pitch": 53,
+      "staff": 1,
+      "ties": [],
+      "voice": "1"
+    },
+    {
+      "duration": "1/4",
+      "local_onset": "0",
+      "measure": 3,
+      "onset": "12",
+      "part": "parsed-part-0001",
+      "pitch": 54,
+      "staff": 1,
+      "ties": [],
+      "voice": "5"
+    },
+    {
+      "duration": "1/4",
+      "local_onset": "1/4",
+      "measure": 3,
+      "onset": "49/4",
+      "part": "parsed-part-0001",
+      "pitch": 57,
+      "staff": 1,
+      "ties": [],
+      "voice": "5"
+    },
+    {
+      "duration": "1/4",
+      "local_onset": "1/2",
+      "measure": 3,
+      "onset": "25/2",
+      "part": "parsed-part-0001",
+      "pitch": 46,
+      "staff": 1,
+      "ties": [],
+      "voice": "5"
+    },
+    {
+      "duration": "1",
+      "local_onset": "3/4",
+      "measure": 3,
+      "onset": "51/4",
+      "part": "parsed-part-0001",
+      "pitch": 53,
+      "staff": 1,
+      "ties": [],
+      "voice": "5"
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "aligned_voice_accuracy": 1.0,
+  "candidate": "shipped-426-phase2-control",
+  "capture_status": "complete",
+  "comparison_identity": "91e7256cd902a6ea2adb9fb415e6847b2ba0b9e94fb03fe8f5f1570ae6544fb9",
+  "composition_group": "joplin/breeze",
+  "configuration_identity": "31512f54e60c2e1cff049c60a7f68ceb0366eb49d4aeacf13368de17a0ec430d",
+  "conversion_error": null,
+  "coverage": {
+    "chord_completeness": 0.3584905660377358,
+    "complete_chords": 38,
+    "per_staff": {
+      "0": {
+        "matched_notes": 73,
+        "predicted_notes": 208,
+        "recall": 0.18575063613231552,
+        "reference_notes": 393
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 185,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 106,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 8,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 5,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 61,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 3,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/4",
+        "count": 9,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 62,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "3/4",
+        "count": 3,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "3/4",
+        "count": 7,
+        "predicted": "3/4"
+      }
+    ],
+    "unmatched_expected": 235,
+    "unmatched_predicted": 235
+  },
+  "elapsed_seconds": 14.579000000001543,
+  "extra_notes": 255,
+  "item_id": "9f96b1702b4ccf119d91",
+  "mean_offset_error": 0.03955696202531646,
+  "metrics": {
+    "aligned_voice_accuracy": 1.0,
+    "coverage": {
+      "chord_completeness": 0.3584905660377358,
+      "complete_chords": 38,
+      "per_staff": {
+        "0": {
+          "matched_notes": 73,
+          "predicted_notes": 208,
+          "recall": 0.18575063613231552,
+          "reference_notes": 393
+        },
+        "1": {
+          "matched_notes": 0,
+          "predicted_notes": 185,
+          "recall": null,
+          "reference_notes": 0
+        }
+      },
+      "reference_chords": 106,
+      "staff_interpretation": "notation staff index; not validated hand labels"
+    },
+    "duration": {
+      "confusion": [
+        {
+          "actual": "1",
+          "count": 8,
+          "predicted": "1"
+        },
+        {
+          "actual": "1",
+          "count": 5,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/2",
+          "count": 61,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/2",
+          "count": 3,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/4",
+          "count": 9,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/4",
+          "count": 62,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "3/4",
+          "count": 3,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "3/4",
+          "count": 7,
+          "predicted": "3/4"
+        }
+      ],
+      "unmatched_expected": 235,
+      "unmatched_predicted": 235
+    },
+    "extra_notes": 255,
+    "mean_offset_error": 0.03955696202531646,
+    "missing_notes": 255,
+    "onset_duration_f1": 0.3511450381679389,
+    "onset_f1": 0.4020356234096692,
+    "pitch_f1": 0.989821882951654,
+    "predicted_notes": 393,
+    "reference_notes": 393,
+    "staff_accuracy": 0.5289855072463768,
+    "timeline_predicted": "52",
+    "timeline_reference": "103/2"
+  },
+  "missing_notes": 255,
+  "onset_duration_f1": 0.3511450381679389,
+  "onset_f1": 0.4020356234096692,
+  "original_item_id": "test/joplin/breeze/breeze_4.png",
+  "pitch_f1": 0.989821882951654,
+  "predicted_notes": 393,
+  "receipt_sha256": "e8a862e785bf8d12ad70f06283a75d639995d542c75def48b07e588cd8b53d63",
+  "reference_notes": 393,
+  "reference_sha256": "5ef301b2504aacd57305fc762e04fafddc77f77283f14bdbe8c5d89f92cf83b5",
+  "staff_accuracy": 0.5289855072463768,
+  "status": "complete",
+  "timeline_predicted": "52",
+  "timeline_reference": "103/2"
+}

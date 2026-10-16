@@ -1,0 +1,40 @@
+{
+  "phase": 1,
+  "status": "complete",
+  "diagnostic_identity_sha256": "ade1709596afff5023e14bfb73257028ff2bc8521f4ff895ec91dc863b842cbb",
+  "historical_execution_source": "unverified",
+  "later_phases_authorized": false,
+  "verification": {
+    "verified": true,
+    "identity_sha256": "ade1709596afff5023e14bfb73257028ff2bc8521f4ff895ec91dc863b842cbb",
+    "inherited_detector_files_verified": 50,
+    "verification_source": {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\zeus_provenance_verify.py",
+      "bytes": 1890,
+      "sha256": "3e74c36e516fa9180215b2f5c3a10b75c9663d489486396a71cdc3bc9399c4fa"
+    }
+  },
+  "full_regression": {
+    "historical_context": {
+      "passed": 251,
+      "skipped": 2
+    },
+    "expanded_context": {
+      "passed": 249,
+      "failed": 2,
+      "skipped": 2
+    }
+  },
+  "artifacts": {
+    "REPORT.md": "6665fdb8334885da5fae8bbdba0955982dd1b60fe3a45f3f6593bf3225168cd8",
+    "handoff.md": "1a32758dd6e0da097a6c31fa3a23748662c869bcfb3494e004cfe6905bdaa14a",
+    "job-record.md": "9524219eda02071ff6bc32fdb252e1a1bbe7e290023f7bd4039ad5000ee9056f",
+    "diagnostic-identity.json": "78356551f06d108d36babb8095a2be436291f05eff6e61e296b3a368bec3adf3",
+    "diagnostic-identity.source.zip": "a16334cb6d30c0349b3494c6f52b745fe550e78a01ea870d80accca14a8a61a1",
+    "probe-v2/import-probe.json": "4ab09fda09dfdba561a286d5fc4ab086e6a20bb8931d4e4cd4b50ff7ce462eb9",
+    "identity-verify.log": "85441acb2338fcdca9d8ad887e3eebd8add419a178f4339a474f99991715fd85",
+    "historical-audit.json": "e7637ea18263284adadc64b1f2f1dc6b6fa1e314d7c224cf86a839dbe66d2509",
+    "regression.log": "7c2cd48792d8901007427f7023f0c2d77f7f0aeb7daf41f4a4b52fbfb523d27b",
+    "regression-historical-context.log": "76661cfc69bde89b5a73830529c9fe4996ada59f92cf81fa7e1245b53416d843"
+  }
+}

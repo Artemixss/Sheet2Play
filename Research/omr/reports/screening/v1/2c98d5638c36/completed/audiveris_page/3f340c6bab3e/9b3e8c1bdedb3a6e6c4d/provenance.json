@@ -1,0 +1,17 @@
+{
+  "attempt_path": "Research\\omr\\reports\\screening\\v1\\2c98d5638c36\\attempts\\audiveris_page\\3f340c6bab3e\\47cb0f412e238877c16f\\attempt-de42d48bb13643fbbfb9a1608ebc1c2c",
+  "attempt_sha256": "27c09baf29e8983ce32ad7f13b3228740e14584afa197604d415b9e178b477c4",
+  "identity": {
+    "adapter_config_sha256": "6794f219b928f816a0a0c860f2672cc542560efe5ce9d227511f8757a658ba61",
+    "candidate": "audiveris_page",
+    "configuration_sha256": "3f340c6bab3e8884240da3a2ffdec61b0bd98ebcf81788d3725d08a9aa5ef137",
+    "image_sha256": "0fe292f8913214db85a4a327cebe3bd2f9fd64f45f0eb1f8d318238322d9b1cb",
+    "item_id": "test/scarlatti/L056K281/L056K281_1.png",
+    "reference_sha256": "9f1b16cb5ccb90bf32f5a4099716ba447ee509be17e7f1c80073c76829ad4d33",
+    "sample_sha256": "2c98d5638c368b1a53bdb3440177d04fa585f9b1ca6ce6adbe65af64cd8e27d1",
+    "schema_version": 1
+  },
+  "origin": "completed_attempt",
+  "result_sha256": "ce625a007eb3987267d8e9e62c285beeeab80d3743be333feb988f99a9de7a21",
+  "timing_source": "screening_complete_path"
+}

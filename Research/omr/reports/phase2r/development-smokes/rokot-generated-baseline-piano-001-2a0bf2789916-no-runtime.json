@@ -1,0 +1,119 @@
+{
+  "adapter_config_sha256": "2a0bf27899167e7a232850f987e166a2be085e9b4a268298bc9333bb19358938",
+  "adapter_id": "rokot_q8_system_and_page",
+  "artifacts": [
+    {
+      "bytes": 209,
+      "media_type": "application/json",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-generated-baseline-piano-001-2a0bf2789916-no-runtime/native-systems.json",
+      "role": "native",
+      "sha256": "6c2f09e2f4883b3afe3f2ca3b5aa9be6b7df0604e34dce44dc59626d5626ad93"
+    },
+    {
+      "bytes": 13734,
+      "media_type": "application/vnd.recordare.musicxml+xml",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-generated-baseline-piano-001-2a0bf2789916-no-runtime/score.musicxml",
+      "role": "musicxml",
+      "sha256": "f08b0b9686facf61a704370c70227669681d5785703ecd65ab3b60b6d2622aa8"
+    },
+    {
+      "bytes": 9730,
+      "media_type": "application/json",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-generated-baseline-piano-001-2a0bf2789916-no-runtime/canonical-events.json",
+      "role": "canonical_events",
+      "sha256": "3df10197a25f715819319b26a8a3eb55d8862d51cbb8355f2dac03d7b88b7558"
+    },
+    {
+      "bytes": 305,
+      "media_type": "text/plain",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-generated-baseline-piano-001-2a0bf2789916-no-runtime/system-0001.abc",
+      "role": "system_1_abc",
+      "sha256": "e2d8816e1bcc7d339a772b56a6b4285769db8fd92709e90b06c34505c2efd0a2"
+    },
+    {
+      "bytes": 1573,
+      "media_type": "text/plain",
+      "path": "Research/omr/.runtime/phase2r/smokes/rokot-generated-baseline-piano-001-2a0bf2789916-no-runtime/system-0001.raw.txt",
+      "role": "system_1_raw",
+      "sha256": "3eacb02da754186269173e7c2e6d19692de9c92f662a97194c20d64d5458dfbe"
+    }
+  ],
+  "candidate_id": "rokot",
+  "composition_group": "baseline-piano-001",
+  "error": null,
+  "exit_status": 0,
+  "item_id": "generated-baseline-piano-001",
+  "measurement_path": "annotated_crop",
+  "provenance": {
+    "adapter_config": {
+      "adapter_id": "rokot_q8_system_and_page",
+      "adapter_revision": "cd15bc720949a2be4739ccf9508e7dc4be7645d482837666c01b2422f575e25b",
+      "candidate_id": "rokot",
+      "checkpoint": "rokot-omr-2b-Q8_0.gguf",
+      "checkpoint_revision": "7add305aade6fb3a64ad4dde77d410fa68381089",
+      "input_granularity": "detected system",
+      "native_format": "ABC",
+      "settings": {
+        "cli_sha256": "252d8c9a02c20aa7263a38fea69182e3658779f368baaeb57610bfd90e084b9e",
+        "converter": "croma 1.2.1 strict ABC to MusicXML",
+        "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+        "detector_sha256": "b1aac6372d1cbce32dc8e00a7e6c6d809cb9d6eb1fb82ad382cfb42a8b2e6c86",
+        "max_new_tokens": 1600,
+        "model_sha256": "df53948ada1a4a584b4c7c81cc7e3293d3457f2e5ec9688271693459eb950f25",
+        "precision": "Q8_0 text; f16 projector",
+        "projector_sha256": "1074d47f6fd864bffa9d8843bbae30e6aa696ad0d55535ebd77053d81c699bd0",
+        "prompt": "Transcribe this sheet music to rokot-ABC.",
+        "segmentation": "Bridge/detect_systems.py with full-width, vertical-margin crops",
+        "temperature": 0
+      },
+      "source_repository": "https://huggingface.co/rokotmidi/rokot-omr-2b",
+      "source_revision": "7add305aade6fb3a64ad4dde77d410fa68381089",
+      "supported_paths": [
+        "annotated_crop",
+        "complete_document"
+      ]
+    },
+    "adapter_config_sha256": "2a0bf27899167e7a232850f987e166a2be085e9b4a268298bc9333bb19358938",
+    "checkpoint": "rokot-omr-2b-Q8_0.gguf",
+    "checkpoint_revision": "7add305aade6fb3a64ad4dde77d410fa68381089",
+    "converter_version": "croma 1.2.1",
+    "input_path": "Research/omr/tests/fixtures/transcoda-baseline/baseline-piano.png",
+    "input_sha256": "2cbe267a15f2f5791943523413ce6c3d25dee32e283f43af156c7eeee5f08805",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "runtime": "Research/omr/.runtime/phase2r/llama-b11124/llama-mtmd-cli.exe",
+    "source_repository": "https://huggingface.co/rokotmidi/rokot-omr-2b",
+    "source_revision": "7add305aade6fb3a64ad4dde77d410fa68381089",
+    "system_count": 1
+  },
+  "resources": {
+    "cold_start": true,
+    "measurement_notes": [
+      "device-wide WDDM fallback"
+    ],
+    "peak_ram_bytes": 8573353984,
+    "peak_vram_bytes": null,
+    "sample_interval_seconds": 0.2
+  },
+  "schema_version": 1,
+  "status": "succeeded",
+  "timings": [
+    {
+      "seconds": 0.0,
+      "stage": "segmentation"
+    },
+    {
+      "seconds": 68.94806199999948,
+      "stage": "recognition"
+    },
+    {
+      "seconds": 0.9916665000000648,
+      "stage": "native_to_musicxml_and_stitching"
+    },
+    {
+      "seconds": 0.04149520000009943,
+      "stage": "shared_normalization"
+    }
+  ],
+  "warnings": []
+}

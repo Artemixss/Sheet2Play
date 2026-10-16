@@ -1,0 +1,46 @@
+{
+  "outcomes": [
+    {
+      "page": "openscore-6211535-page-1",
+      "status": "succeeded",
+      "reason": null,
+      "elapsed_seconds": 20.59400000000005,
+      "exit_code": 0,
+      "sample_count": 5,
+      "peak_ram_percent": 80.5,
+      "peak_worker_tree_rss_bytes": 1605054464,
+      "peak_device_vram_mib": 1413,
+      "report_sha256": "30de503ef5ad73f5ea2354567e0c80e75a5652118c64458f92cbe5eddb8baa52",
+      "error": null
+    },
+    {
+      "page": "openscore-6211549-page-1",
+      "status": "succeeded",
+      "reason": null,
+      "elapsed_seconds": 15.641000000000076,
+      "exit_code": 0,
+      "sample_count": 4,
+      "peak_ram_percent": 78.2,
+      "peak_worker_tree_rss_bytes": 1045270528,
+      "peak_device_vram_mib": 1165,
+      "report_sha256": "877b5063c7c584ff2bb0205d6161e56e113c11411985a19c36d3229332c905ec",
+      "error": null
+    },
+    {
+      "page": "openscore-6211555-page-1",
+      "status": "succeeded",
+      "reason": null,
+      "elapsed_seconds": 15.608999999999924,
+      "exit_code": 0,
+      "sample_count": 4,
+      "peak_ram_percent": 81.9,
+      "peak_worker_tree_rss_bytes": 1551667200,
+      "peak_device_vram_mib": 1567,
+      "report_sha256": "cb20daa2a067bb19002447291b1502097fd27d7bac350a566f579c699afe82c8",
+      "error": null
+    }
+  ],
+  "planned_count": 3,
+  "remaining_count": 0,
+  "screening_inference_started": false
+}

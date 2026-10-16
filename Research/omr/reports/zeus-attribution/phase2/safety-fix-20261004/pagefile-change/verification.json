@@ -1,0 +1,28 @@
+{
+  "CapturedAt": "2026-10-04T13:20:31.2705190+03:00",
+  "ConfiguredPolicyVerified": true,
+  "PagingFiles": [
+    "C:\\pagefile.sys 0 0"
+  ],
+  "RegistryValueKind": "MultiString",
+  "AutomaticManagedPagefile": false,
+  "Settings": [
+    {
+      "Name": "C:\\pagefile.sys",
+      "InitialSize": 0,
+      "MaximumSize": 0
+    }
+  ],
+  "RuntimeUsage": [
+    {
+      "Name": "C:\\pagefile.sys",
+      "AllocatedBaseSize": 16384,
+      "CurrentUsage": 1097,
+      "PeakUsage": 1121
+    }
+  ],
+  "RuntimeCapacityVerifiedAfterReboot": false,
+  "RebootPerformed": false,
+  "WorkerLockPresent": false,
+  "ObservedGitPythonProcesses": []
+}

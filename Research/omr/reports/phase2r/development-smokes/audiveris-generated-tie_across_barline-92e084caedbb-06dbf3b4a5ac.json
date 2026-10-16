@@ -1,0 +1,72 @@
+{
+  "adapter_config_sha256": "92e084caedbbd773d2c373456310ef153ee057ce290e663f91b1c1157bd5d472",
+  "adapter_id": "audiveris_unattended",
+  "artifacts": [
+    {
+      "bytes": 21273,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/audiveris-generated-tie_across_barline-92e084caedbb-06dbf3b4a5ac/audiveris.omr",
+      "role": "partial_audiveris.omr",
+      "sha256": "2c98330d07bc8aee0abcee1c39cbae7692d10baee1dc3c5d2e799868c2f737b8"
+    },
+    {
+      "bytes": 1870,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/audiveris-generated-tie_across_barline-92e084caedbb-06dbf3b4a5ac/score.mxl",
+      "role": "partial_score.mxl",
+      "sha256": "97e321482ee98df33ff34f16d0f8d27faaac0f8b159e7e62cd028a064a1ef075"
+    }
+  ],
+  "candidate_id": "audiveris",
+  "composition_group": "tie_across_barline",
+  "error": {
+    "code": "MusicXmlNormalizationError",
+    "message": "music21 could not parse ${WORKSPACE}\\Research\\omr\\.runtime\\phase2r\\smokes\\audiveris-generated-tie_across_barline-92e084caedbb-06dbf3b4a5ac\\score.mxl: float division by zero",
+    "stage": "parse"
+  },
+  "exit_status": 1,
+  "item_id": "generated-tie_across_barline",
+  "measurement_path": "complete_document",
+  "provenance": {
+    "adapter_config": {
+      "adapter_id": "audiveris_unattended",
+      "adapter_revision": "8206a398f8ca66d576a40954f870849515c4958654e20e6423a157587353234b",
+      "candidate_id": "audiveris",
+      "checkpoint": "Audiveris 5.11.0 classifiers",
+      "checkpoint_revision": "5.11.0",
+      "input_granularity": "complete document",
+      "native_format": "Audiveris OMR project",
+      "settings": {
+        "batch": true,
+        "export": "MusicXML",
+        "manual_corrections": false,
+        "small_image_preprocessing": "lanczos-width-at-least-2000px-300dpi-v1"
+      },
+      "source_repository": "https://github.com/Audiveris/audiveris",
+      "source_revision": "9e1e55cd2746037d059345881c53e6a6754bffbd",
+      "supported_paths": [
+        "complete_document"
+      ]
+    },
+    "adapter_config_sha256": "92e084caedbbd773d2c373456310ef153ee057ce290e663f91b1c1157bd5d472",
+    "checkpoint": "Audiveris 5.11.0 classifiers",
+    "checkpoint_revision": "5.11.0",
+    "input_path": "Research/omr/data/polyrhythm/tie_across_barline.png",
+    "input_sha256": "5651dc3756ad48f8963570e0b8f6cbe67f63fc3c6790bf2fabadc84f9eda4b71",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "source_repository": "https://github.com/Audiveris/audiveris",
+    "source_revision": "9e1e55cd2746037d059345881c53e6a6754bffbd"
+  },
+  "resources": {
+    "cold_start": true,
+    "measurement_notes": [],
+    "peak_ram_bytes": null,
+    "peak_vram_bytes": null,
+    "sample_interval_seconds": null
+  },
+  "schema_version": 1,
+  "status": "failed",
+  "timings": [],
+  "warnings": []
+}

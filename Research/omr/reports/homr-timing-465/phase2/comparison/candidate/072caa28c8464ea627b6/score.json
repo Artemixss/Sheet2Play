@@ -1,0 +1,142 @@
+{
+  "aligned_voice_accuracy": 1.0,
+  "candidate": "homr-465-upstream",
+  "capture_status": "complete",
+  "comparison_identity": "91e7256cd902a6ea2adb9fb415e6847b2ba0b9e94fb03fe8f5f1570ae6544fb9",
+  "composition_group": "joplin/breeze",
+  "configuration_identity": "9e619e47fd0317b6a7d1da5207985e1120acefc499a111649c5b7cdb1e339122",
+  "conversion_error": null,
+  "coverage": {
+    "chord_completeness": 0.9611650485436893,
+    "complete_chords": 99,
+    "per_staff": {
+      "0": {
+        "matched_notes": 216,
+        "predicted_notes": 219,
+        "recall": 0.5468354430379747,
+        "reference_notes": 395
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 178,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 103,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 10,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 203,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 139,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "3/4",
+        "count": 36,
+        "predicted": "3/4"
+      },
+      {
+        "actual": "5/4",
+        "count": 2,
+        "predicted": "5/4"
+      }
+    ],
+    "unmatched_expected": 5,
+    "unmatched_predicted": 7
+  },
+  "elapsed_seconds": 15.56300000000192,
+  "extra_notes": 7,
+  "item_id": "072caa28c8464ea627b6",
+  "mean_offset_error": 0.0,
+  "metrics": {
+    "aligned_voice_accuracy": 1.0,
+    "coverage": {
+      "chord_completeness": 0.9611650485436893,
+      "complete_chords": 99,
+      "per_staff": {
+        "0": {
+          "matched_notes": 216,
+          "predicted_notes": 219,
+          "recall": 0.5468354430379747,
+          "reference_notes": 395
+        },
+        "1": {
+          "matched_notes": 0,
+          "predicted_notes": 178,
+          "recall": null,
+          "reference_notes": 0
+        }
+      },
+      "reference_chords": 103,
+      "staff_interpretation": "notation staff index; not validated hand labels"
+    },
+    "duration": {
+      "confusion": [
+        {
+          "actual": "1",
+          "count": 10,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/2",
+          "count": 203,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/4",
+          "count": 139,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "3/4",
+          "count": 36,
+          "predicted": "3/4"
+        },
+        {
+          "actual": "5/4",
+          "count": 2,
+          "predicted": "5/4"
+        }
+      ],
+      "unmatched_expected": 5,
+      "unmatched_predicted": 7
+    },
+    "extra_notes": 7,
+    "mean_offset_error": 0.0,
+    "missing_notes": 5,
+    "onset_duration_f1": 0.9848484848484849,
+    "onset_f1": 0.9848484848484849,
+    "pitch_f1": 0.9848484848484849,
+    "predicted_notes": 397,
+    "reference_notes": 395,
+    "staff_accuracy": 0.5538461538461539,
+    "timeline_predicted": "50",
+    "timeline_reference": "50"
+  },
+  "missing_notes": 5,
+  "onset_duration_f1": 0.9848484848484849,
+  "onset_f1": 0.9848484848484849,
+  "original_item_id": "test/joplin/breeze/breeze_3.png",
+  "pitch_f1": 0.9848484848484849,
+  "predicted_notes": 397,
+  "receipt_sha256": "3b8e1739ed77fc79e22c7fdcbee072414a1b7e986cb0a3c6ed2583400699f814",
+  "reference_notes": 395,
+  "reference_sha256": "89415df864688b5b582a659349dfc87c0b12f7b8858a6edddadc3db4584dd58c",
+  "staff_accuracy": 0.5538461538461539,
+  "status": "complete",
+  "timeline_predicted": "50",
+  "timeline_reference": "50"
+}

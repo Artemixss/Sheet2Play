@@ -1,0 +1,23 @@
+{
+  "coordinate_space": "homr_predictions_preprocessed",
+  "detector_image": {
+    "height": 2485,
+    "sha256": "4de397ef2d952325ac5b132ca9460bca5825986b03e4af03b867f1937a016138",
+    "width": 1920
+  },
+  "preprocessing": "HOMR autocrop, resize, CLAHE; crop the returned image directly",
+  "schema_version": 2,
+  "source_image": {
+    "height": 3300,
+    "sha256": "b81f65fe8faa3a2d2517aaf22b362ba613441388e79335f18ffb5839d4e5a4e7",
+    "width": 2550
+  },
+  "systems": [
+    {
+      "max_x": 580.0,
+      "max_y": 486.1,
+      "min_x": 200.0,
+      "min_y": 397.9
+    }
+  ]
+}

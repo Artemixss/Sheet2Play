@@ -1,5 +1,109 @@
 # Rhythm diagnosis — where HOMR's timing actually breaks
 
+## Status of this evidence — 2026-09-17
+
+The [canonical Astra comparison plan](../../COMPARISON_PLAN.md) supersedes this document's
+older proposed work orders. Read the [Phase 1 handoff](../../PHASE1_HANDOFF.md) for current
+execution state. Phase 2 has not started. Preserve the measurements, controls, raw artifacts,
+and negative results below; they are historical evidence, not eligible candidate rankings
+under the frozen protocol. Alignment-assisted results remain diagnostic only.
+
+Upstream status and availability claims describe the date of each investigation. In
+particular, a reported PR #156 training run does not establish downloadable compatible
+weights: verify availability and record "not evaluated" if missing. Historical Transcoda
+results do not authorize restoring it. The current plan starts no new training run and
+makes no automatic production replacement.
+
+## Update 2026-09-16: upstream experiment overlap and revised priorities
+
+The PDMX token-to-image pipeline is an intentional tradeoff, not a newly discovered
+implementation mistake. [Merged PR #107](https://github.com/liebharc/homr/pull/107)
+explicitly renders the internal representation to keep images consistent with labels,
+while acknowledging that unsupported notation disappears. Its discussion already proposed
+rendering PDMX through Lieder and mixing the two approaches. The inference that a lossy
+representation limits what additional examples can teach remains valid; it does not establish
+that this is the dominant cause of every observed rhythm failure.
+
+The following proposed directions have already received upstream experiments:
+
+| Direction | Upstream evidence | Consequence for Sheet2Play |
+| --- | --- | --- |
+| Render PDMX source through Lieder | [PR #159, completed run](https://github.com/liebharc/homr/pull/159#issuecomment-5691330759): SMB 14.86%, Polish 17.76%; discussion calls the improvement slight. The diff exports source MXL through MuseScore before creating token/image pairs. | Reuse this work for a controlled pilot; do not present the renderer switch as an untried likely breakthrough. |
+| Filter narrow/low-resolution examples | [PR #153, 33 epochs](https://github.com/liebharc/homr/pull/153#issuecomment-5582435411): SMB 14.50%, Polish 17.87%, reported as similar to baseline. | Keep quality checks, but do not spend another full run solely on this hypothesis. |
+| Use inference segmentation for training crops | [PR #147](https://github.com/liebharc/homr/pull/147): roughly 4,000 image/token pairs, fine-tuning without observed improvement; closed after finding little visual difference for synthetic sources. | Useful precedent, not proof that all matched-crop training fails. Require a measured distribution mismatch before repeating it. |
+| Force stronger image reliance with history dropout | [PR #125, completed run](https://github.com/liebharc/homr/pull/125#issuecomment-5024150011): metrics basically unchanged; not merged. | Generic decoder regularization is not the next default experiment. |
+| Repair multi-voice timing after decoding | [PR #146](https://github.com/liebharc/homr/pull/146): no OMR-NED change; author closed it because the problem was more complex than expected. | The local port must be assessed with frozen tokens and timing metrics; upstream closure alone does not establish local harm or benefit. |
+| Represent additional voices explicitly | [PR #126](https://github.com/liebharc/homr/pull/126) documents distinct voice patterns mapping to identical tokens. [PR #156](https://github.com/liebharc/homr/pull/156) adds upper2/lower2 and reports a retrained model: Polish 16.89%, SMB 13.72%. | Highest-priority representation candidate to evaluate, not an established piano-rhythm fix. |
+
+These reported percentages are upstream benchmark errors, not our onset F1. Runs differ in
+training and code, and PR #156 also changes SMB ground-truth parsing; this table is not a
+controlled ranking of models. PRs #153, #156 and #159 were still unmerged when checked.
+PR #156 also has an unresolved review question about a consistent visual rule for assigning
+voice identities. PR #145's proposed tuplet checksum fix was withdrawn after its author found
+that main already achieved the claimed pitch score; that example cannot justify reimplementing it.
+
+**Superseded experiment order (2026-09-16):** retained for rationale; use the canonical
+comparison plan for current execution.
+
+1. Let the currently running fine-tune finish, as requested. Evaluate saved candidate and final
+   checkpoints against the shipped model with identical preprocessing, decoder and fixed
+   source ground truth. Training token accuracy alone cannot establish audible timing quality.
+2. Audit a small set of independently voiced, cross-staff and changing-meter piano examples:
+   source MusicXML -> tokens -> MusicXML, before using model predictions. Keep the project's
+   generator for controlled multi-measure cases. Separate representation loss, conversion bugs,
+   recognition errors and export errors; failure to round-trip is not by itself proof that the
+   vocabulary is incapable of representing the source.
+3. Test PR #156's parser/generator round trips on exactly those examples before investing in
+   compatible model evaluation or training. Vocabulary changes require matching model weights;
+   this is not a decoder-only patch for the current checkpoint.
+4. Retain the proposed source-rendered piano pilot as a bounded, composition-disjoint evaluation
+   and targeted data experiment, reusing PR #159 where appropriate. Source rendering preserves
+   visual information, but cannot restore semantics still absent from target tokens. Expand the
+   corpus only after the failing cases are representable and correctly paired with their crops.
+
+## Update 2026-09-16: upstream duration fix tested in isolation
+
+[HOMR PR #157](https://github.com/liebharc/homr/pull/157) merged on September 16.
+Its main change collects every note/rest duration denominator when choosing MusicXML
+divisions, rather than only the shortest duration in each chord. It also adds minimum-duration
+clamps and fixes a missing return for multimeasure rests; those latter changes were **not**
+part of this experiment.
+
+The denominator defect reproduces without a model: a chord containing `note_8` and `note_12`
+gets division 12, so its durations become 1.5 and 1 ticks. Integer serialization truncates the
+first. Collecting both denominators gives division 24 and exact durations of 3 and 2 ticks.
+The experiment retained the existing meter estimate and changed only the division calculation,
+inside the test process; no installed or vendored engine files were modified.
+
+Fresh paired round trips through the existing patched decoder:
+
+| corpus | attempted / scored | onset F1 before / after | onset-duration F1 before / after |
+| --- | --- | --- | --- |
+| OLiMPiC canary | 100 / 94 | 0.7598 / 0.7598 | 0.7476 / 0.7476 |
+| Generated polyrhythm | 11 / 11 | 0.6535 / 0.6535 | 0.6535 / 0.6535 |
+
+No sample changed in pitch F1, onset F1, onset-duration F1, span ratio, or failure status.
+The six canary encoding failures remained. This confirms a correctness defect but provides no
+evidence that this particular fix addresses the measured timing gap. It does **not** rule out
+benefits on model predictions, which may contain duration combinations absent from correct
+labels. These are round-trip results, not an inference benchmark or a production promotion.
+
+Local experiment artifacts are `tmp/probe_pr157.py` and `tmp/pr157-probe/comparison.json`;
+the baseline generator SHA-256 was
+`c01415ed218a29326e207b9c21c9ff46fa6b2403c02e90f0b8e73399ac7afd83`.
+
+Two other upstream leads were checked on the same date:
+
+- [PR #156](https://github.com/liebharc/homr/pull/156) remains open. Its voice identities are
+  assigned by encounter order; the maintainer explicitly questions the lack of an unambiguous
+  visual rule. The reported Polish/SMB results are not onset-F1 evidence on this canary.
+- [PR #159](https://github.com/liebharc/homr/pull/159) reports a completed training experiment
+  rendering PDMX through the Lieder pipeline, with SMB 14.86% and Polish 17.76% benchmark
+  results. This is a data-rendering lead, not proof of corrected piano rhythm. A controlled
+  evaluation is needed before changing this project's training recipe.
+
+The sections below retain the earlier investigation, including explicitly superseded hypotheses.
+
 Step 1 of the OMR next-phase plan: locate the rhythm error before spending GPU time on it.
 Everything below is measured on the 100-sample OLiMPiC scanned canary (99 produced valid
 output), reproduced with `diagnose_rhythm.py`. Raw data is in `diagnosis.json`; cached
@@ -761,7 +865,7 @@ This cannot explain any of the numbers above — the OLiMPiC benchmark feeds sin
 PNGs, so `combine_score_pages` is a no-op there. But it affects the app on real multi-page
 PDFs, which is the normal case, and it has no test coverage. Recorded, not fixed.
 
-## What this means for fine-tuning
+## What this meant for fine-tuning — superseded proposal
 
 The plan's Step 3 decision now has evidence behind it, and it is not encouraging for the
 "fine-tune HOMR" strategy.

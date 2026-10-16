@@ -1,0 +1,991 @@
+{
+  "collection": "open",
+  "detected_systems": 5,
+  "item_id": "openscore-6211535-page-1",
+  "reference_normalizer_matches_exact": false,
+  "reference_notes": 222,
+  "reference_part_staff_counts": [
+    {
+      "global_staff": 1,
+      "notes": 97,
+      "part": "P2"
+    },
+    {
+      "global_staff": 2,
+      "notes": 131,
+      "part": "P2"
+    }
+  ],
+  "reference_systems": 5,
+  "reference_tie_issues": [
+    {
+      "kind": "unmatched_or_noncontiguous_tie_stop",
+      "note": {
+        "duration": "4",
+        "local_onset": "0",
+        "measure": 15,
+        "onset": "60",
+        "part": "P2",
+        "pitch": 74,
+        "staff": 1,
+        "ties": [
+          "stop"
+        ],
+        "voice": "2"
+      }
+    },
+    {
+      "kind": "interrupted_tie_start",
+      "note": {
+        "duration": "4",
+        "local_onset": "0",
+        "measure": 14,
+        "onset": "56",
+        "part": "P2",
+        "pitch": 74,
+        "staff": 1,
+        "ties": [
+          "start"
+        ],
+        "voice": "1"
+      }
+    },
+    {
+      "kind": "open_tie_start",
+      "note": {
+        "duration": "4",
+        "local_onset": "0",
+        "measure": 18,
+        "onset": "72",
+        "part": "P2",
+        "pitch": 74,
+        "staff": 1,
+        "ties": [
+          "start"
+        ],
+        "voice": "1"
+      }
+    },
+    {
+      "kind": "open_tie_start",
+      "note": {
+        "duration": "4",
+        "local_onset": "0",
+        "measure": 18,
+        "onset": "72",
+        "part": "P2",
+        "pitch": 76,
+        "staff": 1,
+        "ties": [
+          "start"
+        ],
+        "voice": "1"
+      }
+    }
+  ],
+  "staff_coverage_policy": "normalized staff indices reset per part; coverage is historical-index diagnostic, not hand accuracy; XML counts preserve distinct parts/staves",
+  "system_local_policy": "ordinal system pairing; reference origins reset separately at each part's boundary; primary global scoring unchanged",
+  "variants": {
+    "upstream": {
+      "conversion_diagnostic_count": 0,
+      "global": {
+        "aligned_voice_accuracy": 0.7,
+        "coverage": {
+          "chord_completeness": 0.012195121951219513,
+          "complete_chords": 1,
+          "per_staff": {
+            "0": {
+              "matched_notes": 2,
+              "predicted_notes": 106,
+              "recall": 0.021052631578947368,
+              "reference_notes": 95
+            },
+            "1": {
+              "matched_notes": 8,
+              "predicted_notes": 129,
+              "recall": 0.06299212598425197,
+              "reference_notes": 127
+            }
+          },
+          "reference_chords": 82,
+          "staff_interpretation": "notation staff index; not validated hand labels"
+        },
+        "duration": {
+          "confusion": [
+            {
+              "actual": "1",
+              "count": 4,
+              "predicted": "1"
+            },
+            {
+              "actual": "1",
+              "count": 2,
+              "predicted": "8"
+            },
+            {
+              "actual": "1/2",
+              "count": 2,
+              "predicted": "1"
+            },
+            {
+              "actual": "1/2",
+              "count": 5,
+              "predicted": "1/2"
+            },
+            {
+              "actual": "4",
+              "count": 2,
+              "predicted": "1"
+            },
+            {
+              "actual": "4",
+              "count": 1,
+              "predicted": "4"
+            }
+          ],
+          "unmatched_expected": 206,
+          "unmatched_predicted": 219
+        },
+        "extra_notes": 225,
+        "mean_offset_error": 1.3125,
+        "missing_notes": 212,
+        "onset_duration_f1": 0.043763676148796504,
+        "onset_f1": 0.0700218818380744,
+        "pitch_f1": 0.4026258205689278,
+        "predicted_notes": 235,
+        "reference_notes": 222,
+        "staff_accuracy": 1.0,
+        "timeline_predicted": "242/3",
+        "timeline_reference": "76"
+      },
+      "measure_local": null,
+      "normalizer_vs_exact_segments": null,
+      "part_staff_counts": null,
+      "raw_global": null,
+      "seconds": 4.873999999997977,
+      "status": "succeeded",
+      "stitch_raw_note_count_preserved": null,
+      "system_boundary_starts": null,
+      "systems": [
+        {
+          "conversion": {
+            "diagnostics": "",
+            "musicxml_sha256": "cb828c6b41f918de0ca9a5652265c38e747973c4046d3af3153bb32c927fb0bd",
+            "status": "succeeded"
+          },
+          "index": 1,
+          "normalized_notes": 47,
+          "termination": "EOS",
+          "token_count": 275,
+          "trace_failure": {
+            "error": "ValueError: Non-grace note requires positive duration",
+            "stage": "xml_trace"
+          },
+          "unknown_token_count": 0
+        },
+        {
+          "conversion": {
+            "diagnostics": "",
+            "musicxml_sha256": "7f782683e8d1ff8d70ca9a9023beb893bdf62eb6f2fa8bbbd22a5ebb16e16192",
+            "status": "succeeded"
+          },
+          "exact_merged_notes": 76,
+          "exact_vs_normalized": {
+            "aligned_voice_accuracy": 0.9866666666666667,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 32,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 50,
+                  "predicted_notes": 50,
+                  "recall": 1.0,
+                  "reference_notes": 50
+                },
+                "1": {
+                  "matched_notes": 25,
+                  "predicted_notes": 27,
+                  "recall": 0.9615384615384616,
+                  "reference_notes": 26
+                }
+              },
+              "reference_chords": 32,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 12,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "1/2",
+                  "count": 60,
+                  "predicted": "1/2"
+                },
+                {
+                  "actual": "2",
+                  "count": 1,
+                  "predicted": "2"
+                },
+                {
+                  "actual": "3",
+                  "count": 1,
+                  "predicted": "2"
+                },
+                {
+                  "actual": "5/2",
+                  "count": 2,
+                  "predicted": "5/2"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 1
+            },
+            "extra_notes": 2,
+            "mean_offset_error": 0.013157894736842105,
+            "missing_notes": 1,
+            "onset_duration_f1": 0.9803921568627451,
+            "onset_f1": 0.9934640522875817,
+            "pitch_f1": 0.9934640522875817,
+            "predicted_notes": 77,
+            "reference_notes": 76,
+            "staff_accuracy": 1.0,
+            "timeline_predicted": "17",
+            "timeline_reference": "17"
+          },
+          "index": 2,
+          "measure_count": 4,
+          "normalized_notes": 77,
+          "overflow_measures": 1,
+          "part_staff_counts": [
+            {
+              "global_staff": 0,
+              "notes": 52,
+              "part": "P2"
+            },
+            {
+              "global_staff": 1,
+              "notes": 27,
+              "part": "P2"
+            }
+          ],
+          "raw_notes": 79,
+          "system_local_raw": {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 0.0,
+              "complete_chords": 0,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 52,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 27,
+                  "recall": 0.0,
+                  "reference_notes": 46
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 27
+                }
+              },
+              "reference_chords": 30,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 1,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "1/2",
+                  "count": 2,
+                  "predicted": "1/2"
+                },
+                {
+                  "actual": "1/2",
+                  "count": 1,
+                  "predicted": "2"
+                },
+                {
+                  "actual": "2",
+                  "count": 1,
+                  "predicted": "1"
+                }
+              ],
+              "unmatched_expected": 68,
+              "unmatched_predicted": 74
+            },
+            "extra_notes": 76,
+            "mean_offset_error": 0.5,
+            "missing_notes": 70,
+            "onset_duration_f1": 0.039473684210526314,
+            "onset_f1": 0.06578947368421052,
+            "pitch_f1": 0.2631578947368421,
+            "predicted_notes": 79,
+            "reference_notes": 73,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "17",
+            "timeline_reference": "16"
+          },
+          "termination": "EOS",
+          "tie_issues": [
+            {
+              "kind": "unmatched_or_noncontiguous_tie_stop",
+              "note": {
+                "duration": "2",
+                "local_onset": "0",
+                "measure": 1,
+                "onset": "5",
+                "part": "P2",
+                "pitch": 76,
+                "staff": 1,
+                "ties": [
+                  "stop"
+                ],
+                "voice": "5"
+              }
+            },
+            {
+              "kind": "unmatched_or_noncontiguous_tie_stop",
+              "note": {
+                "duration": "1",
+                "local_onset": "0",
+                "measure": 2,
+                "onset": "9",
+                "part": "P2",
+                "pitch": 67,
+                "staff": 1,
+                "ties": [
+                  "stop"
+                ],
+                "voice": "5"
+              }
+            }
+          ],
+          "token_count": 301,
+          "unknown_token_count": 0
+        },
+        {
+          "conversion": {
+            "diagnostics": "",
+            "musicxml_sha256": "3626cb0f7ac9b6904e9fc18eff88c2ac66f14b6c683a686215f4fa8e5f0cfee2",
+            "status": "succeeded"
+          },
+          "exact_merged_notes": 58,
+          "exact_vs_normalized": {
+            "aligned_voice_accuracy": 0.9310344827586207,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 18,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 11,
+                  "predicted_notes": 11,
+                  "recall": 1.0,
+                  "reference_notes": 11
+                },
+                "1": {
+                  "matched_notes": 47,
+                  "predicted_notes": 47,
+                  "recall": 1.0,
+                  "reference_notes": 47
+                }
+              },
+              "reference_chords": 18,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 22,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "1/2",
+                  "count": 20,
+                  "predicted": "1/2"
+                },
+                {
+                  "actual": "1/3",
+                  "count": 11,
+                  "predicted": "1/3"
+                },
+                {
+                  "actual": "2",
+                  "count": 3,
+                  "predicted": "2"
+                },
+                {
+                  "actual": "4",
+                  "count": 2,
+                  "predicted": "4"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 58,
+            "reference_notes": 58,
+            "staff_accuracy": 1.0,
+            "timeline_predicted": "20",
+            "timeline_reference": "20"
+          },
+          "index": 3,
+          "measure_count": 5,
+          "normalized_notes": 58,
+          "overflow_measures": 0,
+          "part_staff_counts": [
+            {
+              "global_staff": 0,
+              "notes": 11,
+              "part": "P2"
+            },
+            {
+              "global_staff": 1,
+              "notes": 47,
+              "part": "P2"
+            }
+          ],
+          "raw_notes": 58,
+          "system_local_raw": {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 0.0,
+              "complete_chords": 0,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 11,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 47,
+                  "recall": 0.0,
+                  "reference_notes": 11
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 50
+                }
+              },
+              "reference_chords": 22,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 2,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "1/2",
+                  "count": 1,
+                  "predicted": "1/3"
+                },
+                {
+                  "actual": "2/3",
+                  "count": 1,
+                  "predicted": "1"
+                }
+              ],
+              "unmatched_expected": 57,
+              "unmatched_predicted": 54
+            },
+            "extra_notes": 56,
+            "mean_offset_error": 0.125,
+            "missing_notes": 59,
+            "onset_duration_f1": 0.033613445378151266,
+            "onset_f1": 0.06722689075630253,
+            "pitch_f1": 0.20168067226890757,
+            "predicted_notes": 58,
+            "reference_notes": 61,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "20",
+            "timeline_reference": "20"
+          },
+          "termination": "EOS",
+          "tie_issues": [
+            {
+              "kind": "interrupted_tie_start",
+              "note": {
+                "duration": "4",
+                "local_onset": "0",
+                "measure": 2,
+                "onset": "8",
+                "part": "P2",
+                "pitch": 83,
+                "staff": 0,
+                "ties": [
+                  "start"
+                ],
+                "voice": "1"
+              }
+            },
+            {
+              "kind": "open_tie_start",
+              "note": {
+                "duration": "4",
+                "local_onset": "0",
+                "measure": 4,
+                "onset": "16",
+                "part": "P2",
+                "pitch": 83,
+                "staff": 0,
+                "ties": [
+                  "start"
+                ],
+                "voice": "1"
+              }
+            }
+          ],
+          "token_count": 257,
+          "unknown_token_count": 0
+        },
+        {
+          "conversion": {
+            "diagnostics": "",
+            "musicxml_sha256": "c8accdf10ddf8bdb9128bce565ba45f0ac441a95e1f0dc826db344b21dc30eff",
+            "status": "succeeded"
+          },
+          "exact_merged_notes": 37,
+          "exact_vs_normalized": {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 0.9,
+              "complete_chords": 9,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 10,
+                  "predicted_notes": 13,
+                  "recall": 0.7692307692307693,
+                  "reference_notes": 13
+                },
+                "1": {
+                  "matched_notes": 24,
+                  "predicted_notes": 24,
+                  "recall": 1.0,
+                  "reference_notes": 24
+                }
+              },
+              "reference_chords": 10,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 7,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "1/2",
+                  "count": 24,
+                  "predicted": "1/2"
+                },
+                {
+                  "actual": "2",
+                  "count": 2,
+                  "predicted": "2"
+                },
+                {
+                  "actual": "4",
+                  "count": 1,
+                  "predicted": "4"
+                },
+                {
+                  "actual": "4",
+                  "count": 1,
+                  "predicted": "8"
+                },
+                {
+                  "actual": "5",
+                  "count": 1,
+                  "predicted": "8"
+                }
+              ],
+              "unmatched_expected": 1,
+              "unmatched_predicted": 1
+            },
+            "extra_notes": 3,
+            "mean_offset_error": 0.19444444444444445,
+            "missing_notes": 3,
+            "onset_duration_f1": 0.918918918918919,
+            "onset_f1": 0.972972972972973,
+            "pitch_f1": 0.972972972972973,
+            "predicted_notes": 37,
+            "reference_notes": 37,
+            "staff_accuracy": 1.0,
+            "timeline_predicted": "12",
+            "timeline_reference": "12"
+          },
+          "index": 4,
+          "measure_count": 3,
+          "normalized_notes": 37,
+          "overflow_measures": 0,
+          "part_staff_counts": [
+            {
+              "global_staff": 0,
+              "notes": 14,
+              "part": "P2"
+            },
+            {
+              "global_staff": 1,
+              "notes": 24,
+              "part": "P2"
+            }
+          ],
+          "raw_notes": 38,
+          "system_local_raw": {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 0.4,
+              "complete_chords": 4,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 14,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 24,
+                  "recall": 0.0,
+                  "reference_notes": 14
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 24
+                }
+              },
+              "reference_chords": 10,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 8,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "1/2",
+                  "count": 9,
+                  "predicted": "1/2"
+                },
+                {
+                  "actual": "2",
+                  "count": 1,
+                  "predicted": "2"
+                },
+                {
+                  "actual": "4",
+                  "count": 4,
+                  "predicted": "4"
+                }
+              ],
+              "unmatched_expected": 16,
+              "unmatched_predicted": 16
+            },
+            "extra_notes": 16,
+            "mean_offset_error": 0.0,
+            "missing_notes": 16,
+            "onset_duration_f1": 0.5789473684210527,
+            "onset_f1": 0.5789473684210527,
+            "pitch_f1": 0.7105263157894737,
+            "predicted_notes": 38,
+            "reference_notes": 38,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "12",
+            "timeline_reference": "12"
+          },
+          "termination": "EOS",
+          "tie_issues": [
+            {
+              "kind": "unmatched_or_noncontiguous_tie_stop",
+              "note": {
+                "duration": "2",
+                "local_onset": "0",
+                "measure": 0,
+                "onset": "0",
+                "part": "P2",
+                "pitch": 86,
+                "staff": 0,
+                "ties": [
+                  "stop"
+                ],
+                "voice": "1"
+              }
+            },
+            {
+              "kind": "unmatched_or_noncontiguous_tie_stop",
+              "note": {
+                "duration": "4",
+                "local_onset": "0",
+                "measure": 0,
+                "onset": "0",
+                "part": "P2",
+                "pitch": 74,
+                "staff": 0,
+                "ties": [
+                  "stop"
+                ],
+                "voice": "2"
+              }
+            },
+            {
+              "kind": "interrupted_tie_start",
+              "note": {
+                "duration": "4",
+                "local_onset": "0",
+                "measure": 1,
+                "onset": "4",
+                "part": "P2",
+                "pitch": 76,
+                "staff": 0,
+                "ties": [
+                  "start"
+                ],
+                "voice": "1"
+              }
+            },
+            {
+              "kind": "unmatched_or_noncontiguous_tie_stop",
+              "note": {
+                "duration": "4",
+                "local_onset": "0",
+                "measure": 2,
+                "onset": "8",
+                "part": "P2",
+                "pitch": 70,
+                "staff": 0,
+                "ties": [
+                  "stop"
+                ],
+                "voice": "2"
+              }
+            }
+          ],
+          "token_count": 168,
+          "unknown_token_count": 0
+        },
+        {
+          "conversion": {
+            "diagnostics": "",
+            "musicxml_sha256": "113b924679bef9b1e7301476948c3e85ee3ed6435af58ba276b7d40c7efca9d2",
+            "status": "succeeded"
+          },
+          "index": 5,
+          "normalized_notes": 18,
+          "termination": "EOS",
+          "token_count": 144,
+          "trace_failure": {
+            "error": "ValueError: MusicXML backup precedes measure start",
+            "stage": "xml_trace"
+          },
+          "unknown_token_count": 0
+        }
+      ],
+      "tie_issues": null,
+      "trace_failure": {
+        "error": "ValueError: Non-grace note requires positive duration",
+        "stage": "xml_trace"
+      },
+      "trace_policy": "Diagnostic validation never substitutes for unchanged stitched-page normalization failure policy"
+    },
+    "wrapper": {
+      "conversion_diagnostic_count": 0,
+      "global": {
+        "aligned_voice_accuracy": 1.0,
+        "coverage": {
+          "chord_completeness": 0.0,
+          "complete_chords": 0,
+          "per_staff": {
+            "0": {
+              "matched_notes": 0,
+              "predicted_notes": 110,
+              "recall": 0.0,
+              "reference_notes": 95
+            },
+            "1": {
+              "matched_notes": 1,
+              "predicted_notes": 115,
+              "recall": 0.007874015748031496,
+              "reference_notes": 127
+            }
+          },
+          "reference_chords": 82,
+          "staff_interpretation": "notation staff index; not validated hand labels"
+        },
+        "duration": {
+          "confusion": [
+            {
+              "actual": "1",
+              "count": 1,
+              "predicted": "1"
+            },
+            {
+              "actual": "1/2",
+              "count": 1,
+              "predicted": "1"
+            },
+            {
+              "actual": "1/2",
+              "count": 2,
+              "predicted": "1/2"
+            },
+            {
+              "actual": "1/2",
+              "count": 1,
+              "predicted": "2"
+            },
+            {
+              "actual": "1/2",
+              "count": 1,
+              "predicted": "3/4"
+            },
+            {
+              "actual": "2",
+              "count": 1,
+              "predicted": "3/2"
+            }
+          ],
+          "unmatched_expected": 215,
+          "unmatched_predicted": 218
+        },
+        "extra_notes": 222,
+        "mean_offset_error": 0.39285714285714285,
+        "missing_notes": 219,
+        "onset_duration_f1": 0.013422818791946308,
+        "onset_f1": 0.03131991051454139,
+        "pitch_f1": 0.4026845637583893,
+        "predicted_notes": 225,
+        "reference_notes": 222,
+        "staff_accuracy": 0.3333333333333333,
+        "timeline_predicted": "179/2",
+        "timeline_reference": "76"
+      },
+      "measure_local": null,
+      "normalizer_vs_exact_segments": null,
+      "part_staff_counts": null,
+      "raw_global": null,
+      "seconds": 4.563999999999396,
+      "status": "succeeded",
+      "stitch_raw_note_count_preserved": null,
+      "system_boundary_starts": null,
+      "systems": [
+        {
+          "conversion": {
+            "diagnostics": "",
+            "musicxml_sha256": "76e54f3516e07ad17e68775b772d7153c3beb727bf490ec77f249ddd92fd0dea",
+            "status": "succeeded"
+          },
+          "index": 1,
+          "normalized_notes": 23,
+          "termination": "EOS",
+          "token_count": 208,
+          "trace_failure": {
+            "error": "ValueError: Non-grace note requires positive duration",
+            "stage": "xml_trace"
+          },
+          "unknown_token_count": 0
+        },
+        {
+          "conversion": {
+            "diagnostics": "",
+            "musicxml_sha256": "5dcc7106d94bee8b79ce0c314245c8d18d2c3b576384c87bb04720dc9bbda480",
+            "status": "succeeded"
+          },
+          "index": 2,
+          "normalized_notes": 79,
+          "termination": "EOS",
+          "token_count": 303,
+          "trace_failure": {
+            "error": "ValueError: Non-grace note requires positive duration",
+            "stage": "xml_trace"
+          },
+          "unknown_token_count": 0
+        },
+        {
+          "conversion": {
+            "diagnostics": "",
+            "musicxml_sha256": "c17a70c5002bfb6e5f861a934bcdc7a4e507c9fe9b79732b90aa62652b18c5fc",
+            "status": "succeeded"
+          },
+          "index": 3,
+          "normalized_notes": 65,
+          "termination": "EOS",
+          "token_count": 284,
+          "trace_failure": {
+            "error": "ValueError: Non-grace note requires positive duration",
+            "stage": "xml_trace"
+          },
+          "unknown_token_count": 0
+        },
+        {
+          "conversion": {
+            "diagnostics": "",
+            "musicxml_sha256": "393e2bb136ecfd46f7cc16d81d6eb40d8975efeda5317c0280afea266715df8c",
+            "status": "succeeded"
+          },
+          "index": 4,
+          "normalized_notes": 38,
+          "termination": "EOS",
+          "token_count": 210,
+          "trace_failure": {
+            "error": "ValueError: Non-grace note requires positive duration",
+            "stage": "xml_trace"
+          },
+          "unknown_token_count": 0
+        },
+        {
+          "conversion": {
+            "diagnostics": "",
+            "musicxml_sha256": "5d675c5ddd8c369d7738cbe854c49fd2db47ea9760a29b90c6e38eb630b34c8b",
+            "status": "succeeded"
+          },
+          "index": 5,
+          "normalized_notes": 21,
+          "termination": "EOS",
+          "token_count": 171,
+          "trace_failure": {
+            "error": "ValueError: MusicXML backup precedes measure start",
+            "stage": "xml_trace"
+          },
+          "unknown_token_count": 0
+        }
+      ],
+      "tie_issues": null,
+      "trace_failure": {
+        "error": "ValueError: Non-grace note requires positive duration",
+        "stage": "xml_trace"
+      },
+      "trace_policy": "Diagnostic validation never substitutes for unchanged stitched-page normalization failure policy"
+    }
+  }
+}

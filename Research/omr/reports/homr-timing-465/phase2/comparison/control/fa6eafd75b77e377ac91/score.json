@@ -1,0 +1,182 @@
+{
+  "aligned_voice_accuracy": 0.71875,
+  "candidate": "shipped-426-phase2-control",
+  "capture_status": "complete",
+  "comparison_identity": "91e7256cd902a6ea2adb9fb415e6847b2ba0b9e94fb03fe8f5f1570ae6544fb9",
+  "composition_group": "hummel/prelude67_14",
+  "configuration_identity": "31512f54e60c2e1cff049c60a7f68ceb0366eb49d4aeacf13368de17a0ec430d",
+  "conversion_error": null,
+  "coverage": {
+    "chord_completeness": 0.95,
+    "complete_chords": 19,
+    "per_staff": {
+      "0": {
+        "matched_notes": 35,
+        "predicted_notes": 45,
+        "recall": 0.5,
+        "reference_notes": 70
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 29,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 20,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 36,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/4",
+        "count": 2,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "2",
+        "count": 15,
+        "predicted": "2"
+      },
+      {
+        "actual": "2",
+        "count": 2,
+        "predicted": "3"
+      },
+      {
+        "actual": "3",
+        "count": 2,
+        "predicted": "2"
+      },
+      {
+        "actual": "3",
+        "count": 8,
+        "predicted": "3"
+      },
+      {
+        "actual": "4",
+        "count": 1,
+        "predicted": "4"
+      },
+      {
+        "actual": "7",
+        "count": 1,
+        "predicted": "2"
+      },
+      {
+        "actual": "7/2",
+        "count": 2,
+        "predicted": "7/2"
+      }
+    ],
+    "unmatched_expected": 1,
+    "unmatched_predicted": 5
+  },
+  "elapsed_seconds": 5.953000000001339,
+  "extra_notes": 10,
+  "item_id": "fa6eafd75b77e377ac91",
+  "mean_offset_error": 0.13043478260869565,
+  "metrics": {
+    "aligned_voice_accuracy": 0.71875,
+    "coverage": {
+      "chord_completeness": 0.95,
+      "complete_chords": 19,
+      "per_staff": {
+        "0": {
+          "matched_notes": 35,
+          "predicted_notes": 45,
+          "recall": 0.5,
+          "reference_notes": 70
+        },
+        "1": {
+          "matched_notes": 0,
+          "predicted_notes": 29,
+          "recall": null,
+          "reference_notes": 0
+        }
+      },
+      "reference_chords": 20,
+      "staff_interpretation": "notation staff index; not validated hand labels"
+    },
+    "duration": {
+      "confusion": [
+        {
+          "actual": "1",
+          "count": 36,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/4",
+          "count": 2,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "2",
+          "count": 15,
+          "predicted": "2"
+        },
+        {
+          "actual": "2",
+          "count": 2,
+          "predicted": "3"
+        },
+        {
+          "actual": "3",
+          "count": 2,
+          "predicted": "2"
+        },
+        {
+          "actual": "3",
+          "count": 8,
+          "predicted": "3"
+        },
+        {
+          "actual": "4",
+          "count": 1,
+          "predicted": "4"
+        },
+        {
+          "actual": "7",
+          "count": 1,
+          "predicted": "2"
+        },
+        {
+          "actual": "7/2",
+          "count": 2,
+          "predicted": "7/2"
+        }
+      ],
+      "unmatched_expected": 1,
+      "unmatched_predicted": 5
+    },
+    "extra_notes": 10,
+    "mean_offset_error": 0.13043478260869565,
+    "missing_notes": 6,
+    "onset_duration_f1": 0.888888888888889,
+    "onset_f1": 0.9583333333333333,
+    "pitch_f1": 0.9583333333333333,
+    "predicted_notes": 74,
+    "reference_notes": 70,
+    "staff_accuracy": 0.546875,
+    "timeline_predicted": "28",
+    "timeline_reference": "28"
+  },
+  "missing_notes": 6,
+  "onset_duration_f1": 0.888888888888889,
+  "onset_f1": 0.9583333333333333,
+  "original_item_id": "test/hummel/prelude67_14/prelude67_14_1.png",
+  "pitch_f1": 0.9583333333333333,
+  "predicted_notes": 74,
+  "receipt_sha256": "a2654e90c92aa0775a65c838a591025baf4cc521ffc1f4de4f88657ceaefedd9",
+  "reference_notes": 70,
+  "reference_sha256": "4675888b0e81ca7f4835bc35dd4138e508b12bca603164cf67f4c12f2310db58",
+  "staff_accuracy": 0.546875,
+  "status": "complete",
+  "timeline_predicted": "28",
+  "timeline_reference": "28"
+}

@@ -1,0 +1,41 @@
+{
+  "coordinate_space": "homr_predictions_preprocessed",
+  "detector_image": {
+    "height": 2717,
+    "sha256": "c6c9ea82c1e07517128526a45437a9f3f4f00aa650cca809de9a9104f41162b2",
+    "width": 1920
+  },
+  "preprocessing": "HOMR autocrop, resize, CLAHE; crop the returned image directly",
+  "schema_version": 2,
+  "source_image": {
+    "height": 3509,
+    "sha256": "2fb2928d51c8bb08303dc3ebabec82e665a41ed89406037650d7a8c2f0ae1bef",
+    "width": 2480
+  },
+  "systems": [
+    {
+      "max_x": 1830.0,
+      "max_y": 880.0301718989433,
+      "min_x": 220.0,
+      "min_y": 602.9116380168427
+    },
+    {
+      "max_x": 1830.0,
+      "max_y": 1349.173205570306,
+      "min_x": 90.0,
+      "min_y": 1093.171098880217
+    },
+    {
+      "max_x": 1820.0,
+      "max_y": 1866.3973475345792,
+      "min_x": 90.0,
+      "min_y": 1546.5686487919297
+    },
+    {
+      "max_x": 1830.0,
+      "max_y": 2523.1783772472154,
+      "min_x": 90.0,
+      "min_y": 2015.3807346433302
+    }
+  ]
+}

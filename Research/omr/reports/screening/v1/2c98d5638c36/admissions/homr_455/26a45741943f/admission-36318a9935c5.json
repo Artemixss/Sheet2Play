@@ -1,0 +1,15 @@
+{
+  "adapter_config_sha256": "625d9ddf4c2daf3ccb276544996c7cac88b70b1621bd5d4459919bc1178349c3",
+  "candidate": "homr_455",
+  "compatibility_report_sha256": "14c6ad366d41a48afb6323b7356cac62296c31dc6d9751d7af1ecd34514e3303",
+  "complete_page": true,
+  "configuration_sha256": "26a45741943fe8a4ae422d01d86b989053f4d20a5c8f1e62a8710fee88b0627a",
+  "development_identity_sha256": "292ac9efe1d6ac2f0b521c450a56f1cc2db6f3338f3393a0ad4b9d063c4cf8f5",
+  "development_item_id": "openscore-6211535-page-1",
+  "development_report": "Research/omr/reports/screening/v1/2c98d5638c36/development/homr_455/26a45741943f/openscore-6211535-page-1.json",
+  "development_report_sha256": "65714adbee3e5ebfe031108cd4b19edbeba2c2bcd0514ccb1cb5d5e5711edac1",
+  "sample_sha256": "2c98d5638c368b1a53bdb3440177d04fa585f9b1ca6ce6adbe65af64cd8e27d1",
+  "schema_version": 1,
+  "scope": "development_entry_only; does not authorize screening inference",
+  "status": "passed"
+}

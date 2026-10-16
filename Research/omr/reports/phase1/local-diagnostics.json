@@ -1,0 +1,241 @@
+{
+  "available": true,
+  "confirmed": 7,
+  "eligible": 1,
+  "excluded": 6,
+  "items": [
+    {
+      "composition_group": "00eab3fd3e2dd6c4540c6cb8732143d8e73fac358f645bb52f018c71155d7cdf",
+      "eligible": false,
+      "ground_truth_provenance": "user-confirmed local symbolic reference",
+      "id": "00eab3fd3e2dd6c4540c6cb8732143d8e73fac358f645bb52f018c71155d7cdf",
+      "notation_features": {
+        "edition_review": "PDF does not identify its arranger; MIDI carries no edition metadata",
+        "page_coverage_review": "six pages and 252 MIDI quarter notes are plausibly complete but not independently edition-matched",
+        "pickup_review": "none observed",
+        "repeat_review": "none observed",
+        "transcription_alignment_review": "prior pitch agreement 0.959 is strong but cannot establish edition identity"
+      },
+      "page_system_identity": {
+        "document": "00eab3fd3e2dd6c4540c6cb8732143d8e73fac358f645bb52f018c71155d7cdf",
+        "page_coverage": "six pages and 252 MIDI quarter notes are plausibly complete but not independently edition-matched"
+      },
+      "pdf_sha256": "aa1479c0c919d4ceb0c1f30e5035d5799b0e5f1c297ed6cfa81636c8437e8765",
+      "phase1_review_sha256": "61c9d4f72c3c5ecc5e9d8185cee85ccff3cbc9b09226e20982c583a88a7bff0d",
+      "printed_or_scanned": "unknown private source",
+      "private_id_sha256": "00eab3fd3e2dd6c4540c6cb8732143d8e73fac358f645bb52f018c71155d7cdf",
+      "reference_sha256": "020241d001de8e57b5934e3ce43832edb80bf40edf03d3906bdc9bc22451ae79",
+      "review_record_sha256": "22d95669dd97708756fda1506acfff16117b85df77b9b459f5d04c3f34360c8e",
+      "source_revision": "bc4d6943607f36f29e56f307fafcf04df53e99e2b06023aa2d774035b44d5de6",
+      "status": "confirmed",
+      "training_overlap_by_candidate": {
+        "audiveris": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "completed_homr_finetune": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "homr_pr156": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "legato": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "shipped_homr": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "zeus": "unknown; private files are not direct training inputs, repertoire overlap may exist"
+      }
+    },
+    {
+      "composition_group": "1ff58e8f79ace0811c002751d2245910ed70c399531b4bf8709d96c71d658aa8",
+      "eligible": false,
+      "ground_truth_provenance": "user-confirmed local symbolic reference",
+      "id": "1ff58e8f79ace0811c002751d2245910ed70c399531b4bf8709d96c71d658aa8",
+      "notation_features": {
+        "edition_review": "reference carries no arranger or edition metadata",
+        "page_coverage_review": "four pages cover measures 1-120; MIDI duration is exactly 480 quarter notes",
+        "pickup_review": "none",
+        "repeat_review": "none observed",
+        "transcription_alignment_review": "prior pitch evidence is strong but cannot establish the edition"
+      },
+      "page_system_identity": {
+        "document": "1ff58e8f79ace0811c002751d2245910ed70c399531b4bf8709d96c71d658aa8",
+        "page_coverage": "four pages cover measures 1-120; MIDI duration is exactly 480 quarter notes"
+      },
+      "pdf_sha256": "55075d8c7fd3cce979d4b1af996052784b295c4e9e5e8017573793a28dfd3f20",
+      "phase1_review_sha256": "f280600581bf35202c2e410e926145e14969896d6c6843bc4c40ee507ea2de0d",
+      "printed_or_scanned": "unknown private source",
+      "private_id_sha256": "1ff58e8f79ace0811c002751d2245910ed70c399531b4bf8709d96c71d658aa8",
+      "reference_sha256": "31a46726a742d2fbbd2cb5dafbe4cb961e71f16c96adb3de7e3ef3aab70c644b",
+      "review_record_sha256": "ee0f0e214a71b56429d69b8ffe3b3c90706a531a767bd8ea272bc1e4a066bcd2",
+      "source_revision": "59142da5e492f7c8cea34fb3c9e50e70f56333a318d29d6b5469e4fef05af43d",
+      "status": "confirmed",
+      "training_overlap_by_candidate": {
+        "audiveris": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "completed_homr_finetune": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "homr_pr156": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "legato": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "shipped_homr": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "zeus": "unknown; private files are not direct training inputs, repertoire overlap may exist"
+      }
+    },
+    {
+      "composition_group": "343c7cf94957d6b9cc365cb89660cbf039e9822359db46ad61cc4add5b569629",
+      "eligible": false,
+      "ground_truth_provenance": "user-confirmed local symbolic reference",
+      "id": "343c7cf94957d6b9cc365cb89660cbf039e9822359db46ad61cc4add5b569629",
+      "notation_features": {
+        "edition_review": "reference carries no edition metadata",
+        "page_coverage_review": "eleven printed pages; prior span ratio is 0.99 but complex meter changes prevent independent MIDI-only coverage proof",
+        "pickup_review": "MIDI duration ends on a half-quarter boundary; pickup status is unresolved",
+        "repeat_review": "none observed at contact-sheet resolution",
+        "transcription_alignment_review": "prior pitch agreement is 0.924, insufficient to prove the same edition"
+      },
+      "page_system_identity": {
+        "document": "343c7cf94957d6b9cc365cb89660cbf039e9822359db46ad61cc4add5b569629",
+        "page_coverage": "eleven printed pages; prior span ratio is 0.99 but complex meter changes prevent independent MIDI-only coverage proof"
+      },
+      "pdf_sha256": "cbf5790d18853e2bdec599bbdde0d50c0857c9af286d83550e3ea84e9a419674",
+      "phase1_review_sha256": "e018d730ce695fb167bdf5930e63987567ce6bc93a9b5689100f3cc6877e7b17",
+      "printed_or_scanned": "unknown private source",
+      "private_id_sha256": "343c7cf94957d6b9cc365cb89660cbf039e9822359db46ad61cc4add5b569629",
+      "reference_sha256": "d0103d4448834dd72b9d280f0c1946c7a6e615a5b72479e86a22a3e305f3c511",
+      "review_record_sha256": "29729ff647b5b8b1201430d9e141c40aa2896d6498c96508171d655ac124503e",
+      "source_revision": "bdb8307f97672f9ca6d1a033c2f10494021e23fc1a852460ba55b16201d8f390",
+      "status": "confirmed",
+      "training_overlap_by_candidate": {
+        "audiveris": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "completed_homr_finetune": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "homr_pr156": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "legato": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "shipped_homr": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "zeus": "unknown; private files are not direct training inputs, repertoire overlap may exist"
+      }
+    },
+    {
+      "composition_group": "571f0f90d4a39c00ea5de28bf47a395a8535108067e94611a4d7c6023f46397b",
+      "eligible": false,
+      "ground_truth_provenance": "user-confirmed local symbolic reference",
+      "id": "571f0f90d4a39c00ea5de28bf47a395a8535108067e94611a4d7c6023f46397b",
+      "notation_features": {
+        "edition_review": "same arranger is named",
+        "page_coverage_review": "both printed pages present",
+        "pickup_review": "no unresolved pickup mismatch observed",
+        "repeat_review": "printed repeat barlines and first/second endings are present; the MIDI timeline is expanded",
+        "transcription_alignment_review": "prior pitch/note/span evidence is strong but uses incompatible repeat semantics"
+      },
+      "page_system_identity": {
+        "document": "571f0f90d4a39c00ea5de28bf47a395a8535108067e94611a4d7c6023f46397b",
+        "page_coverage": "both printed pages present"
+      },
+      "pdf_sha256": "ef20ae35250aea52f6bd6fc1d69e7d26d3b1d355555bc6361cca18f6d57b0a52",
+      "phase1_review_sha256": "9b838039461edaa145d3b992d2f2bd2fd5f90591b4fe610e994a34eb25b6dcb1",
+      "printed_or_scanned": "unknown private source",
+      "private_id_sha256": "571f0f90d4a39c00ea5de28bf47a395a8535108067e94611a4d7c6023f46397b",
+      "reference_sha256": "ccde96d0af8513f0a530069a20c7c141a236e186a94853e782163cdd740177dd",
+      "review_record_sha256": "ad6e852ea2eabd949518b3c3ff8600f1a2f6ad92c7910a92e50b9d1ff6789b8b",
+      "source_revision": "934cad2751a0eac997bdc45200e358b54f38c4d62c95647e22422335120a9c07",
+      "status": "confirmed",
+      "training_overlap_by_candidate": {
+        "audiveris": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "completed_homr_finetune": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "homr_pr156": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "legato": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "shipped_homr": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "zeus": "unknown; private files are not direct training inputs, repertoire overlap may exist"
+      }
+    },
+    {
+      "composition_group": "8b5e0bd851ff74150041e3d5a5bfbdee9e5025f2d8224850baf951bbfb80a71b",
+      "eligible": false,
+      "ground_truth_provenance": "user-confirmed local symbolic reference",
+      "id": "8b5e0bd851ff74150041e3d5a5bfbdee9e5025f2d8224850baf951bbfb80a71b",
+      "notation_features": {
+        "edition_review": "PDF describes itself as an arrangement similar to the original; MIDI edition is unidentified",
+        "page_coverage_review": "PDF reaches measure 53 while the MIDI duration is only 152.5 quarter notes",
+        "pickup_review": "unresolved",
+        "repeat_review": "none observed",
+        "transcription_alignment_review": "prior note ratio near 1.0 came from an incomplete transcription and does not prove full-score alignment"
+      },
+      "page_system_identity": {
+        "document": "8b5e0bd851ff74150041e3d5a5bfbdee9e5025f2d8224850baf951bbfb80a71b",
+        "page_coverage": "PDF reaches measure 53 while the MIDI duration is only 152.5 quarter notes"
+      },
+      "pdf_sha256": "7def5f6ad97eb8c53b6f5ea5506b074fc13245b25348eca8f102cec8e8842add",
+      "phase1_review_sha256": "01a9eeae47e5c67f3b41efdd91c7c4f085b36af7492a0269f81bba013c5eaea0",
+      "printed_or_scanned": "unknown private source",
+      "private_id_sha256": "8b5e0bd851ff74150041e3d5a5bfbdee9e5025f2d8224850baf951bbfb80a71b",
+      "reference_sha256": "a5e545842788ae973466c207bd98ee68e7e0d05d6bf5a931ff734d9d84291c72",
+      "review_record_sha256": "a75a4cad693cec077e97dea99d6fbca392987f756d70797eb1fef508b408e12a",
+      "source_revision": "acf86464a083cb7a307ef6c38ececbf1d266d0345ed9a7375b8f65fe6593f467",
+      "status": "confirmed",
+      "training_overlap_by_candidate": {
+        "audiveris": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "completed_homr_finetune": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "homr_pr156": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "legato": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "shipped_homr": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "zeus": "unknown; private files are not direct training inputs, repertoire overlap may exist"
+      }
+    },
+    {
+      "composition_group": "ae2407ef40bb7dbcf86c6293fded4ac687e288e1a23dd30d8e78394966fe4394",
+      "eligible": false,
+      "ground_truth_provenance": "user-confirmed local symbolic reference",
+      "id": "ae2407ef40bb7dbcf86c6293fded4ac687e288e1a23dd30d8e78394966fe4394",
+      "notation_features": {
+        "edition_review": "PDF explicitly names a different arranger while reusing another PDF's MIDI reference",
+        "page_coverage_review": "six printed pages; reused MIDI duration is 252 quarter notes",
+        "pickup_review": "not material after arrangement mismatch",
+        "repeat_review": "none observed",
+        "transcription_alignment_review": "prior pitch agreement 0.734 is consistent with an arrangement mismatch"
+      },
+      "page_system_identity": {
+        "document": "ae2407ef40bb7dbcf86c6293fded4ac687e288e1a23dd30d8e78394966fe4394",
+        "page_coverage": "six printed pages; reused MIDI duration is 252 quarter notes"
+      },
+      "pdf_sha256": "8f7b092b3def0dd81ece4478029b0b2527d00704c9383dd8cb92f1bfb524c007",
+      "phase1_review_sha256": "7babefc328ae763a671eefef2fd44486ee33a4326bbb844361aaa36e7a243671",
+      "printed_or_scanned": "unknown private source",
+      "private_id_sha256": "ae2407ef40bb7dbcf86c6293fded4ac687e288e1a23dd30d8e78394966fe4394",
+      "reference_sha256": "020241d001de8e57b5934e3ce43832edb80bf40edf03d3906bdc9bc22451ae79",
+      "review_record_sha256": "5c33ca1f61992a5b1dcc7c9a12c0b2e8dd4701f25d0c46b9de94e7751485d9b5",
+      "source_revision": "61bb0e1895da81cb3e8977b579490033aef7c789569dc1b8e4f6476b953a23c0",
+      "status": "confirmed",
+      "training_overlap_by_candidate": {
+        "audiveris": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "completed_homr_finetune": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "homr_pr156": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "legato": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "shipped_homr": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "zeus": "unknown; private files are not direct training inputs, repertoire overlap may exist"
+      }
+    },
+    {
+      "composition_group": "e8128f3b9ecea23a29cbc1fc1ff912e7b6e11301d65f81dbc71a82ba9ab115d8",
+      "eligible": true,
+      "ground_truth_provenance": "user-confirmed local symbolic reference",
+      "id": "e8128f3b9ecea23a29cbc1fc1ff912e7b6e11301d65f81dbc71a82ba9ab115d8",
+      "notation_features": {
+        "edition_review": "same composer and arranger are named",
+        "page_coverage_review": "eight pages cover measures 1-120; MIDI duration is exactly 480 quarter notes",
+        "pickup_review": "none",
+        "repeat_review": "none observed",
+        "transcription_alignment_review": "prior pitch agreement 0.992 and note ratio 0.997"
+      },
+      "page_system_identity": {
+        "document": "e8128f3b9ecea23a29cbc1fc1ff912e7b6e11301d65f81dbc71a82ba9ab115d8",
+        "page_coverage": "eight pages cover measures 1-120; MIDI duration is exactly 480 quarter notes"
+      },
+      "pdf_sha256": "48516c128f45e61a7bb4f2c28233690683ea5375ebff70b1200e27da5133acaa",
+      "phase1_review_sha256": "2cfd190c0e569ef1a375cbec2b32a693ad68aba51da5aadb8dc99fffbb527028",
+      "printed_or_scanned": "unknown private source",
+      "private_id_sha256": "e8128f3b9ecea23a29cbc1fc1ff912e7b6e11301d65f81dbc71a82ba9ab115d8",
+      "reference_sha256": "72b80922c4b23249726bf0175e4ba69de4534510ad1097765ef13a82f9c1a802",
+      "review_record_sha256": "50a8c6a9150264e65ea7375b0bb8f9b9a683554af2eb5b43264a6b9211515d46",
+      "source_revision": "6405d6103207f099ad90167da3c67021921254cacc10359d95fc2de37e691882",
+      "status": "confirmed",
+      "training_overlap_by_candidate": {
+        "audiveris": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "completed_homr_finetune": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "homr_pr156": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "legato": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "shipped_homr": "unknown; private files are not direct training inputs, repertoire overlap may exist",
+        "zeus": "unknown; private files are not direct training inputs, repertoire overlap may exist"
+      }
+    }
+  ],
+  "privacy": "names and paths intentionally omitted from tracked output",
+  "reviewed": 7
+}

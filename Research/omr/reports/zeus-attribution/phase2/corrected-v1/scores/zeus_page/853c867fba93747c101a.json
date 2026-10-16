@@ -1,0 +1,109 @@
+{
+  "adapter_id": "zeus_app_integration",
+  "aligned_voice_accuracy": 0.8695652173913043,
+  "candidate_id": "zeus",
+  "cold_start": true,
+  "composition_group": "joplin/lilyqueen",
+  "coverage": {
+    "chord_completeness": 0.009259259259259259,
+    "complete_chords": 1,
+    "per_staff": {
+      "0": {
+        "matched_notes": 11,
+        "predicted_notes": 274,
+        "recall": 0.02806122448979592,
+        "reference_notes": 392
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 216,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 108,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 2,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 2,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 18,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 4,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 4,
+        "predicted": "1/4"
+      }
+    ],
+    "unmatched_expected": 359,
+    "unmatched_predicted": 457
+  },
+  "elapsed_seconds": 60.59300000000076,
+  "error": null,
+  "extra_note_count": 467,
+  "failure_penalized_omr_ned": 0.818337617823479,
+  "first_divergent_measure": 1,
+  "input_identity": {
+    "historical_score_sha256": "90e69677898b4e8322953e0f7ec609be6db57177a595fb40727e06dc179a2e5e",
+    "reference_sha256": "db086b12244c7ca42f6a9e048c80d42ac4bc7665047295f4e70fda508489d4af",
+    "result_sha256": "b750466e8f5ef9d61c20131d2cc3cdcd300ddef8b6f057e5d9ce792ae82dc186"
+  },
+  "item_id": "test/joplin/lilyqueen/lilyqueen_4.png",
+  "mean_offset_error": 0.12121212121212122,
+  "missing_note_count": 369,
+  "omr_ned": 0.818337617823479,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.05215419501133787,
+  "onset_f1": 0.07482993197278913,
+  "peak_ram_bytes": 1058353152,
+  "peak_vram_bytes": 242221056,
+  "pitch_f1": 0.6077097505668935,
+  "predicted_note_count": 490,
+  "reference_measure_count": 23,
+  "reference_note_count": 392,
+  "reference_quarter_length": "91/2",
+  "schema_version": 2,
+  "scoring_identity_sha256": "ed9e5b7e6f998b5787ae21dfc0b7f545c42fc0bc83b60fc717f002d6b34aa568",
+  "staff_accuracy": 0.4782608695652174,
+  "status": "succeeded",
+  "timeline_length_error": "6",
+  "timing_policy": "symmetric-rational-4096-roundoff-v1",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

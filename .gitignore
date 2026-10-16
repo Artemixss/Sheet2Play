@@ -7,6 +7,8 @@ dist/
 *.sourcelink.json
 
 # ---- Python ----
+# Per-chat Codex continuation state stays local; keep the hook/config sources tracked.
+/.codex/checkpoints/
 __pycache__/
 *.py[cod]
 .venv/
@@ -104,6 +106,56 @@ tmp/
 Thumbs.db
 Research/omr/dataset/
 Research/omr/vendor/
+Bridge/.runtime/
+Research/omr/reports/homr-465-app-integration/phase*/
 
 # Unreferenced sample score, kept locally but not distributed under the repo licence.
 Omr/test_sheet.jpg
+
+# ---- Bulky research evidence: kept on disk, not distributed ----
+# Page renders, debug images, worker logs, raw OMR attempts, pickles and archives are
+# reproduction detail for the reports beside them. Summaries, manifests and handoffs
+# stay tracked.
+Research/omr/reports/**/attempts/
+Research/omr/reports/**/raw/
+Research/omr/reports/**/*.png
+Research/omr/reports/**/*.jpg
+Research/omr/reports/**/*.jpeg
+Research/omr/reports/**/*.log
+Research/omr/reports/**/*.jsonl
+Research/omr/reports/**/*.pickle
+Research/omr/reports/**/*.tar
+Research/omr/reports/**/*.gz
+# Report JSON over 256 KB (prediction and token dumps).
+Research/omr/reports/homr-timing-465/phase1/resume-20261007/analysis-final/development-analysis.json
+Research/omr/reports/homr-timing-465/phase1/resume-20261007/analysis-reviewed/development-analysis.json
+Research/omr/reports/homr-timing-465/phase1/resume-20261007/development-analysis.json
+Research/omr/reports/homr-timing-465/phase1/title-disabled-20261007/analysis/development-analysis.json
+Research/omr/reports/homr-timing-465/phase2/comparison-report.json
+Research/omr/reports/homr-timing-465/phase2/development-analysis.json
+Research/omr/reports/homr-timing-465/phase3/preservation-before.json
+Research/omr/reports/phase3/reference-audit-smb-complete-full-0bd4f11ed34a.json
+Research/omr/reports/phase3/reference-audit-smb-complete-full-6e027f2195f3.json
+Research/omr/reports/screening/v1/stage3-cpu/zeus-preserved-evidence-audit.json
+Research/omr/reports/zeus-attribution/phase1/diagnostic-identity.json
+Research/omr/reports/zeus-attribution/phase1/import-probe.json
+Research/omr/reports/zeus-attribution/phase1/probe-v2/import-probe.json
+Research/omr/reports/zeus-attribution/phase2/corrected-v1/report.json
+Research/omr/reports/zeus-attribution/phase2/crash-investigation-20261004/Application.json
+Research/omr/reports/zeus-attribution/phase2/crash-recurrence-20261004/Application.json
+Research/omr/reports/zeus-attribution/phase3/import-probe.json
+Research/omr/reports/zeus-attribution/phase3/parser-diagnostics.json
+Research/omr/reports/zeus-attribution/phase3/resume-20261005-1746/import-probe-v2/import-probe.json
+Research/omr/reports/zeus-attribution/phase3/resume-20261005-1746/import-probe-v2/original-import-probe.json
+Research/omr/reports/zeus-attribution/phase4/analysis-report.json
+# Raw Windows event-log exports from the crash investigations carry the machine name
+# and account SID; their REPORT.md summaries are tracked instead.
+Research/omr/reports/screening/stage1-20260926/events-Application.json
+Research/omr/reports/screening/stage1-20260926/events-System.json
+Research/omr/reports/screening/stage1-20260926/events-resource-Detector.json
+Research/omr/reports/screening/stage1-20260926/kernel-power-41.xml
+Research/omr/reports/screening/stage1-20260926/resource-history-logs.json
+Research/omr/reports/zeus-attribution/phase2/crash-investigation-20261004/Operational-Detector.json
+Research/omr/reports/zeus-attribution/phase2/crash-investigation-20261004/System.json
+Research/omr/reports/zeus-attribution/phase2/crash-recurrence-20261004/Detector.json
+Research/omr/reports/zeus-attribution/phase2/crash-recurrence-20261004/System.json

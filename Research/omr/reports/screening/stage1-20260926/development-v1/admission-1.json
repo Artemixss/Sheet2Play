@@ -1,0 +1,22 @@
+{
+  "utc": "2026-09-26T11:06:50.077885+00:00",
+  "ram_percent": 70.9,
+  "ram_total_bytes": 16369225728,
+  "ram_available_bytes": 4767698944,
+  "cpu_percent": 23.4,
+  "device_wide_gpu": [
+    {
+      "index": 0,
+      "name": "NVIDIA GeForce RTX 4050 Laptop GPU",
+      "driver": "591.86",
+      "used_mib": 0,
+      "total_mib": 6141,
+      "percent": 0.0,
+      "utilization_percent": 0,
+      "temperature_c": 53
+    }
+  ],
+  "gpu_error": null,
+  "disk_free_bytes": 62265020416,
+  "admission_blockers": []
+}

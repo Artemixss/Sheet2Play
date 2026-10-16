@@ -1,0 +1,109 @@
+{
+  "adapter_config_sha256": "65cbbc866b8d90895b671961c7c6145a5a7995110aaada16432c43517b6373a9",
+  "adapter_id": "audiveris_unattended",
+  "artifacts": [
+    {
+      "bytes": 227102,
+      "media_type": "application/vnd.audiveris.omr",
+      "path": "Research/omr/.runtime/phase2r/smokes/audiveris-openscore-6623145-page-1-65cbbc866b8d-06dbf3b4a5ac/audiveris.omr",
+      "role": "native",
+      "sha256": "0c5889028a8a5a1167262f24e0b0ac6b82ac4813c81112e0fe9be047c4f2b68e"
+    },
+    {
+      "bytes": 6656,
+      "media_type": "application/vnd.recordare.musicxml",
+      "path": "Research/omr/.runtime/phase2r/smokes/audiveris-openscore-6623145-page-1-65cbbc866b8d-06dbf3b4a5ac/score.mxl",
+      "role": "musicxml",
+      "sha256": "d4e3b5c4b79b2dda68e49cab3bb7a9d73da64af17444f748f496cd2f04def2ea"
+    },
+    {
+      "bytes": 38622,
+      "media_type": "application/json",
+      "path": "Research/omr/.runtime/phase2r/smokes/audiveris-openscore-6623145-page-1-65cbbc866b8d-06dbf3b4a5ac/canonical-events.json",
+      "role": "canonical_events",
+      "sha256": "8ed6718a8a0e55ef7c222791ce8e88b79e5a4c9416ad83277862195f4e3a000d"
+    },
+    {
+      "bytes": 7679,
+      "media_type": "text/plain",
+      "path": "Research/omr/.runtime/phase2r/smokes/audiveris-openscore-6623145-page-1-65cbbc866b8d-06dbf3b4a5ac/engine.log",
+      "role": "engine_log",
+      "sha256": "aa7e5601b6b86d548805ce74c046f08f52f92b47b3551cc9d7f4ed80cdb61f15"
+    }
+  ],
+  "candidate_id": "audiveris",
+  "composition_group": "6623145",
+  "error": null,
+  "exit_status": 0,
+  "item_id": "openscore-6623145-page-1",
+  "measurement_path": "complete_document",
+  "provenance": {
+    "adapter_config": {
+      "adapter_id": "audiveris_unattended",
+      "adapter_revision": "614faf6ddc1d8f0f6580ec1f1772574e55f8b1d27f566026f829ca99f3bdc2b4",
+      "candidate_id": "audiveris",
+      "checkpoint": "Audiveris 5.11.0 classifiers",
+      "checkpoint_revision": "5.11.0",
+      "input_granularity": "complete document",
+      "native_format": "Audiveris OMR project",
+      "settings": {
+        "batch": true,
+        "export": "MusicXML",
+        "manual_corrections": false,
+        "small_image_preprocessing": "lanczos-width-at-least-2000px-300dpi-v1"
+      },
+      "source_repository": "https://github.com/Audiveris/audiveris",
+      "source_revision": "9e1e55cd2746037d059345881c53e6a6754bffbd",
+      "supported_paths": [
+        "complete_document"
+      ]
+    },
+    "adapter_config_sha256": "65cbbc866b8d90895b671961c7c6145a5a7995110aaada16432c43517b6373a9",
+    "checkpoint": "Audiveris 5.11.0 classifiers",
+    "checkpoint_revision": "5.11.0",
+    "command": [
+      "Research/omr/.runtime/phase2r/audiveris-extract/Audiveris/Audiveris.exe",
+      "-batch",
+      "-save",
+      "-export",
+      "-output",
+      "Research/omr/.runtime/phase2r/smokes/audiveris-openscore-6623145-page-1-65cbbc866b8d-06dbf3b4a5ac/audiveris-output",
+      "--",
+      "Research/omr/data/phase1-development/open/6623145/page-1.png"
+    ],
+    "input_path": "Research/omr/data/phase1-development/open/6623145/page-1.png",
+    "input_scale": 1,
+    "input_sha256": "b5430eec26f18c8400f681dd714ca037fae20fc6a5c04dbd74170e6e9ccc2af9",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "prepared_input_sha256": "b5430eec26f18c8400f681dd714ca037fae20fc6a5c04dbd74170e6e9ccc2af9",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "source_repository": "https://github.com/Audiveris/audiveris",
+    "source_revision": "9e1e55cd2746037d059345881c53e6a6754bffbd"
+  },
+  "resources": {
+    "cold_start": true,
+    "measurement_notes": [
+      "VRAM measurement: device-wide WDDM fallback"
+    ],
+    "peak_ram_bytes": 854142976,
+    "peak_vram_bytes": 84934656,
+    "sample_interval_seconds": 0.2
+  },
+  "schema_version": 1,
+  "status": "succeeded",
+  "timings": [
+    {
+      "seconds": 0.00018929999714600854,
+      "stage": "input_preprocessing"
+    },
+    {
+      "seconds": 21.307842199999868,
+      "stage": "recognition_and_native_conversion"
+    },
+    {
+      "seconds": 0.17451350000192178,
+      "stage": "shared_normalization"
+    }
+  ],
+  "warnings": []
+}

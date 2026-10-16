@@ -1,0 +1,17 @@
+{
+  "attempt_path": "Research\\omr\\reports\\screening\\v1\\2c98d5638c36\\attempts\\fine_tuned_homr\\4cd03e3ed82f\\072caa28c8464ea627b6\\attempt-92fc59e2f7054a91b8f51b6df85c1ec0",
+  "attempt_sha256": "88c17c5f2e4e8dba3a320cfc96889995ae5f21471735e368709a1b1d5dba9ca9",
+  "identity": {
+    "adapter_config_sha256": "426183ceebd62651ac638db869fa7ea85bd49d71dda7825ebb52954c9b6029aa",
+    "candidate": "fine_tuned_homr",
+    "configuration_sha256": "4cd03e3ed82f222a3fcfae0e009989e13380de9fcf933c3f3aab5b8effe3b32c",
+    "image_sha256": "3ae5cc7a3e8dbc068ff0b7e96591c6bf331de07d6d3902b9211257b5111aaca8",
+    "item_id": "test/joplin/breeze/breeze_3.png",
+    "reference_sha256": "89415df864688b5b582a659349dfc87c0b12f7b8858a6edddadc3db4584dd58c",
+    "sample_sha256": "2c98d5638c368b1a53bdb3440177d04fa585f9b1ca6ce6adbe65af64cd8e27d1",
+    "schema_version": 1
+  },
+  "origin": "completed_attempt",
+  "result_sha256": "7b847e925be6152cc672b261d3c31bcba959ee36a659cb2e34ea5a326c9770b9",
+  "timing_source": "screening_complete_path"
+}

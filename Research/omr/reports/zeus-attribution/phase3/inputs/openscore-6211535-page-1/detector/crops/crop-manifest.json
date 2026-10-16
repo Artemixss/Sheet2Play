@@ -1,0 +1,55 @@
+{
+  "coordinate_space": "homr_predictions_preprocessed",
+  "crops": [
+    {
+      "bottom": 931,
+      "height": 285,
+      "sha256": "99567cbd853542d929b41e23803d3932d32d799fca642559474613ca73565ff7",
+      "system": 1,
+      "top": 646,
+      "width": 1920
+    },
+    {
+      "bottom": 1317,
+      "height": 289,
+      "sha256": "a9dc91c21ce2882f354077aa2e334e507e95cf317bb9621b182a6903f6ddb3f3",
+      "system": 2,
+      "top": 1028,
+      "width": 1920
+    },
+    {
+      "bottom": 1702,
+      "height": 290,
+      "sha256": "64f453702a720f4740045daca4fb2b60b4c64aea9fa1f1892df228e017c0742a",
+      "system": 3,
+      "top": 1412,
+      "width": 1920
+    },
+    {
+      "bottom": 2101,
+      "height": 321,
+      "sha256": "73a3f21806c9ef46fb537a0abb82c159b695738efbff7070d32bff00f524f658",
+      "system": 4,
+      "top": 1780,
+      "width": 1920
+    },
+    {
+      "bottom": 2480,
+      "height": 296,
+      "sha256": "aa3d29a8138f1cce2e84adc412979d76ce918c939235fc7f02726d49c7e68a9c",
+      "system": 5,
+      "top": 2184,
+      "width": 1920
+    }
+  ],
+  "detector_image": {
+    "height": 2717,
+    "sha256": "31bb9cf7a855fe07d56236182b290723d8ceb5660310d1103346dfa708270b57",
+    "width": 1920
+  },
+  "source_image": {
+    "height": 3509,
+    "sha256": "b368dd864dc235272728822a578551fbed619cce02265cc52043dea3051c57c8",
+    "width": 2480
+  }
+}

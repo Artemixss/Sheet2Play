@@ -1,0 +1,37 @@
+{
+  "adapter_id": "shipped_homr_direct",
+  "candidate_id": "shipped_homr",
+  "cold_start": true,
+  "composition_group": "beethoven/sonata17_1",
+  "duration": null,
+  "elapsed_seconds": 20.59400000000096,
+  "error": {
+    "code": "HOMR_OUTPUT_MISSING",
+    "message": "HOMR did not produce MusicXML",
+    "stage": "conversion"
+  },
+  "extra_note_count": 0,
+  "failure_penalized_omr_ned": 1.0,
+  "first_divergent_measure": 1,
+  "item_id": "test/beethoven/sonata17_1/sonata17_1_6.png",
+  "missing_note_count": 371,
+  "omr_ned": null,
+  "omr_ned_status": "engine_failed",
+  "onset_duration_f1": 0.0,
+  "onset_f1": 0.0,
+  "peak_ram_bytes": 1557192704,
+  "peak_vram_bytes": 1636827136,
+  "pitch_f1": 0.0,
+  "predicted_note_count": 0,
+  "reference_measure_count": 29,
+  "reference_note_count": 371,
+  "reference_quarter_length": "116",
+  "schema_version": 1,
+  "status": "failed",
+  "timeline_length_error": null,
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

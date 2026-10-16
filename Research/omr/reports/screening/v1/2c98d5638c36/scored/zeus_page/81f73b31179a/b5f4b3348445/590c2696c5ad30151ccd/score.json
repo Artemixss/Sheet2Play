@@ -1,0 +1,41 @@
+{
+  "adapter_id": "zeus_app_integration",
+  "aligned_voice_accuracy": 0.0,
+  "candidate_id": "zeus",
+  "cold_start": true,
+  "composition_group": "beethoven/sonata17_1",
+  "duration": {
+    "confusion": [],
+    "unmatched_expected": 376,
+    "unmatched_predicted": 692
+  },
+  "elapsed_seconds": 70.59299999999985,
+  "error": null,
+  "extra_note_count": 692,
+  "failure_penalized_omr_ned": 0.9421119592875318,
+  "first_divergent_measure": 1,
+  "item_id": "test/beethoven/sonata17_1/sonata17_1_1.png",
+  "mean_offset_error": null,
+  "missing_note_count": 376,
+  "omr_ned": 0.9421119592875318,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.0,
+  "onset_f1": 0.0,
+  "peak_ram_bytes": 1069088768,
+  "peak_vram_bytes": 179306496,
+  "pitch_f1": 0.5430711610486891,
+  "predicted_note_count": 692,
+  "reference_measure_count": 29,
+  "reference_note_count": 376,
+  "reference_quarter_length": "116",
+  "schema_version": 1,
+  "staff_accuracy": 0.0,
+  "status": "succeeded",
+  "timeline_length_error": "-212916666666666667/10000000000000000",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

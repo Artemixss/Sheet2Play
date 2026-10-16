@@ -1,0 +1,97 @@
+{
+  "adapter_config_sha256": "ebf2773246e5dc58d0d0ffbbcc18a388c3f17937b3de85cb087d16d67578198c",
+  "adapter_id": "shipped_homr_direct",
+  "artifacts": [
+    {
+      "bytes": 3161,
+      "media_type": "text/plain",
+      "path": "Research/omr/.runtime/phase3/evaluation/smb-pianoform/homr_page/7cdaea69a04193b6b3d9-ebf2773246e5-635ffae17143/homr.tokens.txt",
+      "role": "native",
+      "sha256": "53c4511a87a1d59400cc44e19eb68269f18425cee9e188c62831d0dfadb327f7"
+    },
+    {
+      "bytes": 15938,
+      "media_type": "application/vnd.recordare.musicxml+xml",
+      "path": "Research/omr/.runtime/phase3/evaluation/smb-pianoform/homr_page/7cdaea69a04193b6b3d9-ebf2773246e5-635ffae17143/score.musicxml",
+      "role": "musicxml",
+      "sha256": "1b7b39fd426e6f5fe042273aed7e9c49a1d05ab84791d7a595eecf91b132db1b"
+    },
+    {
+      "bytes": 12818,
+      "media_type": "application/json",
+      "path": "Research/omr/.runtime/phase3/evaluation/smb-pianoform/homr_page/7cdaea69a04193b6b3d9-ebf2773246e5-635ffae17143/canonical-events.json",
+      "role": "canonical_events",
+      "sha256": "fff49c873152e23aff0b9a742a5dcaaa8d69e4d757e3fdc3f9df23997e8c7f6c"
+    },
+    {
+      "bytes": 5746,
+      "media_type": "text/plain",
+      "path": "Research/omr/.runtime/phase3/evaluation/smb-pianoform/homr_page/7cdaea69a04193b6b3d9-ebf2773246e5-635ffae17143/engine.log",
+      "role": "engine_log",
+      "sha256": "b1febabfb2dcc284420a938956c1d0e580621e68baec1814ab0bfa0e25c28711"
+    }
+  ],
+  "candidate_id": "shipped_homr",
+  "composition_group": "hummel/prelude67_14",
+  "error": null,
+  "exit_status": 0,
+  "item_id": "test/hummel/prelude67_14/prelude67_14_1.png",
+  "measurement_path": "complete_document",
+  "provenance": {
+    "adapter_config": {
+      "adapter_id": "shipped_homr_direct",
+      "adapter_revision": "fdffc993b22fc2a284a8822c5e9688cbbd4ac09107ef2af4c2cccc5b8b44af10",
+      "candidate_id": "shipped_homr",
+      "checkpoint": "homr released ONNX checkpoints",
+      "checkpoint_revision": "homr-0.7.0.post38+457e7c6+pr146",
+      "input_granularity": "page or system image",
+      "native_format": "HOMR EncodedSymbol token stream",
+      "settings": {
+        "gpu": "force",
+        "normalization": "frozen-phase1"
+      },
+      "source_repository": "https://github.com/liebharc/homr",
+      "source_revision": "457e7c6518a10ba755db2e60883419e56c4d7369+pr146",
+      "supported_paths": [
+        "annotated_crop",
+        "complete_document"
+      ]
+    },
+    "adapter_config_sha256": "ebf2773246e5dc58d0d0ffbbcc18a388c3f17937b3de85cb087d16d67578198c",
+    "checkpoint": "homr released ONNX checkpoints",
+    "checkpoint_revision": "homr-0.7.0.post38+457e7c6+pr146",
+    "command": [
+      "Bridge/.venv-homr-gpu/Scripts/python.exe",
+      "Bridge/homr_gpu.py",
+      "<external>/input.png"
+    ],
+    "input_path": "Research/omr/data/smb/test/hummel/prelude67_14/prelude67_14_1.png",
+    "input_sha256": "c7a17d993841659c86b125d56742aca09b43906af281e7ed24a8abe1827b6eba",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "source_repository": "https://github.com/liebharc/homr",
+    "source_revision": "457e7c6518a10ba755db2e60883419e56c4d7369+pr146"
+  },
+  "resources": {
+    "cold_start": true,
+    "measurement_notes": [
+      "VRAM measurement: device-wide WDDM fallback"
+    ],
+    "peak_ram_bytes": 1511763968,
+    "peak_vram_bytes": 833617920,
+    "sample_interval_seconds": 0.2
+  },
+  "schema_version": 1,
+  "status": "succeeded",
+  "timings": [
+    {
+      "seconds": 5.143839300000309,
+      "stage": "recognition_and_native_conversion"
+    },
+    {
+      "seconds": 0.0673663000002307,
+      "stage": "shared_normalization"
+    }
+  ],
+  "warnings": []
+}

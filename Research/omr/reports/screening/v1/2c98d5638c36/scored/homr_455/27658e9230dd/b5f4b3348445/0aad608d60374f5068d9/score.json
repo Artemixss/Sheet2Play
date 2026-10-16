@@ -1,0 +1,67 @@
+{
+  "adapter_id": "homr_455_explicit_onnx_pair",
+  "aligned_voice_accuracy": 0.6666666666666666,
+  "candidate_id": "homr_455",
+  "cold_start": true,
+  "composition_group": "liszt/etude10_05",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/2",
+        "count": 4,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/6",
+        "count": 6,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "2",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "2",
+        "count": 2,
+        "predicted": "2"
+      }
+    ],
+    "unmatched_expected": 411,
+    "unmatched_predicted": 410
+  },
+  "elapsed_seconds": 25.59400000000096,
+  "error": null,
+  "extra_note_count": 418,
+  "failure_penalized_omr_ned": 0.8751551253412757,
+  "first_divergent_measure": 1,
+  "item_id": "test/liszt/etude10_05/etude10_05_2.png",
+  "mean_offset_error": 0.21428571428571427,
+  "missing_note_count": 419,
+  "omr_ned": 0.8751551253412757,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.014134275618374558,
+  "onset_f1": 0.03297997644287397,
+  "peak_ram_bytes": 1367138304,
+  "peak_vram_bytes": 1638924288,
+  "pitch_f1": 0.9823321554770319,
+  "predicted_note_count": 424,
+  "reference_measure_count": 24,
+  "reference_note_count": 425,
+  "reference_quarter_length": "48",
+  "schema_version": 1,
+  "staff_accuracy": 0.0,
+  "status": "succeeded",
+  "timeline_length_error": "187/8",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

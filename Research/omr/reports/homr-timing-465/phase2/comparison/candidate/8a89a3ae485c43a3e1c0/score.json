@@ -1,0 +1,142 @@
+{
+  "aligned_voice_accuracy": 0.6666666666666666,
+  "candidate": "homr-465-upstream",
+  "capture_status": "complete",
+  "comparison_identity": "91e7256cd902a6ea2adb9fb415e6847b2ba0b9e94fb03fe8f5f1570ae6544fb9",
+  "composition_group": "liszt/etude10_05",
+  "configuration_identity": "9e619e47fd0317b6a7d1da5207985e1120acefc499a111649c5b7cdb1e339122",
+  "conversion_error": null,
+  "coverage": {
+    "chord_completeness": 0.01694915254237288,
+    "complete_chords": 1,
+    "per_staff": {
+      "0": {
+        "matched_notes": 0,
+        "predicted_notes": 280,
+        "recall": 0.0,
+        "reference_notes": 425
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 140,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 59,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/2",
+        "count": 4,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/6",
+        "count": 8,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "2",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "2",
+        "count": 2,
+        "predicted": "2"
+      }
+    ],
+    "unmatched_expected": 409,
+    "unmatched_predicted": 404
+  },
+  "elapsed_seconds": 15.93800000000192,
+  "extra_notes": 414,
+  "item_id": "8a89a3ae485c43a3e1c0",
+  "mean_offset_error": 0.19791666666666666,
+  "metrics": {
+    "aligned_voice_accuracy": 0.6666666666666666,
+    "coverage": {
+      "chord_completeness": 0.01694915254237288,
+      "complete_chords": 1,
+      "per_staff": {
+        "0": {
+          "matched_notes": 0,
+          "predicted_notes": 280,
+          "recall": 0.0,
+          "reference_notes": 425
+        },
+        "1": {
+          "matched_notes": 0,
+          "predicted_notes": 140,
+          "recall": null,
+          "reference_notes": 0
+        }
+      },
+      "reference_chords": 59,
+      "staff_interpretation": "notation staff index; not validated hand labels"
+    },
+    "duration": {
+      "confusion": [
+        {
+          "actual": "1",
+          "count": 1,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/2",
+          "count": 4,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/6",
+          "count": 8,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "2",
+          "count": 1,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "2",
+          "count": 2,
+          "predicted": "2"
+        }
+      ],
+      "unmatched_expected": 409,
+      "unmatched_predicted": 404
+    },
+    "extra_notes": 414,
+    "mean_offset_error": 0.19791666666666666,
+    "missing_notes": 419,
+    "onset_duration_f1": 0.014201183431952662,
+    "onset_f1": 0.0378698224852071,
+    "pitch_f1": 0.9775147928994082,
+    "predicted_notes": 420,
+    "reference_notes": 425,
+    "staff_accuracy": 0.0,
+    "timeline_predicted": "143/2",
+    "timeline_reference": "48"
+  },
+  "missing_notes": 419,
+  "onset_duration_f1": 0.014201183431952662,
+  "onset_f1": 0.0378698224852071,
+  "original_item_id": "test/liszt/etude10_05/etude10_05_2.png",
+  "pitch_f1": 0.9775147928994082,
+  "predicted_notes": 420,
+  "receipt_sha256": "e26745f2e9784d5c3ee574d536616c40fae47139884f6aaa73d48f3fd2719aac",
+  "reference_notes": 425,
+  "reference_sha256": "5bc895fe809deb797895d7c676698bbc248853d82f0250f90a3245e1b101091b",
+  "staff_accuracy": 0.0,
+  "status": "complete",
+  "timeline_predicted": "143/2",
+  "timeline_reference": "48"
+}

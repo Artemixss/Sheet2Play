@@ -1,0 +1,79 @@
+{
+  "adapter_id": "zeus_app_integration",
+  "aligned_voice_accuracy": 1.0,
+  "candidate_id": "zeus",
+  "cold_start": true,
+  "composition_group": "beethoven/sonata05_1",
+  "coverage": {
+    "chord_completeness": 0.0,
+    "complete_chords": 0,
+    "per_staff": {
+      "0": {
+        "matched_notes": 1,
+        "predicted_notes": 120,
+        "recall": 0.00303951367781155,
+        "reference_notes": 329
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 176,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 74,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "2",
+        "count": 1,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "3/2",
+        "count": 4,
+        "predicted": "3/2"
+      }
+    ],
+    "unmatched_expected": 324,
+    "unmatched_predicted": 291
+  },
+  "elapsed_seconds": 70.57800000000043,
+  "error": null,
+  "extra_note_count": 292,
+  "failure_penalized_omr_ned": 0.6178371391641534,
+  "first_divergent_measure": 1,
+  "input_identity": {
+    "historical_score_sha256": "c4728ed9e46bf6fa46619df1368aa50f0bee64d104b8d0cf24de409fc0d91615",
+    "reference_sha256": "b3837666c8d877128b026a1d1d7378673a36ba42a537b2e8ae81670d66226752",
+    "result_sha256": "10157fbfecd548d3d84bd90090fb6601551e4f6fcd67d73f90cd5b8b0ab60334"
+  },
+  "item_id": "test/beethoven/sonata05_1/sonata05_1_3.png",
+  "mean_offset_error": 0.1,
+  "missing_note_count": 325,
+  "omr_ned": 0.6178371391641534,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.012799999999999999,
+  "onset_f1": 0.016,
+  "peak_ram_bytes": 1058050048,
+  "peak_vram_bytes": 1181745152,
+  "pitch_f1": 0.6624,
+  "predicted_note_count": 296,
+  "reference_measure_count": 45,
+  "reference_note_count": 329,
+  "reference_quarter_length": "135",
+  "schema_version": 2,
+  "scoring_identity_sha256": "ed9e5b7e6f998b5787ae21dfc0b7f545c42fc0bc83b60fc717f002d6b34aa568",
+  "staff_accuracy": 0.25,
+  "status": "succeeded",
+  "timeline_length_error": "145/12",
+  "timing_policy": "symmetric-rational-4096-roundoff-v1",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

@@ -1,0 +1,1394 @@
+{
+  "artifacts": [
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Bridge\\musicxml_normalizer.py",
+      "sha256": "2e56906636a7164784492ac47c0f0fd628e4f15e172390b58e2792160f819c8e"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\phase2_zeus_runner.py",
+      "sha256": "592e63d2c4828be954257073275e4665c22f2a583bf1c81d06b585711e4021f4"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\phase3_score.py",
+      "sha256": "6b7afe67dfb2e86b0b76a666397cab3e166162bec9abbb8b6587e0a47395fb39"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\screening_cpu_profile.py",
+      "sha256": "56388ee1250f7e8057488c88a9698304bc4510882b5e41d9a5c502ce1874eb12"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\src\\sheet2play_omr\\corrected_scoring.py",
+      "sha256": "64c777a956521b4654b7d75bd66bfc8f42e52481f889aef424a0bac81470a58a"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\src\\sheet2play_omr\\metrics.py",
+      "sha256": "f708a8f15d56d9c38f534d7dde2895858057bce3a22bbec6b6450a1901638765"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\src\\sheet2play_omr\\phase2r_detector.py",
+      "sha256": "4ad2a8c2cf88d19db46349fda84c76dc8a60dbad2cac6df9f3405b2ad7b26bc2"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\src\\sheet2play_omr\\phase2r_development.py",
+      "sha256": "a57c2e77cae7e36016a474087398f3105867a51587040c3a244bc7caffb4f90d"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\src\\sheet2play_omr\\phase2r_vlm.py",
+      "sha256": "b4ffcc4f75ba5b0243db3c1314ba421d75e6b69c3c80502ce45e6172626302d5"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\src\\sheet2play_omr\\phase3_scoring.py",
+      "sha256": "b5f4b33484454e7e0e1affb008a0ae47d791af127f283cc76ac09b8da31c2e97"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\src\\sheet2play_omr\\timing.py",
+      "sha256": "a5a2812186dcd1f683fa70ee1ad01fb04aaa26987ac392702d2a0c8cd4334515"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\src\\sheet2play_omr\\zeus_trace.py",
+      "sha256": "5b34b81e47046276f1d8310eac2b424f4a106fd0ab7279912b7d4ccd9c796fb4"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\zeus_attribution_analyze.py",
+      "sha256": "16f2353bbd49c63bbc7b7d79340de965b7cc035d9ce592fa063b3e53ee24024e"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\zeus_attribution_infer.py",
+      "sha256": "b8c926477996e4f743cbd090ce6e526d5b2de2c746b6bb84bb6294be6b280b94"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\zeus_attribution_prepare.py",
+      "sha256": "d69b0f9d97bd518c11990119a56f47fb073eb46f35392a6198c938fb0e36f0fa"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\zeus_attribution_verify.py",
+      "sha256": "4de8054f6a482a54dc322f43f62413207dda947cd8b2b7837a8fc137b3f08d26"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\zeus_provenance_probe.py",
+      "sha256": "5162be2e0e528f32f08cdbc41a456a68f14be0252755a4429479ecac8e916681"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\tests\\fixtures\\transcoda-baseline\\baseline-piano.png",
+      "sha256": "2cbe267a15f2f5791943523413ce6c3d25dee32e283f43af156c7eeee5f08805"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\tests\\fixtures\\transcoda-baseline\\baseline-piano.krn",
+      "sha256": "03a48bf5f047943af61f451fabf4f1eb835eff559da36faa38fe3349bc03eef5"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-baseline-piano-001\\page-reference.musicxml",
+      "sha256": "6783a7059363ba0fb10d3d19d4e9ad6528e824b8b820a7f1c86c57d1fe371d38"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-baseline-piano-001\\detector\\crops\\system-0001.png",
+      "sha256": "ee28aad8f6cba6b80823c325b506d6219f04c824c917d1dc2c1ef279c4229f1c"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-baseline-piano-001\\system-0001\\prediction.json",
+      "sha256": "f4928bc439530ce4c5e526233747ebafe41d5dc58603066447fc1f3b25259836"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-baseline-piano-001\\system-0001\\upstream.musicxml",
+      "sha256": "ddf8942416a55664f20ff4a9e4570079544210d721d7c4b5c84974ecbb0b432a"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-baseline-piano-001\\system-0001\\wrapper.musicxml",
+      "sha256": "880285764d3f92ca34f9d43f64c6eae4f50c5ea8cd8cf5e0b7ced80bdcd45aa6"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-baseline-piano-001\\detector\\crops\\system-0002.png",
+      "sha256": "410728bbe63780725f0bf174d13f609c8f4694c72bd6ca3c744552a2a42f7d02"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-baseline-piano-001\\system-0002\\prediction.json",
+      "sha256": "165a954b9dead5ae526edbd5b4d1fc596ab8b42890aae223f0b9c20dbe97c742"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-baseline-piano-001\\system-0002\\upstream.musicxml",
+      "sha256": "ccd2e1cff7b726033d51f09eedd6a864c28a3a42746b6b1ee1923b3c89331830"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-baseline-piano-001\\system-0002\\wrapper.musicxml",
+      "sha256": "5e5e834f84a3d959ee438fb3b66ab401235bcd54da6b551268075e94b9befd09"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-baseline-piano-001\\upstream-stitched.musicxml",
+      "sha256": "fddc64251afbffe4324119da8f20861d3bd51697916ea33ac6cff8fe27365747"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-baseline-piano-001\\wrapper-stitched.musicxml",
+      "sha256": "a62eadd19255d9ecd850a7edb8aebf8060e9452d9999be258f9fd71bf565d3ac"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-baseline-piano-001\\result.json",
+      "sha256": "5cb542af1661d8fff3f63f8a6cdfdf6a1fed734ae5324d640061fbd89d45d4a1"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\homophonic.png",
+      "sha256": "298bf62eaa8c2b822a3d9ec173154caa1cb1981de5704f6799828a2ec239fc79"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\homophonic.musicxml",
+      "sha256": "84922d9757a5be7b9877fc9737032d9f297b773698e1d9f50f7764d46ab8eaab"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-homophonic\\page-reference.musicxml",
+      "sha256": "84922d9757a5be7b9877fc9737032d9f297b773698e1d9f50f7764d46ab8eaab"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-homophonic\\detector\\crops\\system-0001.png",
+      "sha256": "8e0a3f07ec7da593fef6f9c45e7aa60f6e98e1f96d17e8db4c115c363b7694d7"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-homophonic\\system-0001\\prediction.json",
+      "sha256": "49dba3f31a0b9025b6defbce21242f96a536d7970ed9de861d3cbfb697cdbd51"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-homophonic\\system-0001\\upstream.musicxml",
+      "sha256": "72c736087d0e46304c76b9c96539e97e7ad39065c8640d8893304471316e95a8"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-homophonic\\system-0001\\wrapper.musicxml",
+      "sha256": "0f598425d8470be568dae74ab0fe665e431a5649ee1f6e00dc032623664c8bc6"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-homophonic\\upstream-stitched.musicxml",
+      "sha256": "72c736087d0e46304c76b9c96539e97e7ad39065c8640d8893304471316e95a8"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-homophonic\\wrapper-stitched.musicxml",
+      "sha256": "0f598425d8470be568dae74ab0fe665e431a5649ee1f6e00dc032623664c8bc6"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-homophonic\\result.json",
+      "sha256": "0259e189b376f13b04c4949819168e4cb7cd138d57d72f8c5300292e7999a03e"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\offset_entry.png",
+      "sha256": "9dd714781e3fe710c07f7b3b95e75a049c400b5f66c951013704798719f9dbf8"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\offset_entry.musicxml",
+      "sha256": "7e9a04bca94dfb1265ffd52470876acb8fe58ff5f343b8d978e0d3934c2b3217"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-offset_entry\\page-reference.musicxml",
+      "sha256": "7e9a04bca94dfb1265ffd52470876acb8fe58ff5f343b8d978e0d3934c2b3217"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-offset_entry\\detector\\crops\\system-0001.png",
+      "sha256": "edd87d822e628b6eb48672a66a3c21e7356ad52126e702ac5f6f0026590a2b32"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-offset_entry\\system-0001\\prediction.json",
+      "sha256": "d5913d096fa9d9bfc879431a341fa3dec83777ca2b5b604f5d2e7cf714d24cae"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-offset_entry\\system-0001\\upstream.musicxml",
+      "sha256": "c97099a9ea51b84b1514537d1cd294e6725d022c4f838acc7ac57d618696e65e"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-offset_entry\\system-0001\\wrapper.musicxml",
+      "sha256": "ac2ba285ae051123cbc2e389b486b8c3d6f6053e2408603714e0ec4ea0b9b3b3"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-offset_entry\\upstream-stitched.musicxml",
+      "sha256": "c97099a9ea51b84b1514537d1cd294e6725d022c4f838acc7ac57d618696e65e"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-offset_entry\\wrapper-stitched.musicxml",
+      "sha256": "ac2ba285ae051123cbc2e389b486b8c3d6f6053e2408603714e0ec4ea0b9b3b3"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-offset_entry\\result.json",
+      "sha256": "7bf71acc6ae2af19ac545bde0164eb9bd39b3abc97869755116c4123e27457f2"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\quintuplet_vs_duple.png",
+      "sha256": "b57f0e85b624a4be1e9a6484bbd2c6088612831ba77875c640e0b1111eaff79d"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\quintuplet_vs_duple.musicxml",
+      "sha256": "bf0d92a4c3639690ac43e87f54f93bf0ef12e8b9760d0d6ba21596bdfa580931"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-quintuplet_vs_duple\\page-reference.musicxml",
+      "sha256": "bf0d92a4c3639690ac43e87f54f93bf0ef12e8b9760d0d6ba21596bdfa580931"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-quintuplet_vs_duple\\detector\\crops\\system-0001.png",
+      "sha256": "659ec8841502459f0bc53860326ed8cb218912f0958883b48924a465342d5047"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-quintuplet_vs_duple\\system-0001\\prediction.json",
+      "sha256": "4011eccd9f6a8b64ed341a44f95163d2b1178c4b0ac98da31eeebb9478924957"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-quintuplet_vs_duple\\system-0001\\upstream.musicxml",
+      "sha256": "c4d258f3ebcd5379d2c0a413dc39ea4d7e00b686f2dc4a980e96c4fd125208a5"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-quintuplet_vs_duple\\system-0001\\wrapper.musicxml",
+      "sha256": "392d498e8ffff79a7fd23a5c9087ccf39cd12ee101a550ef5e3c67c9ae145269"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-quintuplet_vs_duple\\upstream-stitched.musicxml",
+      "sha256": "c4d258f3ebcd5379d2c0a413dc39ea4d7e00b686f2dc4a980e96c4fd125208a5"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-quintuplet_vs_duple\\wrapper-stitched.musicxml",
+      "sha256": "392d498e8ffff79a7fd23a5c9087ccf39cd12ee101a550ef5e3c67c9ae145269"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-quintuplet_vs_duple\\result.json",
+      "sha256": "da35eabbd8859227192b49d4425b47f5a7d2f9d1bd0c31cdfb80e5a36c933ec1"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\same_position_sustain.png",
+      "sha256": "74c1ba126d212f5c7ef3e7f3ef763dda2e35871f23add62d58f6daa3604cf624"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\same_position_sustain.musicxml",
+      "sha256": "98708dc156bafa3093697b433310e77332595560512edbf2522c989e572e3e26"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-same_position_sustain\\page-reference.musicxml",
+      "sha256": "98708dc156bafa3093697b433310e77332595560512edbf2522c989e572e3e26"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-same_position_sustain\\detector\\crops\\system-0001.png",
+      "sha256": "7a05fe1dee56f8945e4c3d33b25bc7f1c393ffbb0ca8b095933795d70209927c"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-same_position_sustain\\system-0001\\prediction.json",
+      "sha256": "9a97785153906539e5444184c0ecc6c96230a87cea6d9c0d0555cbe473e0ff09"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-same_position_sustain\\system-0001\\upstream.musicxml",
+      "sha256": "baf688bfda8f17408b7ebbbb475c1cb286ca726888f4c8079763f3951bd00c2e"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-same_position_sustain\\system-0001\\wrapper.musicxml",
+      "sha256": "eb0086873c0f78dc804aea272423e4e5d297544a8d15cc0424ca8120e0d2c8fc"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-same_position_sustain\\upstream-stitched.musicxml",
+      "sha256": "baf688bfda8f17408b7ebbbb475c1cb286ca726888f4c8079763f3951bd00c2e"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-same_position_sustain\\wrapper-stitched.musicxml",
+      "sha256": "eb0086873c0f78dc804aea272423e4e5d297544a8d15cc0424ca8120e0d2c8fc"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-same_position_sustain\\result.json",
+      "sha256": "cf9293865bfefd4bca61c373228b8fe738467012b72b3130cf5878373f807452"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\septuplet_vs_duple.png",
+      "sha256": "f8f9caca9f95b1a94cef6452cb2850d91e509a7465794e4e6c927bdfcf4c5791"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\septuplet_vs_duple.musicxml",
+      "sha256": "12243b6a57e88281408481c8cdc419a852174920dbde8b3f3cc2e9af2fa79bcb"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-septuplet_vs_duple\\page-reference.musicxml",
+      "sha256": "12243b6a57e88281408481c8cdc419a852174920dbde8b3f3cc2e9af2fa79bcb"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-septuplet_vs_duple\\detector\\crops\\system-0001.png",
+      "sha256": "588f48f345c1b618d643613745c6b446d733fb1dd7cba9e3911a409eafd8bd94"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-septuplet_vs_duple\\system-0001\\prediction.json",
+      "sha256": "cb1b01633db093900bd3c255d37b04ced23f31f5239b009471bb8b333ce8a21d"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-septuplet_vs_duple\\system-0001\\upstream.musicxml",
+      "sha256": "b9ded51f4a61e9ffb821d9def9e0b8769d5762c6e52d59e67021d99bb42f75cd"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-septuplet_vs_duple\\system-0001\\wrapper.musicxml",
+      "sha256": "669258ea3d0cfef080ba7742543d915b8f997fe2c3dfa1ac8520b733a6078ee7"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-septuplet_vs_duple\\upstream-stitched.musicxml",
+      "sha256": "b9ded51f4a61e9ffb821d9def9e0b8769d5762c6e52d59e67021d99bb42f75cd"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-septuplet_vs_duple\\wrapper-stitched.musicxml",
+      "sha256": "669258ea3d0cfef080ba7742543d915b8f997fe2c3dfa1ac8520b733a6078ee7"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-septuplet_vs_duple\\result.json",
+      "sha256": "32d198c4b9a30b341ce40feec007b686be75c51dfcd2a9f861f23e27dbae3f2c"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\syncopation.png",
+      "sha256": "b81f65fe8faa3a2d2517aaf22b362ba613441388e79335f18ffb5839d4e5a4e7"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\syncopation.musicxml",
+      "sha256": "c603832b1189a6a8539e4ab180220b8f5e54601f5881615061fc798ffd3bd1b3"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-syncopation\\page-reference.musicxml",
+      "sha256": "c603832b1189a6a8539e4ab180220b8f5e54601f5881615061fc798ffd3bd1b3"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-syncopation\\detector\\crops\\system-0001.png",
+      "sha256": "07ee8dd2ad1625619874a7853fa30a6ded1d53f9d3815006a665e9be692ad32b"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-syncopation\\system-0001\\prediction.json",
+      "sha256": "82070f0c6119befe40690c8b956b8f52d1e28a5f99aaef23f96b5397432c2f53"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-syncopation\\system-0001\\upstream.musicxml",
+      "sha256": "d34deb954aafeb3de92685bddf4e4d5df6577eeeb3e7461a433b40c60e5127fe"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-syncopation\\system-0001\\wrapper.musicxml",
+      "sha256": "1a395419f1716a58972c6dfb04e8c5e2a0773be0dffb889f8ecb93140d2f33ed"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-syncopation\\upstream-stitched.musicxml",
+      "sha256": "d34deb954aafeb3de92685bddf4e4d5df6577eeeb3e7461a433b40c60e5127fe"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-syncopation\\wrapper-stitched.musicxml",
+      "sha256": "1a395419f1716a58972c6dfb04e8c5e2a0773be0dffb889f8ecb93140d2f33ed"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-syncopation\\result.json",
+      "sha256": "82f040328aeb5308b9787ec3edc64546516f54a8caeb7434de2c40340e30fbe6"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\three_voices.png",
+      "sha256": "6a5fb87a643858e21b4be6c8637acc69259b19b052c486b1c85e057a0828203d"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\three_voices.musicxml",
+      "sha256": "6534855228913d7897c671ff2e1ee88528859e6111b9315ef7e013044f652214"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-three_voices\\page-reference.musicxml",
+      "sha256": "6534855228913d7897c671ff2e1ee88528859e6111b9315ef7e013044f652214"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-three_voices\\detector\\crops\\system-0001.png",
+      "sha256": "6e86a8b4d976276df6903d18c064ee8dc338c64674bb0c344939ab38e7e12e1e"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-three_voices\\system-0001\\prediction.json",
+      "sha256": "aeb451d56351f106d24f07aa037945aa0e8350042fdf5a2d1b8429c44c86e245"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-three_voices\\system-0001\\upstream.musicxml",
+      "sha256": "7dd1d8f7348dc7b45020089c857fe8c31ec8ca6e36d8873578b7f6a1c1d47ca9"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-three_voices\\system-0001\\wrapper.musicxml",
+      "sha256": "818442b984aacce475823a3cfcd90646a07882fdc587a4b0e7ac346392ed0092"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-three_voices\\upstream-stitched.musicxml",
+      "sha256": "7dd1d8f7348dc7b45020089c857fe8c31ec8ca6e36d8873578b7f6a1c1d47ca9"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-three_voices\\wrapper-stitched.musicxml",
+      "sha256": "818442b984aacce475823a3cfcd90646a07882fdc587a4b0e7ac346392ed0092"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-three_voices\\result.json",
+      "sha256": "d86001949ecc6505cb07ef5b8fe9806eb8d23c719c8a8330275805658885acb0"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\tie_across_barline.png",
+      "sha256": "5651dc3756ad48f8963570e0b8f6cbe67f63fc3c6790bf2fabadc84f9eda4b71"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\tie_across_barline.musicxml",
+      "sha256": "678260f1a5c7eb3d8f49cc3475b3d3bff0d0912debbb0352b404e37be8cd9d0c"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-tie_across_barline\\page-reference.musicxml",
+      "sha256": "678260f1a5c7eb3d8f49cc3475b3d3bff0d0912debbb0352b404e37be8cd9d0c"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-tie_across_barline\\detector\\crops\\system-0001.png",
+      "sha256": "a23f0372fb18cf6fd7c1736a8883fa24168134193d60eb821e6baae8900d5684"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-tie_across_barline\\system-0001\\prediction.json",
+      "sha256": "941db12a48630109a3cee352fb848717bba160157d68c015db58d4a93a0c287a"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-tie_across_barline\\system-0001\\upstream.musicxml",
+      "sha256": "0c73d2e3901763bc0bd7447f86c5a53092399838602171ea14063fd45c7a1b0f"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-tie_across_barline\\system-0001\\wrapper.musicxml",
+      "sha256": "e8192195ba4df51e7d13d70a422766143dff5ea154ad49c62762545b3122236a"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-tie_across_barline\\upstream-stitched.musicxml",
+      "sha256": "0c73d2e3901763bc0bd7447f86c5a53092399838602171ea14063fd45c7a1b0f"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-tie_across_barline\\wrapper-stitched.musicxml",
+      "sha256": "e8192195ba4df51e7d13d70a422766143dff5ea154ad49c62762545b3122236a"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-tie_across_barline\\result.json",
+      "sha256": "0002529a6de4065b62dd47d73240b5fea28a5a7184dbc61dae9ce4f7ff0b333b"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\triplet_vs_duple.png",
+      "sha256": "aad2dfdb6e0719b2e1a85cbf9d198473ab1c608aa9f720e2ed91bfbb7f785970"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\triplet_vs_duple.musicxml",
+      "sha256": "a7c9656f91daec641a0eb12bf5d24e411b8aac0bc34d0f06e7d2d57e44f8a4cc"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-triplet_vs_duple\\page-reference.musicxml",
+      "sha256": "a7c9656f91daec641a0eb12bf5d24e411b8aac0bc34d0f06e7d2d57e44f8a4cc"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-triplet_vs_duple\\detector\\crops\\system-0001.png",
+      "sha256": "228f2c0408209ab256e196e1927fbde351b11d42584d0d1198bfae89f42beaa6"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-triplet_vs_duple\\system-0001\\prediction.json",
+      "sha256": "fe538e229588dc4baec17e9117e8d8b2d2574ce95a092c05b9828d0663992a01"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-triplet_vs_duple\\system-0001\\upstream.musicxml",
+      "sha256": "0fa3ca261a019ae9af38faefa438d38a91ad2fd29955a2676ffa8ff6a21f1089"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-triplet_vs_duple\\system-0001\\wrapper.musicxml",
+      "sha256": "2e417991267ff8a23592cff1f8bb887c6b9fcdc6fd10f84ef578c9a034ef3603"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-triplet_vs_duple\\upstream-stitched.musicxml",
+      "sha256": "0fa3ca261a019ae9af38faefa438d38a91ad2fd29955a2676ffa8ff6a21f1089"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-triplet_vs_duple\\wrapper-stitched.musicxml",
+      "sha256": "2e417991267ff8a23592cff1f8bb887c6b9fcdc6fd10f84ef578c9a034ef3603"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-triplet_vs_duple\\result.json",
+      "sha256": "2398a4c5f18f442d23e34f1b0a3d3007e476aabbc6f3ee22ba8227799dcdbef8"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\triplet_vs_quadruple.png",
+      "sha256": "9cb1565f8a69326d456910653549d46a784fa30d4060770e8539958d4830ed04"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\triplet_vs_quadruple.musicxml",
+      "sha256": "5fc483dc3a1a056d98742e8797235e5598e6c0ca9c75ab399acbafbd873b0bdc"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-triplet_vs_quadruple\\page-reference.musicxml",
+      "sha256": "5fc483dc3a1a056d98742e8797235e5598e6c0ca9c75ab399acbafbd873b0bdc"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-triplet_vs_quadruple\\detector\\crops\\system-0001.png",
+      "sha256": "b2244ee062945c476f38dce55dac0fccf59cf68d2c9a5a81309cf5bc8fdac0e8"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-triplet_vs_quadruple\\system-0001\\prediction.json",
+      "sha256": "d907ad43f397a8c8c6639366a282ce579bc6a1726d23e8e7bec60534923d7020"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-triplet_vs_quadruple\\system-0001\\upstream.musicxml",
+      "sha256": "4cd2048e7a7d0b232a1cc3a8c153cec6155455b724454c8a8d8eb4cc6d1b8102"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-triplet_vs_quadruple\\system-0001\\wrapper.musicxml",
+      "sha256": "6c1ad2f6343b3b98c4f95e139fb1a23f2298e5005c01fcbf0843257c070f8c35"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-triplet_vs_quadruple\\upstream-stitched.musicxml",
+      "sha256": "4cd2048e7a7d0b232a1cc3a8c153cec6155455b724454c8a8d8eb4cc6d1b8102"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-triplet_vs_quadruple\\wrapper-stitched.musicxml",
+      "sha256": "6c1ad2f6343b3b98c4f95e139fb1a23f2298e5005c01fcbf0843257c070f8c35"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-triplet_vs_quadruple\\result.json",
+      "sha256": "e810f56aded969356e603998ca81afef1e833e1cbd9678a4790530dde87a00fd"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\tuplet_aligned.png",
+      "sha256": "6a37b7d11e0d090fec743c04b42511f814b860f554aeb8abae1182ba46456f45"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\tuplet_aligned.musicxml",
+      "sha256": "7e913ab9fad842cc43bacc070adbbb2c2b4323dec2e86790683ca2d0b16c5d55"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-tuplet_aligned\\page-reference.musicxml",
+      "sha256": "7e913ab9fad842cc43bacc070adbbb2c2b4323dec2e86790683ca2d0b16c5d55"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-tuplet_aligned\\detector\\crops\\system-0001.png",
+      "sha256": "d0d864a92872061463cec027f2ccd4393c63760c4d0f14af2db175013ac5af79"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-tuplet_aligned\\system-0001\\prediction.json",
+      "sha256": "e2766063248ce96c6f90cafba1a1b4d995cc9b2b07c73d3113a0f658215869fc"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-tuplet_aligned\\system-0001\\upstream.musicxml",
+      "sha256": "c6ad576110611ed0f675ebe31a218d5d1ea9779fb88ef6caa471912b6f993734"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\generated-tuplet_aligned\\system-0001\\wrapper.musicxml",
+      "sha256": "05ac4e85d331766decb6864a20f73da48f98b567dc44a17de986cdb7b862b946"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-tuplet_aligned\\upstream-stitched.musicxml",
+      "sha256": "c6ad576110611ed0f675ebe31a218d5d1ea9779fb88ef6caa471912b6f993734"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-tuplet_aligned\\wrapper-stitched.musicxml",
+      "sha256": "05ac4e85d331766decb6864a20f73da48f98b567dc44a17de986cdb7b862b946"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\generated-tuplet_aligned\\result.json",
+      "sha256": "80c04270f7f8bb0469335d46813eca58705cd7ed73e5558f7b43b2779369ed79"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\phase1-development\\open\\6211535\\page-1.png",
+      "sha256": "b368dd864dc235272728822a578551fbed619cce02265cc52043dea3051c57c8"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6211535.musicxml",
+      "sha256": "7752257515ec8ec575f1cd5c05e7aba9b52b743032494f162b93e57959792951"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\openscore-6211535-page-1\\page-reference.musicxml",
+      "sha256": "04b5f2999839d6a71c36d0a380efc1119e6d8883ec8a4295558ad183ac123a24"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\openscore-6211535-page-1\\detector\\crops\\system-0001.png",
+      "sha256": "99567cbd853542d929b41e23803d3932d32d799fca642559474613ca73565ff7"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211535-page-1\\system-0001\\prediction.json",
+      "sha256": "f37fd0817903a98c9908d6a034a12ae17a022041c2f787c4a2a534ab1c2c1429"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211535-page-1\\system-0001\\upstream.musicxml",
+      "sha256": "cb828c6b41f918de0ca9a5652265c38e747973c4046d3af3153bb32c927fb0bd"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211535-page-1\\system-0001\\wrapper.musicxml",
+      "sha256": "76e54f3516e07ad17e68775b772d7153c3beb727bf490ec77f249ddd92fd0dea"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\openscore-6211535-page-1\\detector\\crops\\system-0002.png",
+      "sha256": "a9dc91c21ce2882f354077aa2e334e507e95cf317bb9621b182a6903f6ddb3f3"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211535-page-1\\system-0002\\prediction.json",
+      "sha256": "6e0df81e460cd01bdf10d74f4e82305ab6f7d843a14c95c32531e731baaaffac"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211535-page-1\\system-0002\\upstream.musicxml",
+      "sha256": "7f782683e8d1ff8d70ca9a9023beb893bdf62eb6f2fa8bbbd22a5ebb16e16192"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211535-page-1\\system-0002\\wrapper.musicxml",
+      "sha256": "5dcc7106d94bee8b79ce0c314245c8d18d2c3b576384c87bb04720dc9bbda480"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\openscore-6211535-page-1\\detector\\crops\\system-0003.png",
+      "sha256": "64f453702a720f4740045daca4fb2b60b4c64aea9fa1f1892df228e017c0742a"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211535-page-1\\system-0003\\prediction.json",
+      "sha256": "e36d4a794be91b22b0ba496c2c4498c7a21980cfd9e7dd143cd133fba0d4a3ef"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211535-page-1\\system-0003\\upstream.musicxml",
+      "sha256": "3626cb0f7ac9b6904e9fc18eff88c2ac66f14b6c683a686215f4fa8e5f0cfee2"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211535-page-1\\system-0003\\wrapper.musicxml",
+      "sha256": "c17a70c5002bfb6e5f861a934bcdc7a4e507c9fe9b79732b90aa62652b18c5fc"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\openscore-6211535-page-1\\detector\\crops\\system-0004.png",
+      "sha256": "73a3f21806c9ef46fb537a0abb82c159b695738efbff7070d32bff00f524f658"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211535-page-1\\system-0004\\prediction.json",
+      "sha256": "9c487689f006e0ee69747937bfdd7872b91e3234473c9f830098fca1d0ecced7"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211535-page-1\\system-0004\\upstream.musicxml",
+      "sha256": "c8accdf10ddf8bdb9128bce565ba45f0ac441a95e1f0dc826db344b21dc30eff"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211535-page-1\\system-0004\\wrapper.musicxml",
+      "sha256": "393e2bb136ecfd46f7cc16d81d6eb40d8975efeda5317c0280afea266715df8c"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\openscore-6211535-page-1\\detector\\crops\\system-0005.png",
+      "sha256": "aa3d29a8138f1cce2e84adc412979d76ce918c939235fc7f02726d49c7e68a9c"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211535-page-1\\system-0005\\prediction.json",
+      "sha256": "ed84e8b3bb23476c8a1f5d958fe35394e377653ea66edde76714a6a765736969"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211535-page-1\\system-0005\\upstream.musicxml",
+      "sha256": "113b924679bef9b1e7301476948c3e85ee3ed6435af58ba276b7d40c7efca9d2"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211535-page-1\\system-0005\\wrapper.musicxml",
+      "sha256": "5d675c5ddd8c369d7738cbe854c49fd2db47ea9760a29b90c6e38eb630b34c8b"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\openscore-6211535-page-1\\upstream-stitched.musicxml",
+      "sha256": "a8823b12d983fb47cc6cbff3cfd8b0b135a1c56256d7dbca09e36b033eaed376"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\openscore-6211535-page-1\\wrapper-stitched.musicxml",
+      "sha256": "5c36277a0105c8c730cf70da8234963273d1c81ad5e60585d2387e0ecfcdfc81"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\openscore-6211535-page-1\\result.json",
+      "sha256": "d3ee564d266fbb92bac999df1b4176a187725fbcff7f562e33d94c315d445e1c"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\phase1-development\\open\\6211549\\page-1.png",
+      "sha256": "2fb2928d51c8bb08303dc3ebabec82e665a41ed89406037650d7a8c2f0ae1bef"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6211549.musicxml",
+      "sha256": "9d746b490220f25cfc0bba1b6a18cde0e445b09607a65b3655484b9a705ac897"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\openscore-6211549-page-1\\page-reference.musicxml",
+      "sha256": "944e2f83adfaaf48cbf7b2f5570e0e68b18fcc0d22331a3be0ab909e200d6d5d"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\openscore-6211549-page-1\\detector\\crops\\system-0001.png",
+      "sha256": "c1466d603a06f5838a483572c6439bbf77eb3ad311998bb6e331609412953eb0"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211549-page-1\\system-0001\\prediction.json",
+      "sha256": "1806123d0e29143addd76b3d4e7b72dcb32c005d3347a9efaac07733272522bd"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211549-page-1\\system-0001\\upstream.musicxml",
+      "sha256": "2441920ec793080e8742f53aaab9a3cd52425c2c460b1245af455ac6b47bf673"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211549-page-1\\system-0001\\wrapper.musicxml",
+      "sha256": "664777600cba8c925e79db1b6b25e44d519000c38292d3a140c6dc026be581af"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\openscore-6211549-page-1\\detector\\crops\\system-0002.png",
+      "sha256": "ec5f3b0435e090b2df8bc0e4750c27a52c4d116cb60fc0254a3cc908657c0cfd"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211549-page-1\\system-0002\\prediction.json",
+      "sha256": "a281cb64cd0ba072e46825f084a08f1bd5d1ab54a480424294d3794e2ed8a685"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211549-page-1\\system-0002\\upstream.musicxml",
+      "sha256": "55037d3d02e199e37b70dd36a3ca4054eb4d06a0f0267d25eeebf5261dfc71f2"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211549-page-1\\system-0002\\wrapper.musicxml",
+      "sha256": "77879ec00ced8465e38c61bfb886f7508a6dafa07a8c7c6a141792aef7bae59b"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\openscore-6211549-page-1\\detector\\crops\\system-0003.png",
+      "sha256": "36331dca73d5cb516990b26244f8b4706db34862f55aac5388a9d640db356525"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211549-page-1\\system-0003\\prediction.json",
+      "sha256": "25d525f20722df34802469a25245b222d04b6fee0ae90f9053fc78e5b6780bc0"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211549-page-1\\system-0003\\upstream.musicxml",
+      "sha256": "386de8119109a2e4b37a9e33059b641f8790bf975c9e97eba42d6f3dc6a21edd"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211549-page-1\\system-0003\\wrapper.musicxml",
+      "sha256": "4fa83d3373a1268516db7aeba95d827137bfb31b419f0d776971fc9e93e7aad9"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\openscore-6211549-page-1\\detector\\crops\\system-0004.png",
+      "sha256": "30fa0f655495fd429357b67a26a248147e929e36bed48b4db1def0bd921d27db"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211549-page-1\\system-0004\\prediction.json",
+      "sha256": "99a3cf79bfa2c2694b3007075f33fb58e4c2a480803b38cdad242de80ca33cd3"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211549-page-1\\system-0004\\upstream.musicxml",
+      "sha256": "74529d6a29bea350da6dbe0a5745e7b7328af956a0f237bca872ab200b31dfba"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211549-page-1\\system-0004\\wrapper.musicxml",
+      "sha256": "585b81f7df8b8886e86d791c2aac2192980bd3d4125b6eb59e8f18da9d76ef75"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\openscore-6211549-page-1\\upstream-stitched.musicxml",
+      "sha256": "18d3d01d503088ba5e391d13d87d9d96c3a854457ac2bb152c9f2a94b96b66ed"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\openscore-6211549-page-1\\wrapper-stitched.musicxml",
+      "sha256": "d73a6577f83478d1ad5a6a4f5d5d86c1a86ed58ac0f869b6dc40c3f0ad090009"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\openscore-6211549-page-1\\result.json",
+      "sha256": "c750153e2b181366638d8d5cb9820a2df3bfe771a50135b656631dd0147d868d"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\phase1-development\\open\\6211555\\page-1.png",
+      "sha256": "8787a0a691a6118d66fe41c3f0cf160d5f641ffde05ffe1824218d7fb27cc9fb"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6211555.musicxml",
+      "sha256": "634f9047f31bd272f056963d7643d208dbd19599351ba81d92a22da3d0f01eca"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\openscore-6211555-page-1\\page-reference.musicxml",
+      "sha256": "15a031c932d1b53eeaf80882570a35b4d2bfc0b617ff95c49f5e25de3f5d561e"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\openscore-6211555-page-1\\detector\\crops\\system-0001.png",
+      "sha256": "3999d47a120775f0fc8fdbb8ad9bff2f168b69a2521cd5674bd2d856a062fcf8"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211555-page-1\\system-0001\\prediction.json",
+      "sha256": "881612014a5b67d8c45baeb13b9ef0c58ed6b4a126eba2f158ba5d5b4baa6d27"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211555-page-1\\system-0001\\upstream.musicxml",
+      "sha256": "edb22bf7a396dbe7968e91e6ef6655ccbd3a63a64f84328b2c2c2b03a0552d05"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211555-page-1\\system-0001\\wrapper.musicxml",
+      "sha256": "31393026bccfdc91f8c2e0872337e84a05f675bf322c2175889291f7d20508f0"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\openscore-6211555-page-1\\detector\\crops\\system-0002.png",
+      "sha256": "92040efd2e46c50a698906010f4946a9297a8120cfbbd5d64e52130a02ecefd2"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211555-page-1\\system-0002\\prediction.json",
+      "sha256": "52d8b79d695d2808716e3e172cc269394c062e8745a5428c65c10ebf042cd83d"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211555-page-1\\system-0002\\upstream.musicxml",
+      "sha256": "5776a8b94379c2384fada08515c2c862f4647958a997e5e571a6d739cf10f715"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211555-page-1\\system-0002\\wrapper.musicxml",
+      "sha256": "28e6725100fa50a889246da09e882ec29b339538a5df4dfb641f1c96ab7cf73e"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\openscore-6211555-page-1\\detector\\crops\\system-0003.png",
+      "sha256": "e7a188f53045722b0fb1eb38a5e0875e398ea5b6e71d6694fa9fc4b030ce1cf3"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211555-page-1\\system-0003\\prediction.json",
+      "sha256": "cbc8c7c599fbe90a49d2eacb0613be2e82b2e99b8c2d190fbe4ae6fc348c91e6"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211555-page-1\\system-0003\\upstream.musicxml",
+      "sha256": "1c3e6efbea86596e7768673c5b84cbdb334c7286bd13d7c9a4cc8c9515a12577"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inference\\openscore-6211555-page-1\\system-0003\\wrapper.musicxml",
+      "sha256": "62e9f1fd0f929ddb117d8baafc7e2083637b51e7ce99648a11c9d3273fc3a524"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\openscore-6211555-page-1\\upstream-stitched.musicxml",
+      "sha256": "e41477cd8ebaa7a2f3d794871eca97da22e230dd5811b704cbc3b2e2f8753c64"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\openscore-6211555-page-1\\wrapper-stitched.musicxml",
+      "sha256": "3fb91ce217c48b5c3a4a903b842446f17230c06ce67b8fb4cd5609efba9438e4"
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\analysis\\openscore-6211555-page-1\\result.json",
+      "sha256": "688ac6f809f5c633bc7c7d173630531b6f309ee84f3a45d2d1f0433fdcbb2645"
+    }
+  ],
+  "audit_script_sha256": "249b06c564c97a06e2b8b3027c6effdcb59c4acd6ee5e16b1f132174e5ac163b",
+  "base_pitch_multiset_preserved_outputs": 49,
+  "items": 15,
+  "limits": "Base pitch tokens exclude accidental semantics; type/duration checks are converted-XML internal consistency, not recognition accuracy.",
+  "missing_full_rest_duration": 109,
+  "recipe_system_outputs": 50,
+  "rows": [
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "generated-baseline-piano-001",
+      "missing_full_rest_duration": 1,
+      "native_base_pitch_count": 33,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 34,
+      "variant": "upstream",
+      "xml_pitch_count": 33
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "generated-baseline-piano-001",
+      "missing_full_rest_duration": 1,
+      "native_base_pitch_count": 33,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 33,
+      "variant": "wrapper",
+      "xml_pitch_count": 33
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "generated-baseline-piano-001",
+      "missing_full_rest_duration": 1,
+      "native_base_pitch_count": 23,
+      "system": 2,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 22,
+      "variant": "upstream",
+      "xml_pitch_count": 23
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "generated-baseline-piano-001",
+      "missing_full_rest_duration": 1,
+      "native_base_pitch_count": 21,
+      "system": 2,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 21,
+      "variant": "wrapper",
+      "xml_pitch_count": 21
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "generated-homophonic",
+      "missing_full_rest_duration": 4,
+      "native_base_pitch_count": 49,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 48,
+      "variant": "upstream",
+      "xml_pitch_count": 49
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "generated-homophonic",
+      "missing_full_rest_duration": 4,
+      "native_base_pitch_count": 32,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 37,
+      "variant": "wrapper",
+      "xml_pitch_count": 32
+    },
+    {
+      "base_pitch_multiset_preserved": false,
+      "item_id": "generated-offset_entry",
+      "missing_full_rest_duration": 4,
+      "native_base_pitch_count": 43,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 42,
+      "variant": "upstream",
+      "xml_pitch_count": 42
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "generated-offset_entry",
+      "missing_full_rest_duration": 2,
+      "native_base_pitch_count": 44,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 44,
+      "variant": "wrapper",
+      "xml_pitch_count": 44
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "generated-quintuplet_vs_duple",
+      "missing_full_rest_duration": 5,
+      "native_base_pitch_count": 31,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 36,
+      "variant": "upstream",
+      "xml_pitch_count": 31
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "generated-quintuplet_vs_duple",
+      "missing_full_rest_duration": 4,
+      "native_base_pitch_count": 40,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 30,
+      "variant": "wrapper",
+      "xml_pitch_count": 40
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "generated-same_position_sustain",
+      "missing_full_rest_duration": 4,
+      "native_base_pitch_count": 32,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 33,
+      "variant": "upstream",
+      "xml_pitch_count": 32
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "generated-same_position_sustain",
+      "missing_full_rest_duration": 5,
+      "native_base_pitch_count": 16,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 20,
+      "variant": "wrapper",
+      "xml_pitch_count": 16
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "generated-septuplet_vs_duple",
+      "missing_full_rest_duration": 4,
+      "native_base_pitch_count": 34,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 39,
+      "variant": "upstream",
+      "xml_pitch_count": 34
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "generated-septuplet_vs_duple",
+      "missing_full_rest_duration": 4,
+      "native_base_pitch_count": 40,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 41,
+      "variant": "wrapper",
+      "xml_pitch_count": 40
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "generated-syncopation",
+      "missing_full_rest_duration": 3,
+      "native_base_pitch_count": 32,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 33,
+      "variant": "upstream",
+      "xml_pitch_count": 32
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "generated-syncopation",
+      "missing_full_rest_duration": 2,
+      "native_base_pitch_count": 30,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 31,
+      "variant": "wrapper",
+      "xml_pitch_count": 30
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "generated-three_voices",
+      "missing_full_rest_duration": 4,
+      "native_base_pitch_count": 77,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 37,
+      "variant": "upstream",
+      "xml_pitch_count": 77
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "generated-three_voices",
+      "missing_full_rest_duration": 5,
+      "native_base_pitch_count": 43,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 32,
+      "variant": "wrapper",
+      "xml_pitch_count": 43
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "generated-tie_across_barline",
+      "missing_full_rest_duration": 2,
+      "native_base_pitch_count": 21,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 24,
+      "variant": "upstream",
+      "xml_pitch_count": 21
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "generated-tie_across_barline",
+      "missing_full_rest_duration": 3,
+      "native_base_pitch_count": 30,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 34,
+      "variant": "wrapper",
+      "xml_pitch_count": 30
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "generated-triplet_vs_duple",
+      "missing_full_rest_duration": 3,
+      "native_base_pitch_count": 17,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 18,
+      "variant": "upstream",
+      "xml_pitch_count": 17
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "generated-triplet_vs_duple",
+      "missing_full_rest_duration": 4,
+      "native_base_pitch_count": 38,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 44,
+      "variant": "wrapper",
+      "xml_pitch_count": 38
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "generated-triplet_vs_quadruple",
+      "missing_full_rest_duration": 3,
+      "native_base_pitch_count": 34,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 34,
+      "variant": "upstream",
+      "xml_pitch_count": 34
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "generated-triplet_vs_quadruple",
+      "missing_full_rest_duration": 4,
+      "native_base_pitch_count": 35,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 35,
+      "variant": "wrapper",
+      "xml_pitch_count": 35
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "generated-tuplet_aligned",
+      "missing_full_rest_duration": 1,
+      "native_base_pitch_count": 81,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 82,
+      "variant": "upstream",
+      "xml_pitch_count": 81
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "generated-tuplet_aligned",
+      "missing_full_rest_duration": 1,
+      "native_base_pitch_count": 63,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 65,
+      "variant": "wrapper",
+      "xml_pitch_count": 63
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "openscore-6211535-page-1",
+      "missing_full_rest_duration": 3,
+      "native_base_pitch_count": 49,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 55,
+      "variant": "upstream",
+      "xml_pitch_count": 49
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "openscore-6211535-page-1",
+      "missing_full_rest_duration": 2,
+      "native_base_pitch_count": 27,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 24,
+      "variant": "wrapper",
+      "xml_pitch_count": 27
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "openscore-6211535-page-1",
+      "missing_full_rest_duration": 0,
+      "native_base_pitch_count": 79,
+      "system": 2,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 82,
+      "variant": "upstream",
+      "xml_pitch_count": 79
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "openscore-6211535-page-1",
+      "missing_full_rest_duration": 1,
+      "native_base_pitch_count": 79,
+      "system": 2,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 81,
+      "variant": "wrapper",
+      "xml_pitch_count": 79
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "openscore-6211535-page-1",
+      "missing_full_rest_duration": 0,
+      "native_base_pitch_count": 60,
+      "system": 3,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 61,
+      "variant": "upstream",
+      "xml_pitch_count": 60
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "openscore-6211535-page-1",
+      "missing_full_rest_duration": 2,
+      "native_base_pitch_count": 65,
+      "system": 3,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 67,
+      "variant": "wrapper",
+      "xml_pitch_count": 65
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "openscore-6211535-page-1",
+      "missing_full_rest_duration": 0,
+      "native_base_pitch_count": 38,
+      "system": 4,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 39,
+      "variant": "upstream",
+      "xml_pitch_count": 38
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "openscore-6211535-page-1",
+      "missing_full_rest_duration": 1,
+      "native_base_pitch_count": 39,
+      "system": 4,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 43,
+      "variant": "wrapper",
+      "xml_pitch_count": 39
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "openscore-6211535-page-1",
+      "missing_full_rest_duration": 0,
+      "native_base_pitch_count": 23,
+      "system": 5,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 19,
+      "variant": "upstream",
+      "xml_pitch_count": 23
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "openscore-6211535-page-1",
+      "missing_full_rest_duration": 0,
+      "native_base_pitch_count": 29,
+      "system": 5,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 25,
+      "variant": "wrapper",
+      "xml_pitch_count": 29
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "openscore-6211549-page-1",
+      "missing_full_rest_duration": 3,
+      "native_base_pitch_count": 48,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 50,
+      "variant": "upstream",
+      "xml_pitch_count": 48
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "openscore-6211549-page-1",
+      "missing_full_rest_duration": 0,
+      "native_base_pitch_count": 48,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 53,
+      "variant": "wrapper",
+      "xml_pitch_count": 48
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "openscore-6211549-page-1",
+      "missing_full_rest_duration": 0,
+      "native_base_pitch_count": 50,
+      "system": 2,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 53,
+      "variant": "upstream",
+      "xml_pitch_count": 50
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "openscore-6211549-page-1",
+      "missing_full_rest_duration": 0,
+      "native_base_pitch_count": 47,
+      "system": 2,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 48,
+      "variant": "wrapper",
+      "xml_pitch_count": 47
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "openscore-6211549-page-1",
+      "missing_full_rest_duration": 0,
+      "native_base_pitch_count": 49,
+      "system": 3,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 59,
+      "variant": "upstream",
+      "xml_pitch_count": 49
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "openscore-6211549-page-1",
+      "missing_full_rest_duration": 1,
+      "native_base_pitch_count": 51,
+      "system": 3,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 55,
+      "variant": "wrapper",
+      "xml_pitch_count": 51
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "openscore-6211549-page-1",
+      "missing_full_rest_duration": 0,
+      "native_base_pitch_count": 35,
+      "system": 4,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 42,
+      "variant": "upstream",
+      "xml_pitch_count": 35
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "openscore-6211549-page-1",
+      "missing_full_rest_duration": 1,
+      "native_base_pitch_count": 28,
+      "system": 4,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 37,
+      "variant": "wrapper",
+      "xml_pitch_count": 28
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "openscore-6211555-page-1",
+      "missing_full_rest_duration": 4,
+      "native_base_pitch_count": 38,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 43,
+      "variant": "upstream",
+      "xml_pitch_count": 38
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "openscore-6211555-page-1",
+      "missing_full_rest_duration": 5,
+      "native_base_pitch_count": 30,
+      "system": 1,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 35,
+      "variant": "wrapper",
+      "xml_pitch_count": 30
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "openscore-6211555-page-1",
+      "missing_full_rest_duration": 2,
+      "native_base_pitch_count": 44,
+      "system": 2,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 44,
+      "variant": "upstream",
+      "xml_pitch_count": 44
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "openscore-6211555-page-1",
+      "missing_full_rest_duration": 3,
+      "native_base_pitch_count": 47,
+      "system": 2,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 48,
+      "variant": "wrapper",
+      "xml_pitch_count": 47
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "openscore-6211555-page-1",
+      "missing_full_rest_duration": 1,
+      "native_base_pitch_count": 39,
+      "system": 3,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 44,
+      "variant": "upstream",
+      "xml_pitch_count": 39
+    },
+    {
+      "base_pitch_multiset_preserved": true,
+      "item_id": "openscore-6211555-page-1",
+      "missing_full_rest_duration": 1,
+      "native_base_pitch_count": 35,
+      "system": 3,
+      "typed_duration_mismatches": [],
+      "typed_durations_checked": 50,
+      "variant": "wrapper",
+      "xml_pitch_count": 35
+    }
+  ],
+  "stitched_pages_note_xml_preserved": 30,
+  "typed_duration_mismatches": 0,
+  "typed_durations_checked": 2106,
+  "verified": true
+}

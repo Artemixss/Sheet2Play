@@ -1,0 +1,82 @@
+{
+  "adapter_id": "audiveris_unattended",
+  "aligned_voice_accuracy": 0.5,
+  "candidate_id": "audiveris",
+  "cold_start": true,
+  "composition_group": "chopin/mazurka_51",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 10,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 2,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1",
+        "count": 2,
+        "predicted": "3333333333333333/10000000000000000"
+      },
+      {
+        "actual": "1/2",
+        "count": 4,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 2,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 2,
+        "predicted": "1"
+      },
+      {
+        "actual": "2",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "3",
+        "count": 1,
+        "predicted": "1/2"
+      }
+    ],
+    "unmatched_expected": 307,
+    "unmatched_predicted": 365
+  },
+  "elapsed_seconds": 30.57799999999952,
+  "error": null,
+  "extra_note_count": 375,
+  "failure_penalized_omr_ned": 0.4163189615206305,
+  "first_divergent_measure": 1,
+  "item_id": "test/chopin/mazurka_51/mazurka_51_4.png",
+  "mean_offset_error": 0.4305555555555556,
+  "missing_note_count": 317,
+  "omr_ned": 0.4163189615206305,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.03888888888888889,
+  "onset_f1": 0.06666666666666668,
+  "peak_ram_bytes": 1055924224,
+  "peak_vram_bytes": 0,
+  "pitch_f1": 0.8722222222222221,
+  "predicted_note_count": 389,
+  "reference_measure_count": 32,
+  "reference_note_count": 331,
+  "reference_quarter_length": "96",
+  "schema_version": 1,
+  "staff_accuracy": 0.6428571428571429,
+  "status": "succeeded",
+  "timeline_length_error": "35/4",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

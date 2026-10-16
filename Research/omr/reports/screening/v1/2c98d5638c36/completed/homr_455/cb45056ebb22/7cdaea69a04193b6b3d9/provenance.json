@@ -1,0 +1,17 @@
+{
+  "attempt_path": "Research\\omr\\reports\\screening\\v1\\2c98d5638c36\\attempts\\homr_455\\cb45056ebb22\\fa6eafd75b77e377ac91\\attempt-84e81c4880bc4347b00dc31584d936d1",
+  "attempt_sha256": "421d47ae93a72120266c254aae1bf07ffe5e6a5f1e6387630e7cf0cb68bae968",
+  "identity": {
+    "adapter_config_sha256": "c1dff58f76acf54863aaa39a67454458b36be38ba6e9de0ea75d22243b8f38b2",
+    "candidate": "homr_455",
+    "configuration_sha256": "cb45056ebb223f4bb82fc7b4eecd4f4fd28d5cd0a00b439bc00e8bde6537a99f",
+    "image_sha256": "c7a17d993841659c86b125d56742aca09b43906af281e7ed24a8abe1827b6eba",
+    "item_id": "test/hummel/prelude67_14/prelude67_14_1.png",
+    "reference_sha256": "4675888b0e81ca7f4835bc35dd4138e508b12bca603164cf67f4c12f2310db58",
+    "sample_sha256": "2c98d5638c368b1a53bdb3440177d04fa585f9b1ca6ce6adbe65af64cd8e27d1",
+    "schema_version": 1
+  },
+  "origin": "completed_attempt",
+  "result_sha256": "155c5904435c41712688993dee06cf4222d2a70b3eb3cd2ed4e093130edba7e5",
+  "timing_source": "screening_complete_path"
+}

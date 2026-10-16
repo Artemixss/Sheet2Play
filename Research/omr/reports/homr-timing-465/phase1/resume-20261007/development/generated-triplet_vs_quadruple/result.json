@@ -1,0 +1,150 @@
+{
+  "item_id": "generated-triplet_vs_quadruple",
+  "runtime_identity": "e61db08610fe9b475d42a822a9ea265fed780e095758944b71cb2c0b17b0ec66",
+  "input_sha256": "9cb1565f8a69326d456910653549d46a784fa30d4060770e8539958d4830ed04",
+  "status": "complete",
+  "profile": "native shipped CUDA page pipeline; debug and position capture enabled",
+  "numeric_accuracy_eligible": true,
+  "python_executable": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Bridge\\.venv-homr-gpu\\Scripts\\python.exe",
+  "python_prefix": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Bridge\\.venv-homr-gpu",
+  "homr_origin": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Bridge\\.venv-homr-gpu\\Lib\\site-packages\\homr\\main.py",
+  "capture_script_sha256": "0f541d092e05baeedb984cc1f9dbb5f6fa2e05118e2b007e44b59a24d6d0720e",
+  "elapsed_seconds": 3.1719999999995707,
+  "artifacts": [
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\input.musicxml",
+      "sha256": "7a4698d438b91930eb01af9a00fd53fef76f40ecc892d45338c421e410dad88e",
+      "bytes": 2150
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\input.png",
+      "sha256": "9cb1565f8a69326d456910653549d46a784fa30d4060770e8539958d4830ed04",
+      "bytes": 87075
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\input.txt",
+      "sha256": "558ea1b9408809f12ad7e92fcefab1d860fb1406d8c18d14256c3ca4e08194e3",
+      "bytes": 74
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\input_debug_10_notehead_with_stems.png",
+      "sha256": "1c9e9e6a453386c7e1127c7a2a52fa4af3a07e1550e36e57c63eb1f5f9b3cc2c",
+      "bytes": 72629
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\input_debug_11_bar_lines.png",
+      "sha256": "65e9cd558b61db0b3fbd601dbbdfb98290bf07d109bd845c70e87eeeff636d1a",
+      "bytes": 74886
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\input_debug_12_anchor_input.png",
+      "sha256": "ff492a173a8baacc7b34e71b319586a2aa599c0cfb69caad4920c04e904e9006",
+      "bytes": 72417
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\input_debug_13_staff_anchors.png",
+      "sha256": "a300ed26a1489f7a866bf6a6e42b3593122581346e0439f019b6a8a24b3a2a71",
+      "bytes": 81430
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\input_debug_14_raw_staffs.png",
+      "sha256": "d1f2a04b90599b20499a0f92a1878b01333fff7ef7ec158d7f3916c6b829486d",
+      "bytes": 73297
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\input_debug_15_staffs.png",
+      "sha256": "155a0935fdab275cd82adc82f8e11e4f7c3e74512a93c75cd8c59e16f75a95ff",
+      "bytes": 73398
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\input_debug_16_brace_dot.png",
+      "sha256": "0f9953aa4eb039b0a1f48ec1c93a26dc7069cb77e1edfa3cbd88b8fd1d1784bb",
+      "bytes": 8803
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\input_debug_17_notes.png",
+      "sha256": "b3e25bd0a0d8d7a7c9d8b1980e1be0952727d9b9a9f9472b5f8f80d2ae8563b3",
+      "bytes": 83069
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\input_debug_1_color_adjust.png",
+      "sha256": "af196465bb1498ea3638eaf105bcac6e63ed2a3224826097441dbf9ef0dfe153",
+      "bytes": 32927
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\input_debug_2_noise_crop.png",
+      "sha256": "3a5ca101e96067aeb996d6283003cb4da665eaa107ae47aeeb3de7911294c494",
+      "bytes": 182534
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\input_debug_3_staff.png",
+      "sha256": "c9173743c83fb21e0620bf3789337d5565f955928f5c5d959e09dfe996b0a70f",
+      "bytes": 9545
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\input_debug_4_symbols.png",
+      "sha256": "0f9953aa4eb039b0a1f48ec1c93a26dc7069cb77e1edfa3cbd88b8fd1d1784bb",
+      "bytes": 8803
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\input_debug_5_stems_rest.png",
+      "sha256": "1ec00586241550c1952e00035f542dcc423b48e11a0e60838ab2c716982c8b55",
+      "bytes": 9886
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\input_debug_6_notehead.png",
+      "sha256": "2bea77dc37e18be8b36ebbba76e43d9b8211287b949b15a1b1f4720d1c35adad",
+      "bytes": 9389
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\input_debug_7_clefs_keys.png",
+      "sha256": "d1ed06bbcfc2bedf52c2f8c1010a85c8bbcaf52a256ace15c6c26d1e58d02e12",
+      "bytes": 9631
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\input_debug_8_bar_line_img.png",
+      "sha256": "4af7547e52a6a38f5c30078c0117a9b90d980b575741e44efaf7716041db68c5",
+      "bytes": 10339
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\input_debug_9_staff_fragments.png",
+      "sha256": "c6ee8ccccb97aa775448081aa814836e0b035197a71a4e483722c27b07a85f97",
+      "bytes": 72385
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\input_staff-0_debug_annotated.jpg",
+      "sha256": "878c7af1d6fb4efb2ca2831527f2b0059b37630298148cf80a021d63d913c329",
+      "bytes": 24213
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\input_staff-0_debug_span_points.png",
+      "sha256": "075ad7f505e8661b984353c64c3e314c73145a73faf2bffbae1780fc5bed3a4e",
+      "bytes": 18507
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\input_staff-0_input.jpg",
+      "sha256": "5fb8d81a1945832b210c6e3cb899a6f76cfe82700354ce8d982906c66fbaa073",
+      "bytes": 23380
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\input_staff-0_output.jpg",
+      "sha256": "3af0a140a5d3afd42d7911a73ef503f5d8906a915f637defc59d468d241891ed",
+      "bytes": 30824
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\input_teaser.png",
+      "sha256": "155a0935fdab275cd82adc82f8e11e4f7c3e74512a93c75cd8c59e16f75a95ff",
+      "bytes": 73398
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\input_tesseract_input.png",
+      "sha256": "4b5d947e0c2cc9e8bf57990997b5bdc87de3fffc8f092b7b66ef01059b935020",
+      "bytes": 8367
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\resume-20261007\\development\\generated-triplet_vs_quadruple\\tokens.json",
+      "sha256": "4a77402b7f1e6a3f1d736933f0b31404caf910b9a5764eba2244109f5b3afc59",
+      "bytes": 3268
+    }
+  ]
+}

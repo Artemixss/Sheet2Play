@@ -1,0 +1,58 @@
+{
+  "adapter_id": "audiveris_unattended",
+  "candidate_id": "audiveris",
+  "cold_start": true,
+  "composition_group": "scarlatti/L056K281",
+  "coverage": {
+    "chord_completeness": 0.0,
+    "complete_chords": 0,
+    "per_staff": {
+      "0": {
+        "matched_notes": 0,
+        "predicted_notes": 0,
+        "recall": 0.0,
+        "reference_notes": 288
+      }
+    },
+    "reference_chords": 89,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": null,
+  "elapsed_seconds": 15.563000000000102,
+  "error": {
+    "code": "AUDIVERIS_OUTPUT_INVALID",
+    "message": "Expected one OMR project and one MusicXML export; found 1 and 0",
+    "stage": "artifact_capture"
+  },
+  "extra_note_count": 0,
+  "failure_penalized_omr_ned": 1.0,
+  "first_divergent_measure": 1,
+  "input_identity": {
+    "historical_score_sha256": "d8ca675d9361c39e085385dbdaa8221e5aa921fc06b5b400ffd9f9215bf42d6d",
+    "reference_sha256": "e30d77d06697747e62ca0ca7df39109d0b083e08f4abafcc446b418afd98e44c",
+    "result_sha256": "13b3a5cfd6bf8469b0253c06205437d125ba2a8a6af2563d585e91b54d4ceb28"
+  },
+  "item_id": "test/scarlatti/L056K281/L056K281_3.png",
+  "missing_note_count": 288,
+  "omr_ned": null,
+  "omr_ned_status": "engine_failed",
+  "onset_duration_f1": 0.0,
+  "onset_f1": 0.0,
+  "peak_ram_bytes": 785801216,
+  "peak_vram_bytes": 0,
+  "pitch_f1": 0.0,
+  "predicted_note_count": 0,
+  "reference_measure_count": 30,
+  "reference_note_count": 288,
+  "reference_quarter_length": "90",
+  "schema_version": 2,
+  "scoring_identity_sha256": "ed9e5b7e6f998b5787ae21dfc0b7f545c42fc0bc83b60fc717f002d6b34aa568",
+  "status": "failed",
+  "timeline_length_error": null,
+  "timing_policy": "symmetric-rational-4096-roundoff-v1",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

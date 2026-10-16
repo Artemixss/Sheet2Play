@@ -1,0 +1,72 @@
+{
+  "adapter_id": "audiveris_unattended",
+  "aligned_voice_accuracy": 0.85,
+  "candidate_id": "audiveris",
+  "cold_start": true,
+  "composition_group": "hummel/prelude67_14",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 8,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "2"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "2",
+        "count": 5,
+        "predicted": "2"
+      },
+      {
+        "actual": "3",
+        "count": 2,
+        "predicted": "2"
+      },
+      {
+        "actual": "3",
+        "count": 7,
+        "predicted": "3"
+      }
+    ],
+    "unmatched_expected": 46,
+    "unmatched_predicted": 41
+  },
+  "elapsed_seconds": 15.593999999999141,
+  "error": null,
+  "extra_note_count": 45,
+  "failure_penalized_omr_ned": 0.42857142857142855,
+  "first_divergent_measure": 1,
+  "item_id": "test/hummel/prelude67_14/prelude67_14_1.png",
+  "mean_offset_error": 0.15625,
+  "missing_note_count": 50,
+  "omr_ned": 0.42857142857142855,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.29629629629629634,
+  "onset_f1": 0.35555555555555557,
+  "peak_ram_bytes": 665735168,
+  "peak_vram_bytes": 0,
+  "pitch_f1": 0.8444444444444444,
+  "predicted_note_count": 65,
+  "reference_measure_count": 7,
+  "reference_note_count": 70,
+  "reference_quarter_length": "28",
+  "schema_version": 1,
+  "staff_accuracy": 0.7,
+  "status": "succeeded",
+  "timeline_length_error": "-7/2",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

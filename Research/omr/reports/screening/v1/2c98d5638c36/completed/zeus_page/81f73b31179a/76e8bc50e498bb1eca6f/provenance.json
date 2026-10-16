@@ -1,0 +1,17 @@
+{
+  "attempt_path": "Research\\omr\\reports\\screening\\v1\\2c98d5638c36\\attempts\\zeus_page\\81f73b31179a\\be726b3abdb5884b3cf1\\attempt-e31257fc21e74c15a79ea8ad7cc977b5",
+  "attempt_sha256": "cf5341b77382515e1aeb173c572d371a3abefc85d65872b781633dc0386405ac",
+  "identity": {
+    "adapter_config_sha256": "e798b17dc339f6a42ea50f4dcf6c54a72cbcfa97d1461b083d282ea59502ce93",
+    "candidate": "zeus_page",
+    "configuration_sha256": "81f73b31179a40bf63c608d9adea99f546dac49e57722d436dae205a1b135821",
+    "image_sha256": "cc0fd5c518642385e291222f072f1d1db59b40c4ea54f0b0bed1e642deddabdc",
+    "item_id": "test/mozart/sonata06_3j/sonata06_3j_1.png",
+    "reference_sha256": "2718cf98d2cbc593a078a1097eda7dda518e8e38e4820582dba4631a31aff18d",
+    "sample_sha256": "2c98d5638c368b1a53bdb3440177d04fa585f9b1ca6ce6adbe65af64cd8e27d1",
+    "schema_version": 1
+  },
+  "origin": "completed_attempt",
+  "result_sha256": "76c5e70a56ab8bddb412e39f957481f975cf5b5f9d323db353023aaa1ffdee79",
+  "timing_source": "screening_complete_path"
+}

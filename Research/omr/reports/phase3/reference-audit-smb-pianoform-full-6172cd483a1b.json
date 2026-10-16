@@ -1,0 +1,2982 @@
+{
+  "audited_count": 402,
+  "collection": "smb-pianoform",
+  "eligible_count": 402,
+  "full_collection": true,
+  "identity": {
+    "builder_sha256": "6172cd483a1b0a2986c3a01ff60ccbfbfa177218e5c5cc78acd1a4aeeb8f04e3",
+    "manifest_sha256": "f73419cb60019d0bfbaf7ce0efaf2fdea66d89648eec3d2552c606f2172d9a81",
+    "metadata_sha256": "3a1f727011fb6a468dbdaa45052f4b35e7282c4002fe4e395d98d369a7101c52",
+    "parser_sha256": "0bea9cdb67f60110ff53305904909ddb56de9d965958b344aa824244ef900c8d"
+  },
+  "invalid_count": 126,
+  "items": [
+    {
+      "id": "test/bach/bwv978_3/bwv978_3_1.png",
+      "note_count": 471,
+      "reference_path": "Research/omr/.runtime/phase3/references/59b1dd035f0066b337fd5556.json",
+      "reference_sha256": "d582269c05b7060149dfbed7a6d9af99d904268dfe94711ad75d39878d799880",
+      "state": "verified_cache",
+      "status": "valid"
+    },
+    {
+      "error": "Expected exactly two piano staves, found 3",
+      "error_type": "ResearchError",
+      "id": "test/bach/bwv978_3/bwv978_3_2.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Expected exactly two piano staves, found 3",
+      "error_type": "ResearchError",
+      "id": "test/bach/bwv978_3/bwv978_3_3.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata01_2/sonata01_2_1.png",
+      "note_count": 123,
+      "reference_path": "Research/omr/.runtime/phase3/references/f45f61c925af65e9fbe2e13b.json",
+      "reference_sha256": "6d20d13c022e70178343acbe3b62a5075a45f5bd56a5ec34f1920c31a7c52800",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata01_2/sonata01_2_2.png",
+      "note_count": 412,
+      "reference_path": "Research/omr/.runtime/phase3/references/1404856ce6188f96fccc2f3f.json",
+      "reference_sha256": "d2116bff92a4d5cd44f13667989ea39887e443d63441ce7009f362119284f317",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata01_2/sonata01_2_4.png",
+      "note_count": 371,
+      "reference_path": "Research/omr/.runtime/phase3/references/da7da0417e96d114cae6f922.json",
+      "reference_sha256": "dc661a502e8b1e2387be04a46f84e5bde220817eb3cf4bfeb1302f71d1615763",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata01_4/sonata01_4_1.png",
+      "note_count": 359,
+      "reference_path": "Research/omr/.runtime/phase3/references/d5a99055bcc404d24f1fe486.json",
+      "reference_sha256": "26defcb48ab4c1e26348fe1b0e592d955073964b913a5cd98017d612a67ba5aa",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata01_4/sonata01_4_2.png",
+      "note_count": 455,
+      "reference_path": "Research/omr/.runtime/phase3/references/556427190a55ad28b7572837.json",
+      "reference_sha256": "1646b074c763c7a26bc65ac708ec625b4eb5c2fe8a176f10b3599a4244c18160",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata01_4/sonata01_4_3.png",
+      "note_count": 478,
+      "reference_path": "Research/omr/.runtime/phase3/references/5e24c38f786466bc6283eb06.json",
+      "reference_sha256": "456faac441903fdcc3663f4ea5450180889b041397dc61a5f20bbbcb3b0a229d",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata01_4/sonata01_4_4.png",
+      "note_count": 525,
+      "reference_path": "Research/omr/.runtime/phase3/references/0181a9a8e020d4143a272a79.json",
+      "reference_sha256": "5ca4565afb4a4d32caac50099f22cf04ae37979811ffe557f390f41c27049d18",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata01_4/sonata01_4_5.png",
+      "note_count": 416,
+      "reference_path": "Research/omr/.runtime/phase3/references/75bda13281a7d24c47d953bc.json",
+      "reference_sha256": "011579c857041dc0c68e527e4b9b02b63f907b161812089c9d037e1247dfa150",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata01_4/sonata01_4_6.png",
+      "note_count": 440,
+      "reference_path": "Research/omr/.runtime/phase3/references/07645e61aebd6909e1f33b5a.json",
+      "reference_sha256": "f2ad9bd853d40dba89106d690d4ba5ad4bcfac2a4ff5911cb308df261378b282",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata01_4/sonata01_4_7.png",
+      "note_count": 457,
+      "reference_path": "Research/omr/.runtime/phase3/references/005e476e80990f23be2a9980.json",
+      "reference_sha256": "5054f64debfb22734e8e419cc67f3e82c840b8bbfcfdc528ba4575a9cd14d297",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata02_1/sonata02_1_1.png",
+      "note_count": 380,
+      "reference_path": "Research/omr/.runtime/phase3/references/4e274809baa28586403770a9.json",
+      "reference_sha256": "7eb9975ff7787a680f437decfeb5de2b4e7f29a0d9e443fb6c8f08e50acb3777",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-1', 51)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata02_1/sonata02_1_2.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-3', 40)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata02_1/sonata02_1_3.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata02_1/sonata02_1_4.png",
+      "note_count": 477,
+      "reference_path": "Research/omr/.runtime/phase3/references/4626c47716a0923108ab72b6.json",
+      "reference_sha256": "3288b83e3a76b291919306786f0c1d044464bf0866c6d8fffe82dcfbd742754c",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Unterminated page ties: [(1, 'voice-1', 52)]",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata02_1/sonata02_1_5.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-1', 52)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata02_1/sonata02_1_6.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-1', 59)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata02_1/sonata02_1_7.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-2', 33)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata02_1/sonata02_1_8.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-1', 45)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata02_2/sonata02_2_1.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-1', 45)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata02_2/sonata02_2_2.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-1', 33)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata02_2/sonata02_2_3.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata03_1/sonata03_1_2.png",
+      "note_count": 450,
+      "reference_path": "Research/omr/.runtime/phase3/references/22ecda812c5d34596377e92c.json",
+      "reference_sha256": "bbc98684ec0381b5b660d8ceec8428cb32ef6d57a360c5eb0a9c55461a329b1e",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata03_1/sonata03_1_4.png",
+      "note_count": 464,
+      "reference_path": "Research/omr/.runtime/phase3/references/3d56d1de239f7e69e47842bf.json",
+      "reference_sha256": "10b1c2f36538f04a5e9f3f0cb427a505cd4108cc39349103c357442ce04ba521",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata03_1/sonata03_1_5.png",
+      "note_count": 399,
+      "reference_path": "Research/omr/.runtime/phase3/references/23dbb9519ba1df8080c48e36.json",
+      "reference_sha256": "64dbb64a4af5e2ff9c465da97b96a165489a7a2940543dedd8809f4c9eb38026",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Unterminated page ties: [(0, 'voice-1', 70)]",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata03_1/sonata03_1_6.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 70)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata03_1/sonata03_1_7.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Measure 0 on staff 0 exceeds its time signature",
+      "error_type": "ResearchError",
+      "id": "test/beethoven/sonata03_1/sonata03_1_9.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-2', 46)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata05_1/sonata05_1_2.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 82)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata05_1/sonata05_1_3.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata05_1/sonata05_1_4.png",
+      "note_count": 309,
+      "reference_path": "Research/omr/.runtime/phase3/references/48a380042defca74fca241e2.json",
+      "reference_sha256": "71b8679a2f7314ebf0188ac1628cc5088c80e0366da367319d96ff28f4d19a61",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata05_1/sonata05_1_5.png",
+      "note_count": 306,
+      "reference_path": "Research/omr/.runtime/phase3/references/07e91369ae896c5daf6e09f2.json",
+      "reference_sha256": "1d0150a4196e0016225fb5ae2dab84d3189a5c959d91173a849d10d6d2c74218",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata05_1/sonata05_1_6.png",
+      "note_count": 355,
+      "reference_path": "Research/omr/.runtime/phase3/references/30fa2ca9313bc7daf96390e4.json",
+      "reference_sha256": "88dcb7d7096617823123de6c19088e581b39fd0bc63b40980b877731cfd7f9c1",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-1', 62)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata07_4/sonata07_4_1.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-1', 62)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata07_4/sonata07_4_2.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 88)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata07_4/sonata07_4_3.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 88)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata07_4/sonata07_4_4.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata08_3/sonata08_3_1.png",
+      "note_count": 409,
+      "reference_path": "Research/omr/.runtime/phase3/references/352ec179a1dabb552db1dd80.json",
+      "reference_sha256": "1ed44102e1868fdff71fea7833e8c37c7fef47af8a2ea2356d4b303d464b616b",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata08_3/sonata08_3_2.png",
+      "note_count": 427,
+      "reference_path": "Research/omr/.runtime/phase3/references/cbe4681c1a1e3090c39d72f6.json",
+      "reference_sha256": "5e2f73dabc2c8e137b65bb35e7d001b0aba0fa1aeea0f0da873e591c78b1c35e",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 63)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata08_3/sonata08_3_3.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata08_3/sonata08_3_4.png",
+      "note_count": 361,
+      "reference_path": "Research/omr/.runtime/phase3/references/f5a0419e80cbcc0b0a014362.json",
+      "reference_sha256": "5dd704d2320e93c2810c9fa887a9fb6777627a1e83020b204178c9c6e3045cec",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 60)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata08_3/sonata08_3_5.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-1', 58)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata08_3/sonata08_3_6.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata09_2/sonata09_2_1.png",
+      "note_count": 204,
+      "reference_path": "Research/omr/.runtime/phase3/references/ae99295196c5108e4a1bd216.json",
+      "reference_sha256": "7fc882a8782b3c9cf914c5375db249ac9d871f52a723dcb817910f2d5dc0d403",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-1', 47)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata09_2/sonata09_2_2.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 57)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata09_2/sonata09_2_3.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-1', 47)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata09_2/sonata09_2_4.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata10_2/sonata10_2_1.png",
+      "note_count": 285,
+      "reference_path": "Research/omr/.runtime/phase3/references/7b218fcce65be737ba06f6b8.json",
+      "reference_sha256": "e672902aaead493e69a0d51313c7ba7cd0c1d5c71f14f48c1e1c0d5c1aea9f2e",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata10_2/sonata10_2_4.png",
+      "note_count": 307,
+      "reference_path": "Research/omr/.runtime/phase3/references/2026dcfb5a0e96268dac5671.json",
+      "reference_sha256": "e18b33d540361dbef5ebeb68150a1c16dcbb6d8f806b5c4dd85d1e814f49417b",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata10_3/sonata10_3_1.png",
+      "note_count": 266,
+      "reference_path": "Research/omr/.runtime/phase3/references/77ad5e5d8f282a900d228eac.json",
+      "reference_sha256": "a67037be4f8ffe69a0d456ddd29f5687b58ea728b400c6b9352d732873ebd98d",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata10_3/sonata10_3_2.png",
+      "note_count": 268,
+      "reference_path": "Research/omr/.runtime/phase3/references/8b50c81f923591bbf20b12c2.json",
+      "reference_sha256": "74e0f1ee5f1649cb2ba9572b4b9e03722a761ef3c3f95a521f1e7ee0b5d717f3",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-1', 43)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata10_3/sonata10_3_3.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata10_3/sonata10_3_4.png",
+      "note_count": 292,
+      "reference_path": "Research/omr/.runtime/phase3/references/cb9cf04f175c07d2956439ff.json",
+      "reference_sha256": "0f81179575e71f77346a8830a0ed4a5ad4b099a88dde9def3c5849ddbd7304e3",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata10_3/sonata10_3_5.png",
+      "note_count": 369,
+      "reference_path": "Research/omr/.runtime/phase3/references/97c023441da9ee9326673d19.json",
+      "reference_sha256": "e5ef9319f53fc57492f09bf57a193cefcea45cc34c6e70d5984af9e1ddb40678",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata10_3/sonata10_3_6.png",
+      "note_count": 418,
+      "reference_path": "Research/omr/.runtime/phase3/references/4212196d21361297c232cf4b.json",
+      "reference_sha256": "608c44074f8533a209cb8af7a05e8e970c3dc2fd4f8ec807a986ae8574d9bfda",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata11_1/sonata11_1_1.png",
+      "note_count": 399,
+      "reference_path": "Research/omr/.runtime/phase3/references/08cc130e5cb66aad60fa4e47.json",
+      "reference_sha256": "e336a11b73842e4755667b0035b83df430badbd0c4085cf6a70b7068a2a01bc0",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 79)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata11_1/sonata11_1_2.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata11_1/sonata11_1_4.png",
+      "note_count": 439,
+      "reference_path": "Research/omr/.runtime/phase3/references/b33cff73a4f7418fd6bf3bee.json",
+      "reference_sha256": "e867f65b631d44d4803a0df1c35d53cbfd23b0101be37b62fa5741f03d04044c",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata11_1/sonata11_1_5.png",
+      "note_count": 345,
+      "reference_path": "Research/omr/.runtime/phase3/references/734f8f3302a0cfeb1aba6485.json",
+      "reference_sha256": "a6a866f1268df546a038147cf64c6ea36e12d4d606239109b99a7ed903a2204e",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 63)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata11_1/sonata11_1_6.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata11_1/sonata11_1_7.png",
+      "note_count": 454,
+      "reference_path": "Research/omr/.runtime/phase3/references/d772a5d59f79ce09065979e0.json",
+      "reference_sha256": "0d7c15be0f8e767dc3d623d5578ca1887d7cda6d4da604f2e443643764217399",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-1', 53)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata11_3/sonata11_3_1.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 81)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata11_3/sonata11_3_3.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata11_4/sonata11_4_1.png",
+      "note_count": 142,
+      "reference_path": "Research/omr/.runtime/phase3/references/efa33ad83c55f7341a4aa2fa.json",
+      "reference_sha256": "75bc969d45685ceb67526a5590a2ac9a1e911a6fb86026e002bf909c537bf508",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Expected exactly two piano staves, found 3",
+      "error_type": "ResearchError",
+      "id": "test/beethoven/sonata11_4/sonata11_4_2.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata11_4/sonata11_4_3.png",
+      "note_count": 368,
+      "reference_path": "Research/omr/.runtime/phase3/references/619c5e2e77caa99bc24326cb.json",
+      "reference_sha256": "175ff30ea9c80bb8b53eb0172f7e31e8088be25c1c424f5910aa7d6fbe5d9dc9",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata11_4/sonata11_4_6.png",
+      "note_count": 378,
+      "reference_path": "Research/omr/.runtime/phase3/references/11c98c313c1b6553d1bea78c.json",
+      "reference_sha256": "4482d058e78da5ef73f7dae080cbcfc7d928f23b45ffc1769e04118da55a795b",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-2', 50)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata11_4/sonata11_4_7.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata11_4/sonata11_4_8.png",
+      "note_count": 412,
+      "reference_path": "Research/omr/.runtime/phase3/references/a9a09881375e836d3f8a6197.json",
+      "reference_sha256": "6748e2a2c2ca231dfa83d81c8bcc6e77d032e221523b248f5b00a3d8c9ca340a",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata11_4/sonata11_4_9.png",
+      "note_count": 489,
+      "reference_path": "Research/omr/.runtime/phase3/references/b5d6f77abf6d42079bbf3e81.json",
+      "reference_sha256": "560b02d5b03a9c52ff156e7cbabd271725e671296d68d82e176263c95747563b",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 80)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata13_1/sonata13_1_1.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 74)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata13_1/sonata13_1_2.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata13_1/sonata13_1_3.png",
+      "note_count": 435,
+      "reference_path": "Research/omr/.runtime/phase3/references/ec04e0c8ea66540c8772dbe4.json",
+      "reference_sha256": "fded8c34ea31e0885a882f6be6f27cd73a27d4c9b7bbe84b4981da676c1bf1e3",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 78)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata15_3/sonata15_3_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata15_3/sonata15_3_2.png",
+      "note_count": 308,
+      "reference_path": "Research/omr/.runtime/phase3/references/65ecf102947be33fc8ad756a.json",
+      "reference_sha256": "af5ac721d12c11f0d64cf0fab9f7907ad90bac0cf9f9b4a818d330b0e5c3567a",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-1', 45)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata17_1/sonata17_1_1.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 50)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata17_1/sonata17_1_2.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 70)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata17_1/sonata17_1_3.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata17_1/sonata17_1_4.png",
+      "note_count": 424,
+      "reference_path": "Research/omr/.runtime/phase3/references/601b3a71f991916f620f1955.json",
+      "reference_sha256": "77ef0ecfc8bfbceab38de318b98ca8eee09d2359c3dad2296b0e731afa87a1d8",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata17_1/sonata17_1_6.png",
+      "note_count": 371,
+      "reference_path": "Research/omr/.runtime/phase3/references/7607904d52c7a3ea62cd3b18.json",
+      "reference_sha256": "c178575ad7e2c47cf7ee50e2278092c64b3f9d85579bb728961207d0fdd8a420",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata20_2/sonata20_2_1.png",
+      "note_count": 118,
+      "reference_path": "Research/omr/.runtime/phase3/references/2d7751d242839fb7dd4ae639.json",
+      "reference_sha256": "9a5623f1665e5a85fa24598bda4cb4b029d6280fa10e14de8725592e948542d1",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata20_2/sonata20_2_2.png",
+      "note_count": 370,
+      "reference_path": "Research/omr/.runtime/phase3/references/3908802f382405086b89b689.json",
+      "reference_sha256": "50268abe3ed2ffa470129b643223863ff6f9c6e44ca1135b24ee9986741f024c",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata20_2/sonata20_2_3.png",
+      "note_count": 414,
+      "reference_path": "Research/omr/.runtime/phase3/references/fb27babeb8f30542d27ec067.json",
+      "reference_sha256": "6780caacc31959828b41662c4efef44d9c12affdb9d02eeac406f9fd1117ea89",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata20_2/sonata20_2_4.png",
+      "note_count": 365,
+      "reference_path": "Research/omr/.runtime/phase3/references/57e2c18380eb4e97d790cd56.json",
+      "reference_sha256": "84275b2a33816aed46334913bbb456302c1195b43a75a92cbbd78c881a9dbda0",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-1', 55)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata21_1/sonata21_1_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata21_1/sonata21_1_11.png",
+      "note_count": 465,
+      "reference_path": "Research/omr/.runtime/phase3/references/002bae86a1fee1253bc487b3.json",
+      "reference_sha256": "554bc1c0e6ca6475d74c29b6418571154632c74651eaa1cc2f4fd663641e0b8a",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata21_1/sonata21_1_12.png",
+      "note_count": 619,
+      "reference_path": "Research/omr/.runtime/phase3/references/74934767f36c6d743b270f77.json",
+      "reference_sha256": "eee8faaf6a7001c61ee301f0b1f41285e60efd0d2164614473930ccdf6e87a6f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata21_1/sonata21_1_14.png",
+      "note_count": 101,
+      "reference_path": "Research/omr/.runtime/phase3/references/acae520efa29cb9368f5300b.json",
+      "reference_sha256": "f93d3823e064588089a125d76bd5a8c31f3c07a8798f3ffa9467775bde5ef2ff",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata21_1/sonata21_1_3.png",
+      "note_count": 551,
+      "reference_path": "Research/omr/.runtime/phase3/references/1e6bb403cd1546ed05e34581.json",
+      "reference_sha256": "8465506dc0468c14ca455cb39eaf3e7f8b6c668dc3817ff03683a072d8803caa",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata21_1/sonata21_1_4.png",
+      "note_count": 493,
+      "reference_path": "Research/omr/.runtime/phase3/references/14a3fa07de2ee6b47259146b.json",
+      "reference_sha256": "a6c172a28dc5efff7095834855b1c0aaecb3bec179f3192cb2b3eed7f5aff1c4",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata21_1/sonata21_1_5.png",
+      "note_count": 439,
+      "reference_path": "Research/omr/.runtime/phase3/references/b2126516ebebf0d515d441fb.json",
+      "reference_sha256": "9de609a66edfbc74cbfbb09fd076da59ea384d51b7fbe3421d419854fc34f03e",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-2', 55)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata21_1/sonata21_1_6.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-1', 59)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata21_1/sonata21_1_7.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata21_1/sonata21_1_8.png",
+      "note_count": 541,
+      "reference_path": "Research/omr/.runtime/phase3/references/597b373555d2936fbf5221f7.json",
+      "reference_sha256": "cb6c103a4598ea9076c7c91406a1336fbbd515e482d2157120fce7848b94e7d4",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata21_1/sonata21_1_9.png",
+      "note_count": 543,
+      "reference_path": "Research/omr/.runtime/phase3/references/35f5da195662b1556966303d.json",
+      "reference_sha256": "c49842e8b5abce64bb00d6c549202cfb15de1dbe095a38fa30da977351ed5b32",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata22_1/sonata22_1_1.png",
+      "note_count": 396,
+      "reference_path": "Research/omr/.runtime/phase3/references/a78079429484d619fd213c7e.json",
+      "reference_sha256": "6376b3d8b21d923cf70373f33328d29ea8c89de5c7e6894760f7d4dcdedb3489",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata22_1/sonata22_1_2.png",
+      "note_count": 757,
+      "reference_path": "Research/omr/.runtime/phase3/references/d1333da9a7263cc5debaa6ee.json",
+      "reference_sha256": "1a62f9d667ae3f94b79a4aac8904840eb8bf2da0e71ab3387f3e3f4c33140b3f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata22_1/sonata22_1_3.png",
+      "note_count": 265,
+      "reference_path": "Research/omr/.runtime/phase3/references/dfd5f457be8acf47002d4447.json",
+      "reference_sha256": "9ad7283d1a14f08c66015462ede18403c1cff79b9eb11cedbc7166545639b78b",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata22_1/sonata22_1_5.png",
+      "note_count": 396,
+      "reference_path": "Research/omr/.runtime/phase3/references/a83aaad1d5616b6f99691c6a.json",
+      "reference_sha256": "8595125bef5ed0b13d3a0fc9532dc93947c7d3b6e83dc14d123e7457f307a9bf",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Measure 0 on staff 0 exceeds its time signature",
+      "error_type": "ResearchError",
+      "id": "test/beethoven/sonata22_1/sonata22_1_6.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata22_2/sonata22_2_1.png",
+      "note_count": 366,
+      "reference_path": "Research/omr/.runtime/phase3/references/770fb8d79927f4dafddaa498.json",
+      "reference_sha256": "199d48ae192f18cb017fbb53980ce7d9237a08bb2876eb3d548f70497c4f5840",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata22_2/sonata22_2_2.png",
+      "note_count": 407,
+      "reference_path": "Research/omr/.runtime/phase3/references/fb429a450ba8dae08b342e5e.json",
+      "reference_sha256": "e4eb145f9e4be4213c6629329aaa443c45839928adcb9f39350e582d8e9d6e2f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata22_2/sonata22_2_3.png",
+      "note_count": 389,
+      "reference_path": "Research/omr/.runtime/phase3/references/840cdd4c6a58cd575215195b.json",
+      "reference_sha256": "8d8a5e851627f9362ceebea96f24c10390eb1f02cfc38cca63892856194546ca",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata22_2/sonata22_2_4.png",
+      "note_count": 444,
+      "reference_path": "Research/omr/.runtime/phase3/references/892fafe47104c15dbe294586.json",
+      "reference_sha256": "6ae9fd2045df145679ca6f64c3dde1c126b6864fba38c117eaf525ccd75336e7",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata22_2/sonata22_2_5.png",
+      "note_count": 441,
+      "reference_path": "Research/omr/.runtime/phase3/references/7419a198660a3c8281e7f13d.json",
+      "reference_sha256": "400dd2acd0bdc6279a983030f3a66bc0338a83ed632005f2ef45422ab8b0ce93",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-1', 41)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata22_2/sonata22_2_6.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata23_3/sonata23_3_1.png",
+      "note_count": 100,
+      "reference_path": "Research/omr/.runtime/phase3/references/faea0897edb37e36c1491f46.json",
+      "reference_sha256": "c38347439bbe6201da7de939736cfa3e4f9fcd1a9a3fa38b09db1e253eecb2d7",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata23_3/sonata23_3_10.png",
+      "note_count": 470,
+      "reference_path": "Research/omr/.runtime/phase3/references/83441cbed19e334e23f57210.json",
+      "reference_sha256": "a31d430dcdbf19ddfe62c7de5aec4391e47e82840fb89e34266bcca4a60d266e",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-1', 41)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata23_3/sonata23_3_11.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-1', 48)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata23_3/sonata23_3_12.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata23_3/sonata23_3_3.png",
+      "note_count": 473,
+      "reference_path": "Research/omr/.runtime/phase3/references/7dd596fcf49289adc3c27618.json",
+      "reference_sha256": "ef7aa84807ec28e043c2d5700b02bfafd8eba4328595dba056b2893cb916e472",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata23_3/sonata23_3_4.png",
+      "note_count": 422,
+      "reference_path": "Research/omr/.runtime/phase3/references/818fdc66b9f01ed4652e7ded.json",
+      "reference_sha256": "88aea8941285a4f6e3027dae6aa986461bf6e337bf7f5380e1d66bd9c15c45e2",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata23_3/sonata23_3_5.png",
+      "note_count": 430,
+      "reference_path": "Research/omr/.runtime/phase3/references/9b701f339277bedbc30d8fe8.json",
+      "reference_sha256": "3767caa46de47655691fa470fcaa37380caf05f943b10cf78a67e98f20910241",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata23_3/sonata23_3_6.png",
+      "note_count": 509,
+      "reference_path": "Research/omr/.runtime/phase3/references/225174dfcb492a0f1be2d1b9.json",
+      "reference_sha256": "ffe8a153163636836379c160bd66e8b24664f518960b86fe941f67f114be33fb",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata23_3/sonata23_3_7.png",
+      "note_count": 303,
+      "reference_path": "Research/omr/.runtime/phase3/references/250b9eba60888fe05113d4d6.json",
+      "reference_sha256": "eafe96fe627c41505b5dba6ed4e28d8ce54ff2be438670204ed752f25e7a13c3",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata23_3/sonata23_3_8.png",
+      "note_count": 361,
+      "reference_path": "Research/omr/.runtime/phase3/references/5d8ae47a4b1f2150932227b1.json",
+      "reference_sha256": "5f75c60cd8839ea0d727541622f7404ccf9664e7c7aa57b2b3e8a993771001af",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata25_1/sonata25_1_1.png",
+      "note_count": 336,
+      "reference_path": "Research/omr/.runtime/phase3/references/f02b6507bce8fab780035456.json",
+      "reference_sha256": "0dfe2f4015f1f629f4f8aee43f566e04f9d70f6589568f650c86bf844f2a0edd",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata25_1/sonata25_1_3.png",
+      "note_count": 380,
+      "reference_path": "Research/omr/.runtime/phase3/references/70f9d767864136ba6c7c8b2a.json",
+      "reference_sha256": "bea032628e9a54c024912fd91aa55e36a97559df5fb82e847f863eb15f2b56f6",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata25_1/sonata25_1_4.png",
+      "note_count": 402,
+      "reference_path": "Research/omr/.runtime/phase3/references/4e31c83681e272f7094f9411.json",
+      "reference_sha256": "787fa7c6bcd8aeac068c4fe569014dcc491546cb5a0684c5e2ff4b18bdb2fe08",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata25_1/sonata25_1_5.png",
+      "note_count": 490,
+      "reference_path": "Research/omr/.runtime/phase3/references/2d12c063fcc5a208dcebe999.json",
+      "reference_sha256": "b9567d54f6f9a0fb23b72b0f0d5b304d90bb4fe7999bc0c7fb41c7aa322ce32b",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata26_1/sonata26_1_1.png",
+      "note_count": 515,
+      "reference_path": "Research/omr/.runtime/phase3/references/80bd6d15dc416db27cddb20c.json",
+      "reference_sha256": "4898a4752928e2d111a6b1b90bb4914d6bf5322dab613281d7f986fb5f39e879",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 70)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata26_1/sonata26_1_2.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 89)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata26_1/sonata26_1_4.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 75)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata26_1/sonata26_1_5.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 73)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata28_4/sonata28_4_1.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 69)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata28_4/sonata28_4_2.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Unterminated page ties: [(0, 'voice-1', 76)]",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata28_4/sonata28_4_3.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 76)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata28_4/sonata28_4_4.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata28_4/sonata28_4_5.png",
+      "note_count": 431,
+      "reference_path": "Research/omr/.runtime/phase3/references/aa466299c9fe23c4bfdefcd2.json",
+      "reference_sha256": "f12c0a4fac527bcc4214cc8a7bbe5f3c0e1c6f445ece58204d17339cbb486414",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 74)",
+      "error_type": "ValueError",
+      "id": "test/beethoven/sonata28_4/sonata28_4_8.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/beethoven/sonata31_1/sonata31_1_1.png",
+      "note_count": 423,
+      "reference_path": "Research/omr/.runtime/phase3/references/1ff88165e75a9f712d24c8c5.json",
+      "reference_sha256": "234eba88b3435749d4de47a20a4a09b9aa59741e6b542caf615baef40b7a2f18",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata31_1/sonata31_1_2.png",
+      "note_count": 466,
+      "reference_path": "Research/omr/.runtime/phase3/references/c096cf68684b1c9647748e8f.json",
+      "reference_sha256": "74f5d818c4f6366b1027be54a78d82a7e06eca1e28fa0f796cd1fca4dcf07df3",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata31_1/sonata31_1_3.png",
+      "note_count": 454,
+      "reference_path": "Research/omr/.runtime/phase3/references/fd4d912e121ee7f695e682c5.json",
+      "reference_sha256": "5c1412be8a2af37887b51a516ff5fcc831ab954e02d12f9e90ec388ea528a561",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/beethoven/sonata31_1/sonata31_1_6.png",
+      "note_count": 424,
+      "reference_path": "Research/omr/.runtime/phase3/references/d2fc2b87521cd152b006c8cf.json",
+      "reference_sha256": "f12a4966f0e6e88ad3713650205e1c96cc82b6c05312a82d5404d51db78bf480",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/etude10_09/etude10_09_1.png",
+      "note_count": 385,
+      "reference_path": "Research/omr/.runtime/phase3/references/d576c9ed9656ec2120430595.json",
+      "reference_sha256": "c4e2fb5f9a2635ec0eb9ea3dce35ef1173e29215d9c2746c635c7717c799a919",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/etude10_09/etude10_09_2.png",
+      "note_count": 455,
+      "reference_path": "Research/omr/.runtime/phase3/references/ce8b2490e25ff337ff842640.json",
+      "reference_sha256": "92d912690299f442bd0503e96d8e7351aadcd85a1ad8275440f2e98cdaaa5702",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/etude10_09/etude10_09_3.png",
+      "note_count": 384,
+      "reference_path": "Research/omr/.runtime/phase3/references/d402468cf877f64724bd74ec.json",
+      "reference_sha256": "85c7cee7399debe0736877517a402818f989b79361b378b0312343502620f042",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/mazurka06_3/mazurka06_3_1.png",
+      "note_count": 398,
+      "reference_path": "Research/omr/.runtime/phase3/references/9e2b6c786ba258f04786c7ff.json",
+      "reference_sha256": "60596164756ba33ccad44ea4757823ead9bfbf16fd28e4d58254637b0a3fb86d",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/mazurka06_3/mazurka06_3_3.png",
+      "note_count": 365,
+      "reference_path": "Research/omr/.runtime/phase3/references/c50eed589848b25846e64d3e.json",
+      "reference_sha256": "ecd552a78ed66b3527d04ae6926249716388b3cb89139558bfc8145e2f4fda5b",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/mazurka07_3/mazurka07_3_1.png",
+      "note_count": 407,
+      "reference_path": "Research/omr/.runtime/phase3/references/035309546dfa82497ae6c1bf.json",
+      "reference_sha256": "0fa8bd2348f08469dbc8f9ea49201478939f78d7b24efeec3e04faedd96d601d",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Unterminated page ties: [(1, 'voice-1', 48)]",
+      "error_type": "ValueError",
+      "id": "test/chopin/mazurka07_3/mazurka07_3_3.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-1', 48)",
+      "error_type": "ValueError",
+      "id": "test/chopin/mazurka07_3/mazurka07_3_4.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/chopin/mazurka07_4/mazurka07_4_1.png",
+      "note_count": 364,
+      "reference_path": "Research/omr/.runtime/phase3/references/df7daaee84c4d6e4add68ad3.json",
+      "reference_sha256": "b41de182c541da4315c99c8f409a95784af12f4eaae0a991514a358e9de0ad29",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/mazurka07_4/mazurka07_4_2.png",
+      "note_count": 287,
+      "reference_path": "Research/omr/.runtime/phase3/references/5447216d5408bd252f99ba85.json",
+      "reference_sha256": "c00f90f25ee202d5c7af0e703744372e21b414254c5d7e2e2621dfa3b5790aa7",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Unterminated page ties: [(1, 'voice-1', 55)]",
+      "error_type": "ValueError",
+      "id": "test/chopin/mazurka17_2/mazurka17_2_1.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-1', 55)",
+      "error_type": "ValueError",
+      "id": "test/chopin/mazurka17_2/mazurka17_2_2.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/chopin/mazurka24_1/mazurka24_1_1.png",
+      "note_count": 345,
+      "reference_path": "Research/omr/.runtime/phase3/references/3d300d029cad782039739900.json",
+      "reference_sha256": "d3c6e45c1b22d01fa10e616a50bd7327ba54e2fe45efe57ed00f069a0de03f5f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/mazurka24_1/mazurka24_1_2.png",
+      "note_count": 418,
+      "reference_path": "Research/omr/.runtime/phase3/references/41f3a9c2476b50f054e4b8fe.json",
+      "reference_sha256": "1b086b130bf4dec163bbafb993a4e808b0a6df724aa96b917cc61a49861c356d",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/mazurka30_2/mazurka30_2_1.png",
+      "note_count": 364,
+      "reference_path": "Research/omr/.runtime/phase3/references/7936a4bae62b2a39d77d2471.json",
+      "reference_sha256": "f68d4df989e319883a520a43510ed35ceff7623f62f34c40bdbf33050cdd2e04",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/mazurka41_1/mazurka41_1_1.png",
+      "note_count": 348,
+      "reference_path": "Research/omr/.runtime/phase3/references/51fc3ea585a737a775246adf.json",
+      "reference_sha256": "13255fd0eb7f1bb73b7bd0633bcb6f0f2f440fb47617ea9dfbf2a41ac737ccc9",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-2', 49)",
+      "error_type": "ValueError",
+      "id": "test/chopin/mazurka41_1/mazurka41_1_2.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-1', 45)",
+      "error_type": "ValueError",
+      "id": "test/chopin/mazurka41_1/mazurka41_1_3.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/chopin/mazurka67_1/mazurka67_1_1.png",
+      "note_count": 349,
+      "reference_path": "Research/omr/.runtime/phase3/references/5b8ff7ddcaad6488192f7f8c.json",
+      "reference_sha256": "ca6db4b5089b7521dc3f88e8d1ff9ba99c9d9a112179ed79bb86e2f974fc5164",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/mazurka67_1/mazurka67_1_2.png",
+      "note_count": 415,
+      "reference_path": "Research/omr/.runtime/phase3/references/730126807f2f242a9d2a6094.json",
+      "reference_sha256": "227656f5446930da09395be2143a834984ea0e9fc7571adc6ee11ba1300ab8ae",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 63)",
+      "error_type": "ValueError",
+      "id": "test/chopin/mazurka67_2/mazurka67_2_1.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 63)",
+      "error_type": "ValueError",
+      "id": "test/chopin/mazurka67_2/mazurka67_2_2.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/chopin/mazurka68_4/mazurka68_4_1.png",
+      "note_count": 177,
+      "reference_path": "Research/omr/.runtime/phase3/references/8f85b415901d8c4ba40db334.json",
+      "reference_sha256": "de7f9d37d70d17e107cb7bbff93205b001d10ae3fbc0ec2c6b5716f9025ac896",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/mazurka68_4/mazurka68_4_2.png",
+      "note_count": 244,
+      "reference_path": "Research/omr/.runtime/phase3/references/2b69c29f59553b35415c406f.json",
+      "reference_sha256": "23ba5bc96fede73acb73675953ebf4623f3a19bf947b533dc272173198c33f2c",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/mazurka_51/mazurka_51_1.png",
+      "note_count": 363,
+      "reference_path": "Research/omr/.runtime/phase3/references/f61441717abbe2ddf0a16400.json",
+      "reference_sha256": "aa8d25553d44da08e4f155dd20217e92738ff5adb4b029a39766cd49e0df51a2",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/mazurka_51/mazurka_51_4.png",
+      "note_count": 327,
+      "reference_path": "Research/omr/.runtime/phase3/references/d2c69c8d7f4e416fa744dcef.json",
+      "reference_sha256": "76d92417649e9ec6a6a9bedde6d5ec084d9e0cc8cc477342e99003b26e6cd361",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/prelude28_02/prelude28_02_1.png",
+      "note_count": 338,
+      "reference_path": "Research/omr/.runtime/phase3/references/40c62cf6231caa162d7bfa72.json",
+      "reference_sha256": "4ab122ed8e1021dfd09a2d873a601c87ab62d4f8297806e0b286cde5bce7a7ea",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/chopin/prelude28_23/prelude28_23_1.png",
+      "note_count": 228,
+      "reference_path": "Research/omr/.runtime/phase3/references/ad691268b657b797be55ab4f.json",
+      "reference_sha256": "b5e31f5dc8dc6e128bf26cc0c2aa016d17a745e1a86c839287df8b802db0a1e4",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 60)",
+      "error_type": "ValueError",
+      "id": "test/grieg/op12_2/op12_2_2.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/haydn/sonata03_4/sonata03_4_1.png",
+      "note_count": 156,
+      "reference_path": "Research/omr/.runtime/phase3/references/bc1efae736e8a607f6359fb6.json",
+      "reference_sha256": "b9fa541744929e7f2a2da3a26fd2d71dbe863c1f3b4a2c2cd01c28eeee492798",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata03_4/sonata03_4_10.png",
+      "note_count": 408,
+      "reference_path": "Research/omr/.runtime/phase3/references/dde1dae139796be1e7b52342.json",
+      "reference_sha256": "d4c663ec18d71d7c91c787bf78268bb4806d501f8eb2db8dd837f996be3efdc8",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata03_4/sonata03_4_3.png",
+      "note_count": 403,
+      "reference_path": "Research/omr/.runtime/phase3/references/0a7802fc32327260433189fc.json",
+      "reference_sha256": "1df48fa40c3ed65a46989af813929edeaff0bfcbfcd86214643324d7bbb13b47",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata03_4/sonata03_4_4.png",
+      "note_count": 489,
+      "reference_path": "Research/omr/.runtime/phase3/references/e6a873ea97109dec22ad7272.json",
+      "reference_sha256": "4cf5038d648fea6e56e7fa7bc1ede4836d2d661fda445f0618e468d78674d65a",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-1', 58)",
+      "error_type": "ValueError",
+      "id": "test/haydn/sonata03_4/sonata03_4_5.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/haydn/sonata03_4/sonata03_4_6.png",
+      "note_count": 327,
+      "reference_path": "Research/omr/.runtime/phase3/references/93640fbf82e044bf7a4e9fd6.json",
+      "reference_sha256": "b86c70956bb31b6ecebc1803238c04c3d3cef7762cc8af21b3402cb0c7f14d3f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata03_4/sonata03_4_7.png",
+      "note_count": 408,
+      "reference_path": "Research/omr/.runtime/phase3/references/7989ff1fcb5aa2df302c9629.json",
+      "reference_sha256": "2220baefbea71fc4fe00281a7ab5c1fc6c19f19f654e37a2b675264f21cf86c1",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata03_4/sonata03_4_9.png",
+      "note_count": 352,
+      "reference_path": "Research/omr/.runtime/phase3/references/4d85afd171d1a223421595a9.json",
+      "reference_sha256": "9f52aa9ef55d3b6931f1f828cde8853b234df6fc2a3cacefd5a95e623055caae",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 78)",
+      "error_type": "ValueError",
+      "id": "test/haydn/sonata15_1/sonata15_1_2.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/haydn/sonata16_2/sonata16_2_1.png",
+      "note_count": 427,
+      "reference_path": "Research/omr/.runtime/phase3/references/a0ae55aaff39aca16df76518.json",
+      "reference_sha256": "dd89f984d75abb05fb1eb1f0e587452e99706b189d2098a76867317ff51d9d42",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata16_2/sonata16_2_2.png",
+      "note_count": 69,
+      "reference_path": "Research/omr/.runtime/phase3/references/297b0ee2ac99103cc088c90d.json",
+      "reference_sha256": "62ca7faf0c0c2b878de9a8dd6814bbf1d990f52a086d2a87062b92d29b1f8f5f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata29_3/sonata29_3_1.png",
+      "note_count": 380,
+      "reference_path": "Research/omr/.runtime/phase3/references/9f11d1886e7705c1706c9d92.json",
+      "reference_sha256": "41b4353eda290805ec9b0ac300ba4cd32a1140ffd2d83afaa455ce9c5285d738",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata29_3/sonata29_3_2.png",
+      "note_count": 446,
+      "reference_path": "Research/omr/.runtime/phase3/references/af7febd2e9bf39d1140de746.json",
+      "reference_sha256": "7484d65aedd598504299765e8d43252c0e25ecd989123c292751a778d6eb44e8",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata29_3/sonata29_3_4.png",
+      "note_count": 449,
+      "reference_path": "Research/omr/.runtime/phase3/references/dfc40d6005404ad2317d203c.json",
+      "reference_sha256": "7b718a01e6a39d1fa153a46edc619e27d17b26a10fdd1da4f04b2055ac04236d",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata53_3/sonata53_3_1.png",
+      "note_count": 392,
+      "reference_path": "Research/omr/.runtime/phase3/references/dccc817ace02e299b6d89b8b.json",
+      "reference_sha256": "c819069853a14aa0a520fafd8f1fdc49d8aa0e173e67622fe3621c64bf5df65c",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata53_3/sonata53_3_2.png",
+      "note_count": 407,
+      "reference_path": "Research/omr/.runtime/phase3/references/7033cae634eb2575e3b7aad6.json",
+      "reference_sha256": "52289c123e18ed7e7d3cd0b280dce7bb045697652013daea0ef51c6957fd1ce7",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata53_3/sonata53_3_3.png",
+      "note_count": 324,
+      "reference_path": "Research/omr/.runtime/phase3/references/2d4bd7490ff34968d00da5e5.json",
+      "reference_sha256": "282aea9bb0c954bc569ba89653881acd7691b974e3be0c74b5c4cb6a5d2c2cd9",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata53_3/sonata53_3_4.png",
+      "note_count": 350,
+      "reference_path": "Research/omr/.runtime/phase3/references/d270a055158545b5ffabc8f5.json",
+      "reference_sha256": "524dd475263961a38e1ab73cce634e1310eecdba730941c7e744c3606a677965",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata61_1/sonata61_1_1.png",
+      "note_count": 269,
+      "reference_path": "Research/omr/.runtime/phase3/references/6f60aefc82a2f5f6aa2dc4ea.json",
+      "reference_sha256": "ccb5b119720077e70c689ab9a256388b9475d5f55165049336629bf7d79cbd6c",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata61_1/sonata61_1_2.png",
+      "note_count": 413,
+      "reference_path": "Research/omr/.runtime/phase3/references/2ce4e91ccc8f19401a18c011.json",
+      "reference_sha256": "27b32a43e69e0b2d6a5064b52ac85c09c02aa9696b80571e36725e6305d0d58b",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata61_1/sonata61_1_3.png",
+      "note_count": 344,
+      "reference_path": "Research/omr/.runtime/phase3/references/1253ce3d74b798b037e4853c.json",
+      "reference_sha256": "43938447bdda96629d96bcf8040cd9668b34bfd8e506df0f056a812952e4140f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata61_1/sonata61_1_4.png",
+      "note_count": 373,
+      "reference_path": "Research/omr/.runtime/phase3/references/a15bd952445f9f3a5182ca87.json",
+      "reference_sha256": "7efebe4aedf03ea9996c408bfe3ffc21e3d68b050057bd2cb0770a4613e6a864",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/haydn/sonata61_1/sonata61_1_5.png",
+      "note_count": 441,
+      "reference_path": "Research/omr/.runtime/phase3/references/53378b0529bb0f1214081fee.json",
+      "reference_sha256": "565439f3fdfc35e76e2dc48dfcc5f264c2b7fe957ee134f557682c883e0c8d78",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-1', 34)",
+      "error_type": "ValueError",
+      "id": "test/hummel/prelude67_13/prelude67_13_1.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 59)",
+      "error_type": "ValueError",
+      "id": "test/hummel/prelude67_14/prelude67_14_1.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-2', 48)",
+      "error_type": "ValueError",
+      "id": "test/hummel/prelude67_20/prelude67_20_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/joplin/augustan/augustan_1.png",
+      "note_count": 360,
+      "reference_path": "Research/omr/.runtime/phase3/references/13181e6e56f5bd1f52d3047b.json",
+      "reference_sha256": "7e7cb01bfa6da51001c88d1cf366e0f989d3d4d94cd2c062f305f6599ad8e710",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 74)",
+      "error_type": "ValueError",
+      "id": "test/joplin/augustan/augustan_2.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/joplin/augustan/augustan_3.png",
+      "note_count": 355,
+      "reference_path": "Research/omr/.runtime/phase3/references/02ae31a38d055d312aa8a219.json",
+      "reference_sha256": "c0febc81c0770a6de0ad9be4c589e561234fa7357dbe483eee12a57d0024bac0",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 53)",
+      "error_type": "ValueError",
+      "id": "test/joplin/augustan/augustan_4.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/joplin/binks/binks_1.png",
+      "note_count": 266,
+      "reference_path": "Research/omr/.runtime/phase3/references/7fe19c0f5d36074d3156443b.json",
+      "reference_sha256": "f720763e8533656c356c6dc09a8f3857cd4479eca417038460a53cfbc8f07a5f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/binks/binks_2.png",
+      "note_count": 420,
+      "reference_path": "Research/omr/.runtime/phase3/references/a67e2f94dfde6a8a1b0c0397.json",
+      "reference_sha256": "d8f9c1094bf56f7011fb822c0fcaf3f11c09a158e6a304f08595d414639e4134",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/binks/binks_3.png",
+      "note_count": 298,
+      "reference_path": "Research/omr/.runtime/phase3/references/00a84f59e63f43ebcc5fd47c.json",
+      "reference_sha256": "a0c488c3aead0a0b4481297bddd7a7389cf89ba03b2d70284a4039b2dbd30b43",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 77)",
+      "error_type": "ValueError",
+      "id": "test/joplin/binks/binks_5.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/joplin/binks/binks_6.png",
+      "note_count": 203,
+      "reference_path": "Research/omr/.runtime/phase3/references/fe61ed34b8f0c99a0a68d863.json",
+      "reference_sha256": "a52a28895c0d9be2326f3e07202795b3617dfe8ab347ec6d783309478afb3d6c",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 64)",
+      "error_type": "ValueError",
+      "id": "test/joplin/breeze/breeze_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/joplin/breeze/breeze_2.png",
+      "note_count": 464,
+      "reference_path": "Research/omr/.runtime/phase3/references/b8b223cddec3e4bf73678da1.json",
+      "reference_sha256": "09d84a43c5a29686298ced3d71047a0d21dc9ae1bcb8520315c230c526bef469",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/breeze/breeze_3.png",
+      "note_count": 395,
+      "reference_path": "Research/omr/.runtime/phase3/references/eb6ea51bbdf1deafe49094d0.json",
+      "reference_sha256": "0398c69dd76f98f531e4b918390bf54864d21bb2e6f26a573443caba3fcc9ffd",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/breeze/breeze_4.png",
+      "note_count": 393,
+      "reference_path": "Research/omr/.runtime/phase3/references/cb53252a1bc65c60898a1999.json",
+      "reference_sha256": "81f0e171e47a627568f023cb0711eb8ee03a249fb5e5d37c2908cf52eb30fb73",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/leola/leola_1.png",
+      "note_count": 260,
+      "reference_path": "Research/omr/.runtime/phase3/references/44dee02cd587431d4d397e98.json",
+      "reference_sha256": "a353218d4db0532654f0322e4a7969baf7f8c82e13199e7f56c81ccb94e0edd6",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/leola/leola_2.png",
+      "note_count": 362,
+      "reference_path": "Research/omr/.runtime/phase3/references/beda9709081ddf1fb96a6551.json",
+      "reference_sha256": "9371a6ed6c5629f695f76cbbd8d997908b6d0f058007b385d69ccb1e0cea596e",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/leola/leola_3.png",
+      "note_count": 415,
+      "reference_path": "Research/omr/.runtime/phase3/references/c2aa01602d4f81b7ab5c3140.json",
+      "reference_sha256": "ab1f3ea84d908143da84ca46eed1cc2b0398776bb84c526b1f9077eb26b0da8e",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/leola/leola_4.png",
+      "note_count": 429,
+      "reference_path": "Research/omr/.runtime/phase3/references/746c9e7efd0f924912940907.json",
+      "reference_sha256": "03f39a04f6898d64ac84fa5113cdc4392e71431412a68cb54dfa0afdc9409ae2",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Measure 0 on staff 0 exceeds its time signature",
+      "error_type": "ResearchError",
+      "id": "test/joplin/lilyqueen/lilyqueen_1.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Measure 0 on staff 0 exceeds its time signature",
+      "error_type": "ResearchError",
+      "id": "test/joplin/lilyqueen/lilyqueen_2.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 72)",
+      "error_type": "ValueError",
+      "id": "test/joplin/lilyqueen/lilyqueen_3.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 69)",
+      "error_type": "ValueError",
+      "id": "test/joplin/lilyqueen/lilyqueen_4.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/joplin/mapleleaf/mapleleaf_1.png",
+      "note_count": 294,
+      "reference_path": "Research/omr/.runtime/phase3/references/c5e45ff6297fe0f491cc4ba8.json",
+      "reference_sha256": "312541ddb644f75a03f916d6e35312f128140d68185543cd5b3b9082a7ed8f19",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 65)",
+      "error_type": "ValueError",
+      "id": "test/joplin/mapleleaf/mapleleaf_3.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/joplin/newrag/newrag_1.png",
+      "note_count": 343,
+      "reference_path": "Research/omr/.runtime/phase3/references/e647fd2d0f2bf697d2024a92.json",
+      "reference_sha256": "1cf42f851ba0c94e2c86c0fc0e43c84601232316df769fe5a527a4b0f819db94",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/newrag/newrag_2.png",
+      "note_count": 492,
+      "reference_path": "Research/omr/.runtime/phase3/references/db69b9cf7dc4961def7e7fa4.json",
+      "reference_sha256": "ff889263139ba006b9ae388f66cac35af2a3f6202c79944652b021a70c1852a7",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 71)",
+      "error_type": "ValueError",
+      "id": "test/joplin/newrag/newrag_3.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/joplin/newrag/newrag_4.png",
+      "note_count": 424,
+      "reference_path": "Research/omr/.runtime/phase3/references/a11947d47f65cebf0d8f12f2.json",
+      "reference_sha256": "1bab34f6dedb6f5ba5f690bb83c4f73dde600fcc57a5f1af81212b5ec6bd4b4a",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/nonpareil/nonpareil_1.png",
+      "note_count": 241,
+      "reference_path": "Research/omr/.runtime/phase3/references/c63b22758b0e047487dc80c7.json",
+      "reference_sha256": "d1e6c38c1a66b2e3b105c54ac8ce9a77979d8ee5453b7f5e87ad9bf1cb0d78b9",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/nonpareil/nonpareil_2.png",
+      "note_count": 388,
+      "reference_path": "Research/omr/.runtime/phase3/references/85fa1a0fec06f59e326d972a.json",
+      "reference_sha256": "e314fc92a62893f4a08f90f60fca7dae17ec238cfc9aadf3ac4212e8b41ab424",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/nonpareil/nonpareil_3.png",
+      "note_count": 382,
+      "reference_path": "Research/omr/.runtime/phase3/references/396a66a7eea96d6247384c64.json",
+      "reference_sha256": "25b9a24b176f1045742f9d1a2c619f3e7af40ede4a8549ff5e9a7c703b814543",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/nonpareil/nonpareil_4.png",
+      "note_count": 306,
+      "reference_path": "Research/omr/.runtime/phase3/references/63445d07d7959cb30ba7f53e.json",
+      "reference_sha256": "4a650aed84fb3a142d9a2fb079cf689658c1db4edbbab72939bae9c67c45ec9b",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 60)",
+      "error_type": "ValueError",
+      "id": "test/joplin/pleasant/pleasant_1.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 67)",
+      "error_type": "ValueError",
+      "id": "test/joplin/pleasant/pleasant_2.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 60)",
+      "error_type": "ValueError",
+      "id": "test/joplin/pleasant/pleasant_3.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/joplin/pleasant/pleasant_4.png",
+      "note_count": 334,
+      "reference_path": "Research/omr/.runtime/phase3/references/410dd38e0d624606e9d53dea.json",
+      "reference_sha256": "47d691661cdcdf82c8c00a92734a452e91fd89cbf065456367599ca84da0d1d8",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/reflection/reflection_1.png",
+      "note_count": 627,
+      "reference_path": "Research/omr/.runtime/phase3/references/70ab0d53dfaf0ac825d757d6.json",
+      "reference_sha256": "10e6a3db0816a9e5110d7aa10f12852b29d22d84bd585b66198f473513d5e3b7",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/reflection/reflection_2.png",
+      "note_count": 671,
+      "reference_path": "Research/omr/.runtime/phase3/references/27c8192d8a9a6ccec01b0411.json",
+      "reference_sha256": "4dd863dc40b42f9e8295f3c39e99ffc0cc5ff58fa31c31c2a783e43b19c6f614",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/rosebud/rosebud_1.png",
+      "note_count": 288,
+      "reference_path": "Research/omr/.runtime/phase3/references/61f9f11b3e37dab20c2bd75d.json",
+      "reference_sha256": "96046772acb4bdea74c2c955608ea19fb24432a00d8eb595ec1af7326a2441e0",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/rosebud/rosebud_2.png",
+      "note_count": 427,
+      "reference_path": "Research/omr/.runtime/phase3/references/234a48c2535ffed516b899b9.json",
+      "reference_sha256": "315fe35f1f17b0b904429a9c0e378efbcda6a3e8fdc1449d0842f6598104f1d3",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/joplin/rosebud/rosebud_3.png",
+      "note_count": 454,
+      "reference_path": "Research/omr/.runtime/phase3/references/8aa989a6a5e2f7c7502f0010.json",
+      "reference_sha256": "aa016daa84467f9aad7ba7b09f48f4159a7c9e667faa21266e2a6f3a11d8882f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 60)",
+      "error_type": "ValueError",
+      "id": "test/joplin/roseleaf/roseleaf_1.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 73)",
+      "error_type": "ValueError",
+      "id": "test/joplin/roseleaf/roseleaf_2.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 60)",
+      "error_type": "ValueError",
+      "id": "test/joplin/roseleaf/roseleaf_3.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 84)",
+      "error_type": "ValueError",
+      "id": "test/joplin/roseleaf/roseleaf_4.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 70)",
+      "error_type": "ValueError",
+      "id": "test/joplin/searchlight/searchlight_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/joplin/searchlight/searchlight_2.png",
+      "note_count": 284,
+      "reference_path": "Research/omr/.runtime/phase3/references/1da48761ca17d1815323e14f.json",
+      "reference_sha256": "9d375fcae1ec1cb1df8685b9ba87c2649cbfd3d5dc289ae53c478f40f3b0e813",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 70)",
+      "error_type": "ValueError",
+      "id": "test/joplin/searchlight/searchlight_3.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 67)",
+      "error_type": "ValueError",
+      "id": "test/joplin/searchlight/searchlight_4.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/liszt/etude10_05/etude10_05_1.png",
+      "note_count": 477,
+      "reference_path": "Research/omr/.runtime/phase3/references/0bcf89cbd45c5c03494d85c1.json",
+      "reference_sha256": "c09701a8e1efd6ff7a78dffc338f5aae3a4d0c01d77d1637e475b68454b17076",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/liszt/etude10_05/etude10_05_2.png",
+      "note_count": 425,
+      "reference_path": "Research/omr/.runtime/phase3/references/db80563b8a12a2a842fbe293.json",
+      "reference_sha256": "6d68b17f32b9ccb5fa5feec0f0091dc5801b69a08c239069653014faac69c797",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Unterminated page ties: [(0, 'voice-1', 73)]",
+      "error_type": "ValueError",
+      "id": "test/liszt/etude10_05/etude10_05_3.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 73)",
+      "error_type": "ValueError",
+      "id": "test/liszt/etude10_05/etude10_05_4.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_B_-_KV_281/26.png",
+      "note_count": 338,
+      "reference_path": "Research/omr/.runtime/phase3/references/f490b6cc8d6faa8f4cab1874.json",
+      "reference_sha256": "773740a1a1262b5a9fa7edee45267a6c2f23e736132cbd030fdc3f28a9885e53",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_B_-_KV_281/27.png",
+      "note_count": 370,
+      "reference_path": "Research/omr/.runtime/phase3/references/931a28f8b0bd3e70c9b54a82.json",
+      "reference_sha256": "8c29846e1fd3ca24f2960b21e83a43cf8e66afe040141f9822d4aa3e37e6eb9d",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_B_-_KV_281/29.png",
+      "note_count": 404,
+      "reference_path": "Research/omr/.runtime/phase3/references/70f6f878f9c2fca912eca5b0.json",
+      "reference_sha256": "8e4a64852560fd5091454bd6343033c9cbf50aba3a604de8c84d9f4b18e83b43",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_B_-_KV_281/30.png",
+      "note_count": 371,
+      "reference_path": "Research/omr/.runtime/phase3/references/a59c9f36df1e919be04b8504.json",
+      "reference_sha256": "cabc54e75169006d326c7bf759b8dd424f73771303d380245086ac3207a6a177",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_C_-_KV_545/122.png",
+      "note_count": 291,
+      "reference_path": "Research/omr/.runtime/phase3/references/cd24aa3d55ea3486fa9523b1.json",
+      "reference_sha256": "6f40de7430fd731d99aab8b8d690c82c01b56e7fcdde0fb2bf13a6fb399cb2c0",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_C_-_KV_545/123.png",
+      "note_count": 316,
+      "reference_path": "Research/omr/.runtime/phase3/references/41aa8de17509a2461a94c051.json",
+      "reference_sha256": "027ecb79769665d67eccb5bbca95ffa06e990cf609bff4177d7241944210ae6f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_C_-_KV_545/124.png",
+      "note_count": 312,
+      "reference_path": "Research/omr/.runtime/phase3/references/88197ff42bb0efa6f9906777.json",
+      "reference_sha256": "16167eca4c2e0c67c8fd1ce2c150ae6bea963020a0de392dda79564e19ea15d4",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_C_-_KV_545/125.png",
+      "note_count": 351,
+      "reference_path": "Research/omr/.runtime/phase3/references/2f7e6da2453a563b962dfff6.json",
+      "reference_sha256": "f0f453dceb583b337ae1ecd1f1bfdea83cf0e400ba3a3df529497189c9be3c79",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_D_-_KV_576/148.png",
+      "note_count": 354,
+      "reference_path": "Research/omr/.runtime/phase3/references/eaf521bdd8802e49e8a5d645.json",
+      "reference_sha256": "7457512472b1a4ffd04b0c288679d848cdaef94bfb64e7eacd336ee2a3f9c9cd",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_D_-_KV_576/149.png",
+      "note_count": 443,
+      "reference_path": "Research/omr/.runtime/phase3/references/174d0e9c014f3a3a0f3df91f.json",
+      "reference_sha256": "a197607dc5540a90eacdf0f658930fb9dad595d92a1b01c7ee7c504f0f90ca75",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_D_-_KV_576/150.png",
+      "note_count": 368,
+      "reference_path": "Research/omr/.runtime/phase3/references/5ae1d545ca19c288e22a2188.json",
+      "reference_sha256": "b9d1d8e1ba4ca44feb8f7e52144e955e56dbb35d84aa6526cb94a1b0c50d19c0",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_D_-_KV_576/151.png",
+      "note_count": 399,
+      "reference_path": "Research/omr/.runtime/phase3/references/5e1854805038d7b2f6c08540.json",
+      "reference_sha256": "4b27e7069c0859ad9c9f3577476e2284eccb15d27e2ecf8e18b8246af9185978",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_D_-_KV_576/153.png",
+      "note_count": 254,
+      "reference_path": "Research/omr/.runtime/phase3/references/c9b2bb8431870b9d22aaae04.json",
+      "reference_sha256": "790ad07c348c79258608633eca000244d1bd36cf31d753ddb5d0773b6d2598d5",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_Es_-_KV_282/40.png",
+      "note_count": 341,
+      "reference_path": "Research/omr/.runtime/phase3/references/d1ba388356411cc6bab9d165.json",
+      "reference_sha256": "f694963522eff9fb45e3496fc0cec0ec8525620919a5cb12828213f5358eaab0",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_Es_-_KV_282/41.png",
+      "note_count": 311,
+      "reference_path": "Research/omr/.runtime/phase3/references/1795c5d181a9430fb983b389.json",
+      "reference_sha256": "1290e6b51b01fccf2a0734a9973dac3aeffc09788bf5e90e19a0360c86c53272",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_Es_-_KV_282/42.png",
+      "note_count": 304,
+      "reference_path": "Research/omr/.runtime/phase3/references/cd65b59e376abdb82abcf8ab.json",
+      "reference_sha256": "be72eee10578af2b3b0310477fc4ee8a6c1530004a679c23484934324af401a0",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_G_-_KV_283/48.png",
+      "note_count": 311,
+      "reference_path": "Research/omr/.runtime/phase3/references/cc3b3b6d269eb2a68f3b8556.json",
+      "reference_sha256": "b7564d21eb65ebe1aebcca7235810fa226a9bf2bc0e54e7b58fbd53e18171443",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_G_-_KV_283/49.png",
+      "note_count": 431,
+      "reference_path": "Research/omr/.runtime/phase3/references/846f5337f89b965670036f09.json",
+      "reference_sha256": "b04ec7a0c87503514ea6f0333adcc9a850705749ad055f287e78b0f3e7a6da8f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_G_-_KV_283/50.png",
+      "note_count": 422,
+      "reference_path": "Research/omr/.runtime/phase3/references/dcbd5e909735955c723ac9c1.json",
+      "reference_sha256": "18d78c5dc094eab63515ae9b8e6ad83d6bfecdc80e64d692fa51e198c7a9304b",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/Sonate_in_G_-_KV_283/51.png",
+      "note_count": 469,
+      "reference_path": "Research/omr/.runtime/phase3/references/b6fb4dca1bc423c70937ac04.json",
+      "reference_sha256": "43ffae1954e6e13a9ba4d446f22806161fa364cf016dc660099c50f52dba4322",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata02_1/sonata02_1_1.png",
+      "note_count": 474,
+      "reference_path": "Research/omr/.runtime/phase3/references/7478f351e2379b5a80387b1c.json",
+      "reference_sha256": "e02ca8e93846cdcfe23a79e98fc6c69660e141806c84223f52c97fd5fd47c897",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata02_1/sonata02_1_2.png",
+      "note_count": 451,
+      "reference_path": "Research/omr/.runtime/phase3/references/6e4d18f887555382df69a8a5.json",
+      "reference_sha256": "c2328e1e07f5819c82d516bdbec0b30b9a18a4275f70fb396a3c0219672b4d95",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata02_1/sonata02_1_3.png",
+      "note_count": 591,
+      "reference_path": "Research/omr/.runtime/phase3/references/bd304c51983f956b1480a7ef.json",
+      "reference_sha256": "f3b2bb281a11210536790b01925c1ed82b1b59f0a7b108682e59315f1f6eb512",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata02_1/sonata02_1_4.png",
+      "note_count": 248,
+      "reference_path": "Research/omr/.runtime/phase3/references/fefa3cb4ff3f2b8de72cba93.json",
+      "reference_sha256": "90cb7e4e78f8b07264638093273aaa504f21789e9f98d5829cedb55aa3b8fae8",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata03_1/sonata03_1_1.png",
+      "note_count": 418,
+      "reference_path": "Research/omr/.runtime/phase3/references/19409a0fc2fe2a0b8e5e82bf.json",
+      "reference_sha256": "cddd7b04fabbce5a3d742ab88b3b6b1482e9eecfda7b6680fcca3e5c267e9ff6",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata03_1/sonata03_1_2.png",
+      "note_count": 516,
+      "reference_path": "Research/omr/.runtime/phase3/references/c488f31d7b84c8f69409c802.json",
+      "reference_sha256": "870789f1636035b4b9e0090ec04ca1875593e5cf1dad881e7f54deea02153b1b",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata03_1/sonata03_1_3.png",
+      "note_count": 500,
+      "reference_path": "Research/omr/.runtime/phase3/references/f82b978e00a617f127618767.json",
+      "reference_sha256": "911ce7000a05f6ea6e0260b5110c598c838fea2bca98153873b1f6a77906724d",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata03_1/sonata03_1_4.png",
+      "note_count": 487,
+      "reference_path": "Research/omr/.runtime/phase3/references/26e89fa07bbafe6717f3cf28.json",
+      "reference_sha256": "e0a86cf8743c00cdf0e4739e63edac6360015f8891e5fdd7d2993aa2efbeb41f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata03_2/sonata03_2_1.png",
+      "note_count": 543,
+      "reference_path": "Research/omr/.runtime/phase3/references/ce7c252e1aecea34f76f4eb5.json",
+      "reference_sha256": "8c8262810c9a6ff7a1c6135e4e038250dc117d7a00466470b962a42c9d0611bc",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata03_3/sonata03_3_1.png",
+      "note_count": 393,
+      "reference_path": "Research/omr/.runtime/phase3/references/6318ec40c44f740aaf62f176.json",
+      "reference_sha256": "33cff8f28674d72269721e22f25cf6c174ba840a035f5e200cc284a4c23d2d32",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Measure 0 on staff 0 exceeds its time signature",
+      "error_type": "ResearchError",
+      "id": "test/mozart/sonata03_3/sonata03_3_2.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Unterminated page ties: [(0, 'voice-1', 77)]",
+      "error_type": "ValueError",
+      "id": "test/mozart/sonata03_3/sonata03_3_3.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 77)",
+      "error_type": "ValueError",
+      "id": "test/mozart/sonata03_3/sonata03_3_4.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/mozart/sonata04_1/sonata04_1_1.png",
+      "note_count": 407,
+      "reference_path": "Research/omr/.runtime/phase3/references/50c66e4001bf7605e8ef6306.json",
+      "reference_sha256": "0bc6bc5b82d97971083191f57d6450f9c453021555bb2df4d38e90d13289e268",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata04_1/sonata04_1_2.png",
+      "note_count": 552,
+      "reference_path": "Research/omr/.runtime/phase3/references/e69662d50ec486dc2db4e054.json",
+      "reference_sha256": "01d634ded9d5d62887d29e04a215d7183546e79ef8452bafc5a99cd9d8bc405f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata04_2/sonata04_2_1.png",
+      "note_count": 332,
+      "reference_path": "Research/omr/.runtime/phase3/references/f3c89c39a2bab7648ce53485.json",
+      "reference_sha256": "169afe57d64b8a0a20338aa74dd2b8a96d2cc51cfc8ccf7c095479d9fab24a0b",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata04_2/sonata04_2_2.png",
+      "note_count": 404,
+      "reference_path": "Research/omr/.runtime/phase3/references/a7e54ae0ecc256b93549a03d.json",
+      "reference_sha256": "f95a08cf99ae06fdafe63bb7c6dbaffed6c841daf8b2a39c4783cbd8a87946dd",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Unterminated page ties: [(0, 'voice-1', 65), (0, 'voice-1', 69)]",
+      "error_type": "ValueError",
+      "id": "test/mozart/sonata04_3/sonata04_3_1.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 65)",
+      "error_type": "ValueError",
+      "id": "test/mozart/sonata04_3/sonata04_3_2.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/mozart/sonata06_3f/sonata06_3f_1.png",
+      "note_count": 269,
+      "reference_path": "Research/omr/.runtime/phase3/references/592b9071f5a5617549c05a82.json",
+      "reference_sha256": "d70800cf3a87c4d3d68a5b292a1e3033364657bed9fdf33da2a6cb537b39dea5",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata06_3j/sonata06_3j_1.png",
+      "note_count": 243,
+      "reference_path": "Research/omr/.runtime/phase3/references/eb424793a39d8c02417b695f.json",
+      "reference_sha256": "32684c0b280de0e871c1c9394f3a884a25ee280a5cfa699a3388913444415c49",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata06_3l/sonata06_3l_1.png",
+      "note_count": 133,
+      "reference_path": "Research/omr/.runtime/phase3/references/c1ffb18abee87e4b6ece1fdd.json",
+      "reference_sha256": "c49838c13108df46de740b1ad51a10c58ac65e377306fb7ce44c7cf5e23258fb",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata06_3l/sonata06_3l_2.png",
+      "note_count": 335,
+      "reference_path": "Research/omr/.runtime/phase3/references/29287ff9dce32730d68ee77a.json",
+      "reference_sha256": "4bb6373e10f4dfaea4adb285ff754ecaff39da450f7d617b29294dadfea56963",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata07_2/sonata07_2_1.png",
+      "note_count": 362,
+      "reference_path": "Research/omr/.runtime/phase3/references/6f00c9f1dba7d3456b96525b.json",
+      "reference_sha256": "cdd7871cb49009fdbb5fe772313010811b7beb89576309092071626538267197",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 72)",
+      "error_type": "ValueError",
+      "id": "test/mozart/sonata07_2/sonata07_2_3.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/mozart/sonata07_2/sonata07_2_4.png",
+      "note_count": 78,
+      "reference_path": "Research/omr/.runtime/phase3/references/35d01a4de976af8db455e9ce.json",
+      "reference_sha256": "38eca18b0f408950aedc533b12e059c8976122cadb321f439f15c625c3805efa",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata07_3/sonata07_3_2.png",
+      "note_count": 573,
+      "reference_path": "Research/omr/.runtime/phase3/references/a6d2d9eb38593bf13329902a.json",
+      "reference_sha256": "ffe93f8e59fca973fe2996392e5162c533477c34ac9b41d533b4a5aa3aedba46",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata07_3/sonata07_3_3.png",
+      "note_count": 604,
+      "reference_path": "Research/omr/.runtime/phase3/references/fb813afdb727cfc840ac3036.json",
+      "reference_sha256": "d01b6b03b75f338c3c9aeb62c2562649fb74068940eb6b1d3af481914fc143b6",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata07_3/sonata07_3_4.png",
+      "note_count": 538,
+      "reference_path": "Research/omr/.runtime/phase3/references/52e30f3cf31f359924252d22.json",
+      "reference_sha256": "1f053e2298b27ba629959431f1577dce945f7449ca9491a1af3a681df86869f9",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-2', 53)",
+      "error_type": "ValueError",
+      "id": "test/mozart/sonata07_3/sonata07_3_5.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/mozart/sonata07_3/sonata07_3_6.png",
+      "note_count": 449,
+      "reference_path": "Research/omr/.runtime/phase3/references/940e08d9c9e99105b656fa42.json",
+      "reference_sha256": "e3028defe10ca4d60befa1892397d95e9b33b136f9519915bfb074ecf41b44e7",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata07_3/sonata07_3_7.png",
+      "note_count": 472,
+      "reference_path": "Research/omr/.runtime/phase3/references/d5f1ba3aea021cd44826914f.json",
+      "reference_sha256": "27a6433a4f3c8d6ff264c63f9c66b993b6ae4e1b448b80a111aacdb24d7fd913",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 65)",
+      "error_type": "ValueError",
+      "id": "test/mozart/sonata08_2/sonata08_2_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/mozart/sonata08_2/sonata08_2_2.png",
+      "note_count": 500,
+      "reference_path": "Research/omr/.runtime/phase3/references/7fcdffc407efeb70920e1731.json",
+      "reference_sha256": "2535d2f6e01012dc1ca2b812576e6c82a258ddd00ecf46ae3566dc9c2ead72e6",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata08_2/sonata08_2_3.png",
+      "note_count": 543,
+      "reference_path": "Research/omr/.runtime/phase3/references/c7c9c1ee1b3dd3acd2ba5627.json",
+      "reference_sha256": "8c13d68a3dedc532346b275d860d15db0003e4d0a343defd631c52c3f59ba30f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata08_2/sonata08_2_5.png",
+      "note_count": 381,
+      "reference_path": "Research/omr/.runtime/phase3/references/048aa2a472426414c1a8a29a.json",
+      "reference_sha256": "da29797a8fb74542f4dacaca0b7c0656eab5e21558265191657074ce81075a0b",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata09_2/sonata09_2_2.png",
+      "note_count": 471,
+      "reference_path": "Research/omr/.runtime/phase3/references/3e2ae78abbf04e6e44a111ce.json",
+      "reference_sha256": "8230a5d57d7f4a6e9285594ac8ba453b95cec33e61b1354b1347b47db1c74599",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata09_2/sonata09_2_3.png",
+      "note_count": 300,
+      "reference_path": "Research/omr/.runtime/phase3/references/9d6a20bc15549da987715043.json",
+      "reference_sha256": "47b6c52756554d4e131315f65816eaaf8c1c781e5bda7629fc9a1c795a496ea0",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata09_3/sonata09_3_3.png",
+      "note_count": 503,
+      "reference_path": "Research/omr/.runtime/phase3/references/0490b3afeee4c0e4773c1088.json",
+      "reference_sha256": "2691662fa1e5e50afb3755a6929722d59d62e4c7660fc8529cd4e5a7a0bdd74b",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata09_3/sonata09_3_5.png",
+      "note_count": 458,
+      "reference_path": "Research/omr/.runtime/phase3/references/a047ce5ef4ff3244037699ce.json",
+      "reference_sha256": "4e8d182839c3d7eca4dcdee8c4597b6c6f91a49096e7eaae6c65e37d4399d0a5",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Measure 0 on staff 0 exceeds its time signature",
+      "error_type": "ResearchError",
+      "id": "test/mozart/sonata09_3/sonata09_3_6.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 84)",
+      "error_type": "ValueError",
+      "id": "test/mozart/sonata09_3/sonata09_3_7.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/mozart/sonata09_3/sonata09_3_8.png",
+      "note_count": 461,
+      "reference_path": "Research/omr/.runtime/phase3/references/58db521e41b48c03835007ef.json",
+      "reference_sha256": "eed297ccf700b25afbaade0c6a5bec2ff87bbc72f968e9db56358e60a36217e4",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata11_1b/sonata11_1b_1.png",
+      "note_count": 236,
+      "reference_path": "Research/omr/.runtime/phase3/references/4cafb0262a38707d0da0df28.json",
+      "reference_sha256": "9124d436261357a8fcc7c46d896068d03cd74ed24dbd0965ae3b9ff70b75ec64",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata11_1b/sonata11_1b_2.png",
+      "note_count": 100,
+      "reference_path": "Research/omr/.runtime/phase3/references/532166bc46eb6060dec4e127.json",
+      "reference_sha256": "346fe38677eb21977284e1ff8044747c477b198bc781ed9f4397c489996df5db",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 71)",
+      "error_type": "ValueError",
+      "id": "test/mozart/sonata14_1/sonata14_1_1.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/mozart/sonata14_1/sonata14_1_2.png",
+      "note_count": 422,
+      "reference_path": "Research/omr/.runtime/phase3/references/7ef01a788c5ea9412538abf1.json",
+      "reference_sha256": "7cc9e6f99cd861f20ec9d6a81d944450dfddef2c26ada67badaac0297b4413a9",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Unterminated page ties: [(0, 'voice-2', 72)]",
+      "error_type": "ValueError",
+      "id": "test/mozart/sonata14_1/sonata14_1_3.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/mozart/sonata14_1/sonata14_1_5.png",
+      "note_count": 435,
+      "reference_path": "Research/omr/.runtime/phase3/references/e62562093b488b6ec5d837bb.json",
+      "reference_sha256": "cda34bb27f48ec3ab4729ceb01df1606e20a03cfe44785af0dcd0ddc58e422f3",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 56)",
+      "error_type": "ValueError",
+      "id": "test/mozart/sonata14_2/sonata14_2_1.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Measure 0 on staff 0 exceeds its time signature",
+      "error_type": "ResearchError",
+      "id": "test/mozart/sonata14_2/sonata14_2_2.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/mozart/sonata14_2/sonata14_2_3.png",
+      "note_count": 430,
+      "reference_path": "Research/omr/.runtime/phase3/references/a06f536bc205b2fa7b19c573.json",
+      "reference_sha256": "c91548827bf3ab6c6fd272abe96c3a46bbea11e3690a80019285f6f1deb89765",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Measure 0 on staff 0 exceeds its time signature",
+      "error_type": "ResearchError",
+      "id": "test/mozart/sonata14_2/sonata14_2_4.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/mozart/sonata15_1/sonata15_1_1.png",
+      "note_count": 425,
+      "reference_path": "Research/omr/.runtime/phase3/references/b8c5eafa44f8f4e52e2faaed.json",
+      "reference_sha256": "9e7de107e6dad88849a3c16ce8535a0fd0b660fe551d7be004954e8adf90788f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata15_1/sonata15_1_2.png",
+      "note_count": 404,
+      "reference_path": "Research/omr/.runtime/phase3/references/52bc44561243e4b885cc865c.json",
+      "reference_sha256": "10f93a9227b7b5266d9a635d648314b18adeeef222bb490b93c47ecbc9d50421",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata15_1/sonata15_1_3.png",
+      "note_count": 449,
+      "reference_path": "Research/omr/.runtime/phase3/references/481e3f1c1a1de288bc2d71b7.json",
+      "reference_sha256": "37fbb9534028832d7b9cf2aaa40fe2feb73de6120a2165e0ddd3913e328a2597",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata15_3/sonata15_3_2.png",
+      "note_count": 463,
+      "reference_path": "Research/omr/.runtime/phase3/references/9a1a8bdbb21b0bec5e2ca7a4.json",
+      "reference_sha256": "018e76d09723b4e6b175c2911108e6a57ed94c3e22845557ac090b8dd77b2b07",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata16_3/sonata16_3_1.png",
+      "note_count": 326,
+      "reference_path": "Research/omr/.runtime/phase3/references/82121f77814f1a2ca5b4abba.json",
+      "reference_sha256": "58b47e4c86ccf3d70663885fcf5f608234875e749bf8378d88d0015e6e5deb89",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata16_3/sonata16_3_2.png",
+      "note_count": 365,
+      "reference_path": "Research/omr/.runtime/phase3/references/38bc36186ddf6b027f146787.json",
+      "reference_sha256": "cbb0f5ff7fd09bef32b6de653cf17e8741fe6a0657001d026a9c2e7f8c7ff7f2",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata16_3/sonata16_3_3.png",
+      "note_count": 288,
+      "reference_path": "Research/omr/.runtime/phase3/references/f999e17becca93ab6f60557a.json",
+      "reference_sha256": "79e95e4d4d2ed72ae1d24de6f507acd307c396e2539a48156d6cb0a09906a088",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata16_3/sonata16_3_4.png",
+      "note_count": 371,
+      "reference_path": "Research/omr/.runtime/phase3/references/84c568b01ad8bb3378b304a9.json",
+      "reference_sha256": "92cfef6c90d2fa41f82ab6f693a0ab5568e7698862f93402955a35a94e6d251f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata17_2/sonata17_2_1.png",
+      "note_count": 247,
+      "reference_path": "Research/omr/.runtime/phase3/references/db5fb93e272b77bf5380c322.json",
+      "reference_sha256": "6aa7e7d51c0b6ae04a3d0a8fc74074331aaf66161fe4cda9aea58266d4926861",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata17_2/sonata17_2_2.png",
+      "note_count": 498,
+      "reference_path": "Research/omr/.runtime/phase3/references/8620b4fe047c36e4c4a30c3c.json",
+      "reference_sha256": "2469b07404c950dc53d80b9c160ba2b5aafbffbf3ee6a888a5532b81b7084e56",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata17_2/sonata17_2_3.png",
+      "note_count": 540,
+      "reference_path": "Research/omr/.runtime/phase3/references/767408ffa96a1b1fbec8b21d.json",
+      "reference_sha256": "a8203834a76b1d9433d95b8d172d01b53b1b1c9755f5618e511528aeb605f11b",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/sonata17_2/sonata17_2_4.png",
+      "note_count": 150,
+      "reference_path": "Research/omr/.runtime/phase3/references/00eee56e6e6d7b0ae92d0802.json",
+      "reference_sha256": "0ae03b66feda4d9c57c8895557fdcc2de331fcaaf6b99a4ccf97a1f1f2d61a11",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/viennese1_1/viennese1_1_1.png",
+      "note_count": 323,
+      "reference_path": "Research/omr/.runtime/phase3/references/a2581fa58bac02b82f2e18cc.json",
+      "reference_sha256": "6febc5e835f6c59764ef5b68be763aeb8a1d8e193247f5f7f865d29ee9cd7d43",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Expected exactly two piano staves, found 3",
+      "error_type": "ResearchError",
+      "id": "test/mozart/viennese1_1/viennese1_1_2.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-2', 60)",
+      "error_type": "ValueError",
+      "id": "test/mozart/viennese6_1/viennese6_1_1.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 79)",
+      "error_type": "ValueError",
+      "id": "test/mozart/viennese6_1/viennese6_1_2.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/mozart/viennese6_2/viennese6_2_1.png",
+      "note_count": 358,
+      "reference_path": "Research/omr/.runtime/phase3/references/a0a32bc03e149d9f13e36744.json",
+      "reference_sha256": "1a164b1cdf0886a06a4b5b7655605dbf2e0cc99119a7a21a7bd1141312534089",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/mozart/viennese6_2/viennese6_2_2.png",
+      "note_count": 187,
+      "reference_path": "Research/omr/.runtime/phase3/references/b457fd1f26f21ec24fc615c3.json",
+      "reference_sha256": "27af86ee178ee5151c5d45b8d3e3d3575c878f30127751eb86a80942f09da9f1",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 52)",
+      "error_type": "ValueError",
+      "id": "test/ravel/sonatine_1/sonatine_1_2.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/ravel/sonatine_1/sonatine_1_3.png",
+      "note_count": 381,
+      "reference_path": "Research/omr/.runtime/phase3/references/5080f86dcdbda0d1c43d0be2.json",
+      "reference_sha256": "2eb410e2d06248ae674e712ff6f277dc45a3dfbcc3a6889a4c4837f37e9fef3a",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 79)",
+      "error_type": "ValueError",
+      "id": "test/scarlatti/L003K502/L003K502_2.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/scarlatti/L008K461/L008K461_1.png",
+      "note_count": 215,
+      "reference_path": "Research/omr/.runtime/phase3/references/4cc9e6e3d4ee72805e56249f.json",
+      "reference_sha256": "8478bd4b3257d0d6b85791d5d8e5984eedd873049c9b5252453fec75a4d3c409",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L008K461/L008K461_2.png",
+      "note_count": 258,
+      "reference_path": "Research/omr/.runtime/phase3/references/29c91ec3d8460752e506d180.json",
+      "reference_sha256": "d9bc93e2dbf305e290d15c51d4bde2408148a217642b95a0d4da251201c89d27",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L008K461/L008K461_3.png",
+      "note_count": 340,
+      "reference_path": "Research/omr/.runtime/phase3/references/9f11aa18468f4aeaee4b6677.json",
+      "reference_sha256": "6e6580da7af1cc177ec273c0867fa9fa51390cad6b42af68a5e8e16fa4342c9c",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L008K461/L008K461_5.png",
+      "note_count": 187,
+      "reference_path": "Research/omr/.runtime/phase3/references/af7a3aeca4f722fdb4ce7521.json",
+      "reference_sha256": "bdfa4b5c399c219421ebbaebedf26592842007052afe49c32636f67ad339122a",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L016K306/L016K306_1.png",
+      "note_count": 262,
+      "reference_path": "Research/omr/.runtime/phase3/references/ac4f9421592307199f6d4037.json",
+      "reference_sha256": "53b60d05fe6d2dbb49d36ab701a202aea95212d85695dbf8224aba57b5728a7d",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L016K306/L016K306_2.png",
+      "note_count": 362,
+      "reference_path": "Research/omr/.runtime/phase3/references/138a0fe2fb98134dad917566.json",
+      "reference_sha256": "a6244c125b3e546a6ecbb5f0e630e2dd91df39c79781531a5c17865a84a325bb",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L016K306/L016K306_3.png",
+      "note_count": 348,
+      "reference_path": "Research/omr/.runtime/phase3/references/c853fd1929deb3b6fb7445f5.json",
+      "reference_sha256": "05b4c1cc712bd19edf34ca27cec39ee9305e48d8af140cbcba12a79f56d6b919",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L016K306/L016K306_4.png",
+      "note_count": 305,
+      "reference_path": "Research/omr/.runtime/phase3/references/deb65fcc5a6ebbadc2de2a6b.json",
+      "reference_sha256": "3607144a7135d0bec4d5959150a8f3f75b51b0149df09788bb10d75139b5d542",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L053K075/L053K075_1.png",
+      "note_count": 193,
+      "reference_path": "Research/omr/.runtime/phase3/references/811a108908b7d29577ea8a3f.json",
+      "reference_sha256": "4ef94a7171b53e06ae1330298026decbd3bf3d346c482af6947e270f6a685599",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L053K075/L053K075_2.png",
+      "note_count": 263,
+      "reference_path": "Research/omr/.runtime/phase3/references/1fee100467c5c4510a4a7d92.json",
+      "reference_sha256": "dce5ac937dab650f5dd17ecd0cbfd5acf1ada8f8bbe3f2d895d882199751e212",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L055K330/L055K330_1.png",
+      "note_count": 302,
+      "reference_path": "Research/omr/.runtime/phase3/references/58df63833d0d2eda50486a8b.json",
+      "reference_sha256": "19697051512b1d0ac7c3c2b04e07420d666ea81f3b36aaacb5e0625e641b6c53",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L055K330/L055K330_2.png",
+      "note_count": 277,
+      "reference_path": "Research/omr/.runtime/phase3/references/90d1b53685736b85ee1397be.json",
+      "reference_sha256": "7be0d149aeabc2f8dc6b763d71f9b869af9e090090861b3577c35ba1efada958",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L056K281/L056K281_1.png",
+      "note_count": 203,
+      "reference_path": "Research/omr/.runtime/phase3/references/d851210745837a3fe4520306.json",
+      "reference_sha256": "8e3fc4cbb5b22f96de5e6fa4567dcc326fba3536fd719d11cef7c9c7f801a12d",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 77)",
+      "error_type": "ValueError",
+      "id": "test/scarlatti/L056K281/L056K281_3.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/scarlatti/L064K148/L064K148_1.png",
+      "note_count": 305,
+      "reference_path": "Research/omr/.runtime/phase3/references/114cfd2d215128f9a2f858c0.json",
+      "reference_sha256": "ee04621a21d0386dba00efc9175eafc5efe90201c259603e19afd68ea91e5da4",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L064K148/L064K148_2.png",
+      "note_count": 292,
+      "reference_path": "Research/omr/.runtime/phase3/references/e9363ddd1cc3298477b8e013.json",
+      "reference_sha256": "7b8b9756c49dd9c12a0f86c7959a9902ee098c60ed1bc528fc9532c73e1dd7f7",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 83)",
+      "error_type": "ValueError",
+      "id": "test/scarlatti/L154K235/L154K235_2.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/scarlatti/L154K235/L154K235_4.png",
+      "note_count": 204,
+      "reference_path": "Research/omr/.runtime/phase3/references/72a6288c809f6d9c398a3745.json",
+      "reference_sha256": "b19dffccaf8c13c4871cca928dcb64b0c2a5023218ded0c11db90997353a5408",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L166K085/L166K085_1.png",
+      "note_count": 273,
+      "reference_path": "Research/omr/.runtime/phase3/references/fe274a2af5de137ddd888efd.json",
+      "reference_sha256": "d04326a58dfadba35b624b6242b21c2502ec58704feef1cf512fabdde596a8af",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L166K085/L166K085_2.png",
+      "note_count": 358,
+      "reference_path": "Research/omr/.runtime/phase3/references/4ac30463db8707dac2c3173b.json",
+      "reference_sha256": "89422a36e651f0a793529b41c0330a98066d3ec3d89059ae82ac663f46674f95",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L166K085/L166K085_3.png",
+      "note_count": 331,
+      "reference_path": "Research/omr/.runtime/phase3/references/fdebcdf06cd22833ffffcbd8.json",
+      "reference_sha256": "e2987b3ac3ca4d34d54bc1fa0c0412fd177514dce3524bce67bbc6dc2cb2a447",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L240K369/L240K369_3.png",
+      "note_count": 231,
+      "reference_path": "Research/omr/.runtime/phase3/references/c8bbb4fd15bd9337f005bd7b.json",
+      "reference_sha256": "e9f4ba61ee4df92207af81e3156c4315075d84a0df9e4079a84b5479dcf2eaad",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-2', 58)",
+      "error_type": "ValueError",
+      "id": "test/scarlatti/L267K052/L267K052_1.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-1', 65)",
+      "error_type": "ValueError",
+      "id": "test/scarlatti/L267K052/L267K052_2.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/scarlatti/L267K052/L267K052_3.png",
+      "note_count": 355,
+      "reference_path": "Research/omr/.runtime/phase3/references/028464965e61678658f63177.json",
+      "reference_sha256": "2e1156ea77b83299fc43ef8f9585c59fa4b11e1d2eb0b9521913380bbe367079",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L267K052/L267K052_4.png",
+      "note_count": 297,
+      "reference_path": "Research/omr/.runtime/phase3/references/1efd9f446c2d38bf319113ec.json",
+      "reference_sha256": "839922d18e1d9bc96d0644f99311849070b1e7ba39225f94e261edef5ab7de0b",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L301K049/L301K049_1.png",
+      "note_count": 139,
+      "reference_path": "Research/omr/.runtime/phase3/references/e2403d85e49c658ce6cb8ee3.json",
+      "reference_sha256": "edad7536b1a4d36979883f0d6efb5ee01555caa6f43b1991bd9f7ff9eb4032d0",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L301K049/L301K049_3.png",
+      "note_count": 228,
+      "reference_path": "Research/omr/.runtime/phase3/references/5ccc8cce70ee47bfc3bfc0e3.json",
+      "reference_sha256": "d3f13edb0a7baebbe63a09e4dd91bdea1be5f98e7364f044a0794f34c50ce66d",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L301K049/L301K049_4.png",
+      "note_count": 324,
+      "reference_path": "Research/omr/.runtime/phase3/references/4fc768db58d500099a9309bd.json",
+      "reference_sha256": "d4535d33985106eae3153c41fc39c3f0348308c6f5eaf31debdcfdcca732624e",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L301K049/L301K049_6.png",
+      "note_count": 207,
+      "reference_path": "Research/omr/.runtime/phase3/references/ed6aaa2d5dbab935b5aed1e2.json",
+      "reference_sha256": "5a517e46aa40e8aaf146204e16326b3d904be8f7f16825719159ae0f5a8687cb",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L304K470/L304K470_1.png",
+      "note_count": 338,
+      "reference_path": "Research/omr/.runtime/phase3/references/5437ebdb42c1bd1173d1d44c.json",
+      "reference_sha256": "50228163609dde9df9c70a02297bc6436e03f76fa3ca7e5239a9d5ecdc4a784f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L304K470/L304K470_2.png",
+      "note_count": 287,
+      "reference_path": "Research/omr/.runtime/phase3/references/9b96ca861bef065d410a09c5.json",
+      "reference_sha256": "582eec67e1e317d54604b553a897da58827441d0e57b627075a2540e66002c83",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L304K470/L304K470_3.png",
+      "note_count": 208,
+      "reference_path": "Research/omr/.runtime/phase3/references/1b52213e64741bce60788545.json",
+      "reference_sha256": "9899ab36730010fb0d8069fdc2d6432bec94bb0fe5665c71b342d371a5e72556",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Unterminated page ties: [(0, 'voice-1', 84)]",
+      "error_type": "ValueError",
+      "id": "test/scarlatti/L304K470/L304K470_5.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 84)",
+      "error_type": "ValueError",
+      "id": "test/scarlatti/L304K470/L304K470_6.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/scarlatti/L319K442/L319K442_1.png",
+      "note_count": 198,
+      "reference_path": "Research/omr/.runtime/phase3/references/26fc5dcc98b62c09733acbfc.json",
+      "reference_sha256": "c84bf2d567b3191885f59d1e815aa300b7a0d1c9f60ab77d0af76822b02b63c3",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L319K442/L319K442_2.png",
+      "note_count": 231,
+      "reference_path": "Research/omr/.runtime/phase3/references/23608edf0669f77144611a9c.json",
+      "reference_sha256": "5aad722f84ad5b4e31cabd7d1f60507c3693bd0a04b5cab37782164e58059e05",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L319K442/L319K442_3.png",
+      "note_count": 198,
+      "reference_path": "Research/omr/.runtime/phase3/references/e21ff56e51d511d486d3f429.json",
+      "reference_sha256": "89dd1a07cf6e29ab89684763b82e503fbf79dbf596d07df03bd330d8c4d84b1b",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L319K442/L319K442_4.png",
+      "note_count": 215,
+      "reference_path": "Research/omr/.runtime/phase3/references/e2480960e4a67498a67dcd5a.json",
+      "reference_sha256": "4e07ae98f28319e2390d68a1b5a9a07e737b91f5fdfb4e294a2a737f780f2128",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 69)",
+      "error_type": "ValueError",
+      "id": "test/scarlatti/L334K122/L334K122_2.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 77)",
+      "error_type": "ValueError",
+      "id": "test/scarlatti/L334K122/L334K122_3.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 70)",
+      "error_type": "ValueError",
+      "id": "test/scarlatti/L334K122/L334K122_4.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 58)",
+      "error_type": "ValueError",
+      "id": "test/scarlatti/L336K093/L336K093_1.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 67)",
+      "error_type": "ValueError",
+      "id": "test/scarlatti/L336K093/L336K093_2.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-1', 44)",
+      "error_type": "ValueError",
+      "id": "test/scarlatti/L336K093/L336K093_3.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 72)",
+      "error_type": "ValueError",
+      "id": "test/scarlatti/L336K093/L336K093_4.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (1, 'voice-1', 46)",
+      "error_type": "ValueError",
+      "id": "test/scarlatti/L336K093/L336K093_5.png",
+      "status": "invalid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-1', 63)",
+      "error_type": "ValueError",
+      "id": "test/scarlatti/L336K093/L336K093_6.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/scarlatti/L339K512/L339K512_1.png",
+      "note_count": 197,
+      "reference_path": "Research/omr/.runtime/phase3/references/51f78d341ca7a2f6f739ab6f.json",
+      "reference_sha256": "05c2a44c1e2a5a9072847c356f939f492c1e4413586456f7276abc3e7692a0a0",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L339K512/L339K512_2.png",
+      "note_count": 198,
+      "reference_path": "Research/omr/.runtime/phase3/references/942a34059754656db534a7b6.json",
+      "reference_sha256": "9d421e947048493436213cb276ee577088a6383e524b0a03e83e8d5779af7281",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L339K512/L339K512_3.png",
+      "note_count": 255,
+      "reference_path": "Research/omr/.runtime/phase3/references/4796ebeb56de167816bdf391.json",
+      "reference_sha256": "ee55f1eeb5c34b2e329d994bb8cb924990d9e85ce44481b1ed4e04e6dbe0650f",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L339K512/L339K512_4.png",
+      "note_count": 236,
+      "reference_path": "Research/omr/.runtime/phase3/references/16e906ccc7a4244785c54c63.json",
+      "reference_sha256": "c1b2eb5bccfae446f54f94d83f7f8fac9d295ddf26585fca482236d85c6ca111",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L348K244/L348K244_1.png",
+      "note_count": 307,
+      "reference_path": "Research/omr/.runtime/phase3/references/ed3af94869a0f9fa751b9e3e.json",
+      "reference_sha256": "69afdc23c1682c1593de5d237899fd49499bc10cae1aba2160a97b836de9b8ab",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "error": "Tie continuation has no adjacent start: (0, 'voice-2', 76)",
+      "error_type": "ValueError",
+      "id": "test/scarlatti/L348K244/L348K244_2.png",
+      "status": "invalid"
+    },
+    {
+      "id": "test/scarlatti/L400K360/L400K360_1.png",
+      "note_count": 173,
+      "reference_path": "Research/omr/.runtime/phase3/references/295a0d8bd914b61a4b663873.json",
+      "reference_sha256": "7b9cddcec1d0ecc53e49040d4beba5d2ad4df508d7fffe83b2beca3cc4e8d7e6",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L400K360/L400K360_2.png",
+      "note_count": 185,
+      "reference_path": "Research/omr/.runtime/phase3/references/8532e01a9190192d032894af.json",
+      "reference_sha256": "ab5e5ba0763e91f5fe591dbf1b9514f03c00281413b002af9b61a11d50ffb297",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L400K360/L400K360_3.png",
+      "note_count": 171,
+      "reference_path": "Research/omr/.runtime/phase3/references/e9d6994c38a6a274e4ea41d2.json",
+      "reference_sha256": "a6b87c61b65cf545306f3d6663d35379ebdbe8292ec5b8d91e22c00e0ff247dc",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L400K360/L400K360_4.png",
+      "note_count": 188,
+      "reference_path": "Research/omr/.runtime/phase3/references/295f5184e626b1330cba4c78.json",
+      "reference_sha256": "77ca1409118528aefb4a0abfeb4f339dc8b3259f200912e529daf6634b7a44a9",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L400K360/L400K360_5.png",
+      "note_count": 240,
+      "reference_path": "Research/omr/.runtime/phase3/references/3f102d3e0129a30aa92a4b6f.json",
+      "reference_sha256": "609a6cdd658ad85fe1d5ff4cc8e507cbde7969ceb5e31a35adb236d4639cf644",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L481K025/L481K025_1.png",
+      "note_count": 233,
+      "reference_path": "Research/omr/.runtime/phase3/references/537264ad9762217489fe35d7.json",
+      "reference_sha256": "cda5e28ae0895b1e1b4ec95f32989f5b616e689a262a730a350ac26748bc3353",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L481K025/L481K025_2.png",
+      "note_count": 328,
+      "reference_path": "Research/omr/.runtime/phase3/references/00d1a4ea14ae3bdf2a58f82d.json",
+      "reference_sha256": "b5ee28b16e20fd490c678a73237b766a820c2121400cab292eb648bbab06dcc9",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L481K025/L481K025_3.png",
+      "note_count": 275,
+      "reference_path": "Research/omr/.runtime/phase3/references/4eda4ce5a77b924d3cfe1f69.json",
+      "reference_sha256": "50a1ba6bb4f1851937c57d54794fe110b0a65b72dbf2ed03229be3d779146403",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/scarlatti/L481K025/L481K025_4.png",
+      "note_count": 302,
+      "reference_path": "Research/omr/.runtime/phase3/references/a284b2c57fb7a6e2eeb1ef52.json",
+      "reference_sha256": "7bb1153390f83d5051d0e329374f34a14b6a016c795b15467921913692e6a867",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/sousa/venus_transit/venus_transit_1.png",
+      "note_count": 324,
+      "reference_path": "Research/omr/.runtime/phase3/references/3bbc6fea1cbabfc42b5a2b83.json",
+      "reference_sha256": "f8ae4b9562ceeb2935f1b7a0b8ae7acc68949d8d4de6e3b6d3c32d4652274fc0",
+      "state": "generated",
+      "status": "valid"
+    },
+    {
+      "id": "test/sousa/venus_transit/venus_transit_2.png",
+      "note_count": 434,
+      "reference_path": "Research/omr/.runtime/phase3/references/f2aadbc1dc51c31033a5ae45.json",
+      "reference_sha256": "664d7465bad1e2c7663c6309885b829475d0518a1076eb5d42d1547f9cb97f52",
+      "state": "generated",
+      "status": "valid"
+    }
+  ],
+  "schema_version": 1,
+  "scope": "complete_page_reference_preflight",
+  "valid_count": 276
+}

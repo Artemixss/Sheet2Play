@@ -1,0 +1,1072 @@
+{
+  "added_distributions": {
+    "homr": [],
+    "research": [],
+    "zeus": []
+  },
+  "current": {
+    "approval_baseline": "fine_tuned_homr_pending_phase4",
+    "comparison_config_sha256": "05888ddcf6614f33ee1b1334ba271a876f7a0832d5050d35cd6c8dff35933837",
+    "excluded": {
+      "fine_tuned_homr": "Phase 4 checkpoint verification and selection",
+      "homr_pr156": "compatible weights unverified",
+      "legato": "recognition checkpoint/runtime not provisioned or measured",
+      "musvit": "requires training and decoder verification; not evaluated",
+      "qwen3_vl_2b_instruct": "no accepted development output under tested settings",
+      "rokot_q8_page": "no accepted corrected development page",
+      "zeus_direct_app_extraction": "development event extraction failure; separate integration evidence"
+    },
+    "failure_policy": {
+      "empty_output_is_failure": true,
+      "failed_prediction_primary_f1": 0.0,
+      "missing_middle_system_is_document_failure": true,
+      "omr_ned": "valid-output and failure-penalized summaries reported separately",
+      "report_invalid_timeout_and_document_failure_separately": true,
+      "same_eligible_items_for_every_engine": true
+    },
+    "input": {
+      "all_image_hashes_verified": true,
+      "collection": "smb-pianoform",
+      "count": 402,
+      "manifest_sha256": "f73419cb60019d0bfbaf7ce0efaf2fdea66d89648eec3d2552c606f2172d9a81"
+    },
+    "measurement_paths": {
+      "annotated_crops": "identical ground-truth system regions for compatible system recognizers",
+      "complete_document": "same preserved 300-DPI pages through segmentation, recognition, conversion, and stitching",
+      "reference_round_trip": "known symbolic truth through each native representation and back; no recognition"
+    },
+    "normalization": {
+      "expand_repeats": false,
+      "grace_notes_in_primary": false,
+      "merge_tied_continuations": true,
+      "prediction_alignment": "none for headline results",
+      "preserve_pickups": true
+    },
+    "olimpic_system_audit": {
+      "eligible_count": 100,
+      "manifest_sha256": "fc5da2b418b9f86b7d41a8128f6b5c5f184405b9f2233a8159999553cfcde750",
+      "path": "Research/omr/reports/phase3/olimpic-canary-reference-audit-5382d5ffb4b3.json",
+      "sha256": "1111a7f43ba8bb5901a9d21f99e217995522c576c4cb5ee9bbccf96c77b43b46",
+      "warning_count": 30
+    },
+    "phase": "3_pretrained_reduced_roster",
+    "phase4_started": false,
+    "platform": "Windows-10-10.0.26200-SP0",
+    "private_diagnostic": {
+      "preflight_report": "Research/omr/.runtime/phase3/private-diagnostic/preflight.json",
+      "preflight_sha256": "b1307979253a5274f44e2fd42ce76b257a3ce36df6badd314999664fe98e0dcb",
+      "ranking_eligible": false,
+      "rendered_pages": 8
+    },
+    "ready": {
+      "audiveris_page": {
+        "adapter_config": {
+          "adapter_id": "audiveris_unattended",
+          "adapter_revision": "fdffc993b22fc2a284a8822c5e9688cbbd4ac09107ef2af4c2cccc5b8b44af10",
+          "candidate_id": "audiveris",
+          "checkpoint": "Audiveris 5.11.0 classifiers",
+          "checkpoint_revision": "5.11.0",
+          "input_granularity": "complete document",
+          "native_format": "Audiveris OMR project",
+          "settings": {
+            "batch": true,
+            "export": "MusicXML",
+            "manual_corrections": false,
+            "small_image_preprocessing": "lanczos-width-at-least-2000px-300dpi-v1"
+          },
+          "source_repository": "https://github.com/Audiveris/audiveris",
+          "source_revision": "9e1e55cd2746037d059345881c53e6a6754bffbd",
+          "supported_paths": [
+            "complete_document"
+          ]
+        },
+        "adapter_config_sha256": "a60883fe6e39455af4f2c39ce62de54618d0c4ffe5de8f3da4d359f8bfed7b0c",
+        "entry_identity_sha256": "64c0b05da0db6b73353fa299a1504f2309ec236d3936658e737513000d05e7a3",
+        "entry_report": "Research/omr/reports/phase3/development-entry/audiveris_page-openscore-6211535-page-1-45d0929784d0.json",
+        "entry_report_sha256": "9e1d33425c0c964917a7a42b521de65f2b294239bd95d494f39747c878cd3947",
+        "source_input_identity": {
+          "adapter_config_sha256": "a60883fe6e39455af4f2c39ce62de54618d0c4ffe5de8f3da4d359f8bfed7b0c",
+          "candidate": "audiveris_page",
+          "files": {
+            "Bridge/musicxml_normalizer.py": "2e56906636a7164784492ac47c0f0fd628e4f15e172390b58e2792160f819c8e",
+            "Research/omr/.runtime/phase2r/audiveris-extract/Audiveris/Audiveris.exe": "06dbf3b4a5acd4dbbefcf9dfbcef43529ad6afde4ba9330cb856d849cd7fe172",
+            "Research/omr/src/sheet2play_omr/adapter_contract.py": "90ad6b27097654907a5ed2bccd1ba8604de2969d81abc58de05468d3a3f71cc9",
+            "Research/omr/src/sheet2play_omr/phase2_adapters.py": "fdffc993b22fc2a284a8822c5e9688cbbd4ac09107ef2af4c2cccc5b8b44af10",
+            "Research/omr/src/sheet2play_omr/phase2r_validation.py": "f8191718114af445f3d273f7251a2ba68f2dd433ff9c604780ead684e5789a33"
+          },
+          "input_sha256": "b368dd864dc235272728822a578551fbed619cce02265cc52043dea3051c57c8"
+        },
+        "source_input_identity_sha256": "45d0929784d0cc3c30d3615bcf3c5e49df9dc86dde1cab7aab712c7234ebfc0f"
+      },
+      "homr_page": {
+        "adapter_config": {
+          "adapter_id": "shipped_homr_direct",
+          "adapter_revision": "fdffc993b22fc2a284a8822c5e9688cbbd4ac09107ef2af4c2cccc5b8b44af10",
+          "candidate_id": "shipped_homr",
+          "checkpoint": "homr released ONNX checkpoints",
+          "checkpoint_revision": "homr-0.7.0.post38+457e7c6+pr146",
+          "input_granularity": "page or system image",
+          "native_format": "HOMR EncodedSymbol token stream",
+          "settings": {
+            "gpu": "force",
+            "normalization": "frozen-phase1"
+          },
+          "source_repository": "https://github.com/liebharc/homr",
+          "source_revision": "457e7c6518a10ba755db2e60883419e56c4d7369+pr146",
+          "supported_paths": [
+            "annotated_crop",
+            "complete_document"
+          ]
+        },
+        "adapter_config_sha256": "ebf2773246e5dc58d0d0ffbbcc18a388c3f17937b3de85cb087d16d67578198c",
+        "entry_identity_sha256": "d2aec3f5c25b1929b67f83880a64a99bea2d590d1df1012cb24ee1c78da72d03",
+        "entry_report": "Research/omr/reports/phase3/development-entry/homr_page-openscore-6211535-page-1-c624ddab6590.json",
+        "entry_report_sha256": "58df640fcda9b554de2716b0d31438ffd47c647b6a9ab079a21b3c07b716180e",
+        "source_input_identity": {
+          "adapter_config_sha256": "ebf2773246e5dc58d0d0ffbbcc18a388c3f17937b3de85cb087d16d67578198c",
+          "candidate": "homr_page",
+          "files": {
+            "Bridge/homr_gpu.py": "e0b4c4f95031713c73507d7bc14bee00a10355746a107e49cbdf8999704a4f97",
+            "Bridge/musicxml_normalizer.py": "2e56906636a7164784492ac47c0f0fd628e4f15e172390b58e2792160f819c8e",
+            "Research/omr/src/sheet2play_omr/adapter_contract.py": "90ad6b27097654907a5ed2bccd1ba8604de2969d81abc58de05468d3a3f71cc9",
+            "Research/omr/src/sheet2play_omr/phase2_adapters.py": "fdffc993b22fc2a284a8822c5e9688cbbd4ac09107ef2af4c2cccc5b8b44af10",
+            "Research/omr/src/sheet2play_omr/phase2r_validation.py": "f8191718114af445f3d273f7251a2ba68f2dd433ff9c604780ead684e5789a33"
+          },
+          "input_sha256": "b368dd864dc235272728822a578551fbed619cce02265cc52043dea3051c57c8"
+        },
+        "source_input_identity_sha256": "c624ddab6590847d7a6f54a1034bee12ffcb9bf1810857b3dda2bdb88072f967"
+      },
+      "zeus_page": {
+        "adapter_config": {
+          "adapter_id": "zeus_app_integration",
+          "adapter_revision": "fdffc993b22fc2a284a8822c5e9688cbbd4ac09107ef2af4c2cccc5b8b44af10",
+          "candidate_id": "zeus",
+          "checkpoint": "zeus-olimpic-1.0-2024-02-12.model",
+          "checkpoint_revision": "2024-02-12",
+          "input_granularity": "document with HOMR-detected systems",
+          "native_format": "LMX",
+          "settings": {
+            "normalization": "frozen-phase1",
+            "preprocessing": "app-width-bucketing",
+            "runner_sha256": "592e63d2c4828be954257073275e4665c22f2a583bf1c81d06b585711e4021f4",
+            "system_detector_sha256": "b1aac6372d1cbce32dc8e00a7e6c6d809cb9d6eb1fb82ad382cfb42a8b2e6c86"
+          },
+          "source_repository": "https://github.com/ufal/olimpic-icdar24",
+          "source_revision": "df0d842596ccd199882ff958e628d59327ca6cba",
+          "supported_paths": [
+            "complete_document"
+          ]
+        },
+        "adapter_config_sha256": "7373b663fc5ac2e69ded8d5b3fb2b8e5dd9ccbfc13fc75f05eec1dcd322340bb",
+        "entry_identity_sha256": "65aebb6fe7b0b937be01db47da5786ae52867f3360ca8e92db89087744570dfb",
+        "entry_report": "Research/omr/reports/phase3/development-entry/zeus_page-openscore-6211535-page-1-9c064b3ed7dc.json",
+        "entry_report_sha256": "346e4de1e1d3f971b82bee7173313529347c79a214aa0f0dd38f938fca5affc0",
+        "source_input_identity": {
+          "adapter_config_sha256": "7373b663fc5ac2e69ded8d5b3fb2b8e5dd9ccbfc13fc75f05eec1dcd322340bb",
+          "candidate": "zeus_page",
+          "files": {
+            "Bridge/detect_systems.py": "b1aac6372d1cbce32dc8e00a7e6c6d809cb9d6eb1fb82ad382cfb42a8b2e6c86",
+            "Bridge/musicxml_normalizer.py": "2e56906636a7164784492ac47c0f0fd628e4f15e172390b58e2792160f819c8e",
+            "Research/omr/phase2_zeus_runner.py": "592e63d2c4828be954257073275e4665c22f2a583bf1c81d06b585711e4021f4",
+            "Research/omr/src/sheet2play_omr/adapter_contract.py": "90ad6b27097654907a5ed2bccd1ba8604de2969d81abc58de05468d3a3f71cc9",
+            "Research/omr/src/sheet2play_omr/phase2_adapters.py": "fdffc993b22fc2a284a8822c5e9688cbbd4ac09107ef2af4c2cccc5b8b44af10",
+            "Research/omr/src/sheet2play_omr/phase2r_validation.py": "f8191718114af445f3d273f7251a2ba68f2dd433ff9c604780ead684e5789a33",
+            "Research/omr/zeus/infer_batch.py": "6c95239dc9f8a0dbd44f93ea87d5528575d9d3d715d891ff477eef97423cc53c",
+            "Research/omr/zeus/weights/zeus-olimpic-1.0-2024-02-12.model/options.json": "5147216bddbf4530c75c5a72365d8b4482f0985bab52f071e0cf60cb94e40cf5",
+            "Research/omr/zeus/weights/zeus-olimpic-1.0-2024-02-12.model/tags.txt": "3daf7ece0f23dbcffd96a38ad392382feadb1dd9ad7e578614e30adc787e2de2",
+            "Research/omr/zeus/weights/zeus-olimpic-1.0-2024-02-12.model/weights.h5": "6f8808cc00e62ac643a1889eca087a1808f5a7d95366d95a5400f68b7802947d"
+          },
+          "input_sha256": "b368dd864dc235272728822a578551fbed619cce02265cc52043dea3051c57c8"
+        },
+        "source_input_identity_sha256": "9c064b3ed7dcf47c119f51644b824ad52a415557d9335f6fc3c7c8cceb23dd07"
+      },
+      "zeus_system": {
+        "adapter_config": {
+          "adapter_id": "zeus_upstream",
+          "adapter_revision": "fdffc993b22fc2a284a8822c5e9688cbbd4ac09107ef2af4c2cccc5b8b44af10",
+          "candidate_id": "zeus",
+          "checkpoint": "zeus-olimpic-1.0-2024-02-12.model",
+          "checkpoint_revision": "2024-02-12",
+          "input_granularity": "system image",
+          "native_format": "LMX",
+          "settings": {
+            "normalization": "frozen-phase1",
+            "preprocessing": "upstream",
+            "runner_sha256": "592e63d2c4828be954257073275e4665c22f2a583bf1c81d06b585711e4021f4",
+            "system_detector_sha256": null
+          },
+          "source_repository": "https://github.com/ufal/olimpic-icdar24",
+          "source_revision": "df0d842596ccd199882ff958e628d59327ca6cba",
+          "supported_paths": [
+            "annotated_crop"
+          ]
+        },
+        "adapter_config_sha256": "f1abe5752acf0798ba742a9da259fe40673271aa2643e1a325dfd1accca0689c",
+        "entry_identity_sha256": "0c8c1d2eb29c0c1b8ec0350177bc9b3dac34f88031e3662756254266ad482641",
+        "entry_report": "Research/omr/reports/phase3/development-entry/zeus_system-generated-baseline-piano-001-6f7a23d48dc7.json",
+        "entry_report_sha256": "71e163b716988153b323f738c62aed177658986740e49172fe32484925007436",
+        "source_input_identity": {
+          "adapter_config_sha256": "f1abe5752acf0798ba742a9da259fe40673271aa2643e1a325dfd1accca0689c",
+          "candidate": "zeus_system",
+          "files": {
+            "Bridge/detect_systems.py": "b1aac6372d1cbce32dc8e00a7e6c6d809cb9d6eb1fb82ad382cfb42a8b2e6c86",
+            "Bridge/musicxml_normalizer.py": "2e56906636a7164784492ac47c0f0fd628e4f15e172390b58e2792160f819c8e",
+            "Research/omr/phase2_zeus_runner.py": "592e63d2c4828be954257073275e4665c22f2a583bf1c81d06b585711e4021f4",
+            "Research/omr/src/sheet2play_omr/adapter_contract.py": "90ad6b27097654907a5ed2bccd1ba8604de2969d81abc58de05468d3a3f71cc9",
+            "Research/omr/src/sheet2play_omr/phase2_adapters.py": "fdffc993b22fc2a284a8822c5e9688cbbd4ac09107ef2af4c2cccc5b8b44af10",
+            "Research/omr/src/sheet2play_omr/phase2r_validation.py": "f8191718114af445f3d273f7251a2ba68f2dd433ff9c604780ead684e5789a33",
+            "Research/omr/zeus/infer_batch.py": "6c95239dc9f8a0dbd44f93ea87d5528575d9d3d715d891ff477eef97423cc53c",
+            "Research/omr/zeus/weights/zeus-olimpic-1.0-2024-02-12.model/options.json": "5147216bddbf4530c75c5a72365d8b4482f0985bab52f071e0cf60cb94e40cf5",
+            "Research/omr/zeus/weights/zeus-olimpic-1.0-2024-02-12.model/tags.txt": "3daf7ece0f23dbcffd96a38ad392382feadb1dd9ad7e578614e30adc787e2de2",
+            "Research/omr/zeus/weights/zeus-olimpic-1.0-2024-02-12.model/weights.h5": "6f8808cc00e62ac643a1889eca087a1808f5a7d95366d95a5400f68b7802947d"
+          },
+          "input_sha256": "2cbe267a15f2f5791943523413ce6c3d25dee32e283f43af156c7eeee5f08805"
+        },
+        "source_input_identity_sha256": "6f7a23d48dc7839e4a39e3c314376ab0c140c1d986f4824c86b964314b1b5537"
+      }
+    },
+    "reference_audit": {
+      "eligible_count": 402,
+      "identity": {
+        "builder_sha256": "6e027f2195f355e0ea0ff4c09dbadb2bfc87049a05fa3131c85089d0d2cc481f",
+        "manifest_sha256": "f73419cb60019d0bfbaf7ce0efaf2fdea66d89648eec3d2552c606f2172d9a81",
+        "metadata_sha256": "3a1f727011fb6a468dbdaa45052f4b35e7282c4002fe4e395d98d369a7101c52",
+        "normalizer_sha256": "2e56906636a7164784492ac47c0f0fd628e4f15e172390b58e2792160f819c8e",
+        "parser_sha256": "0bea9cdb67f60110ff53305904909ddb56de9d965958b344aa824244ef900c8d"
+      },
+      "missing_voice_tag_warning_count": 0,
+      "path": "Research/omr/reports/phase3/reference-audit-smb-pianoform-full-6e027f2195f3.json",
+      "pedal_import_warning_count": 488,
+      "sha256": "635ffae17143bc93c6fc43171bf0283f605c96b533a4f9f1dfec6a90ed31a89d",
+      "valid_count": 402,
+      "warning_interpretation": "Pedal marks and missing voice tags may affect notation-detail or voice diagnostics; exact pitch/onset/duration raw note timing was separately verified"
+    },
+    "research_source_sha256": {
+      "phase3_bootstrap.py": "20a01e3ee00a47e1ddb70ba2371cb046ca5acecfc28855cdb945503209065a0c",
+      "phase3_freeze.py": "e684af6d019caeca87ca58b84e81ba4215f1d01859186a5557b20b5b447d3110",
+      "phase3_infer.py": "67b4bbc86a5709bdb87ced8cb6291a4cd9006a4e21f45c1b5fd19062637741a8",
+      "phase3_olimpic.py": "5382d5ffb4b37eb721c7c843cc7fe2a20611b194535ec6d7199edba1b7a6205b",
+      "phase3_private_diagnostic.py": "36a6e0640f364f7c4cfd614052b1e603d0e7a0fb3cd9ad0dbe1d718f52148198",
+      "phase3_private_preflight.py": "4524dec41633cea73bd2e652d123b41903e782cbdfa94954ba058d3a9e2b793a",
+      "phase3_reference_audit.py": "24fbec470c2cb8cef978ee5a4a9d43df1f4a97ba38019ff8c12f3e19bea71f40",
+      "phase3_score.py": "6b7afe67dfb2e86b0b76a666397cab3e166162bec9abbb8b6587e0a47395fb39",
+      "phase3_sequence.py": "ffc6e32d5800af2f29e6f01b7c1e9814105926b7d8d59b858404073739abfa94",
+      "src/sheet2play_omr/metrics.py": "f708a8f15d56d9c38f534d7dde2895858057bce3a22bbec6b6450a1901638765",
+      "src/sheet2play_omr/omr_ned.py": "b3753c37d9d8fa30908a078dc06c16987c67d5b7ef9cd516922a5fc44fa36713",
+      "src/sheet2play_omr/phase3_references.py": "6e027f2195f355e0ea0ff4c09dbadb2bfc87049a05fa3131c85089d0d2cc481f",
+      "src/sheet2play_omr/phase3_scoring.py": "b5f4b33484454e7e0e1affb008a0ae47d791af127f283cc76ac09b8da31c2e97"
+    },
+    "runtime": {
+      "audiveris": {
+        "application_jars": {
+          "file_count": 55,
+          "files": [
+            {
+              "path": "angus-activation-2.0.2.jar",
+              "sha256": "6dd3bcffc22bce83b07376a0e2e094e4964a3195d4118fb43e380ef35436cc1e"
+            },
+            {
+              "path": "apfloat-1.10.1.jar",
+              "sha256": "a1480f560f37355f6c0458c523bda46658da4cd3e23cc64e309fedcd7b0782ba"
+            },
+            {
+              "path": "args4j-2.33.jar",
+              "sha256": "91ddeaba0b24adce72291c618c00bbdce1c884755f6c4dba9c5c46e871c69ed6"
+            },
+            {
+              "path": "audiveris.jar",
+              "sha256": "47d8e482d6566ebb64d5e8bd121f6a381ca8cef27521000b861885a19413b428"
+            },
+            {
+              "path": "bsaf-1.9.2.jar",
+              "sha256": "45572e5b7cac67719be39010fab0750b5eb7cc9759f9df473e6366131516f819"
+            },
+            {
+              "path": "commonmark-0.27.0.jar",
+              "sha256": "7a5a1a6e848e729fd7f85309f39e777af949848a914e559caeb7f64baef6e63e"
+            },
+            {
+              "path": "commons-io-2.16.1.jar",
+              "sha256": "f41f7baacd716896447ace9758621f62c1c6b0a91d89acee488da26fc477c84f"
+            },
+            {
+              "path": "commons-lang3-3.18.0.jar",
+              "sha256": "4eeeae8d20c078abb64b015ec158add383ac581571cddc45c68f0c9ae0230720"
+            },
+            {
+              "path": "commons-logging-1.3.5.jar",
+              "sha256": "6d7a744e4027649fbb50895df9497d109f98c766a637062fe8d2eabbb3140ba4"
+            },
+            {
+              "path": "eventbus-1.4.jar",
+              "sha256": "63ecd62d3e72447ddd0ed688c8dbf79d4ad96fafeaad5cc9836da9a91d4298fe"
+            },
+            {
+              "path": "fontbox-3.0.6.jar",
+              "sha256": "7a09fcb0c630e471ac26b347ca45a0d8aef5a969cc59aebff1c57fe92293e2b1"
+            },
+            {
+              "path": "github-api-1.330.jar",
+              "sha256": "740cbe21fddcd88b3baa9e006e50e5759db160822b12e93154f79013cf6d1e31"
+            },
+            {
+              "path": "ij-1.54p.jar",
+              "sha256": "2e1a09961dfb41cee66ddc821b2577a41a072566ce45a49bae69267099741e20"
+            },
+            {
+              "path": "istack-commons-runtime-4.1.2.jar",
+              "sha256": "7fd6792361f4dd00f8c56af4a20cecc0066deea4a8f3dec38348af23fc2296ee"
+            },
+            {
+              "path": "itextpdf-5.5.13.2.jar",
+              "sha256": "c355cddab40c481c842e17b603c01f44c0541bbb7bad2647dd3c9d69d76889e6"
+            },
+            {
+              "path": "jackson-annotations-2.20.jar",
+              "sha256": "959a2ffb2d591436f51f183c6a521fc89347912f711bf0cae008cdf045d95319"
+            },
+            {
+              "path": "jackson-core-2.20.0.jar",
+              "sha256": "bc0cf46075877201f8406ee7de2741ae7df6c066f5f0457bd80632a718c06e72"
+            },
+            {
+              "path": "jackson-databind-2.20.0.jar",
+              "sha256": "a70e146a6bf2cba4f9cd367169787f50adcfbb57122bc2e9c8390cd0b397ac30"
+            },
+            {
+              "path": "jai-core-1.1.3.jar",
+              "sha256": "8b696cf067533545f44c2f68339e24ab1a2669153ed2081aa5be8749f4d592bf"
+            },
+            {
+              "path": "jai-imageio-core-1.4.0.jar",
+              "sha256": "8ad3c68e9efffb10ac87ff8bc589adf64b04a729c5194c079efd0643607fd72a"
+            },
+            {
+              "path": "jai-imageio-jpeg2000-1.4.0.jar",
+              "sha256": "07fb6e3a3040122b846c5e52520033175c3251e2ec8830df82f87cb21f388bb1"
+            },
+            {
+              "path": "jakarta.activation-api-2.1.3.jar",
+              "sha256": "01b176d718a169263e78290691fc479977186bcc6b333487325084d6586f4627"
+            },
+            {
+              "path": "jakarta.xml.bind-api-4.0.2.jar",
+              "sha256": "0d6bcfe47763e85047acf7c398336dc84ff85ebcad0a7cb6f3b9d3e981245406"
+            },
+            {
+              "path": "jama-1.0.3.jar",
+              "sha256": "c7325ee29be1aac1287ddac690f73671f1cd911ca9eca7c619990e86310556fd"
+            },
+            {
+              "path": "javacpp-1.5.13.jar",
+              "sha256": "077f27d663cc928adce43e912a90ec06f97f92f120ca02d414735ae0fb1c743c"
+            },
+            {
+              "path": "javassist-3.28.0-GA.jar",
+              "sha256": "57d0a9e9286f82f4eaa851125186997f811befce0e2060ff0a15a77f5a9dd9a7"
+            },
+            {
+              "path": "javax.activation-api-1.2.0.jar",
+              "sha256": "43fdef0b5b6ceb31b0424b208b930c74ab58fac2ceeb7b3f6fd3aeb8b5ca4393"
+            },
+            {
+              "path": "jaxb-api-2.3.1.jar",
+              "sha256": "88b955a0df57880a26a74708bc34f74dcaf8ebf4e78843a28b50eae945732b06"
+            },
+            {
+              "path": "jaxb-core-2.3.0.1.jar",
+              "sha256": "d2ecba63615f317a11fb55c6468f6a9480f6411c10951d9881bafd9a9a8d0467"
+            },
+            {
+              "path": "jaxb-core-4.0.5.jar",
+              "sha256": "ad3fd9bf00de3eda9859f70b6cfb011e2fe9904804e16a2665092888ece0fdca"
+            },
+            {
+              "path": "jaxb-impl-2.3.1.jar",
+              "sha256": "e6c9e0f1830fd5f7c30c25ecf5e2046c5668b06d304add89d2f027d5072297d0"
+            },
+            {
+              "path": "jaxb-runtime-4.0.5.jar",
+              "sha256": "485d8940e76373a7f300815ea5504bf5b726c234425ad30971019d133124cca4"
+            },
+            {
+              "path": "jbig2-imageio-3.0.4.jar",
+              "sha256": "29cb2951622f10acf61fd0656c4e6fa5562194a9095f7a1d26aa426e2f6b17eb"
+            },
+            {
+              "path": "jcip-annotations-1.0.jar",
+              "sha256": "be5805392060c71474bf6c9a67a099471274d30b83eef84bfc4e0889a4f1dcc0"
+            },
+            {
+              "path": "jfreechart-1.5.6.jar",
+              "sha256": "be7ae6310ca005ac98eceb74fa514af88cad098c808845786f762ca08a5b4bb3"
+            },
+            {
+              "path": "jgoodies-common-1.8.1.jar",
+              "sha256": "ddca10c16e1dc7a1b399c14580f0aae23014851e57d224cb96c260e6d649d2ad"
+            },
+            {
+              "path": "jgoodies-forms-1.9.0.jar",
+              "sha256": "755c79501abd806f5aa83257dc88b2ca5923e6965f3cbfe873116c7c9768210a"
+            },
+            {
+              "path": "jgoodies-looks-2.7.0.jar",
+              "sha256": "d7dfb4d041c28eae836aa0910c91c1b95b29c28e833200d2ef6d311fa66b4c6d"
+            },
+            {
+              "path": "jgrapht-core-1.5.2.jar",
+              "sha256": "dfa596e9f0d0838f1b5e81dd0cd60e3a76c2c290ac25a0a029ffde58cf5e4c14"
+            },
+            {
+              "path": "jheaps-0.14.jar",
+              "sha256": "49a9898da3758659388f1333c53ccadb6fbd142a7d18aa7b1a33577090684279"
+            },
+            {
+              "path": "jna-5.14.0.jar",
+              "sha256": "34ed1e1f27fa896bca50dbc4e99cf3732967cec387a7a0d5e3486c09673fe8c6"
+            },
+            {
+              "path": "jsr305-3.0.2.jar",
+              "sha256": "766ad2a0783f2687962c8ad74ceecc38a28b9f72a2d085ee438b7813e928d0c7"
+            },
+            {
+              "path": "leptonica-1.87.0-1.5.13-windows-x86_64.jar",
+              "sha256": "4fb35ee744b02c259a60c0836ff0989e769acfc73457c8feb3a551335baf19b6"
+            },
+            {
+              "path": "leptonica-1.87.0-1.5.13.jar",
+              "sha256": "aef3a16dde6f2b94fafa3fd1263bac10f5ef85cdf5cf1fe490a3158940384884"
+            },
+            {
+              "path": "logback-classic-1.4.14.jar",
+              "sha256": "8e832f7263ca606ae36dabb2d8b24c2f43d82cf634e81dad9d1640fa6ee3c596"
+            },
+            {
+              "path": "logback-core-1.4.14.jar",
+              "sha256": "f8c2f05f42530b1852739507c1792f0080167850ed8f396444c6913d6617a293"
+            },
+            {
+              "path": "org.apache.commons.io-2.4.jar",
+              "sha256": "3afaf44a818cefb65e104597587ac6147110bc9625a22c68de6659a5a0ab84fc"
+            },
+            {
+              "path": "pdfbox-3.0.6.jar",
+              "sha256": "87b9122b78f521fef83e2806d98e7e483e049f087ea6267b72d319f672019101"
+            },
+            {
+              "path": "pdfbox-io-3.0.6.jar",
+              "sha256": "191eac63756ff0dbc841e397e97cfa0cbdfd2515972d60ef5639a0aa884a7e47"
+            },
+            {
+              "path": "proxymusic-4.0.3.jar",
+              "sha256": "933fe64e7136b0d98a186b61fc139fc9e1ee98b64662b60c9cf9af37b5f8f107"
+            },
+            {
+              "path": "reflections-0.10.2.jar",
+              "sha256": "938a2d08fe54050d7610b944d8ddc3a09355710d9e6be0aac838dbc04e9a2825"
+            },
+            {
+              "path": "slf4j-api-2.0.17.jar",
+              "sha256": "7b751d952061954d5abfed7181c1f645d336091b679891591d63329c622eb832"
+            },
+            {
+              "path": "tesseract-5.5.2-1.5.13-windows-x86_64.jar",
+              "sha256": "f4746470eff676936cdf8050338b077e3c125b24223b96da211b756217a71810"
+            },
+            {
+              "path": "tesseract-5.5.2-1.5.13.jar",
+              "sha256": "f57edd554a37c3432fa82830099a07f8eb78fa55468211253320d38e3fcb9ebd"
+            },
+            {
+              "path": "txw2-4.0.5.jar",
+              "sha256": "917355bc451481f30d043b24d123110517966af34383901773882810dca480e5"
+            }
+          ],
+          "root": "Research/omr/.runtime/phase2r/audiveris-extract/Audiveris/app",
+          "source_tree_sha256": "ef863b8141f90c7abcb1f7155422df9feeb075786d6c2d0023a21c80666b5d2a"
+        },
+        "executable": {
+          "bytes": 532992,
+          "expected_sha256": null,
+          "path": "Research/omr/.runtime/phase2r/audiveris-extract/Audiveris/Audiveris.exe",
+          "sha256": "06dbf3b4a5acd4dbbefcf9dfbcef43529ad6afde4ba9330cb856d849cd7fe172",
+          "status": "hashed"
+        },
+        "java": {
+          "bytes": 39424,
+          "expected_sha256": null,
+          "path": "Research/omr/.runtime/phase2r/audiveris-extract/Audiveris/runtime/bin/java.exe",
+          "sha256": "9648fcd95f72a93edeb3f76e2dcff55d297f7bf0b2c05db94f102c3c5a143b08",
+          "status": "hashed"
+        },
+        "version_evidence": {
+          "exit_status": 0,
+          "status": "verified",
+          "version_output": "Audiveris\n- Version:      5.11.0\n- Commit:       9e1e55cd2746037d059345881c53e6a6754bffbd\n- OS:           Windows 11 10.0\n- Architecture: amd64\n- Java VM:      OpenJDK 64-Bit Server VM (build 25.0.3+9-LTS, mixed mode)\n- OCR Engine:   Tesseract OCR, version 5.5.2"
+        },
+        "version_evidence_report_sha256": "5704beae46871747edc5ab1def0ef4bd435949b5f13fbc72fc42a28f3ebde6a8"
+      },
+      "homr": {
+        "bridge_patch": {
+          "bytes": 3936,
+          "expected_sha256": null,
+          "path": "Bridge/homr_gpu.py",
+          "sha256": "e0b4c4f95031713c73507d7bc14bee00a10355746a107e49cbdf8999704a4f97",
+          "status": "hashed"
+        },
+        "local_source": {
+          "file_count": 40,
+          "files": [
+            {
+              "path": "__init__.py",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            {
+              "path": "autocrop.py",
+              "sha256": "8d898b51d4a892052eea695c8b95d7262ed1c4b5180ff0b99cb2c53a3ddf12ce"
+            },
+            {
+              "path": "bar_line_detection.py",
+              "sha256": "0fd0ec988d240842a72348770769ef1a2c3a47a95da8996017aed04455589a6d"
+            },
+            {
+              "path": "bounding_boxes.py",
+              "sha256": "cf5c27212f3b9763dd460cbefe99fd0a66e8f7bf53ea50d02d8849482a02a51f"
+            },
+            {
+              "path": "brace_dot_detection.py",
+              "sha256": "ab5aade1a8653b3a44b300217404618f2bd8319d34173e7cd4dc26d66d45a7b7"
+            },
+            {
+              "path": "circle_of_fifths.py",
+              "sha256": "3974ab21de851225a3f23f27868165c9b9ea9730984c3589ef180f1162056ae9"
+            },
+            {
+              "path": "color_adjust.py",
+              "sha256": "01d971bded1397042bfa76ab9d691e6a3e6bf9bb4283f9d1dab382b0088d96fc"
+            },
+            {
+              "path": "constants.py",
+              "sha256": "98d7114ec0509575e2b61ede66d7f42e8c0a90eb25aaa82ab7dd0e92e10fefa0"
+            },
+            {
+              "path": "debug.py",
+              "sha256": "dc9e208c605389a967b58a4edee955bfa8ab559d2ac66cd3f677877c8c42b5b3"
+            },
+            {
+              "path": "download_utils.py",
+              "sha256": "a1c73e044e093095212bab6905213db4427e3980fbcc957a01013c9cdcee3bdb"
+            },
+            {
+              "path": "find_peaks.py",
+              "sha256": "61443dc0c58ef8a2dadc659ed46cb1547ef9c2c23fa46ea9a7631de2aee75180"
+            },
+            {
+              "path": "image_utils.py",
+              "sha256": "b293ffad901fee69e11fcee672f2fc7aa61a44216143b95b8a916655400eea06"
+            },
+            {
+              "path": "main.py",
+              "sha256": "11994ea9448ddc03c8cfe17165ec1b3093ed223e8b86dc5aa63934c6a8b492b8"
+            },
+            {
+              "path": "model.py",
+              "sha256": "c46a69c711d9eb8b1bf9d00f7046031ecd73a7788e8caaaa3c53ee08fe16f59e"
+            },
+            {
+              "path": "music_xml_generator.py",
+              "sha256": "c01415ed218a29326e207b9c21c9ff46fa6b2403c02e90f0b8e73399ac7afd83"
+            },
+            {
+              "path": "noise_filtering.py",
+              "sha256": "0752bba4acca214407408b8f4e4f0540893e07a288f1272f3bfbd4395eca724b"
+            },
+            {
+              "path": "note_detection.py",
+              "sha256": "7dc0b3f8038c47d5b4f263ae16b241ac358e12e2d13055aaa6593aaf0be1014b"
+            },
+            {
+              "path": "onnx_providers.py",
+              "sha256": "fc677bd0ec701fd4d09f85d46121575647a28c6e05020a2be10d014e0e374b25"
+            },
+            {
+              "path": "pdf_utils.py",
+              "sha256": "9a05d6f81979567bf9ee9939931c260e4ff275118132d11aeeea8711536bf3e3"
+            },
+            {
+              "path": "relieur.py",
+              "sha256": "a29ac70c7b23ff2dab8f2cff14d33663597597401e98be9cd0b6db2d01f08fc8"
+            },
+            {
+              "path": "resize.py",
+              "sha256": "b4e40105552a3a165f6fc1bf42e192455c842b5c7605165156538dd405c92b81"
+            },
+            {
+              "path": "segmentation/__init__.py",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            {
+              "path": "segmentation/config.py",
+              "sha256": "22dbb71d4e066f1ea03d1af526c57dc2014e2a04c37264b68cb4d7d919d3089c"
+            },
+            {
+              "path": "segmentation/inference_segnet.py",
+              "sha256": "80bf3354f292b323183534ed5517c5c2e67f1ec5c229291aa125184666ba707c"
+            },
+            {
+              "path": "simple_logging.py",
+              "sha256": "0a289e6deb8d55e0bcd709f4651246a417efb744447a9340b3cd5eb5669271ed"
+            },
+            {
+              "path": "staff_detection.py",
+              "sha256": "5f0b0a4faff6275ca4a47e2f4a0a32e2c436321d2cf41fe2cd303747a032589e"
+            },
+            {
+              "path": "staff_dewarping.py",
+              "sha256": "6fc9efd2549343712f94141997c8fa4e522c27a0c93ee5e6fef921bc29c6e31c"
+            },
+            {
+              "path": "staff_parsing.py",
+              "sha256": "fe35057fc723bbcf2d6b7296490efa1d0f29fccc0199d20019eb882fbf39f850"
+            },
+            {
+              "path": "staff_parsing_tromr.py",
+              "sha256": "bf4664ff0a32378fd841bd2af915e5e00a470daadaca8d44246450ea896fd109"
+            },
+            {
+              "path": "staff_position_save_load.py",
+              "sha256": "63c671944f79c20727ebcb37e20835604a0e3d7d31cabe8df6fb605514b3f69f"
+            },
+            {
+              "path": "staff_regions.py",
+              "sha256": "a77ab00fec757961ae8492f6f5f9b5bc0a26b883c585703a28588200bc02502e"
+            },
+            {
+              "path": "title_detection.py",
+              "sha256": "086ca3f1117654f1897b0849d67fa4ebe1cee5dfa7a526318f42c8f92a02642c"
+            },
+            {
+              "path": "transformer/__init__.py",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            {
+              "path": "transformer/configs.py",
+              "sha256": "b9dbe459f64dfd3a993cfbf620cb18a63d05d5d1062ff86705cbe7d3057cd629"
+            },
+            {
+              "path": "transformer/decoder_inference.py",
+              "sha256": "2a2fac58915bd63059052e2f91799f1008fb9a56af136e1e8fba137338b199d3"
+            },
+            {
+              "path": "transformer/encoder_inference.py",
+              "sha256": "d7248e7f2271849f22addf9c14ed87bc84eec6471a2917d98376c5cc27e092cd"
+            },
+            {
+              "path": "transformer/staff2score.py",
+              "sha256": "5c440f9547c2f29883a9a6eaa67dbcde940acb8f580743a28b9406f50c254fc8"
+            },
+            {
+              "path": "transformer/utils.py",
+              "sha256": "e5b8a54c585b190562d7848381a42c740b86b626c3987f5715485ee15917158f"
+            },
+            {
+              "path": "transformer/vocabulary.py",
+              "sha256": "48b39832a6882dc73b83b80df44b3b79d7d88188d02ff4808ff536605edb0693"
+            },
+            {
+              "path": "type_definitions.py",
+              "sha256": "ef479171ac083ce2ed8e4945099f281571c932a51548ba466a340e0e2d8b263e"
+            }
+          ],
+          "root": "Bridge/.venv-homr-gpu/Lib/site-packages/homr",
+          "source_tree_sha256": "f038ae83d0dac572e3abaa6b9a6077b39c2ff3cb55fb8b6bd495b0ae7208c02a"
+        },
+        "package_source": {
+          "url": "https://github.com/liebharc/homr.git",
+          "vcs_info": {
+            "commit_id": "457e7c6518a10ba755db2e60883419e56c4d7369",
+            "requested_revision": "457e7c6518a10ba755db2e60883419e56c4d7369",
+            "vcs": "git"
+          }
+        },
+        "source_revision_verified": true,
+        "tokenizer_count": 4,
+        "tokenizers": [
+          {
+            "bytes": 331,
+            "expected_sha256": null,
+            "path": "Bridge/.venv-homr-gpu/Lib/site-packages/homr/transformer/tokenizer_lift.json",
+            "sha256": "5ab78e27bb6f296fc43ff9b64f87abc959b16984440b1523823b10ddd44289da",
+            "status": "hashed"
+          },
+          {
+            "bytes": 275,
+            "expected_sha256": null,
+            "path": "Bridge/.venv-homr-gpu/Lib/site-packages/homr/transformer/tokenizer_note.json",
+            "sha256": "43df5138227acea24f7b4bf48407ae0dda31c518f9c6efe5ccbade0775debb92",
+            "status": "hashed"
+          },
+          {
+            "bytes": 1581,
+            "expected_sha256": null,
+            "path": "Bridge/.venv-homr-gpu/Lib/site-packages/homr/transformer/tokenizer_pitch.json",
+            "sha256": "d6ff2edecbbd9d6ed8256fc09c1a907cbf58215e337582e630b2987a800837c7",
+            "status": "hashed"
+          },
+          {
+            "bytes": 2556,
+            "expected_sha256": null,
+            "path": "Bridge/.venv-homr-gpu/Lib/site-packages/homr/transformer/tokenizer_rhythm.json",
+            "sha256": "3f041e7b711fba5651b7b83f745404569ddeb5e101a7e9aa4edb232cd3c59926",
+            "status": "hashed"
+          }
+        ],
+        "weight_count": 5,
+        "weights": [
+          {
+            "bytes": 28667207,
+            "expected_sha256": null,
+            "path": "Bridge/.venv-homr-gpu/Lib/site-packages/homr/segmentation/segnet_308-3296ccd40960f90ca6ab9c035cca945675d30a0f_fp16.onnx",
+            "sha256": "60f495496cb41473c0521d0811d8f44b9d5cff892d287974a8aebb3eaee2fa83",
+            "status": "hashed"
+          },
+          {
+            "bytes": 93946388,
+            "expected_sha256": null,
+            "path": "Bridge/.venv-homr-gpu/Lib/site-packages/homr/transformer/decoder_pytorch_model_396-f6feedb42ff90087d898b0941a55d040fa6b2903_fp16.onnx",
+            "sha256": "5f69d7552f795e7515540db7a96ee1164bb9f70d140d7135a46e0fe872aaba92",
+            "status": "hashed"
+          },
+          {
+            "bytes": 93962788,
+            "expected_sha256": null,
+            "path": "Bridge/.venv-homr-gpu/Lib/site-packages/homr/transformer/decoder_pytorch_model_426-b6fd20809a8dcaf10dfd39a4ca4f64c6f056e644_fp16.onnx",
+            "sha256": "58d55eebe22788ce98f0fc7730480a79c9f56534db064e8d32b1d5fe2579904a",
+            "status": "hashed"
+          },
+          {
+            "bytes": 26466256,
+            "expected_sha256": null,
+            "path": "Bridge/.venv-homr-gpu/Lib/site-packages/homr/transformer/encoder_pytorch_model_396-f6feedb42ff90087d898b0941a55d040fa6b2903_fp16.onnx",
+            "sha256": "9db62d5a6a13c8df2df321af3bcf72c7f81a95d4f876d4f0c202b28f8658087e",
+            "status": "hashed"
+          },
+          {
+            "bytes": 26466256,
+            "expected_sha256": null,
+            "path": "Bridge/.venv-homr-gpu/Lib/site-packages/homr/transformer/encoder_pytorch_model_426-b6fd20809a8dcaf10dfd39a4ca4f64c6f056e644_fp16.onnx",
+            "sha256": "cd2da3ddec91af046d274506947f01da079c4ec5908ba0dd4c0c5985f780c82a",
+            "status": "hashed"
+          }
+        ]
+      },
+      "homr_python": {
+        "bytes": 274712,
+        "expected_sha256": null,
+        "path": "Bridge/.venv-homr-gpu/Scripts/python.exe",
+        "sha256": "21bb438c0d4a6f1f164b9a646f6ee000340185e5871180aec06db8d3f07c0082",
+        "status": "hashed"
+      },
+      "python_distributions": {
+        "homr": {
+          "antlr4-python3-runtime": "4.9.3",
+          "charset-normalizer": "3.4.9",
+          "colorama": "0.4.6",
+          "colorlog": "6.12.0",
+          "flatbuffers": "25.12.19",
+          "homr": "0.7.0.post38+457e7c6",
+          "matplotlib": "3.11.1",
+          "mpmath": "1.3.0",
+          "music21": "10.5.0",
+          "musicxml": "1.4",
+          "numpy": "2.4.6",
+          "nvidia-cublas-cu12": "12.9.2.10",
+          "nvidia-cuda-nvrtc-cu12": "12.9.86",
+          "nvidia-cuda-runtime-cu12": "12.9.79",
+          "nvidia-cudnn-cu12": "9.25.1.1",
+          "nvidia-cufft-cu12": "11.4.1.4",
+          "nvidia-curand-cu12": "10.3.10.19",
+          "nvidia-nvjitlink-cu12": "12.9.86",
+          "omegaconf": "2.3.1",
+          "onnxruntime": "1.28.0",
+          "onnxruntime-gpu": "1.24.1",
+          "opencv-python-headless": "4.14.0.94",
+          "packaging": "26.3",
+          "pillow": "12.3.0",
+          "protobuf": "7.36.1",
+          "pyclipper": "1.4.0",
+          "pymupdf": "1.26.3",
+          "pypdfium2": "5.13.0",
+          "pyyaml": "6.0.3",
+          "rapidocr": "3.9.2",
+          "shapely": "2.1.2",
+          "sympy": "1.14.0",
+          "tqdm": "4.70.0",
+          "types-pillow": "10.2.0.20240822",
+          "typing-extensions": "4.16.0"
+        },
+        "research": {
+          "aiohappyeyeballs": "2.7.1",
+          "aiohttp": "3.14.3",
+          "aiosignal": "1.4.0",
+          "annotated-types": "0.8.0",
+          "antlr4-python3-runtime": "4.9.3",
+          "anyio": "4.14.2",
+          "attrs": "26.1.0",
+          "blobfile": "3.2.0",
+          "charset-normalizer": "3.4.3",
+          "colorama": "0.4.6",
+          "converter21": "4.0.1",
+          "datasets": "5.0.1",
+          "dill": "0.4.1",
+          "filelock": "3.29.0",
+          "frozenlist": "1.8.0",
+          "fsspec": "2026.4.0",
+          "h11": "0.16.0",
+          "hf-transfer": "0.1.9",
+          "httpcore": "1.0.9",
+          "httpx": "0.28.1",
+          "huggingface-hub": "0.35.0",
+          "imageio": "2.37.4",
+          "iniconfig": "2.3.0",
+          "jinja2": "3.1.6",
+          "kagglehub": "1.0.2",
+          "kagglesdk": "0.1.37",
+          "lazy-loader": "0.5",
+          "loguru": "0.7.3",
+          "lxml": "6.1.1",
+          "markupsafe": "3.0.3",
+          "matplotlib": "3.11.1",
+          "mpmath": "1.3.0",
+          "multidict": "6.7.1",
+          "multiprocess": "0.70.19",
+          "music21": "9.9.1",
+          "musicdiff": "5.2",
+          "networkx": "3.6.1",
+          "numpy": "2.2.6",
+          "omegaconf": "2.3.1",
+          "opencv-python": "5.0.0.93",
+          "packaging": "25.0",
+          "pandas": "3.0.5",
+          "pillow": "11.3.0",
+          "pluggy": "1.6.0",
+          "propcache": "0.5.2",
+          "psutil": "7.2.2",
+          "pyarrow": "25.0.1",
+          "pycryptodomex": "3.23.0",
+          "pydantic": "2.12.5",
+          "pydantic-core": "2.41.5",
+          "pygments": "2.20.0",
+          "pypdfium2": "4.30.0",
+          "pytest": "9.0.2",
+          "pyyaml": "6.0.3",
+          "regex": "2026.7.19",
+          "safetensors": "0.6.2",
+          "scikit-image": "0.26.0",
+          "scipy": "1.17.1",
+          "sentencepiece": "0.2.2",
+          "sheet2play-omr-research": "0.1.0",
+          "sympy": "1.14.0",
+          "tifffile": "2026.3.3",
+          "tiktoken": "0.13.0",
+          "timm": "1.0.28",
+          "tokenizers": "0.22.1",
+          "torch": "2.9.1+cu130",
+          "torchao": "0.15.0",
+          "torchdata": "0.11.0",
+          "torchtune": "0.6.1",
+          "torchvision": "0.24.1+cu130",
+          "tqdm": "4.70.0",
+          "transformers": "4.57.3",
+          "typing-extensions": "4.15.0",
+          "typing-inspection": "0.4.4",
+          "tzdata": "2026.3",
+          "win32-setctime": "1.2.0",
+          "xgrammar": "0.1.31",
+          "xxhash": "4.0.0",
+          "yarl": "1.24.5"
+        },
+        "zeus": {
+          "absl-py": "2.5.0",
+          "astunparse": "1.6.3",
+          "certifi": "2026.7.22",
+          "cffi": "2.1.1",
+          "chardet": "7.5.1",
+          "charset-normalizer": "3.5.0",
+          "contourpy": "1.3.2",
+          "cryptography": "50.0.0",
+          "cycler": "0.12.1",
+          "flatbuffers": "25.12.19",
+          "fonttools": "4.63.0",
+          "gast": "0.4.0",
+          "google-auth": "2.56.3",
+          "google-auth-oauthlib": "1.0.0",
+          "google-pasta": "0.2.0",
+          "grpcio": "1.74.0",
+          "h5py": "3.16.0",
+          "idna": "3.18",
+          "imageio": "2.37.4",
+          "jax": "0.4.30",
+          "jaxlib": "0.4.30",
+          "joblib": "1.5.3",
+          "jsonpickle": "4.1.2",
+          "keras": "2.12.0",
+          "kiwisolver": "1.5.0",
+          "lazy-loader": "0.5",
+          "levenshtein": "0.27.4",
+          "libclang": "18.1.1",
+          "markdown": "3.10.3",
+          "markupsafe": "3.0.3",
+          "matplotlib": "3.10.9",
+          "ml-dtypes": "0.5.4",
+          "more-itertools": "11.1.0",
+          "music21": "9.7.0",
+          "networkx": "3.6.1",
+          "numpy": "1.23.5",
+          "oauthlib": "3.3.1",
+          "opencv-python": "4.11.0.86",
+          "opt-einsum": "3.4.0",
+          "packaging": "26.3",
+          "pillow": "12.3.0",
+          "pip": "26.2.1",
+          "protobuf": "4.25.9",
+          "pyasn1": "0.6.4",
+          "pyasn1-modules": "0.4.2",
+          "pycparser": "3.0",
+          "pyparsing": "3.3.2",
+          "python-dateutil": "2.9.0.post0",
+          "pyyaml": "6.0.3",
+          "rapidfuzz": "3.14.5",
+          "requests": "2.34.2",
+          "requests-oauthlib": "2.0.0",
+          "scikit-image": "0.24.0",
+          "scipy": "1.15.3",
+          "setuptools": "65.5.0",
+          "six": "1.17.0",
+          "svgelements": "1.9.6",
+          "tensorboard": "2.12.3",
+          "tensorboard-data-server": "0.7.2",
+          "tensorflow": "2.12.1",
+          "tensorflow-estimator": "2.12.0",
+          "tensorflow-intel": "2.12.1",
+          "tensorflow-io-gcs-filesystem": "0.31.0",
+          "termcolor": "3.3.0",
+          "tifffile": "2026.3.3",
+          "typing-extensions": "4.5.0",
+          "urllib3": "2.7.0",
+          "webcolors": "25.10.0",
+          "werkzeug": "3.1.8",
+          "wheel": "0.48.0",
+          "wrapt": "1.14.2",
+          "zss": "1.2.0"
+        }
+      },
+      "research_python": {
+        "bytes": 274712,
+        "expected_sha256": null,
+        "path": "Research/omr/.venv/Scripts/python.exe",
+        "sha256": "21bb438c0d4a6f1f164b9a646f6ee000340185e5871180aec06db8d3f07c0082",
+        "status": "hashed"
+      },
+      "zeus": {
+        "checkpoint": {
+          "options": {
+            "bytes": 805,
+            "expected_sha256": null,
+            "path": "Research/omr/zeus/weights/zeus-olimpic-1.0-2024-02-12.model/options.json",
+            "sha256": "5147216bddbf4530c75c5a72365d8b4482f0985bab52f071e0cf60cb94e40cf5",
+            "status": "hashed"
+          },
+          "tags": {
+            "bytes": 1486,
+            "expected_sha256": null,
+            "path": "Research/omr/zeus/weights/zeus-olimpic-1.0-2024-02-12.model/tags.txt",
+            "sha256": "3daf7ece0f23dbcffd96a38ad392382feadb1dd9ad7e578614e30adc787e2de2",
+            "status": "hashed"
+          },
+          "weights": {
+            "bytes": 29241592,
+            "expected_sha256": null,
+            "path": "Research/omr/zeus/weights/zeus-olimpic-1.0-2024-02-12.model/weights.h5",
+            "sha256": "6f8808cc00e62ac643a1889eca087a1808f5a7d95366d95a5400f68b7802947d",
+            "status": "hashed"
+          }
+        },
+        "detector": {
+          "bytes": 1750,
+          "expected_sha256": null,
+          "path": "Bridge/detect_systems.py",
+          "sha256": "b1aac6372d1cbce32dc8e00a7e6c6d809cb9d6eb1fb82ad382cfb42a8b2e6c86",
+          "status": "hashed"
+        },
+        "local_source": {
+          "file_count": 4,
+          "files": [
+            {
+              "path": "benchmark_zeus.py",
+              "sha256": "9c65ce8d846d6779420c121f3465b862d21c4f5a90e651e15aa67bdd3c1437f9"
+            },
+            {
+              "path": "infer_batch.py",
+              "sha256": "6c95239dc9f8a0dbd44f93ea87d5528575d9d3d715d891ff477eef97423cc53c"
+            },
+            {
+              "path": "test_zeus.py",
+              "sha256": "b7b334669e8308043c30e18fdfde7edd557e0caca8f94f99b8a2f7ed64c23ce9"
+            },
+            {
+              "path": "zeus_runner.py",
+              "sha256": "e797067e768aa8757ddaed782c806e7f5e4781b560439b848049b8368ac799aa"
+            }
+          ],
+          "root": "Research/omr/zeus",
+          "source_tree_sha256": "8283fb91380f6177bb88e0b0ad2cdd1a21318cffac83109a055cb0011117e008"
+        },
+        "runner": {
+          "bytes": 5954,
+          "expected_sha256": null,
+          "path": "Research/omr/phase2_zeus_runner.py",
+          "sha256": "592e63d2c4828be954257073275e4665c22f2a583bf1c81d06b585711e4021f4",
+          "status": "hashed"
+        }
+      },
+      "zeus_python": {
+        "bytes": 274712,
+        "expected_sha256": null,
+        "path": "Research/omr/zeus/.venv/Scripts/python.exe",
+        "sha256": "21bb438c0d4a6f1f164b9a646f6ee000340185e5871180aec06db8d3f07c0082",
+        "status": "hashed"
+      }
+    },
+    "schema_version": 1,
+    "scope": {
+      "cloud_spend_usd": 0.0,
+      "frozen_inference_started": false,
+      "local_first": true,
+      "no_promotion": true,
+      "olimpic_annotated_systems": 100,
+      "page_and_system_tracks_separate": true,
+      "primary_pages": 402
+    },
+    "scoring_protocol_sha256": "0fdc0796ee68aa6920f2be20cab98e73b7565682a987eb9bedea6b2f210f809b",
+    "scoring_versions": {
+      "converter21": "4.0.1",
+      "music21": "9.9.1",
+      "musicdiff": "5.2"
+    },
+    "training_overlap": {
+      "audiveris": "unknown",
+      "shipped_homr": "unknown",
+      "zeus": "known OLiMPiC repertoire family; SMB overlap unknown"
+    }
+  },
+  "current_sha256": "89f385c8790bae261511054c098016e96dc31c13360ff6e8971a5fb53d78c58c",
+  "historical_equals_current": true,
+  "historical_freeze_sha256": "3fdd3d76aeab4188244795ea7b5eb310b2129d8d50131290297aeb1a32020633",
+  "schema_version": 1,
+  "scope": "current Phase4 runtime; no historical equality claim",
+  "sources": {
+    "phase4_execute.py": "96db8215c9f13865468425795894b7d105ddcb4c0621944291991e2a8a557ece",
+    "phase4_validation.py": "ac77b6aff61c8756f6f99186f250261220c75b3b3c9885f2072caca228702abf"
+  }
+}

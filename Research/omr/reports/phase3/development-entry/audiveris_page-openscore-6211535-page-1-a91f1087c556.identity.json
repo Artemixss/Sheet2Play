@@ -1,0 +1,12 @@
+{
+  "adapter_config_sha256": "935b7fd9e1486971a5ac719a743cfe279d6097c4a2a3aded99a294883e1d648c",
+  "candidate": "audiveris_page",
+  "files": {
+    "Bridge/musicxml_normalizer.py": "2e56906636a7164784492ac47c0f0fd628e4f15e172390b58e2792160f819c8e",
+    "Research/omr/.runtime/phase2r/audiveris-extract/Audiveris/Audiveris.exe": "06dbf3b4a5acd4dbbefcf9dfbcef43529ad6afde4ba9330cb856d849cd7fe172",
+    "Research/omr/src/sheet2play_omr/adapter_contract.py": "90ad6b27097654907a5ed2bccd1ba8604de2969d81abc58de05468d3a3f71cc9",
+    "Research/omr/src/sheet2play_omr/phase2_adapters.py": "9aed6425831c77cf53fc935e30138782757de2de1d2ef66f857254e1b95cfb9b",
+    "Research/omr/src/sheet2play_omr/phase2r_validation.py": "f8191718114af445f3d273f7251a2ba68f2dd433ff9c604780ead684e5789a33"
+  },
+  "input_sha256": "b368dd864dc235272728822a578551fbed619cce02265cc52043dea3051c57c8"
+}

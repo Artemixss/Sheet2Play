@@ -1,0 +1,142 @@
+{
+  "aligned_voice_accuracy": 0.9523809523809523,
+  "candidate": "homr-465-upstream",
+  "capture_status": "complete",
+  "comparison_identity": "91e7256cd902a6ea2adb9fb415e6847b2ba0b9e94fb03fe8f5f1570ae6544fb9",
+  "composition_group": "mozart/viennese1_1",
+  "configuration_identity": "9e619e47fd0317b6a7d1da5207985e1120acefc499a111649c5b7cdb1e339122",
+  "conversion_error": null,
+  "coverage": {
+    "chord_completeness": 0.9819819819819819,
+    "complete_chords": 109,
+    "per_staff": {
+      "0": {
+        "matched_notes": 139,
+        "predicted_notes": 139,
+        "recall": 0.43034055727554177,
+        "reference_notes": 323
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 176,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 111,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 100,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 178,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "2",
+        "count": 34,
+        "predicted": "2"
+      },
+      {
+        "actual": "3/2",
+        "count": 2,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "4",
+        "count": 1,
+        "predicted": "4"
+      }
+    ],
+    "unmatched_expected": 8,
+    "unmatched_predicted": 0
+  },
+  "elapsed_seconds": 13.608999999999924,
+  "extra_notes": 0,
+  "item_id": "d603d2fbf15fbc7b7b57",
+  "mean_offset_error": 0.012698412698412698,
+  "metrics": {
+    "aligned_voice_accuracy": 0.9523809523809523,
+    "coverage": {
+      "chord_completeness": 0.9819819819819819,
+      "complete_chords": 109,
+      "per_staff": {
+        "0": {
+          "matched_notes": 139,
+          "predicted_notes": 139,
+          "recall": 0.43034055727554177,
+          "reference_notes": 323
+        },
+        "1": {
+          "matched_notes": 0,
+          "predicted_notes": 176,
+          "recall": null,
+          "reference_notes": 0
+        }
+      },
+      "reference_chords": 111,
+      "staff_interpretation": "notation staff index; not validated hand labels"
+    },
+    "duration": {
+      "confusion": [
+        {
+          "actual": "1",
+          "count": 100,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/2",
+          "count": 178,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "2",
+          "count": 34,
+          "predicted": "2"
+        },
+        {
+          "actual": "3/2",
+          "count": 2,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "4",
+          "count": 1,
+          "predicted": "4"
+        }
+      ],
+      "unmatched_expected": 8,
+      "unmatched_predicted": 0
+    },
+    "extra_notes": 0,
+    "mean_offset_error": 0.012698412698412698,
+    "missing_notes": 8,
+    "onset_duration_f1": 0.9874608150470219,
+    "onset_f1": 0.9874608150470219,
+    "pitch_f1": 0.9874608150470219,
+    "predicted_notes": 315,
+    "reference_notes": 323,
+    "staff_accuracy": 0.44126984126984126,
+    "timeline_predicted": "111",
+    "timeline_reference": "116"
+  },
+  "missing_notes": 8,
+  "onset_duration_f1": 0.9874608150470219,
+  "onset_f1": 0.9874608150470219,
+  "original_item_id": "test/mozart/viennese1_1/viennese1_1_1.png",
+  "pitch_f1": 0.9874608150470219,
+  "predicted_notes": 315,
+  "receipt_sha256": "16316917211f7f1f6ba6fcad49e06ef563b06ef90b86824749e52175099906c9",
+  "reference_notes": 323,
+  "reference_sha256": "50e26091b7c760c457f03422a7e987b8ff3d691b69830c3908c573283ab519ea",
+  "staff_accuracy": 0.44126984126984126,
+  "status": "complete",
+  "timeline_predicted": "111",
+  "timeline_reference": "116"
+}

@@ -1,0 +1,107 @@
+{
+  "adapter_id": "homr_455_explicit_onnx_pair",
+  "aligned_voice_accuracy": 0.5,
+  "candidate_id": "homr_455",
+  "cold_start": true,
+  "composition_group": "joplin/pleasant",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 19,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "2"
+      },
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "3"
+      },
+      {
+        "actual": "1/2",
+        "count": 2,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 10,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "2",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "3",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "3/2",
+        "count": 3,
+        "predicted": "1"
+      },
+      {
+        "actual": "3/2",
+        "count": 1,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "3/2",
+        "count": 1,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "4",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "5/2",
+        "count": 1,
+        "predicted": "3/2"
+      }
+    ],
+    "unmatched_expected": 287,
+    "unmatched_predicted": 307
+  },
+  "elapsed_seconds": 20.610000000000582,
+  "error": null,
+  "extra_note_count": 320,
+  "failure_penalized_omr_ned": 0.6298568507157464,
+  "first_divergent_measure": 1,
+  "item_id": "test/joplin/pleasant/pleasant_2.png",
+  "mean_offset_error": 0.32558139534883723,
+  "missing_note_count": 300,
+  "omr_ned": 0.6298568507157464,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.08823529411764705,
+  "onset_f1": 0.12647058823529414,
+  "peak_ram_bytes": 1502887936,
+  "peak_vram_bytes": 1483735040,
+  "pitch_f1": 0.9647058823529412,
+  "predicted_note_count": 350,
+  "reference_measure_count": 25,
+  "reference_note_count": 330,
+  "reference_quarter_length": "75",
+  "schema_version": 1,
+  "staff_accuracy": 1.0,
+  "status": "succeeded",
+  "timeline_length_error": "17",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

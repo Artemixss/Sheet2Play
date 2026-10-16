@@ -1,0 +1,3781 @@
+{
+  "collection": "open",
+  "detected_systems": 5,
+  "item_id": "openscore-6211535-page-1",
+  "reference_normalizer_matches_exact": false,
+  "reference_notes": 222,
+  "reference_part_staff_counts": [
+    {
+      "global_staff": 1,
+      "notes": 97,
+      "part": "P2"
+    },
+    {
+      "global_staff": 2,
+      "notes": 131,
+      "part": "P2"
+    }
+  ],
+  "reference_systems": 5,
+  "reference_tie_issues": [
+    {
+      "kind": "unmatched_or_noncontiguous_tie_stop",
+      "note": {
+        "duration": "4",
+        "local_onset": "0",
+        "measure": 15,
+        "onset": "60",
+        "part": "P2",
+        "pitch": 74,
+        "staff": 1,
+        "ties": [
+          "stop"
+        ],
+        "voice": "2"
+      }
+    },
+    {
+      "kind": "interrupted_tie_start",
+      "note": {
+        "duration": "4",
+        "local_onset": "0",
+        "measure": 14,
+        "onset": "56",
+        "part": "P2",
+        "pitch": 74,
+        "staff": 1,
+        "ties": [
+          "start"
+        ],
+        "voice": "1"
+      }
+    },
+    {
+      "kind": "open_tie_start",
+      "note": {
+        "duration": "4",
+        "local_onset": "0",
+        "measure": 18,
+        "onset": "72",
+        "part": "P2",
+        "pitch": 74,
+        "staff": 1,
+        "ties": [
+          "start"
+        ],
+        "voice": "1"
+      }
+    },
+    {
+      "kind": "open_tie_start",
+      "note": {
+        "duration": "4",
+        "local_onset": "0",
+        "measure": 18,
+        "onset": "72",
+        "part": "P2",
+        "pitch": 76,
+        "staff": 1,
+        "ties": [
+          "start"
+        ],
+        "voice": "1"
+      }
+    }
+  ],
+  "staff_coverage_policy": "normalized staff indices reset per part; coverage is historical-index diagnostic, not hand accuracy; XML counts preserve distinct parts/staves",
+  "system_local_policy": "ordinal system pairing; reference origins reset separately at each part's boundary; primary global scoring unchanged",
+  "variants": {
+    "upstream": {
+      "conversion_diagnostic_count": 0,
+      "global": {
+        "aligned_voice_accuracy": 1.0,
+        "coverage": {
+          "chord_completeness": 0.8780487804878049,
+          "complete_chords": 72,
+          "per_staff": {
+            "0": {
+              "matched_notes": 95,
+              "predicted_notes": 95,
+              "recall": 1.0,
+              "reference_notes": 95
+            },
+            "1": {
+              "matched_notes": 108,
+              "predicted_notes": 127,
+              "recall": 0.8503937007874016,
+              "reference_notes": 127
+            }
+          },
+          "reference_chords": 82,
+          "staff_interpretation": "notation staff index; not validated hand labels"
+        },
+        "duration": {
+          "confusion": [
+            {
+              "actual": "1",
+              "count": 36,
+              "predicted": "1"
+            },
+            {
+              "actual": "1/2",
+              "count": 103,
+              "predicted": "1/2"
+            },
+            {
+              "actual": "2",
+              "count": 21,
+              "predicted": "2"
+            },
+            {
+              "actual": "2/3",
+              "count": 24,
+              "predicted": "2/3"
+            },
+            {
+              "actual": "3",
+              "count": 2,
+              "predicted": "3"
+            },
+            {
+              "actual": "4",
+              "count": 8,
+              "predicted": "4"
+            },
+            {
+              "actual": "4/3",
+              "count": 6,
+              "predicted": "4/3"
+            },
+            {
+              "actual": "6",
+              "count": 2,
+              "predicted": "6"
+            },
+            {
+              "actual": "8",
+              "count": 1,
+              "predicted": "8"
+            }
+          ],
+          "unmatched_expected": 19,
+          "unmatched_predicted": 19
+        },
+        "extra_notes": 19,
+        "mean_offset_error": 0.0,
+        "missing_notes": 19,
+        "onset_duration_f1": 0.9144144144144143,
+        "onset_f1": 0.9144144144144143,
+        "pitch_f1": 0.918918918918919,
+        "predicted_notes": 222,
+        "reference_notes": 222,
+        "staff_accuracy": 1.0,
+        "timeline_predicted": "76",
+        "timeline_reference": "76"
+      },
+      "measure_local": {
+        "macro_onset_duration_f1": 0.9026315789473683,
+        "measures": [
+          {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 1,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 2,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 2
+                }
+              },
+              "reference_chords": 1,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "2",
+                  "count": 2,
+                  "predicted": "2"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "measure_index": 0,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 2,
+            "reference_notes": 2,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "4",
+            "timeline_reference": "4"
+          },
+          {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 2,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 4,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 4
+                }
+              },
+              "reference_chords": 2,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "2",
+                  "count": 4,
+                  "predicted": "2"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "measure_index": 1,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 4,
+            "reference_notes": 4,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "4",
+            "timeline_reference": "4"
+          },
+          {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 0.25,
+              "complete_chords": 1,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 4,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 6,
+                  "recall": 0.0,
+                  "reference_notes": 4
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 6
+                }
+              },
+              "reference_chords": 4,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "2",
+                  "count": 4,
+                  "predicted": "2"
+                }
+              ],
+              "unmatched_expected": 6,
+              "unmatched_predicted": 6
+            },
+            "extra_notes": 6,
+            "mean_offset_error": 0.0,
+            "measure_index": 2,
+            "missing_notes": 6,
+            "onset_duration_f1": 0.4000000000000001,
+            "onset_f1": 0.4000000000000001,
+            "pitch_f1": 0.4000000000000001,
+            "predicted_notes": 10,
+            "reference_notes": 10,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "4",
+            "timeline_reference": "4"
+          },
+          {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 0.5,
+              "complete_chords": 2,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 4,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 6,
+                  "recall": 0.0,
+                  "reference_notes": 4
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 6
+                }
+              },
+              "reference_chords": 4,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 2,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "2",
+                  "count": 4,
+                  "predicted": "2"
+                }
+              ],
+              "unmatched_expected": 4,
+              "unmatched_predicted": 4
+            },
+            "extra_notes": 4,
+            "mean_offset_error": 0.0,
+            "measure_index": 3,
+            "missing_notes": 4,
+            "onset_duration_f1": 0.6,
+            "onset_f1": 0.6,
+            "pitch_f1": 0.6,
+            "predicted_notes": 10,
+            "reference_notes": 10,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "4",
+            "timeline_reference": "4"
+          },
+          {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 0.5,
+              "complete_chords": 2,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 4,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 6,
+                  "recall": 0.0,
+                  "reference_notes": 4
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 6
+                }
+              },
+              "reference_chords": 4,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 2,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "2",
+                  "count": 4,
+                  "predicted": "2"
+                }
+              ],
+              "unmatched_expected": 4,
+              "unmatched_predicted": 4
+            },
+            "extra_notes": 4,
+            "mean_offset_error": 0.0,
+            "measure_index": 4,
+            "missing_notes": 4,
+            "onset_duration_f1": 0.6,
+            "onset_f1": 0.6,
+            "pitch_f1": 0.6,
+            "predicted_notes": 10,
+            "reference_notes": 10,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "4",
+            "timeline_reference": "4"
+          },
+          {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 0.5,
+              "complete_chords": 2,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 6,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 4,
+                  "recall": 0.0,
+                  "reference_notes": 6
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 4
+                }
+              },
+              "reference_chords": 4,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 6,
+                  "predicted": "1"
+                }
+              ],
+              "unmatched_expected": 4,
+              "unmatched_predicted": 4
+            },
+            "extra_notes": 4,
+            "mean_offset_error": 0.0,
+            "measure_index": 5,
+            "missing_notes": 4,
+            "onset_duration_f1": 0.6,
+            "onset_f1": 0.6,
+            "pitch_f1": 0.6,
+            "predicted_notes": 10,
+            "reference_notes": 10,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "4",
+            "timeline_reference": "4"
+          },
+          {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 6,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 12,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 2,
+                  "recall": 0.0,
+                  "reference_notes": 12
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 2
+                }
+              },
+              "reference_chords": 6,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "2",
+                  "count": 2,
+                  "predicted": "2"
+                },
+                {
+                  "actual": "2/3",
+                  "count": 12,
+                  "predicted": "2/3"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "measure_index": 6,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 14,
+            "reference_notes": 14,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "4",
+            "timeline_reference": "4"
+          },
+          {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 8,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 16,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 4,
+                  "recall": 0.0,
+                  "reference_notes": 16
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 4
+                }
+              },
+              "reference_chords": 8,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1/2",
+                  "count": 16,
+                  "predicted": "1/2"
+                },
+                {
+                  "actual": "2",
+                  "count": 4,
+                  "predicted": "2"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "measure_index": 7,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 20,
+            "reference_notes": 20,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "4",
+            "timeline_reference": "4"
+          },
+          {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 8,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 16,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 5,
+                  "recall": 0.0,
+                  "reference_notes": 16
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 5
+                }
+              },
+              "reference_chords": 8,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 5,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "1/2",
+                  "count": 16,
+                  "predicted": "1/2"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "measure_index": 8,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 21,
+            "reference_notes": 21,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "4",
+            "timeline_reference": "4"
+          },
+          {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 8,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 2,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 16,
+                  "recall": 0.0,
+                  "reference_notes": 2
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 16
+                }
+              },
+              "reference_chords": 8,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 1,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "1/2",
+                  "count": 16,
+                  "predicted": "1/2"
+                },
+                {
+                  "actual": "2",
+                  "count": 1,
+                  "predicted": "2"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "measure_index": 9,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 18,
+            "reference_notes": 18,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "4",
+            "timeline_reference": "4"
+          },
+          {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 0.875,
+              "complete_chords": 7,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 4,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 16,
+                  "recall": 0.0,
+                  "reference_notes": 4
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 16
+                }
+              },
+              "reference_chords": 8,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 4,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "1/2",
+                  "count": 15,
+                  "predicted": "1/2"
+                }
+              ],
+              "unmatched_expected": 1,
+              "unmatched_predicted": 1
+            },
+            "extra_notes": 1,
+            "mean_offset_error": 0.0,
+            "measure_index": 10,
+            "missing_notes": 1,
+            "onset_duration_f1": 0.9500000000000001,
+            "onset_f1": 0.9500000000000001,
+            "pitch_f1": 0.9500000000000001,
+            "predicted_notes": 20,
+            "reference_notes": 20,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "4",
+            "timeline_reference": "4"
+          },
+          {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 6,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 3,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 12,
+                  "recall": 0.0,
+                  "reference_notes": 3
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 12
+                }
+              },
+              "reference_chords": 6,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 2,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "2",
+                  "count": 1,
+                  "predicted": "2"
+                },
+                {
+                  "actual": "2/3",
+                  "count": 12,
+                  "predicted": "2/3"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "measure_index": 11,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 15,
+            "reference_notes": 15,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "4",
+            "timeline_reference": "4"
+          },
+          {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 4,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 1,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 8,
+                  "recall": 0.0,
+                  "reference_notes": 1
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 8
+                }
+              },
+              "reference_chords": 4,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 8,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "4",
+                  "count": 1,
+                  "predicted": "4"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "measure_index": 12,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 9,
+            "reference_notes": 9,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "4",
+            "timeline_reference": "4"
+          },
+          {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 3,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 1,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 6,
+                  "recall": 0.0,
+                  "reference_notes": 1
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 6
+                }
+              },
+              "reference_chords": 3,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "4",
+                  "count": 1,
+                  "predicted": "4"
+                },
+                {
+                  "actual": "4/3",
+                  "count": 6,
+                  "predicted": "4/3"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "measure_index": 13,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 7,
+            "reference_notes": 7,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "4",
+            "timeline_reference": "4"
+          },
+          {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 1,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 2,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 8,
+                  "recall": 0.0,
+                  "reference_notes": 2
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 8
+                }
+              },
+              "reference_chords": 1,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1/2",
+                  "count": 8,
+                  "predicted": "1/2"
+                },
+                {
+                  "actual": "4",
+                  "count": 2,
+                  "predicted": "4"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "measure_index": 14,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 10,
+            "reference_notes": 10,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "4",
+            "timeline_reference": "4"
+          },
+          {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 2,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 3,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 8,
+                  "recall": 0.0,
+                  "reference_notes": 3
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 8
+                }
+              },
+              "reference_chords": 2,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1/2",
+                  "count": 8,
+                  "predicted": "1/2"
+                },
+                {
+                  "actual": "2",
+                  "count": 2,
+                  "predicted": "2"
+                },
+                {
+                  "actual": "4",
+                  "count": 1,
+                  "predicted": "4"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "measure_index": 15,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 11,
+            "reference_notes": 11,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "4",
+            "timeline_reference": "4"
+          },
+          {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 4,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 5,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 8,
+                  "recall": 0.0,
+                  "reference_notes": 5
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 8
+                }
+              },
+              "reference_chords": 4,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 3,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "1/2",
+                  "count": 8,
+                  "predicted": "1/2"
+                },
+                {
+                  "actual": "4",
+                  "count": 2,
+                  "predicted": "4"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "measure_index": 16,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 13,
+            "reference_notes": 13,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "4",
+            "timeline_reference": "4"
+          },
+          {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 4,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 6,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 8,
+                  "recall": 0.0,
+                  "reference_notes": 6
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 8
+                }
+              },
+              "reference_chords": 4,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 5,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "1/2",
+                  "count": 8,
+                  "predicted": "1/2"
+                },
+                {
+                  "actual": "4",
+                  "count": 1,
+                  "predicted": "4"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "measure_index": 17,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 14,
+            "reference_notes": 14,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "4",
+            "timeline_reference": "4"
+          },
+          {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 1,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 2,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 8,
+                  "recall": 0.0,
+                  "reference_notes": 2
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 8
+                }
+              },
+              "reference_chords": 1,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1/2",
+                  "count": 8,
+                  "predicted": "1/2"
+                },
+                {
+                  "actual": "4",
+                  "count": 2,
+                  "predicted": "4"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "measure_index": 18,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 10,
+            "reference_notes": 10,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "4",
+            "timeline_reference": "4"
+          }
+        ],
+        "policy": "diagnostic only; XML ordinal measure pairing with each measure origin reset; unmatched measures retained"
+      },
+      "normalizer_vs_exact_segments": {
+        "aligned_voice_accuracy": 1.0,
+        "coverage": {
+          "chord_completeness": 1.0,
+          "complete_chords": 82,
+          "per_staff": {
+            "0": {
+              "matched_notes": 92,
+              "predicted_notes": 95,
+              "recall": 0.9787234042553191,
+              "reference_notes": 94
+            },
+            "1": {
+              "matched_notes": 127,
+              "predicted_notes": 127,
+              "recall": 1.0,
+              "reference_notes": 127
+            }
+          },
+          "reference_chords": 82,
+          "staff_interpretation": "notation staff index; not validated hand labels"
+        },
+        "duration": {
+          "confusion": [
+            {
+              "actual": "1",
+              "count": 49,
+              "predicted": "1"
+            },
+            {
+              "actual": "1/2",
+              "count": 104,
+              "predicted": "1/2"
+            },
+            {
+              "actual": "2",
+              "count": 25,
+              "predicted": "2"
+            },
+            {
+              "actual": "2/3",
+              "count": 24,
+              "predicted": "2/3"
+            },
+            {
+              "actual": "3",
+              "count": 2,
+              "predicted": "3"
+            },
+            {
+              "actual": "4",
+              "count": 7,
+              "predicted": "4"
+            },
+            {
+              "actual": "4",
+              "count": 1,
+              "predicted": "6"
+            },
+            {
+              "actual": "4/3",
+              "count": 6,
+              "predicted": "4/3"
+            },
+            {
+              "actual": "5",
+              "count": 1,
+              "predicted": "4"
+            },
+            {
+              "actual": "6",
+              "count": 1,
+              "predicted": "6"
+            },
+            {
+              "actual": "8",
+              "count": 1,
+              "predicted": "8"
+            }
+          ],
+          "unmatched_expected": 0,
+          "unmatched_predicted": 1
+        },
+        "extra_notes": 3,
+        "mean_offset_error": 0.013574660633484163,
+        "missing_notes": 2,
+        "onset_duration_f1": 0.9887133182844244,
+        "onset_f1": 0.9977426636568849,
+        "pitch_f1": 0.9977426636568849,
+        "predicted_notes": 222,
+        "reference_notes": 221,
+        "staff_accuracy": 1.0,
+        "timeline_predicted": "76",
+        "timeline_reference": "76"
+      },
+      "part_staff_counts": [
+        {
+          "global_staff": 0,
+          "notes": 97,
+          "part": "P2"
+        },
+        {
+          "global_staff": 1,
+          "notes": 131,
+          "part": "P2"
+        }
+      ],
+      "raw_global": {
+        "aligned_voice_accuracy": 1.0,
+        "coverage": {
+          "chord_completeness": 0.8780487804878049,
+          "complete_chords": 72,
+          "per_staff": {
+            "0": {
+              "matched_notes": 0,
+              "predicted_notes": 97,
+              "recall": null,
+              "reference_notes": 0
+            },
+            "1": {
+              "matched_notes": 0,
+              "predicted_notes": 131,
+              "recall": 0.0,
+              "reference_notes": 97
+            },
+            "2": {
+              "matched_notes": 0,
+              "predicted_notes": 0,
+              "recall": 0.0,
+              "reference_notes": 131
+            }
+          },
+          "reference_chords": 82,
+          "staff_interpretation": "notation staff index; not validated hand labels"
+        },
+        "duration": {
+          "confusion": [
+            {
+              "actual": "1",
+              "count": 38,
+              "predicted": "1"
+            },
+            {
+              "actual": "1/2",
+              "count": 103,
+              "predicted": "1/2"
+            },
+            {
+              "actual": "2",
+              "count": 28,
+              "predicted": "2"
+            },
+            {
+              "actual": "2/3",
+              "count": 24,
+              "predicted": "2/3"
+            },
+            {
+              "actual": "4",
+              "count": 10,
+              "predicted": "4"
+            },
+            {
+              "actual": "4/3",
+              "count": 6,
+              "predicted": "4/3"
+            }
+          ],
+          "unmatched_expected": 19,
+          "unmatched_predicted": 19
+        },
+        "extra_notes": 19,
+        "mean_offset_error": 0.0,
+        "missing_notes": 19,
+        "onset_duration_f1": 0.9166666666666666,
+        "onset_f1": 0.9166666666666666,
+        "pitch_f1": 0.9210526315789473,
+        "predicted_notes": 228,
+        "reference_notes": 228,
+        "staff_accuracy": 0.0,
+        "timeline_predicted": "76",
+        "timeline_reference": "76"
+      },
+      "seconds": 0.8739999999997963,
+      "status": "succeeded",
+      "stitch_raw_note_count_preserved": true,
+      "system_boundary_starts": [],
+      "systems": [
+        {
+          "conversion": {
+            "diagnostics": "",
+            "musicxml_sha256": "bb0a4f602ea62398a6a686dc20d4c6892014c278267ba8aac8eb390045c1e98a",
+            "policy": "Native output unchanged; diagnostics do not change acceptance",
+            "status": "succeeded"
+          },
+          "exact_merged_notes": 46,
+          "exact_vs_normalized": {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 19,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 24,
+                  "predicted_notes": 24,
+                  "recall": 1.0,
+                  "reference_notes": 24
+                },
+                "1": {
+                  "matched_notes": 22,
+                  "predicted_notes": 22,
+                  "recall": 1.0,
+                  "reference_notes": 22
+                }
+              },
+              "reference_chords": 19,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 24,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "2",
+                  "count": 22,
+                  "predicted": "2"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 46,
+            "reference_notes": 46,
+            "staff_accuracy": 1.0,
+            "timeline_predicted": "24",
+            "timeline_reference": "24"
+          },
+          "index": 1,
+          "measure_count": 6,
+          "normalized_notes": 46,
+          "overflow_measures": 0,
+          "part_staff_counts": [
+            {
+              "global_staff": 0,
+              "notes": 24,
+              "part": "P2"
+            },
+            {
+              "global_staff": 1,
+              "notes": 22,
+              "part": "P2"
+            }
+          ],
+          "raw_notes": 46,
+          "system_local_raw": {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 0.5263157894736842,
+              "complete_chords": 10,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 24,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 22,
+                  "recall": 0.0,
+                  "reference_notes": 24
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 22
+                }
+              },
+              "reference_chords": 19,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 10,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "2",
+                  "count": 18,
+                  "predicted": "2"
+                }
+              ],
+              "unmatched_expected": 18,
+              "unmatched_predicted": 18
+            },
+            "extra_notes": 18,
+            "mean_offset_error": 0.0,
+            "missing_notes": 18,
+            "onset_duration_f1": 0.6086956521739131,
+            "onset_f1": 0.6086956521739131,
+            "pitch_f1": 0.6304347826086957,
+            "predicted_notes": 46,
+            "reference_notes": 46,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "24",
+            "timeline_reference": "24"
+          },
+          "termination": "EOS",
+          "tie_issues": [],
+          "token_count": 203,
+          "unknown_token_count": 0
+        },
+        {
+          "conversion": {
+            "diagnostics": "",
+            "musicxml_sha256": "0c24e3b6a90eb24eb4f53ebc499e32f250e81fe87281c370795f7709e3b0a7a1",
+            "policy": "Native output unchanged; diagnostics do not change acceptance",
+            "status": "succeeded"
+          },
+          "exact_merged_notes": 69,
+          "exact_vs_normalized": {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 30,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 46,
+                  "predicted_notes": 46,
+                  "recall": 1.0,
+                  "reference_notes": 46
+                },
+                "1": {
+                  "matched_notes": 23,
+                  "predicted_notes": 23,
+                  "recall": 1.0,
+                  "reference_notes": 23
+                }
+              },
+              "reference_chords": 30,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 4,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "1/2",
+                  "count": 48,
+                  "predicted": "1/2"
+                },
+                {
+                  "actual": "2",
+                  "count": 1,
+                  "predicted": "2"
+                },
+                {
+                  "actual": "2/3",
+                  "count": 12,
+                  "predicted": "2/3"
+                },
+                {
+                  "actual": "3",
+                  "count": 2,
+                  "predicted": "3"
+                },
+                {
+                  "actual": "4",
+                  "count": 2,
+                  "predicted": "4"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 69,
+            "reference_notes": 69,
+            "staff_accuracy": 1.0,
+            "timeline_predicted": "16",
+            "timeline_reference": "16"
+          },
+          "index": 2,
+          "measure_count": 4,
+          "normalized_notes": 69,
+          "overflow_measures": 0,
+          "part_staff_counts": [
+            {
+              "global_staff": 0,
+              "notes": 46,
+              "part": "P2"
+            },
+            {
+              "global_staff": 1,
+              "notes": 27,
+              "part": "P2"
+            }
+          ],
+          "raw_notes": 73,
+          "system_local_raw": {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 30,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 46,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 27,
+                  "recall": 0.0,
+                  "reference_notes": 46
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 27
+                }
+              },
+              "reference_chords": 30,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 6,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "1/2",
+                  "count": 48,
+                  "predicted": "1/2"
+                },
+                {
+                  "actual": "2",
+                  "count": 7,
+                  "predicted": "2"
+                },
+                {
+                  "actual": "2/3",
+                  "count": 12,
+                  "predicted": "2/3"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 73,
+            "reference_notes": 73,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "16",
+            "timeline_reference": "16"
+          },
+          "termination": "EOS",
+          "tie_issues": [],
+          "token_count": 269,
+          "unknown_token_count": 0
+        },
+        {
+          "conversion": {
+            "diagnostics": "",
+            "musicxml_sha256": "55baf146472196f3935f846876693da5199828efceaf492c55f3e0f1088a780b",
+            "policy": "Native output unchanged; diagnostics do not change acceptance",
+            "status": "succeeded"
+          },
+          "exact_merged_notes": 60,
+          "exact_vs_normalized": {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 22,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 10,
+                  "predicted_notes": 10,
+                  "recall": 1.0,
+                  "reference_notes": 10
+                },
+                "1": {
+                  "matched_notes": 50,
+                  "predicted_notes": 50,
+                  "recall": 1.0,
+                  "reference_notes": 50
+                }
+              },
+              "reference_chords": 22,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 14,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "1/2",
+                  "count": 24,
+                  "predicted": "1/2"
+                },
+                {
+                  "actual": "2",
+                  "count": 1,
+                  "predicted": "2"
+                },
+                {
+                  "actual": "2/3",
+                  "count": 12,
+                  "predicted": "2/3"
+                },
+                {
+                  "actual": "4",
+                  "count": 2,
+                  "predicted": "4"
+                },
+                {
+                  "actual": "4/3",
+                  "count": 6,
+                  "predicted": "4/3"
+                },
+                {
+                  "actual": "8",
+                  "count": 1,
+                  "predicted": "8"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 60,
+            "reference_notes": 60,
+            "staff_accuracy": 1.0,
+            "timeline_predicted": "20",
+            "timeline_reference": "20"
+          },
+          "index": 3,
+          "measure_count": 5,
+          "normalized_notes": 60,
+          "overflow_measures": 0,
+          "part_staff_counts": [
+            {
+              "global_staff": 0,
+              "notes": 11,
+              "part": "P2"
+            },
+            {
+              "global_staff": 1,
+              "notes": 50,
+              "part": "P2"
+            }
+          ],
+          "raw_notes": 61,
+          "system_local_raw": {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 0.9545454545454546,
+              "complete_chords": 21,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 11,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 50,
+                  "recall": 0.0,
+                  "reference_notes": 11
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 50
+                }
+              },
+              "reference_chords": 22,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 14,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "1/2",
+                  "count": 23,
+                  "predicted": "1/2"
+                },
+                {
+                  "actual": "2",
+                  "count": 1,
+                  "predicted": "2"
+                },
+                {
+                  "actual": "2/3",
+                  "count": 12,
+                  "predicted": "2/3"
+                },
+                {
+                  "actual": "4",
+                  "count": 4,
+                  "predicted": "4"
+                },
+                {
+                  "actual": "4/3",
+                  "count": 6,
+                  "predicted": "4/3"
+                }
+              ],
+              "unmatched_expected": 1,
+              "unmatched_predicted": 1
+            },
+            "extra_notes": 1,
+            "mean_offset_error": 0.0,
+            "missing_notes": 1,
+            "onset_duration_f1": 0.9836065573770492,
+            "onset_f1": 0.9836065573770492,
+            "pitch_f1": 0.9836065573770492,
+            "predicted_notes": 61,
+            "reference_notes": 61,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "20",
+            "timeline_reference": "20"
+          },
+          "termination": "EOS",
+          "tie_issues": [
+            {
+              "kind": "open_tie_start",
+              "note": {
+                "duration": "4",
+                "local_onset": "0",
+                "measure": 4,
+                "onset": "16",
+                "part": "P2",
+                "pitch": 74,
+                "staff": 0,
+                "ties": [
+                  "start"
+                ],
+                "voice": "1"
+              }
+            },
+            {
+              "kind": "open_tie_start",
+              "note": {
+                "duration": "4",
+                "local_onset": "0",
+                "measure": 4,
+                "onset": "16",
+                "part": "P2",
+                "pitch": 76,
+                "staff": 0,
+                "ties": [
+                  "start"
+                ],
+                "voice": "1"
+              }
+            }
+          ],
+          "token_count": 241,
+          "unknown_token_count": 0
+        },
+        {
+          "conversion": {
+            "diagnostics": "",
+            "musicxml_sha256": "60d70582aa8f74d4f348e3e1ad48b599839e78ec11844f5592df1ecd0d3085aa",
+            "policy": "Native output unchanged; diagnostics do not change acceptance",
+            "status": "succeeded"
+          },
+          "exact_merged_notes": 37,
+          "exact_vs_normalized": {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 10,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 12,
+                  "predicted_notes": 14,
+                  "recall": 0.9230769230769231,
+                  "reference_notes": 13
+                },
+                "1": {
+                  "matched_notes": 24,
+                  "predicted_notes": 24,
+                  "recall": 1.0,
+                  "reference_notes": 24
+                }
+              },
+              "reference_chords": 10,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 7,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "1/2",
+                  "count": 24,
+                  "predicted": "1/2"
+                },
+                {
+                  "actual": "2",
+                  "count": 2,
+                  "predicted": "2"
+                },
+                {
+                  "actual": "4",
+                  "count": 3,
+                  "predicted": "4"
+                },
+                {
+                  "actual": "5",
+                  "count": 1,
+                  "predicted": "4"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 1
+            },
+            "extra_notes": 2,
+            "mean_offset_error": 0.02702702702702703,
+            "missing_notes": 1,
+            "onset_duration_f1": 0.9599999999999999,
+            "onset_f1": 0.9866666666666666,
+            "pitch_f1": 0.9866666666666666,
+            "predicted_notes": 38,
+            "reference_notes": 37,
+            "staff_accuracy": 1.0,
+            "timeline_predicted": "12",
+            "timeline_reference": "12"
+          },
+          "index": 4,
+          "measure_count": 3,
+          "normalized_notes": 38,
+          "overflow_measures": 0,
+          "part_staff_counts": [
+            {
+              "global_staff": 0,
+              "notes": 14,
+              "part": "P2"
+            },
+            {
+              "global_staff": 1,
+              "notes": 24,
+              "part": "P2"
+            }
+          ],
+          "raw_notes": 38,
+          "system_local_raw": {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 10,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 14,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 24,
+                  "recall": 0.0,
+                  "reference_notes": 14
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 24
+                }
+              },
+              "reference_chords": 10,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 8,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "1/2",
+                  "count": 24,
+                  "predicted": "1/2"
+                },
+                {
+                  "actual": "2",
+                  "count": 2,
+                  "predicted": "2"
+                },
+                {
+                  "actual": "4",
+                  "count": 4,
+                  "predicted": "4"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 38,
+            "reference_notes": 38,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "12",
+            "timeline_reference": "12"
+          },
+          "termination": "EOS",
+          "tie_issues": [
+            {
+              "kind": "unmatched_or_noncontiguous_tie_stop",
+              "note": {
+                "duration": "2",
+                "local_onset": "0",
+                "measure": 0,
+                "onset": "0",
+                "part": "P2",
+                "pitch": 76,
+                "staff": 0,
+                "ties": [
+                  "stop"
+                ],
+                "voice": "1"
+              }
+            },
+            {
+              "kind": "unmatched_or_noncontiguous_tie_stop",
+              "note": {
+                "duration": "4",
+                "local_onset": "0",
+                "measure": 0,
+                "onset": "0",
+                "part": "P2",
+                "pitch": 74,
+                "staff": 0,
+                "ties": [
+                  "stop"
+                ],
+                "voice": "2"
+              }
+            },
+            {
+              "kind": "interrupted_tie_start",
+              "note": {
+                "duration": "4",
+                "local_onset": "0",
+                "measure": 1,
+                "onset": "4",
+                "part": "P2",
+                "pitch": 76,
+                "staff": 0,
+                "ties": [
+                  "start"
+                ],
+                "voice": "1"
+              }
+            }
+          ],
+          "token_count": 167,
+          "unknown_token_count": 0
+        },
+        {
+          "conversion": {
+            "diagnostics": "",
+            "musicxml_sha256": "a1a3424c20139a2088fe6c6ad08618f6e2dc35a4956341eab708ecc832c52cb1",
+            "policy": "Native output unchanged; diagnostics do not change acceptance",
+            "status": "succeeded"
+          },
+          "exact_merged_notes": 10,
+          "exact_vs_normalized": {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 1,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 2,
+                  "predicted_notes": 2,
+                  "recall": 1.0,
+                  "reference_notes": 2
+                },
+                "1": {
+                  "matched_notes": 8,
+                  "predicted_notes": 8,
+                  "recall": 1.0,
+                  "reference_notes": 8
+                }
+              },
+              "reference_chords": 1,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1/2",
+                  "count": 8,
+                  "predicted": "1/2"
+                },
+                {
+                  "actual": "4",
+                  "count": 2,
+                  "predicted": "4"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 10,
+            "reference_notes": 10,
+            "staff_accuracy": 1.0,
+            "timeline_predicted": "4",
+            "timeline_reference": "4"
+          },
+          "index": 5,
+          "measure_count": 1,
+          "normalized_notes": 10,
+          "overflow_measures": 0,
+          "part_staff_counts": [
+            {
+              "global_staff": 0,
+              "notes": 2,
+              "part": "P2"
+            },
+            {
+              "global_staff": 1,
+              "notes": 8,
+              "part": "P2"
+            }
+          ],
+          "raw_notes": 10,
+          "system_local_raw": {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 1,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 2,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 8,
+                  "recall": 0.0,
+                  "reference_notes": 2
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 8
+                }
+              },
+              "reference_chords": 1,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1/2",
+                  "count": 8,
+                  "predicted": "1/2"
+                },
+                {
+                  "actual": "4",
+                  "count": 2,
+                  "predicted": "4"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 10,
+            "reference_notes": 10,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "4",
+            "timeline_reference": "4"
+          },
+          "termination": "EOS",
+          "tie_issues": [
+            {
+              "kind": "open_tie_start",
+              "note": {
+                "duration": "4",
+                "local_onset": "0",
+                "measure": 0,
+                "onset": "0",
+                "part": "P2",
+                "pitch": 74,
+                "staff": 0,
+                "ties": [
+                  "start"
+                ],
+                "voice": "1"
+              }
+            },
+            {
+              "kind": "open_tie_start",
+              "note": {
+                "duration": "4",
+                "local_onset": "0",
+                "measure": 0,
+                "onset": "0",
+                "part": "P2",
+                "pitch": 76,
+                "staff": 0,
+                "ties": [
+                  "start"
+                ],
+                "voice": "1"
+              }
+            }
+          ],
+          "token_count": 48,
+          "unknown_token_count": 0
+        }
+      ],
+      "tie_issues": [
+        {
+          "kind": "unmatched_or_noncontiguous_tie_stop",
+          "note": {
+            "duration": "4",
+            "local_onset": "0",
+            "measure": 15,
+            "onset": "60",
+            "part": "P2",
+            "pitch": 74,
+            "staff": 0,
+            "ties": [
+              "stop"
+            ],
+            "voice": "2"
+          }
+        },
+        {
+          "kind": "interrupted_tie_start",
+          "note": {
+            "duration": "4",
+            "local_onset": "0",
+            "measure": 14,
+            "onset": "56",
+            "part": "P2",
+            "pitch": 74,
+            "staff": 0,
+            "ties": [
+              "start"
+            ],
+            "voice": "1"
+          }
+        },
+        {
+          "kind": "interrupted_tie_start",
+          "note": {
+            "duration": "4",
+            "local_onset": "0",
+            "measure": 16,
+            "onset": "64",
+            "part": "P2",
+            "pitch": 76,
+            "staff": 0,
+            "ties": [
+              "start"
+            ],
+            "voice": "1"
+          }
+        },
+        {
+          "kind": "open_tie_start",
+          "note": {
+            "duration": "4",
+            "local_onset": "0",
+            "measure": 18,
+            "onset": "72",
+            "part": "P2",
+            "pitch": 74,
+            "staff": 0,
+            "ties": [
+              "start"
+            ],
+            "voice": "1"
+          }
+        },
+        {
+          "kind": "open_tie_start",
+          "note": {
+            "duration": "4",
+            "local_onset": "0",
+            "measure": 18,
+            "onset": "72",
+            "part": "P2",
+            "pitch": 76,
+            "staff": 0,
+            "ties": [
+              "start"
+            ],
+            "voice": "1"
+          }
+        }
+      ],
+      "trace_failure": null,
+      "trace_policy": "Diagnostic validation never substitutes for unchanged stitched-page normalization failure policy"
+    },
+    "wrapper": {
+      "conversion_diagnostic_count": 0,
+      "global": {
+        "aligned_voice_accuracy": 0.9830508474576272,
+        "coverage": {
+          "chord_completeness": 0.2682926829268293,
+          "complete_chords": 22,
+          "per_staff": {
+            "0": {
+              "matched_notes": 39,
+              "predicted_notes": 93,
+              "recall": 0.4105263157894737,
+              "reference_notes": 95
+            },
+            "1": {
+              "matched_notes": 19,
+              "predicted_notes": 144,
+              "recall": 0.14960629921259844,
+              "reference_notes": 127
+            }
+          },
+          "reference_chords": 82,
+          "staff_interpretation": "notation staff index; not validated hand labels"
+        },
+        "duration": {
+          "confusion": [
+            {
+              "actual": "1",
+              "count": 10,
+              "predicted": "1"
+            },
+            {
+              "actual": "1",
+              "count": 3,
+              "predicted": "1/2"
+            },
+            {
+              "actual": "1",
+              "count": 1,
+              "predicted": "1/3"
+            },
+            {
+              "actual": "1",
+              "count": 1,
+              "predicted": "2"
+            },
+            {
+              "actual": "1",
+              "count": 1,
+              "predicted": "3"
+            },
+            {
+              "actual": "1/2",
+              "count": 1,
+              "predicted": "1"
+            },
+            {
+              "actual": "1/2",
+              "count": 32,
+              "predicted": "1/2"
+            },
+            {
+              "actual": "1/2",
+              "count": 2,
+              "predicted": "2/3"
+            },
+            {
+              "actual": "1/2",
+              "count": 1,
+              "predicted": "4/3"
+            },
+            {
+              "actual": "2",
+              "count": 1,
+              "predicted": "1/2"
+            },
+            {
+              "actual": "2",
+              "count": 16,
+              "predicted": "2"
+            },
+            {
+              "actual": "2/3",
+              "count": 1,
+              "predicted": "3/4"
+            },
+            {
+              "actual": "4",
+              "count": 1,
+              "predicted": "4"
+            },
+            {
+              "actual": "4",
+              "count": 2,
+              "predicted": "6"
+            },
+            {
+              "actual": "4/3",
+              "count": 1,
+              "predicted": "2"
+            },
+            {
+              "actual": "4/3",
+              "count": 3,
+              "predicted": "2/3"
+            },
+            {
+              "actual": "6",
+              "count": 1,
+              "predicted": "8"
+            }
+          ],
+          "unmatched_expected": 144,
+          "unmatched_predicted": 159
+        },
+        "extra_notes": 178,
+        "mean_offset_error": 0.21901709401709402,
+        "missing_notes": 163,
+        "onset_duration_f1": 0.2570806100217865,
+        "onset_f1": 0.33986928104575165,
+        "pitch_f1": 0.9106753812636166,
+        "predicted_notes": 237,
+        "reference_notes": 222,
+        "staff_accuracy": 0.9830508474576272,
+        "timeline_predicted": "92",
+        "timeline_reference": "76"
+      },
+      "measure_local": null,
+      "normalizer_vs_exact_segments": null,
+      "part_staff_counts": null,
+      "raw_global": null,
+      "seconds": 4.687999999998283,
+      "status": "succeeded",
+      "stitch_raw_note_count_preserved": null,
+      "system_boundary_starts": null,
+      "systems": [
+        {
+          "conversion": {
+            "diagnostics": "",
+            "musicxml_sha256": "883543c61c7d02737af5e238800840eb393e8a1e2dc7fb77831b8385dea9e7c7",
+            "policy": "Native output unchanged; diagnostics do not change acceptance",
+            "status": "succeeded"
+          },
+          "exact_merged_notes": 43,
+          "exact_vs_normalized": {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 17,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 22,
+                  "predicted_notes": 22,
+                  "recall": 1.0,
+                  "reference_notes": 22
+                },
+                "1": {
+                  "matched_notes": 21,
+                  "predicted_notes": 21,
+                  "recall": 1.0,
+                  "reference_notes": 21
+                }
+              },
+              "reference_chords": 17,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 24,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "2",
+                  "count": 19,
+                  "predicted": "2"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 43,
+            "reference_notes": 43,
+            "staff_accuracy": 1.0,
+            "timeline_predicted": "24",
+            "timeline_reference": "24"
+          },
+          "index": 1,
+          "measure_count": 7,
+          "normalized_notes": 43,
+          "overflow_measures": 0,
+          "part_staff_counts": [
+            {
+              "global_staff": 0,
+              "notes": 22,
+              "part": "P2"
+            },
+            {
+              "global_staff": 1,
+              "notes": 21,
+              "part": "P2"
+            }
+          ],
+          "raw_notes": 43,
+          "system_local_raw": {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 0.42105263157894735,
+              "complete_chords": 8,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 22,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 21,
+                  "recall": 0.0,
+                  "reference_notes": 24
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 22
+                }
+              },
+              "reference_chords": 19,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 9,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "2",
+                  "count": 16,
+                  "predicted": "2"
+                }
+              ],
+              "unmatched_expected": 21,
+              "unmatched_predicted": 18
+            },
+            "extra_notes": 18,
+            "mean_offset_error": 0.0,
+            "missing_notes": 21,
+            "onset_duration_f1": 0.5617977528089888,
+            "onset_f1": 0.5617977528089888,
+            "pitch_f1": 0.6067415730337078,
+            "predicted_notes": 43,
+            "reference_notes": 46,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "24",
+            "timeline_reference": "24"
+          },
+          "termination": "EOS",
+          "tie_issues": [],
+          "token_count": 205,
+          "unknown_token_count": 0
+        },
+        {
+          "conversion": {
+            "diagnostics": "",
+            "musicxml_sha256": "b5ed2d12fff902d3bd6c495bdf56618ddd3800a57104fcabb8eee466516b9f9d",
+            "policy": "Native output unchanged; diagnostics do not change acceptance",
+            "status": "succeeded"
+          },
+          "index": 2,
+          "normalized_notes": 77,
+          "termination": "EOS",
+          "token_count": 311,
+          "trace_failure": {
+            "error": "ValueError: Non-grace note requires positive duration",
+            "stage": "xml_trace"
+          },
+          "unknown_token_count": 0
+        },
+        {
+          "conversion": {
+            "diagnostics": "",
+            "musicxml_sha256": "4be8775bef37157fb4f07d2c397cab7078b458b7040772dd413b5f55e0469d51",
+            "policy": "Native output unchanged; diagnostics do not change acceptance",
+            "status": "succeeded"
+          },
+          "index": 3,
+          "normalized_notes": 69,
+          "termination": "EOS",
+          "token_count": 294,
+          "trace_failure": {
+            "error": "ValueError: Non-grace note requires positive duration",
+            "stage": "xml_trace"
+          },
+          "unknown_token_count": 0
+        },
+        {
+          "conversion": {
+            "diagnostics": "",
+            "musicxml_sha256": "60d70582aa8f74d4f348e3e1ad48b599839e78ec11844f5592df1ecd0d3085aa",
+            "policy": "Native output unchanged; diagnostics do not change acceptance",
+            "status": "succeeded"
+          },
+          "exact_merged_notes": 37,
+          "exact_vs_normalized": {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 10,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 12,
+                  "predicted_notes": 14,
+                  "recall": 0.9230769230769231,
+                  "reference_notes": 13
+                },
+                "1": {
+                  "matched_notes": 24,
+                  "predicted_notes": 24,
+                  "recall": 1.0,
+                  "reference_notes": 24
+                }
+              },
+              "reference_chords": 10,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 7,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "1/2",
+                  "count": 24,
+                  "predicted": "1/2"
+                },
+                {
+                  "actual": "2",
+                  "count": 2,
+                  "predicted": "2"
+                },
+                {
+                  "actual": "4",
+                  "count": 3,
+                  "predicted": "4"
+                },
+                {
+                  "actual": "5",
+                  "count": 1,
+                  "predicted": "4"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 1
+            },
+            "extra_notes": 2,
+            "mean_offset_error": 0.02702702702702703,
+            "missing_notes": 1,
+            "onset_duration_f1": 0.9599999999999999,
+            "onset_f1": 0.9866666666666666,
+            "pitch_f1": 0.9866666666666666,
+            "predicted_notes": 38,
+            "reference_notes": 37,
+            "staff_accuracy": 1.0,
+            "timeline_predicted": "12",
+            "timeline_reference": "12"
+          },
+          "index": 4,
+          "measure_count": 3,
+          "normalized_notes": 38,
+          "overflow_measures": 0,
+          "part_staff_counts": [
+            {
+              "global_staff": 0,
+              "notes": 14,
+              "part": "P2"
+            },
+            {
+              "global_staff": 1,
+              "notes": 24,
+              "part": "P2"
+            }
+          ],
+          "raw_notes": 38,
+          "system_local_raw": {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 10,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 14,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 24,
+                  "recall": 0.0,
+                  "reference_notes": 14
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 24
+                }
+              },
+              "reference_chords": 10,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 8,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "1/2",
+                  "count": 24,
+                  "predicted": "1/2"
+                },
+                {
+                  "actual": "2",
+                  "count": 2,
+                  "predicted": "2"
+                },
+                {
+                  "actual": "4",
+                  "count": 4,
+                  "predicted": "4"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 38,
+            "reference_notes": 38,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "12",
+            "timeline_reference": "12"
+          },
+          "termination": "EOS",
+          "tie_issues": [
+            {
+              "kind": "unmatched_or_noncontiguous_tie_stop",
+              "note": {
+                "duration": "2",
+                "local_onset": "0",
+                "measure": 0,
+                "onset": "0",
+                "part": "P2",
+                "pitch": 76,
+                "staff": 0,
+                "ties": [
+                  "stop"
+                ],
+                "voice": "1"
+              }
+            },
+            {
+              "kind": "unmatched_or_noncontiguous_tie_stop",
+              "note": {
+                "duration": "4",
+                "local_onset": "0",
+                "measure": 0,
+                "onset": "0",
+                "part": "P2",
+                "pitch": 74,
+                "staff": 0,
+                "ties": [
+                  "stop"
+                ],
+                "voice": "2"
+              }
+            },
+            {
+              "kind": "interrupted_tie_start",
+              "note": {
+                "duration": "4",
+                "local_onset": "0",
+                "measure": 1,
+                "onset": "4",
+                "part": "P2",
+                "pitch": 76,
+                "staff": 0,
+                "ties": [
+                  "start"
+                ],
+                "voice": "1"
+              }
+            }
+          ],
+          "token_count": 167,
+          "unknown_token_count": 0
+        },
+        {
+          "conversion": {
+            "diagnostics": "",
+            "musicxml_sha256": "2d2531e30ab45bafe797b5cadc8af9d1d0a8bccb4e3e8cb41822742a08ea52f5",
+            "policy": "Native output unchanged; diagnostics do not change acceptance",
+            "status": "succeeded"
+          },
+          "index": 5,
+          "normalized_notes": 11,
+          "termination": "EOS",
+          "token_count": 60,
+          "trace_failure": {
+            "error": "ValueError: Non-grace note requires positive duration",
+            "stage": "xml_trace"
+          },
+          "unknown_token_count": 0
+        }
+      ],
+      "tie_issues": null,
+      "trace_failure": {
+        "error": "ValueError: Non-grace note requires positive duration",
+        "stage": "xml_trace"
+      },
+      "trace_policy": "Diagnostic validation never substitutes for unchanged stitched-page normalization failure policy"
+    },
+    "wrapper_valid_mask": {
+      "conversion_diagnostic_count": 0,
+      "global": {
+        "aligned_voice_accuracy": 0.9811320754716981,
+        "coverage": {
+          "chord_completeness": 0.7317073170731707,
+          "complete_chords": 60,
+          "per_staff": {
+            "0": {
+              "matched_notes": 77,
+              "predicted_notes": 93,
+              "recall": 0.8105263157894737,
+              "reference_notes": 95
+            },
+            "1": {
+              "matched_notes": 82,
+              "predicted_notes": 135,
+              "recall": 0.6456692913385826,
+              "reference_notes": 127
+            }
+          },
+          "reference_chords": 82,
+          "staff_interpretation": "notation staff index; not validated hand labels"
+        },
+        "duration": {
+          "confusion": [
+            {
+              "actual": "1",
+              "count": 27,
+              "predicted": "1"
+            },
+            {
+              "actual": "1",
+              "count": 2,
+              "predicted": "4"
+            },
+            {
+              "actual": "1/2",
+              "count": 76,
+              "predicted": "1/2"
+            },
+            {
+              "actual": "2",
+              "count": 20,
+              "predicted": "2"
+            },
+            {
+              "actual": "2/3",
+              "count": 24,
+              "predicted": "2/3"
+            },
+            {
+              "actual": "3",
+              "count": 2,
+              "predicted": "3"
+            },
+            {
+              "actual": "4",
+              "count": 2,
+              "predicted": "1"
+            },
+            {
+              "actual": "4",
+              "count": 3,
+              "predicted": "4"
+            },
+            {
+              "actual": "4/3",
+              "count": 6,
+              "predicted": "4/3"
+            },
+            {
+              "actual": "6",
+              "count": 2,
+              "predicted": "10"
+            },
+            {
+              "actual": "8",
+              "count": 1,
+              "predicted": "8"
+            }
+          ],
+          "unmatched_expected": 57,
+          "unmatched_predicted": 63
+        },
+        "extra_notes": 69,
+        "mean_offset_error": 0.12121212121212122,
+        "missing_notes": 63,
+        "onset_duration_f1": 0.7066666666666668,
+        "onset_f1": 0.7333333333333334,
+        "pitch_f1": 0.9377777777777777,
+        "predicted_notes": 228,
+        "reference_notes": 222,
+        "staff_accuracy": 1.0,
+        "timeline_predicted": "80",
+        "timeline_reference": "76"
+      },
+      "measure_local": null,
+      "normalizer_vs_exact_segments": null,
+      "part_staff_counts": null,
+      "raw_global": null,
+      "seconds": 4.233999999998559,
+      "status": "succeeded",
+      "stitch_raw_note_count_preserved": null,
+      "system_boundary_starts": null,
+      "systems": [
+        {
+          "conversion": {
+            "diagnostics": "",
+            "musicxml_sha256": "0554fe7cbc1968ca549be6200939b46043a1f6c45846b7ed3511ac8f29a874c4",
+            "policy": "Native output unchanged; diagnostics do not change acceptance",
+            "status": "succeeded"
+          },
+          "exact_merged_notes": 44,
+          "exact_vs_normalized": {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 18,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 22,
+                  "predicted_notes": 22,
+                  "recall": 1.0,
+                  "reference_notes": 22
+                },
+                "1": {
+                  "matched_notes": 22,
+                  "predicted_notes": 22,
+                  "recall": 1.0,
+                  "reference_notes": 22
+                }
+              },
+              "reference_chords": 18,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 24,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "2",
+                  "count": 20,
+                  "predicted": "2"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 44,
+            "reference_notes": 44,
+            "staff_accuracy": 1.0,
+            "timeline_predicted": "24",
+            "timeline_reference": "24"
+          },
+          "index": 1,
+          "measure_count": 6,
+          "normalized_notes": 44,
+          "overflow_measures": 0,
+          "part_staff_counts": [
+            {
+              "global_staff": 0,
+              "notes": 22,
+              "part": "P2"
+            },
+            {
+              "global_staff": 1,
+              "notes": 22,
+              "part": "P2"
+            }
+          ],
+          "raw_notes": 44,
+          "system_local_raw": {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 0.42105263157894735,
+              "complete_chords": 8,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 22,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 22,
+                  "recall": 0.0,
+                  "reference_notes": 24
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 22
+                }
+              },
+              "reference_chords": 19,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 9,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "2",
+                  "count": 18,
+                  "predicted": "2"
+                }
+              ],
+              "unmatched_expected": 19,
+              "unmatched_predicted": 17
+            },
+            "extra_notes": 17,
+            "mean_offset_error": 0.0,
+            "missing_notes": 19,
+            "onset_duration_f1": 0.6,
+            "onset_f1": 0.6,
+            "pitch_f1": 0.6666666666666666,
+            "predicted_notes": 44,
+            "reference_notes": 46,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "24",
+            "timeline_reference": "24"
+          },
+          "termination": "EOS",
+          "tie_issues": [],
+          "token_count": 196,
+          "unknown_token_count": 0
+        },
+        {
+          "conversion": {
+            "diagnostics": "",
+            "musicxml_sha256": "0c24e3b6a90eb24eb4f53ebc499e32f250e81fe87281c370795f7709e3b0a7a1",
+            "policy": "Native output unchanged; diagnostics do not change acceptance",
+            "status": "succeeded"
+          },
+          "exact_merged_notes": 69,
+          "exact_vs_normalized": {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 30,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 46,
+                  "predicted_notes": 46,
+                  "recall": 1.0,
+                  "reference_notes": 46
+                },
+                "1": {
+                  "matched_notes": 23,
+                  "predicted_notes": 23,
+                  "recall": 1.0,
+                  "reference_notes": 23
+                }
+              },
+              "reference_chords": 30,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 4,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "1/2",
+                  "count": 48,
+                  "predicted": "1/2"
+                },
+                {
+                  "actual": "2",
+                  "count": 1,
+                  "predicted": "2"
+                },
+                {
+                  "actual": "2/3",
+                  "count": 12,
+                  "predicted": "2/3"
+                },
+                {
+                  "actual": "3",
+                  "count": 2,
+                  "predicted": "3"
+                },
+                {
+                  "actual": "4",
+                  "count": 2,
+                  "predicted": "4"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 69,
+            "reference_notes": 69,
+            "staff_accuracy": 1.0,
+            "timeline_predicted": "16",
+            "timeline_reference": "16"
+          },
+          "index": 2,
+          "measure_count": 4,
+          "normalized_notes": 69,
+          "overflow_measures": 0,
+          "part_staff_counts": [
+            {
+              "global_staff": 0,
+              "notes": 46,
+              "part": "P2"
+            },
+            {
+              "global_staff": 1,
+              "notes": 27,
+              "part": "P2"
+            }
+          ],
+          "raw_notes": 73,
+          "system_local_raw": {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 30,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 46,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 27,
+                  "recall": 0.0,
+                  "reference_notes": 46
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 27
+                }
+              },
+              "reference_chords": 30,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 6,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "1/2",
+                  "count": 48,
+                  "predicted": "1/2"
+                },
+                {
+                  "actual": "2",
+                  "count": 7,
+                  "predicted": "2"
+                },
+                {
+                  "actual": "2/3",
+                  "count": 12,
+                  "predicted": "2/3"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 73,
+            "reference_notes": 73,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "16",
+            "timeline_reference": "16"
+          },
+          "termination": "EOS",
+          "tie_issues": [],
+          "token_count": 269,
+          "unknown_token_count": 0
+        },
+        {
+          "conversion": {
+            "diagnostics": "",
+            "musicxml_sha256": "1bbbca775ff1a4d71e41ba109d9a841dba9e60c880b258aae545cbc7a5d44c12",
+            "policy": "Native output unchanged; diagnostics do not change acceptance",
+            "status": "succeeded"
+          },
+          "index": 3,
+          "normalized_notes": 69,
+          "termination": "EOS",
+          "token_count": 287,
+          "trace_failure": {
+            "error": "ValueError: Non-grace note requires positive duration",
+            "stage": "xml_trace"
+          },
+          "unknown_token_count": 0
+        },
+        {
+          "conversion": {
+            "diagnostics": "",
+            "musicxml_sha256": "60d70582aa8f74d4f348e3e1ad48b599839e78ec11844f5592df1ecd0d3085aa",
+            "policy": "Native output unchanged; diagnostics do not change acceptance",
+            "status": "succeeded"
+          },
+          "exact_merged_notes": 37,
+          "exact_vs_normalized": {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 10,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 12,
+                  "predicted_notes": 14,
+                  "recall": 0.9230769230769231,
+                  "reference_notes": 13
+                },
+                "1": {
+                  "matched_notes": 24,
+                  "predicted_notes": 24,
+                  "recall": 1.0,
+                  "reference_notes": 24
+                }
+              },
+              "reference_chords": 10,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 7,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "1/2",
+                  "count": 24,
+                  "predicted": "1/2"
+                },
+                {
+                  "actual": "2",
+                  "count": 2,
+                  "predicted": "2"
+                },
+                {
+                  "actual": "4",
+                  "count": 3,
+                  "predicted": "4"
+                },
+                {
+                  "actual": "5",
+                  "count": 1,
+                  "predicted": "4"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 1
+            },
+            "extra_notes": 2,
+            "mean_offset_error": 0.02702702702702703,
+            "missing_notes": 1,
+            "onset_duration_f1": 0.9599999999999999,
+            "onset_f1": 0.9866666666666666,
+            "pitch_f1": 0.9866666666666666,
+            "predicted_notes": 38,
+            "reference_notes": 37,
+            "staff_accuracy": 1.0,
+            "timeline_predicted": "12",
+            "timeline_reference": "12"
+          },
+          "index": 4,
+          "measure_count": 3,
+          "normalized_notes": 38,
+          "overflow_measures": 0,
+          "part_staff_counts": [
+            {
+              "global_staff": 0,
+              "notes": 14,
+              "part": "P2"
+            },
+            {
+              "global_staff": 1,
+              "notes": 24,
+              "part": "P2"
+            }
+          ],
+          "raw_notes": 38,
+          "system_local_raw": {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 10,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 14,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 24,
+                  "recall": 0.0,
+                  "reference_notes": 14
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 24
+                }
+              },
+              "reference_chords": 10,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1",
+                  "count": 8,
+                  "predicted": "1"
+                },
+                {
+                  "actual": "1/2",
+                  "count": 24,
+                  "predicted": "1/2"
+                },
+                {
+                  "actual": "2",
+                  "count": 2,
+                  "predicted": "2"
+                },
+                {
+                  "actual": "4",
+                  "count": 4,
+                  "predicted": "4"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 38,
+            "reference_notes": 38,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "12",
+            "timeline_reference": "12"
+          },
+          "termination": "EOS",
+          "tie_issues": [
+            {
+              "kind": "unmatched_or_noncontiguous_tie_stop",
+              "note": {
+                "duration": "2",
+                "local_onset": "0",
+                "measure": 0,
+                "onset": "0",
+                "part": "P2",
+                "pitch": 76,
+                "staff": 0,
+                "ties": [
+                  "stop"
+                ],
+                "voice": "1"
+              }
+            },
+            {
+              "kind": "unmatched_or_noncontiguous_tie_stop",
+              "note": {
+                "duration": "4",
+                "local_onset": "0",
+                "measure": 0,
+                "onset": "0",
+                "part": "P2",
+                "pitch": 74,
+                "staff": 0,
+                "ties": [
+                  "stop"
+                ],
+                "voice": "2"
+              }
+            },
+            {
+              "kind": "interrupted_tie_start",
+              "note": {
+                "duration": "4",
+                "local_onset": "0",
+                "measure": 1,
+                "onset": "4",
+                "part": "P2",
+                "pitch": 76,
+                "staff": 0,
+                "ties": [
+                  "start"
+                ],
+                "voice": "1"
+              }
+            }
+          ],
+          "token_count": 167,
+          "unknown_token_count": 0
+        },
+        {
+          "conversion": {
+            "diagnostics": "",
+            "musicxml_sha256": "3cd9302a0b23c1e0999a63af30042cc8a49c45c86b4c3a4123bf3983b484bcb0",
+            "policy": "Native output unchanged; diagnostics do not change acceptance",
+            "status": "succeeded"
+          },
+          "exact_merged_notes": 10,
+          "exact_vs_normalized": {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 1,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 2,
+                  "predicted_notes": 2,
+                  "recall": 1.0,
+                  "reference_notes": 2
+                },
+                "1": {
+                  "matched_notes": 8,
+                  "predicted_notes": 8,
+                  "recall": 1.0,
+                  "reference_notes": 8
+                }
+              },
+              "reference_chords": 1,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1/2",
+                  "count": 8,
+                  "predicted": "1/2"
+                },
+                {
+                  "actual": "4",
+                  "count": 2,
+                  "predicted": "4"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 10,
+            "reference_notes": 10,
+            "staff_accuracy": 1.0,
+            "timeline_predicted": "4",
+            "timeline_reference": "4"
+          },
+          "index": 5,
+          "measure_count": 1,
+          "normalized_notes": 10,
+          "overflow_measures": 0,
+          "part_staff_counts": [
+            {
+              "global_staff": 0,
+              "notes": 2,
+              "part": "P2"
+            },
+            {
+              "global_staff": 1,
+              "notes": 8,
+              "part": "P2"
+            }
+          ],
+          "raw_notes": 10,
+          "system_local_raw": {
+            "aligned_voice_accuracy": 1.0,
+            "coverage": {
+              "chord_completeness": 1.0,
+              "complete_chords": 1,
+              "per_staff": {
+                "0": {
+                  "matched_notes": 0,
+                  "predicted_notes": 2,
+                  "recall": null,
+                  "reference_notes": 0
+                },
+                "1": {
+                  "matched_notes": 0,
+                  "predicted_notes": 8,
+                  "recall": 0.0,
+                  "reference_notes": 2
+                },
+                "2": {
+                  "matched_notes": 0,
+                  "predicted_notes": 0,
+                  "recall": 0.0,
+                  "reference_notes": 8
+                }
+              },
+              "reference_chords": 1,
+              "staff_interpretation": "notation staff index; not validated hand labels"
+            },
+            "duration": {
+              "confusion": [
+                {
+                  "actual": "1/2",
+                  "count": 8,
+                  "predicted": "1/2"
+                },
+                {
+                  "actual": "4",
+                  "count": 2,
+                  "predicted": "4"
+                }
+              ],
+              "unmatched_expected": 0,
+              "unmatched_predicted": 0
+            },
+            "extra_notes": 0,
+            "mean_offset_error": 0.0,
+            "missing_notes": 0,
+            "onset_duration_f1": 1.0,
+            "onset_f1": 1.0,
+            "pitch_f1": 1.0,
+            "predicted_notes": 10,
+            "reference_notes": 10,
+            "staff_accuracy": 0.0,
+            "timeline_predicted": "4",
+            "timeline_reference": "4"
+          },
+          "termination": "EOS",
+          "tie_issues": [
+            {
+              "kind": "open_tie_start",
+              "note": {
+                "duration": "4",
+                "local_onset": "0",
+                "measure": 0,
+                "onset": "0",
+                "part": "P2",
+                "pitch": 74,
+                "staff": 0,
+                "ties": [
+                  "start"
+                ],
+                "voice": "1"
+              }
+            },
+            {
+              "kind": "open_tie_start",
+              "note": {
+                "duration": "4",
+                "local_onset": "0",
+                "measure": 0,
+                "onset": "0",
+                "part": "P2",
+                "pitch": 76,
+                "staff": 0,
+                "ties": [
+                  "start"
+                ],
+                "voice": "1"
+              }
+            }
+          ],
+          "token_count": 47,
+          "unknown_token_count": 0
+        }
+      ],
+      "tie_issues": null,
+      "trace_failure": {
+        "error": "ValueError: Non-grace note requires positive duration",
+        "stage": "xml_trace"
+      },
+      "trace_policy": "Diagnostic validation never substitutes for unchanged stitched-page normalization failure policy"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "screening_cpu_run.py": {
+    "cpu_sha256": "8bfbdc1ed6ce7fbe5b4181b35dcc78bbc15a724c592fe46f0a2b440c5c0b0123",
+    "original_sha256": "632818152cb36f4652f5d6a8a860bee534e472c696ced8d811ddb8c4b19e6787",
+    "same_ast": {
+      "acquire_lock": true,
+      "close_session": true,
+      "command_monitor": true,
+      "release_lock": true,
+      "run_attempt": true,
+      "session_budget": true
+    }
+  },
+  "screening_cpu_score.py": {
+    "cpu_sha256": "0363e68ca585d580d9da3bc51f13fc84cfdd8ad0bf16d652b38bbeb772a9b627",
+    "original_sha256": "f2d25648b6d95f449f03429ad857c09b179fca422e996f118c3958a0f4ac0e3c",
+    "same_ast": {
+      "commit_score": true,
+      "run_score_worker": true,
+      "summary": true
+    }
+  }
+}

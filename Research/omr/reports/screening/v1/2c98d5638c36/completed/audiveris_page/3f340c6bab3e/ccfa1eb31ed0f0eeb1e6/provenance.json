@@ -1,0 +1,17 @@
+{
+  "attempt_path": "Research\\omr\\reports\\screening\\v1\\2c98d5638c36\\attempts\\audiveris_page\\3f340c6bab3e\\c24ce1e59c36934b28c2\\attempt-7c82143fb3ed43948097793b80f2998c",
+  "attempt_sha256": "d1045e2a0520f04537ca570031cd923329e5eeafb2c652d03219717db564d097",
+  "identity": {
+    "adapter_config_sha256": "6794f219b928f816a0a0c860f2672cc542560efe5ce9d227511f8757a658ba61",
+    "candidate": "audiveris_page",
+    "configuration_sha256": "3f340c6bab3e8884240da3a2ffdec61b0bd98ebcf81788d3725d08a9aa5ef137",
+    "image_sha256": "5185827353ffbd47c2f6f234747e4b079cdc5cef72073ab33b4488a3257fc843",
+    "item_id": "test/chopin/mazurka68_4/mazurka68_4_2.png",
+    "reference_sha256": "3a69c6fe78768d049022421a659358df61d295a3b257d15e43ef69f2296d11c8",
+    "sample_sha256": "2c98d5638c368b1a53bdb3440177d04fa585f9b1ca6ce6adbe65af64cd8e27d1",
+    "schema_version": 1
+  },
+  "origin": "completed_attempt",
+  "result_sha256": "65d3010dd16c2f525f72597d9cf3ae1f57985c92f17b6b695859815606adc16e",
+  "timing_source": "screening_complete_path"
+}

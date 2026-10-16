@@ -1,0 +1,162 @@
+{
+  "aligned_voice_accuracy": 1.0,
+  "candidate": "homr-465-upstream",
+  "capture_status": "complete",
+  "comparison_identity": "91e7256cd902a6ea2adb9fb415e6847b2ba0b9e94fb03fe8f5f1570ae6544fb9",
+  "composition_group": "joplin/breeze",
+  "configuration_identity": "9e619e47fd0317b6a7d1da5207985e1120acefc499a111649c5b7cdb1e339122",
+  "conversion_error": null,
+  "coverage": {
+    "chord_completeness": 0.6328125,
+    "complete_chords": 81,
+    "per_staff": {
+      "0": {
+        "matched_notes": 172,
+        "predicted_notes": 274,
+        "recall": 0.3706896551724138,
+        "reference_notes": 464
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 190,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 128,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 18,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 199,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/4",
+        "count": 8,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 84,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "3/2",
+        "count": 9,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "3/4",
+        "count": 4,
+        "predicted": "3/4"
+      }
+    ],
+    "unmatched_expected": 141,
+    "unmatched_predicted": 141
+  },
+  "elapsed_seconds": 16.5470000000023,
+  "extra_notes": 150,
+  "item_id": "7173009d5db41bf92c8c",
+  "mean_offset_error": 0.00696594427244582,
+  "metrics": {
+    "aligned_voice_accuracy": 1.0,
+    "coverage": {
+      "chord_completeness": 0.6328125,
+      "complete_chords": 81,
+      "per_staff": {
+        "0": {
+          "matched_notes": 172,
+          "predicted_notes": 274,
+          "recall": 0.3706896551724138,
+          "reference_notes": 464
+        },
+        "1": {
+          "matched_notes": 0,
+          "predicted_notes": 190,
+          "recall": null,
+          "reference_notes": 0
+        }
+      },
+      "reference_chords": 128,
+      "staff_interpretation": "notation staff index; not validated hand labels"
+    },
+    "duration": {
+      "confusion": [
+        {
+          "actual": "1",
+          "count": 18,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/2",
+          "count": 199,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/2",
+          "count": 1,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/4",
+          "count": 8,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/4",
+          "count": 84,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "3/2",
+          "count": 9,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "3/4",
+          "count": 4,
+          "predicted": "3/4"
+        }
+      ],
+      "unmatched_expected": 141,
+      "unmatched_predicted": 141
+    },
+    "extra_notes": 150,
+    "mean_offset_error": 0.00696594427244582,
+    "missing_notes": 150,
+    "onset_duration_f1": 0.6767241379310345,
+    "onset_f1": 0.6961206896551724,
+    "pitch_f1": 1.0,
+    "predicted_notes": 464,
+    "reference_notes": 464,
+    "staff_accuracy": 0.5477707006369427,
+    "timeline_predicted": "51",
+    "timeline_reference": "50"
+  },
+  "missing_notes": 150,
+  "onset_duration_f1": 0.6767241379310345,
+  "onset_f1": 0.6961206896551724,
+  "original_item_id": "test/joplin/breeze/breeze_2.png",
+  "pitch_f1": 1.0,
+  "predicted_notes": 464,
+  "receipt_sha256": "d73b4254dfde9d698aa3e745db8fe09e92992b1bc3ff04b1b08810a66b09c54c",
+  "reference_notes": 464,
+  "reference_sha256": "2bd609fae6d2a68bfcee3272c734ddcc73af1302b3ccee1d869a827af324e899",
+  "staff_accuracy": 0.5477707006369427,
+  "status": "complete",
+  "timeline_predicted": "51",
+  "timeline_reference": "50"
+}

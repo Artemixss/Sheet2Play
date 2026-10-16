@@ -1,0 +1,84 @@
+{
+  "adapter_id": "homr_455_explicit_onnx_pair",
+  "aligned_voice_accuracy": 1.0,
+  "candidate_id": "homr_455",
+  "cold_start": true,
+  "composition_group": "scarlatti/L055K330",
+  "coverage": {
+    "chord_completeness": 0.7333333333333333,
+    "complete_chords": 77,
+    "per_staff": {
+      "0": {
+        "matched_notes": 155,
+        "predicted_notes": 193,
+        "recall": 0.5132450331125827,
+        "reference_notes": 302
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 109,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 105,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1/2",
+        "count": 206,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 34,
+        "predicted": "1/4"
+      }
+    ],
+    "unmatched_expected": 61,
+    "unmatched_predicted": 61
+  },
+  "elapsed_seconds": 25.610000000000582,
+  "error": null,
+  "extra_note_count": 62,
+  "failure_penalized_omr_ned": 0.20813953488372092,
+  "first_divergent_measure": 25,
+  "input_identity": {
+    "historical_score_sha256": "8596922c58efcd8e9cb7e0e16b0f5b80e3eaefe0ac6cbf6aeb163369c7bf82cd",
+    "reference_sha256": "ce4341e21233158a09b91371424dcb5dab5ef8f66ba18071b2c46e27c3703466",
+    "result_sha256": "c53b83f4c05644ecd84efed0a0413405f13ca6773d846b9ef85f39e52747f1d0"
+  },
+  "item_id": "test/scarlatti/L055K330/L055K330_1.png",
+  "mean_offset_error": 0.001037344398340249,
+  "missing_note_count": 62,
+  "omr_ned": 0.20813953488372092,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.7947019867549667,
+  "onset_f1": 0.7980132450331126,
+  "peak_ram_bytes": 1383243776,
+  "peak_vram_bytes": 1636827136,
+  "pitch_f1": 0.9900662251655629,
+  "predicted_note_count": 302,
+  "reference_measure_count": 43,
+  "reference_note_count": 302,
+  "reference_quarter_length": "129/2",
+  "schema_version": 2,
+  "scoring_identity_sha256": "ed9e5b7e6f998b5787ae21dfc0b7f545c42fc0bc83b60fc717f002d6b34aa568",
+  "staff_accuracy": 0.6458333333333334,
+  "status": "succeeded",
+  "timeline_length_error": "1",
+  "timing_policy": "symmetric-rational-4096-roundoff-v1",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

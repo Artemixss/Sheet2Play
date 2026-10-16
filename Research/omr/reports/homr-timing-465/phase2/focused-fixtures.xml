@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="5" skipped="0" tests="13" time="6.952" timestamp="2026-10-07T23:07:46.221488+03:00" hostname="DESKTOP-5BGNU15"><testcase classname="tests.test_homr_465_download" name="test_reservation_blocks_before_network" time="0.985"><failure message="PermissionError: [WinError 5] Access is denied: 'C:\\Users\\bur4x\\AppData\\Local\\Packages\\sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}\\AC\\Temp\\pytest-of-bur4x\\pytest-0\\test_reservation_blocks_before0\\budget.tmp' -&gt; 'C:\\Users\\bur4x\\AppData\\Local\\Packages\\sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}\\AC\\Temp\\pytest-of-bur4x\\pytest-0\\test_reservation_blocks_before0\\budget.json'">tmp_path = WindowsPath('C:/Users/bur4x/AppData/Local/Packages/sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}/AC/Temp/pytest-of-bur4x/pytest-0/test_reservation_blocks_before0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x000001C6D26DC790&gt;
+
+    def test_reservation_blocks_before_network(tmp_path, monkeypatch):
+&gt;       budget = download.Budget(tmp_path / "budget.json")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Research\omr\tests\test_homr_465_download.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+Research\omr\homr_465_download.py:43: in __init__
+    save(path, self.data)
+Research\omr\homr_465_download.py:24: in save
+    temporary.replace(path)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('C:/Users/bur4x/AppData/Local/Packages/sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}/AC/Temp/pytest-of-bur4x/pytest-0/test_reservation_blocks_before0/budget.tmp')
+target = WindowsPath('C:/Users/bur4x/AppData/Local/Packages/sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}/AC/Temp/pytest-of-bur4x/pytest-0/test_reservation_blocks_before0/budget.json')
+
+    def replace(self, target):
+        """
+        Rename this path to the target path, overwriting if that path exists.
+    
+        The target path may be absolute or relative. Relative paths are
+        interpreted relative to the current working directory, *not* the
+        directory of the Path object.
+    
+        Returns the new Path instance pointing to the target path.
+        """
+&gt;       os.replace(self, target)
+E       PermissionError: [WinError 5] Access is denied: 'C:\\Users\\bur4x\\AppData\\Local\\Packages\\sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}\\AC\\Temp\\pytest-of-bur4x\\pytest-0\\test_reservation_blocks_before0\\budget.tmp' -&gt; 'C:\\Users\\bur4x\\AppData\\Local\\Packages\\sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}\\AC\\Temp\\pytest-of-bur4x\\pytest-0\\test_reservation_blocks_before0\\budget.json'
+
+..\..\..\..\AppData\Local\Programs\Python\Python311\Lib\pathlib.py:1188: PermissionError</failure></testcase><testcase classname="tests.test_homr_465_download" name="test_length_overflow_and_truncation_preserve_failure[10-a]" time="0.974"><failure message="PermissionError: [WinError 5] Access is denied: 'C:\\Users\\bur4x\\AppData\\Local\\Packages\\sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}\\AC\\Temp\\pytest-of-bur4x\\pytest-0\\test_length_overflow_and_trunc0\\budget.tmp' -&gt; 'C:\\Users\\bur4x\\AppData\\Local\\Packages\\sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}\\AC\\Temp\\pytest-of-bur4x\\pytest-0\\test_length_overflow_and_trunc0\\budget.json'">tmp_path = WindowsPath('C:/Users/bur4x/AppData/Local/Packages/sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}/AC/Temp/pytest-of-bur4x/pytest-0/test_length_overflow_and_trunc0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x000001C6D3060C50&gt;
+length = 10, content = b'a'
+
+    @pytest.mark.parametrize("length,content", [(10, b"a"), (None, b"abcdef"), (4, b"abc")])
+    def test_length_overflow_and_truncation_preserve_failure(tmp_path, monkeypatch, length, content):
+&gt;       budget = download.Budget(tmp_path / "budget.json")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Research\omr\tests\test_homr_465_download.py:29: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+Research\omr\homr_465_download.py:43: in __init__
+    save(path, self.data)
+Research\omr\homr_465_download.py:24: in save
+    temporary.replace(path)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('C:/Users/bur4x/AppData/Local/Packages/sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}/AC/Temp/pytest-of-bur4x/pytest-0/test_length_overflow_and_trunc0/budget.tmp')
+target = WindowsPath('C:/Users/bur4x/AppData/Local/Packages/sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}/AC/Temp/pytest-of-bur4x/pytest-0/test_length_overflow_and_trunc0/budget.json')
+
+    def replace(self, target):
+        """
+        Rename this path to the target path, overwriting if that path exists.
+    
+        The target path may be absolute or relative. Relative paths are
+        interpreted relative to the current working directory, *not* the
+        directory of the Path object.
+    
+        Returns the new Path instance pointing to the target path.
+        """
+&gt;       os.replace(self, target)
+E       PermissionError: [WinError 5] Access is denied: 'C:\\Users\\bur4x\\AppData\\Local\\Packages\\sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}\\AC\\Temp\\pytest-of-bur4x\\pytest-0\\test_length_overflow_and_trunc0\\budget.tmp' -&gt; 'C:\\Users\\bur4x\\AppData\\Local\\Packages\\sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}\\AC\\Temp\\pytest-of-bur4x\\pytest-0\\test_length_overflow_and_trunc0\\budget.json'
+
+..\..\..\..\AppData\Local\Programs\Python\Python311\Lib\pathlib.py:1188: PermissionError</failure></testcase><testcase classname="tests.test_homr_465_download" name="test_length_overflow_and_truncation_preserve_failure[None-abcdef]" time="0.976"><failure message="PermissionError: [WinError 5] Access is denied: 'C:\\Users\\bur4x\\AppData\\Local\\Packages\\sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}\\AC\\Temp\\pytest-of-bur4x\\pytest-0\\test_length_overflow_and_trunc1\\budget.tmp' -&gt; 'C:\\Users\\bur4x\\AppData\\Local\\Packages\\sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}\\AC\\Temp\\pytest-of-bur4x\\pytest-0\\test_length_overflow_and_trunc1\\budget.json'">tmp_path = WindowsPath('C:/Users/bur4x/AppData/Local/Packages/sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}/AC/Temp/pytest-of-bur4x/pytest-0/test_length_overflow_and_trunc1')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x000001C6D2F62750&gt;
+length = None, content = b'abcdef'
+
+    @pytest.mark.parametrize("length,content", [(10, b"a"), (None, b"abcdef"), (4, b"abc")])
+    def test_length_overflow_and_truncation_preserve_failure(tmp_path, monkeypatch, length, content):
+&gt;       budget = download.Budget(tmp_path / "budget.json")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Research\omr\tests\test_homr_465_download.py:29: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+Research\omr\homr_465_download.py:43: in __init__
+    save(path, self.data)
+Research\omr\homr_465_download.py:24: in save
+    temporary.replace(path)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('C:/Users/bur4x/AppData/Local/Packages/sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}/AC/Temp/pytest-of-bur4x/pytest-0/test_length_overflow_and_trunc1/budget.tmp')
+target = WindowsPath('C:/Users/bur4x/AppData/Local/Packages/sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}/AC/Temp/pytest-of-bur4x/pytest-0/test_length_overflow_and_trunc1/budget.json')
+
+    def replace(self, target):
+        """
+        Rename this path to the target path, overwriting if that path exists.
+    
+        The target path may be absolute or relative. Relative paths are
+        interpreted relative to the current working directory, *not* the
+        directory of the Path object.
+    
+        Returns the new Path instance pointing to the target path.
+        """
+&gt;       os.replace(self, target)
+E       PermissionError: [WinError 5] Access is denied: 'C:\\Users\\bur4x\\AppData\\Local\\Packages\\sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}\\AC\\Temp\\pytest-of-bur4x\\pytest-0\\test_length_overflow_and_trunc1\\budget.tmp' -&gt; 'C:\\Users\\bur4x\\AppData\\Local\\Packages\\sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}\\AC\\Temp\\pytest-of-bur4x\\pytest-0\\test_length_overflow_and_trunc1\\budget.json'
+
+..\..\..\..\AppData\Local\Programs\Python\Python311\Lib\pathlib.py:1188: PermissionError</failure></testcase><testcase classname="tests.test_homr_465_download" name="test_length_overflow_and_truncation_preserve_failure[4-abc]" time="0.975"><failure message="PermissionError: [WinError 5] Access is denied: 'C:\\Users\\bur4x\\AppData\\Local\\Packages\\sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}\\AC\\Temp\\pytest-of-bur4x\\pytest-0\\test_length_overflow_and_trunc2\\budget.tmp' -&gt; 'C:\\Users\\bur4x\\AppData\\Local\\Packages\\sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}\\AC\\Temp\\pytest-of-bur4x\\pytest-0\\test_length_overflow_and_trunc2\\budget.json'">tmp_path = WindowsPath('C:/Users/bur4x/AppData/Local/Packages/sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}/AC/Temp/pytest-of-bur4x/pytest-0/test_length_overflow_and_trunc2')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x000001C6D2F372D0&gt;
+length = 4, content = b'abc'
+
+    @pytest.mark.parametrize("length,content", [(10, b"a"), (None, b"abcdef"), (4, b"abc")])
+    def test_length_overflow_and_truncation_preserve_failure(tmp_path, monkeypatch, length, content):
+&gt;       budget = download.Budget(tmp_path / "budget.json")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Research\omr\tests\test_homr_465_download.py:29: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+Research\omr\homr_465_download.py:43: in __init__
+    save(path, self.data)
+Research\omr\homr_465_download.py:24: in save
+    temporary.replace(path)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('C:/Users/bur4x/AppData/Local/Packages/sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}/AC/Temp/pytest-of-bur4x/pytest-0/test_length_overflow_and_trunc2/budget.tmp')
+target = WindowsPath('C:/Users/bur4x/AppData/Local/Packages/sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}/AC/Temp/pytest-of-bur4x/pytest-0/test_length_overflow_and_trunc2/budget.json')
+
+    def replace(self, target):
+        """
+        Rename this path to the target path, overwriting if that path exists.
+    
+        The target path may be absolute or relative. Relative paths are
+        interpreted relative to the current working directory, *not* the
+        directory of the Path object.
+    
+        Returns the new Path instance pointing to the target path.
+        """
+&gt;       os.replace(self, target)
+E       PermissionError: [WinError 5] Access is denied: 'C:\\Users\\bur4x\\AppData\\Local\\Packages\\sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}\\AC\\Temp\\pytest-of-bur4x\\pytest-0\\test_length_overflow_and_trunc2\\budget.tmp' -&gt; 'C:\\Users\\bur4x\\AppData\\Local\\Packages\\sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}\\AC\\Temp\\pytest-of-bur4x\\pytest-0\\test_length_overflow_and_trunc2\\budget.json'
+
+..\..\..\..\AppData\Local\Programs\Python\Python311\Lib\pathlib.py:1188: PermissionError</failure></testcase><testcase classname="tests.test_homr_465_download" name="test_complete_response_hash_and_freshness" time="0.974"><failure message="PermissionError: [WinError 5] Access is denied: 'C:\\Users\\bur4x\\AppData\\Local\\Packages\\sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}\\AC\\Temp\\pytest-of-bur4x\\pytest-0\\test_complete_response_hash_an0\\budget.tmp' -&gt; 'C:\\Users\\bur4x\\AppData\\Local\\Packages\\sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}\\AC\\Temp\\pytest-of-bur4x\\pytest-0\\test_complete_response_hash_an0\\budget.json'">tmp_path = WindowsPath('C:/Users/bur4x/AppData/Local/Packages/sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}/AC/Temp/pytest-of-bur4x/pytest-0/test_complete_response_hash_an0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x000001C6D3042BD0&gt;
+
+    def test_complete_response_hash_and_freshness(tmp_path, monkeypatch):
+&gt;       budget = download.Budget(tmp_path / "budget.json")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Research\omr\tests\test_homr_465_download.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+Research\omr\homr_465_download.py:43: in __init__
+    save(path, self.data)
+Research\omr\homr_465_download.py:24: in save
+    temporary.replace(path)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('C:/Users/bur4x/AppData/Local/Packages/sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}/AC/Temp/pytest-of-bur4x/pytest-0/test_complete_response_hash_an0/budget.tmp')
+target = WindowsPath('C:/Users/bur4x/AppData/Local/Packages/sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}/AC/Temp/pytest-of-bur4x/pytest-0/test_complete_response_hash_an0/budget.json')
+
+    def replace(self, target):
+        """
+        Rename this path to the target path, overwriting if that path exists.
+    
+        The target path may be absolute or relative. Relative paths are
+        interpreted relative to the current working directory, *not* the
+        directory of the Path object.
+    
+        Returns the new Path instance pointing to the target path.
+        """
+&gt;       os.replace(self, target)
+E       PermissionError: [WinError 5] Access is denied: 'C:\\Users\\bur4x\\AppData\\Local\\Packages\\sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}\\AC\\Temp\\pytest-of-bur4x\\pytest-0\\test_complete_response_hash_an0\\budget.tmp' -&gt; 'C:\\Users\\bur4x\\AppData\\Local\\Packages\\sandbox.{eba34ad8-ce57-4d08-b18f-dbbf4cf913e0}\\AC\\Temp\\pytest-of-bur4x\\pytest-0\\test_complete_response_hash_an0\\budget.json'
+
+..\..\..\..\AppData\Local\Programs\Python\Python311\Lib\pathlib.py:1188: PermissionError</failure></testcase><testcase classname="tests.test_homr_465_download" name="test_zip_traversal_rejected" time="0.026" /><testcase classname="tests.test_homr_465_download" name="test_archive_revision_prefix_rejected" time="0.013" /><testcase classname="tests.test_homr_465_compatibility" name="test_source_extra_file_or_mutation_rejected" time="0.019" /><testcase classname="tests.test_homr_465_compatibility" name="test_decoder_incompatibility_rejected[position_dimension]" time="0.002" /><testcase classname="tests.test_homr_465_compatibility" name="test_decoder_incompatibility_rejected[head_order]" time="0.001" /><testcase classname="tests.test_homr_465_compatibility" name="test_decoder_incompatibility_rejected[precision]" time="0.001" /><testcase classname="tests.test_homr_465_compatibility" name="test_decoder_incompatibility_rejected[cache_shape]" time="0.001" /><testcase classname="tests.test_homr_465_compatibility" name="test_valid_identity_does_not_authorize_weaker_safeguards" time="0.014" /></testsuite></testsuites>

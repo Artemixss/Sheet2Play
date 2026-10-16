@@ -1,0 +1,77 @@
+{
+  "literal_xml_events": [
+    {
+      "duration": "2",
+      "local_onset": "0",
+      "measure": 0,
+      "onset": "0",
+      "part": "P1",
+      "pitch": 72,
+      "staff": 0,
+      "ties": [],
+      "voice": "1"
+    },
+    {
+      "duration": "2",
+      "local_onset": "2",
+      "measure": 0,
+      "onset": "2",
+      "part": "P1",
+      "pitch": 79,
+      "staff": 0,
+      "ties": [
+        "start"
+      ],
+      "voice": "1"
+    },
+    {
+      "duration": "2",
+      "local_onset": "0",
+      "measure": 1,
+      "onset": "4",
+      "part": "P1",
+      "pitch": 79,
+      "staff": 0,
+      "ties": [
+        "stop"
+      ],
+      "voice": "1"
+    },
+    {
+      "duration": "2",
+      "local_onset": "2",
+      "measure": 1,
+      "onset": "6",
+      "part": "P1",
+      "pitch": 76,
+      "staff": 0,
+      "ties": [],
+      "voice": "1"
+    }
+  ],
+  "normalizer_sha256": "2e56906636a7164784492ac47c0f0fd628e4f15e172390b58e2792160f819c8e",
+  "production_normalized_events": [
+    {
+      "duration": "2",
+      "onset": "0",
+      "pitch": 72,
+      "staff": 0,
+      "voice": "1"
+    },
+    {
+      "duration": "4",
+      "onset": "2",
+      "pitch": 79,
+      "staff": 0,
+      "voice": "1"
+    },
+    {
+      "duration": "2",
+      "onset": "6",
+      "pitch": 76,
+      "staff": 0,
+      "voice": "1"
+    }
+  ],
+  "result_sha256": "5ac5d28fae84c04513409030c6c86266982d6286fe64b87e47e38da31a0f7866"
+}

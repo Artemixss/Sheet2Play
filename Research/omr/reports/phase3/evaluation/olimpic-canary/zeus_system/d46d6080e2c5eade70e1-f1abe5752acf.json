@@ -1,0 +1,103 @@
+{
+  "adapter_config_sha256": "f1abe5752acf0798ba742a9da259fe40673271aa2643e1a325dfd1accca0689c",
+  "adapter_id": "zeus_upstream",
+  "artifacts": [
+    {
+      "bytes": 2559,
+      "media_type": "application/json",
+      "path": "Research/omr/.runtime/phase3/evaluation/olimpic-canary/zeus_system/d46d6080e2c5eade70e1-f1abe5752acf/native.lmx.json",
+      "role": "native",
+      "sha256": "97131c9177da44ad4c236ef68776e5d456c9ce3a97f22701dbe54f1015b61844"
+    },
+    {
+      "bytes": 19300,
+      "media_type": "application/vnd.recordare.musicxml+xml",
+      "path": "Research/omr/.runtime/phase3/evaluation/olimpic-canary/zeus_system/d46d6080e2c5eade70e1-f1abe5752acf/score.musicxml",
+      "role": "musicxml",
+      "sha256": "1ab09af263ad8972b5308d0747c66a626d9257baf43e6625c78fb87691a76d7d"
+    },
+    {
+      "bytes": 16344,
+      "media_type": "application/json",
+      "path": "Research/omr/.runtime/phase3/evaluation/olimpic-canary/zeus_system/d46d6080e2c5eade70e1-f1abe5752acf/canonical-events.json",
+      "role": "canonical_events",
+      "sha256": "af6b748b1666525544db6fad2f712723b1dcf2dcd0b7ce74fa7ab0cef79c8b6a"
+    },
+    {
+      "bytes": 36,
+      "media_type": "text/plain",
+      "path": "Research/omr/.runtime/phase3/evaluation/olimpic-canary/zeus_system/d46d6080e2c5eade70e1-f1abe5752acf/engine.log",
+      "role": "engine_log",
+      "sha256": "aaca0942830f1b45ec196816065629ccabc813fe2265555bbb1adbab111caad7"
+    }
+  ],
+  "candidate_id": "zeus",
+  "composition_group": "4919798",
+  "error": null,
+  "exit_status": 0,
+  "item_id": "4919798/p1-s3",
+  "measurement_path": "annotated_crop",
+  "provenance": {
+    "adapter_config": {
+      "adapter_id": "zeus_upstream",
+      "adapter_revision": "fdffc993b22fc2a284a8822c5e9688cbbd4ac09107ef2af4c2cccc5b8b44af10",
+      "candidate_id": "zeus",
+      "checkpoint": "zeus-olimpic-1.0-2024-02-12.model",
+      "checkpoint_revision": "2024-02-12",
+      "input_granularity": "system image",
+      "native_format": "LMX",
+      "settings": {
+        "normalization": "frozen-phase1",
+        "preprocessing": "upstream",
+        "runner_sha256": "592e63d2c4828be954257073275e4665c22f2a583bf1c81d06b585711e4021f4",
+        "system_detector_sha256": null
+      },
+      "source_repository": "https://github.com/ufal/olimpic-icdar24",
+      "source_revision": "df0d842596ccd199882ff958e628d59327ca6cba",
+      "supported_paths": [
+        "annotated_crop"
+      ]
+    },
+    "adapter_config_sha256": "f1abe5752acf0798ba742a9da259fe40673271aa2643e1a325dfd1accca0689c",
+    "checkpoint": "zeus-olimpic-1.0-2024-02-12.model",
+    "checkpoint_revision": "2024-02-12",
+    "command": [
+      "Research/omr/.venv/Scripts/python.exe",
+      "Research/omr/phase2_zeus_runner.py",
+      "--input",
+      "Research/omr/data/olimpic/olimpic-1.0-scanned/samples/4919798/p1-s3.png",
+      "--output",
+      "Research/omr/.runtime/phase3/evaluation/olimpic-canary/zeus_system/d46d6080e2c5eade70e1-f1abe5752acf",
+      "--mode",
+      "upstream"
+    ],
+    "input_path": "Research/omr/data/olimpic/olimpic-1.0-scanned/samples/4919798/p1-s3.png",
+    "input_sha256": "f01a07b4a0b8ebc33f0a9d6c59cbd68e9379e165f13facc3433f9050d7093f89",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "source_repository": "https://github.com/ufal/olimpic-icdar24",
+    "source_revision": "df0d842596ccd199882ff958e628d59327ca6cba"
+  },
+  "resources": {
+    "cold_start": true,
+    "measurement_notes": [
+      "VRAM measurement: device-wide WDDM fallback"
+    ],
+    "peak_ram_bytes": 518090752,
+    "peak_vram_bytes": null,
+    "sample_interval_seconds": 0.2
+  },
+  "schema_version": 1,
+  "status": "succeeded",
+  "timings": [
+    {
+      "seconds": 10.314940899999783,
+      "stage": "recognition_conversion_stitching"
+    },
+    {
+      "seconds": 0.5071119999993243,
+      "stage": "shared_normalization"
+    }
+  ],
+  "warnings": []
+}

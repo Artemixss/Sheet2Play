@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="27" time="11.437" timestamp="2026-10-05T21:38:02.774482+03:00" hostname="DESKTOP-5BGNU15"><testcase classname="tests.test_phase4_validation" name="test_git_free_source_rejects_changes[added]" time="0.075" /><testcase classname="tests.test_phase4_validation" name="test_git_free_source_rejects_changes[missing]" time="0.060" /><testcase classname="tests.test_phase4_validation" name="test_git_free_source_rejects_changes[altered]" time="0.283" /><testcase classname="tests.test_phase4_validation" name="test_git_free_source_rejects_changes[revision]" time="0.060" /><testcase classname="tests.test_phase4_validation" name="test_changed_historical_artifact_is_rejected" time="0.021" /><testcase classname="tests.test_phase4_validation" name="test_changed_or_missing_input_rejected" time="0.015" /><testcase classname="tests.test_phase4_validation" name="test_inventory_escape_rejected[../escape]" time="0.003" /><testcase classname="tests.test_phase4_validation" name="test_inventory_escape_rejected[C:/escape]" time="0.002" /><testcase classname="tests.test_phase4_validation" name="test_current_metadata_addition_requires_new_admission" time="0.000" /><testcase classname="tests.test_screening_homr_compatibility" name="test_pinned_pair_and_ordered_labels_pass" time="0.804" /><testcase classname="tests.test_screening_homr_compatibility" name="test_incompatible_contract_is_rejected[&lt;lambda&gt;-position labels0]" time="0.241" /><testcase classname="tests.test_screening_homr_compatibility" name="test_incompatible_contract_is_rejected[&lt;lambda&gt;-position labels1]" time="0.245" /><testcase classname="tests.test_screening_homr_compatibility" name="test_incompatible_contract_is_rejected[&lt;lambda&gt;-encoder SHA-256]" time="0.258" /><testcase classname="tests.test_screening_homr_compatibility" name="test_incompatible_contract_is_rejected[&lt;lambda&gt;-decoder outputs count]" time="0.799" /><testcase classname="tests.test_screening_homr_compatibility" name="test_incompatible_contract_is_rejected[&lt;lambda&gt;-decoder inputs[0]]" time="0.801" /><testcase classname="tests.test_screening_homr_compatibility" name="test_incompatible_contract_is_rejected[&lt;lambda&gt;-decoder inputs[7]]" time="0.788" /><testcase classname="tests.test_screening_homr_compatibility" name="test_incompatible_contract_is_rejected[&lt;lambda&gt;-source revision]" time="0.185" /><testcase classname="tests.test_screening_homr_compatibility" name="test_screened_source_and_missing_model_are_rejected" time="0.410" /><testcase classname="tests.test_screening_homr_compatibility" name="test_dirty_source_is_rejected" time="0.256"><failure message="AssertionError: Regex pattern did not match.&#10;  Expected regex: 'source worktree status'&#10;  Actual message: 'Source worktree status / SHA-256 changed: homr/transformer/vocabulary.py'">tmp_path = WindowsPath('C:/Users/bur4x/AppData/Local/Temp/pytest-of-bur4x/pytest-175/test_dirty_source_is_rejected0')
+
+    def test_dirty_source_is_rejected(tmp_path: Path) -&gt; None:
+        import shutil
+        source = tmp_path / "source"
+        shutil.copytree(extension.SOURCE / "homr", source / "homr", ignore=shutil.ignore_patterns("__pycache__"))
+        (source / ".git").mkdir()
+        (source / ".git/HEAD").write_text(extension.REVISION + "\n")
+        vocabulary = source / "homr/transformer/vocabulary.py"
+        vocabulary.write_text(vocabulary.read_text() + "\nchanged = True\n")
+        with pytest.raises(ValueError, match="source worktree status"):
+&gt;           compatibility.check_source(source, common.read_json(extension.CONTRACT))
+
+Research\omr\tests\test_screening_homr_compatibility.py:85: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+Research\omr\screening_homr_compatibility.py:40: in check_source
+    checked_homr_source(source, contract["source_revision"])
+Research\omr\phase4_validation.py:88: in checked_homr_source
+    verify_files(source, files)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+root = WindowsPath('C:/Users/bur4x/AppData/Local/Temp/pytest-of-bur4x/pytest-175/test_dirty_source_is_rejected0/source')
+files = {'homr/__init__.py': 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'homr/autocrop.py': '8d898b51...6017aed04455589a6d', 'homr/bounding_boxes.py': 'cf5c27212f3b9763dd460cbefe99fd0a66e8f7bf53ea50d02d8849482a02a51f', ...}
+
+    def verify_files(root: Path, files: dict[str, str]) -&gt; None:
+        if not files:
+            raise ValueError("Empty source inventory")
+        for name, expected in files.items():
+            if not re.fullmatch(r"[0-9a-f]{64}", expected):
+                raise ValueError(f"Invalid inventory digest: {name}")
+            if file_hash(safe_path(root, name)) != expected:
+&gt;               raise ValueError(f"Source worktree status / SHA-256 changed: {name}")
+E               ValueError: Source worktree status / SHA-256 changed: homr/transformer/vocabulary.py
+
+Research\omr\phase4_validation.py:49: ValueError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = WindowsPath('C:/Users/bur4x/AppData/Local/Temp/pytest-of-bur4x/pytest-175/test_dirty_source_is_rejected0')
+
+    def test_dirty_source_is_rejected(tmp_path: Path) -&gt; None:
+        import shutil
+        source = tmp_path / "source"
+        shutil.copytree(extension.SOURCE / "homr", source / "homr", ignore=shutil.ignore_patterns("__pycache__"))
+        (source / ".git").mkdir()
+        (source / ".git/HEAD").write_text(extension.REVISION + "\n")
+        vocabulary = source / "homr/transformer/vocabulary.py"
+        vocabulary.write_text(vocabulary.read_text() + "\nchanged = True\n")
+&gt;       with pytest.raises(ValueError, match="source worktree status"):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'source worktree status'
+E         Actual message: 'Source worktree status / SHA-256 changed: homr/transformer/vocabulary.py'
+
+Research\omr\tests\test_screening_homr_compatibility.py:84: AssertionError</failure></testcase><testcase classname="tests.test_screening_homr_compatibility" name="test_wrong_imported_source_is_rejected" time="0.171" /><testcase classname="tests.test_screening_homr_compatibility" name="test_live_manifest_rejects_historical_455_identity" time="0.790" /><testcase classname="tests.test_screening_homr_compatibility" name="test_missing_compatibility_report_blocks_verification" time="0.775" /><testcase classname="tests.test_screening_homr_compatibility" name="test_development_ram_override_keeps_other_resource_blocks" time="0.000" /><testcase classname="tests.test_screening_homr_compatibility" name="test_release_symbolic_conversion_and_shared_normalizer" time="1.326" /><testcase classname="tests.test_screening_stage3" name="test_homr_455_extension_preserves_frozen_sample_and_control" time="1.370" /><testcase classname="tests.test_screening_stage3" name="test_homr_455_environment_matches_pinned_assets" time="1.306" /><testcase classname="tests.test_screening_stage3" name="test_homr_455_rejects_wrong_source_revision" time="0.002" /></testsuite></testsuites>

@@ -1,0 +1,97 @@
+{
+  "adapter_id": "shipped_homr_direct",
+  "aligned_voice_accuracy": 0.5691823899371069,
+  "candidate_id": "shipped_homr",
+  "cold_start": true,
+  "composition_group": "beethoven/sonata26_1",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 118,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 154,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "2",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "2",
+        "count": 2,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "2",
+        "count": 17,
+        "predicted": "2"
+      },
+      {
+        "actual": "3",
+        "count": 3,
+        "predicted": "3"
+      },
+      {
+        "actual": "3",
+        "count": 2,
+        "predicted": "4"
+      },
+      {
+        "actual": "3/2",
+        "count": 6,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "4",
+        "count": 20,
+        "predicted": "4"
+      },
+      {
+        "actual": "5",
+        "count": 2,
+        "predicted": "4"
+      },
+      {
+        "actual": "5/2",
+        "count": 2,
+        "predicted": "2"
+      }
+    ],
+    "unmatched_expected": 66,
+    "unmatched_predicted": 71
+  },
+  "elapsed_seconds": 20.625,
+  "error": null,
+  "extra_note_count": 80,
+  "failure_penalized_omr_ned": 0.2433993399339934,
+  "first_divergent_measure": 1,
+  "item_id": "test/beethoven/sonata26_1/sonata26_1_2.png",
+  "mean_offset_error": 0.06574923547400612,
+  "missing_note_count": 75,
+  "omr_ned": 0.2433993399339934,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.8040455120101139,
+  "onset_f1": 0.8268015170670038,
+  "peak_ram_bytes": 1646874624,
+  "peak_vram_bytes": 1636827136,
+  "pitch_f1": 0.9633375474083439,
+  "predicted_note_count": 398,
+  "reference_measure_count": 37,
+  "reference_note_count": 393,
+  "reference_quarter_length": "148",
+  "schema_version": 1,
+  "staff_accuracy": 0.6037735849056604,
+  "status": "succeeded",
+  "timeline_length_error": "316666666666667/50000000000000",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

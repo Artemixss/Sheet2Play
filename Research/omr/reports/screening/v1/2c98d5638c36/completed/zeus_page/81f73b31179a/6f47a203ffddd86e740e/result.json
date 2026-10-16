@@ -1,0 +1,132 @@
+{
+  "adapter_config_sha256": "e798b17dc339f6a42ea50f4dcf6c54a72cbcfa97d1461b083d282ea59502ce93",
+  "adapter_id": "zeus_app_integration",
+  "artifacts": [
+    {
+      "bytes": 18058,
+      "media_type": "application/json",
+      "path": "Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/2aafd91c5d093078a7df/attempt-1328e1cf90584d409dcc2792a3646622/raw/native.lmx.json",
+      "role": "native",
+      "sha256": "a2348f452516c32cb88905d5686777e5f56f3a2068f95f8734868ec929298afa"
+    },
+    {
+      "bytes": 133518,
+      "media_type": "application/vnd.recordare.musicxml+xml",
+      "path": "Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/2aafd91c5d093078a7df/attempt-1328e1cf90584d409dcc2792a3646622/raw/score.musicxml",
+      "role": "musicxml",
+      "sha256": "02179cb30f3b9ca08a007f940c43e52dae4ee0f4dfe848f5e2ae372cffd1ae7c"
+    },
+    {
+      "bytes": 85478,
+      "media_type": "application/json",
+      "path": "Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/2aafd91c5d093078a7df/attempt-1328e1cf90584d409dcc2792a3646622/raw/canonical-events.json",
+      "role": "canonical_events",
+      "sha256": "3479fae1263feec38f077784fb65ae76ace6d8fed841152c3a8e1134f888cc59"
+    },
+    {
+      "bytes": 36,
+      "media_type": "text/plain",
+      "path": "Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/2aafd91c5d093078a7df/attempt-1328e1cf90584d409dcc2792a3646622/raw/engine.log",
+      "role": "engine_log",
+      "sha256": "aaca0942830f1b45ec196816065629ccabc813fe2265555bbb1adbab111caad7"
+    }
+  ],
+  "candidate_id": "zeus",
+  "composition_group": "mozart/sonata08_2",
+  "error": null,
+  "exit_status": 0,
+  "item_id": "test/mozart/sonata08_2/sonata08_2_2.png",
+  "measurement_path": "complete_document",
+  "provenance": {
+    "adapter_config": {
+      "adapter_id": "zeus_app_integration",
+      "adapter_revision": "fdffc993b22fc2a284a8822c5e9688cbbd4ac09107ef2af4c2cccc5b8b44af10",
+      "candidate_id": "zeus",
+      "checkpoint": "zeus-olimpic-1.0-2024-02-12.model",
+      "checkpoint_revision": "2024-02-12",
+      "input_granularity": "document with HOMR-detected systems",
+      "native_format": "LMX",
+      "settings": {
+        "cpu_affinity_count": 8,
+        "cpu_environment": {
+          "JAVA_TOOL_OPTIONS": "-XX:ActiveProcessorCount=8",
+          "JDK_JAVA_OPTIONS": "",
+          "MKL_NUM_THREADS": "8",
+          "NUMEXPR_NUM_THREADS": "8",
+          "OMP_NUM_THREADS": "8",
+          "OPENBLAS_NUM_THREADS": "8",
+          "TF_NUM_INTEROP_THREADS": "1",
+          "TF_NUM_INTRAOP_THREADS": "8",
+          "_JAVA_OPTIONS": ""
+        },
+        "cpu_profile_sha256": "56388ee1250f7e8057488c88a9698304bc4510882b5e41d9a5c502ce1874eb12",
+        "cpu_threads": 8,
+        "execution_context": "fully_readable_local",
+        "normalization": "frozen-phase1",
+        "preprocessing": "app-width-bucketing",
+        "priority": "below_normal",
+        "runner_sha256": "592e63d2c4828be954257073275e4665c22f2a583bf1c81d06b585711e4021f4",
+        "screening_resource_policy_sha256": "7295130be2109e160d38d0e5117a45e9d85aa1da8560a841bccbed808d05fce0",
+        "screening_runner_sha256": "8bfbdc1ed6ce7fbe5b4181b35dcc78bbc15a724c592fe46f0a2b440c5c0b0123",
+        "system_detector_sha256": "b1aac6372d1cbce32dc8e00a7e6c6d809cb9d6eb1fb82ad382cfb42a8b2e6c86"
+      },
+      "source_repository": "https://github.com/ufal/olimpic-icdar24",
+      "source_revision": "df0d842596ccd199882ff958e628d59327ca6cba",
+      "supported_paths": [
+        "complete_document"
+      ]
+    },
+    "adapter_config_sha256": "e798b17dc339f6a42ea50f4dcf6c54a72cbcfa97d1461b083d282ea59502ce93",
+    "adapter_timings": [
+      {
+        "seconds": 64.25,
+        "stage": "recognition_conversion_stitching"
+      },
+      {
+        "seconds": 0.8497774999996182,
+        "stage": "shared_normalization"
+      }
+    ],
+    "checkpoint": "zeus-olimpic-1.0-2024-02-12.model",
+    "checkpoint_revision": "2024-02-12",
+    "command": [
+      "Research/omr/.venv/Scripts/python.exe",
+      "Research/omr/phase2_zeus_runner.py",
+      "--input",
+      "Research/omr/data/smb/test/mozart/sonata08_2/sonata08_2_2.png",
+      "--output",
+      "Research/omr/reports/screening/v1/2c98d5638c36/attempts/zeus_page/81f73b31179a/2aafd91c5d093078a7df/attempt-1328e1cf90584d409dcc2792a3646622/raw",
+      "--mode",
+      "integration"
+    ],
+    "input_path": "Research/omr/data/smb/test/mozart/sonata08_2/sonata08_2_2.png",
+    "input_sha256": "06e41335b0ad92f70945aa373af9c464be2d2cd70197fc2141c288131ea1cc62",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "source_repository": "https://github.com/ufal/olimpic-icdar24",
+    "source_revision": "df0d842596ccd199882ff958e628d59327ca6cba",
+    "timing_source": "screening_complete_path"
+  },
+  "resources": {
+    "cold_start": true,
+    "measurement_notes": [
+      "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+      "device-wide nvidia-smi sample; not per-process VRAM"
+    ],
+    "peak_ram_bytes": 1046265856,
+    "peak_vram_bytes": 242221056,
+    "sample_interval_seconds": 0.2
+  },
+  "schema_version": 1,
+  "status": "succeeded",
+  "timings": [
+    {
+      "seconds": 70.57799999999952,
+      "stage": "screening_complete_path"
+    }
+  ],
+  "warnings": [
+    "MusicXMLWarning: Warning: measure 0 in part Pianois overfull: 43/10 > 4.0,assuming 4.0 is correct.",
+    "MusicXMLWarning: Warning: measure 0 in part Pianois overfull: 133/30 > 4.0,assuming 4.0 is correct."
+  ]
+}

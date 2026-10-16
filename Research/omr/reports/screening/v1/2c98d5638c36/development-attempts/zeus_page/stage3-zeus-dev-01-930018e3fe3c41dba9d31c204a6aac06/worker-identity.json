@@ -1,0 +1,22 @@
+{
+  "adapter_config_sha256": "e798b17dc339f6a42ea50f4dcf6c54a72cbcfa97d1461b083d282ea59502ce93",
+  "compatibility_report": null,
+  "cpu_affinity_count": 8,
+  "cpu_profile_sha256": "56388ee1250f7e8057488c88a9698304bc4510882b5e41d9a5c502ce1874eb12",
+  "creation_time": 1790753859.7924056,
+  "development_entry_sha256": "2e137bd3d9c40c2c8532471d1c03c4865f449051b3e42ec551caa22ecbe223b0",
+  "development_ram_admission_percent": 90,
+  "effective_cpu_environment": {
+    "JAVA_TOOL_OPTIONS": "-XX:ActiveProcessorCount=8",
+    "JDK_JAVA_OPTIONS": "",
+    "MKL_NUM_THREADS": "8",
+    "NUMEXPR_NUM_THREADS": "8",
+    "OMP_NUM_THREADS": "8",
+    "OPENBLAS_NUM_THREADS": "8",
+    "TF_NUM_INTEROP_THREADS": "1",
+    "TF_NUM_INTRAOP_THREADS": "8",
+    "_JAVA_OPTIONS": ""
+  },
+  "pid": 14492,
+  "priority": "below_normal"
+}

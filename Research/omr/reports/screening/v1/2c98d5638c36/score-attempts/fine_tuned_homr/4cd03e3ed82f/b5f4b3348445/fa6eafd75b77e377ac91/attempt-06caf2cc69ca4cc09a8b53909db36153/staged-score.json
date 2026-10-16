@@ -1,0 +1,87 @@
+{
+  "adapter_id": "epoch14_verified_onnx",
+  "aligned_voice_accuracy": 0.6923076923076923,
+  "candidate_id": "fine_tuned_homr",
+  "cold_start": true,
+  "composition_group": "hummel/prelude67_14",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 36,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/4",
+        "count": 2,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "2",
+        "count": 16,
+        "predicted": "2"
+      },
+      {
+        "actual": "2",
+        "count": 2,
+        "predicted": "3"
+      },
+      {
+        "actual": "3",
+        "count": 2,
+        "predicted": "2"
+      },
+      {
+        "actual": "3",
+        "count": 8,
+        "predicted": "3"
+      },
+      {
+        "actual": "4",
+        "count": 1,
+        "predicted": "4"
+      },
+      {
+        "actual": "7",
+        "count": 1,
+        "predicted": "2"
+      },
+      {
+        "actual": "7/2",
+        "count": 2,
+        "predicted": "7/2"
+      }
+    ],
+    "unmatched_expected": 0,
+    "unmatched_predicted": 5
+  },
+  "elapsed_seconds": 15.609999999998763,
+  "error": null,
+  "extra_note_count": 10,
+  "failure_penalized_omr_ned": 0.14988814317673377,
+  "first_divergent_measure": 1,
+  "item_id": "test/hummel/prelude67_14/prelude67_14_1.png",
+  "mean_offset_error": 0.12857142857142856,
+  "missing_note_count": 5,
+  "omr_ned": 0.14988814317673377,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.896551724137931,
+  "onset_f1": 0.9655172413793104,
+  "peak_ram_bytes": 1489866752,
+  "peak_vram_bytes": 680525824,
+  "pitch_f1": 0.9655172413793104,
+  "predicted_note_count": 75,
+  "reference_measure_count": 7,
+  "reference_note_count": 70,
+  "reference_quarter_length": "28",
+  "schema_version": 1,
+  "staff_accuracy": 0.5538461538461539,
+  "status": "succeeded",
+  "timeline_length_error": "0",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "engine": "MusicXml",
+  "engine_revision": "direct-xml",
+  "tempo_changes": [
+    {
+      "start_beat": 0,
+      "bpm": 90
+    }
+  ],
+  "notes": [
+    {
+      "pitch": "C4",
+      "midi_pitch": 60,
+      "start_beat": 0,
+      "duration_beats": 2,
+      "start_seconds": 0,
+      "duration_seconds": 1.3333333333333333,
+      "part_index": 0,
+      "staff_index": 0,
+      "voice_identifier": "1"
+    },
+    {
+      "pitch": "E4",
+      "midi_pitch": 64,
+      "start_beat": 0,
+      "duration_beats": 2,
+      "start_seconds": 0,
+      "duration_seconds": 1.3333333333333333,
+      "part_index": 0,
+      "staff_index": 0,
+      "voice_identifier": "1"
+    },
+    {
+      "pitch": "G4",
+      "midi_pitch": 67,
+      "start_beat": 0,
+      "duration_beats": 2,
+      "start_seconds": 0,
+      "duration_seconds": 1.3333333333333333,
+      "part_index": 0,
+      "staff_index": 0,
+      "voice_identifier": "1"
+    },
+    {
+      "pitch": "C3",
+      "midi_pitch": 48,
+      "start_beat": 0,
+      "duration_beats": 2,
+      "start_seconds": 0,
+      "duration_seconds": 1.3333333333333333,
+      "part_index": 1,
+      "staff_index": 0,
+      "voice_identifier": "1"
+    },
+    {
+      "pitch": "G3",
+      "midi_pitch": 55,
+      "start_beat": 0,
+      "duration_beats": 2,
+      "start_seconds": 0,
+      "duration_seconds": 1.3333333333333333,
+      "part_index": 1,
+      "staff_index": 0,
+      "voice_identifier": "1"
+    }
+  ]
+}

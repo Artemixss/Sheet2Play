@@ -1,0 +1,102 @@
+{
+  "adapter_config_sha256": "65cbbc866b8d90895b671961c7c6145a5a7995110aaada16432c43517b6373a9",
+  "adapter_id": "audiveris_unattended",
+  "artifacts": [
+    {
+      "bytes": 6704,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/audiveris-generated-quintuplet_vs_duple-65cbbc866b8d-06dbf3b4a5ac/engine.log",
+      "role": "partial_1_engine.log",
+      "sha256": "de07d2d62b3026dd28558ee6e656ee64e207ffa11add6386351612f5f2babf7f"
+    },
+    {
+      "bytes": 6912,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/audiveris-generated-quintuplet_vs_duple-65cbbc866b8d-06dbf3b4a5ac/audiveris-output/quintuplet_vs_duple-20260924T2118.log",
+      "role": "partial_2_quintuplet_vs_duple-20260924T2118.log",
+      "sha256": "3a678c3ecaf100ce2fe981ae6a006b6d0edcd8d80f6b57a5ebdbdabe38e825bc"
+    },
+    {
+      "bytes": 11782,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/audiveris-generated-quintuplet_vs_duple-65cbbc866b8d-06dbf3b4a5ac/audiveris-output/quintuplet_vs_duple.omr",
+      "role": "partial_3_quintuplet_vs_duple.omr",
+      "sha256": "be182f461401963d94d6b03a885d0c45b6989f5849a3fc5fcc37d9d590254b8d"
+    }
+  ],
+  "candidate_id": "audiveris",
+  "composition_group": "quintuplet_vs_duple",
+  "error": {
+    "code": "AUDIVERIS_FAILED",
+    "message": "se/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)\n\tat java.base/java.lang.Thread.run(Unknown Source)\nINFO  [quintuplet_vs_duple]                      Book 2584 | Book{quintuplet_vs_duple} storing\nINFO  [quintuplet_vs_duple]                      Book 2565 | Stored /book.xml\nINFO  [quintuplet_vs_duple]                     Sheet 1583 | Stored /sheet#1/sheet#1.xml\nINFO  [quintuplet_vs_duple]                      Book 2525 | Book stored as ${WORKSPACE}\\Research\\omr\\.runtime\\phase2r\\smokes\\audiveris-generated-quintuplet_vs_duple-65cbbc866b8d-06dbf3b4a5ac\\audiveris-output\\quintuplet_vs_duple.omr\nINFO  [quintuplet_vs_duple]                 SheetStub 1655 | Sheet disposed\nINFO  [quintuplet_vs_duple]                      Book 2050 | End of Stub#1\nINFO  [quintuplet_vs_duple]                      Book 2057 | End of Book{quintuplet_vs_duple}\nINFO  [quintuplet_vs_duple]                      Book 596  | Could not export since transcription did not complete successfully\nWARN  [quintuplet_vs_duple]                       CLI 956  | Exception occurred java.lang.Exception: Error in export\njava.lang.Exception: Error in export\n\tat org.audiveris.omr.CLI$ProcessingTask.processBook(CLI.java:930)\n\tat org.audiveris.omr.CLI$CliTask.call(CLI.java:513)\n\tat org.audiveris.omr.Main.runBatchTasks(Main.java:370)\n\tat org.audiveris.omr.Main.main(Main.java:272)\n\tat Audiveris.main(Audiveris.java:50)\nWARN  []                      Main 373  | Exception on quintuplet_vs_duple, java.lang.Exception: Error in export\njava.lang.Exception: Error in export\n\tat org.audiveris.omr.CLI$ProcessingTask.processBook(CLI.java:930)\n\tat org.audiveris.omr.CLI$CliTask.call(CLI.java:513)\n\tat org.audiveris.omr.Main.runBatchTasks(Main.java:370)\n\tat org.audiveris.omr.Main.main(Main.java:272)\n\tat Audiveris.main(Audiveris.java:50)\nWARN  []                      Main 307  | Exit forced. Failure\n",
+    "stage": "recognition"
+  },
+  "exit_status": 1,
+  "item_id": "generated-quintuplet_vs_duple",
+  "measurement_path": "complete_document",
+  "provenance": {
+    "adapter_config": {
+      "adapter_id": "audiveris_unattended",
+      "adapter_revision": "614faf6ddc1d8f0f6580ec1f1772574e55f8b1d27f566026f829ca99f3bdc2b4",
+      "candidate_id": "audiveris",
+      "checkpoint": "Audiveris 5.11.0 classifiers",
+      "checkpoint_revision": "5.11.0",
+      "input_granularity": "complete document",
+      "native_format": "Audiveris OMR project",
+      "settings": {
+        "batch": true,
+        "export": "MusicXML",
+        "manual_corrections": false,
+        "small_image_preprocessing": "lanczos-width-at-least-2000px-300dpi-v1"
+      },
+      "source_repository": "https://github.com/Audiveris/audiveris",
+      "source_revision": "9e1e55cd2746037d059345881c53e6a6754bffbd",
+      "supported_paths": [
+        "complete_document"
+      ]
+    },
+    "adapter_config_sha256": "65cbbc866b8d90895b671961c7c6145a5a7995110aaada16432c43517b6373a9",
+    "checkpoint": "Audiveris 5.11.0 classifiers",
+    "checkpoint_revision": "5.11.0",
+    "command": [
+      "Research/omr/.runtime/phase2r/audiveris-extract/Audiveris/Audiveris.exe",
+      "-batch",
+      "-save",
+      "-export",
+      "-output",
+      "Research/omr/.runtime/phase2r/smokes/audiveris-generated-quintuplet_vs_duple-65cbbc866b8d-06dbf3b4a5ac/audiveris-output",
+      "--",
+      "Research/omr/data/polyrhythm/quintuplet_vs_duple.png"
+    ],
+    "input_path": "Research/omr/data/polyrhythm/quintuplet_vs_duple.png",
+    "input_scale": 1,
+    "input_sha256": "b57f0e85b624a4be1e9a6484bbd2c6088612831ba77875c640e0b1111eaff79d",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "prepared_input_sha256": "b57f0e85b624a4be1e9a6484bbd2c6088612831ba77875c640e0b1111eaff79d",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "source_repository": "https://github.com/Audiveris/audiveris",
+    "source_revision": "9e1e55cd2746037d059345881c53e6a6754bffbd"
+  },
+  "resources": {
+    "cold_start": true,
+    "measurement_notes": [
+      "VRAM measurement: device-wide WDDM fallback"
+    ],
+    "peak_ram_bytes": 397922304,
+    "peak_vram_bytes": null,
+    "sample_interval_seconds": 0.2
+  },
+  "schema_version": 1,
+  "status": "failed",
+  "timings": [
+    {
+      "seconds": 0.00019840000095427968,
+      "stage": "input_preprocessing"
+    },
+    {
+      "seconds": 3.6253661000009743,
+      "stage": "recognition"
+    }
+  ],
+  "warnings": []
+}

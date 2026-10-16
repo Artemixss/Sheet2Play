@@ -1,0 +1,82 @@
+{
+  "adapter_id": "zeus_app_integration",
+  "aligned_voice_accuracy": 1.0,
+  "candidate_id": "zeus",
+  "cold_start": true,
+  "composition_group": "mozart/sonata08_2",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 2,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 2,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 2,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/2",
+        "count": 2,
+        "predicted": "3333333333333333/10000000000000000"
+      },
+      {
+        "actual": "1/6",
+        "count": 6,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/6",
+        "count": 2,
+        "predicted": "8333333333333333/50000000000000000"
+      }
+    ],
+    "unmatched_expected": 526,
+    "unmatched_predicted": 628
+  },
+  "elapsed_seconds": 80.59400000000096,
+  "error": null,
+  "extra_note_count": 643,
+  "failure_penalized_omr_ned": 0.8786963434022258,
+  "first_divergent_measure": 1,
+  "item_id": "test/mozart/sonata08_2/sonata08_2_3.png",
+  "mean_offset_error": 0.1574074074074074,
+  "missing_note_count": 541,
+  "omr_ned": 0.8786963434022258,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.005042016806722689,
+  "onset_f1": 0.030252100840336138,
+  "peak_ram_bytes": 1055584256,
+  "peak_vram_bytes": 240123904,
+  "pitch_f1": 0.6403361344537816,
+  "predicted_note_count": 646,
+  "reference_measure_count": 18,
+  "reference_note_count": 544,
+  "reference_quarter_length": "54",
+  "schema_version": 1,
+  "staff_accuracy": 0.3333333333333333,
+  "status": "succeeded",
+  "timeline_length_error": "21",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

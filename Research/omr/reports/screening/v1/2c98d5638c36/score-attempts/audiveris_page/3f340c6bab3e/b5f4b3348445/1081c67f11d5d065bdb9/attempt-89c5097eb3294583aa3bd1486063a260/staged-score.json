@@ -1,0 +1,47 @@
+{
+  "adapter_id": "audiveris_unattended",
+  "aligned_voice_accuracy": 0.8333333333333334,
+  "candidate_id": "audiveris",
+  "cold_start": true,
+  "composition_group": "mozart/viennese1_1",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1/2",
+        "count": 6,
+        "predicted": "1/2"
+      }
+    ],
+    "unmatched_expected": 327,
+    "unmatched_predicted": 328
+  },
+  "elapsed_seconds": 30.59399999999914,
+  "error": null,
+  "extra_note_count": 328,
+  "failure_penalized_omr_ned": 0.9014989293361885,
+  "first_divergent_measure": 1,
+  "item_id": "test/mozart/viennese1_1/viennese1_1_2.png",
+  "mean_offset_error": 0.0,
+  "missing_note_count": 327,
+  "omr_ned": 0.9014989293361885,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.017991004497751126,
+  "onset_f1": 0.017991004497751126,
+  "peak_ram_bytes": 1147383808,
+  "peak_vram_bytes": 0,
+  "pitch_f1": 0.9445277361319341,
+  "predicted_note_count": 334,
+  "reference_measure_count": 34,
+  "reference_note_count": 333,
+  "reference_quarter_length": "135",
+  "schema_version": 1,
+  "staff_accuracy": 0.6666666666666666,
+  "status": "succeeded",
+  "timeline_length_error": "15/4",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

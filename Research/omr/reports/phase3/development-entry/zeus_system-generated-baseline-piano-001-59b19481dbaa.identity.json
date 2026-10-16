@@ -1,0 +1,17 @@
+{
+  "adapter_config_sha256": "f8780da636a87e33a3e2cbfab361e757cbb26e2c103e3607996872d00684b51f",
+  "candidate": "zeus_system",
+  "files": {
+    "Bridge/detect_systems.py": "b1aac6372d1cbce32dc8e00a7e6c6d809cb9d6eb1fb82ad382cfb42a8b2e6c86",
+    "Bridge/musicxml_normalizer.py": "2e56906636a7164784492ac47c0f0fd628e4f15e172390b58e2792160f819c8e",
+    "Research/omr/phase2_zeus_runner.py": "592e63d2c4828be954257073275e4665c22f2a583bf1c81d06b585711e4021f4",
+    "Research/omr/src/sheet2play_omr/adapter_contract.py": "90ad6b27097654907a5ed2bccd1ba8604de2969d81abc58de05468d3a3f71cc9",
+    "Research/omr/src/sheet2play_omr/phase2_adapters.py": "9aed6425831c77cf53fc935e30138782757de2de1d2ef66f857254e1b95cfb9b",
+    "Research/omr/src/sheet2play_omr/phase2r_validation.py": "f8191718114af445f3d273f7251a2ba68f2dd433ff9c604780ead684e5789a33",
+    "Research/omr/zeus/infer_batch.py": "6c95239dc9f8a0dbd44f93ea87d5528575d9d3d715d891ff477eef97423cc53c",
+    "Research/omr/zeus/weights/zeus-olimpic-1.0-2024-02-12.model/options.json": "5147216bddbf4530c75c5a72365d8b4482f0985bab52f071e0cf60cb94e40cf5",
+    "Research/omr/zeus/weights/zeus-olimpic-1.0-2024-02-12.model/tags.txt": "3daf7ece0f23dbcffd96a38ad392382feadb1dd9ad7e578614e30adc787e2de2",
+    "Research/omr/zeus/weights/zeus-olimpic-1.0-2024-02-12.model/weights.h5": "6f8808cc00e62ac643a1889eca087a1808f5a7d95366d95a5400f68b7802947d"
+  },
+  "input_sha256": "2cbe267a15f2f5791943523413ce6c3d25dee32e283f43af156c7eeee5f08805"
+}

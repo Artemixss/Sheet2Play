@@ -1,0 +1,17 @@
+{
+  "attempt_path": "Research\\omr\\reports\\screening\\v1\\2c98d5638c36\\attempts\\audiveris_page\\3f340c6bab3e\\8a89a3ae485c43a3e1c0\\attempt-479034ba1beb416e901072c4dab61ea4",
+  "attempt_sha256": "aa82bde9bfaca4fc10cfb5b8e78a75034d21f1708b2f89fed2565b7a7287a86d",
+  "identity": {
+    "adapter_config_sha256": "6794f219b928f816a0a0c860f2672cc542560efe5ce9d227511f8757a658ba61",
+    "candidate": "audiveris_page",
+    "configuration_sha256": "3f340c6bab3e8884240da3a2ffdec61b0bd98ebcf81788d3725d08a9aa5ef137",
+    "image_sha256": "7d84380cb526789040e81fc63331e4d64058e68cab1fc265b6bc52466c13fc13",
+    "item_id": "test/liszt/etude10_05/etude10_05_2.png",
+    "reference_sha256": "5bc895fe809deb797895d7c676698bbc248853d82f0250f90a3245e1b101091b",
+    "sample_sha256": "2c98d5638c368b1a53bdb3440177d04fa585f9b1ca6ce6adbe65af64cd8e27d1",
+    "schema_version": 1
+  },
+  "origin": "completed_attempt",
+  "result_sha256": "a31d7adda7a56ebb1309730b1115b80c3281ab02190c9eb76ae19ea8f2737cbc",
+  "timing_source": "screening_complete_path"
+}

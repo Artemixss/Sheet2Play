@@ -1,0 +1,578 @@
+{
+  "status": "blocked",
+  "command": [
+    "Research/omr/.venv/Scripts/python.exe",
+    "-B",
+    "Research/omr/zeus_attribution_verify.py",
+    "Research/omr/reports/zeus-attribution/phase1/diagnostic-identity.json",
+    "--output",
+    "Research/omr/reports/zeus-attribution/phase3/verified-bytes.json"
+  ],
+  "cwd": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play",
+  "limits": {
+    "worker_bytes": 4294967296,
+    "max_seconds": 600.0,
+    "active_processes": 16,
+    "max_git_processes": 8,
+    "max_git_private_bytes": 1073741824
+  },
+  "sampling_interval_seconds": 0.5,
+  "worker_pid": 5520,
+  "worker_exit_code": 0,
+  "stop_reason": "RuntimeError: unexpected_Git_process_buildup",
+  "scope": "Own CPU worker tree only; external Git processes are observed, never killed",
+  "operational_sources": {
+    "Research\\omr\\guarded_execution.py": "ff0eaa28a3d6af2bcda935af25e98a9b9dec37f550c9bf0a8ae9ea49b257857d",
+    "Research\\omr\\guarded_worker.py": "27a53ce5cb4bff58b55fc405aabbb327cc3ee2f46139a14eec510cc3a98786d2",
+    "Research\\omr\\src\\sheet2play_omr\\execution_resources.py": "dd54301eab5cc36fd0f2eea787d8bcbbe55815e0a1271c18d6b7e83d8eb25c11",
+    "Research\\omr\\src\\sheet2play_omr\\safety_policy.py": "10e196953dcc7850b37cd749f59493f1f72a57c85d21f2033a20fe21d8d2507d",
+    "Research\\omr\\src\\sheet2play_omr\\windows_job.py": "e9ccdcca7f64e364d7b52f75ae899b922cdadcf60bf2e0ea8aeaaa4bedb25358"
+  },
+  "initial": {
+    "utc": "2026-10-04T18:45:42.352413+00:00",
+    "committed_bytes": 14945431552,
+    "commit_limit_bytes": 35696578560,
+    "physical_percent": 59.76849624148576,
+    "git_count": 0,
+    "git_private_bytes": 0,
+    "git_processes": []
+  },
+  "admission_process_evidence": {
+    "largest_private_memory_processes": [
+      {
+        "pid": 24876,
+        "parent_pid": 23972,
+        "name": "ChatGPT.exe",
+        "created": 1791136626.33494,
+        "private_bytes": 626184192,
+        "threads": 31
+      },
+      {
+        "pid": 26596,
+        "parent_pid": 7596,
+        "name": "mpv.exe",
+        "created": 1791136635.1198742,
+        "private_bytes": 515477504,
+        "threads": 38
+      },
+      {
+        "pid": 7524,
+        "parent_pid": 1868,
+        "name": "MsMpEng.exe",
+        "created": 1791136588.9606123,
+        "private_bytes": 439209984,
+        "threads": 72
+      },
+      {
+        "pid": 23972,
+        "parent_pid": 12144,
+        "name": "ChatGPT.exe",
+        "created": 1791136618.6513145,
+        "private_bytes": 386048000,
+        "threads": 57
+      },
+      {
+        "pid": 12144,
+        "parent_pid": 11240,
+        "name": "explorer.exe",
+        "created": 1791136594.3166993,
+        "private_bytes": 304287744,
+        "threads": 159
+      },
+      {
+        "pid": 9460,
+        "parent_pid": 25324,
+        "name": "RadeonSoftware.exe",
+        "created": 1791136683.3114552,
+        "private_bytes": 271986688,
+        "threads": 86
+      },
+      {
+        "pid": 22836,
+        "parent_pid": 12144,
+        "name": "Cloudflare WARP.exe",
+        "created": 1791136615.332888,
+        "private_bytes": 255131648,
+        "threads": 121
+      },
+      {
+        "pid": 8512,
+        "parent_pid": 23972,
+        "name": "ChatGPT.exe",
+        "created": 1791136619.6263149,
+        "private_bytes": 253276160,
+        "threads": 72
+      },
+      {
+        "pid": 24828,
+        "parent_pid": 23972,
+        "name": "codex.exe",
+        "created": 1791136626.8582742,
+        "private_bytes": 242397184,
+        "threads": 86
+      },
+      {
+        "pid": 26472,
+        "parent_pid": 23972,
+        "name": "ChatGPT.exe",
+        "created": 1791136634.8479476,
+        "private_bytes": 242176000,
+        "threads": 26
+      },
+      {
+        "pid": 27404,
+        "parent_pid": 23972,
+        "name": "ChatGPT.exe",
+        "created": 1791136643.482912,
+        "private_bytes": 197427200,
+        "threads": 31
+      },
+      {
+        "pid": 17344,
+        "parent_pid": 13212,
+        "name": "NVIDIA Overlay.exe",
+        "created": 1791136597.4438572,
+        "private_bytes": 150355968,
+        "threads": 102
+      },
+      {
+        "pid": 1756,
+        "parent_pid": 23504,
+        "name": "lghub_agent.exe",
+        "created": 1791136616.553073,
+        "private_bytes": 143040512,
+        "threads": 110
+      },
+      {
+        "pid": 2228,
+        "parent_pid": 1808,
+        "name": "dwm.exe",
+        "created": 1791136586.0101917,
+        "private_bytes": 129843200,
+        "threads": 60
+      },
+      {
+        "pid": 25948,
+        "parent_pid": 17900,
+        "name": "AMDRSSrcExt.exe",
+        "created": 1791136687.7103636,
+        "private_bytes": 128770048,
+        "threads": 26
+      },
+      {
+        "pid": 12960,
+        "parent_pid": 2912,
+        "name": "node.exe",
+        "created": 1791137958.659597,
+        "private_bytes": 120172544,
+        "threads": 13
+      },
+      {
+        "pid": 6124,
+        "parent_pid": 8876,
+        "name": "node.exe",
+        "created": 1791139091.3447948,
+        "private_bytes": 119558144,
+        "threads": 13
+      },
+      {
+        "pid": 27828,
+        "parent_pid": 3384,
+        "name": "node.exe",
+        "created": 1791136647.0642483,
+        "private_bytes": 119238656,
+        "threads": 13
+      },
+      {
+        "pid": 27368,
+        "parent_pid": 23432,
+        "name": "node.exe",
+        "created": 1791137952.0583396,
+        "private_bytes": 119013376,
+        "threads": 13
+      },
+      {
+        "pid": 27176,
+        "parent_pid": 14552,
+        "name": "node.exe",
+        "created": 1791138937.8765166,
+        "private_bytes": 118673408,
+        "threads": 15
+      },
+      {
+        "pid": 15948,
+        "parent_pid": 2020,
+        "name": "StartMenuExperienceHost.exe",
+        "created": 1791136596.3876507,
+        "private_bytes": 114843648,
+        "threads": 36
+      },
+      {
+        "pid": 20220,
+        "parent_pid": 17344,
+        "name": "NVIDIA Overlay.exe",
+        "created": 1791136599.471676,
+        "private_bytes": 110223360,
+        "threads": 54
+      },
+      {
+        "pid": 24832,
+        "parent_pid": 23972,
+        "name": "ChatGPT.exe",
+        "created": 1791136626.3343103,
+        "private_bytes": 109666304,
+        "threads": 26
+      },
+      {
+        "pid": 19368,
+        "parent_pid": 17412,
+        "name": "msedgewebview2.exe",
+        "created": 1791136598.6822956,
+        "private_bytes": 96976896,
+        "threads": 36
+      }
+    ],
+    "processes_not_readable": 0,
+    "limitation": "Process private bytes do not account for all system commit; no commandlines captured"
+  },
+  "gate_admission": {
+    "utc": "2026-10-04T18:45:47.333190+00:00",
+    "committed_bytes": 14971047936,
+    "commit_limit_bytes": 35696578560,
+    "physical_percent": 59.94025112144876,
+    "git_count": 0,
+    "git_private_bytes": 0,
+    "git_processes": []
+  },
+  "final": {
+    "utc": "2026-10-04T18:55:18.720030+00:00",
+    "committed_bytes": 15999799296,
+    "commit_limit_bytes": 35696578560,
+    "physical_percent": 60.88883150380856,
+    "git_count": 15,
+    "git_private_bytes": 192995328,
+    "git_processes": [
+      {
+        "pid": 952,
+        "parent_pid": 24828,
+        "name": "git.exe",
+        "created": 1791140117.7423005,
+        "private_bytes": 1589248,
+        "threads": 4
+      },
+      {
+        "pid": 2796,
+        "parent_pid": 16508,
+        "name": "git.exe",
+        "created": 1791140117.939634,
+        "private_bytes": 958464,
+        "threads": 4
+      },
+      {
+        "pid": 5304,
+        "parent_pid": 24828,
+        "name": "git.exe",
+        "created": 1791140117.722194,
+        "private_bytes": 1556480,
+        "threads": 3
+      },
+      {
+        "pid": 6360,
+        "parent_pid": 13892,
+        "name": "git.exe",
+        "created": 1791140117.9561064,
+        "private_bytes": 35586048,
+        "threads": 4
+      },
+      {
+        "pid": 7748,
+        "parent_pid": 24828,
+        "name": "git.exe",
+        "created": 1791140117.8933556,
+        "private_bytes": 1589248,
+        "threads": 4
+      },
+      {
+        "pid": 7784,
+        "parent_pid": 24828,
+        "name": "git.exe",
+        "created": 1791140117.9482496,
+        "private_bytes": 1560576,
+        "threads": 3
+      },
+      {
+        "pid": 11916,
+        "parent_pid": 23972,
+        "name": "git.exe",
+        "created": 1791140117.9240458,
+        "private_bytes": 1568768,
+        "threads": 4
+      },
+      {
+        "pid": 12640,
+        "parent_pid": 24828,
+        "name": "git.exe",
+        "created": 1791140117.9395833,
+        "private_bytes": 1589248,
+        "threads": 4
+      },
+      {
+        "pid": 13424,
+        "parent_pid": 5304,
+        "name": "git.exe",
+        "created": 1791140117.9115894,
+        "private_bytes": 35676160,
+        "threads": 4
+      },
+      {
+        "pid": 19440,
+        "parent_pid": 23716,
+        "name": "git.exe",
+        "created": 1791140117.8062525,
+        "private_bytes": 35676160,
+        "threads": 4
+      },
+      {
+        "pid": 21652,
+        "parent_pid": 24828,
+        "name": "git.exe",
+        "created": 1791140117.6562204,
+        "private_bytes": 1556480,
+        "threads": 3
+      },
+      {
+        "pid": 22676,
+        "parent_pid": 15624,
+        "name": "git.exe",
+        "created": 1791140118.5138009,
+        "private_bytes": 1155072,
+        "threads": 4
+      },
+      {
+        "pid": 23716,
+        "parent_pid": 24828,
+        "name": "git.exe",
+        "created": 1791140117.6757855,
+        "private_bytes": 1589248,
+        "threads": 4
+      },
+      {
+        "pid": 28324,
+        "parent_pid": 952,
+        "name": "git.exe",
+        "created": 1791140117.856966,
+        "private_bytes": 35663872,
+        "threads": 4
+      },
+      {
+        "pid": 28380,
+        "parent_pid": 21652,
+        "name": "git.exe",
+        "created": 1791140117.8233366,
+        "private_bytes": 35680256,
+        "threads": 4
+      }
+    ]
+  },
+  "peak_commit_percent": 44.821660622479556,
+  "peak_physical_percent": 61.13893203195981,
+  "stop_process_evidence": {
+    "largest_private_memory_processes": [
+      {
+        "pid": 24876,
+        "parent_pid": 23972,
+        "name": "ChatGPT.exe",
+        "created": 1791136626.33494,
+        "private_bytes": 652652544,
+        "threads": 31
+      },
+      {
+        "pid": 7524,
+        "parent_pid": 1868,
+        "name": "MsMpEng.exe",
+        "created": 1791136588.9606123,
+        "private_bytes": 581935104,
+        "threads": 76
+      },
+      {
+        "pid": 26596,
+        "parent_pid": 7596,
+        "name": "mpv.exe",
+        "created": 1791136635.1198742,
+        "private_bytes": 515686400,
+        "threads": 38
+      },
+      {
+        "pid": 23972,
+        "parent_pid": 12144,
+        "name": "ChatGPT.exe",
+        "created": 1791136618.6513145,
+        "private_bytes": 434532352,
+        "threads": 56
+      },
+      {
+        "pid": 12144,
+        "parent_pid": 11240,
+        "name": "explorer.exe",
+        "created": 1791136594.3166993,
+        "private_bytes": 304218112,
+        "threads": 158
+      },
+      {
+        "pid": 24828,
+        "parent_pid": 23972,
+        "name": "codex.exe",
+        "created": 1791136626.8582742,
+        "private_bytes": 277995520,
+        "threads": 192
+      },
+      {
+        "pid": 9460,
+        "parent_pid": 25324,
+        "name": "RadeonSoftware.exe",
+        "created": 1791136683.3114552,
+        "private_bytes": 271855616,
+        "threads": 83
+      },
+      {
+        "pid": 8512,
+        "parent_pid": 23972,
+        "name": "ChatGPT.exe",
+        "created": 1791136619.6263149,
+        "private_bytes": 251068416,
+        "threads": 71
+      },
+      {
+        "pid": 22836,
+        "parent_pid": 12144,
+        "name": "Cloudflare WARP.exe",
+        "created": 1791136615.332888,
+        "private_bytes": 244076544,
+        "threads": 120
+      },
+      {
+        "pid": 26472,
+        "parent_pid": 23972,
+        "name": "ChatGPT.exe",
+        "created": 1791136634.8479476,
+        "private_bytes": 242294784,
+        "threads": 26
+      },
+      {
+        "pid": 27404,
+        "parent_pid": 23972,
+        "name": "ChatGPT.exe",
+        "created": 1791136643.482912,
+        "private_bytes": 198176768,
+        "threads": 31
+      },
+      {
+        "pid": 17344,
+        "parent_pid": 13212,
+        "name": "NVIDIA Overlay.exe",
+        "created": 1791136597.4438572,
+        "private_bytes": 150409216,
+        "threads": 104
+      },
+      {
+        "pid": 1756,
+        "parent_pid": 23504,
+        "name": "lghub_agent.exe",
+        "created": 1791136616.553073,
+        "private_bytes": 142979072,
+        "threads": 108
+      },
+      {
+        "pid": 2228,
+        "parent_pid": 1808,
+        "name": "dwm.exe",
+        "created": 1791136586.0101917,
+        "private_bytes": 129843200,
+        "threads": 60
+      },
+      {
+        "pid": 25948,
+        "parent_pid": 17900,
+        "name": "AMDRSSrcExt.exe",
+        "created": 1791136687.7103636,
+        "private_bytes": 128770048,
+        "threads": 26
+      },
+      {
+        "pid": 12960,
+        "parent_pid": 2912,
+        "name": "node.exe",
+        "created": 1791137958.659597,
+        "private_bytes": 120172544,
+        "threads": 13
+      },
+      {
+        "pid": 6124,
+        "parent_pid": 8876,
+        "name": "node.exe",
+        "created": 1791139091.3447948,
+        "private_bytes": 119558144,
+        "threads": 13
+      },
+      {
+        "pid": 27828,
+        "parent_pid": 3384,
+        "name": "node.exe",
+        "created": 1791136647.0642483,
+        "private_bytes": 119238656,
+        "threads": 13
+      },
+      {
+        "pid": 27368,
+        "parent_pid": 23432,
+        "name": "node.exe",
+        "created": 1791137952.0583396,
+        "private_bytes": 119013376,
+        "threads": 13
+      },
+      {
+        "pid": 27176,
+        "parent_pid": 14552,
+        "name": "node.exe",
+        "created": 1791138937.8765166,
+        "private_bytes": 118607872,
+        "threads": 13
+      },
+      {
+        "pid": 15948,
+        "parent_pid": 2020,
+        "name": "StartMenuExperienceHost.exe",
+        "created": 1791136596.3876507,
+        "private_bytes": 114737152,
+        "threads": 35
+      },
+      {
+        "pid": 20220,
+        "parent_pid": 17344,
+        "name": "NVIDIA Overlay.exe",
+        "created": 1791136599.471676,
+        "private_bytes": 110223360,
+        "threads": 54
+      },
+      {
+        "pid": 24832,
+        "parent_pid": 23972,
+        "name": "ChatGPT.exe",
+        "created": 1791136626.3343103,
+        "private_bytes": 108548096,
+        "threads": 26
+      },
+      {
+        "pid": 19368,
+        "parent_pid": 17412,
+        "name": "msedgewebview2.exe",
+        "created": 1791136598.6822956,
+        "private_bytes": 96989184,
+        "threads": 36
+      }
+    ],
+    "processes_not_readable": 7,
+    "limitation": "Process private bytes do not account for all system commit; no commandlines captured"
+  },
+  "elapsed_seconds": 588.6880000000001
+}

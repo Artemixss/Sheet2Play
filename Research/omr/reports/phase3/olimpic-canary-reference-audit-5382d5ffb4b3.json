@@ -1,0 +1,912 @@
+{
+  "builder_sha256": "5382d5ffb4b37eb721c7c843cc7fe2a20611b194535ec6d7199edba1b7a6205b",
+  "collection": "olimpic-canary",
+  "eligible_count": 100,
+  "invalid_count": 0,
+  "items": [
+    {
+      "id": "4919798/p1-s3",
+      "note_count": 95,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/d2dd84044aeaab55e7044ad0.json",
+      "reference_sha256": "fc4dadf52486b3553628b0702cd697f251f7bb64ef4974fbe9263b69c8e58add",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "4978492/p6-s1",
+      "note_count": 64,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/6d248d2d421fd335321cf406.json",
+      "reference_sha256": "7e74e5e6138788db83b3b5453806f8a3810fe3c70f1e8b98f354bc5b6e68045c",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "4982465/p1-s4",
+      "note_count": 78,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/0027506e385165437576b5ab.json",
+      "reference_sha256": "ef1c1f49506849fcb82bd8710ea111a048c46556c8b9793501d92ccdf6c62f20",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 2
+    },
+    {
+      "id": "4982505/p4-s2",
+      "note_count": 75,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/3674894d85d961cdf37ec2ed.json",
+      "reference_sha256": "362365047e1b9a31fb4c57edaf6ac67146af9790170dbafb7bcf91bbe7ff37c0",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "5000459/p1-s3",
+      "note_count": 87,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/c2a1ab48d8414824254725b2.json",
+      "reference_sha256": "ae02a3a70375bb49ed9b7ded0a31f99f576937083a8031df97aebc23d7f18297",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "5000464/p1-s1",
+      "note_count": 40,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/dbd3ddad44c5dfae2afc8fef.json",
+      "reference_sha256": "5dba82e1d3b615b82a93e0d87f41c9642abe8d6d111eb9ca65a92b67c263e224",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "5000467/p3-s2",
+      "note_count": 96,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/6caee0ae26847c282d454d50.json",
+      "reference_sha256": "e8ec2dd82d6541a43f54079c30adb1be40eed530e2f67926bf8ae9b79f977878",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "5026306/p2-s4",
+      "note_count": 89,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/aa7c5b2dd625b7e37b106b9b.json",
+      "reference_sha256": "967ba2a402ea0681788f2acfe2a102c5b6a3f55d991f9dc06c58ee3ceefc533d",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 2
+    },
+    {
+      "id": "5026309/p6-s3",
+      "note_count": 64,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/4bee3ce02b87552aa4290519.json",
+      "reference_sha256": "aeb02e1f6d5ca9e3ac81b0f8157f5ee26e91641d0bbfc7747b924763f963cb54",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "5026316/p2-s4",
+      "note_count": 70,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/d02899ba3f54f9dd580df8fc.json",
+      "reference_sha256": "79516e95001ee2d61a066493ab0babd2b1d28db646ff7c169cfcb7e97c2469eb",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "5062156/p2-s1",
+      "note_count": 81,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/9315f11e49d2f6a4b5be3483.json",
+      "reference_sha256": "24c9dfbe4e51e2546e82b52466492b7530d937c3224f946ab0b3cece2961dcd1",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "5062158/p1-s3",
+      "note_count": 78,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/a0b7073a88cabec8c16db6cc.json",
+      "reference_sha256": "9374c27f51e66090862e48f9db370b635fee8ba54caf8a528902582a74d5f638",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "5062159/p1-s1",
+      "note_count": 47,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/68e5d5844da03d9f6c0a7659.json",
+      "reference_sha256": "9104dee0b5699318053b173f66e4cb8c2a3392253518e36d710dcca0b5d8e065",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "5069022/p2-s2",
+      "note_count": 79,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/83423a5c0a5c2147912b85c7.json",
+      "reference_sha256": "c41a671e7b105b4d1b4f5febf45cdea01f63bacabaab23fe492609360b87c7f9",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "5069028/p1-s4",
+      "note_count": 42,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/c5a11b911788f3fc591c67d6.json",
+      "reference_sha256": "1c42f8ba54637d1a0d0cf3a01e6ce00e3482755e5b950b4d27ec72d5c2b97ff8",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "5071644/p1-s3",
+      "note_count": 45,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/d563baeddd7c04a3d1787fb0.json",
+      "reference_sha256": "9584450edc15d37d8b27cbe60d308bd830ec443d35e41c0fdcc103dc420ca2ae",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "5098713/p2-s2",
+      "note_count": 108,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/fc5ced3f002695851004000c.json",
+      "reference_sha256": "e1ea26e28eb59f2c04faa6eacd16c4e609f4d5bb1f89c9ff0283a7cd2144c5ef",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 2
+    },
+    {
+      "id": "5654342/p1-s2",
+      "note_count": 36,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/b21df6655ca87e7ec83033cd.json",
+      "reference_sha256": "0becacf79c44e0a694d5b7bf62af4a71d3dea38ca8c482b1b545fc80f173363b",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "5656522/p3-s4",
+      "note_count": 75,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/85f5496994ed5e9cd7fb2595.json",
+      "reference_sha256": "790e649dc6f0490dc974037386509eb3605596c6fb698a5b7d604ad48f04ec43",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "5659823/p1-s2",
+      "note_count": 48,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/78e54a4c9d36b58ab300393b.json",
+      "reference_sha256": "398f72971dabd9c8f1a14557653d41c73d51ac7010b05327aea14e6225faec7c",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "5667944/p4-s3",
+      "note_count": 71,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/a21962812c8b24c168d74edb.json",
+      "reference_sha256": "8a6c32fbdd6d4107c7c29640733f0be95f23331aa8f3d473d051502a34b15117",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "5700433/p2-s4",
+      "note_count": 57,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/fd6379905f69e54dd5a7da21.json",
+      "reference_sha256": "98657c5912fef16ad78d56aa091fb3dd501e7e733184832a503b5daef160522d",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "5701612/p1-s3",
+      "note_count": 56,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/72a4ff47c6e196c4985a11e6.json",
+      "reference_sha256": "48ac635d100450ed1ae52f114ea647c1d26f96c56d149b34d5ff96bb75acac4c",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "5820797/p1-s2",
+      "note_count": 64,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/d5d06a9a0de005c24055cacb.json",
+      "reference_sha256": "71fce2b1ea0f1463de1da3e58b90725b4b9b894396b395e9a06a720f3eec8f30",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "5834392/p1-s3",
+      "note_count": 81,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/1b1a1087f0a4f8c6bafb192d.json",
+      "reference_sha256": "050229127ceb1089478632224d6e83a1099fa12524ba5d508da5c6dbeae28f0c",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "5837811/p1-s4",
+      "note_count": 100,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/90f4fe1ae22a0bd07fc93d27.json",
+      "reference_sha256": "6e9b99d4ed133978efedf691a3d87f606244426752cb4964eae3391576da6f35",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 2
+    },
+    {
+      "id": "5840228/p1-s3",
+      "note_count": 75,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/e38bd35f177e9e59c94a096d.json",
+      "reference_sha256": "22dfe14961234e23c9824923f0cc90ef124cf26ddc46800902d534745c0c12c4",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6112984/p4-s3",
+      "note_count": 78,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/aa6360d73ab3eac883c92296.json",
+      "reference_sha256": "75eedb151acc447462d8ae0a703c4b5fb102ab36fa331789d752f3a2ebe17aa6",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 2
+    },
+    {
+      "id": "6114679/p1-s2",
+      "note_count": 48,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/0db84c376510a7bcfb66c712.json",
+      "reference_sha256": "da00cd8f9501fc57e425612cab5e4e860491ecf3450c5f54d01bcc1238e1febe",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6115317/p3-s3",
+      "note_count": 133,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/f0943f7fc640b9b20ee19b76.json",
+      "reference_sha256": "018b139464d2467a48108642a106e75e3c54e1aaba7bcb876e58b77b571bd70a",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6209594/p3-s1",
+      "note_count": 48,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/441123eb804874717549f458.json",
+      "reference_sha256": "5b41aab0a1d4833283ebe95d036fbff09bd833035c7b22781e5d689c0056e985",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6209602/p4-s2",
+      "note_count": 49,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/596015823df009631f1895e1.json",
+      "reference_sha256": "d612e60060db9bcbfacf1095c3955807ff4ce6d3408fb432087e2424042503c9",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6209605/p1-s2",
+      "note_count": 43,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/8fe79649d893ae92c59a2506.json",
+      "reference_sha256": "c6845f5a51cd9c00c5ed278a432b1f7cb2daf42444c3b4a304f67bd37cc5227f",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6209607/p1-s3",
+      "note_count": 44,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/4caa01f2c68fc2c0751663c5.json",
+      "reference_sha256": "4be3554652822bce7db452f9faf462626607b50b841e360abb6d0bf01e6caf63",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6209608/p1-s2",
+      "note_count": 65,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/0c10c6bcdf72e896783df3f3.json",
+      "reference_sha256": "533443dc31cec88e4f71d1ff3665b41acdbddeff5a27587f99a9ab80f3c72660",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6232117/p2-s2",
+      "note_count": 65,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/400270c4ca237cbf328f3ce1.json",
+      "reference_sha256": "48bc22cfa63e92a46b77c43bbe2289d145a4e69b9b2020348bf8024a27dada10",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 2
+    },
+    {
+      "id": "6243836/p4-s3",
+      "note_count": 35,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/aead6bc72e2028593fe0eb2f.json",
+      "reference_sha256": "2c6e52d8bc5d6a91f2b33a39ad27ee8820ef65c452f9e96595bde50051d95c09",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6243838/p3-s4",
+      "note_count": 34,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/3075205fce2edd2f255fb858.json",
+      "reference_sha256": "8205c939686fa8e2bc0ab70d9413271d3fc2c086515fb18f76273b92d9b8d288",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6243839/p2-s1",
+      "note_count": 47,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/7750028aea7b387b51abf1ae.json",
+      "reference_sha256": "bc00540f0636bfcf7131841940d7071b2cecbb9553b0fd5a656c502ace05ed08",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6302395/p2-s1",
+      "note_count": 32,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/e32d5b52ffc0f1fd2e68ca10.json",
+      "reference_sha256": "f154de2ace21d06b14243eab45932bb26b114460c2e5b860abc1cb36661b0560",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6320420/p7-s2",
+      "note_count": 38,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/e68580d23de4a41886b9da45.json",
+      "reference_sha256": "909805b1d67593583b4cee7962db64ec6ad3ce243164ab4afd14f27e45834fb1",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6351349/p4-s2",
+      "note_count": 74,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/dd7cfe5cde5b590beb668f7b.json",
+      "reference_sha256": "723859d1e4126ffe6335b06074d37d6121260d6547dcdaff13bb5ae53e5f9a97",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6377942/p2-s2",
+      "note_count": 58,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/1e43c8a4ac8ec34d24133886.json",
+      "reference_sha256": "81ef5befe92a81a9a2276b6fed958f65668e1b268714a9b6fd167391b5267940",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 2
+    },
+    {
+      "id": "6378337/p2-s1",
+      "note_count": 40,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/b03397ba8b037fb23bf06dde.json",
+      "reference_sha256": "cd95cfb100537f240537512e2e4b542c5ecf6655722e68aa51321b879ac0dc4b",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6378373/p1-s2",
+      "note_count": 29,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/676567876a9a6c30feefe4eb.json",
+      "reference_sha256": "afd1b59e7f564095a1102ba3e4e03754286df833b491f0aa9503fb9ead9257f1",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6379527/p3-s4",
+      "note_count": 54,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/47f8023784e08dae5f5558b3.json",
+      "reference_sha256": "0aeff8a17cc68457a5f864df702498d3c419ef3cfb231ab1bbe4c9883bd8c36d",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6379750/p2-s1",
+      "note_count": 36,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/4c12574f9de692cad521ec38.json",
+      "reference_sha256": "897a42cad068edfd6cfe690fc190c037487e955e254aabb52a9e870c7d85f7ed",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6447286/p2-s1",
+      "note_count": 63,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/205e7422876a0abb8fa0f103.json",
+      "reference_sha256": "ba3877232779a62bb70cd1e07c041819829f632cadbbe9161433d10fffc54396",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6447342/p2-s3",
+      "note_count": 77,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/cd10c2ab4e66af6dd2c75d04.json",
+      "reference_sha256": "b2b015bcb3bba03db09a05a297eaa067dd250b1afc5835ed0939b70299237c98",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6447372/p1-s3",
+      "note_count": 45,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/203dd81587621cdd1084304f.json",
+      "reference_sha256": "5f66047fc624542d712f306fb91cbc1a6f3ba3a9f9f0efb18055e284ed14fb01",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6481218/p10-s1",
+      "note_count": 58,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/1c3955fc6a87908754037c7a.json",
+      "reference_sha256": "ab3f7f1f92883b4835975b1ad949e0b7f38b88d17916142756cdcf20ce9de161",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 2
+    },
+    {
+      "id": "6481941/p11-s2",
+      "note_count": 42,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/7720806f896d190a88c99f88.json",
+      "reference_sha256": "002da5b54531ac276cc32d459d55dd42f12315093ebee927cc7eae6c645c491e",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6482032/p34-s2",
+      "note_count": 26,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/68a602b4b5547685e3ce9956.json",
+      "reference_sha256": "5e3b42f5afc9d1dc8b022baf8c1692575f008f2f4e06c40558eb975ca0265302",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6548435/p4-s2",
+      "note_count": 65,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/8aa12805b1b49bbc08c2e032.json",
+      "reference_sha256": "0807e001abe504a2b5a0688e7943689b687ec4bd4046647132adbe1dd672353f",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6565727/p6-s1",
+      "note_count": 65,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/c68158f9687c20b3c4c8edd0.json",
+      "reference_sha256": "1c2dc51c591e35cead1610ee503cd6a6bfa15123c932cdd99990060cc3530492",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6567603/p1-s3",
+      "note_count": 52,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/8b70909767b4fbfca56b1621.json",
+      "reference_sha256": "f655f8ce5808a745deb1d2488da008aa5332f38ba5187b724435ee5497a80233",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6568021/p1-s2",
+      "note_count": 36,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/192da75dcd5f16f6729c65d4.json",
+      "reference_sha256": "fee12b6f1cb40907623220cde8b0db14e76605af4a7d13912eec47e26b11dcf2",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6568070/p3-s4",
+      "note_count": 21,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/b31d733d644905c14c9067b1.json",
+      "reference_sha256": "695f7b3a3e9ccca5717189d2c6b29246c04d2d2f6f3a913cc9104e6216cc5c70",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6569855/p1-s1",
+      "note_count": 61,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/3e4ce5519faded1231b522fa.json",
+      "reference_sha256": "5242f58454cea1eb1bff9e9df71bbe7349f47ac6792d3b4da8c8050c04dcbead",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6569865/p2-s1",
+      "note_count": 57,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/9e6d1523067c166dda1d3541.json",
+      "reference_sha256": "189daa0bdee6436ae45759d1d1984765fa51358300421200cf629b6bb5c82980",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6570092/p1-s4",
+      "note_count": 63,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/597137d521d54a1341085bc8.json",
+      "reference_sha256": "5fe3792b1d8f7cddab2da5dad6be82a06cff88c7fc3e82f195642d5e1dbad70c",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6570192/p1-s1",
+      "note_count": 56,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/96bf5a982b1974ea4e5983fb.json",
+      "reference_sha256": "7ad4abce84e670fcae40f511d295326e8f872ecd591b76b850f2326448de988d",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6570255/p3-s1",
+      "note_count": 43,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/f3fed10f293d9eed07417e01.json",
+      "reference_sha256": "799b9a904c89af46c69c9049e705953ff3fa334c816c6da5452f3d619f8664b3",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6570310/p3-s3",
+      "note_count": 69,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/9930d11430bdb84a93d84484.json",
+      "reference_sha256": "3d2e005db0c621082e3ee72869b9bb75b817be6920f7652482b472bfff6621c1",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6573515/p2-s1",
+      "note_count": 42,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/0be8c1463bb3a2d340071bc5.json",
+      "reference_sha256": "15ddda8fe3569abfbd7e786bf7866b4e12aaa390db1e72d78a8ca80971907e81",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6573701/p4-s3",
+      "note_count": 33,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/bb6b1ccce9e26ddf0d5b9f3f.json",
+      "reference_sha256": "99ffe9df8ed9537e44409dedb856fca44ec2efdb4bbc82aa55032afa71c9456c",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6586696/p1-s1",
+      "note_count": 45,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/63706b4aa90a247c1d79aca3.json",
+      "reference_sha256": "5daad5f6672bc1440e2a5463d9bde6bc6be49cf43f7fbdc8d59b8e70bc2a2dfd",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6592539/p1-s3",
+      "note_count": 70,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/18e60c54ba3d52c00b6df63b.json",
+      "reference_sha256": "3ac1efb7b41df40eb95d49242e1e4817de2d15f2c24515a0ebbf07dae817fd03",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6592662/p2-s2",
+      "note_count": 52,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/bba6790c9ff80a6eaf6372f3.json",
+      "reference_sha256": "be774230215718e2e51cf5f0ecfff037fc0b4cad4a25dc9cdbfaa4988c71f010",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6621051/p1-s3",
+      "note_count": 79,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/641625e39ec329de200226c2.json",
+      "reference_sha256": "a1f831a8cbcedc145efba669764dc633e4dbc6ed7de319fd801d96b16393aa1a",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6631610/p7-s1",
+      "note_count": 41,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/6a67bd10c80f02c477b61555.json",
+      "reference_sha256": "5bef2af9a1735a43dc3ba294e445518b98434eeb2e426b4d56d17df21af05f51",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6660019/p2-s5",
+      "note_count": 52,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/e645eebddc50fe37009d3e7f.json",
+      "reference_sha256": "32060d57079e65c399fd83d1aae7d2ae895e5c6bf63b1b878cca4020c3ea256a",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6660043/p2-s4",
+      "note_count": 100,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/6bb95aaddbc7244c5400bf05.json",
+      "reference_sha256": "33d362e8787dbc30c89be0c1175d682f0a0d5bff341e6cf1ddc2e28a199fce65",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6660097/p3-s3",
+      "note_count": 44,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/2ebd45716fd295acb5dcbca3.json",
+      "reference_sha256": "cd36de9bc4a4d658a96f777185b85db9775e11b338281c5f351470bad0f9726e",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6686592/p2-s2",
+      "note_count": 91,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/2ddf9213273c4c604948d507.json",
+      "reference_sha256": "c47915e8456fb209105d9700fd7df8ffbb023bc91472291bbe7408841900769f",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6686901/p2-s1",
+      "note_count": 67,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/2c05fb409871658a44c0d4a9.json",
+      "reference_sha256": "abf7b6793d8d8d661daadce962bda5e19a7b84af4a3f7a2f5c1e8c04ca8685d7",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6686980/p1-s3",
+      "note_count": 58,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/f0e0a8f0cdc3a38edafcdbf6.json",
+      "reference_sha256": "2374dca336b974614123815c1bc633186616c0bfc4dcdd1ed926516ad6c832d4",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6687153/p4-s1",
+      "note_count": 47,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/09b895e5aabf139f76b01644.json",
+      "reference_sha256": "c400ced409092971c307e91dfc43dd5113d6d149f839993022491fef853b00c4",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6715306/p1-s1",
+      "note_count": 36,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/759529a8aff3b781c1135012.json",
+      "reference_sha256": "f58c7884c5c09c6970ac54f5743890217e4a79751921423c32001aa31383d3e2",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6715339/p1-s2",
+      "note_count": 41,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/4373d0949b058da8cb2a93d8.json",
+      "reference_sha256": "8ed61db70539787b24ea3a77c77946d0a3a9cf1ee728091307d0941bda99591e",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6715795/p1-s3",
+      "note_count": 39,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/c7c8c206b613a2946ca38382.json",
+      "reference_sha256": "8ab52a7a84f1b2cfe2f3c2143c507caa42c17026e00809ceb801b3883005deb4",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6716614/p1-s4",
+      "note_count": 45,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/b17515b148a68cf11cb0330d.json",
+      "reference_sha256": "374b44f83f8fa4c76dd2941c468732e6305030f1bcc8a8d16c68ac620d100469",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 2
+    },
+    {
+      "id": "6716631/p1-s3",
+      "note_count": 64,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/2c4c816343db417dacab625c.json",
+      "reference_sha256": "423267998aabb5862828749d903cedf0e0693e1da76616f5aad2d4a6b73500e2",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6725471/p1-s1",
+      "note_count": 19,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/4d510c104071094162e92abe.json",
+      "reference_sha256": "c5a0b9defe7f9cb704bd115fb831b734aefad058df3fcb44c9012038dded8def",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6725510/p1-s2",
+      "note_count": 34,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/d47e81aeaefdf48e800bc706.json",
+      "reference_sha256": "e561a4e7f3a11ac5b99305ecd647cb7c8a4afe5624cb5d574a299893ab7d15d5",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6725782/p1-s2",
+      "note_count": 57,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/dadf1e1ed708fee95e1500cf.json",
+      "reference_sha256": "1246084463f014c5649d23dbad7b38650a25a3f012fcf741174fc5549cc63ff5",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 2
+    },
+    {
+      "id": "6725890/p1-s3",
+      "note_count": 27,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/e7810605786f1ca870741bcc.json",
+      "reference_sha256": "63e57f0497251b69e869c6b428368ca0bcd13b92b984abbde364c0dfa7e1c5d3",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 4
+    },
+    {
+      "id": "6726319/p1-s4",
+      "note_count": 22,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/140668976c019e7b5c03c28e.json",
+      "reference_sha256": "875192b9420a654c4ff84f19a7f6c7ccff400bdd2bada7c47a2c3e34fd862ac8",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6753259/p4-s3",
+      "note_count": 46,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/83fb0f310244a7b69f9ff732.json",
+      "reference_sha256": "8fa73f1f8612556fde604f19d1bf7824acabc3d4344a7c70db29c8581199b768",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6834630/p2-s1",
+      "note_count": 59,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/01c72a21cc1832d72eb833fb.json",
+      "reference_sha256": "e247c25d21a3d28fd277ea85cf52ad7c6c0af50bba5dd7297e466655caa19b72",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6984262/p1-s1",
+      "note_count": 70,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/44d1160730223801a081314b.json",
+      "reference_sha256": "0555de100ed408be2564139b7013f973556c004dbacf4c9620eeae87cd3e0dc1",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6984553/p3-s2",
+      "note_count": 67,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/26944026490dd38e99505208.json",
+      "reference_sha256": "d1bf56f9f2f13e8e5f9e5ca7f91166c9f92fece585918d36f585146cc1eef8eb",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 2
+    },
+    {
+      "id": "6984631/p1-s4",
+      "note_count": 67,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/4047381bf8eb7be9df7787ec.json",
+      "reference_sha256": "b7ae6040e47553f2f45f7ae7749d98bd514edb4e2fbeac2c8e0dbfaa0a8222f6",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6985082/p1-s2",
+      "note_count": 147,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/eed45088d135c83db8fce570.json",
+      "reference_sha256": "107be4c60a617c31ab2a471d2d70ec178629d26769cb9bd03ee27eede0d4a1db",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6986065/p2-s1",
+      "note_count": 37,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/ea34368f1201217d4e099ada.json",
+      "reference_sha256": "aead395199ef82bff07925e78d21fcff806fe414142bfef1eb162376cd3f9a55",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6986302/p6-s4",
+      "note_count": 44,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/0c2069ca609265143111af8d.json",
+      "reference_sha256": "2c276c91aea5f1156deb757ce1354eccdc1aef5a4a02c4244e3e90c6293f5e12",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6987705/p5-s3",
+      "note_count": 45,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/fae41866a9c581686def1bcb.json",
+      "reference_sha256": "184c20273292d154d9bcb51a8b35013b1694f12c8fefe0574f2395d807b1c50e",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "6993176/p5-s3",
+      "note_count": 52,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/beeb8c2a62f1069f9f5cbe5a.json",
+      "reference_sha256": "9c2b5378d9da6a1a5093b1ae21970c00c0a6bc61a511a8b0383354437d4f2ffc",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 0
+    },
+    {
+      "id": "7086632/p3-s3",
+      "note_count": 37,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/36e5b82a6b326ca66bb5962e.json",
+      "reference_sha256": "ee17b347c8172beee0e2554de3def739de66d1f0478f91b6066c1fd191ac0e61",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 2
+    },
+    {
+      "id": "7163829/p1-s3",
+      "note_count": 58,
+      "reference_path": "Research/omr/.runtime/phase3/olimpic-references/224473eda660ddd578c12742.json",
+      "reference_sha256": "eae78fc4e40e8aa215c08f13fca0ee687534f0d96090435aa04517e6d40a86f6",
+      "state": "generated",
+      "status": "valid",
+      "warning_count": 2
+    }
+  ],
+  "manifest_sha256": "fc5da2b418b9f86b7d41a8128f6b5c5f184405b9f2233a8159999553cfcde750",
+  "normalizer_sha256": "2e56906636a7164784492ac47c0f0fd628e4f15e172390b58e2792160f819c8e",
+  "schema_version": 1,
+  "valid_count": 100
+}

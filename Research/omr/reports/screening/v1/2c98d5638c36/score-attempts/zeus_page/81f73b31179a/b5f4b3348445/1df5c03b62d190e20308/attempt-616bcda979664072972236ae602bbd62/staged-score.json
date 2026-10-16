@@ -1,0 +1,102 @@
+{
+  "adapter_id": "zeus_app_integration",
+  "aligned_voice_accuracy": 0.9333333333333333,
+  "candidate_id": "zeus",
+  "cold_start": true,
+  "composition_group": "beethoven/sonata02_2",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 3,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 3,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1",
+        "count": 2,
+        "predicted": "2"
+      },
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "8333333333333333/50000000000000000"
+      },
+      {
+        "actual": "1/2",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 14,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 1,
+        "predicted": "8333333333333333/50000000000000000"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/4",
+        "count": 13,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/4",
+        "count": 2,
+        "predicted": "8333333333333333/50000000000000000"
+      },
+      {
+        "actual": "2",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "3/2",
+        "count": 1,
+        "predicted": "8333333333333333/50000000000000000"
+      }
+    ],
+    "unmatched_expected": 432,
+    "unmatched_predicted": 446
+  },
+  "elapsed_seconds": 70.59400000000005,
+  "error": null,
+  "extra_note_count": 459,
+  "failure_penalized_omr_ned": 0.7340450771055753,
+  "first_divergent_measure": 1,
+  "item_id": "test/beethoven/sonata02_2/sonata02_2_3.png",
+  "mean_offset_error": 0.19573643410852715,
+  "missing_note_count": 445,
+  "omr_ned": 0.7340450771055753,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.06224066390041494,
+  "onset_f1": 0.0892116182572614,
+  "peak_ram_bytes": 1054543872,
+  "peak_vram_bytes": 242221056,
+  "pitch_f1": 0.6721991701244813,
+  "predicted_note_count": 489,
+  "reference_measure_count": 26,
+  "reference_note_count": 475,
+  "reference_quarter_length": "78",
+  "schema_version": 1,
+  "staff_accuracy": 0.6666666666666666,
+  "status": "succeeded",
+  "timeline_length_error": "616666666666667/100000000000000",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

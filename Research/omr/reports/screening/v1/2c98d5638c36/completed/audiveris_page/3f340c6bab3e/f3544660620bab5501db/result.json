@@ -1,0 +1,151 @@
+{
+  "adapter_config_sha256": "6794f219b928f816a0a0c860f2672cc542560efe5ce9d227511f8757a658ba61",
+  "adapter_id": "audiveris_unattended",
+  "artifacts": [
+    {
+      "bytes": 498328,
+      "media_type": "application/vnd.audiveris.omr",
+      "path": "Research/omr/reports/screening/v1/2c98d5638c36/attempts/audiveris_page/3f340c6bab3e/60a492c40eae938f7571/attempt-2ab50ce2880f4093849f6ad237a6de9b/raw/audiveris.omr",
+      "role": "native",
+      "sha256": "4b87fa12d611b55716f76eedf2472916bb29579a5e422589bdc8e13434f069c4"
+    },
+    {
+      "bytes": 12309,
+      "media_type": "application/vnd.recordare.musicxml",
+      "path": "Research/omr/reports/screening/v1/2c98d5638c36/attempts/audiveris_page/3f340c6bab3e/60a492c40eae938f7571/attempt-2ab50ce2880f4093849f6ad237a6de9b/raw/score.mxl",
+      "role": "musicxml",
+      "sha256": "d1765b625a17fe0a9cc09c7dff1668655d168236daaadd412233974410682abc"
+    },
+    {
+      "bytes": 93465,
+      "media_type": "application/json",
+      "path": "Research/omr/reports/screening/v1/2c98d5638c36/attempts/audiveris_page/3f340c6bab3e/60a492c40eae938f7571/attempt-2ab50ce2880f4093849f6ad237a6de9b/raw/canonical-events.json",
+      "role": "canonical_events",
+      "sha256": "c3e787df88fa9f8c5b39cb7d517b8e0690990544c2b11b49b71bf97509fb080e"
+    },
+    {
+      "bytes": 13186,
+      "media_type": "text/plain",
+      "path": "Research/omr/reports/screening/v1/2c98d5638c36/attempts/audiveris_page/3f340c6bab3e/60a492c40eae938f7571/attempt-2ab50ce2880f4093849f6ad237a6de9b/raw/engine.log",
+      "role": "engine_log",
+      "sha256": "e89aa57a292687dd4c896565b40342b6ba7ba8a3e8ba7e7cba32f6655fb4da48"
+    },
+    {
+      "bytes": 585,
+      "media_type": "application/json",
+      "path": "Research/omr/reports/screening/v1/2c98d5638c36/attempts/audiveris_page/3f340c6bab3e/60a492c40eae938f7571/attempt-2ab50ce2880f4093849f6ad237a6de9b/raw/attempt-measurements.json",
+      "role": "attempt_measurements",
+      "sha256": "231d6ca722814c2ab76c40435dac5799f9d47203d853985b9a1de342640c85a9"
+    },
+    {
+      "bytes": 3153211,
+      "media_type": "image/png",
+      "path": "Research/omr/reports/screening/v1/2c98d5638c36/attempts/audiveris_page/3f340c6bab3e/60a492c40eae938f7571/attempt-2ab50ce2880f4093849f6ad237a6de9b/raw/audiveris-input-300dpi.png",
+      "role": "prepared_input",
+      "sha256": "2716f6418033ca5a460aee67912fc2e1838434f8f933a85567c74a50393dc291"
+    }
+  ],
+  "candidate_id": "audiveris",
+  "composition_group": "mozart/sonata08_2",
+  "error": null,
+  "exit_status": 0,
+  "item_id": "test/mozart/sonata08_2/sonata08_2_3.png",
+  "measurement_path": "complete_document",
+  "provenance": {
+    "adapter_config": {
+      "adapter_id": "audiveris_unattended",
+      "adapter_revision": "fdffc993b22fc2a284a8822c5e9688cbbd4ac09107ef2af4c2cccc5b8b44af10",
+      "candidate_id": "audiveris",
+      "checkpoint": "Audiveris 5.11.0 classifiers",
+      "checkpoint_revision": "5.11.0",
+      "input_granularity": "complete document",
+      "native_format": "Audiveris OMR project",
+      "settings": {
+        "batch": true,
+        "cpu_affinity_count": 8,
+        "cpu_environment": {
+          "JAVA_TOOL_OPTIONS": "-XX:ActiveProcessorCount=8",
+          "JDK_JAVA_OPTIONS": "",
+          "MKL_NUM_THREADS": "8",
+          "NUMEXPR_NUM_THREADS": "8",
+          "OMP_NUM_THREADS": "8",
+          "OPENBLAS_NUM_THREADS": "8",
+          "TF_NUM_INTEROP_THREADS": "1",
+          "TF_NUM_INTRAOP_THREADS": "8",
+          "_JAVA_OPTIONS": ""
+        },
+        "cpu_profile_sha256": "56388ee1250f7e8057488c88a9698304bc4510882b5e41d9a5c502ce1874eb12",
+        "cpu_threads": 8,
+        "execution_context": "fully_readable_local",
+        "export": "MusicXML",
+        "manual_corrections": false,
+        "priority": "below_normal",
+        "screening_resource_policy_sha256": "7295130be2109e160d38d0e5117a45e9d85aa1da8560a841bccbed808d05fce0",
+        "screening_runner_sha256": "8bfbdc1ed6ce7fbe5b4181b35dcc78bbc15a724c592fe46f0a2b440c5c0b0123",
+        "small_image_preprocessing": "lanczos-width-at-least-2000px-300dpi-v1"
+      },
+      "source_repository": "https://github.com/Audiveris/audiveris",
+      "source_revision": "9e1e55cd2746037d059345881c53e6a6754bffbd",
+      "supported_paths": [
+        "complete_document"
+      ]
+    },
+    "adapter_config_sha256": "6794f219b928f816a0a0c860f2672cc542560efe5ce9d227511f8757a658ba61",
+    "adapter_timings": [
+      {
+        "seconds": 0.5067540999989433,
+        "stage": "input_preprocessing"
+      },
+      {
+        "seconds": 32.5,
+        "stage": "recognition_and_native_conversion"
+      },
+      {
+        "seconds": 0.8848278000004939,
+        "stage": "shared_normalization"
+      }
+    ],
+    "checkpoint": "Audiveris 5.11.0 classifiers",
+    "checkpoint_revision": "5.11.0",
+    "command": [
+      "Research/omr/.runtime/phase2r/audiveris-extract/Audiveris/Audiveris.exe",
+      "-batch",
+      "-save",
+      "-export",
+      "-output",
+      "Research/omr/reports/screening/v1/2c98d5638c36/attempts/audiveris_page/3f340c6bab3e/60a492c40eae938f7571/attempt-2ab50ce2880f4093849f6ad237a6de9b/raw/audiveris-output",
+      "--",
+      "Research/omr/reports/screening/v1/2c98d5638c36/attempts/audiveris_page/3f340c6bab3e/60a492c40eae938f7571/attempt-2ab50ce2880f4093849f6ad237a6de9b/raw/audiveris-input-300dpi.png"
+    ],
+    "input_path": "Research/omr/data/smb/test/mozart/sonata08_2/sonata08_2_3.png",
+    "input_scale": 2,
+    "input_sha256": "583bacc3c47dfdbd9541cebf0b003f9d7082b8f95fe1fdd62be79ff777c7e3f6",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "prepared_input_sha256": "2716f6418033ca5a460aee67912fc2e1838434f8f933a85567c74a50393dc291",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "source_repository": "https://github.com/Audiveris/audiveris",
+    "source_revision": "9e1e55cd2746037d059345881c53e6a6754bffbd",
+    "timing_source": "screening_complete_path"
+  },
+  "resources": {
+    "cold_start": true,
+    "measurement_notes": [
+      "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+      "device-wide nvidia-smi sample; not per-process VRAM"
+    ],
+    "peak_ram_bytes": 1233014784,
+    "peak_vram_bytes": 0,
+    "sample_interval_seconds": 0.2
+  },
+  "schema_version": 1,
+  "status": "succeeded",
+  "timings": [
+    {
+      "seconds": 40.5630000000001,
+      "stage": "screening_complete_path"
+    }
+  ],
+  "warnings": [
+    "MusicXMLWarning: Could not import wedge: Error in getting DynamicWedges"
+  ]
+}

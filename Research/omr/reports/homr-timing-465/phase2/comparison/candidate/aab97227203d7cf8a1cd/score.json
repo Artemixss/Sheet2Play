@@ -1,0 +1,132 @@
+{
+  "aligned_voice_accuracy": 1.0,
+  "candidate": "homr-465-upstream",
+  "capture_status": "complete",
+  "comparison_identity": "91e7256cd902a6ea2adb9fb415e6847b2ba0b9e94fb03fe8f5f1570ae6544fb9",
+  "composition_group": "scarlatti/L055K330",
+  "configuration_identity": "9e619e47fd0317b6a7d1da5207985e1120acefc499a111649c5b7cdb1e339122",
+  "conversion_error": null,
+  "coverage": {
+    "chord_completeness": 0.07079646017699115,
+    "complete_chords": 8,
+    "per_staff": {
+      "0": {
+        "matched_notes": 10,
+        "predicted_notes": 157,
+        "recall": 0.036101083032490974,
+        "reference_notes": 277
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 121,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 113,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 20,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 4,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "3/4",
+        "count": 1,
+        "predicted": "1/4"
+      }
+    ],
+    "unmatched_expected": 251,
+    "unmatched_predicted": 252
+  },
+  "elapsed_seconds": 15.093000000000075,
+  "extra_notes": 257,
+  "item_id": "aab97227203d7cf8a1cd",
+  "mean_offset_error": 0.057692307692307696,
+  "metrics": {
+    "aligned_voice_accuracy": 1.0,
+    "coverage": {
+      "chord_completeness": 0.07079646017699115,
+      "complete_chords": 8,
+      "per_staff": {
+        "0": {
+          "matched_notes": 10,
+          "predicted_notes": 157,
+          "recall": 0.036101083032490974,
+          "reference_notes": 277
+        },
+        "1": {
+          "matched_notes": 0,
+          "predicted_notes": 121,
+          "recall": null,
+          "reference_notes": 0
+        }
+      },
+      "reference_chords": 113,
+      "staff_interpretation": "notation staff index; not validated hand labels"
+    },
+    "duration": {
+      "confusion": [
+        {
+          "actual": "1",
+          "count": 1,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/2",
+          "count": 20,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/2",
+          "count": 4,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "3/4",
+          "count": 1,
+          "predicted": "1/4"
+        }
+      ],
+      "unmatched_expected": 251,
+      "unmatched_predicted": 252
+    },
+    "extra_notes": 257,
+    "mean_offset_error": 0.057692307692307696,
+    "missing_notes": 256,
+    "onset_duration_f1": 0.07567567567567568,
+    "onset_f1": 0.0936936936936937,
+    "pitch_f1": 0.9837837837837838,
+    "predicted_notes": 278,
+    "reference_notes": 277,
+    "staff_accuracy": 0.47619047619047616,
+    "timeline_predicted": "265/4",
+    "timeline_reference": "129/2"
+  },
+  "missing_notes": 256,
+  "onset_duration_f1": 0.07567567567567568,
+  "onset_f1": 0.0936936936936937,
+  "original_item_id": "test/scarlatti/L055K330/L055K330_2.png",
+  "pitch_f1": 0.9837837837837838,
+  "predicted_notes": 278,
+  "receipt_sha256": "c72144c1ef1598cbc3a7315a8592726cb1b5472d277bff9e962463d5625be965",
+  "reference_notes": 277,
+  "reference_sha256": "f7fabb1252901cb0242a58be1b9b1d617028d2d8de55ecca9b15e0c526caed27",
+  "staff_accuracy": 0.47619047619047616,
+  "status": "complete",
+  "timeline_predicted": "265/4",
+  "timeline_reference": "129/2"
+}

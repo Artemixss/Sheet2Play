@@ -1,0 +1,82 @@
+{
+  "adapter_id": "shipped_homr_direct",
+  "aligned_voice_accuracy": 1.0,
+  "candidate_id": "shipped_homr",
+  "cold_start": true,
+  "composition_group": "beethoven/sonata07_4",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 2,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 2,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 104,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 2,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 33,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/5",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "2",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "2",
+        "count": 3,
+        "predicted": "2"
+      }
+    ],
+    "unmatched_expected": 269,
+    "unmatched_predicted": 272
+  },
+  "elapsed_seconds": 20.639999999999418,
+  "error": null,
+  "extra_note_count": 278,
+  "failure_penalized_omr_ned": 0.3483852529294084,
+  "first_divergent_measure": 1,
+  "item_id": "test/beethoven/sonata07_4/sonata07_4_4.png",
+  "mean_offset_error": 0.01722972972972973,
+  "missing_note_count": 275,
+  "omr_ned": 0.3483852529294084,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.33930704898446834,
+  "onset_f1": 0.3536439665471924,
+  "peak_ram_bytes": 1625460736,
+  "peak_vram_bytes": 1641021440,
+  "pitch_f1": 0.972520908004779,
+  "predicted_note_count": 420,
+  "reference_measure_count": 21,
+  "reference_note_count": 417,
+  "reference_quarter_length": "84",
+  "schema_version": 1,
+  "staff_accuracy": 0.9577464788732394,
+  "status": "succeeded",
+  "timeline_length_error": "33/8",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

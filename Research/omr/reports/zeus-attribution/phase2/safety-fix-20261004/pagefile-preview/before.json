@@ -1,0 +1,22 @@
+{
+  "CapturedAt": "2026-10-04T13:12:57.5822856+03:00",
+  "PagingFiles": [
+    "C:\\pagefile.sys 16384 32768"
+  ],
+  "AutomaticManagedPagefile": false,
+  "Settings": [
+    {
+      "Name": "C:\\pagefile.sys",
+      "InitialSize": 16384,
+      "MaximumSize": 32768
+    }
+  ],
+  "RuntimeUsage": [
+    {
+      "Name": "C:\\pagefile.sys",
+      "AllocatedBaseSize": 16384,
+      "CurrentUsage": 253,
+      "PeakUsage": 269
+    }
+  ]
+}

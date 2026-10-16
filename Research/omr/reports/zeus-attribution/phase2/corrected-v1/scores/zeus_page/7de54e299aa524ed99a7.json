@@ -1,0 +1,89 @@
+{
+  "adapter_id": "zeus_app_integration",
+  "aligned_voice_accuracy": 1.0,
+  "candidate_id": "zeus",
+  "cold_start": true,
+  "composition_group": "mozart/viennese1_1",
+  "coverage": {
+    "chord_completeness": 0.0,
+    "complete_chords": 0,
+    "per_staff": {
+      "0": {
+        "matched_notes": 4,
+        "predicted_notes": 134,
+        "recall": 0.01238390092879257,
+        "reference_notes": 323
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 179,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 111,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 3,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 2,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 14,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "2",
+        "count": 2,
+        "predicted": "1"
+      }
+    ],
+    "unmatched_expected": 302,
+    "unmatched_predicted": 292
+  },
+  "elapsed_seconds": 60.625,
+  "error": null,
+  "extra_note_count": 296,
+  "failure_penalized_omr_ned": 0.8060384263494969,
+  "first_divergent_measure": 1,
+  "input_identity": {
+    "historical_score_sha256": "642cd94e1b1ee85ab4e2073a57dfaf23a5f7c1ad1e0f92333e1a205c986d1df4",
+    "reference_sha256": "50e26091b7c760c457f03422a7e987b8ff3d691b69830c3908c573283ab519ea",
+    "result_sha256": "d01a943d3970e002aa32d13d3845ad153abe3222eb514be49d92209965e9daea"
+  },
+  "item_id": "test/mozart/viennese1_1/viennese1_1_1.png",
+  "mean_offset_error": 0.14285714285714285,
+  "missing_note_count": 306,
+  "omr_ned": 0.8060384263494969,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.05345911949685534,
+  "onset_f1": 0.06603773584905659,
+  "peak_ram_bytes": 1065082880,
+  "peak_vram_bytes": 242221056,
+  "pitch_f1": 0.6037735849056604,
+  "predicted_note_count": 313,
+  "reference_measure_count": 29,
+  "reference_note_count": 323,
+  "reference_quarter_length": "116",
+  "schema_version": 2,
+  "scoring_identity_sha256": "ed9e5b7e6f998b5787ae21dfc0b7f545c42fc0bc83b60fc717f002d6b34aa568",
+  "staff_accuracy": 0.23529411764705882,
+  "status": "succeeded",
+  "timeline_length_error": "-23/8",
+  "timing_policy": "symmetric-rational-4096-roundoff-v1",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

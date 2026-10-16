@@ -1,0 +1,67 @@
+{
+  "adapter_id": "shipped_homr_direct",
+  "aligned_voice_accuracy": 0.9777777777777777,
+  "candidate_id": "shipped_homr",
+  "cold_start": true,
+  "composition_group": "joplin/breeze",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 4,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 91,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 73,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "3/4",
+        "count": 4,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "3/4",
+        "count": 12,
+        "predicted": "3/4"
+      }
+    ],
+    "unmatched_expected": 211,
+    "unmatched_predicted": 215
+  },
+  "elapsed_seconds": 20.625,
+  "error": null,
+  "extra_note_count": 219,
+  "failure_penalized_omr_ned": 0.2522606797630184,
+  "first_divergent_measure": 1,
+  "item_id": "test/joplin/breeze/breeze_3.png",
+  "mean_offset_error": 0.005434782608695652,
+  "missing_note_count": 215,
+  "omr_ned": 0.2522606797630184,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.4534005037783375,
+  "onset_f1": 0.4634760705289672,
+  "peak_ram_bytes": 1611132928,
+  "peak_vram_bytes": 1638924288,
+  "pitch_f1": 0.9571788413098237,
+  "predicted_note_count": 399,
+  "reference_measure_count": 25,
+  "reference_note_count": 395,
+  "reference_quarter_length": "50",
+  "schema_version": 1,
+  "staff_accuracy": 0.6333333333333333,
+  "status": "succeeded",
+  "timeline_length_error": "-1/4",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

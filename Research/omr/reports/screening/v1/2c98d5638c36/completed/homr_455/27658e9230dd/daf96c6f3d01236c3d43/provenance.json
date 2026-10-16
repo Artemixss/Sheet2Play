@@ -1,0 +1,17 @@
+{
+  "attempt_path": "Research\\omr\\reports\\screening\\v1\\2c98d5638c36\\attempts\\homr_455\\27658e9230dd\\3faa9cd5750a2b5ef0d3\\attempt-c35cbe805e3a481ca371bde0628aea6d",
+  "attempt_sha256": "80e4b2f9b265b25f0d27ee2af59b1159d57c41ff8150fb1db6d2cf69ed20cf5d",
+  "identity": {
+    "adapter_config_sha256": "3cbb740e7cc134c7fae18077467a23a5fa5ef4a027d67e16f3efd0787b76fc8d",
+    "candidate": "homr_455",
+    "configuration_sha256": "27658e9230dd0cbfe6e02263cc870d3a8468f271b8d27ab4fec50604dc19cf25",
+    "image_sha256": "789092f46bc5fe017cde12c2a47ba8883eb4c5376654aa945f54cd3e3a2c58bf",
+    "item_id": "test/scarlatti/L055K330/L055K330_1.png",
+    "reference_sha256": "ce4341e21233158a09b91371424dcb5dab5ef8f66ba18071b2c46e27c3703466",
+    "sample_sha256": "2c98d5638c368b1a53bdb3440177d04fa585f9b1ca6ce6adbe65af64cd8e27d1",
+    "schema_version": 1
+  },
+  "origin": "completed_attempt",
+  "result_sha256": "c53b83f4c05644ecd84efed0a0413405f13ca6773d846b9ef85f39e52747f1d0",
+  "timing_source": "screening_complete_path"
+}

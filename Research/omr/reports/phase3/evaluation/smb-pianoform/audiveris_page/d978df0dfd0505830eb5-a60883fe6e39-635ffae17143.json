@@ -1,0 +1,88 @@
+{
+  "adapter_config_sha256": "a60883fe6e39455af4f2c39ce62de54618d0c4ffe5de8f3da4d359f8bfed7b0c",
+  "adapter_id": "audiveris_unattended",
+  "artifacts": [
+    {
+      "bytes": 1717,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase3/evaluation/smb-pianoform/audiveris_page/d978df0dfd0505830eb5-a60883fe6e39-635ffae17143/engine.log",
+      "role": "partial_1_engine.log",
+      "sha256": "503059bfdbaf93dd1966f5efbfd9aff44073e26234f4d1f07a939a866a445e98"
+    }
+  ],
+  "candidate_id": "audiveris",
+  "composition_group": "bach/bwv978_3",
+  "error": {
+    "code": "AUDIVERIS_FAILED",
+    "message": "Exception in thread \"main\" java.lang.InternalError: Error loading java.security file\n\tat java.base/java.security.Security$SecPropLoader.loadMaster(Unknown Source)\n\tat java.base/java.security.Security$SecPropLoader.loadAll(Unknown Source)\n\tat java.base/java.security.Security.initialize(Unknown Source)\n\tat java.base/java.security.Security.<clinit>(Unknown Source)\n\tat java.base/sun.security.jca.ProviderList.<init>(Unknown Source)\n\tat java.base/sun.security.jca.ProviderList.fromSecurityProperties(Unknown Source)\n\tat java.base/sun.security.jca.Providers.<clinit>(Unknown Source)\n\tat java.base/java.security.SecureRandom.getDefaultPRNG(Unknown Source)\n\tat java.base/java.security.SecureRandom.<init>(Unknown Source)\n\tat java.base/java.nio.file.TempFileHelper.<clinit>(Unknown Source)\n\tat java.base/java.nio.file.Files.createTempFile(Unknown Source)\n\tat org.audiveris.omr.log.LogUtil.initialize(LogUtil.java:245)\n\tat org.audiveris.omr.WellKnowns.<clinit>(WellKnowns.java:187)\n\tat org.audiveris.omr.Main.<clinit>(Main.java:70)\n\tat Audiveris.main(Audiveris.java:50)\nCaused by: java.nio.file.AccessDeniedException: ${WORKSPACE}\\Research\\omr\\.runtime\\phase2r\\audiveris-extract\\Audiveris\\runtime\\conf\\security\\java.security\n\tat java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source)\n\tat java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)\n\tat java.base/sun.nio.fs.WindowsLinkSupport.getRealPath(Unknown Source)\n\tat java.base/sun.nio.fs.WindowsPath.toRealPath(Unknown Source)\n\tat java.base/sun.nio.fs.WindowsPath.toRealPath(Unknown Source)\n\tat java.base/java.security.Security$SecPropLoader.loadFromPath(Unknown Source)\n\t... 15 more\nFailed to launch JVM\n",
+    "stage": "recognition"
+  },
+  "exit_status": 1,
+  "item_id": "test/bach/bwv978_3/bwv978_3_1.png",
+  "measurement_path": "complete_document",
+  "provenance": {
+    "adapter_config": {
+      "adapter_id": "audiveris_unattended",
+      "adapter_revision": "fdffc993b22fc2a284a8822c5e9688cbbd4ac09107ef2af4c2cccc5b8b44af10",
+      "candidate_id": "audiveris",
+      "checkpoint": "Audiveris 5.11.0 classifiers",
+      "checkpoint_revision": "5.11.0",
+      "input_granularity": "complete document",
+      "native_format": "Audiveris OMR project",
+      "settings": {
+        "batch": true,
+        "export": "MusicXML",
+        "manual_corrections": false,
+        "small_image_preprocessing": "lanczos-width-at-least-2000px-300dpi-v1"
+      },
+      "source_repository": "https://github.com/Audiveris/audiveris",
+      "source_revision": "9e1e55cd2746037d059345881c53e6a6754bffbd",
+      "supported_paths": [
+        "complete_document"
+      ]
+    },
+    "adapter_config_sha256": "a60883fe6e39455af4f2c39ce62de54618d0c4ffe5de8f3da4d359f8bfed7b0c",
+    "checkpoint": "Audiveris 5.11.0 classifiers",
+    "checkpoint_revision": "5.11.0",
+    "command": [
+      "Research/omr/.runtime/phase2r/audiveris-extract/Audiveris/Audiveris.exe",
+      "-batch",
+      "-save",
+      "-export",
+      "-output",
+      "Research/omr/.runtime/phase3/evaluation/smb-pianoform/audiveris_page/d978df0dfd0505830eb5-a60883fe6e39-635ffae17143/audiveris-output",
+      "--",
+      "Research/omr/data/smb/test/bach/bwv978_3/bwv978_3_1.png"
+    ],
+    "input_path": "Research/omr/data/smb/test/bach/bwv978_3/bwv978_3_1.png",
+    "input_scale": 1,
+    "input_sha256": "10f8fe2678e76bcb9789e5cd1d404c648c8994010d76a6bc4a0b570ebe33e46e",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "prepared_input_sha256": "10f8fe2678e76bcb9789e5cd1d404c648c8994010d76a6bc4a0b570ebe33e46e",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "source_repository": "https://github.com/Audiveris/audiveris",
+    "source_revision": "9e1e55cd2746037d059345881c53e6a6754bffbd"
+  },
+  "resources": {
+    "cold_start": true,
+    "measurement_notes": [
+      "VRAM measurement: device-wide WDDM fallback"
+    ],
+    "peak_ram_bytes": 84828160,
+    "peak_vram_bytes": null,
+    "sample_interval_seconds": 0.2
+  },
+  "schema_version": 1,
+  "status": "failed",
+  "timings": [
+    {
+      "seconds": 0.00016490000052726828,
+      "stage": "input_preprocessing"
+    },
+    {
+      "seconds": 2.2922767999989446,
+      "stage": "recognition"
+    }
+  ],
+  "warnings": []
+}

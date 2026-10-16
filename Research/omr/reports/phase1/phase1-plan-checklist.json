@@ -1,0 +1,46 @@
+[
+  {
+    "requirement": "historical results audited",
+    "status": "passed"
+  },
+  {
+    "requirement": "SMB pianoform and complete SMB frozen",
+    "status": "passed"
+  },
+  {
+    "requirement": "OLiMPiC canary and parent test partition frozen",
+    "status": "passed"
+  },
+  {
+    "requirement": "seven local pairs reviewed",
+    "status": "passed"
+  },
+  {
+    "requirement": "20 open plus 12 generated development examples frozen",
+    "status": "passed"
+  },
+  {
+    "requirement": "composition overlap checked",
+    "status": "passed"
+  },
+  {
+    "requirement": "references validated before candidate predictions",
+    "status": "passed"
+  },
+  {
+    "requirement": "scoring, statistics, failure, resource, and promotion rules frozen",
+    "status": "passed"
+  },
+  {
+    "requirement": "source MusicXML to app control",
+    "status": "passed"
+  },
+  {
+    "requirement": "candidate inference or adapter work",
+    "status": "not_started_phase_2"
+  },
+  {
+    "requirement": "adapter-dependent evaluation fixture contract execution",
+    "status": "deferred_to_phase_2_adapter_verification"
+  }
+]

@@ -1,0 +1,87 @@
+{
+  "adapter_id": "zeus_app_integration",
+  "aligned_voice_accuracy": 0.8,
+  "candidate_id": "zeus",
+  "cold_start": true,
+  "composition_group": "chopin/mazurka_51",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 17,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 3,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "3333333333333333/10000000000000000"
+      },
+      {
+        "actual": "1/2",
+        "count": 3,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 3,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 1,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "3/2",
+        "count": 2,
+        "predicted": "1"
+      },
+      {
+        "actual": "3/4",
+        "count": 1,
+        "predicted": "3/2"
+      }
+    ],
+    "unmatched_expected": 299,
+    "unmatched_predicted": 384
+  },
+  "elapsed_seconds": 70.57799999999952,
+  "error": null,
+  "extra_note_count": 396,
+  "failure_penalized_omr_ned": 0.8405405405405405,
+  "first_divergent_measure": 1,
+  "item_id": "test/chopin/mazurka_51/mazurka_51_4.png",
+  "mean_offset_error": 0.22395833333333334,
+  "missing_note_count": 311,
+  "omr_ned": 0.8405405405405405,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.053547523427041506,
+  "onset_f1": 0.0856760374832664,
+  "peak_ram_bytes": 1054662656,
+  "peak_vram_bytes": 242221056,
+  "pitch_f1": 0.6961178045515395,
+  "predicted_note_count": 416,
+  "reference_measure_count": 32,
+  "reference_note_count": 331,
+  "reference_quarter_length": "96",
+  "schema_version": 1,
+  "staff_accuracy": 0.45,
+  "status": "succeeded",
+  "timeline_length_error": "152500000000000033/10000000000000000",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "adapter_config_sha256": "625d9ddf4c2daf3ccb276544996c7cac88b70b1621bd5d4459919bc1178349c3",
+  "admission": {
+    "admission_blockers": [
+      "system_ram_at_or_above_75_percent"
+    ],
+    "cpu_percent": 29.0,
+    "development_ram_admission_percent": 95,
+    "device_wide_gpu": [
+      {
+        "driver": "591.86",
+        "index": 0,
+        "name": "NVIDIA GeForce RTX 4050 Laptop GPU",
+        "percent": 0.0,
+        "temperature_c": 54,
+        "total_mib": 6141,
+        "used_mib": 0,
+        "utilization_percent": 0
+      }
+    ],
+    "disk_free_bytes": 60166774784,
+    "effective_admission_blockers": [],
+    "gpu_error": null,
+    "ram_available_bytes": 3425370112,
+    "ram_percent": 79.1,
+    "ram_total_bytes": 16369225728,
+    "utc": "2026-09-27T09:13:49.952820+00:00"
+  },
+  "command": [
+    "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\.venv\\Scripts\\python.exe",
+    "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\screening_development.py",
+    "--manifest",
+    "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\screening\\v1\\manifest-v3-4080269113d5.json",
+    "--candidate",
+    "homr_455",
+    "--item-id",
+    "openscore-6211549-page-1",
+    "--session-id",
+    "homr455-compatible-dev-02",
+    "--worker-attempt",
+    "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\screening\\v1\\2c98d5638c36\\development-attempts\\homr_455\\homr455-compatible-dev-02-860241ff7a7b47c590a7cf281384d22b"
+  ],
+  "input_sha256": "2fb2928d51c8bb08303dc3ebabec82e665a41ed89406037650d7a8c2f0ae1bef",
+  "manifest_sha256": "5b3459540c9a66a9cbccf502c89c9daef75181c63dd5f0ab7409e135c965c435",
+  "started_utc": "2026-09-27T09:13:49.961419+00:00",
+  "working_directory": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play"
+}

@@ -1,0 +1,146 @@
+{
+  "item_id": "generated-offset_entry",
+  "runtime_identity": "e61db08610fe9b475d42a822a9ea265fed780e095758944b71cb2c0b17b0ec66",
+  "input_sha256": "9dd714781e3fe710c07f7b3b95e75a049c400b5f66c951013704798719f9dbf8",
+  "status": "complete",
+  "profile": "native shipped CUDA page pipeline; debug and position capture enabled",
+  "numeric_accuracy_eligible": true,
+  "elapsed_seconds": 2.030999999999949,
+  "artifacts": [
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\input.musicxml",
+      "sha256": "032a71364a04fe108b440d0d676328248ade5d00c4e4e5de102c2b7e24ee9a07",
+      "bytes": 2058
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\input.png",
+      "sha256": "9dd714781e3fe710c07f7b3b95e75a049c400b5f66c951013704798719f9dbf8",
+      "bytes": 85862
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\input.txt",
+      "sha256": "2d22bd0fe9a78300c93e1dba92a79fdf108850797ac57274467c4932097e1126",
+      "bytes": 82
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\input_debug_10_notehead_with_stems.png",
+      "sha256": "a5901364ce65770218641a4871ac99a9ffff41a2ad9ab49f0899e8f351cbca33",
+      "bytes": 70421
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\input_debug_11_bar_lines.png",
+      "sha256": "73b1ad42dba5be8e3375838cd5bb407d976539a3f6a5939e2f8271c34265104d",
+      "bytes": 73708
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\input_debug_12_anchor_input.png",
+      "sha256": "4522b448d8dcc6f551937075524f6f64e76f44048437911eaca24dc7f59bbb6e",
+      "bytes": 71710
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\input_debug_13_staff_anchors.png",
+      "sha256": "5b055e62a4b4fad04422d8eb9fc03a1f32ca1229b9128108ca24a8c5f000bc9a",
+      "bytes": 78289
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\input_debug_14_raw_staffs.png",
+      "sha256": "c838e77bd8e7d42dc2899a226a1e0386ea7cca76e29d3ab7e222ba3a032dacf5",
+      "bytes": 72731
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\input_debug_15_staffs.png",
+      "sha256": "871262de1bbf7c392796172ff94b3d34413bb72418b17e13db8a2b5b7022c928",
+      "bytes": 72556
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\input_debug_16_brace_dot.png",
+      "sha256": "0f9953aa4eb039b0a1f48ec1c93a26dc7069cb77e1edfa3cbd88b8fd1d1784bb",
+      "bytes": 8803
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\input_debug_17_notes.png",
+      "sha256": "9b50595e4807ce3e7186d8fbed2fb2121c9e7eaabf33abc89787dc9c519ee540",
+      "bytes": 82246
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\input_debug_1_color_adjust.png",
+      "sha256": "0262cac7850d6d84f32545dac54ae77c996a061556e2e91c15fc1986c04eb270",
+      "bytes": 32229
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\input_debug_2_noise_crop.png",
+      "sha256": "9cb9f1c98dede0d2faa227b7d97ebb30877fa3e4710da4d8fd7bd82fe1c369c6",
+      "bytes": 182412
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\input_debug_3_staff.png",
+      "sha256": "e95b05af778657750cd2e7655b0ce3aa1e9a3bd6b175d27d82f54f44f2fa0204",
+      "bytes": 9529
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\input_debug_4_symbols.png",
+      "sha256": "0f9953aa4eb039b0a1f48ec1c93a26dc7069cb77e1edfa3cbd88b8fd1d1784bb",
+      "bytes": 8803
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\input_debug_5_stems_rest.png",
+      "sha256": "972c3dfe470578ea8013436e23d91efbc3eb33ee8e258fc64e058aac52df09b1",
+      "bytes": 9923
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\input_debug_6_notehead.png",
+      "sha256": "6f39bed9bed6e373d8bebccba7da9bd8c04f4c9af735278b4edc79e133496836",
+      "bytes": 9400
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\input_debug_7_clefs_keys.png",
+      "sha256": "c8a473370b683a2e761a34aa59c08607d5cf7d12422037ea470d72b2f8e491e5",
+      "bytes": 9831
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\input_debug_8_bar_line_img.png",
+      "sha256": "5dad4610ecbb8b2dcccdee2d07edb91ed43d8bd8334841e8e3b4684a50c2cf1d",
+      "bytes": 10324
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\input_debug_9_staff_fragments.png",
+      "sha256": "2ca6a79ba4bf5dc725c87218d6122d1e70835bb053fff6dfe7508200296164a0",
+      "bytes": 71586
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\input_staff-0_debug_annotated.jpg",
+      "sha256": "0f7cb9ae54fd27c8127c5225bb06a827179c66ccacf6336f37175273e9363062",
+      "bytes": 25248
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\input_staff-0_debug_span_points.png",
+      "sha256": "2ad2c57818e7c64fe308c6a52578973104e473a21a2af050c041f0eb4440785c",
+      "bytes": 17414
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\input_staff-0_input.jpg",
+      "sha256": "00cb27b7971fba92124f4eb5b91e3453255784776c5f525b077c96ef3eb57a15",
+      "bytes": 24568
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\input_staff-0_output.jpg",
+      "sha256": "ac431a7e6b178f903773bab712d9ed903420c2b781d0f00f173611d4ef5405b8",
+      "bytes": 32611
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\input_teaser.png",
+      "sha256": "871262de1bbf7c392796172ff94b3d34413bb72418b17e13db8a2b5b7022c928",
+      "bytes": 72556
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\input_tesseract_input.png",
+      "sha256": "319342a8003d44ccceb6ed07d08b4385dd84208a104f2f464cdf042546a9cb4f",
+      "bytes": 9829
+    },
+    {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase1\\development\\generated-offset_entry\\tokens.json",
+      "sha256": "ec100f98ef05b557b921cb10d464abb81c2fc7f6b0b1f21db38880d6a393e61e",
+      "bytes": 935
+    }
+  ]
+}

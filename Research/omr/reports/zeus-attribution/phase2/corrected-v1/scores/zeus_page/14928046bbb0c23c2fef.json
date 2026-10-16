@@ -1,0 +1,94 @@
+{
+  "adapter_id": "zeus_app_integration",
+  "aligned_voice_accuracy": 0.6666666666666666,
+  "candidate_id": "zeus",
+  "cold_start": true,
+  "composition_group": "joplin/breeze",
+  "coverage": {
+    "chord_completeness": 0.0,
+    "complete_chords": 0,
+    "per_staff": {
+      "0": {
+        "matched_notes": 2,
+        "predicted_notes": 236,
+        "recall": 0.005063291139240506,
+        "reference_notes": 395
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 194,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 103,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1/2",
+        "count": 1,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 2,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "1/8"
+      }
+    ],
+    "unmatched_expected": 389,
+    "unmatched_predicted": 424
+  },
+  "elapsed_seconds": 60.57899999999972,
+  "error": null,
+  "extra_note_count": 427,
+  "failure_penalized_omr_ned": 0.8205424120023082,
+  "first_divergent_measure": 1,
+  "input_identity": {
+    "historical_score_sha256": "72df054e890cecc14ece28adda2d22890870b3a172c7ffea429ff15eb42a1999",
+    "reference_sha256": "89415df864688b5b582a659349dfc87c0b12f7b8858a6edddadc3db4584dd58c",
+    "result_sha256": "af37667b0943aa66e11bcd902d66e318ac8c8d402f2268667ebe69cc85c562b6"
+  },
+  "item_id": "test/joplin/breeze/breeze_3.png",
+  "mean_offset_error": 0.10416666666666667,
+  "missing_note_count": 392,
+  "omr_ned": 0.8205424120023082,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.007272727272727273,
+  "onset_f1": 0.014545454545454545,
+  "peak_ram_bytes": 1099927552,
+  "peak_vram_bytes": 242221056,
+  "pitch_f1": 0.4824242424242425,
+  "predicted_note_count": 430,
+  "reference_measure_count": 25,
+  "reference_note_count": 395,
+  "reference_quarter_length": "50",
+  "schema_version": 2,
+  "scoring_identity_sha256": "ed9e5b7e6f998b5787ae21dfc0b7f545c42fc0bc83b60fc717f002d6b34aa568",
+  "staff_accuracy": 0.6666666666666666,
+  "status": "succeeded",
+  "timeline_length_error": "22/3",
+  "timing_policy": "symmetric-rational-4096-roundoff-v1",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

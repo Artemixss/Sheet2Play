@@ -1,0 +1,57 @@
+{
+  "adapter_id": "audiveris_unattended",
+  "aligned_voice_accuracy": 0.8,
+  "candidate_id": "audiveris",
+  "cold_start": true,
+  "composition_group": "joplin/lilyqueen",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 2,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 3,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 2,
+        "predicted": "1/4"
+      }
+    ],
+    "unmatched_expected": 356,
+    "unmatched_predicted": 378
+  },
+  "elapsed_seconds": 30.57799999999952,
+  "error": null,
+  "extra_note_count": 380,
+  "failure_penalized_omr_ned": 0.40401968826907303,
+  "first_divergent_measure": 1,
+  "item_id": "test/joplin/lilyqueen/lilyqueen_3.png",
+  "mean_offset_error": 0.07142857142857142,
+  "missing_note_count": 358,
+  "omr_ned": 0.40401968826907303,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.013368983957219251,
+  "onset_f1": 0.01871657754010695,
+  "peak_ram_bytes": 1107058688,
+  "peak_vram_bytes": 0,
+  "pitch_f1": 0.8609625668449198,
+  "predicted_note_count": 385,
+  "reference_measure_count": 23,
+  "reference_note_count": 363,
+  "reference_quarter_length": "46",
+  "schema_version": 1,
+  "staff_accuracy": 0.4,
+  "status": "succeeded",
+  "timeline_length_error": "2316666666666667/100000000000000",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

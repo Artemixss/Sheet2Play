@@ -1,0 +1,122 @@
+{
+  "aligned_voice_accuracy": 1.0,
+  "candidate": "homr-465-upstream",
+  "capture_status": "complete",
+  "comparison_identity": "91e7256cd902a6ea2adb9fb415e6847b2ba0b9e94fb03fe8f5f1570ae6544fb9",
+  "composition_group": "beethoven/sonata22_2",
+  "configuration_identity": "9e619e47fd0317b6a7d1da5207985e1120acefc499a111649c5b7cdb1e339122",
+  "conversion_error": null,
+  "coverage": {
+    "chord_completeness": 0.6464088397790055,
+    "complete_chords": 117,
+    "per_staff": {
+      "0": {
+        "matched_notes": 157,
+        "predicted_notes": 256,
+        "recall": 0.35600907029478457,
+        "reference_notes": 441
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 185,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 181,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 2,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/4",
+        "count": 275,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "2",
+        "count": 3,
+        "predicted": "2"
+      }
+    ],
+    "unmatched_expected": 161,
+    "unmatched_predicted": 161
+  },
+  "elapsed_seconds": 18.0470000000023,
+  "extra_notes": 161,
+  "item_id": "c7d9ddf52fd88048d156",
+  "mean_offset_error": 0.0,
+  "metrics": {
+    "aligned_voice_accuracy": 1.0,
+    "coverage": {
+      "chord_completeness": 0.6464088397790055,
+      "complete_chords": 117,
+      "per_staff": {
+        "0": {
+          "matched_notes": 157,
+          "predicted_notes": 256,
+          "recall": 0.35600907029478457,
+          "reference_notes": 441
+        },
+        "1": {
+          "matched_notes": 0,
+          "predicted_notes": 185,
+          "recall": null,
+          "reference_notes": 0
+        }
+      },
+      "reference_chords": 181,
+      "staff_interpretation": "notation staff index; not validated hand labels"
+    },
+    "duration": {
+      "confusion": [
+        {
+          "actual": "1",
+          "count": 2,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/4",
+          "count": 275,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "2",
+          "count": 3,
+          "predicted": "2"
+        }
+      ],
+      "unmatched_expected": 161,
+      "unmatched_predicted": 161
+    },
+    "extra_notes": 161,
+    "mean_offset_error": 0.0,
+    "missing_notes": 161,
+    "onset_duration_f1": 0.6349206349206349,
+    "onset_f1": 0.6349206349206349,
+    "pitch_f1": 0.9931972789115646,
+    "predicted_notes": 441,
+    "reference_notes": 441,
+    "staff_accuracy": 0.5607142857142857,
+    "timeline_predicted": "249/4",
+    "timeline_reference": "62"
+  },
+  "missing_notes": 161,
+  "onset_duration_f1": 0.6349206349206349,
+  "onset_f1": 0.6349206349206349,
+  "original_item_id": "test/beethoven/sonata22_2/sonata22_2_5.png",
+  "pitch_f1": 0.9931972789115646,
+  "predicted_notes": 441,
+  "receipt_sha256": "13f5b3ec54d050018fc85f298ac70e2c610d1ac1b297ed9d224c03ce0029f882",
+  "reference_notes": 441,
+  "reference_sha256": "7470b2c7390bcc6d852ef7a5eb03439d017caf46491d0b026d5ede2eea45179a",
+  "staff_accuracy": 0.5607142857142857,
+  "status": "complete",
+  "timeline_predicted": "249/4",
+  "timeline_reference": "62"
+}

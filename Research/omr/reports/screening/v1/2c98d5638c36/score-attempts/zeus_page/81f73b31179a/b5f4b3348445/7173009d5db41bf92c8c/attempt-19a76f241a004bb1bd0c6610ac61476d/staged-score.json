@@ -1,0 +1,92 @@
+{
+  "adapter_id": "zeus_app_integration",
+  "aligned_voice_accuracy": 1.0,
+  "candidate_id": "zeus",
+  "cold_start": true,
+  "composition_group": "joplin/breeze",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 23,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/2",
+        "count": 1,
+        "predicted": "3/4"
+      },
+      {
+        "actual": "1/4",
+        "count": 2,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "3/2",
+        "count": 1,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "3/4",
+        "count": 1,
+        "predicted": "1/2"
+      }
+    ],
+    "unmatched_expected": 431,
+    "unmatched_predicted": 458
+  },
+  "elapsed_seconds": 60.59399999999914,
+  "error": null,
+  "extra_note_count": 465,
+  "failure_penalized_omr_ned": 0.7825214899713467,
+  "first_divergent_measure": 1,
+  "item_id": "test/joplin/breeze/breeze_2.png",
+  "mean_offset_error": 0.09090909090909091,
+  "missing_note_count": 438,
+  "omr_ned": 0.7825214899713467,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.05445026178010471,
+  "onset_f1": 0.06910994764397906,
+  "peak_ram_bytes": 1096392704,
+  "peak_vram_bytes": 240123904,
+  "pitch_f1": 0.5486910994764398,
+  "predicted_note_count": 491,
+  "reference_measure_count": 25,
+  "reference_note_count": 464,
+  "reference_quarter_length": "50",
+  "schema_version": 1,
+  "staff_accuracy": 0.2692307692307692,
+  "status": "succeeded",
+  "timeline_length_error": "19",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

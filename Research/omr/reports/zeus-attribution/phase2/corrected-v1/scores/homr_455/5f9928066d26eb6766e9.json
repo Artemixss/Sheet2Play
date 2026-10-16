@@ -1,0 +1,94 @@
+{
+  "adapter_id": "homr_455_explicit_onnx_pair",
+  "aligned_voice_accuracy": 1.0,
+  "candidate_id": "homr_455",
+  "cold_start": true,
+  "composition_group": "beethoven/sonata17_1",
+  "coverage": {
+    "chord_completeness": 0.009433962264150943,
+    "complete_chords": 1,
+    "per_staff": {
+      "0": {
+        "matched_notes": 5,
+        "predicted_notes": 202,
+        "recall": 0.012315270935960592,
+        "reference_notes": 406
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 209,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 106,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 2,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 42,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/3",
+        "count": 7,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "4",
+        "count": 1,
+        "predicted": "4"
+      }
+    ],
+    "unmatched_expected": 353,
+    "unmatched_predicted": 358
+  },
+  "elapsed_seconds": 25.65599999999904,
+  "error": null,
+  "extra_note_count": 367,
+  "failure_penalized_omr_ned": 0.45260663507109006,
+  "first_divergent_measure": 1,
+  "input_identity": {
+    "historical_score_sha256": "794a0be9ad6fd5fd97ef630a7e4f8aa237eba05797452898ca91e2c8e9dade16",
+    "reference_sha256": "b83c214a96272ec2a46af541deb37ab8640e187a0bd7a93c1b448a15c041115e",
+    "result_sha256": "339b26f29bf33a06eafab37b0d31101973a436edb116b19acf29aee2ad6e7fff"
+  },
+  "item_id": "test/beethoven/sonata17_1/sonata17_1_2.png",
+  "mean_offset_error": 0.040880503144654086,
+  "missing_note_count": 362,
+  "omr_ned": 0.45260663507109006,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.1077111383108935,
+  "onset_f1": 0.12974296205630356,
+  "peak_ram_bytes": 1368272896,
+  "peak_vram_bytes": 1636827136,
+  "pitch_f1": 0.9938800489596084,
+  "predicted_note_count": 411,
+  "reference_measure_count": 28,
+  "reference_note_count": 406,
+  "reference_quarter_length": "112",
+  "schema_version": 2,
+  "scoring_identity_sha256": "ed9e5b7e6f998b5787ae21dfc0b7f545c42fc0bc83b60fc717f002d6b34aa568",
+  "staff_accuracy": 0.11363636363636363,
+  "status": "succeeded",
+  "timeline_length_error": "20",
+  "timing_policy": "symmetric-rational-4096-roundoff-v1",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

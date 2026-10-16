@@ -1,0 +1,103 @@
+{
+  "adapter_config_sha256": "ba036bff4bbc33e76985b957f60e3d6f7d8b74a8cc8c2360b077087cb15e74ed",
+  "adapter_id": "zeus_upstream",
+  "artifacts": [
+    {
+      "bytes": 216,
+      "media_type": "application/json",
+      "path": "Research/omr/reports/phase2/artifacts/zeus_upstream/generated-baseline-piano-001/native.lmx.json",
+      "role": "native",
+      "sha256": "cf3373510080dc5d3f2664e1f5113e378bfe7742fffabf2240a76c788d64b579"
+    },
+    {
+      "bytes": 918,
+      "media_type": "application/vnd.recordare.musicxml+xml",
+      "path": "Research/omr/reports/phase2/artifacts/zeus_upstream/generated-baseline-piano-001/score.musicxml",
+      "role": "musicxml",
+      "sha256": "755bdb069ddd6cb127a9aed5bb92c55c73eb29725f08e8c40dab06850dd37257"
+    },
+    {
+      "bytes": 622,
+      "media_type": "application/json",
+      "path": "Research/omr/reports/phase2/artifacts/zeus_upstream/generated-baseline-piano-001/canonical-events.json",
+      "role": "canonical_events",
+      "sha256": "726ee90a61a1c37f39636455e30b4e9915483e89119d41d90bff9d4d6ac76045"
+    },
+    {
+      "bytes": 36,
+      "media_type": "text/plain",
+      "path": "Research/omr/reports/phase2/artifacts/zeus_upstream/generated-baseline-piano-001/engine.log",
+      "role": "engine_log",
+      "sha256": "aaca0942830f1b45ec196816065629ccabc813fe2265555bbb1adbab111caad7"
+    }
+  ],
+  "candidate_id": "zeus",
+  "composition_group": "baseline-piano-001",
+  "error": null,
+  "exit_status": 0,
+  "item_id": "generated-baseline-piano-001",
+  "measurement_path": "annotated_crop",
+  "provenance": {
+    "adapter_config": {
+      "adapter_id": "zeus_upstream",
+      "adapter_revision": "e34dc8c086b04da755b7764c01520eda110a5c065d04ca58027eece2088a647e",
+      "candidate_id": "zeus",
+      "checkpoint": "zeus-olimpic-1.0-2024-02-12.model",
+      "checkpoint_revision": "2024-02-12",
+      "input_granularity": "system image",
+      "native_format": "LMX",
+      "settings": {
+        "normalization": "frozen-phase1",
+        "preprocessing": "upstream",
+        "runner_sha256": "967845fbdca927cb1600e059523629cb18b0123140366a91c9c9d99c3bd4e2d8",
+        "system_detector_sha256": null
+      },
+      "source_repository": "https://github.com/ufal/olimpic-icdar24",
+      "source_revision": "df0d842596ccd199882ff958e628d59327ca6cba",
+      "supported_paths": [
+        "annotated_crop"
+      ]
+    },
+    "adapter_config_sha256": "ba036bff4bbc33e76985b957f60e3d6f7d8b74a8cc8c2360b077087cb15e74ed",
+    "checkpoint": "zeus-olimpic-1.0-2024-02-12.model",
+    "checkpoint_revision": "2024-02-12",
+    "command": [
+      "Research/omr/.venv/Scripts/python.exe",
+      "Research/omr/phase2_zeus_runner.py",
+      "--input",
+      "Research/omr/tests/fixtures/transcoda-baseline/baseline-piano.png",
+      "--output",
+      "Research/omr/reports/phase2/artifacts/zeus_upstream/generated-baseline-piano-001",
+      "--mode",
+      "upstream"
+    ],
+    "input_path": "Research/omr/tests/fixtures/transcoda-baseline/baseline-piano.png",
+    "input_sha256": "2cbe267a15f2f5791943523413ce6c3d25dee32e283f43af156c7eeee5f08805",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "source_repository": "https://github.com/ufal/olimpic-icdar24",
+    "source_revision": "df0d842596ccd199882ff958e628d59327ca6cba"
+  },
+  "resources": {
+    "cold_start": true,
+    "measurement_notes": [
+      "VRAM measurement: device-wide WDDM fallback"
+    ],
+    "peak_ram_bytes": 514338816,
+    "peak_vram_bytes": 1070596096,
+    "sample_interval_seconds": 0.2
+  },
+  "schema_version": 1,
+  "status": "succeeded",
+  "timings": [
+    {
+      "seconds": 18.37472620000335,
+      "stage": "recognition_conversion_stitching"
+    },
+    {
+      "seconds": 0.015574400000332389,
+      "stage": "shared_normalization"
+    }
+  ],
+  "warnings": []
+}

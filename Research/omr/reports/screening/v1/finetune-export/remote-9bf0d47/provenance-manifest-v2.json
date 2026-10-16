@@ -1,0 +1,62 @@
+{
+  "format": "homr-epoch14-provenance-v2",
+  "scope": "offline source-checkpoint-to-ONNX parity verification",
+  "selection": {
+    "selected_checkpoint": "checkpoint-135674 (epoch 14)",
+    "reason": "best tracked evaluation: eval_loss 0.955608, rhythm_loss 0.890660, eval_accuracy 0.994369",
+    "final_epoch_reference": "checkpoint-145365 (epoch 15): eval_loss 0.956571, rhythm_loss 0.890847, eval_accuracy 0.994294"
+  },
+  "source": {
+    "repository": "https://github.com/liebharc/homr.git",
+    "revision": "457e7c6518a10ba755db2e60883419e56c4d7369",
+    "local_patch": "source_bundle/local_changes.patch",
+    "local_patch_sha256": "535290f8c06b93eec199a6cf3e84638435b6ac359dc68bca44403b9662ad22cb"
+  },
+  "artifacts": {
+    "checkpoint": {
+      "path": "/root/Sheet2Play/Research/omr/vendor/homr/current_training/checkpoint-135674/model.safetensors",
+      "sha256": "bb077e964069145996376c209a035a473986c255143e73e8777bfbbf908a6de0",
+      "transferred": false
+    },
+    "encoder_onnx": {
+      "path": "/root/omr_epoch14_onnx_export/homr_epoch14_encoder_fp16.onnx",
+      "sha256": "7e60796fc1b8702008eabda3c0b737daffa80984d34749edec26b162fda596d5",
+      "transferred": false,
+      "existing_release_asset": true
+    },
+    "decoder_onnx": {
+      "path": "/root/omr_epoch14_onnx_export/homr_epoch14_decoder_fp16.onnx",
+      "sha256": "54c4940a2c8f8ca2c340744f29ea6a90a1645973ee7195d127d1b2c776609fce",
+      "transferred": false,
+      "existing_release_asset": true
+    }
+  },
+  "tokenizer_json_files": {
+    "rhythm": "3e64ccafd628436439e664aac40ea3820982cbd90171c9895d2c7cf2b9efb76e",
+    "lift": "acebcd85936f2d2c4b8d67c2a90bb487a327e7eeca3b889896469f34d5157f85",
+    "pitch": "66ce099b2d3fcbdf7269d2600198628af8548bd410ec6a9ac478db7007ec9933",
+    "note": "be294c8adb4febeb93a1e257c7aa35ac34e5298071afa8f2af8d1cf5a33eae20"
+  },
+  "verification": {
+    "report": "verification.json",
+    "tolerance": {"atol": 0.02, "rtol": 0.02},
+    "cpu_parity": "pass",
+    "strict_checkpoint_model_load": "pass",
+    "strict_decoder_wrapper_load": "pass",
+    "deterministic_greedy_generation": "two repeated PyTorch and ONNX CPU runs agree; cross-implementation tokens agree; EOS at 63 steps",
+    "cuda_provider_result": "failed at fused MultiHeadAttention cache step zero; preserved in verification-cuda-failure.log"
+  },
+  "supersedes": {
+    "old_manifest": "../epoch14_onnx_manifest.json",
+    "old_decoder_sha256": "daee4ce3029e53af46bd3f3ea08528ed2af3e5770cb3e75f4fc67926bdd5c685",
+    "old_manifest_modified": false,
+    "finding": "the existing release asset and current WSL decoder both hash to the decoder SHA-256 in this manifest"
+  },
+  "excluded": [
+    "checkpoint and final .pth weights",
+    "optimizer, scheduler, scaler, RNG, and trainer state",
+    "datasets and private music",
+    "ONNX binaries",
+    "credentials"
+  ]
+}

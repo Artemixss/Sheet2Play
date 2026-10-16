@@ -1,0 +1,62 @@
+{
+  "adapter_id": "audiveris_unattended",
+  "aligned_voice_accuracy": 0.9166666666666666,
+  "candidate_id": "audiveris",
+  "cold_start": true,
+  "composition_group": "liszt/etude10_05",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1/2",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 12,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/6",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/6",
+        "count": 4,
+        "predicted": "1/4"
+      }
+    ],
+    "unmatched_expected": 434,
+    "unmatched_predicted": 446
+  },
+  "elapsed_seconds": 40.59399999999914,
+  "error": null,
+  "extra_note_count": 452,
+  "failure_penalized_omr_ned": 0.796875,
+  "first_divergent_measure": 1,
+  "item_id": "test/liszt/etude10_05/etude10_05_3.png",
+  "mean_offset_error": 0.09259259259259259,
+  "missing_note_count": 440,
+  "omr_ned": 0.796875,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.026200873362445417,
+  "onset_f1": 0.039301310043668124,
+  "peak_ram_bytes": 899162112,
+  "peak_vram_bytes": 0,
+  "pitch_f1": 0.9301310043668122,
+  "predicted_note_count": 464,
+  "reference_measure_count": 24,
+  "reference_note_count": 452,
+  "reference_quarter_length": "48",
+  "schema_version": 1,
+  "staff_accuracy": 0.0,
+  "status": "succeeded",
+  "timeline_length_error": "3691666666666667/100000000000000",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

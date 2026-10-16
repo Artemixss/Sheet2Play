@@ -1,0 +1,162 @@
+{
+  "aligned_voice_accuracy": 0.828125,
+  "candidate": "shipped-426-phase2-control",
+  "capture_status": "complete",
+  "comparison_identity": "91e7256cd902a6ea2adb9fb415e6847b2ba0b9e94fb03fe8f5f1570ae6544fb9",
+  "composition_group": "joplin/pleasant",
+  "configuration_identity": "31512f54e60c2e1cff049c60a7f68ceb0366eb49d4aeacf13368de17a0ec430d",
+  "conversion_error": null,
+  "coverage": {
+    "chord_completeness": 0.26136363636363635,
+    "complete_chords": 23,
+    "per_staff": {
+      "0": {
+        "matched_notes": 29,
+        "predicted_notes": 152,
+        "recall": 0.10622710622710622,
+        "reference_notes": 273
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 121,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 88,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 27,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 3,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 33,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "2",
+        "count": 2,
+        "predicted": "1"
+      },
+      {
+        "actual": "2",
+        "count": 1,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "2",
+        "count": 4,
+        "predicted": "2"
+      },
+      {
+        "actual": "3",
+        "count": 1,
+        "predicted": "1/2"
+      }
+    ],
+    "unmatched_expected": 202,
+    "unmatched_predicted": 202
+  },
+  "elapsed_seconds": 11.43800000000192,
+  "extra_notes": 209,
+  "item_id": "5c26674e5927c760f543",
+  "mean_offset_error": 0.1056338028169014,
+  "metrics": {
+    "aligned_voice_accuracy": 0.828125,
+    "coverage": {
+      "chord_completeness": 0.26136363636363635,
+      "complete_chords": 23,
+      "per_staff": {
+        "0": {
+          "matched_notes": 29,
+          "predicted_notes": 152,
+          "recall": 0.10622710622710622,
+          "reference_notes": 273
+        },
+        "1": {
+          "matched_notes": 0,
+          "predicted_notes": 121,
+          "recall": null,
+          "reference_notes": 0
+        }
+      },
+      "reference_chords": 88,
+      "staff_interpretation": "notation staff index; not validated hand labels"
+    },
+    "duration": {
+      "confusion": [
+        {
+          "actual": "1",
+          "count": 27,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/2",
+          "count": 3,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/2",
+          "count": 33,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "2",
+          "count": 2,
+          "predicted": "1"
+        },
+        {
+          "actual": "2",
+          "count": 1,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "2",
+          "count": 4,
+          "predicted": "2"
+        },
+        {
+          "actual": "3",
+          "count": 1,
+          "predicted": "1/2"
+        }
+      ],
+      "unmatched_expected": 202,
+      "unmatched_predicted": 202
+    },
+    "extra_notes": 209,
+    "mean_offset_error": 0.1056338028169014,
+    "missing_notes": 209,
+    "onset_duration_f1": 0.23443223443223443,
+    "onset_f1": 0.2600732600732601,
+    "pitch_f1": 0.9963369963369964,
+    "predicted_notes": 273,
+    "reference_notes": 273,
+    "staff_accuracy": 0.453125,
+    "timeline_predicted": "70",
+    "timeline_reference": "60"
+  },
+  "missing_notes": 209,
+  "onset_duration_f1": 0.23443223443223443,
+  "onset_f1": 0.2600732600732601,
+  "original_item_id": "test/joplin/pleasant/pleasant_1.png",
+  "pitch_f1": 0.9963369963369964,
+  "predicted_notes": 273,
+  "receipt_sha256": "68b1652cd0bff0ad40c744b5fd55774888835078a11899183759b731a5cc323e",
+  "reference_notes": 273,
+  "reference_sha256": "bb638289594e8437667f74e2d719fceaf63c23b363127b0ddf92ce2f85c4744d",
+  "staff_accuracy": 0.453125,
+  "status": "complete",
+  "timeline_predicted": "70",
+  "timeline_reference": "60"
+}

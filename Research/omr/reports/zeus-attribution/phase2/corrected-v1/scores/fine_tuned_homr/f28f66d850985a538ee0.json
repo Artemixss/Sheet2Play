@@ -1,0 +1,74 @@
+{
+  "adapter_id": "epoch14_verified_onnx",
+  "aligned_voice_accuracy": 0.0,
+  "candidate_id": "fine_tuned_homr",
+  "cold_start": true,
+  "composition_group": "beethoven/sonata22_2",
+  "coverage": {
+    "chord_completeness": 0.0,
+    "complete_chords": 0,
+    "per_staff": {
+      "0": {
+        "matched_notes": 0,
+        "predicted_notes": 174,
+        "recall": 0.0,
+        "reference_notes": 366
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 200,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 103,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1/4",
+        "count": 7,
+        "predicted": "1/6"
+      }
+    ],
+    "unmatched_expected": 359,
+    "unmatched_predicted": 367
+  },
+  "elapsed_seconds": 25.625,
+  "error": null,
+  "extra_note_count": 374,
+  "failure_penalized_omr_ned": 0.7324926214113228,
+  "first_divergent_measure": 1,
+  "input_identity": {
+    "historical_score_sha256": "1744ba5ef2add8221ed39703e851d7d9b9aa79de1300622cf9b4d04f53f7f4a6",
+    "reference_sha256": "4e69157e81c71f6ee8e3eebcd347e519706adf74458a4c327061c6a022dae7a5",
+    "result_sha256": "3599247218f15ed74cc1543ae27158aa2685e5995b4eacef15f35e3560e67f09"
+  },
+  "item_id": "test/beethoven/sonata22_2/sonata22_2_1.png",
+  "mean_offset_error": 0.08333333333333333,
+  "missing_note_count": 366,
+  "omr_ned": 0.7324926214113228,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.0,
+  "onset_f1": 0.018918918918918916,
+  "peak_ram_bytes": 1521065984,
+  "peak_vram_bytes": 1643118592,
+  "pitch_f1": 0.9891891891891893,
+  "predicted_note_count": 374,
+  "reference_measure_count": 33,
+  "reference_note_count": 366,
+  "reference_quarter_length": "66",
+  "schema_version": 2,
+  "scoring_identity_sha256": "ed9e5b7e6f998b5787ae21dfc0b7f545c42fc0bc83b60fc717f002d6b34aa568",
+  "staff_accuracy": 0.0,
+  "status": "succeeded",
+  "timeline_length_error": "-43/6",
+  "timing_policy": "symmetric-rational-4096-roundoff-v1",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

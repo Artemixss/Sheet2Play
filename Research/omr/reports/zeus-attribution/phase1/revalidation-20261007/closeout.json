@@ -1,0 +1,32 @@
+{
+  "plan_id": "2026-10-03-zeus-attribution-repair",
+  "authorized_phase": 1,
+  "date_local": "2026-10-07",
+  "timezone": "Europe/Istanbul",
+  "original_phase1_status": "complete_with_explicit_historical_source_limitation",
+  "request_status": "revalidation_stopped_at_resource_admission",
+  "receipt": "jobs/bytes/result.json",
+  "stop_reason": "physical_RAM_at_or_above_85_percent",
+  "physical_percent": 88.3264984199502,
+  "worker_started": false,
+  "automatic_retry_pending": false,
+  "owned_worker_or_lock_remaining": false,
+  "implementation_changed": false,
+  "historical_execution_source": "unverified",
+  "network": {
+    "hard_cap_bytes": 2000000000,
+    "task_artifact_transfer_bytes": 0,
+    "requests_made": 0,
+    "scope": "Task downloads/uploads; unrelated host and Codex service traffic not metered",
+    "python_worker_network_gate": "gate/sitecustomize.py"
+  },
+  "remaining": [
+    "Fresh guarded full byte verification after explicit resume and RAM relief",
+    "Phase 1 fixtures",
+    "Cached release comparison",
+    "Guarded import-only probe if current process provenance is needed"
+  ],
+  "phase2_executed": false,
+  "later_phases_executed": false,
+  "git_invocations": 0
+}

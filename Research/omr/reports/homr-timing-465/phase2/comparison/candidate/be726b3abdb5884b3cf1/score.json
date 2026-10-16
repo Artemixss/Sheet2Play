@@ -1,0 +1,122 @@
+{
+  "aligned_voice_accuracy": 1.0,
+  "candidate": "homr-465-upstream",
+  "capture_status": "complete",
+  "comparison_identity": "91e7256cd902a6ea2adb9fb415e6847b2ba0b9e94fb03fe8f5f1570ae6544fb9",
+  "composition_group": "mozart/sonata06_3j",
+  "configuration_identity": "9e619e47fd0317b6a7d1da5207985e1120acefc499a111649c5b7cdb1e339122",
+  "conversion_error": null,
+  "coverage": {
+    "chord_completeness": 0.013333333333333334,
+    "complete_chords": 1,
+    "per_staff": {
+      "0": {
+        "matched_notes": 6,
+        "predicted_notes": 130,
+        "recall": 0.024691358024691357,
+        "reference_notes": 243
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 113,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 75,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 3,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 2,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 7,
+        "predicted": "1/2"
+      }
+    ],
+    "unmatched_expected": 231,
+    "unmatched_predicted": 231
+  },
+  "elapsed_seconds": 13.359000000000151,
+  "extra_notes": 233,
+  "item_id": "be726b3abdb5884b3cf1",
+  "mean_offset_error": 0.08333333333333333,
+  "metrics": {
+    "aligned_voice_accuracy": 1.0,
+    "coverage": {
+      "chord_completeness": 0.013333333333333334,
+      "complete_chords": 1,
+      "per_staff": {
+        "0": {
+          "matched_notes": 6,
+          "predicted_notes": 130,
+          "recall": 0.024691358024691357,
+          "reference_notes": 243
+        },
+        "1": {
+          "matched_notes": 0,
+          "predicted_notes": 113,
+          "recall": null,
+          "reference_notes": 0
+        }
+      },
+      "reference_chords": 75,
+      "staff_interpretation": "notation staff index; not validated hand labels"
+    },
+    "duration": {
+      "confusion": [
+        {
+          "actual": "1",
+          "count": 3,
+          "predicted": "1"
+        },
+        {
+          "actual": "1",
+          "count": 2,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/2",
+          "count": 7,
+          "predicted": "1/2"
+        }
+      ],
+      "unmatched_expected": 231,
+      "unmatched_predicted": 231
+    },
+    "extra_notes": 233,
+    "mean_offset_error": 0.08333333333333333,
+    "missing_notes": 233,
+    "onset_duration_f1": 0.0411522633744856,
+    "onset_f1": 0.04938271604938271,
+    "pitch_f1": 1.0,
+    "predicted_notes": 243,
+    "reference_notes": 243,
+    "staff_accuracy": 0.6,
+    "timeline_predicted": "72",
+    "timeline_reference": "68"
+  },
+  "missing_notes": 233,
+  "onset_duration_f1": 0.0411522633744856,
+  "onset_f1": 0.04938271604938271,
+  "original_item_id": "test/mozart/sonata06_3j/sonata06_3j_1.png",
+  "pitch_f1": 1.0,
+  "predicted_notes": 243,
+  "receipt_sha256": "2eac779df4f8e2b5d6d8690c7ae4409f0ff741ea5017c1dd8563eb4c6fbedc68",
+  "reference_notes": 243,
+  "reference_sha256": "2718cf98d2cbc593a078a1097eda7dda518e8e38e4820582dba4631a31aff18d",
+  "staff_accuracy": 0.6,
+  "status": "complete",
+  "timeline_predicted": "72",
+  "timeline_reference": "68"
+}

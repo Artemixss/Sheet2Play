@@ -1,0 +1,1897 @@
+{
+  "audit_source_sha256": "b0a89cad333c8cd99b19079673c3dcb61efcdeb6a1c6e814af99976a68b7c728",
+  "candidate_checks": {
+    "audiveris_page": {
+      "declared_artifacts_verified": 319,
+      "full_duration_matrix_and_metrics_recalculated": true,
+      "result_count": 59,
+      "score_count": 59,
+      "session_closed": true,
+      "summary_recalculated_from_saved_scores": true,
+      "worker_lock_absent": true
+    },
+    "fine_tuned_homr": {
+      "declared_artifacts_verified": 236,
+      "full_duration_matrix_and_metrics_recalculated": true,
+      "result_count": 59,
+      "score_count": 59,
+      "session_closed": true,
+      "summary_recalculated_from_saved_scores": true,
+      "worker_lock_absent": true
+    },
+    "homr_455": {
+      "declared_artifacts_verified": 233,
+      "full_duration_matrix_and_metrics_recalculated": true,
+      "result_count": 59,
+      "score_count": 59,
+      "session_closed": true,
+      "summary_recalculated_from_saved_scores": true,
+      "worker_lock_absent": true
+    },
+    "homr_page": {
+      "declared_artifacts_verified": 233,
+      "full_duration_matrix_and_metrics_recalculated": true,
+      "result_count": 59,
+      "score_count": 59,
+      "session_closed": true,
+      "summary_recalculated_from_saved_scores": true,
+      "worker_lock_absent": true
+    },
+    "zeus_page": {
+      "declared_artifacts_verified": 236,
+      "full_duration_matrix_and_metrics_recalculated": true,
+      "result_count": 59,
+      "score_count": 59,
+      "session_closed": true,
+      "summary_recalculated_from_saved_scores": true,
+      "worker_lock_absent": true
+    }
+  },
+  "declared_artifacts_verified": 1257,
+  "new_inference_count": 0,
+  "new_scoring_count": 0,
+  "paired_claims_recalculated": 8,
+  "report_markdown_sha256": "07c786c16e14a4353bcef59e2711f3e498336506ee8b3a5d17d7064730ccfdf4",
+  "report_sha256": "22423ca7343b5382881577b6b6146066974cfd35710a48d964faa04b1ef8bb85",
+  "runtime_readmission": "Not required for analysis; pinned saved evidence verified without executing candidates",
+  "scope": "canonical_stage4_saved_evidence_audit",
+  "timeline_diagnostics": {
+    "audiveris_page": {
+      "absolute_timeline_error_median": 6.0,
+      "absolute_timeline_error_p95": 33.54166666666667,
+      "failed_page_count": 8,
+      "interpretation": "Timeline summaries condition on successes. Failures retain null length and a measure-1 sentinel; primary metrics retain failure penalties. Errors can reflect recognition, representation or conversion and do not establish a cause.",
+      "measured_timeline_count": 51,
+      "per_page": [
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata02_2/sonata02_2_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "554166666666667/100000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata02_2/sonata02_2_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "197/8"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/beethoven/sonata02_2/sonata02_2_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "197/8"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata05_1/sonata05_1_2.png",
+          "status": "failed",
+          "timeline_length_error": null
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata05_1/sonata05_1_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "141666666666667/50000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata05_1/sonata05_1_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "1208333333333333/50000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata05_1/sonata05_1_5.png",
+          "status": "failed",
+          "timeline_length_error": null
+        },
+        {
+          "first_divergent_measure": 8,
+          "item_id": "test/beethoven/sonata05_1/sonata05_1_6.png",
+          "status": "succeeded",
+          "timeline_length_error": "5/2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata07_4/sonata07_4_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "4"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata07_4/sonata07_4_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "6"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata07_4/sonata07_4_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "2"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/beethoven/sonata07_4/sonata07_4_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "6"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata17_1/sonata17_1_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "366666666666667/100000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata17_1/sonata17_1_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "21/4"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata17_1/sonata17_1_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "11/2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata17_1/sonata17_1_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "271/2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata17_1/sonata17_1_6.png",
+          "status": "succeeded",
+          "timeline_length_error": "45/2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "64479166666666683/5000000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "37/2"
+        },
+        {
+          "first_divergent_measure": 5,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "31/4"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "1741666666666667/100000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_5.png",
+          "status": "succeeded",
+          "timeline_length_error": "197/8"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_6.png",
+          "status": "succeeded",
+          "timeline_length_error": "69/4"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/beethoven/sonata26_1/sonata26_1_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "-89"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata26_1/sonata26_1_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "35/2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata26_1/sonata26_1_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "7"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata26_1/sonata26_1_5.png",
+          "status": "succeeded",
+          "timeline_length_error": "21/4"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/chopin/mazurka68_4/mazurka68_4_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "1"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/chopin/mazurka68_4/mazurka68_4_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "316666666666667/100000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/chopin/mazurka_51/mazurka_51_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "-5"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/chopin/mazurka_51/mazurka_51_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "35/4"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/hummel/prelude67_14/prelude67_14_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "-7/2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/breeze/breeze_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "49/8"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/breeze/breeze_2.png",
+          "status": "failed",
+          "timeline_length_error": null
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/breeze/breeze_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "11/2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/breeze/breeze_4.png",
+          "status": "failed",
+          "timeline_length_error": null
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/lilyqueen/lilyqueen_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "-302083333333333/125000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/lilyqueen/lilyqueen_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "3016666666666667/100000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/lilyqueen/lilyqueen_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "2316666666666667/100000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/lilyqueen/lilyqueen_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "85/4"
+        },
+        {
+          "first_divergent_measure": 4,
+          "item_id": "test/joplin/pleasant/pleasant_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/pleasant/pleasant_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "-1/2"
+        },
+        {
+          "first_divergent_measure": 3,
+          "item_id": "test/joplin/pleasant/pleasant_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "5"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/joplin/pleasant/pleasant_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "9/2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/liszt/etude10_05/etude10_05_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "23/4"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/liszt/etude10_05/etude10_05_2.png",
+          "status": "failed",
+          "timeline_length_error": null
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/liszt/etude10_05/etude10_05_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "3691666666666667/100000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/liszt/etude10_05/etude10_05_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "20"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/mozart/sonata06_3j/sonata06_3j_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "4"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/mozart/sonata08_2/sonata08_2_1.png",
+          "status": "failed",
+          "timeline_length_error": null
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/mozart/sonata08_2/sonata08_2_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "1095833333333333/100000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/mozart/sonata08_2/sonata08_2_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "1845833333333333/100000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/mozart/sonata08_2/sonata08_2_5.png",
+          "status": "succeeded",
+          "timeline_length_error": "393/16"
+        },
+        {
+          "first_divergent_measure": 5,
+          "item_id": "test/mozart/viennese1_1/viennese1_1_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "-9/2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/mozart/viennese1_1/viennese1_1_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "15/4"
+        },
+        {
+          "first_divergent_measure": 3,
+          "item_id": "test/scarlatti/L055K330/L055K330_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "143/8"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/scarlatti/L055K330/L055K330_2.png",
+          "status": "failed",
+          "timeline_length_error": null
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/scarlatti/L056K281/L056K281_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "-15/8"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/scarlatti/L056K281/L056K281_3.png",
+          "status": "failed",
+          "timeline_length_error": null
+        }
+      ],
+      "successful_first_divergence_measure_1_count": 41,
+      "successful_no_divergence_count": 0,
+      "successful_page_count": 51,
+      "time_unit": "quarter notes"
+    },
+    "fine_tuned_homr": {
+      "absolute_timeline_error_median": 4.0,
+      "absolute_timeline_error_p95": 19.095833333333307,
+      "failed_page_count": 0,
+      "interpretation": "Timeline summaries condition on successes. Failures retain null length and a measure-1 sentinel; primary metrics retain failure penalties. Errors can reflect recognition, representation or conversion and do not establish a cause.",
+      "measured_timeline_count": 59,
+      "per_page": [
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata02_2/sonata02_2_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "15/4"
+        },
+        {
+          "first_divergent_measure": 4,
+          "item_id": "test/beethoven/sonata02_2/sonata02_2_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "566666666666667/100000000000000"
+        },
+        {
+          "first_divergent_measure": 3,
+          "item_id": "test/beethoven/sonata02_2/sonata02_2_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "-1/8"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/beethoven/sonata05_1/sonata05_1_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "141666666666667/50000000000000"
+        },
+        {
+          "first_divergent_measure": 8,
+          "item_id": "test/beethoven/sonata05_1/sonata05_1_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "0"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/beethoven/sonata05_1/sonata05_1_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "0"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata05_1/sonata05_1_5.png",
+          "status": "succeeded",
+          "timeline_length_error": "0"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata05_1/sonata05_1_6.png",
+          "status": "succeeded",
+          "timeline_length_error": "216666666666667/50000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata07_4/sonata07_4_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "296666666666667/50000000000000"
+        },
+        {
+          "first_divergent_measure": 4,
+          "item_id": "test/beethoven/sonata07_4/sonata07_4_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "558333333333333/100000000000000"
+        },
+        {
+          "first_divergent_measure": 3,
+          "item_id": "test/beethoven/sonata07_4/sonata07_4_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "15/2"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/beethoven/sonata07_4/sonata07_4_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "10833333333333333/10000000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata17_1/sonata17_1_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "1216666666666667/100000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata17_1/sonata17_1_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "1066666666666667/100000000000000"
+        },
+        {
+          "first_divergent_measure": 4,
+          "item_id": "test/beethoven/sonata17_1/sonata17_1_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "0"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata17_1/sonata17_1_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "2091666666666667/50000000000000"
+        },
+        {
+          "first_divergent_measure": 7,
+          "item_id": "test/beethoven/sonata17_1/sonata17_1_6.png",
+          "status": "succeeded",
+          "timeline_length_error": "11/2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "-358333333333333467/50000000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "-637499999999999867/50000000000000000"
+        },
+        {
+          "first_divergent_measure": 5,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "-166666666666667/125000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "-493749999999999867/50000000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_5.png",
+          "status": "succeeded",
+          "timeline_length_error": "-1/4"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_6.png",
+          "status": "succeeded",
+          "timeline_length_error": "179166666666667/100000000000000"
+        },
+        {
+          "first_divergent_measure": 4,
+          "item_id": "test/beethoven/sonata26_1/sonata26_1_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "-983333333333333/100000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata26_1/sonata26_1_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "4"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata26_1/sonata26_1_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "-266666666666667/50000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata26_1/sonata26_1_5.png",
+          "status": "succeeded",
+          "timeline_length_error": "391666666666667/50000000000000"
+        },
+        {
+          "first_divergent_measure": 13,
+          "item_id": "test/chopin/mazurka68_4/mazurka68_4_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "0"
+        },
+        {
+          "first_divergent_measure": 14,
+          "item_id": "test/chopin/mazurka68_4/mazurka68_4_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "0"
+        },
+        {
+          "first_divergent_measure": 3,
+          "item_id": "test/chopin/mazurka_51/mazurka_51_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "27/2"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/chopin/mazurka_51/mazurka_51_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "29"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/hummel/prelude67_14/prelude67_14_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "0"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/joplin/breeze/breeze_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "1/2"
+        },
+        {
+          "first_divergent_measure": 4,
+          "item_id": "test/joplin/breeze/breeze_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "1/2"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/joplin/breeze/breeze_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "-1/4"
+        },
+        {
+          "first_divergent_measure": 8,
+          "item_id": "test/joplin/breeze/breeze_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "3/2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/lilyqueen/lilyqueen_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "9/4"
+        },
+        {
+          "first_divergent_measure": 7,
+          "item_id": "test/joplin/lilyqueen/lilyqueen_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "-2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/lilyqueen/lilyqueen_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "9/4"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/joplin/lilyqueen/lilyqueen_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "13/2"
+        },
+        {
+          "first_divergent_measure": 5,
+          "item_id": "test/joplin/pleasant/pleasant_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "10"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/pleasant/pleasant_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "17"
+        },
+        {
+          "first_divergent_measure": 5,
+          "item_id": "test/joplin/pleasant/pleasant_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "3"
+        },
+        {
+          "first_divergent_measure": 24,
+          "item_id": "test/joplin/pleasant/pleasant_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "0"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/liszt/etude10_05/etude10_05_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "381250000000000133/50000000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/liszt/etude10_05/etude10_05_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "23/4"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/liszt/etude10_05/etude10_05_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "149/8"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/liszt/etude10_05/etude10_05_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "37/4"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/mozart/sonata06_3j/sonata06_3j_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "37/2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/mozart/sonata08_2/sonata08_2_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "25/4"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/mozart/sonata08_2/sonata08_2_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "21/8"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/mozart/sonata08_2/sonata08_2_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "2333333333333333/100000000000000"
+        },
+        {
+          "first_divergent_measure": 3,
+          "item_id": "test/mozart/sonata08_2/sonata08_2_5.png",
+          "status": "succeeded",
+          "timeline_length_error": "-47/8"
+        },
+        {
+          "first_divergent_measure": 5,
+          "item_id": "test/mozart/viennese1_1/viennese1_1_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "-5"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/mozart/viennese1_1/viennese1_1_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "4"
+        },
+        {
+          "first_divergent_measure": 10,
+          "item_id": "test/scarlatti/L055K330/L055K330_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "166666666666667/100000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/scarlatti/L055K330/L055K330_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "1"
+        },
+        {
+          "first_divergent_measure": 23,
+          "item_id": "test/scarlatti/L056K281/L056K281_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "0"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/scarlatti/L056K281/L056K281_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "0"
+        }
+      ],
+      "successful_first_divergence_measure_1_count": 28,
+      "successful_no_divergence_count": 0,
+      "successful_page_count": 59,
+      "time_unit": "quarter notes"
+    },
+    "homr_455": {
+      "absolute_timeline_error_median": 5.25,
+      "absolute_timeline_error_p95": 25.075,
+      "failed_page_count": 1,
+      "interpretation": "Timeline summaries condition on successes. Failures retain null length and a measure-1 sentinel; primary metrics retain failure penalties. Errors can reflect recognition, representation or conversion and do not establish a cause.",
+      "measured_timeline_count": 58,
+      "per_page": [
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata02_2/sonata02_2_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "15/2"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/beethoven/sonata02_2/sonata02_2_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "53/8"
+        },
+        {
+          "first_divergent_measure": 3,
+          "item_id": "test/beethoven/sonata02_2/sonata02_2_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "7/8"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/beethoven/sonata05_1/sonata05_1_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "1/2"
+        },
+        {
+          "first_divergent_measure": 3,
+          "item_id": "test/beethoven/sonata05_1/sonata05_1_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "1/2"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/beethoven/sonata05_1/sonata05_1_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "4"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata05_1/sonata05_1_5.png",
+          "status": "succeeded",
+          "timeline_length_error": "1"
+        },
+        {
+          "first_divergent_measure": 15,
+          "item_id": "test/beethoven/sonata05_1/sonata05_1_6.png",
+          "status": "succeeded",
+          "timeline_length_error": "5/2"
+        },
+        {
+          "first_divergent_measure": 4,
+          "item_id": "test/beethoven/sonata07_4/sonata07_4_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "11/4"
+        },
+        {
+          "first_divergent_measure": 5,
+          "item_id": "test/beethoven/sonata07_4/sonata07_4_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "5"
+        },
+        {
+          "first_divergent_measure": 5,
+          "item_id": "test/beethoven/sonata07_4/sonata07_4_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "27/4"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/beethoven/sonata07_4/sonata07_4_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "139/40"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata17_1/sonata17_1_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "31/2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata17_1/sonata17_1_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "20"
+        },
+        {
+          "first_divergent_measure": 4,
+          "item_id": "test/beethoven/sonata17_1/sonata17_1_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "11/2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata17_1/sonata17_1_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "87/2"
+        },
+        {
+          "first_divergent_measure": 7,
+          "item_id": "test/beethoven/sonata17_1/sonata17_1_6.png",
+          "status": "succeeded",
+          "timeline_length_error": "708333333333333/100000000000000"
+        },
+        {
+          "first_divergent_measure": 13,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "5/2"
+        },
+        {
+          "first_divergent_measure": 4,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "0"
+        },
+        {
+          "first_divergent_measure": 5,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "0"
+        },
+        {
+          "first_divergent_measure": 4,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "0"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_5.png",
+          "status": "succeeded",
+          "timeline_length_error": "0"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_6.png",
+          "status": "succeeded",
+          "timeline_length_error": "2"
+        },
+        {
+          "first_divergent_measure": 4,
+          "item_id": "test/beethoven/sonata26_1/sonata26_1_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "-216666666666667/100000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata26_1/sonata26_1_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "1183333333333333/50000000000000"
+        },
+        {
+          "first_divergent_measure": 8,
+          "item_id": "test/beethoven/sonata26_1/sonata26_1_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "0"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata26_1/sonata26_1_5.png",
+          "status": "succeeded",
+          "timeline_length_error": "51/2"
+        },
+        {
+          "first_divergent_measure": 13,
+          "item_id": "test/chopin/mazurka68_4/mazurka68_4_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "0"
+        },
+        {
+          "first_divergent_measure": 5,
+          "item_id": "test/chopin/mazurka68_4/mazurka68_4_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "3"
+        },
+        {
+          "first_divergent_measure": 3,
+          "item_id": "test/chopin/mazurka_51/mazurka_51_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "95/4"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/chopin/mazurka_51/mazurka_51_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "29"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/hummel/prelude67_14/prelude67_14_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "5/2"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/joplin/breeze/breeze_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "7/4"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/breeze/breeze_2.png",
+          "status": "failed",
+          "timeline_length_error": null
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/joplin/breeze/breeze_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "7/2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/breeze/breeze_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "17/4"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/lilyqueen/lilyqueen_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "5"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/lilyqueen/lilyqueen_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "17/2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/lilyqueen/lilyqueen_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "23/4"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/joplin/lilyqueen/lilyqueen_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "27/2"
+        },
+        {
+          "first_divergent_measure": 4,
+          "item_id": "test/joplin/pleasant/pleasant_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "10"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/pleasant/pleasant_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "17"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/joplin/pleasant/pleasant_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "13"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/pleasant/pleasant_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "10"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/liszt/etude10_05/etude10_05_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "185/8"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/liszt/etude10_05/etude10_05_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "187/8"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/liszt/etude10_05/etude10_05_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "87/4"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/liszt/etude10_05/etude10_05_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "12"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/mozart/sonata06_3j/sonata06_3j_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "45/2"
+        },
+        {
+          "first_divergent_measure": 3,
+          "item_id": "test/mozart/sonata08_2/sonata08_2_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "89/16"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/mozart/sonata08_2/sonata08_2_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "57/8"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/mozart/sonata08_2/sonata08_2_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "25"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/mozart/sonata08_2/sonata08_2_5.png",
+          "status": "succeeded",
+          "timeline_length_error": "-19/8"
+        },
+        {
+          "first_divergent_measure": 5,
+          "item_id": "test/mozart/viennese1_1/viennese1_1_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "-4"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/mozart/viennese1_1/viennese1_1_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "4"
+        },
+        {
+          "first_divergent_measure": 25,
+          "item_id": "test/scarlatti/L055K330/L055K330_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "1"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/scarlatti/L055K330/L055K330_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "25/4"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/scarlatti/L056K281/L056K281_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "0"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/scarlatti/L056K281/L056K281_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "6"
+        }
+      ],
+      "successful_first_divergence_measure_1_count": 25,
+      "successful_no_divergence_count": 0,
+      "successful_page_count": 58,
+      "time_unit": "quarter notes"
+    },
+    "homr_page": {
+      "absolute_timeline_error_median": 3.520833333333335,
+      "absolute_timeline_error_p95": 21.324999999999996,
+      "failed_page_count": 1,
+      "interpretation": "Timeline summaries condition on successes. Failures retain null length and a measure-1 sentinel; primary metrics retain failure penalties. Errors can reflect recognition, representation or conversion and do not establish a cause.",
+      "measured_timeline_count": 58,
+      "per_page": [
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata02_2/sonata02_2_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "-16666666666667/100000000000000"
+        },
+        {
+          "first_divergent_measure": 4,
+          "item_id": "test/beethoven/sonata02_2/sonata02_2_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "208333333333333/100000000000000"
+        },
+        {
+          "first_divergent_measure": 3,
+          "item_id": "test/beethoven/sonata02_2/sonata02_2_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "-9/8"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/beethoven/sonata05_1/sonata05_1_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "110416666666667/50000000000000"
+        },
+        {
+          "first_divergent_measure": 9,
+          "item_id": "test/beethoven/sonata05_1/sonata05_1_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "3/2"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/beethoven/sonata05_1/sonata05_1_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "3/2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata05_1/sonata05_1_5.png",
+          "status": "succeeded",
+          "timeline_length_error": "0"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata05_1/sonata05_1_6.png",
+          "status": "succeeded",
+          "timeline_length_error": "3"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/beethoven/sonata07_4/sonata07_4_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "24999999999999833/50000000000000000"
+        },
+        {
+          "first_divergent_measure": 4,
+          "item_id": "test/beethoven/sonata07_4/sonata07_4_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "466666666666667/100000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata07_4/sonata07_4_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "766666666666667/100000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata07_4/sonata07_4_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "33/8"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata17_1/sonata17_1_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "766666666666667/50000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata17_1/sonata17_1_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "1066666666666667/100000000000000"
+        },
+        {
+          "first_divergent_measure": 4,
+          "item_id": "test/beethoven/sonata17_1/sonata17_1_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "-1/2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata17_1/sonata17_1_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "205000000000000033/10000000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata17_1/sonata17_1_6.png",
+          "status": "failed",
+          "timeline_length_error": null
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "-258333333333333467/50000000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "-658333333333333467/50000000000000000"
+        },
+        {
+          "first_divergent_measure": 5,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "-5/4"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "-618749999999999867/50000000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_5.png",
+          "status": "succeeded",
+          "timeline_length_error": "41666666666667/125000000000000"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_6.png",
+          "status": "succeeded",
+          "timeline_length_error": "2"
+        },
+        {
+          "first_divergent_measure": 4,
+          "item_id": "test/beethoven/sonata26_1/sonata26_1_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "-1083333333333333/100000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata26_1/sonata26_1_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "316666666666667/50000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata26_1/sonata26_1_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "-333333333333333/50000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata26_1/sonata26_1_5.png",
+          "status": "succeeded",
+          "timeline_length_error": "208333333333333/50000000000000"
+        },
+        {
+          "first_divergent_measure": 13,
+          "item_id": "test/chopin/mazurka68_4/mazurka68_4_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "0"
+        },
+        {
+          "first_divergent_measure": 14,
+          "item_id": "test/chopin/mazurka68_4/mazurka68_4_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "0"
+        },
+        {
+          "first_divergent_measure": 3,
+          "item_id": "test/chopin/mazurka_51/mazurka_51_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "1266666666666667/100000000000000"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/chopin/mazurka_51/mazurka_51_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "26"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/hummel/prelude67_14/prelude67_14_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "0"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/joplin/breeze/breeze_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "1/2"
+        },
+        {
+          "first_divergent_measure": null,
+          "item_id": "test/joplin/breeze/breeze_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "0"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/breeze/breeze_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "-1/4"
+        },
+        {
+          "first_divergent_measure": 9,
+          "item_id": "test/joplin/breeze/breeze_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "1/2"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/joplin/lilyqueen/lilyqueen_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "2"
+        },
+        {
+          "first_divergent_measure": 7,
+          "item_id": "test/joplin/lilyqueen/lilyqueen_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "-5/4"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/lilyqueen/lilyqueen_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "9/4"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/joplin/lilyqueen/lilyqueen_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "17/4"
+        },
+        {
+          "first_divergent_measure": 5,
+          "item_id": "test/joplin/pleasant/pleasant_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "10"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/pleasant/pleasant_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "17"
+        },
+        {
+          "first_divergent_measure": 5,
+          "item_id": "test/joplin/pleasant/pleasant_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "3"
+        },
+        {
+          "first_divergent_measure": 24,
+          "item_id": "test/joplin/pleasant/pleasant_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "0"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/liszt/etude10_05/etude10_05_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "308333333333333333/50000000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/liszt/etude10_05/etude10_05_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "1166666666666667/125000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/liszt/etude10_05/etude10_05_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "770833333333333/125000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/liszt/etude10_05/etude10_05_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "43/4"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/mozart/sonata06_3j/sonata06_3j_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "37/2"
+        },
+        {
+          "first_divergent_measure": 3,
+          "item_id": "test/mozart/sonata08_2/sonata08_2_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "7/2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/mozart/sonata08_2/sonata08_2_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "354166666666667/100000000000000"
+        },
+        {
+          "first_divergent_measure": 2,
+          "item_id": "test/mozart/sonata08_2/sonata08_2_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "2804166666666667/100000000000000"
+        },
+        {
+          "first_divergent_measure": 3,
+          "item_id": "test/mozart/sonata08_2/sonata08_2_5.png",
+          "status": "succeeded",
+          "timeline_length_error": "-23/4"
+        },
+        {
+          "first_divergent_measure": 5,
+          "item_id": "test/mozart/viennese1_1/viennese1_1_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "-5"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/mozart/viennese1_1/viennese1_1_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "4"
+        },
+        {
+          "first_divergent_measure": 33,
+          "item_id": "test/scarlatti/L055K330/L055K330_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "3/2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/scarlatti/L055K330/L055K330_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "89/2"
+        },
+        {
+          "first_divergent_measure": 14,
+          "item_id": "test/scarlatti/L056K281/L056K281_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "0"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/scarlatti/L056K281/L056K281_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "33333333333333/100000000000000"
+        }
+      ],
+      "successful_first_divergence_measure_1_count": 27,
+      "successful_no_divergence_count": 1,
+      "successful_page_count": 58,
+      "time_unit": "quarter notes"
+    },
+    "zeus_page": {
+      "absolute_timeline_error_median": 11.29166666666667,
+      "absolute_timeline_error_p95": 25.41666666666667,
+      "failed_page_count": 0,
+      "interpretation": "Timeline summaries condition on successes. Failures retain null length and a measure-1 sentinel; primary metrics retain failure penalties. Errors can reflect recognition, representation or conversion and do not establish a cause.",
+      "measured_timeline_count": 59,
+      "per_page": [
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata02_2/sonata02_2_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "54984126984127/4000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata02_2/sonata02_2_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "2541666666666667/100000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata02_2/sonata02_2_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "616666666666667/100000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata05_1/sonata05_1_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "-11/2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata05_1/sonata05_1_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "120833333333333333/10000000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata05_1/sonata05_1_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "545833333333333/50000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata05_1/sonata05_1_5.png",
+          "status": "succeeded",
+          "timeline_length_error": "-625892857142857/50000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata05_1/sonata05_1_6.png",
+          "status": "succeeded",
+          "timeline_length_error": "43/2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata07_4/sonata07_4_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "983333333333333/100000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata07_4/sonata07_4_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "141666666666667/100000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata07_4/sonata07_4_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "41/4"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata07_4/sonata07_4_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "-648333333333333/100000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata17_1/sonata17_1_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "-212916666666666667/10000000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata17_1/sonata17_1_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "-57/8"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata17_1/sonata17_1_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "-113333333333333367/5000000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata17_1/sonata17_1_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "49544270833333333/10000000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata17_1/sonata17_1_6.png",
+          "status": "succeeded",
+          "timeline_length_error": "-1095833333333333/100000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "1829166666666666833/50000000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "41/8"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "1746666666666667/100000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "22"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_5.png",
+          "status": "succeeded",
+          "timeline_length_error": "1129166666666667/100000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata22_2/sonata22_2_6.png",
+          "status": "succeeded",
+          "timeline_length_error": "161/8"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata26_1/sonata26_1_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "-949/32"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata26_1/sonata26_1_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "-2541666666666667/100000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata26_1/sonata26_1_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "1"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/beethoven/sonata26_1/sonata26_1_5.png",
+          "status": "succeeded",
+          "timeline_length_error": "-87/4"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/chopin/mazurka68_4/mazurka68_4_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "5/2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/chopin/mazurka68_4/mazurka68_4_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "27/2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/chopin/mazurka_51/mazurka_51_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "15/8"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/chopin/mazurka_51/mazurka_51_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "152500000000000033/10000000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/hummel/prelude67_14/prelude67_14_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "-19/2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/breeze/breeze_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "39/4"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/breeze/breeze_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "19"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/breeze/breeze_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "916666666666667/125000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/breeze/breeze_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "76666666666666693/10000000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/lilyqueen/lilyqueen_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/lilyqueen/lilyqueen_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "-29/20"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/lilyqueen/lilyqueen_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "11/4"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/lilyqueen/lilyqueen_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "6"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/pleasant/pleasant_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "31/2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/pleasant/pleasant_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "5"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/pleasant/pleasant_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "14"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/joplin/pleasant/pleasant_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "13"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/liszt/etude10_05/etude10_05_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "894090909090909/50000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/liszt/etude10_05/etude10_05_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "783333333333333333/50000000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/liszt/etude10_05/etude10_05_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "69/4"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/liszt/etude10_05/etude10_05_4.png",
+          "status": "succeeded",
+          "timeline_length_error": "11"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/mozart/sonata06_3j/sonata06_3j_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "-15/2"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/mozart/sonata08_2/sonata08_2_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "181249999999999973/10000000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/mozart/sonata08_2/sonata08_2_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "2291666666666667/100000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/mozart/sonata08_2/sonata08_2_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "21"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/mozart/sonata08_2/sonata08_2_5.png",
+          "status": "succeeded",
+          "timeline_length_error": "151/8"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/mozart/viennese1_1/viennese1_1_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "-23/8"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/mozart/viennese1_1/viennese1_1_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "9"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/scarlatti/L055K330/L055K330_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "95/8"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/scarlatti/L055K330/L055K330_2.png",
+          "status": "succeeded",
+          "timeline_length_error": "49/4"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/scarlatti/L056K281/L056K281_1.png",
+          "status": "succeeded",
+          "timeline_length_error": "1070833333333333/100000000000000"
+        },
+        {
+          "first_divergent_measure": 1,
+          "item_id": "test/scarlatti/L056K281/L056K281_3.png",
+          "status": "succeeded",
+          "timeline_length_error": "-704166666666667/100000000000000"
+        }
+      ],
+      "successful_first_divergence_measure_1_count": 59,
+      "successful_no_divergence_count": 0,
+      "successful_page_count": 59,
+      "time_unit": "quarter notes"
+    }
+  },
+  "verified_results": 295,
+  "verified_scores": 295
+}

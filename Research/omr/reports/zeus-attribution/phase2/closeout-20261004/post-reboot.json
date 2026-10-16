@@ -1,0 +1,21 @@
+{
+  "CapturedAt": "2026-10-04T20:59:27.2586006+03:00",
+  "LastBootUpTime": "2026-10-04T20:56:05.5000000+03:00",
+  "PagingFiles": [
+    "C:\\pagefile.sys 0 0"
+  ],
+  "AutomaticManagedPagefile": false,
+  "RuntimeUsage": [
+    {
+      "Name": "C:\\pagefile.sys",
+      "AllocatedBaseSize": 18432,
+      "CurrentUsage": 1,
+      "PeakUsage": 1
+    }
+  ],
+  "WorkerLockPresent": false,
+  "GitPython": [],
+  "RecordedModel": "gpt-6.1-sol",
+  "RecordedEffort": "medium",
+  "ModelTurnTimestamp": "2026-10-04T17:57:36.071Z"
+}

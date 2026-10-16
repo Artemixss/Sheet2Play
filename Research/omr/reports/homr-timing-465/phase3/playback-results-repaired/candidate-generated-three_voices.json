@@ -1,0 +1,101 @@
+{
+  "schema_version": 2,
+  "engine": "MusicXml",
+  "engine_revision": "direct-xml",
+  "tempo_changes": [
+    {
+      "start_beat": 0,
+      "bpm": 120
+    }
+  ],
+  "notes": [
+    {
+      "pitch": "G3",
+      "midi_pitch": 55,
+      "start_beat": 0,
+      "duration_beats": 1,
+      "start_seconds": 0,
+      "duration_seconds": 0.5,
+      "part_index": 0,
+      "staff_index": 0,
+      "voice_identifier": "1"
+    },
+    {
+      "pitch": "E4",
+      "midi_pitch": 64,
+      "start_beat": 0,
+      "duration_beats": 2,
+      "start_seconds": 0,
+      "duration_seconds": 1,
+      "part_index": 0,
+      "staff_index": 0,
+      "voice_identifier": "2"
+    },
+    {
+      "pitch": "C5",
+      "midi_pitch": 72,
+      "start_beat": 0,
+      "duration_beats": 4,
+      "start_seconds": 0,
+      "duration_seconds": 2,
+      "part_index": 0,
+      "staff_index": 0,
+      "voice_identifier": "3"
+    },
+    {
+      "pitch": "A5",
+      "midi_pitch": 81,
+      "start_beat": 0,
+      "duration_beats": 4,
+      "start_seconds": 0,
+      "duration_seconds": 2,
+      "part_index": 0,
+      "staff_index": 0,
+      "voice_identifier": "3"
+    },
+    {
+      "pitch": "A3",
+      "midi_pitch": 57,
+      "start_beat": 1,
+      "duration_beats": 1,
+      "start_seconds": 0.5,
+      "duration_seconds": 0.5,
+      "part_index": 0,
+      "staff_index": 0,
+      "voice_identifier": "1"
+    },
+    {
+      "pitch": "B3",
+      "midi_pitch": 59,
+      "start_beat": 2,
+      "duration_beats": 1,
+      "start_seconds": 1,
+      "duration_seconds": 0.5,
+      "part_index": 0,
+      "staff_index": 0,
+      "voice_identifier": "1"
+    },
+    {
+      "pitch": "F4",
+      "midi_pitch": 65,
+      "start_beat": 2,
+      "duration_beats": 2,
+      "start_seconds": 1,
+      "duration_seconds": 1,
+      "part_index": 0,
+      "staff_index": 0,
+      "voice_identifier": "2"
+    },
+    {
+      "pitch": "C4",
+      "midi_pitch": 60,
+      "start_beat": 3,
+      "duration_beats": 1,
+      "start_seconds": 1.5,
+      "duration_seconds": 0.5,
+      "part_index": 0,
+      "staff_index": 0,
+      "voice_identifier": "1"
+    }
+  ]
+}

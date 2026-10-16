@@ -1,0 +1,52 @@
+{
+  "adapter_id": "zeus_app_integration",
+  "aligned_voice_accuracy": 0.0,
+  "candidate_id": "zeus",
+  "cold_start": true,
+  "composition_group": "hummel/prelude67_14",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "3",
+        "count": 1,
+        "predicted": "3/2"
+      }
+    ],
+    "unmatched_expected": 68,
+    "unmatched_predicted": 65
+  },
+  "elapsed_seconds": 20.561999999999898,
+  "error": null,
+  "extra_note_count": 67,
+  "failure_penalized_omr_ned": 0.8105263157894737,
+  "first_divergent_measure": 1,
+  "item_id": "test/hummel/prelude67_14/prelude67_14_1.png",
+  "mean_offset_error": 1.0,
+  "missing_note_count": 70,
+  "omr_ned": 0.8105263157894737,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.0,
+  "onset_f1": 0.029197080291970802,
+  "peak_ram_bytes": 931913728,
+  "peak_vram_bytes": 244318208,
+  "pitch_f1": 0.5255474452554744,
+  "predicted_note_count": 67,
+  "reference_measure_count": 7,
+  "reference_note_count": 70,
+  "reference_quarter_length": "28",
+  "schema_version": 1,
+  "staff_accuracy": 0.0,
+  "status": "succeeded",
+  "timeline_length_error": "-19/2",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

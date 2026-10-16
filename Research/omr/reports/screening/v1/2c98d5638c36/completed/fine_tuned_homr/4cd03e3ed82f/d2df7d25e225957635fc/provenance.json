@@ -1,0 +1,17 @@
+{
+  "attempt_path": "Research\\omr\\reports\\screening\\v1\\2c98d5638c36\\attempts\\fine_tuned_homr\\4cd03e3ed82f\\5c26674e5927c760f543\\attempt-27419a5d1ab94ccd84b3080246752e27",
+  "attempt_sha256": "225929675d355421bfab82f3f1870898095782c4b24fe1177a81664a6cde7473",
+  "identity": {
+    "adapter_config_sha256": "426183ceebd62651ac638db869fa7ea85bd49d71dda7825ebb52954c9b6029aa",
+    "candidate": "fine_tuned_homr",
+    "configuration_sha256": "4cd03e3ed82f222a3fcfae0e009989e13380de9fcf933c3f3aab5b8effe3b32c",
+    "image_sha256": "0a41ed3040703edeca49fca4963fabbb7096e8ccd4338dc10fb62f743084f38f",
+    "item_id": "test/joplin/pleasant/pleasant_1.png",
+    "reference_sha256": "bb638289594e8437667f74e2d719fceaf63c23b363127b0ddf92ce2f85c4744d",
+    "sample_sha256": "2c98d5638c368b1a53bdb3440177d04fa585f9b1ca6ce6adbe65af64cd8e27d1",
+    "schema_version": 1
+  },
+  "origin": "completed_attempt",
+  "result_sha256": "84667c219022341f88755d14471b5a6624980b1465c7c8ddc4f39d85099e4f43",
+  "timing_source": "screening_complete_path"
+}

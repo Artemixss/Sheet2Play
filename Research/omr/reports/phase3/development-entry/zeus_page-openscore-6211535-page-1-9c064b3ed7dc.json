@@ -1,0 +1,103 @@
+{
+  "adapter_config_sha256": "7373b663fc5ac2e69ded8d5b3fb2b8e5dd9ccbfc13fc75f05eec1dcd322340bb",
+  "adapter_id": "zeus_app_integration",
+  "artifacts": [
+    {
+      "bytes": 8456,
+      "media_type": "application/json",
+      "path": "Research/omr/.runtime/phase3/development-entry/zeus_page-openscore-6211535-page-1-9c064b3ed7dc/native.lmx.json",
+      "role": "native",
+      "sha256": "fa02fdc85259ad6737a1a8a9c590595871c96be002fa23cc886d05cf503f5143"
+    },
+    {
+      "bytes": 55441,
+      "media_type": "application/vnd.recordare.musicxml+xml",
+      "path": "Research/omr/.runtime/phase3/development-entry/zeus_page-openscore-6211535-page-1-9c064b3ed7dc/score.musicxml",
+      "role": "musicxml",
+      "sha256": "5c36277a0105c8c730cf70da8234963273d1c81ad5e60585d2387e0ecfcdfc81"
+    },
+    {
+      "bytes": 38967,
+      "media_type": "application/json",
+      "path": "Research/omr/.runtime/phase3/development-entry/zeus_page-openscore-6211535-page-1-9c064b3ed7dc/canonical-events.json",
+      "role": "canonical_events",
+      "sha256": "f6d87728664bb3a20e8a60968a5796306428a2b2203ce31eee330891fc665161"
+    },
+    {
+      "bytes": 36,
+      "media_type": "text/plain",
+      "path": "Research/omr/.runtime/phase3/development-entry/zeus_page-openscore-6211535-page-1-9c064b3ed7dc/engine.log",
+      "role": "engine_log",
+      "sha256": "aaca0942830f1b45ec196816065629ccabc813fe2265555bbb1adbab111caad7"
+    }
+  ],
+  "candidate_id": "zeus",
+  "composition_group": "6211535",
+  "error": null,
+  "exit_status": 0,
+  "item_id": "openscore-6211535-page-1",
+  "measurement_path": "complete_document",
+  "provenance": {
+    "adapter_config": {
+      "adapter_id": "zeus_app_integration",
+      "adapter_revision": "fdffc993b22fc2a284a8822c5e9688cbbd4ac09107ef2af4c2cccc5b8b44af10",
+      "candidate_id": "zeus",
+      "checkpoint": "zeus-olimpic-1.0-2024-02-12.model",
+      "checkpoint_revision": "2024-02-12",
+      "input_granularity": "document with HOMR-detected systems",
+      "native_format": "LMX",
+      "settings": {
+        "normalization": "frozen-phase1",
+        "preprocessing": "app-width-bucketing",
+        "runner_sha256": "592e63d2c4828be954257073275e4665c22f2a583bf1c81d06b585711e4021f4",
+        "system_detector_sha256": "b1aac6372d1cbce32dc8e00a7e6c6d809cb9d6eb1fb82ad382cfb42a8b2e6c86"
+      },
+      "source_repository": "https://github.com/ufal/olimpic-icdar24",
+      "source_revision": "df0d842596ccd199882ff958e628d59327ca6cba",
+      "supported_paths": [
+        "complete_document"
+      ]
+    },
+    "adapter_config_sha256": "7373b663fc5ac2e69ded8d5b3fb2b8e5dd9ccbfc13fc75f05eec1dcd322340bb",
+    "checkpoint": "zeus-olimpic-1.0-2024-02-12.model",
+    "checkpoint_revision": "2024-02-12",
+    "command": [
+      "Research/omr/.venv/Scripts/python.exe",
+      "Research/omr/phase2_zeus_runner.py",
+      "--input",
+      "Research/omr/data/phase1-development/open/6211535/page-1.png",
+      "--output",
+      "Research/omr/.runtime/phase3/development-entry/zeus_page-openscore-6211535-page-1-9c064b3ed7dc",
+      "--mode",
+      "integration"
+    ],
+    "input_path": "Research/omr/data/phase1-development/open/6211535/page-1.png",
+    "input_sha256": "b368dd864dc235272728822a578551fbed619cce02265cc52043dea3051c57c8",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "source_repository": "https://github.com/ufal/olimpic-icdar24",
+    "source_revision": "df0d842596ccd199882ff958e628d59327ca6cba"
+  },
+  "resources": {
+    "cold_start": true,
+    "measurement_notes": [
+      "VRAM measurement: device-wide WDDM fallback"
+    ],
+    "peak_ram_bytes": 1150726144,
+    "peak_vram_bytes": 1181745152,
+    "sample_interval_seconds": 0.2
+  },
+  "schema_version": 1,
+  "status": "succeeded",
+  "timings": [
+    {
+      "seconds": 60.51936839999962,
+      "stage": "recognition_conversion_stitching"
+    },
+    {
+      "seconds": 0.7039365999999063,
+      "stage": "shared_normalization"
+    }
+  ],
+  "warnings": []
+}

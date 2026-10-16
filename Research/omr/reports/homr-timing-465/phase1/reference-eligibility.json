@@ -1,0 +1,1395 @@
+[
+  {
+    "alignment_evidence": "Single generated page with authoritative paired source; no token round-trip reference",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "generated",
+    "eligibility": "paired_generated_source",
+    "image": {
+      "bytes": 35285,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\tests\\fixtures\\transcoda-baseline\\baseline-piano.png",
+      "sha256": "2cbe267a15f2f5791943523413ce6c3d25dee32e283f43af156c7eeee5f08805"
+    },
+    "item_id": "generated-baseline-piano-001",
+    "limitations": [],
+    "numeric_accuracy_eligible": true,
+    "reference": {
+      "bytes": 344,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\tests\\fixtures\\transcoda-baseline\\baseline-piano.krn",
+      "sha256": "03a48bf5f047943af61f451fabf4f1eb835eff559da36faa38fe3349bc03eef5"
+    },
+    "reference_format": "kern",
+    "reference_page_break_measures": [],
+    "traits": {
+      "engraved_system_changes": 0,
+      "independent_voices": false,
+      "meter_changes": false,
+      "multi_page": false,
+      "page_count": 1,
+      "ties": false,
+      "tuplets": false
+    }
+  },
+  {
+    "alignment_evidence": "Single generated page with authoritative paired source; no token round-trip reference",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "generated",
+    "eligibility": "paired_generated_source",
+    "image": {
+      "bytes": 84825,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\homophonic.png",
+      "sha256": "298bf62eaa8c2b822a3d9ec173154caa1cb1981de5704f6799828a2ec239fc79"
+    },
+    "item_id": "generated-homophonic",
+    "limitations": [],
+    "numeric_accuracy_eligible": true,
+    "reference": {
+      "bytes": 3090,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\homophonic.musicxml",
+      "sha256": "84922d9757a5be7b9877fc9737032d9f297b773698e1d9f50f7764d46ab8eaab"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      []
+    ],
+    "traits": {
+      "engraved_system_changes": 0,
+      "independent_voices": true,
+      "meter_changes": false,
+      "multi_page": false,
+      "page_count": 1,
+      "ties": false,
+      "tuplets": false
+    }
+  },
+  {
+    "alignment_evidence": "Single generated page with authoritative paired source; no token round-trip reference",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "generated",
+    "eligibility": "paired_generated_source",
+    "image": {
+      "bytes": 85862,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\offset_entry.png",
+      "sha256": "9dd714781e3fe710c07f7b3b95e75a049c400b5f66c951013704798719f9dbf8"
+    },
+    "item_id": "generated-offset_entry",
+    "limitations": [],
+    "numeric_accuracy_eligible": true,
+    "reference": {
+      "bytes": 2898,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\offset_entry.musicxml",
+      "sha256": "7e9a04bca94dfb1265ffd52470876acb8fe58ff5f343b8d978e0d3934c2b3217"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      []
+    ],
+    "traits": {
+      "engraved_system_changes": 0,
+      "independent_voices": true,
+      "meter_changes": false,
+      "multi_page": false,
+      "page_count": 1,
+      "ties": false,
+      "tuplets": false
+    }
+  },
+  {
+    "alignment_evidence": "Single generated page with authoritative paired source; no token round-trip reference",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "generated",
+    "eligibility": "paired_generated_source",
+    "image": {
+      "bytes": 87421,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\quintuplet_vs_duple.png",
+      "sha256": "b57f0e85b624a4be1e9a6484bbd2c6088612831ba77875c640e0b1111eaff79d"
+    },
+    "item_id": "generated-quintuplet_vs_duple",
+    "limitations": [],
+    "numeric_accuracy_eligible": true,
+    "reference": {
+      "bytes": 4735,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\quintuplet_vs_duple.musicxml",
+      "sha256": "bf0d92a4c3639690ac43e87f54f93bf0ef12e8b9760d0d6ba21596bdfa580931"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      []
+    ],
+    "traits": {
+      "engraved_system_changes": 0,
+      "independent_voices": true,
+      "meter_changes": false,
+      "multi_page": false,
+      "page_count": 1,
+      "ties": false,
+      "tuplets": true
+    }
+  },
+  {
+    "alignment_evidence": "Single generated page with authoritative paired source; no token round-trip reference",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "generated",
+    "eligibility": "paired_generated_source",
+    "image": {
+      "bytes": 90540,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\same_position_sustain.png",
+      "sha256": "74c1ba126d212f5c7ef3e7f3ef763dda2e35871f23add62d58f6daa3604cf624"
+    },
+    "item_id": "generated-same_position_sustain",
+    "limitations": [],
+    "numeric_accuracy_eligible": true,
+    "reference": {
+      "bytes": 3075,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\same_position_sustain.musicxml",
+      "sha256": "98708dc156bafa3093697b433310e77332595560512edbf2522c989e572e3e26"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      []
+    ],
+    "traits": {
+      "engraved_system_changes": 0,
+      "independent_voices": true,
+      "meter_changes": false,
+      "multi_page": false,
+      "page_count": 1,
+      "ties": false,
+      "tuplets": false
+    }
+  },
+  {
+    "alignment_evidence": "Single generated page with authoritative paired source; no token round-trip reference",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "generated",
+    "eligibility": "paired_generated_source",
+    "image": {
+      "bytes": 89397,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\septuplet_vs_duple.png",
+      "sha256": "f8f9caca9f95b1a94cef6452cb2850d91e509a7465794e4e6c927bdfcf4c5791"
+    },
+    "item_id": "generated-septuplet_vs_duple",
+    "limitations": [],
+    "numeric_accuracy_eligible": true,
+    "reference": {
+      "bytes": 5507,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\septuplet_vs_duple.musicxml",
+      "sha256": "12243b6a57e88281408481c8cdc419a852174920dbde8b3f3cc2e9af2fa79bcb"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      []
+    ],
+    "traits": {
+      "engraved_system_changes": 0,
+      "independent_voices": true,
+      "meter_changes": false,
+      "multi_page": false,
+      "page_count": 1,
+      "ties": false,
+      "tuplets": true
+    }
+  },
+  {
+    "alignment_evidence": "Single generated page with authoritative paired source; no token round-trip reference",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "generated",
+    "eligibility": "paired_generated_source",
+    "image": {
+      "bytes": 85984,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\syncopation.png",
+      "sha256": "b81f65fe8faa3a2d2517aaf22b362ba613441388e79335f18ffb5839d4e5a4e7"
+    },
+    "item_id": "generated-syncopation",
+    "limitations": [],
+    "numeric_accuracy_eligible": true,
+    "reference": {
+      "bytes": 3257,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\syncopation.musicxml",
+      "sha256": "c603832b1189a6a8539e4ab180220b8f5e54601f5881615061fc798ffd3bd1b3"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      []
+    ],
+    "traits": {
+      "engraved_system_changes": 0,
+      "independent_voices": true,
+      "meter_changes": false,
+      "multi_page": false,
+      "page_count": 1,
+      "ties": false,
+      "tuplets": false
+    }
+  },
+  {
+    "alignment_evidence": "Single generated page with authoritative paired source; no token round-trip reference",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "generated",
+    "eligibility": "paired_generated_source",
+    "image": {
+      "bytes": 86056,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\three_voices.png",
+      "sha256": "6a5fb87a643858e21b4be6c8637acc69259b19b052c486b1c85e057a0828203d"
+    },
+    "item_id": "generated-three_voices",
+    "limitations": [],
+    "numeric_accuracy_eligible": true,
+    "reference": {
+      "bytes": 2945,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\three_voices.musicxml",
+      "sha256": "6534855228913d7897c671ff2e1ee88528859e6111b9315ef7e013044f652214"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      []
+    ],
+    "traits": {
+      "engraved_system_changes": 0,
+      "independent_voices": true,
+      "meter_changes": false,
+      "multi_page": false,
+      "page_count": 1,
+      "ties": false,
+      "tuplets": false
+    }
+  },
+  {
+    "alignment_evidence": "Single generated page with authoritative paired source; no token round-trip reference",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "generated",
+    "eligibility": "paired_generated_source",
+    "image": {
+      "bytes": 89517,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\tie_across_barline.png",
+      "sha256": "5651dc3756ad48f8963570e0b8f6cbe67f63fc3c6790bf2fabadc84f9eda4b71"
+    },
+    "item_id": "generated-tie_across_barline",
+    "limitations": [],
+    "numeric_accuracy_eligible": true,
+    "reference": {
+      "bytes": 2430,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\tie_across_barline.musicxml",
+      "sha256": "678260f1a5c7eb3d8f49cc3475b3d3bff0d0912debbb0352b404e37be8cd9d0c"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      []
+    ],
+    "traits": {
+      "engraved_system_changes": 0,
+      "independent_voices": false,
+      "meter_changes": false,
+      "multi_page": false,
+      "page_count": 1,
+      "ties": true,
+      "tuplets": false
+    }
+  },
+  {
+    "alignment_evidence": "Single generated page with authoritative paired source; no token round-trip reference",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "generated",
+    "eligibility": "paired_generated_source",
+    "image": {
+      "bytes": 85199,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\triplet_vs_duple.png",
+      "sha256": "aad2dfdb6e0719b2e1a85cbf9d198473ab1c608aa9f720e2ed91bfbb7f785970"
+    },
+    "item_id": "generated-triplet_vs_duple",
+    "limitations": [],
+    "numeric_accuracy_eligible": true,
+    "reference": {
+      "bytes": 3557,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\triplet_vs_duple.musicxml",
+      "sha256": "a7c9656f91daec641a0eb12bf5d24e411b8aac0bc34d0f06e7d2d57e44f8a4cc"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      []
+    ],
+    "traits": {
+      "engraved_system_changes": 0,
+      "independent_voices": true,
+      "meter_changes": false,
+      "multi_page": false,
+      "page_count": 1,
+      "ties": false,
+      "tuplets": true
+    }
+  },
+  {
+    "alignment_evidence": "Single generated page with authoritative paired source; no token round-trip reference",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "generated",
+    "eligibility": "paired_generated_source",
+    "image": {
+      "bytes": 87075,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\triplet_vs_quadruple.png",
+      "sha256": "9cb1565f8a69326d456910653549d46a784fa30d4060770e8539958d4830ed04"
+    },
+    "item_id": "generated-triplet_vs_quadruple",
+    "limitations": [],
+    "numeric_accuracy_eligible": true,
+    "reference": {
+      "bytes": 4103,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\triplet_vs_quadruple.musicxml",
+      "sha256": "5fc483dc3a1a056d98742e8797235e5598e6c0ca9c75ab399acbafbd873b0bdc"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      []
+    ],
+    "traits": {
+      "engraved_system_changes": 0,
+      "independent_voices": true,
+      "meter_changes": false,
+      "multi_page": false,
+      "page_count": 1,
+      "ties": false,
+      "tuplets": true
+    }
+  },
+  {
+    "alignment_evidence": "Single generated page with authoritative paired source; no token round-trip reference",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "generated",
+    "eligibility": "paired_generated_source",
+    "image": {
+      "bytes": 100934,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\tuplet_aligned.png",
+      "sha256": "6a37b7d11e0d090fec743c04b42511f814b860f554aeb8abae1182ba46456f45"
+    },
+    "item_id": "generated-tuplet_aligned",
+    "limitations": [],
+    "numeric_accuracy_eligible": true,
+    "reference": {
+      "bytes": 15802,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\tuplet_aligned.musicxml",
+      "sha256": "7e913ab9fad842cc43bacc070adbbb2c2b4323dec2e86790683ca2d0b16c5d55"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      []
+    ],
+    "traits": {
+      "engraved_system_changes": 0,
+      "independent_voices": true,
+      "meter_changes": false,
+      "multi_page": false,
+      "page_count": 1,
+      "ties": false,
+      "tuplets": true
+    }
+  },
+  {
+    "alignment_evidence": "Whole-composition notation; first-page range not independently verified",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "open",
+    "eligibility": "diagnostic_only",
+    "image": {
+      "bytes": 404638,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\phase1-development\\open\\6211535\\page-1.png",
+      "sha256": "b368dd864dc235272728822a578551fbed619cce02265cc52043dea3051c57c8"
+    },
+    "item_id": "openscore-6211535",
+    "limitations": [
+      "possible training overlap",
+      "first-page reference range unverified"
+    ],
+    "numeric_accuracy_eligible": false,
+    "reference": {
+      "bytes": 477817,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6211535.musicxml",
+      "sha256": "7752257515ec8ec575f1cd5c05e7aba9b52b743032494f162b93e57959792951"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      [
+        "20",
+        "24",
+        "40",
+        "44",
+        "56",
+        "68"
+      ],
+      [
+        "20",
+        "24",
+        "40",
+        "44",
+        "56",
+        "68"
+      ]
+    ],
+    "traits": {
+      "engraved_system_changes": 32,
+      "independent_voices": true,
+      "meter_changes": false,
+      "multi_page": true,
+      "page_count": 7,
+      "ties": true,
+      "tuplets": true
+    }
+  },
+  {
+    "alignment_evidence": "Whole-composition notation; first-page range not independently verified",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "open",
+    "eligibility": "diagnostic_only",
+    "image": {
+      "bytes": 390758,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\phase1-development\\open\\6211549\\page-1.png",
+      "sha256": "2fb2928d51c8bb08303dc3ebabec82e665a41ed89406037650d7a8c2f0ae1bef"
+    },
+    "item_id": "openscore-6211549",
+    "limitations": [
+      "possible training overlap",
+      "first-page reference range unverified"
+    ],
+    "numeric_accuracy_eligible": false,
+    "reference": {
+      "bytes": 779318,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6211549.musicxml",
+      "sha256": "9d746b490220f25cfc0bba1b6a18cde0e445b09607a65b3655484b9a705ac897"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      [
+        "12",
+        "19",
+        "30",
+        "39",
+        "49",
+        "58"
+      ],
+      [
+        "12",
+        "19",
+        "30",
+        "39",
+        "49",
+        "58"
+      ]
+    ],
+    "traits": {
+      "engraved_system_changes": 34,
+      "independent_voices": true,
+      "meter_changes": false,
+      "multi_page": true,
+      "page_count": 7,
+      "ties": true,
+      "tuplets": true
+    }
+  },
+  {
+    "alignment_evidence": "Whole-composition notation; first-page range not independently verified",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "open",
+    "eligibility": "diagnostic_only",
+    "image": {
+      "bytes": 331312,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\phase1-development\\open\\6211555\\page-1.png",
+      "sha256": "8787a0a691a6118d66fe41c3f0cf160d5f641ffde05ffe1824218d7fb27cc9fb"
+    },
+    "item_id": "openscore-6211555",
+    "limitations": [
+      "possible training overlap",
+      "first-page reference range unverified"
+    ],
+    "numeric_accuracy_eligible": false,
+    "reference": {
+      "bytes": 226209,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6211555.musicxml",
+      "sha256": "634f9047f31bd272f056963d7643d208dbd19599351ba81d92a22da3d0f01eca"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      [
+        "8",
+        "16",
+        "17"
+      ],
+      [
+        "8",
+        "16",
+        "17"
+      ]
+    ],
+    "traits": {
+      "engraved_system_changes": 12,
+      "independent_voices": true,
+      "meter_changes": false,
+      "multi_page": true,
+      "page_count": 4,
+      "ties": true,
+      "tuplets": true
+    }
+  },
+  {
+    "alignment_evidence": "Whole-composition notation; first-page range not independently verified",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "open",
+    "eligibility": "diagnostic_only",
+    "image": {
+      "bytes": 445797,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\phase1-development\\open\\6211559\\page-1.png",
+      "sha256": "4123491db1d7c742793af359fa29e17c909eea98f728ab7d209759f5697112ab"
+    },
+    "item_id": "openscore-6211559",
+    "limitations": [
+      "possible training overlap",
+      "first-page reference range unverified"
+    ],
+    "numeric_accuracy_eligible": false,
+    "reference": {
+      "bytes": 732088,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6211559.musicxml",
+      "sha256": "a91acbb23c644c87896dde4cab65f0fe6e05653af543d0f2ac099112453983ac"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      [
+        "11",
+        "24",
+        "28",
+        "40",
+        "45",
+        "56",
+        "69"
+      ],
+      [
+        "11",
+        "24",
+        "28",
+        "40",
+        "45",
+        "56",
+        "69"
+      ]
+    ],
+    "traits": {
+      "engraved_system_changes": 32,
+      "independent_voices": true,
+      "meter_changes": false,
+      "multi_page": true,
+      "page_count": 8,
+      "ties": true,
+      "tuplets": true
+    }
+  },
+  {
+    "alignment_evidence": "Whole-composition notation; first-page range not independently verified",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "open",
+    "eligibility": "diagnostic_only",
+    "image": {
+      "bytes": 368491,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\phase1-development\\open\\6211561\\page-1.png",
+      "sha256": "989caaffd513afd7f6430ab3676cc0486219be7b68d7f338749781806cccb059"
+    },
+    "item_id": "openscore-6211561",
+    "limitations": [
+      "possible training overlap",
+      "first-page reference range unverified"
+    ],
+    "numeric_accuracy_eligible": false,
+    "reference": {
+      "bytes": 538002,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6211561.musicxml",
+      "sha256": "de75048c7c17c73cb32c7bd689d4d622a25c7f93f3278038eccef0cea4e7127c"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      [
+        "14",
+        "28",
+        "32",
+        "42",
+        "51",
+        "61",
+        "65"
+      ],
+      [
+        "14",
+        "28",
+        "32",
+        "42",
+        "51",
+        "61",
+        "65"
+      ]
+    ],
+    "traits": {
+      "engraved_system_changes": 32,
+      "independent_voices": true,
+      "meter_changes": false,
+      "multi_page": true,
+      "page_count": 8,
+      "ties": true,
+      "tuplets": false
+    }
+  },
+  {
+    "alignment_evidence": "Whole-composition notation; first-page range not independently verified",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "open",
+    "eligibility": "diagnostic_only",
+    "image": {
+      "bytes": 315098,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\phase1-development\\open\\6212179\\page-1.png",
+      "sha256": "6831bc8e2a6bc9fd60f15f3e0cba20d54f6b919df4ad9a5b86fd1654eb7d2c89"
+    },
+    "item_id": "openscore-6212179",
+    "limitations": [
+      "possible training overlap",
+      "first-page reference range unverified"
+    ],
+    "numeric_accuracy_eligible": false,
+    "reference": {
+      "bytes": 550678,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6212179.musicxml",
+      "sha256": "ddeed95a90fa11918998bb18ff77969cea187c0985d7b1f60e18488477e01c5d"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      [
+        "7",
+        "10",
+        "19",
+        "26"
+      ],
+      [
+        "7",
+        "10",
+        "19",
+        "26"
+      ]
+    ],
+    "traits": {
+      "engraved_system_changes": 14,
+      "independent_voices": true,
+      "meter_changes": true,
+      "multi_page": true,
+      "page_count": 5,
+      "ties": true,
+      "tuplets": true
+    }
+  },
+  {
+    "alignment_evidence": "Whole-composition notation; first-page range not independently verified",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "open",
+    "eligibility": "diagnostic_only",
+    "image": {
+      "bytes": 352512,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\phase1-development\\open\\6212193\\page-1.png",
+      "sha256": "e6472308c8b1bc07dcaa50fa1f95ac33cfaab61b32e564aea7040ce64dfca0c3"
+    },
+    "item_id": "openscore-6212193",
+    "limitations": [
+      "possible training overlap",
+      "first-page reference range unverified"
+    ],
+    "numeric_accuracy_eligible": false,
+    "reference": {
+      "bytes": 754701,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6212193.musicxml",
+      "sha256": "c3a79485cc2cf8cc259b972126a133ae54bc03aaf9c1e9fde1ca45b39e4191df"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      [
+        "10",
+        "22",
+        "28",
+        "34",
+        "40"
+      ],
+      [
+        "10",
+        "22",
+        "28",
+        "34",
+        "40"
+      ]
+    ],
+    "traits": {
+      "engraved_system_changes": 32,
+      "independent_voices": true,
+      "meter_changes": true,
+      "multi_page": true,
+      "page_count": 6,
+      "ties": true,
+      "tuplets": true
+    }
+  },
+  {
+    "alignment_evidence": "Whole-composition notation; first-page range not independently verified",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "open",
+    "eligibility": "diagnostic_only",
+    "image": {
+      "bytes": 311330,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\phase1-development\\open\\6212196\\page-1.png",
+      "sha256": "5e8ede2e03b0e8b9563429e9a813f34c6ca315af8ce8133423e38280540ef5f3"
+    },
+    "item_id": "openscore-6212196",
+    "limitations": [
+      "possible training overlap",
+      "first-page reference range unverified"
+    ],
+    "numeric_accuracy_eligible": false,
+    "reference": {
+      "bytes": 623066,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6212196.musicxml",
+      "sha256": "d01878590c52994e7ad37528175011ffb2607af2f21638f2ef30006981c8600d"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      [
+        "6",
+        "9",
+        "15",
+        "17",
+        "25",
+        "31",
+        "35",
+        "42"
+      ],
+      [
+        "6",
+        "9",
+        "15",
+        "17",
+        "25",
+        "31",
+        "35",
+        "42"
+      ],
+      [
+        "6",
+        "9",
+        "15",
+        "17",
+        "25",
+        "31",
+        "35",
+        "42"
+      ]
+    ],
+    "traits": {
+      "engraved_system_changes": 63,
+      "independent_voices": true,
+      "meter_changes": false,
+      "multi_page": true,
+      "page_count": 9,
+      "ties": true,
+      "tuplets": true
+    }
+  },
+  {
+    "alignment_evidence": "Whole-composition notation; first-page range not independently verified",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "open",
+    "eligibility": "diagnostic_only",
+    "image": {
+      "bytes": 349235,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\phase1-development\\open\\6478624\\page-1.png",
+      "sha256": "034dbe01a5c8ac6216934322cd0ef3bf3fd9d13e193e59411d598a5aa159e16a"
+    },
+    "item_id": "openscore-6478624",
+    "limitations": [
+      "possible training overlap",
+      "first-page reference range unverified"
+    ],
+    "numeric_accuracy_eligible": false,
+    "reference": {
+      "bytes": 466004,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6478624.musicxml",
+      "sha256": "2cc0a378a38c72f1b4a8146b246dd7d206d3d11d8b6cc2ef1fec3dc3589e9036"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      [
+        "9",
+        "19",
+        "23",
+        "33",
+        "37"
+      ],
+      [
+        "9",
+        "19",
+        "23",
+        "33",
+        "37"
+      ]
+    ],
+    "traits": {
+      "engraved_system_changes": 24,
+      "independent_voices": true,
+      "meter_changes": false,
+      "multi_page": true,
+      "page_count": 6,
+      "ties": true,
+      "tuplets": false
+    }
+  },
+  {
+    "alignment_evidence": "Whole-composition notation; first-page range not independently verified",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "open",
+    "eligibility": "diagnostic_only",
+    "image": {
+      "bytes": 324126,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\phase1-development\\open\\6479829\\page-1.png",
+      "sha256": "550eed25ce37d6c018cca02e2a485f934e905f8b45999485d6c6e52751d22b4d"
+    },
+    "item_id": "openscore-6479829",
+    "limitations": [
+      "possible training overlap",
+      "first-page reference range unverified"
+    ],
+    "numeric_accuracy_eligible": false,
+    "reference": {
+      "bytes": 492931,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6479829.musicxml",
+      "sha256": "cf2f421dba8301b389d659187cd8cd3560e64879ddba7c5d7970b00aad361b78"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      [
+        "17",
+        "37",
+        "57"
+      ],
+      [
+        "17",
+        "37",
+        "57"
+      ]
+    ],
+    "traits": {
+      "engraved_system_changes": 30,
+      "independent_voices": true,
+      "meter_changes": false,
+      "multi_page": true,
+      "page_count": 4,
+      "ties": true,
+      "tuplets": false
+    }
+  },
+  {
+    "alignment_evidence": "Whole-composition notation; first-page range not independently verified",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "open",
+    "eligibility": "diagnostic_only",
+    "image": {
+      "bytes": 290966,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\phase1-development\\open\\6564424\\page-1.png",
+      "sha256": "f3ce43b8e2e28b771ae0e39528a9b55efea2d5c43054b0d3d58d272bdffe8833"
+    },
+    "item_id": "openscore-6564424",
+    "limitations": [
+      "possible training overlap",
+      "first-page reference range unverified"
+    ],
+    "numeric_accuracy_eligible": false,
+    "reference": {
+      "bytes": 569856,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6564424.musicxml",
+      "sha256": "a9c67e8f616d9a39a0ef3438a9d27aa7addcba1e965b75646fec9d36d5ff5430"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      [
+        "17",
+        "40",
+        "58",
+        "63",
+        "86"
+      ],
+      [
+        "17",
+        "40",
+        "58",
+        "63",
+        "86"
+      ]
+    ],
+    "traits": {
+      "engraved_system_changes": 28,
+      "independent_voices": true,
+      "meter_changes": false,
+      "multi_page": true,
+      "page_count": 6,
+      "ties": true,
+      "tuplets": true
+    }
+  },
+  {
+    "alignment_evidence": "Whole-composition notation; first-page range not independently verified",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "open",
+    "eligibility": "diagnostic_only",
+    "image": {
+      "bytes": 288659,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\phase1-development\\open\\6583477\\page-1.png",
+      "sha256": "0e460c58a92d90ea3e3a4ec225f49be3a2a23af33f7bb5b04ddae4e86e6a21b4"
+    },
+    "item_id": "openscore-6583477",
+    "limitations": [
+      "possible training overlap",
+      "first-page reference range unverified"
+    ],
+    "numeric_accuracy_eligible": false,
+    "reference": {
+      "bytes": 254353,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6583477.musicxml",
+      "sha256": "b2bd96fa80e49b82e3a3c8591b8977132e7b33aba3f4488ebf816fbb4953b6fe"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      [
+        "14",
+        "29"
+      ],
+      [
+        "14",
+        "29"
+      ]
+    ],
+    "traits": {
+      "engraved_system_changes": 16,
+      "independent_voices": true,
+      "meter_changes": false,
+      "multi_page": true,
+      "page_count": 3,
+      "ties": true,
+      "tuplets": false
+    }
+  },
+  {
+    "alignment_evidence": "Whole-composition notation; first-page range not independently verified",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "open",
+    "eligibility": "diagnostic_only",
+    "image": {
+      "bytes": 279119,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\phase1-development\\open\\6583512\\page-1.png",
+      "sha256": "7da3c01d87298c1c75f95a1b104ff95e091e5ec6650e8d8176139584621612d2"
+    },
+    "item_id": "openscore-6583512",
+    "limitations": [
+      "possible training overlap",
+      "first-page reference range unverified"
+    ],
+    "numeric_accuracy_eligible": false,
+    "reference": {
+      "bytes": 275298,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6583512.musicxml",
+      "sha256": "64692a2393cdfd77c6098c8ef227be7f24d0b1f0c6f59611437ede4738a98113"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      [
+        "9",
+        "19",
+        "25",
+        "35"
+      ],
+      [
+        "9",
+        "19",
+        "25",
+        "35"
+      ]
+    ],
+    "traits": {
+      "engraved_system_changes": 18,
+      "independent_voices": true,
+      "meter_changes": false,
+      "multi_page": true,
+      "page_count": 5,
+      "ties": true,
+      "tuplets": false
+    }
+  },
+  {
+    "alignment_evidence": "Whole-composition notation; first-page range not independently verified",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "open",
+    "eligibility": "diagnostic_only",
+    "image": {
+      "bytes": 255877,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\phase1-development\\open\\6583907\\page-1.png",
+      "sha256": "62921480449a9ae123b91a6e75f5c73b9aeb0ae59c8f20d87e2f8d621ec268d4"
+    },
+    "item_id": "openscore-6583907",
+    "limitations": [
+      "possible training overlap",
+      "first-page reference range unverified"
+    ],
+    "numeric_accuracy_eligible": false,
+    "reference": {
+      "bytes": 449214,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6583907.musicxml",
+      "sha256": "50e207b7493b10f853b8b9b6ced445192de59ad47b4aa06e4e3ad9b565c041c6"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      [
+        "X1",
+        "31",
+        "X4"
+      ],
+      [
+        "X1",
+        "31",
+        "X4"
+      ]
+    ],
+    "traits": {
+      "engraved_system_changes": 28,
+      "independent_voices": true,
+      "meter_changes": false,
+      "multi_page": true,
+      "page_count": 4,
+      "ties": false,
+      "tuplets": true
+    }
+  },
+  {
+    "alignment_evidence": "Whole-composition notation; first-page range not independently verified",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "open",
+    "eligibility": "diagnostic_only",
+    "image": {
+      "bytes": 375450,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\phase1-development\\open\\6583966\\page-1.png",
+      "sha256": "12642442af20d8b68cb6fd3dbf3c0b3cb2f69c68226eb69c473c201d00607b4f"
+    },
+    "item_id": "openscore-6583966",
+    "limitations": [
+      "possible training overlap",
+      "first-page reference range unverified"
+    ],
+    "numeric_accuracy_eligible": false,
+    "reference": {
+      "bytes": 593552,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6583966.musicxml",
+      "sha256": "785935f66e226bac1884ccc4c5a537a86cd1724a0351d953f3551bf4f8b73321"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      [
+        "X1",
+        "24",
+        "X2",
+        "44",
+        "X3",
+        "60",
+        "76"
+      ],
+      [
+        "X1",
+        "24",
+        "X2",
+        "44",
+        "X3",
+        "60",
+        "76"
+      ]
+    ],
+    "traits": {
+      "engraved_system_changes": 32,
+      "independent_voices": true,
+      "meter_changes": false,
+      "multi_page": true,
+      "page_count": 8,
+      "ties": true,
+      "tuplets": true
+    }
+  },
+  {
+    "alignment_evidence": "Whole-composition notation; first-page range not independently verified",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "open",
+    "eligibility": "diagnostic_only",
+    "image": {
+      "bytes": 248187,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\phase1-development\\open\\6585571\\page-1.png",
+      "sha256": "4c8318420224f5a78993de3673c02e0874f28a9e42e4ae8d7d475375bba5b10c"
+    },
+    "item_id": "openscore-6585571",
+    "limitations": [
+      "possible training overlap",
+      "first-page reference range unverified"
+    ],
+    "numeric_accuracy_eligible": false,
+    "reference": {
+      "bytes": 432239,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6585571.musicxml",
+      "sha256": "5acc0b1e95900040d2a6c332ef24e39c91c55cb21893b27588494324d3cf75f6"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      [
+        "10",
+        "23",
+        "35",
+        "47"
+      ],
+      [
+        "10",
+        "23",
+        "35",
+        "47"
+      ]
+    ],
+    "traits": {
+      "engraved_system_changes": 28,
+      "independent_voices": true,
+      "meter_changes": false,
+      "multi_page": true,
+      "page_count": 5,
+      "ties": false,
+      "tuplets": false
+    }
+  },
+  {
+    "alignment_evidence": "Whole-composition notation; first-page range not independently verified",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "open",
+    "eligibility": "diagnostic_only",
+    "image": {
+      "bytes": 283586,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\phase1-development\\open\\6586675\\page-01.png",
+      "sha256": "2f40b9956eb1c5bc10a16a10f14b0c5390c2fc5b65fdf38b30f6f78bd01f8386"
+    },
+    "item_id": "openscore-6586675",
+    "limitations": [
+      "possible training overlap",
+      "first-page reference range unverified"
+    ],
+    "numeric_accuracy_eligible": false,
+    "reference": {
+      "bytes": 845042,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6586675.musicxml",
+      "sha256": "21a194f3213b9f451f9314d8d03a4eb006a9005966b7d9b612a7146dee3d324d"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      [
+        "8",
+        "20",
+        "29",
+        "32",
+        "38",
+        "X1",
+        "53",
+        "65",
+        "69",
+        "73",
+        "78"
+      ],
+      [
+        "8",
+        "20",
+        "29",
+        "32",
+        "38",
+        "X1",
+        "53",
+        "65",
+        "69",
+        "73",
+        "78"
+      ]
+    ],
+    "traits": {
+      "engraved_system_changes": 70,
+      "independent_voices": true,
+      "meter_changes": false,
+      "multi_page": true,
+      "page_count": 12,
+      "ties": true,
+      "tuplets": true
+    }
+  },
+  {
+    "alignment_evidence": "Whole-composition notation; first-page range not independently verified",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "open",
+    "eligibility": "diagnostic_only",
+    "image": {
+      "bytes": 406478,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\phase1-development\\open\\6622814\\page-1.png",
+      "sha256": "988b35f5b272d2446b469ab798ad173edfcb6dfc89695daadc885576532ff83d"
+    },
+    "item_id": "openscore-6622814",
+    "limitations": [
+      "possible training overlap",
+      "first-page reference range unverified"
+    ],
+    "numeric_accuracy_eligible": false,
+    "reference": {
+      "bytes": 697133,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6622814.musicxml",
+      "sha256": "22780b5ad36034fad55e7aac7507ca2e9b5d02189418f0eb82b42ed1c9346363"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      [
+        "25",
+        "50",
+        "75"
+      ],
+      [
+        "25",
+        "50",
+        "75"
+      ]
+    ],
+    "traits": {
+      "engraved_system_changes": 30,
+      "independent_voices": true,
+      "meter_changes": false,
+      "multi_page": true,
+      "page_count": 4,
+      "ties": true,
+      "tuplets": false
+    }
+  },
+  {
+    "alignment_evidence": "Whole-composition notation; first-page range not independently verified",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "open",
+    "eligibility": "diagnostic_only",
+    "image": {
+      "bytes": 345906,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\phase1-development\\open\\6623145\\page-1.png",
+      "sha256": "b5430eec26f18c8400f681dd714ca037fae20fc6a5c04dbd74170e6e9ccc2af9"
+    },
+    "item_id": "openscore-6623145",
+    "limitations": [
+      "possible training overlap",
+      "first-page reference range unverified"
+    ],
+    "numeric_accuracy_eligible": false,
+    "reference": {
+      "bytes": 609890,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6623145.musicxml",
+      "sha256": "409bc909f3064b6620bb29b868811f2d9ab976211218bdc45887c012e74242d7"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      [
+        "16",
+        "21",
+        "34",
+        "40",
+        "55",
+        "60"
+      ],
+      [
+        "16",
+        "21",
+        "34",
+        "40",
+        "55",
+        "60"
+      ]
+    ],
+    "traits": {
+      "engraved_system_changes": 26,
+      "independent_voices": true,
+      "meter_changes": false,
+      "multi_page": true,
+      "page_count": 7,
+      "ties": false,
+      "tuplets": false
+    }
+  },
+  {
+    "alignment_evidence": "Whole-composition notation; first-page range not independently verified",
+    "all_pages_hash_verified": true,
+    "audit_sha256": "39c1aadce339cb036b3c1d8bbebe1edec82d5c5b4598e73b61b632db31a7be17",
+    "collection": "open",
+    "eligibility": "diagnostic_only",
+    "image": {
+      "bytes": 345636,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\phase1-development\\open\\6623221\\page-1.png",
+      "sha256": "335382bbf9ed1b734e6690f21111d4d033bd048ebd823ea43276e366a35314e2"
+    },
+    "item_id": "openscore-6623221",
+    "limitations": [
+      "possible training overlap",
+      "first-page reference range unverified"
+    ],
+    "numeric_accuracy_eligible": false,
+    "reference": {
+      "bytes": 533231,
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\openscore\\lieder\\labels\\lc6623221.musicxml",
+      "sha256": "82c98237f94155d42e7ea97c28cc2bdd0d9aba540e0326412f7217c11aee7b49"
+    },
+    "reference_format": "musicxml",
+    "reference_page_break_measures": [
+      [
+        "18",
+        "35",
+        "52"
+      ],
+      [
+        "18",
+        "35",
+        "52"
+      ],
+      [
+        "18",
+        "35",
+        "52"
+      ]
+    ],
+    "traits": {
+      "engraved_system_changes": 45,
+      "independent_voices": true,
+      "meter_changes": false,
+      "multi_page": true,
+      "page_count": 4,
+      "ties": true,
+      "tuplets": false
+    }
+  }
+]

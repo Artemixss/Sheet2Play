@@ -1,0 +1,87 @@
+{
+  "adapter_config_sha256": "eb8b6de1075a8794fb0e5e19bcfb40e9a579cd1a4b6ab39d9882b888c0ee2af2",
+  "adapter_id": "qwen_q8_system_and_page",
+  "artifacts": [
+    {
+      "bytes": 550,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/qwen-openscore-6583477-page-1-eb8b6de1075a-252d8c9a02c2/detected-systems.json",
+      "role": "partial_detected-systems.json",
+      "sha256": "54b1fbcd178a88825f6a6cc89a382eb87d17d16de70f7239e15fc61ff2c963d5"
+    },
+    {
+      "bytes": 3061,
+      "media_type": "application/octet-stream",
+      "path": "Research/omr/.runtime/phase2r/smokes/qwen-openscore-6583477-page-1-eb8b6de1075a-252d8c9a02c2/system-0001.raw.txt",
+      "role": "partial_system-0001.raw.txt",
+      "sha256": "d375073618bbacc33cf00fb0f58fd0c12d4a8f871940595858c12390bbdb6cc3"
+    }
+  ],
+  "candidate_id": "qwen3_vl_2b_instruct",
+  "composition_group": "6583477",
+  "error": {
+    "code": "INVALID_NOTATION",
+    "message": "ABC has no barline",
+    "stage": "recognition"
+  },
+  "exit_status": 1,
+  "item_id": "openscore-6583477-page-1",
+  "measurement_path": "complete_document",
+  "provenance": {
+    "adapter_config": {
+      "adapter_id": "qwen_q8_system_and_page",
+      "adapter_revision": "c48b2b6c969ed3a4e9c37c08ab76251b8fef8bec81da5bb3079b51b3bfcec1e0",
+      "candidate_id": "qwen3_vl_2b_instruct",
+      "checkpoint": "Qwen3VL-2B-Instruct-Q8_0.gguf",
+      "checkpoint_revision": "52d6c8ffea26cc873ac5ad116f8631268d7eb503",
+      "input_granularity": "detected system",
+      "native_format": "ABC",
+      "settings": {
+        "cli_sha256": "252d8c9a02c20aa7263a38fea69182e3658779f368baaeb57610bfd90e084b9e",
+        "converter": "croma 1.2.1 strict ABC to MusicXML",
+        "converter_sha256": "d20ed24cb4682594abbcfc92537dfa26bb60464c0fb5d99d274b16a903cf5e24",
+        "cuda_runtime_sha256": {
+          "cublas64_12.dll": "e40202fe4223c1cd2d2dce7beec59e1ed61c7801bd827309183be9b50e358f4c",
+          "cublasLt64_12.dll": "2a896460bef60ed57ef32b0875812f355a6984e671d638bb632f5e8c1d7a831f",
+          "cudart64_12.dll": "d28e42265da7462162a54da6b7a99ea4fa2caf8139d862bb500db875d0b32dfc"
+        },
+        "detector_sha256": "b1aac6372d1cbce32dc8e00a7e6c6d809cb9d6eb1fb82ad382cfb42a8b2e6c86",
+        "image_min_tokens": 1024,
+        "max_new_tokens": 1600,
+        "model_sha256": "1e8db19207c8ce0733ddd78c2eff8a9e22c27c82f4443df94c25792ed8fe04f2",
+        "precision": "Q8_0 text and projector",
+        "projector_sha256": "f9a68fabba69c3b81e153367b2c7521030b0fa8bb0de400c9599c8e6725f9c82",
+        "prompt": "Transcribe only the notation visible in this single system into one ABC 2.1 tune. Start with X:1, then M:, L:, K:, and V: lines for each staff or independent voice. Preserve pitches, durations, rests, ties, tuplets, key and meter changes. End with a closing barline. Output ABC only: no LilyPond, prose, Markdown, or repeated staff metadata.",
+        "seed": 0,
+        "segmentation": "Bridge/detect_systems.py with full-width, vertical-margin crops",
+        "temperature": 0
+      },
+      "source_repository": "https://huggingface.co/Qwen/Qwen3-VL-2B-Instruct-GGUF",
+      "source_revision": "52d6c8ffea26cc873ac5ad116f8631268d7eb503",
+      "supported_paths": [
+        "annotated_crop",
+        "complete_document"
+      ]
+    },
+    "adapter_config_sha256": "eb8b6de1075a8794fb0e5e19bcfb40e9a579cd1a4b6ab39d9882b888c0ee2af2",
+    "checkpoint": "Qwen3VL-2B-Instruct-Q8_0.gguf",
+    "checkpoint_revision": "52d6c8ffea26cc873ac5ad116f8631268d7eb503",
+    "input_path": "Research/omr/data/phase1-development/open/6583477/page-1.png",
+    "input_sha256": "0e460c58a92d90ea3e3a4ec225f49be3a2a23af33f7bb5b04ddae4e86e6a21b4",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "source_repository": "https://huggingface.co/Qwen/Qwen3-VL-2B-Instruct-GGUF",
+    "source_revision": "52d6c8ffea26cc873ac5ad116f8631268d7eb503"
+  },
+  "resources": {
+    "cold_start": true,
+    "measurement_notes": [],
+    "peak_ram_bytes": null,
+    "peak_vram_bytes": null,
+    "sample_interval_seconds": null
+  },
+  "schema_version": 1,
+  "status": "failed",
+  "timings": [],
+  "warnings": []
+}

@@ -1,0 +1,452 @@
+[
+  {
+    "item_id": "generated-baseline-piano-001",
+    "system": 1,
+    "size": [
+      1920,
+      332
+    ],
+    "box": {
+      "max_x": 1810.0,
+      "max_y": 438.90422580249333,
+      "min_x": 110.0,
+      "min_y": 107.92102322209226
+    },
+    "crop": {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-baseline-piano-001\\detector\\crops\\system-0001.png",
+      "sha256": "ee28aad8f6cba6b80823c325b506d6219f04c824c917d1dc2c1ef279c4229f1c"
+    }
+  },
+  {
+    "item_id": "generated-baseline-piano-001",
+    "system": 2,
+    "size": [
+      1920,
+      325
+    ],
+    "box": {
+      "max_x": 1080.0,
+      "max_y": 864.7798073792231,
+      "min_x": 110.0,
+      "min_y": 540.071487599395
+    },
+    "crop": {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-baseline-piano-001\\detector\\crops\\system-0002.png",
+      "sha256": "410728bbe63780725f0bf174d13f609c8f4694c72bd6ca3c744552a2a42f7d02"
+    }
+  },
+  {
+    "item_id": "generated-homophonic",
+    "system": 1,
+    "size": [
+      1920,
+      92
+    ],
+    "box": {
+      "max_x": 554.0,
+      "max_y": 476.61869918892626,
+      "min_x": 200.0,
+      "min_y": 385.48021680184564
+    },
+    "crop": {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-homophonic\\detector\\crops\\system-0001.png",
+      "sha256": "8e0a3f07ec7da593fef6f9c45e7aa60f6e98e1f96d17e8db4c115c363b7694d7"
+    }
+  },
+  {
+    "item_id": "generated-offset_entry",
+    "system": 1,
+    "size": [
+      1920,
+      90
+    ],
+    "box": {
+      "max_x": 570.0,
+      "max_y": 486.1,
+      "min_x": 200.0,
+      "min_y": 397.9
+    },
+    "crop": {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-offset_entry\\detector\\crops\\system-0001.png",
+      "sha256": "edd87d822e628b6eb48672a66a3c21e7356ad52126e702ac5f6f0026590a2b32"
+    }
+  },
+  {
+    "item_id": "generated-quintuplet_vs_duple",
+    "system": 1,
+    "size": [
+      1920,
+      88
+    ],
+    "box": {
+      "max_x": 580.0,
+      "max_y": 485.0,
+      "min_x": 200.0,
+      "min_y": 397.5
+    },
+    "crop": {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-quintuplet_vs_duple\\detector\\crops\\system-0001.png",
+      "sha256": "659ec8841502459f0bc53860326ed8cb218912f0958883b48924a465342d5047"
+    }
+  },
+  {
+    "item_id": "generated-same_position_sustain",
+    "system": 1,
+    "size": [
+      1920,
+      92
+    ],
+    "box": {
+      "max_x": 595.0,
+      "max_y": 474.652927049162,
+      "min_x": 200.0,
+      "min_y": 383.8244725775399
+    },
+    "crop": {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-same_position_sustain\\detector\\crops\\system-0001.png",
+      "sha256": "7a05fe1dee56f8945e4c3d33b25bc7f1c393ffbb0ca8b095933795d70209927c"
+    }
+  },
+  {
+    "item_id": "generated-septuplet_vs_duple",
+    "system": 1,
+    "size": [
+      1920,
+      90
+    ],
+    "box": {
+      "max_x": 620.0,
+      "max_y": 487.68155304992536,
+      "min_x": 200.0,
+      "min_y": 398.8030744916791
+    },
+    "crop": {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-septuplet_vs_duple\\detector\\crops\\system-0001.png",
+      "sha256": "588f48f345c1b618d643613745c6b446d733fb1dd7cba9e3911a409eafd8bd94"
+    }
+  },
+  {
+    "item_id": "generated-syncopation",
+    "system": 1,
+    "size": [
+      1920,
+      90
+    ],
+    "box": {
+      "max_x": 580.0,
+      "max_y": 486.1,
+      "min_x": 200.0,
+      "min_y": 397.9
+    },
+    "crop": {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-syncopation\\detector\\crops\\system-0001.png",
+      "sha256": "07ee8dd2ad1625619874a7853fa30a6ded1d53f9d3815006a665e9be692ad32b"
+    }
+  },
+  {
+    "item_id": "generated-three_voices",
+    "system": 1,
+    "size": [
+      1920,
+      90
+    ],
+    "box": {
+      "max_x": 550.0,
+      "max_y": 474.31292026385916,
+      "min_x": 200.0,
+      "min_y": 385.8645132893568
+    },
+    "crop": {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-three_voices\\detector\\crops\\system-0001.png",
+      "sha256": "6e86a8b4d976276df6903d18c064ee8dc338c64674bb0c344939ab38e7e12e1e"
+    }
+  },
+  {
+    "item_id": "generated-tie_across_barline",
+    "system": 1,
+    "size": [
+      1920,
+      98
+    ],
+    "box": {
+      "max_x": 1780.0,
+      "max_y": 476.34466647215254,
+      "min_x": 200.0,
+      "min_y": 379.303618976869
+    },
+    "crop": {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-tie_across_barline\\detector\\crops\\system-0001.png",
+      "sha256": "a23f0372fb18cf6fd7c1736a8883fa24168134193d60eb821e6baae8900d5684"
+    }
+  },
+  {
+    "item_id": "generated-triplet_vs_duple",
+    "system": 1,
+    "size": [
+      1920,
+      89
+    ],
+    "box": {
+      "max_x": 470.0,
+      "max_y": 483.98220127768104,
+      "min_x": 200.0,
+      "min_y": 395.30854300112475
+    },
+    "crop": {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-triplet_vs_duple\\detector\\crops\\system-0001.png",
+      "sha256": "228f2c0408209ab256e196e1927fbde351b11d42584d0d1198bfae89f42beaa6"
+    }
+  },
+  {
+    "item_id": "generated-triplet_vs_quadruple",
+    "system": 1,
+    "size": [
+      1920,
+      90
+    ],
+    "box": {
+      "max_x": 490.0,
+      "max_y": 484.4538644244663,
+      "min_x": 200.0,
+      "min_y": 395.25768926258894
+    },
+    "crop": {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-triplet_vs_quadruple\\detector\\crops\\system-0001.png",
+      "sha256": "b2244ee062945c476f38dce55dac0fccf59cf68d2c9a5a81309cf5bc8fdac0e8"
+    }
+  },
+  {
+    "item_id": "generated-tuplet_aligned",
+    "system": 1,
+    "size": [
+      1920,
+      99
+    ],
+    "box": {
+      "max_x": 1780.0,
+      "max_y": 526.0587339376456,
+      "min_x": 200.0,
+      "min_y": 428.1477976495265
+    },
+    "crop": {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\generated-tuplet_aligned\\detector\\crops\\system-0001.png",
+      "sha256": "d0d864a92872061463cec027f2ccd4393c63760c4d0f14af2db175013ac5af79"
+    }
+  },
+  {
+    "item_id": "openscore-6211535-page-1",
+    "system": 1,
+    "size": [
+      1920,
+      285
+    ],
+    "box": {
+      "max_x": 1830.0,
+      "max_y": 930.2807743972139,
+      "min_x": 240.0,
+      "min_y": 646.8007810547164
+    },
+    "crop": {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\openscore-6211535-page-1\\detector\\crops\\system-0001.png",
+      "sha256": "99567cbd853542d929b41e23803d3932d32d799fca642559474613ca73565ff7"
+    }
+  },
+  {
+    "item_id": "openscore-6211535-page-1",
+    "system": 2,
+    "size": [
+      1920,
+      289
+    ],
+    "box": {
+      "max_x": 1830.0,
+      "max_y": 1316.8499719935016,
+      "min_x": 90.0,
+      "min_y": 1028.2750428942068
+    },
+    "crop": {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\openscore-6211535-page-1\\detector\\crops\\system-0002.png",
+      "sha256": "a9dc91c21ce2882f354077aa2e334e507e95cf317bb9621b182a6903f6ddb3f3"
+    }
+  },
+  {
+    "item_id": "openscore-6211535-page-1",
+    "system": 3,
+    "size": [
+      1920,
+      290
+    ],
+    "box": {
+      "max_x": 1830.0,
+      "max_y": 1701.630627642892,
+      "min_x": 90.0,
+      "min_y": 1412.5381370976233
+    },
+    "crop": {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\openscore-6211535-page-1\\detector\\crops\\system-0003.png",
+      "sha256": "64f453702a720f4740045daca4fb2b60b4c64aea9fa1f1892df228e017c0742a"
+    }
+  },
+  {
+    "item_id": "openscore-6211535-page-1",
+    "system": 4,
+    "size": [
+      1920,
+      321
+    ],
+    "box": {
+      "max_x": 1830.0,
+      "max_y": 2100.8668376204437,
+      "min_x": 90.0,
+      "min_y": 1780.1888603965926
+    },
+    "crop": {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\openscore-6211535-page-1\\detector\\crops\\system-0004.png",
+      "sha256": "73a3f21806c9ef46fb537a0abb82c159b695738efbff7070d32bff00f524f658"
+    }
+  },
+  {
+    "item_id": "openscore-6211535-page-1",
+    "system": 5,
+    "size": [
+      1920,
+      296
+    ],
+    "box": {
+      "max_x": 1820.0,
+      "max_y": 2479.033010575062,
+      "min_x": 90.0,
+      "min_y": 2184.8002275652534
+    },
+    "crop": {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\openscore-6211535-page-1\\detector\\crops\\system-0005.png",
+      "sha256": "aa3d29a8138f1cce2e84adc412979d76ce918c939235fc7f02726d49c7e68a9c"
+    }
+  },
+  {
+    "item_id": "openscore-6211549-page-1",
+    "system": 1,
+    "size": [
+      1920,
+      279
+    ],
+    "box": {
+      "max_x": 1830.0,
+      "max_y": 880.0301718989433,
+      "min_x": 220.0,
+      "min_y": 602.9116380168427
+    },
+    "crop": {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\openscore-6211549-page-1\\detector\\crops\\system-0001.png",
+      "sha256": "c1466d603a06f5838a483572c6439bbf77eb3ad311998bb6e331609412953eb0"
+    }
+  },
+  {
+    "item_id": "openscore-6211549-page-1",
+    "system": 2,
+    "size": [
+      1920,
+      257
+    ],
+    "box": {
+      "max_x": 1830.0,
+      "max_y": 1349.173205570306,
+      "min_x": 90.0,
+      "min_y": 1093.171098880217
+    },
+    "crop": {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\openscore-6211549-page-1\\detector\\crops\\system-0002.png",
+      "sha256": "ec5f3b0435e090b2df8bc0e4750c27a52c4d116cb60fc0254a3cc908657c0cfd"
+    }
+  },
+  {
+    "item_id": "openscore-6211549-page-1",
+    "system": 3,
+    "size": [
+      1920,
+      321
+    ],
+    "box": {
+      "max_x": 1820.0,
+      "max_y": 1866.3973475345792,
+      "min_x": 90.0,
+      "min_y": 1546.5686487919297
+    },
+    "crop": {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\openscore-6211549-page-1\\detector\\crops\\system-0003.png",
+      "sha256": "36331dca73d5cb516990b26244f8b4706db34862f55aac5388a9d640db356525"
+    }
+  },
+  {
+    "item_id": "openscore-6211549-page-1",
+    "system": 4,
+    "size": [
+      1920,
+      509
+    ],
+    "box": {
+      "max_x": 1830.0,
+      "max_y": 2523.1783772472154,
+      "min_x": 90.0,
+      "min_y": 2015.3807346433302
+    },
+    "crop": {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\openscore-6211549-page-1\\detector\\crops\\system-0004.png",
+      "sha256": "30fa0f655495fd429357b67a26a248147e929e36bed48b4db1def0bd921d27db"
+    }
+  },
+  {
+    "item_id": "openscore-6211555-page-1",
+    "system": 1,
+    "size": [
+      1920,
+      628
+    ],
+    "box": {
+      "max_x": 1830.0,
+      "max_y": 1478.615715971381,
+      "min_x": 250.0,
+      "min_y": 851.3048496795268
+    },
+    "crop": {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\openscore-6211555-page-1\\detector\\crops\\system-0001.png",
+      "sha256": "3999d47a120775f0fc8fdbb8ad9bff2f168b69a2521cd5674bd2d856a062fcf8"
+    }
+  },
+  {
+    "item_id": "openscore-6211555-page-1",
+    "system": 2,
+    "size": [
+      1920,
+      85
+    ],
+    "box": {
+      "max_x": 1830.0,
+      "max_y": 1402.5208025088084,
+      "min_x": 770.0,
+      "min_y": 1318.3751849471491
+    },
+    "crop": {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\openscore-6211555-page-1\\detector\\crops\\system-0002.png",
+      "sha256": "92040efd2e46c50a698906010f4946a9297a8120cfbbd5d64e52130a02ecefd2"
+    }
+  },
+  {
+    "item_id": "openscore-6211555-page-1",
+    "system": 3,
+    "size": [
+      1920,
+      658
+    ],
+    "box": {
+      "max_x": 1830.0,
+      "max_y": 2349.786372599012,
+      "min_x": 90.0,
+      "min_y": 1692.8219849748575
+    },
+    "crop": {
+      "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase3\\inputs\\openscore-6211555-page-1\\detector\\crops\\system-0003.png",
+      "sha256": "e7a188f53045722b0fb1eb38a5e0875e398ea5b6e71d6694fa9fc4b030ce1cf3"
+    }
+  }
+]

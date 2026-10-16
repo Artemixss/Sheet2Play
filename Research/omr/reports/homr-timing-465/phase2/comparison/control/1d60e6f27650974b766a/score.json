@@ -1,0 +1,172 @@
+{
+  "aligned_voice_accuracy": 0.8918918918918919,
+  "candidate": "shipped-426-phase2-control",
+  "capture_status": "complete",
+  "comparison_identity": "91e7256cd902a6ea2adb9fb415e6847b2ba0b9e94fb03fe8f5f1570ae6544fb9",
+  "composition_group": "mozart/sonata08_2",
+  "configuration_identity": "31512f54e60c2e1cff049c60a7f68ceb0366eb49d4aeacf13368de17a0ec430d",
+  "conversion_error": null,
+  "coverage": {
+    "chord_completeness": 0.11627906976744186,
+    "complete_chords": 10,
+    "per_staff": {
+      "0": {
+        "matched_notes": 27,
+        "predicted_notes": 197,
+        "recall": 0.08490566037735849,
+        "reference_notes": 318
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 122,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 86,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 10,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/16",
+        "count": 1,
+        "predicted": "1/8"
+      },
+      {
+        "actual": "1/2",
+        "count": 2,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 14,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/8",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/8",
+        "count": 4,
+        "predicted": "1/8"
+      },
+      {
+        "actual": "3/2",
+        "count": 2,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "3/4",
+        "count": 5,
+        "predicted": "3/4"
+      }
+    ],
+    "unmatched_expected": 279,
+    "unmatched_predicted": 280
+  },
+  "elapsed_seconds": 15.094000000000051,
+  "extra_notes": 282,
+  "item_id": "1d60e6f27650974b766a",
+  "mean_offset_error": 0.004807692307692308,
+  "metrics": {
+    "aligned_voice_accuracy": 0.8918918918918919,
+    "coverage": {
+      "chord_completeness": 0.11627906976744186,
+      "complete_chords": 10,
+      "per_staff": {
+        "0": {
+          "matched_notes": 27,
+          "predicted_notes": 197,
+          "recall": 0.08490566037735849,
+          "reference_notes": 318
+        },
+        "1": {
+          "matched_notes": 0,
+          "predicted_notes": 122,
+          "recall": null,
+          "reference_notes": 0
+        }
+      },
+      "reference_chords": 86,
+      "staff_interpretation": "notation staff index; not validated hand labels"
+    },
+    "duration": {
+      "confusion": [
+        {
+          "actual": "1",
+          "count": 10,
+          "predicted": "1"
+        },
+        {
+          "actual": "1/16",
+          "count": 1,
+          "predicted": "1/8"
+        },
+        {
+          "actual": "1/2",
+          "count": 2,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/4",
+          "count": 14,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/8",
+          "count": 1,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/8",
+          "count": 4,
+          "predicted": "1/8"
+        },
+        {
+          "actual": "3/2",
+          "count": 2,
+          "predicted": "3/2"
+        },
+        {
+          "actual": "3/4",
+          "count": 5,
+          "predicted": "3/4"
+        }
+      ],
+      "unmatched_expected": 279,
+      "unmatched_predicted": 280
+    },
+    "extra_notes": 282,
+    "mean_offset_error": 0.004807692307692308,
+    "missing_notes": 281,
+    "onset_duration_f1": 0.11616954474097331,
+    "onset_f1": 0.12244897959183673,
+    "pitch_f1": 0.9984301412872841,
+    "predicted_notes": 319,
+    "reference_notes": 318,
+    "staff_accuracy": 0.7297297297297297,
+    "timeline_predicted": "93/2",
+    "timeline_reference": "43"
+  },
+  "missing_notes": 281,
+  "onset_duration_f1": 0.11616954474097331,
+  "onset_f1": 0.12244897959183673,
+  "original_item_id": "test/mozart/sonata08_2/sonata08_2_1.png",
+  "pitch_f1": 0.9984301412872841,
+  "predicted_notes": 319,
+  "receipt_sha256": "4cd5e7ff58e4c6d12dd6aec0850146e40c636f92de96eabe24379cb08d42a885",
+  "reference_notes": 318,
+  "reference_sha256": "46004d726f80e94ba0b1989094663da630c25b66d93aa9be28dc5340381eb6c4",
+  "staff_accuracy": 0.7297297297297297,
+  "status": "complete",
+  "timeline_predicted": "93/2",
+  "timeline_reference": "43"
+}

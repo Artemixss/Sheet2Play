@@ -1,0 +1,24 @@
+{
+  "Utc": "2026-10-07T14:36:18.3551321Z",
+  "HardTaskNetworkCapBytes": 2000000000,
+  "RequestedResearchNetworkTransfers": 0,
+  "DownloadsAndInstalls": 0,
+  "PythonSocketGate": "socket/name resolution prohibited in research children",
+  "Dotnet": "no restore; telemetry opt-out",
+  "Network": [
+    {
+      "Name": "Ethernet",
+      "ReceivedBytes": 0,
+      "SentBytes": 0
+    },
+    {
+      "Name": "Wi-Fi",
+      "ReceivedBytes": 8292507,
+      "SentBytes": 7442507
+    }
+  ],
+  "HostCounterResetObserved": true,
+  "HostAccountingLimitation": "Wi-Fi counters decreased since preflight; endpoints cannot establish host-wide traffic total. No host-wide firewall or other-app accounting claim. All requested research work used existing local bytes.",
+  "Processes": [],
+  "RootWorkerLockPresent": false
+}

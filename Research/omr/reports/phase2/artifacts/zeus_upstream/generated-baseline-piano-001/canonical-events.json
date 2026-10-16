@@ -1,0 +1,33 @@
+{
+  "expand_repeats": false,
+  "grace_notes_in_primary": false,
+  "merge_tied_continuations": true,
+  "notes": [
+    {
+      "duration": "4.0",
+      "midi_pitch": 40,
+      "onset": "0.0",
+      "part": 0,
+      "pitch": "E2",
+      "staff": 1,
+      "voice": "1"
+    },
+    {
+      "duration": "4.0",
+      "midi_pitch": 46,
+      "onset": "0.0",
+      "part": 0,
+      "pitch": "B-2",
+      "staff": 1,
+      "voice": "1"
+    }
+  ],
+  "schema_version": 1,
+  "tempo_changes": [
+    {
+      "bpm": 120.0,
+      "start_beat": "0.0"
+    }
+  ],
+  "time_unit": "rational quarter-note time"
+}

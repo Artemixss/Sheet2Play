@@ -1,0 +1,77 @@
+{
+  "adapter_id": "shipped_homr_direct",
+  "aligned_voice_accuracy": 0.9154929577464789,
+  "candidate_id": "shipped_homr",
+  "cold_start": true,
+  "composition_group": "liszt/etude10_05",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 2,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 68,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/6",
+        "count": 5,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/6",
+        "count": 34,
+        "predicted": "8333333333333333/50000000000000000"
+      },
+      {
+        "actual": "3/2",
+        "count": 1,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "3/2",
+        "count": 1,
+        "predicted": "3/2"
+      }
+    ],
+    "unmatched_expected": 366,
+    "unmatched_predicted": 367
+  },
+  "elapsed_seconds": 20.610000000000582,
+  "error": null,
+  "extra_note_count": 408,
+  "failure_penalized_omr_ned": 0.3768959069187617,
+  "first_divergent_measure": 1,
+  "item_id": "test/liszt/etude10_05/etude10_05_1.png",
+  "mean_offset_error": 0.014880952380952384,
+  "missing_note_count": 407,
+  "omr_ned": 0.3768959069187617,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.148380355276907,
+  "onset_f1": 0.23406478578892373,
+  "peak_ram_bytes": 1561780224,
+  "peak_vram_bytes": 1636827136,
+  "pitch_f1": 0.9968652037617555,
+  "predicted_note_count": 479,
+  "reference_measure_count": 24,
+  "reference_note_count": 478,
+  "reference_quarter_length": "48",
+  "schema_version": 1,
+  "staff_accuracy": 0.0,
+  "status": "succeeded",
+  "timeline_length_error": "308333333333333333/50000000000000000",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "adapter_config_sha256": "82e2e607d51d8d45f6fe9fbb197d7a39871fbd9669d6a3fec0aa0845313756ce",
+  "compatibility_report": {
+    "path": "Research/omr/reports/screening/v1/compatibility/finetune-085f3eede39d.json",
+    "sha256": "6c2231132abc1a990e7bd970a0f70061e1925f81de398b8fa17eecabf7a092f7"
+  },
+  "cpu_affinity_count": 8,
+  "creation_time": 1790589890.7499385,
+  "development_ram_admission_percent": 90,
+  "pid": 2508,
+  "priority": "below_normal"
+}

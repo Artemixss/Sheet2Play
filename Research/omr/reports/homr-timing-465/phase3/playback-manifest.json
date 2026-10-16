@@ -1,0 +1,3620 @@
+{
+  "bridge": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\dist\\Bridge\\bridge.py",
+  "inputs": [
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 48,
+            "part_index": 0,
+            "pitch": "C3",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 1,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 1,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 67,
+            "part_index": 0,
+            "pitch": "G4",
+            "staff_index": 1,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 62,
+            "part_index": 0,
+            "pitch": "D4",
+            "staff_index": 1,
+            "start_beat": 1.0,
+            "start_seconds": 0.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 55,
+            "part_index": 0,
+            "pitch": "G3",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 1,
+            "start_beat": 2.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 65,
+            "part_index": 0,
+            "pitch": "F4",
+            "staff_index": 1,
+            "start_beat": 3.0,
+            "start_seconds": 1.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 48,
+            "part_index": 0,
+            "pitch": "C3",
+            "staff_index": 0,
+            "start_beat": 4.0,
+            "start_seconds": 2.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 67,
+            "part_index": 0,
+            "pitch": "G4",
+            "staff_index": 1,
+            "start_beat": 4.0,
+            "start_seconds": 2.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 52,
+            "part_index": 0,
+            "pitch": "E3",
+            "staff_index": 0,
+            "start_beat": 5.0,
+            "start_seconds": 2.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 55,
+            "part_index": 0,
+            "pitch": "G3",
+            "staff_index": 0,
+            "start_beat": 6.0,
+            "start_seconds": 3.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 1,
+            "start_beat": 6.0,
+            "start_seconds": 3.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 48,
+            "part_index": 0,
+            "pitch": "C3",
+            "staff_index": 0,
+            "start_beat": 7.0,
+            "start_seconds": 3.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 50,
+            "part_index": 0,
+            "pitch": "D3",
+            "staff_index": 0,
+            "start_beat": 8.0,
+            "start_seconds": 4.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 62,
+            "part_index": 0,
+            "pitch": "D4",
+            "staff_index": 1,
+            "start_beat": 8.0,
+            "start_seconds": 4.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 65,
+            "part_index": 0,
+            "pitch": "F4",
+            "staff_index": 1,
+            "start_beat": 8.0,
+            "start_seconds": 4.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 69,
+            "part_index": 0,
+            "pitch": "A4",
+            "staff_index": 1,
+            "start_beat": 8.0,
+            "start_seconds": 4.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 1,
+            "start_beat": 9.0,
+            "start_seconds": 4.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 57,
+            "part_index": 0,
+            "pitch": "A3",
+            "staff_index": 0,
+            "start_beat": 10.0,
+            "start_seconds": 5.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 65,
+            "part_index": 0,
+            "pitch": "F4",
+            "staff_index": 1,
+            "start_beat": 10.0,
+            "start_seconds": 5.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 67,
+            "part_index": 0,
+            "pitch": "G4",
+            "staff_index": 1,
+            "start_beat": 11.0,
+            "start_seconds": 5.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 50,
+            "part_index": 0,
+            "pitch": "D3",
+            "staff_index": 0,
+            "start_beat": 12.0,
+            "start_seconds": 6.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 69,
+            "part_index": 0,
+            "pitch": "A4",
+            "staff_index": 1,
+            "start_beat": 12.0,
+            "start_seconds": 6.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 53,
+            "part_index": 0,
+            "pitch": "F3",
+            "staff_index": 0,
+            "start_beat": 13.0,
+            "start_seconds": 6.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 57,
+            "part_index": 0,
+            "pitch": "A3",
+            "staff_index": 0,
+            "start_beat": 14.0,
+            "start_seconds": 7.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 62,
+            "part_index": 0,
+            "pitch": "D4",
+            "staff_index": 1,
+            "start_beat": 14.0,
+            "start_seconds": 7.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 50,
+            "part_index": 0,
+            "pitch": "D3",
+            "staff_index": 0,
+            "start_beat": 15.0,
+            "start_seconds": 7.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 52,
+            "part_index": 0,
+            "pitch": "E3",
+            "staff_index": 0,
+            "start_beat": 16.0,
+            "start_seconds": 8.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 1,
+            "start_beat": 16.0,
+            "start_seconds": 8.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 67,
+            "part_index": 0,
+            "pitch": "G4",
+            "staff_index": 1,
+            "start_beat": 16.0,
+            "start_seconds": 8.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 71,
+            "part_index": 0,
+            "pitch": "B4",
+            "staff_index": 1,
+            "start_beat": 16.0,
+            "start_seconds": 8.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 65,
+            "part_index": 0,
+            "pitch": "F4",
+            "staff_index": 1,
+            "start_beat": 17.0,
+            "start_seconds": 8.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 59,
+            "part_index": 0,
+            "pitch": "B3",
+            "staff_index": 0,
+            "start_beat": 18.0,
+            "start_seconds": 9.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 67,
+            "part_index": 0,
+            "pitch": "G4",
+            "staff_index": 1,
+            "start_beat": 18.0,
+            "start_seconds": 9.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 69,
+            "part_index": 0,
+            "pitch": "A4",
+            "staff_index": 1,
+            "start_beat": 19.0,
+            "start_seconds": 9.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 52,
+            "part_index": 0,
+            "pitch": "E3",
+            "staff_index": 0,
+            "start_beat": 20.0,
+            "start_seconds": 10.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 71,
+            "part_index": 0,
+            "pitch": "B4",
+            "staff_index": 1,
+            "start_beat": 20.0,
+            "start_seconds": 10.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 55,
+            "part_index": 0,
+            "pitch": "G3",
+            "staff_index": 0,
+            "start_beat": 21.0,
+            "start_seconds": 10.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 59,
+            "part_index": 0,
+            "pitch": "B3",
+            "staff_index": 0,
+            "start_beat": 22.0,
+            "start_seconds": 11.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 1,
+            "start_beat": 22.0,
+            "start_seconds": 11.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 52,
+            "part_index": 0,
+            "pitch": "E3",
+            "staff_index": 0,
+            "start_beat": 23.0,
+            "start_seconds": 11.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 53,
+            "part_index": 0,
+            "pitch": "F3",
+            "staff_index": 0,
+            "start_beat": 24.0,
+            "start_seconds": 12.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 65,
+            "part_index": 0,
+            "pitch": "F4",
+            "staff_index": 1,
+            "start_beat": 24.0,
+            "start_seconds": 12.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 69,
+            "part_index": 0,
+            "pitch": "A4",
+            "staff_index": 1,
+            "start_beat": 24.0,
+            "start_seconds": 12.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 72,
+            "part_index": 0,
+            "pitch": "C5",
+            "staff_index": 1,
+            "start_beat": 24.0,
+            "start_seconds": 12.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 67,
+            "part_index": 0,
+            "pitch": "G4",
+            "staff_index": 1,
+            "start_beat": 25.0,
+            "start_seconds": 12.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 26.0,
+            "start_seconds": 13.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 69,
+            "part_index": 0,
+            "pitch": "A4",
+            "staff_index": 1,
+            "start_beat": 26.0,
+            "start_seconds": 13.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 71,
+            "part_index": 0,
+            "pitch": "B4",
+            "staff_index": 1,
+            "start_beat": 27.0,
+            "start_seconds": 13.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 53,
+            "part_index": 0,
+            "pitch": "F3",
+            "staff_index": 0,
+            "start_beat": 28.0,
+            "start_seconds": 14.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 72,
+            "part_index": 0,
+            "pitch": "C5",
+            "staff_index": 1,
+            "start_beat": 28.0,
+            "start_seconds": 14.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 57,
+            "part_index": 0,
+            "pitch": "A3",
+            "staff_index": 0,
+            "start_beat": 29.0,
+            "start_seconds": 14.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 30.0,
+            "start_seconds": 15.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 65,
+            "part_index": 0,
+            "pitch": "F4",
+            "staff_index": 1,
+            "start_beat": 30.0,
+            "start_seconds": 15.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 53,
+            "part_index": 0,
+            "pitch": "F3",
+            "staff_index": 0,
+            "start_beat": 31.0,
+            "start_seconds": 15.5,
+            "voice_identifier": "1"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 120.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "candidate-generated-baseline-piano-001",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\development\\generated-baseline-piano-001\\input.musicxml",
+      "input_sha256": "18c65b72d6c711501c545cbb3c79aca5d0d038799c67929b066fa892caa41ae7"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 76,
+            "part_index": 0,
+            "pitch": "E5",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 77,
+            "part_index": 0,
+            "pitch": "F5",
+            "staff_index": 0,
+            "start_beat": 1.0,
+            "start_seconds": 0.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 62,
+            "part_index": 0,
+            "pitch": "D4",
+            "staff_index": 0,
+            "start_beat": 1.0,
+            "start_seconds": 0.5,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 79,
+            "part_index": 0,
+            "pitch": "G5",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 65,
+            "part_index": 0,
+            "pitch": "F4",
+            "staff_index": 0,
+            "start_beat": 3.0,
+            "start_seconds": 1.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 81,
+            "part_index": 0,
+            "pitch": "A5",
+            "staff_index": 0,
+            "start_beat": 3.0,
+            "start_seconds": 1.5,
+            "voice_identifier": "2"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 120.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "candidate-generated-homophonic",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\development\\generated-homophonic\\input.musicxml",
+      "input_sha256": "614514580db93cb86fb1916ef7355f699b852e461f0fa597c35787ea3794bb5a"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.5,
+            "duration_seconds": 0.75,
+            "midi_pitch": 79,
+            "part_index": 0,
+            "pitch": "G5",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 62,
+            "part_index": 0,
+            "pitch": "D4",
+            "staff_index": 0,
+            "start_beat": 1.0,
+            "start_seconds": 0.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.25,
+            "midi_pitch": 81,
+            "part_index": 0,
+            "pitch": "A5",
+            "staff_index": 0,
+            "start_beat": 1.5,
+            "start_seconds": 0.75,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 83,
+            "part_index": 0,
+            "pitch": "B5",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 65,
+            "part_index": 0,
+            "pitch": "F4",
+            "staff_index": 0,
+            "start_beat": 3.0,
+            "start_seconds": 1.5,
+            "voice_identifier": "1"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 120.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "candidate-generated-offset_entry",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\development\\generated-offset_entry\\input.musicxml",
+      "input_sha256": "d253e5975c5ca07766ba9c261e5b1e8bea9285a56d39b18a5044de9d542cc405"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 72,
+            "part_index": 0,
+            "pitch": "C5",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 74,
+            "part_index": 0,
+            "pitch": "D5",
+            "staff_index": 0,
+            "start_beat": 1.0,
+            "start_seconds": 0.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 62,
+            "part_index": 0,
+            "pitch": "D4",
+            "staff_index": 0,
+            "start_beat": 1.0,
+            "start_seconds": 0.5,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 76,
+            "part_index": 0,
+            "pitch": "E5",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 77,
+            "part_index": 0,
+            "pitch": "F5",
+            "staff_index": 0,
+            "start_beat": 3.0,
+            "start_seconds": 1.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 65,
+            "part_index": 0,
+            "pitch": "F4",
+            "staff_index": 0,
+            "start_beat": 3.0,
+            "start_seconds": 1.5,
+            "voice_identifier": "2"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 120.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "candidate-generated-quintuplet_vs_duple",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\development\\generated-quintuplet_vs_duple\\input.musicxml",
+      "input_sha256": "23c8f8d37a4703f8488b46270568e58fb5b3e3a91d2f47ffacc9e231f77bdaf9"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 48,
+            "part_index": 0,
+            "pitch": "C3",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 56,
+            "part_index": 0,
+            "pitch": "A-3",
+            "staff_index": 0,
+            "start_beat": 1.0,
+            "start_seconds": 0.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 63,
+            "part_index": 0,
+            "pitch": "E-4",
+            "staff_index": 0,
+            "start_beat": 3.0,
+            "start_seconds": 1.5,
+            "voice_identifier": "1"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 120.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "candidate-generated-same_position_sustain",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\development\\generated-same_position_sustain\\input.musicxml",
+      "input_sha256": "0f0e74060fac66906388890c7d87c5d85178e88fc64a6cd62b4f943bde21abc5"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 72,
+            "part_index": 0,
+            "pitch": "C5",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 74,
+            "part_index": 0,
+            "pitch": "D5",
+            "staff_index": 0,
+            "start_beat": 1.0,
+            "start_seconds": 0.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 76,
+            "part_index": 0,
+            "pitch": "E5",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 62,
+            "part_index": 0,
+            "pitch": "D4",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 77,
+            "part_index": 0,
+            "pitch": "F5",
+            "staff_index": 0,
+            "start_beat": 3.0,
+            "start_seconds": 1.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 0,
+            "start_beat": 3.0,
+            "start_seconds": 1.5,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.25,
+            "midi_pitch": 79,
+            "part_index": 0,
+            "pitch": "G5",
+            "staff_index": 0,
+            "start_beat": 4.0,
+            "start_seconds": 2.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.25,
+            "midi_pitch": 81,
+            "part_index": 0,
+            "pitch": "A5",
+            "staff_index": 0,
+            "start_beat": 4.5,
+            "start_seconds": 2.25,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 65,
+            "part_index": 0,
+            "pitch": "F4",
+            "staff_index": 0,
+            "start_beat": 4.5,
+            "start_seconds": 2.25,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.25,
+            "midi_pitch": 83,
+            "part_index": 0,
+            "pitch": "B5",
+            "staff_index": 0,
+            "start_beat": 5.0,
+            "start_seconds": 2.5,
+            "voice_identifier": "1"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 120.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "candidate-generated-septuplet_vs_duple",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\development\\generated-septuplet_vs_duple\\input.musicxml",
+      "input_sha256": "7735fd1ddbac34296dc7bf0c3e8bd84eb9ee5aa2a06ffa946d087b5d0e133c49"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 79,
+            "part_index": 0,
+            "pitch": "G5",
+            "staff_index": 0,
+            "start_beat": 1.0,
+            "start_seconds": 0.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 62,
+            "part_index": 0,
+            "pitch": "D4",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 81,
+            "part_index": 0,
+            "pitch": "A5",
+            "staff_index": 0,
+            "start_beat": 3.0,
+            "start_seconds": 1.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 0,
+            "start_beat": 4.0,
+            "start_seconds": 2.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 83,
+            "part_index": 0,
+            "pitch": "B5",
+            "staff_index": 0,
+            "start_beat": 5.0,
+            "start_seconds": 2.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 65,
+            "part_index": 0,
+            "pitch": "F4",
+            "staff_index": 0,
+            "start_beat": 6.0,
+            "start_seconds": 3.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.25,
+            "midi_pitch": 84,
+            "part_index": 0,
+            "pitch": "C6",
+            "staff_index": 0,
+            "start_beat": 7.0,
+            "start_seconds": 3.5,
+            "voice_identifier": "1"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 120.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "candidate-generated-syncopation",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\development\\generated-syncopation\\input.musicxml",
+      "input_sha256": "5a2a75d745a9216e1c602708e9e086ab085827920abf1f805d0dd22cdf56450a"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 55,
+            "part_index": 0,
+            "pitch": "G3",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 4.0,
+            "duration_seconds": 2.0,
+            "midi_pitch": 72,
+            "part_index": 0,
+            "pitch": "C5",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "3"
+          },
+          {
+            "duration_beats": 4.0,
+            "duration_seconds": 2.0,
+            "midi_pitch": 81,
+            "part_index": 0,
+            "pitch": "A5",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "3"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 57,
+            "part_index": 0,
+            "pitch": "A3",
+            "staff_index": 0,
+            "start_beat": 1.0,
+            "start_seconds": 0.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 59,
+            "part_index": 0,
+            "pitch": "B3",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 65,
+            "part_index": 0,
+            "pitch": "F4",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 3.0,
+            "start_seconds": 1.5,
+            "voice_identifier": "1"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 120.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "candidate-generated-three_voices",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\development\\generated-three_voices\\input.musicxml",
+      "input_sha256": "5662622d511c4b1616f861da40d4df52c9a7e5cf4fb4df7cf858fc93016e57d2"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 72,
+            "part_index": 0,
+            "pitch": "C5",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 4.0,
+            "duration_seconds": 2.0,
+            "midi_pitch": 79,
+            "part_index": 0,
+            "pitch": "G5",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 76,
+            "part_index": 0,
+            "pitch": "E5",
+            "staff_index": 0,
+            "start_beat": 6.0,
+            "start_seconds": 3.0,
+            "voice_identifier": "1"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 120.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "candidate-generated-tie_across_barline",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\development\\generated-tie_across_barline\\input.musicxml",
+      "input_sha256": "9519cdc3eefd23701a1d0093866f275dda9c80ec156f646b6190829b99f38184"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 0.6666666666666666,
+            "duration_seconds": 0.3333333333333333,
+            "midi_pitch": 72,
+            "part_index": 0,
+            "pitch": "C5",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.6666666666666666,
+            "duration_seconds": 0.3333333333333333,
+            "midi_pitch": 74,
+            "part_index": 0,
+            "pitch": "D5",
+            "staff_index": 0,
+            "start_beat": 0.6666666666666666,
+            "start_seconds": 0.3333333333333333,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 62,
+            "part_index": 0,
+            "pitch": "D4",
+            "staff_index": 0,
+            "start_beat": 1.0,
+            "start_seconds": 0.5,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.6666666666666666,
+            "duration_seconds": 0.33333333333333337,
+            "midi_pitch": 76,
+            "part_index": 0,
+            "pitch": "E5",
+            "staff_index": 0,
+            "start_beat": 1.3333333333333333,
+            "start_seconds": 0.6666666666666666,
+            "voice_identifier": "1"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 120.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "candidate-generated-triplet_vs_duple",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\development\\generated-triplet_vs_duple\\input.musicxml",
+      "input_sha256": "a54424d9e1e5e7bb202285297dd2319fefd02ddc1f450338f7da0f6ea24555da"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.25,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 72,
+            "part_index": 0,
+            "pitch": "C5",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.25,
+            "midi_pitch": 62,
+            "part_index": 0,
+            "pitch": "D4",
+            "staff_index": 0,
+            "start_beat": 0.5,
+            "start_seconds": 0.25,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.25,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 0,
+            "start_beat": 1.0,
+            "start_seconds": 0.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 74,
+            "part_index": 0,
+            "pitch": "D5",
+            "staff_index": 0,
+            "start_beat": 1.0,
+            "start_seconds": 0.5,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.25,
+            "midi_pitch": 65,
+            "part_index": 0,
+            "pitch": "F4",
+            "staff_index": 0,
+            "start_beat": 1.5,
+            "start_seconds": 0.75,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.25,
+            "midi_pitch": 76,
+            "part_index": 0,
+            "pitch": "E5",
+            "staff_index": 0,
+            "start_beat": 1.5,
+            "start_seconds": 0.75,
+            "voice_identifier": "3"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 120.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "candidate-generated-triplet_vs_quadruple",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\development\\generated-triplet_vs_quadruple\\input.musicxml",
+      "input_sha256": "7612a9ee7a9554fc2c88c29b07abb5a72d6731104214c684df54ce10ebdd3bb5"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.16666666666666666,
+            "midi_pitch": 72,
+            "part_index": 0,
+            "pitch": "C5",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.25,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.16666666666666666,
+            "midi_pitch": 74,
+            "part_index": 0,
+            "pitch": "D5",
+            "staff_index": 0,
+            "start_beat": 0.3333333333333333,
+            "start_seconds": 0.16666666666666666,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.24999999999999997,
+            "midi_pitch": 62,
+            "part_index": 0,
+            "pitch": "D4",
+            "staff_index": 0,
+            "start_beat": 0.3333333333333333,
+            "start_seconds": 0.16666666666666666,
+            "voice_identifier": "3"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.16666666666666663,
+            "midi_pitch": 76,
+            "part_index": 0,
+            "pitch": "E5",
+            "staff_index": 0,
+            "start_beat": 0.5,
+            "start_seconds": 0.25,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.25,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 0,
+            "start_beat": 0.5,
+            "start_seconds": 0.25,
+            "voice_identifier": "4"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.16666666666666669,
+            "midi_pitch": 72,
+            "part_index": 0,
+            "pitch": "C5",
+            "staff_index": 0,
+            "start_beat": 0.6666666666666666,
+            "start_seconds": 0.3333333333333333,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.24999999999999994,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 0.6666666666666666,
+            "start_seconds": 0.3333333333333333,
+            "voice_identifier": "5"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.16666666666666669,
+            "midi_pitch": 74,
+            "part_index": 0,
+            "pitch": "D5",
+            "staff_index": 0,
+            "start_beat": 0.8333333333333334,
+            "start_seconds": 0.4166666666666667,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.25000000000000006,
+            "midi_pitch": 62,
+            "part_index": 0,
+            "pitch": "D4",
+            "staff_index": 0,
+            "start_beat": 0.8333333333333334,
+            "start_seconds": 0.4166666666666667,
+            "voice_identifier": "3"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.16666666666666663,
+            "midi_pitch": 76,
+            "part_index": 0,
+            "pitch": "E5",
+            "staff_index": 0,
+            "start_beat": 1.0,
+            "start_seconds": 0.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.25,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 0,
+            "start_beat": 1.0,
+            "start_seconds": 0.5,
+            "voice_identifier": "4"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.16666666666666663,
+            "midi_pitch": 72,
+            "part_index": 0,
+            "pitch": "C5",
+            "staff_index": 0,
+            "start_beat": 1.1666666666666667,
+            "start_seconds": 0.5833333333333334,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.25,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 1.1666666666666667,
+            "start_seconds": 0.5833333333333334,
+            "voice_identifier": "5"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.16666666666666663,
+            "midi_pitch": 74,
+            "part_index": 0,
+            "pitch": "D5",
+            "staff_index": 0,
+            "start_beat": 1.3333333333333333,
+            "start_seconds": 0.6666666666666666,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.25,
+            "midi_pitch": 62,
+            "part_index": 0,
+            "pitch": "D4",
+            "staff_index": 0,
+            "start_beat": 1.3333333333333333,
+            "start_seconds": 0.6666666666666666,
+            "voice_identifier": "3"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.16666666666666663,
+            "midi_pitch": 76,
+            "part_index": 0,
+            "pitch": "E5",
+            "staff_index": 0,
+            "start_beat": 1.5,
+            "start_seconds": 0.75,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.25,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 0,
+            "start_beat": 1.5,
+            "start_seconds": 0.75,
+            "voice_identifier": "4"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.16666666666666663,
+            "midi_pitch": 72,
+            "part_index": 0,
+            "pitch": "C5",
+            "staff_index": 0,
+            "start_beat": 1.6666666666666667,
+            "start_seconds": 0.8333333333333334,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.2500000000000001,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 1.6666666666666667,
+            "start_seconds": 0.8333333333333334,
+            "voice_identifier": "5"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.16666666666666663,
+            "midi_pitch": 74,
+            "part_index": 0,
+            "pitch": "D5",
+            "staff_index": 0,
+            "start_beat": 1.8333333333333333,
+            "start_seconds": 0.9166666666666666,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.2499999999999999,
+            "midi_pitch": 62,
+            "part_index": 0,
+            "pitch": "D4",
+            "staff_index": 0,
+            "start_beat": 1.8333333333333333,
+            "start_seconds": 0.9166666666666666,
+            "voice_identifier": "3"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.16666666666666674,
+            "midi_pitch": 76,
+            "part_index": 0,
+            "pitch": "E5",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.25,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "4"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 120.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "candidate-generated-tuplet_aligned",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase2\\development\\generated-tuplet_aligned\\input.musicxml",
+      "input_sha256": "cb51649b381a3adfb60dcbbd840c53548ad882091bbcdaaaec9fae7f97d5f654"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 76,
+            "part_index": 0,
+            "pitch": "E5",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 77,
+            "part_index": 0,
+            "pitch": "F5",
+            "staff_index": 0,
+            "start_beat": 1.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 62,
+            "part_index": 0,
+            "pitch": "D4",
+            "staff_index": 0,
+            "start_beat": 1.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 79,
+            "part_index": 0,
+            "pitch": "G5",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 2.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 2.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 81,
+            "part_index": 0,
+            "pitch": "A5",
+            "staff_index": 0,
+            "start_beat": 3.0,
+            "start_seconds": 3.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 65,
+            "part_index": 0,
+            "pitch": "F4",
+            "staff_index": 0,
+            "start_beat": 3.0,
+            "start_seconds": 3.0,
+            "voice_identifier": "2"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 60.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "source-generated-homophonic",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\homophonic.musicxml",
+      "input_sha256": "84922d9757a5be7b9877fc9737032d9f297b773698e1d9f50f7764d46ab8eaab"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 1.5,
+            "duration_seconds": 1.5,
+            "midi_pitch": 79,
+            "part_index": 0,
+            "pitch": "G5",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 62,
+            "part_index": 0,
+            "pitch": "D4",
+            "staff_index": 0,
+            "start_beat": 1.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.5,
+            "midi_pitch": 81,
+            "part_index": 0,
+            "pitch": "A5",
+            "staff_index": 0,
+            "start_beat": 1.5,
+            "start_seconds": 1.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 2.0,
+            "midi_pitch": 83,
+            "part_index": 0,
+            "pitch": "B5",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 2.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 2.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 65,
+            "part_index": 0,
+            "pitch": "F4",
+            "staff_index": 0,
+            "start_beat": 3.0,
+            "start_seconds": 3.0,
+            "voice_identifier": "2"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 60.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "source-generated-offset_entry",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\offset_entry.musicxml",
+      "input_sha256": "7e9a04bca94dfb1265ffd52470876acb8fe58ff5f343b8d978e0d3934c2b3217"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 0.8,
+            "duration_seconds": 0.8,
+            "midi_pitch": 72,
+            "part_index": 0,
+            "pitch": "C5",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.8,
+            "duration_seconds": 0.8,
+            "midi_pitch": 74,
+            "part_index": 0,
+            "pitch": "D5",
+            "staff_index": 0,
+            "start_beat": 0.8,
+            "start_seconds": 0.8,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 62,
+            "part_index": 0,
+            "pitch": "D4",
+            "staff_index": 0,
+            "start_beat": 1.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.8,
+            "duration_seconds": 0.8000000000000003,
+            "midi_pitch": 76,
+            "part_index": 0,
+            "pitch": "E5",
+            "staff_index": 0,
+            "start_beat": 1.6,
+            "start_seconds": 1.6,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 2.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.8,
+            "duration_seconds": 0.8000000000000003,
+            "midi_pitch": 77,
+            "part_index": 0,
+            "pitch": "F5",
+            "staff_index": 0,
+            "start_beat": 2.4,
+            "start_seconds": 2.4,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 65,
+            "part_index": 0,
+            "pitch": "F4",
+            "staff_index": 0,
+            "start_beat": 3.0,
+            "start_seconds": 3.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.8,
+            "duration_seconds": 0.7999999999999998,
+            "midi_pitch": 79,
+            "part_index": 0,
+            "pitch": "G5",
+            "staff_index": 0,
+            "start_beat": 3.2,
+            "start_seconds": 3.2,
+            "voice_identifier": "1"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 60.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "source-generated-quintuplet_vs_duple",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\quintuplet_vs_duple.musicxml",
+      "input_sha256": "bf0d92a4c3639690ac43e87f54f93bf0ef12e8b9760d0d6ba21596bdfa580931"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 2.0,
+            "midi_pitch": 44,
+            "part_index": 0,
+            "pitch": "A-2",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.5,
+            "midi_pitch": 44,
+            "part_index": 0,
+            "pitch": "A-2",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.5,
+            "midi_pitch": 56,
+            "part_index": 0,
+            "pitch": "A-3",
+            "staff_index": 0,
+            "start_beat": 0.5,
+            "start_seconds": 0.5,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 1.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 2.0,
+            "midi_pitch": 46,
+            "part_index": 0,
+            "pitch": "B-2",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 2.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 2.0,
+            "midi_pitch": 63,
+            "part_index": 0,
+            "pitch": "E-4",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 2.0,
+            "voice_identifier": "2"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 60.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "source-generated-same_position_sustain",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\same_position_sustain.musicxml",
+      "input_sha256": "98708dc156bafa3093697b433310e77332595560512edbf2522c989e572e3e26"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 0.5714285714285714,
+            "duration_seconds": 0.5714285714285714,
+            "midi_pitch": 72,
+            "part_index": 0,
+            "pitch": "C5",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.5714285714285714,
+            "duration_seconds": 0.5714285714285714,
+            "midi_pitch": 74,
+            "part_index": 0,
+            "pitch": "D5",
+            "staff_index": 0,
+            "start_beat": 0.5714285714285714,
+            "start_seconds": 0.5714285714285714,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 62,
+            "part_index": 0,
+            "pitch": "D4",
+            "staff_index": 0,
+            "start_beat": 1.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.5714285714285714,
+            "duration_seconds": 0.5714285714285714,
+            "midi_pitch": 76,
+            "part_index": 0,
+            "pitch": "E5",
+            "staff_index": 0,
+            "start_beat": 1.1428571428571428,
+            "start_seconds": 1.1428571428571428,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.5714285714285714,
+            "duration_seconds": 0.5714285714285714,
+            "midi_pitch": 77,
+            "part_index": 0,
+            "pitch": "F5",
+            "staff_index": 0,
+            "start_beat": 1.7142857142857142,
+            "start_seconds": 1.7142857142857142,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 2.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.5714285714285714,
+            "duration_seconds": 0.5714285714285712,
+            "midi_pitch": 79,
+            "part_index": 0,
+            "pitch": "G5",
+            "staff_index": 0,
+            "start_beat": 2.2857142857142856,
+            "start_seconds": 2.2857142857142856,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.5714285714285714,
+            "duration_seconds": 0.5714285714285716,
+            "midi_pitch": 81,
+            "part_index": 0,
+            "pitch": "A5",
+            "staff_index": 0,
+            "start_beat": 2.857142857142857,
+            "start_seconds": 2.857142857142857,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 65,
+            "part_index": 0,
+            "pitch": "F4",
+            "staff_index": 0,
+            "start_beat": 3.0,
+            "start_seconds": 3.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.5714285714285714,
+            "duration_seconds": 0.5714285714285716,
+            "midi_pitch": 83,
+            "part_index": 0,
+            "pitch": "B5",
+            "staff_index": 0,
+            "start_beat": 3.4285714285714284,
+            "start_seconds": 3.4285714285714284,
+            "voice_identifier": "1"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 60.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "source-generated-septuplet_vs_duple",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\septuplet_vs_duple.musicxml",
+      "input_sha256": "12243b6a57e88281408481c8cdc419a852174920dbde8b3f3cc2e9af2fa79bcb"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 79,
+            "part_index": 0,
+            "pitch": "G5",
+            "staff_index": 0,
+            "start_beat": 0.5,
+            "start_seconds": 0.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 62,
+            "part_index": 0,
+            "pitch": "D4",
+            "staff_index": 0,
+            "start_beat": 1.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 81,
+            "part_index": 0,
+            "pitch": "A5",
+            "staff_index": 0,
+            "start_beat": 1.5,
+            "start_seconds": 1.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 2.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 83,
+            "part_index": 0,
+            "pitch": "B5",
+            "staff_index": 0,
+            "start_beat": 2.5,
+            "start_seconds": 2.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 65,
+            "part_index": 0,
+            "pitch": "F4",
+            "staff_index": 0,
+            "start_beat": 3.0,
+            "start_seconds": 3.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.5,
+            "midi_pitch": 84,
+            "part_index": 0,
+            "pitch": "C6",
+            "staff_index": 0,
+            "start_beat": 3.5,
+            "start_seconds": 3.5,
+            "voice_identifier": "1"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 60.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "source-generated-syncopation",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\syncopation.musicxml",
+      "input_sha256": "c603832b1189a6a8539e4ab180220b8f5e54601f5881615061fc798ffd3bd1b3"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 4.0,
+            "duration_seconds": 4.0,
+            "midi_pitch": 72,
+            "part_index": 0,
+            "pitch": "C5",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 2.0,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 55,
+            "part_index": 0,
+            "pitch": "G3",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "3"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 57,
+            "part_index": 0,
+            "pitch": "A3",
+            "staff_index": 0,
+            "start_beat": 1.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "3"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 2.0,
+            "midi_pitch": 65,
+            "part_index": 0,
+            "pitch": "F4",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 2.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 59,
+            "part_index": 0,
+            "pitch": "B3",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 2.0,
+            "voice_identifier": "3"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 3.0,
+            "start_seconds": 3.0,
+            "voice_identifier": "3"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 60.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "source-generated-three_voices",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\three_voices.musicxml",
+      "input_sha256": "6534855228913d7897c671ff2e1ee88528859e6111b9315ef7e013044f652214"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 2.0,
+            "midi_pitch": 72,
+            "part_index": 0,
+            "pitch": "C5",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 4.0,
+            "duration_seconds": 4.0,
+            "midi_pitch": 79,
+            "part_index": 0,
+            "pitch": "G5",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 2.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 2.0,
+            "midi_pitch": 76,
+            "part_index": 0,
+            "pitch": "E5",
+            "staff_index": 0,
+            "start_beat": 6.0,
+            "start_seconds": 6.0,
+            "voice_identifier": "1"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 60.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "source-generated-tie_across_barline",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\tie_across_barline.musicxml",
+      "input_sha256": "678260f1a5c7eb3d8f49cc3475b3d3bff0d0912debbb0352b404e37be8cd9d0c"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 0.6666666666666666,
+            "duration_seconds": 0.6666666666666666,
+            "midi_pitch": 72,
+            "part_index": 0,
+            "pitch": "C5",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.6666666666666666,
+            "duration_seconds": 0.6666666666666666,
+            "midi_pitch": 74,
+            "part_index": 0,
+            "pitch": "D5",
+            "staff_index": 0,
+            "start_beat": 0.6666666666666666,
+            "start_seconds": 0.6666666666666666,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 62,
+            "part_index": 0,
+            "pitch": "D4",
+            "staff_index": 0,
+            "start_beat": 1.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.6666666666666666,
+            "duration_seconds": 0.6666666666666667,
+            "midi_pitch": 76,
+            "part_index": 0,
+            "pitch": "E5",
+            "staff_index": 0,
+            "start_beat": 1.3333333333333333,
+            "start_seconds": 1.3333333333333333,
+            "voice_identifier": "1"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 60.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "source-generated-triplet_vs_duple",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\triplet_vs_duple.musicxml",
+      "input_sha256": "a7c9656f91daec641a0eb12bf5d24e411b8aac0bc34d0f06e7d2d57e44f8a4cc"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 0.6666666666666666,
+            "duration_seconds": 0.6666666666666666,
+            "midi_pitch": 72,
+            "part_index": 0,
+            "pitch": "C5",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.5,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.5,
+            "midi_pitch": 62,
+            "part_index": 0,
+            "pitch": "D4",
+            "staff_index": 0,
+            "start_beat": 0.5,
+            "start_seconds": 0.5,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.6666666666666666,
+            "duration_seconds": 0.6666666666666666,
+            "midi_pitch": 74,
+            "part_index": 0,
+            "pitch": "D5",
+            "staff_index": 0,
+            "start_beat": 0.6666666666666666,
+            "start_seconds": 0.6666666666666666,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.5,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 0,
+            "start_beat": 1.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.6666666666666666,
+            "duration_seconds": 0.6666666666666667,
+            "midi_pitch": 76,
+            "part_index": 0,
+            "pitch": "E5",
+            "staff_index": 0,
+            "start_beat": 1.3333333333333333,
+            "start_seconds": 1.3333333333333333,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.5,
+            "duration_seconds": 0.5,
+            "midi_pitch": 65,
+            "part_index": 0,
+            "pitch": "F4",
+            "staff_index": 0,
+            "start_beat": 1.5,
+            "start_seconds": 1.5,
+            "voice_identifier": "2"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 60.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "source-generated-triplet_vs_quadruple",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\triplet_vs_quadruple.musicxml",
+      "input_sha256": "5fc483dc3a1a056d98742e8797235e5598e6c0ca9c75ab399acbafbd873b0bdc"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.3333333333333333,
+            "midi_pitch": 72,
+            "part_index": 0,
+            "pitch": "C5",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.3333333333333333,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.3333333333333333,
+            "midi_pitch": 74,
+            "part_index": 0,
+            "pitch": "D5",
+            "staff_index": 0,
+            "start_beat": 0.3333333333333333,
+            "start_seconds": 0.3333333333333333,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.3333333333333333,
+            "midi_pitch": 62,
+            "part_index": 0,
+            "pitch": "D4",
+            "staff_index": 0,
+            "start_beat": 0.3333333333333333,
+            "start_seconds": 0.3333333333333333,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.33333333333333337,
+            "midi_pitch": 76,
+            "part_index": 0,
+            "pitch": "E5",
+            "staff_index": 0,
+            "start_beat": 0.6666666666666666,
+            "start_seconds": 0.6666666666666666,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.33333333333333337,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 0,
+            "start_beat": 0.6666666666666666,
+            "start_seconds": 0.6666666666666666,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.33333333333333326,
+            "midi_pitch": 72,
+            "part_index": 0,
+            "pitch": "C5",
+            "staff_index": 0,
+            "start_beat": 1.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.33333333333333326,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 1.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.33333333333333326,
+            "midi_pitch": 74,
+            "part_index": 0,
+            "pitch": "D5",
+            "staff_index": 0,
+            "start_beat": 1.3333333333333333,
+            "start_seconds": 1.3333333333333333,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.33333333333333326,
+            "midi_pitch": 62,
+            "part_index": 0,
+            "pitch": "D4",
+            "staff_index": 0,
+            "start_beat": 1.3333333333333333,
+            "start_seconds": 1.3333333333333333,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.33333333333333326,
+            "midi_pitch": 76,
+            "part_index": 0,
+            "pitch": "E5",
+            "staff_index": 0,
+            "start_beat": 1.6666666666666667,
+            "start_seconds": 1.6666666666666667,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.33333333333333326,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 0,
+            "start_beat": 1.6666666666666667,
+            "start_seconds": 1.6666666666666667,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.3333333333333335,
+            "midi_pitch": 72,
+            "part_index": 0,
+            "pitch": "C5",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 2.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.3333333333333335,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 2.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.3333333333333335,
+            "midi_pitch": 74,
+            "part_index": 0,
+            "pitch": "D5",
+            "staff_index": 0,
+            "start_beat": 2.3333333333333335,
+            "start_seconds": 2.3333333333333335,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.3333333333333335,
+            "midi_pitch": 62,
+            "part_index": 0,
+            "pitch": "D4",
+            "staff_index": 0,
+            "start_beat": 2.3333333333333335,
+            "start_seconds": 2.3333333333333335,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.3333333333333335,
+            "midi_pitch": 76,
+            "part_index": 0,
+            "pitch": "E5",
+            "staff_index": 0,
+            "start_beat": 2.6666666666666665,
+            "start_seconds": 2.6666666666666665,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.3333333333333335,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 0,
+            "start_beat": 2.6666666666666665,
+            "start_seconds": 2.6666666666666665,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.3333333333333335,
+            "midi_pitch": 72,
+            "part_index": 0,
+            "pitch": "C5",
+            "staff_index": 0,
+            "start_beat": 3.0,
+            "start_seconds": 3.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.3333333333333335,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 3.0,
+            "start_seconds": 3.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.3333333333333335,
+            "midi_pitch": 74,
+            "part_index": 0,
+            "pitch": "D5",
+            "staff_index": 0,
+            "start_beat": 3.3333333333333335,
+            "start_seconds": 3.3333333333333335,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.3333333333333335,
+            "midi_pitch": 62,
+            "part_index": 0,
+            "pitch": "D4",
+            "staff_index": 0,
+            "start_beat": 3.3333333333333335,
+            "start_seconds": 3.3333333333333335,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.3333333333333335,
+            "midi_pitch": 76,
+            "part_index": 0,
+            "pitch": "E5",
+            "staff_index": 0,
+            "start_beat": 3.6666666666666665,
+            "start_seconds": 3.6666666666666665,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.3333333333333335,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 0,
+            "start_beat": 3.6666666666666665,
+            "start_seconds": 3.6666666666666665,
+            "voice_identifier": "2"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 60.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "source-generated-tuplet_aligned",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\data\\polyrhythm\\tuplet_aligned.musicxml",
+      "input_sha256": "7e913ab9fad842cc43bacc070adbbb2c2b4323dec2e86790683ca2d0b16c5d55"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 62,
+            "part_index": 0,
+            "pitch": "D4",
+            "staff_index": 0,
+            "start_beat": 1.0,
+            "start_seconds": 0.5,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "1"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 120.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "known-monophonic_melody",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase3\\playback-inputs-validated\\monophonic_melody.musicxml",
+      "input_sha256": "20b4646d87471a9a7e29dde13340453c92c5fcca03d6ee6a9ac1e35c63996466"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 3.0,
+            "duration_seconds": 1.5,
+            "midi_pitch": 67,
+            "part_index": 0,
+            "pitch": "G4",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 69,
+            "part_index": 0,
+            "pitch": "A4",
+            "staff_index": 0,
+            "start_beat": 3.0,
+            "start_seconds": 1.5,
+            "voice_identifier": "1"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 120.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "known-dotted_notes_and_ties",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase3\\playback-inputs-validated\\dotted_notes_and_ties.musicxml",
+      "input_sha256": "dcfa6a2e184fee2d4ce93702361ffc56f88ea395ffba3dadcb4fdcee405c20fa"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.16666666666666666,
+            "midi_pitch": 72,
+            "part_index": 0,
+            "pitch": "C5",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.16666666666666666,
+            "midi_pitch": 74,
+            "part_index": 0,
+            "pitch": "D5",
+            "staff_index": 0,
+            "start_beat": 0.3333333333333333,
+            "start_seconds": 0.16666666666666666,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.16666666666666669,
+            "midi_pitch": 76,
+            "part_index": 0,
+            "pitch": "E5",
+            "staff_index": 0,
+            "start_beat": 0.6666666666666666,
+            "start_seconds": 0.3333333333333333,
+            "voice_identifier": "1"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 120.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "known-triplet_tuplets",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase3\\playback-inputs-validated\\triplet_tuplets.musicxml",
+      "input_sha256": "41fb4476664f865654e912dd85e2eaf224e0fe7fd4c3b813cc468a4a7b22db84"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.3333333333333333,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.3333333333333333,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.3333333333333333,
+            "midi_pitch": 67,
+            "part_index": 0,
+            "pitch": "G4",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.3333333333333333,
+            "midi_pitch": 48,
+            "part_index": 1,
+            "pitch": "C3",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.3333333333333333,
+            "midi_pitch": 55,
+            "part_index": 1,
+            "pitch": "G3",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 90.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "known-piano_grand_staff_chords",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase3\\playback-inputs-validated\\piano_grand_staff_chords.musicxml",
+      "input_sha256": "2ea76f475893bd2c91ff592935c266b6aaf659e58d32db4a0f57452829a27e91"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 66,
+            "part_index": 0,
+            "pitch": "F#4",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 58,
+            "part_index": 0,
+            "pitch": "B-3",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 66,
+            "part_index": 0,
+            "pitch": "F#4",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 58,
+            "part_index": 0,
+            "pitch": "B-3",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "2"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 120.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "known-multiple_voices_repeats_accidentals",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase3\\playback-inputs-validated\\multiple_voices_repeats_accidentals.musicxml",
+      "input_sha256": "c56d08954d39cacd40ff1c126254e8d3e69141efa79d0d34f6555b1be904f89b"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 2.0,
+            "duration_seconds": 1.5,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 0.5,
+            "midi_pitch": 62,
+            "part_index": 0,
+            "pitch": "D4",
+            "staff_index": 0,
+            "start_beat": 2.0,
+            "start_seconds": 1.5,
+            "voice_identifier": "1"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 60.0,
+            "start_beat": 0.0
+          },
+          {
+            "bpm": 120.0,
+            "start_beat": 1.0
+          }
+        ]
+      },
+      "id": "known-piecewise_tempo",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase3\\playback-inputs-validated\\piecewise_tempo.musicxml",
+      "input_sha256": "a53cb8b27a68b32896aa01d28db415deb56cf99de0642a03d73acf8349b65af9"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 1.0,
+            "duration_seconds": 1.0,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 4.0,
+            "duration_seconds": 2.0,
+            "midi_pitch": 62,
+            "part_index": 0,
+            "pitch": "D4",
+            "staff_index": 0,
+            "start_beat": 1.0,
+            "start_seconds": 1.0,
+            "voice_identifier": "1"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 60.0,
+            "start_beat": 0.0
+          },
+          {
+            "bpm": 120.0,
+            "start_beat": 1.0
+          }
+        ]
+      },
+      "id": "known-pickup-tempo",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase3\\playback-inputs-validated\\pickup-tempo.musicxml",
+      "input_sha256": "5348fcbde572b93164f79a59470bf94a431be83afc84e98cbb43f9fad27c8a14"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 4.0,
+            "duration_seconds": 2.0,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 4.0,
+            "duration_seconds": 2.0,
+            "midi_pitch": 72,
+            "part_index": 0,
+            "pitch": "C5",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 4.0,
+            "duration_seconds": 2.0,
+            "midi_pitch": 52,
+            "part_index": 0,
+            "pitch": "E3",
+            "staff_index": 1,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "5"
+          },
+          {
+            "duration_beats": 4.0,
+            "duration_seconds": 2.0,
+            "midi_pitch": 48,
+            "part_index": 0,
+            "pitch": "C3",
+            "staff_index": 1,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "6"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 120.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "known-four-positions",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\homr-timing-465\\phase3\\export-installed\\four-position-voices.musicxml",
+      "input_sha256": "321532354429ae366db867508b768c2b0a94b8c8e51391388050d0f1746aec49"
+    },
+    {
+      "expected": {
+        "engine": "musicxml",
+        "engine_revision": "direct-xml",
+        "notes": [
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.16666666666666666,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.16666666666666666,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.3333333333333333,
+            "duration_seconds": 0.16666666666666666,
+            "midi_pitch": 55,
+            "part_index": 0,
+            "pitch": "G3",
+            "staff_index": 0,
+            "start_beat": 0.0,
+            "start_seconds": 0.0,
+            "voice_identifier": "2"
+          },
+          {
+            "duration_beats": 0.6666666666666666,
+            "duration_seconds": 0.33333333333333337,
+            "midi_pitch": 60,
+            "part_index": 0,
+            "pitch": "C4",
+            "staff_index": 0,
+            "start_beat": 0.3333333333333333,
+            "start_seconds": 0.16666666666666666,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 0.6666666666666666,
+            "duration_seconds": 0.33333333333333337,
+            "midi_pitch": 64,
+            "part_index": 0,
+            "pitch": "E4",
+            "staff_index": 0,
+            "start_beat": 0.3333333333333333,
+            "start_seconds": 0.16666666666666666,
+            "voice_identifier": "1"
+          },
+          {
+            "duration_beats": 2.3333333333333335,
+            "duration_seconds": 1.1666666666666667,
+            "midi_pitch": 62,
+            "part_index": 0,
+            "pitch": "D4",
+            "staff_index": 0,
+            "start_beat": 1.0,
+            "start_seconds": 0.5,
+            "voice_identifier": "1"
+          }
+        ],
+        "schema_version": 2,
+        "tempo_changes": [
+          {
+            "bpm": 120.0,
+            "start_beat": 0.0
+          }
+        ]
+      },
+      "id": "known-independent-voice-tie-limitation",
+      "input": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Research\\omr\\reports\\zeus-attribution\\phase2\\cross-system-chord-tie.musicxml",
+      "input_sha256": "babc7ed14fd0267cd108f73c9acbd8fb8dbc7b66bdb1d4d62175d9e37216eadb"
+    }
+  ],
+  "normalizer": {
+    "path": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\dist\\Bridge\\musicxml_normalizer.py",
+    "sha256": "2e56906636a7164784492ac47c0f0fd628e4f15e172390b58e2792160f819c8e"
+  },
+  "python": "C:\\Users\\bur4x\\Desktop\\lecture\\big_projects\\Sheet2Play\\Bridge\\.venv-homr-gpu\\Scripts\\python.exe",
+  "tie_limitation": "Six production events; four independent-voice tie-merged events required. Compatibility is not correctness for this known case."
+}

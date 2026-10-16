@@ -1,0 +1,642 @@
+{
+  "actual_cloud_cost_usd": 0.0,
+  "candidate": "audiveris_page",
+  "cold_start_seconds": [
+    40.57799999999952,
+    40.5630000000001,
+    40.60900000000038,
+    35.59399999999914,
+    40.57899999999972,
+    45.59400000000096,
+    45.57800000000134,
+    35.57799999999952,
+    40.60900000000038,
+    45.5619999999999,
+    40.57799999999952,
+    40.57799999999952,
+    45.57799999999952,
+    40.60900000000038,
+    45.57799999999952,
+    40.57800000000134,
+    35.5630000000001,
+    55.625,
+    40.57799999999952,
+    40.57799999999952,
+    40.59400000000096,
+    45.57899999999972,
+    40.5630000000001,
+    45.57899999999972,
+    45.5630000000001,
+    45.57799999999952,
+    40.57799999999952,
+    25.561999999999898,
+    30.57799999999952,
+    35.59399999999914,
+    30.57799999999952,
+    15.593999999999141,
+    40.57799999999952,
+    30.57799999999952,
+    30.593000000000757,
+    30.59400000000096,
+    30.57799999999952,
+    30.57799999999952,
+    30.57799999999952,
+    35.57799999999952,
+    30.57800000000134,
+    25.593000000000757,
+    30.593000000000757,
+    25.57799999999952,
+    40.5619999999999,
+    35.57799999999952,
+    40.59399999999914,
+    25.57799999999952,
+    25.593000000000757,
+    30.59399999999914,
+    40.57799999999952,
+    40.5630000000001,
+    35.60900000000038,
+    25.57799999999952,
+    30.59399999999914,
+    45.57899999999972,
+    60.59400000000096,
+    40.57800000000134,
+    15.563000000000102
+  ],
+  "collection": "smb-pianoform",
+  "composition_count": 18,
+  "composition_macro": {
+    "onset_duration_f1": 0.09863803143566607,
+    "onset_f1": 0.1178657989503457,
+    "pitch_f1": 0.7568426894579541
+  },
+  "configuration_sha256": "3f340c6bab3e8884240da3a2ffdec61b0bd98ebcf81788d3725d08a9aa5ef137",
+  "duration_classification": {
+    "balanced_accuracy": 0.38796944328817917,
+    "confusion_matrix": [
+      {
+        "actual": "1",
+        "count": 481,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 42,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1",
+        "count": 2,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1",
+        "count": 11,
+        "predicted": "2"
+      },
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "3"
+      },
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "3/4"
+      },
+      {
+        "actual": "1",
+        "count": 2,
+        "predicted": "3333333333333333/10000000000000000"
+      },
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "3333333333333333/5000000000000000"
+      },
+      {
+        "actual": "1/2",
+        "count": 75,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 801,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 30,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/2",
+        "count": 1,
+        "predicted": "1/8"
+      },
+      {
+        "actual": "1/2",
+        "count": 6,
+        "predicted": "2"
+      },
+      {
+        "actual": "1/2",
+        "count": 7,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 2,
+        "predicted": "3/4"
+      },
+      {
+        "actual": "1/2",
+        "count": 1,
+        "predicted": "3333333333333333/10000000000000000"
+      },
+      {
+        "actual": "1/3",
+        "count": 7,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/3",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/4",
+        "count": 38,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/4",
+        "count": 25,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 420,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/4",
+        "count": 2,
+        "predicted": "2"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "3/4"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "3333333333333333/5000000000000000"
+      },
+      {
+        "actual": "1/5",
+        "count": 2,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/6",
+        "count": 7,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/6",
+        "count": 35,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/6",
+        "count": 3,
+        "predicted": "8333333333333333/50000000000000000"
+      },
+      {
+        "actual": "1/8",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/8",
+        "count": 6,
+        "predicted": "1/8"
+      },
+      {
+        "actual": "15/4",
+        "count": 1,
+        "predicted": "2"
+      },
+      {
+        "actual": "2",
+        "count": 6,
+        "predicted": "1"
+      },
+      {
+        "actual": "2",
+        "count": 6,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "2",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "2",
+        "count": 55,
+        "predicted": "2"
+      },
+      {
+        "actual": "2",
+        "count": 1,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "3",
+        "count": 6,
+        "predicted": "1"
+      },
+      {
+        "actual": "3",
+        "count": 3,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "3",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "3",
+        "count": 15,
+        "predicted": "2"
+      },
+      {
+        "actual": "3",
+        "count": 19,
+        "predicted": "3"
+      },
+      {
+        "actual": "3/2",
+        "count": 6,
+        "predicted": "1"
+      },
+      {
+        "actual": "3/2",
+        "count": 5,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "3/2",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "3/2",
+        "count": 1,
+        "predicted": "3"
+      },
+      {
+        "actual": "3/2",
+        "count": 13,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "3/4",
+        "count": 3,
+        "predicted": "1"
+      },
+      {
+        "actual": "3/4",
+        "count": 2,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "3/4",
+        "count": 2,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "3/4",
+        "count": 3,
+        "predicted": "3/4"
+      },
+      {
+        "actual": "3/8",
+        "count": 1,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "4",
+        "count": 2,
+        "predicted": "4"
+      },
+      {
+        "actual": "5",
+        "count": 1,
+        "predicted": "4"
+      },
+      {
+        "actual": "5",
+        "count": 1,
+        "predicted": "5"
+      },
+      {
+        "actual": "5/2",
+        "count": 2,
+        "predicted": "2"
+      },
+      {
+        "actual": "5/4",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "5/4",
+        "count": 1,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "6",
+        "count": 2,
+        "predicted": "2"
+      },
+      {
+        "actual": "6",
+        "count": 1,
+        "predicted": "6"
+      },
+      {
+        "actual": "7",
+        "count": 1,
+        "predicted": "2"
+      },
+      {
+        "actual": "7/2",
+        "count": 1,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "7/2",
+        "count": 3,
+        "predicted": "3"
+      },
+      {
+        "actual": "7/2",
+        "count": 1,
+        "predicted": "7/2"
+      },
+      {
+        "actual": "7/4",
+        "count": 1,
+        "predicted": "7/4"
+      },
+      {
+        "actual": "7/6",
+        "count": 1,
+        "predicted": "3"
+      }
+    ],
+    "degenerate_single_class_predictor": false,
+    "labels": [
+      "1",
+      "1/2",
+      "1/3",
+      "1/4",
+      "1/5",
+      "1/6",
+      "1/8",
+      "15/4",
+      "2",
+      "3",
+      "3/2",
+      "3/4",
+      "3/8",
+      "3333333333333333/10000000000000000",
+      "3333333333333333/5000000000000000",
+      "4",
+      "5",
+      "5/2",
+      "5/4",
+      "6",
+      "7",
+      "7/2",
+      "7/4",
+      "7/6",
+      "8333333333333333/50000000000000000"
+    ],
+    "macro_f1": 0.3521359415130487,
+    "majority_baseline_accuracy": 0.42242562929061783,
+    "majority_baseline_macro_f1": 0.023758043758043756,
+    "majority_class": "1/2",
+    "matched_pitch_onset_notes": 2185,
+    "unmatched_expected": 16863,
+    "unmatched_predicted": 16708
+  },
+  "eligible_page_count": 59,
+  "error_code_stage_counts": {
+    "AUDIVERIS_FAILED:recognition": 5,
+    "AUDIVERIS_OUTPUT_INVALID:artifact_capture": 3
+  },
+  "extra_note_count": 17089,
+  "failure_class_rates": {
+    "complete_document": 0.13559322033898305,
+    "invalid_output": 0.05084745762711865,
+    "missing_system": 0.0,
+    "timeout": 0.0
+  },
+  "failure_penalized_omr_ned_complete": true,
+  "failure_penalized_omr_ned_count": 59,
+  "failure_penalized_omr_ned_mean": 0.5203582256416263,
+  "failure_penalty_omr_ned": 1.0,
+  "failure_rate": 0.13559322033898305,
+  "feature_breakdowns": {
+    "cross_staff": {
+      "unknown": {
+        "composition_count": 18,
+        "composition_macro_primary_f1": 0.09863803143566607,
+        "page_count": 59
+      }
+    },
+    "density_notes_per_quarter": {
+      "ge4": {
+        "composition_macro_primary_f1": 0.06431350545704911,
+        "page_count": 37
+      },
+      "lt4": {
+        "composition_macro_primary_f1": 0.12963912803626523,
+        "page_count": 22
+      }
+    },
+    "document_measure_count": {
+      "gt32": {
+        "composition_macro_primary_f1": 0.07084523811107574,
+        "page_count": 16
+      },
+      "le32": {
+        "composition_macro_primary_f1": 0.10449296394886476,
+        "page_count": 43
+      }
+    },
+    "has_independent_voices": {
+      "False": {
+        "composition_count": 7,
+        "composition_macro_primary_f1": 0.023382607513140204,
+        "page_count": 14
+      },
+      "True": {
+        "composition_count": 16,
+        "composition_macro_primary_f1": 0.11706169967956206,
+        "page_count": 45
+      }
+    },
+    "has_meter_changes": {
+      "False": {
+        "composition_count": 18,
+        "composition_macro_primary_f1": 0.10053143241912738,
+        "page_count": 58
+      },
+      "True": {
+        "composition_count": 1,
+        "composition_macro_primary_f1": 0.04991680532445924,
+        "page_count": 1
+      }
+    },
+    "has_repeats": {
+      "False": {
+        "composition_count": 14,
+        "composition_macro_primary_f1": 0.1120725608230545,
+        "page_count": 35
+      },
+      "True": {
+        "composition_count": 12,
+        "composition_macro_primary_f1": 0.06950928138743422,
+        "page_count": 24
+      }
+    },
+    "has_ties": {
+      "True": {
+        "composition_count": 18,
+        "composition_macro_primary_f1": 0.09863803143566607,
+        "page_count": 59
+      }
+    },
+    "has_tuplets": {
+      "False": {
+        "composition_count": 15,
+        "composition_macro_primary_f1": 0.1194676444611335,
+        "page_count": 40
+      },
+      "True": {
+        "composition_count": 8,
+        "composition_macro_primary_f1": 0.07442870946153064,
+        "page_count": 19
+      }
+    }
+  },
+  "item_score_sha256": {
+    "test/beethoven/sonata02_2/sonata02_2_1.png": "e5626ef4caaafab0354eb27943b28970b4745046b6ba6ff19f70859c5c5dfcc8",
+    "test/beethoven/sonata02_2/sonata02_2_2.png": "920d1b73bdd77e38073c09902195d4871138862636d253b88e91430d5677cb5f",
+    "test/beethoven/sonata02_2/sonata02_2_3.png": "e5199da910066b3a3bbfe7a9c1bec58360a0eb6f5acb5b0d28c5a33073a6246a",
+    "test/beethoven/sonata05_1/sonata05_1_2.png": "ac7e54c36a040ea7e946b253affe622744aa274a1a6fb28fbd2149b79efaae06",
+    "test/beethoven/sonata05_1/sonata05_1_3.png": "feac65d28529839460c9ad8161cfcf17295ec0e3f3d28595cbbe8bd00ed25c42",
+    "test/beethoven/sonata05_1/sonata05_1_4.png": "b22f29b3674a919eb238059ebca9ec3fb29fc2211516a58cd9a5a911022d545c",
+    "test/beethoven/sonata05_1/sonata05_1_5.png": "5537648d49944e4dc12942dcc3c0c769f9d3050a2ef39f49af392a64c2af4c08",
+    "test/beethoven/sonata05_1/sonata05_1_6.png": "b0af857d28971b8549266986fc2356ea914c8b53fdafe7536aadd7b96dfec9bd",
+    "test/beethoven/sonata07_4/sonata07_4_1.png": "86f8a6b8022df821271061c8ff33653667facb58a143ae5cf46f6df92ca8fb08",
+    "test/beethoven/sonata07_4/sonata07_4_2.png": "82a8e11c34af8de451467dce2209a6b24d4f076a063983c534465f49bf23cd88",
+    "test/beethoven/sonata07_4/sonata07_4_3.png": "c88fd431e7b50018d1ff39d653dbf482ccc320e9e888f33d9972cc58bf1a8701",
+    "test/beethoven/sonata07_4/sonata07_4_4.png": "35d1d6804b135ecc11f3a53aff06158acf00e9e5b43797a1ba999d28460949db",
+    "test/beethoven/sonata17_1/sonata17_1_1.png": "e67812454507e6d5f4b71de82a33342ec79142ec00e963fdb430b60d0ca4fafa",
+    "test/beethoven/sonata17_1/sonata17_1_2.png": "37455317a98216576859582a2503952b54e9a4b41668d9637071dfe0ed415068",
+    "test/beethoven/sonata17_1/sonata17_1_3.png": "add5b77b73f27e9ed1f2a71b5f58c50436805796d54e7fec76e9d96b3434cdb8",
+    "test/beethoven/sonata17_1/sonata17_1_4.png": "8b68a1ac6f4d30919b91ccd7341edefb0674fa4b622d9f28630ebde49ae39737",
+    "test/beethoven/sonata17_1/sonata17_1_6.png": "cb316ea9fd2b46884a1041a973a3902b81115bad4700371ca8fff1e88917f8fd",
+    "test/beethoven/sonata22_2/sonata22_2_1.png": "56aa29973d4e19145565b7f63b25ca5284c6709c64785aa19cc0f4881e68b71a",
+    "test/beethoven/sonata22_2/sonata22_2_2.png": "72f409cad0ebff40f049c6a686d7ae36f9ba87ab15b93332d2dcb4baa4d34361",
+    "test/beethoven/sonata22_2/sonata22_2_3.png": "8c68062d46f98d26ff1826edaf9d48e1769622c92ef55127a39399e64cc3d91e",
+    "test/beethoven/sonata22_2/sonata22_2_4.png": "de212f4337bebb2612a30dea7a0537935b226b122f83493a1f4dc612aae98d8b",
+    "test/beethoven/sonata22_2/sonata22_2_5.png": "73e77ac528ce19fdd4ba3aabb6a8c524bd502868e83823aa1bb1ab970a1c37a4",
+    "test/beethoven/sonata22_2/sonata22_2_6.png": "07307cef89d55350dab1490ce064d1e5bcac05a41ce2971bc3bad9a371cc909b",
+    "test/beethoven/sonata26_1/sonata26_1_1.png": "6db9b1769392894da006aefbcc2f7ebcdbb270201654bc70664e74bdda72906a",
+    "test/beethoven/sonata26_1/sonata26_1_2.png": "8755abda6dfa561aa5d4b0b7626855d0c9fe488e8b04b646cb553b4cac20479e",
+    "test/beethoven/sonata26_1/sonata26_1_4.png": "c69a7e962979718cf53cbf77a97a6e78a4a76385e57dea6c40e9cdf2f9b2b1be",
+    "test/beethoven/sonata26_1/sonata26_1_5.png": "b459067a6c0dbf96fe4df676a24e243c5ec93b18f015d8872ee2774163f6e176",
+    "test/chopin/mazurka68_4/mazurka68_4_1.png": "d37b923cc35a68c379bffadceeccf3a01d2ce773442ac1f165587905ec7fe1d4",
+    "test/chopin/mazurka68_4/mazurka68_4_2.png": "e07d1aafa5af2f528b8deb91521408fc9426e1c66d05edd410c297486961cb5c",
+    "test/chopin/mazurka_51/mazurka_51_1.png": "40536e46236d93e96cc71fa5b1dc86522ee9afc63a770894bb66c10c251baf55",
+    "test/chopin/mazurka_51/mazurka_51_4.png": "43d3e4168fd38552fd0cf79b998eb33c7ad19cae94965e4a59728ff29f0acf3d",
+    "test/hummel/prelude67_14/prelude67_14_1.png": "8320d131364cc45413b7304174aa499ec3ee94c64e981382b6677b1d820c6e98",
+    "test/joplin/breeze/breeze_1.png": "42646b211cd3e4c3961d9328ed4b8f61a0706f039c95af6a1bd13462a87e229b",
+    "test/joplin/breeze/breeze_2.png": "654acb8fa7bbe4f52d5284036768f1431839abe8ed4bf86aca61cd498a5bd7b2",
+    "test/joplin/breeze/breeze_3.png": "63cd765c8284b1e821701c9df9cb58724cc8f4d68510ef274d14474f069b934d",
+    "test/joplin/breeze/breeze_4.png": "72fd24102fc2cb55d6aec1424dd4309477355342ef54b7f4518bcd5de6c4f7d9",
+    "test/joplin/lilyqueen/lilyqueen_1.png": "ed1532bd9c33757c488a9274e031619ecefae8b163a166024e04a6b1f8e4c317",
+    "test/joplin/lilyqueen/lilyqueen_2.png": "0493273f0f13fd25482014dc52a4947ac950d1342bc96e44bd01d6c6824557c1",
+    "test/joplin/lilyqueen/lilyqueen_3.png": "777b45de0de668f15e9256df2794c60f5d65e18a9e5f33ffef26cde69fb3772d",
+    "test/joplin/lilyqueen/lilyqueen_4.png": "951408017d8badb29cd92473af84eb1980355a72687e049ea4f7da8187e5c67b",
+    "test/joplin/pleasant/pleasant_1.png": "1518d11e2d7eb8af7c0eb5b40bd9f790406236bf5618107c41ea27000aadb5c7",
+    "test/joplin/pleasant/pleasant_2.png": "bace9db46628000cbcfe63f0e43a5334210a93a0c0b261a2ae3ac4285435e548",
+    "test/joplin/pleasant/pleasant_3.png": "5e94b15859c3ce71b75599c3f76d0c1fe5cf68bfbea06ff591039efeaf18c6a8",
+    "test/joplin/pleasant/pleasant_4.png": "b000663d8cede215c7e39ac6d529ebe6ab32f6921a9d987db8a1bcdf64a23662",
+    "test/liszt/etude10_05/etude10_05_1.png": "177e9d902ac9a83f5d3238821998ec52079158c784053966d918bcf3d912c69d",
+    "test/liszt/etude10_05/etude10_05_2.png": "2c615048cafa4be80b66b634c042fa5bc5eff3d25a22325cd85d733d760e5429",
+    "test/liszt/etude10_05/etude10_05_3.png": "c479732a77703057db1fcc487a4cf8888974ec6c1d2ad4eb013faa366b07aa5b",
+    "test/liszt/etude10_05/etude10_05_4.png": "35d29ebbee815b9ca86c3ee00f1500837810b3e800edadbb2c6582ed15d0c68d",
+    "test/mozart/sonata06_3j/sonata06_3j_1.png": "20987a333993ce7db25da291f2e4aba7d8bd6a88a266617e41c2bf8b6bd42884",
+    "test/mozart/sonata08_2/sonata08_2_1.png": "68699aebefe3bc66039a3b0074e430c7360f618a3c59421d90a0117362f05a26",
+    "test/mozart/sonata08_2/sonata08_2_2.png": "29c7c3c24b9c235e48c717700091e8d7ce1bdf1338bd903d151116631f119a78",
+    "test/mozart/sonata08_2/sonata08_2_3.png": "526734e4cb470a7d30714fd61620fda2738758950290badbc2fa867317a5d762",
+    "test/mozart/sonata08_2/sonata08_2_5.png": "ae07df5763cb7ac14d0d332cd1910a6ac3821c9bda661f1384eb07c57218495d",
+    "test/mozart/viennese1_1/viennese1_1_1.png": "6b02e84c82b686502aa60c70474b9327f72b5db32d5349545e96d06fc26bd8fa",
+    "test/mozart/viennese1_1/viennese1_1_2.png": "4d7dc78e1734738be0d2291657a192048e7b134e462fd53777920c269303a5b2",
+    "test/scarlatti/L055K330/L055K330_1.png": "b036ba28de86092bdffe11cb5f0bd6916951f10b130d2a5d02756080f220a8e3",
+    "test/scarlatti/L055K330/L055K330_2.png": "583c6f5b194ceff2bd77293d1257a323b131f18ae542ba4884f4a26a94e723ef",
+    "test/scarlatti/L056K281/L056K281_1.png": "b1cf04d0004751293d3e6999ad528dc330a5114284c15e10f9fdb9f6677d6697",
+    "test/scarlatti/L056K281/L056K281_3.png": "d8ca675d9361c39e085385dbdaa8221e5aa921fc06b5b400ffd9f9215bf42d6d"
+  },
+  "latency_seconds": {
+    "comparable_page_count": 59,
+    "excluded_noncomparable_page_count": 0,
+    "includes_failures": true,
+    "median": 40.5630000000001,
+    "p95": 45.580499999999844
+  },
+  "missing_note_count": 20159,
+  "omr_ned_scoring_error_count": 0,
+  "peak_ram_bytes_max": 1663651840,
+  "peak_vram_bytes_max": 0,
+  "reference_interpretation": "Combined SMB region truth exported to MusicXML; OMR-NED is not directly comparable to native **kern published scores",
+  "sample_sha256": "2c98d5638c368b1a53bdb3440177d04fa585f9b1ca6ce6adbe65af64cd8e27d1",
+  "schema_version": 1,
+  "scope": "bounded_59_page_screen_descriptive",
+  "scored_page_count": 59,
+  "scorer_sha256": "b5f4b33484454e7e0e1affb008a0ae47d791af127f283cc76ac09b8da31c2e97",
+  "status_counts": {
+    "failed": 8,
+    "succeeded": 51
+  },
+  "training_overlap": {
+    "audiveris_page": [
+      "unknown"
+    ]
+  },
+  "valid_output_omr_ned_count": 51,
+  "valid_output_omr_ned_mean": 0.44512030025207744,
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

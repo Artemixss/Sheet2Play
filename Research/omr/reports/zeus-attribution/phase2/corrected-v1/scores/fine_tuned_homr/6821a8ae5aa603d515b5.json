@@ -1,0 +1,114 @@
+{
+  "adapter_id": "epoch14_verified_onnx",
+  "aligned_voice_accuracy": 1.0,
+  "candidate_id": "fine_tuned_homr",
+  "cold_start": true,
+  "composition_group": "beethoven/sonata05_1",
+  "coverage": {
+    "chord_completeness": 0.9594594594594594,
+    "complete_chords": 71,
+    "per_staff": {
+      "0": {
+        "matched_notes": 149,
+        "predicted_notes": 155,
+        "recall": 0.45288753799392095,
+        "reference_notes": 329
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 172,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 74,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 139,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 108,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 11,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "2",
+        "count": 26,
+        "predicted": "2"
+      },
+      {
+        "actual": "3",
+        "count": 11,
+        "predicted": "3"
+      },
+      {
+        "actual": "3",
+        "count": 2,
+        "predicted": "5"
+      },
+      {
+        "actual": "3/2",
+        "count": 15,
+        "predicted": "3/2"
+      },
+      {
+        "actual": "3/4",
+        "count": 9,
+        "predicted": "3/4"
+      }
+    ],
+    "unmatched_expected": 7,
+    "unmatched_predicted": 5
+  },
+  "elapsed_seconds": 25.625,
+  "error": null,
+  "extra_note_count": 8,
+  "failure_penalized_omr_ned": 0.16995666827154549,
+  "first_divergent_measure": 8,
+  "input_identity": {
+    "historical_score_sha256": "5053038b37c6009dec838212169182ff23c77a807fc35d00163fe6c065b23ea9",
+    "reference_sha256": "b3837666c8d877128b026a1d1d7378673a36ba42a537b2e8ae81670d66226752",
+    "result_sha256": "586ea412aad83a3e4d648bc049e6438a8be25cb0c66c65de9431faf18a791911"
+  },
+  "item_id": "test/beethoven/sonata05_1/sonata05_1_3.png",
+  "mean_offset_error": 0.013975155279503106,
+  "missing_note_count": 10,
+  "omr_ned": 0.16995666827154549,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.9725609756097561,
+  "onset_f1": 0.9817073170731708,
+  "peak_ram_bytes": 1581707264,
+  "peak_vram_bytes": 1636827136,
+  "pitch_f1": 0.9908536585365854,
+  "predicted_note_count": 327,
+  "reference_measure_count": 45,
+  "reference_note_count": 329,
+  "reference_quarter_length": "135",
+  "schema_version": 2,
+  "scoring_identity_sha256": "ed9e5b7e6f998b5787ae21dfc0b7f545c42fc0bc83b60fc717f002d6b34aa568",
+  "staff_accuracy": 0.4670846394984326,
+  "status": "succeeded",
+  "timeline_length_error": "0",
+  "timing_policy": "symmetric-rational-4096-roundoff-v1",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

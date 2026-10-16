@@ -1,0 +1,115 @@
+{
+  "measures": null,
+  "normalized_notes": [
+    {
+      "duration": "1/8",
+      "onset": "0",
+      "pitch": 69,
+      "staff": 0,
+      "voice": "5"
+    },
+    {
+      "duration": "1/8",
+      "onset": "1/8",
+      "pitch": 62,
+      "staff": 0,
+      "voice": "5"
+    },
+    {
+      "duration": "1/8",
+      "onset": "1/4",
+      "pitch": 67,
+      "staff": 0,
+      "voice": "5"
+    },
+    {
+      "duration": "1/8",
+      "onset": "3/8",
+      "pitch": 57,
+      "staff": 1,
+      "voice": "1"
+    },
+    {
+      "duration": "1",
+      "onset": "1/2",
+      "pitch": 62,
+      "staff": 1,
+      "voice": "1"
+    },
+    {
+      "duration": "1/8",
+      "onset": "4",
+      "pitch": 69,
+      "staff": 0,
+      "voice": "5"
+    },
+    {
+      "duration": "2/7",
+      "onset": "33/8",
+      "pitch": 71,
+      "staff": 0,
+      "voice": "5"
+    },
+    {
+      "duration": "2/7",
+      "onset": "247/56",
+      "pitch": 72,
+      "staff": 0,
+      "voice": "5"
+    },
+    {
+      "duration": "1/8",
+      "onset": "8",
+      "pitch": 70,
+      "staff": 0,
+      "voice": "5"
+    },
+    {
+      "duration": "2/7",
+      "onset": "65/8",
+      "pitch": 64,
+      "staff": 0,
+      "voice": "5"
+    },
+    {
+      "duration": "2/7",
+      "onset": "471/56",
+      "pitch": 66,
+      "staff": 0,
+      "voice": "5"
+    },
+    {
+      "duration": "2/7",
+      "onset": "487/56",
+      "pitch": 71,
+      "staff": 0,
+      "voice": "5"
+    },
+    {
+      "duration": "1/3",
+      "onset": "12",
+      "pitch": 53,
+      "staff": 1,
+      "voice": "1"
+    },
+    {
+      "duration": "1/3",
+      "onset": "37/3",
+      "pitch": 63,
+      "staff": 1,
+      "voice": "1"
+    },
+    {
+      "duration": "1/3",
+      "onset": "38/3",
+      "pitch": 69,
+      "staff": 0,
+      "voice": "5"
+    }
+  ],
+  "notes": null,
+  "trace_failure": {
+    "error": "ValueError: Non-grace note requires positive duration",
+    "stage": "xml_trace"
+  }
+}

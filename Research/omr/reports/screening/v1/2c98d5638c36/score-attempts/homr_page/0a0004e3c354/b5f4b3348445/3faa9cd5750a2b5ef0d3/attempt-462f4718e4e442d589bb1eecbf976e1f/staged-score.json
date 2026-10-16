@@ -1,0 +1,52 @@
+{
+  "adapter_id": "shipped_homr_direct",
+  "aligned_voice_accuracy": 1.0,
+  "candidate_id": "shipped_homr",
+  "cold_start": true,
+  "composition_group": "scarlatti/L055K330",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1/2",
+        "count": 202,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 36,
+        "predicted": "1/4"
+      }
+    ],
+    "unmatched_expected": 64,
+    "unmatched_predicted": 65
+  },
+  "elapsed_seconds": 20.625,
+  "error": null,
+  "extra_note_count": 65,
+  "failure_penalized_omr_ned": 0.20425531914893616,
+  "first_divergent_measure": 33,
+  "item_id": "test/scarlatti/L055K330/L055K330_1.png",
+  "mean_offset_error": 0.0,
+  "missing_note_count": 64,
+  "omr_ned": 0.20425531914893616,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.7867768595041322,
+  "onset_f1": 0.7867768595041322,
+  "peak_ram_bytes": 1600217088,
+  "peak_vram_bytes": 1643118592,
+  "pitch_f1": 0.9950413223140495,
+  "predicted_note_count": 303,
+  "reference_measure_count": 43,
+  "reference_note_count": 302,
+  "reference_quarter_length": "129/2",
+  "schema_version": 1,
+  "staff_accuracy": 0.6596638655462185,
+  "status": "succeeded",
+  "timeline_length_error": "3/2",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

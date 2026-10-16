@@ -1,0 +1,26 @@
+{
+  "audited_count": 1,
+  "collection": "smb-pianoform",
+  "eligible_count": 402,
+  "full_collection": false,
+  "identity": {
+    "builder_sha256": "6172cd483a1b0a2986c3a01ff60ccbfbfa177218e5c5cc78acd1a4aeeb8f04e3",
+    "manifest_sha256": "f73419cb60019d0bfbaf7ce0efaf2fdea66d89648eec3d2552c606f2172d9a81",
+    "metadata_sha256": "3a1f727011fb6a468dbdaa45052f4b35e7282c4002fe4e395d98d369a7101c52",
+    "parser_sha256": "0bea9cdb67f60110ff53305904909ddb56de9d965958b344aa824244ef900c8d"
+  },
+  "invalid_count": 0,
+  "items": [
+    {
+      "id": "test/bach/bwv978_3/bwv978_3_1.png",
+      "note_count": 471,
+      "reference_path": "Research/omr/.runtime/phase3/references/59b1dd035f0066b337fd5556.json",
+      "reference_sha256": "d582269c05b7060149dfbed7a6d9af99d904268dfe94711ad75d39878d799880",
+      "state": "generated",
+      "status": "valid"
+    }
+  ],
+  "schema_version": 1,
+  "scope": "complete_page_reference_preflight",
+  "valid_count": 1
+}

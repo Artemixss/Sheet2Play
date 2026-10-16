@@ -1,0 +1,57 @@
+{
+  "adapter_id": "homr_455_explicit_onnx_pair",
+  "aligned_voice_accuracy": 0.4911242603550296,
+  "candidate_id": "homr_455",
+  "cold_start": true,
+  "composition_group": "chopin/mazurka68_4",
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 102,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 67,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "3/2",
+        "count": 7,
+        "predicted": "1"
+      }
+    ],
+    "unmatched_expected": 1,
+    "unmatched_predicted": 8
+  },
+  "elapsed_seconds": 15.718999999997322,
+  "error": null,
+  "extra_note_count": 15,
+  "failure_penalized_omr_ned": 0.6,
+  "first_divergent_measure": 1,
+  "item_id": "test/chopin/mazurka68_4/mazurka68_4_1.png",
+  "mean_offset_error": 0.019886363636363636,
+  "missing_note_count": 8,
+  "omr_ned": 0.6,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.9362880886426593,
+  "onset_f1": 0.9750692520775623,
+  "peak_ram_bytes": 1411186688,
+  "peak_vram_bytes": 1483735040,
+  "pitch_f1": 0.9750692520775623,
+  "predicted_note_count": 184,
+  "reference_measure_count": 17,
+  "reference_note_count": 177,
+  "reference_quarter_length": "51",
+  "schema_version": 1,
+  "staff_accuracy": 1.0,
+  "status": "succeeded",
+  "timeline_length_error": "0",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}

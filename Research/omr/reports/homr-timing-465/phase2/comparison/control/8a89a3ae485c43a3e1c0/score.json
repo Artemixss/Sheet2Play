@@ -1,0 +1,182 @@
+{
+  "aligned_voice_accuracy": 1.0,
+  "candidate": "shipped-426-phase2-control",
+  "capture_status": "complete",
+  "comparison_identity": "91e7256cd902a6ea2adb9fb415e6847b2ba0b9e94fb03fe8f5f1570ae6544fb9",
+  "composition_group": "liszt/etude10_05",
+  "configuration_identity": "31512f54e60c2e1cff049c60a7f68ceb0366eb49d4aeacf13368de17a0ec430d",
+  "conversion_error": null,
+  "coverage": {
+    "chord_completeness": 0.4406779661016949,
+    "complete_chords": 26,
+    "per_staff": {
+      "0": {
+        "matched_notes": 97,
+        "predicted_notes": 286,
+        "recall": 0.22823529411764706,
+        "reference_notes": 425
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 140,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 59,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 4,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/2",
+        "count": 55,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/4",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/6",
+        "count": 5,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "1/6",
+        "count": 96,
+        "predicted": "1/6"
+      },
+      {
+        "actual": "2",
+        "count": 1,
+        "predicted": "1/4"
+      },
+      {
+        "actual": "2",
+        "count": 2,
+        "predicted": "2"
+      },
+      {
+        "actual": "3/4",
+        "count": 1,
+        "predicted": "1/4"
+      }
+    ],
+    "unmatched_expected": 259,
+    "unmatched_predicted": 260
+  },
+  "elapsed_seconds": 15.73399999999674,
+  "extra_notes": 268,
+  "item_id": "8a89a3ae485c43a3e1c0",
+  "mean_offset_error": 0.020582329317269075,
+  "metrics": {
+    "aligned_voice_accuracy": 1.0,
+    "coverage": {
+      "chord_completeness": 0.4406779661016949,
+      "complete_chords": 26,
+      "per_staff": {
+        "0": {
+          "matched_notes": 97,
+          "predicted_notes": 286,
+          "recall": 0.22823529411764706,
+          "reference_notes": 425
+        },
+        "1": {
+          "matched_notes": 0,
+          "predicted_notes": 140,
+          "recall": null,
+          "reference_notes": 0
+        }
+      },
+      "reference_chords": 59,
+      "staff_interpretation": "notation staff index; not validated hand labels"
+    },
+    "duration": {
+      "confusion": [
+        {
+          "actual": "1",
+          "count": 4,
+          "predicted": "1"
+        },
+        {
+          "actual": "1",
+          "count": 1,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/2",
+          "count": 55,
+          "predicted": "1/2"
+        },
+        {
+          "actual": "1/4",
+          "count": 1,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/6",
+          "count": 5,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "1/6",
+          "count": 96,
+          "predicted": "1/6"
+        },
+        {
+          "actual": "2",
+          "count": 1,
+          "predicted": "1/4"
+        },
+        {
+          "actual": "2",
+          "count": 2,
+          "predicted": "2"
+        },
+        {
+          "actual": "3/4",
+          "count": 1,
+          "predicted": "1/4"
+        }
+      ],
+      "unmatched_expected": 259,
+      "unmatched_predicted": 260
+    },
+    "extra_notes": 268,
+    "mean_offset_error": 0.020582329317269075,
+    "missing_notes": 267,
+    "onset_duration_f1": 0.37132784958871917,
+    "onset_f1": 0.39012925969447704,
+    "pitch_f1": 0.9800235017626322,
+    "predicted_notes": 426,
+    "reference_notes": 425,
+    "staff_accuracy": 0.6139240506329114,
+    "timeline_predicted": "172/3",
+    "timeline_reference": "48"
+  },
+  "missing_notes": 267,
+  "onset_duration_f1": 0.37132784958871917,
+  "onset_f1": 0.39012925969447704,
+  "original_item_id": "test/liszt/etude10_05/etude10_05_2.png",
+  "pitch_f1": 0.9800235017626322,
+  "predicted_notes": 426,
+  "receipt_sha256": "82589353fef95fa16f46b4e012c6d9562ef1294e4184dfaa60deab007114ebe3",
+  "reference_notes": 425,
+  "reference_sha256": "5bc895fe809deb797895d7c676698bbc248853d82f0250f90a3245e1b101091b",
+  "staff_accuracy": 0.6139240506329114,
+  "status": "complete",
+  "timeline_predicted": "172/3",
+  "timeline_reference": "48"
+}

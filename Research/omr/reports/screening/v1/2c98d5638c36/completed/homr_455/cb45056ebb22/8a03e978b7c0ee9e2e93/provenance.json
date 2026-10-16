@@ -1,0 +1,17 @@
+{
+  "attempt_path": "Research\\omr\\reports\\screening\\v1\\2c98d5638c36\\attempts\\homr_455\\cb45056ebb22\\d603d2fbf15fbc7b7b57\\attempt-e120372012d64c95b653c73c748166d5",
+  "attempt_sha256": "56a0db4a37c4c37d429f2639434413c2b353779abcc748871903bb0f31805282",
+  "identity": {
+    "adapter_config_sha256": "c1dff58f76acf54863aaa39a67454458b36be38ba6e9de0ea75d22243b8f38b2",
+    "candidate": "homr_455",
+    "configuration_sha256": "cb45056ebb223f4bb82fc7b4eecd4f4fd28d5cd0a00b439bc00e8bde6537a99f",
+    "image_sha256": "a858cff2be8e547485f2da81722a2233db27edd884071585180169de6886e781",
+    "item_id": "test/mozart/viennese1_1/viennese1_1_1.png",
+    "reference_sha256": "50e26091b7c760c457f03422a7e987b8ff3d691b69830c3908c573283ab519ea",
+    "sample_sha256": "2c98d5638c368b1a53bdb3440177d04fa585f9b1ca6ce6adbe65af64cd8e27d1",
+    "schema_version": 1
+  },
+  "origin": "completed_attempt",
+  "result_sha256": "aa9d2c8ad04af3b2cda661dfe2dd631dba3199f3f7c22f8cfa5165a478c9471b",
+  "timing_source": "screening_complete_path"
+}

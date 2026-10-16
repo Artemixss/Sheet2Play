@@ -1,0 +1,109 @@
+{
+  "adapter_id": "audiveris_unattended",
+  "aligned_voice_accuracy": 0.5625,
+  "candidate_id": "audiveris",
+  "cold_start": true,
+  "composition_group": "joplin/pleasant",
+  "coverage": {
+    "chord_completeness": 0.22727272727272727,
+    "complete_chords": 20,
+    "per_staff": {
+      "0": {
+        "matched_notes": 25,
+        "predicted_notes": 151,
+        "recall": 0.09157509157509157,
+        "reference_notes": 273
+      },
+      "1": {
+        "matched_notes": 0,
+        "predicted_notes": 115,
+        "recall": null,
+        "reference_notes": 0
+      }
+    },
+    "reference_chords": 88,
+    "staff_interpretation": "notation staff index; not validated hand labels"
+  },
+  "duration": {
+    "confusion": [
+      {
+        "actual": "1",
+        "count": 31,
+        "predicted": "1"
+      },
+      {
+        "actual": "1",
+        "count": 1,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "1/2",
+        "count": 6,
+        "predicted": "1"
+      },
+      {
+        "actual": "1/2",
+        "count": 30,
+        "predicted": "1/2"
+      },
+      {
+        "actual": "2",
+        "count": 1,
+        "predicted": "1"
+      },
+      {
+        "actual": "2",
+        "count": 3,
+        "predicted": "2"
+      },
+      {
+        "actual": "3",
+        "count": 2,
+        "predicted": "1"
+      },
+      {
+        "actual": "3",
+        "count": 1,
+        "predicted": "1/2"
+      }
+    ],
+    "unmatched_expected": 198,
+    "unmatched_predicted": 191
+  },
+  "elapsed_seconds": 30.57800000000134,
+  "error": null,
+  "extra_note_count": 202,
+  "failure_penalized_omr_ned": 0.23894939141575913,
+  "first_divergent_measure": 4,
+  "input_identity": {
+    "historical_score_sha256": "1518d11e2d7eb8af7c0eb5b40bd9f790406236bf5618107c41ea27000aadb5c7",
+    "reference_sha256": "bb638289594e8437667f74e2d719fceaf63c23b363127b0ddf92ce2f85c4744d",
+    "result_sha256": "98fe68dc7521fec3957d526184c26ffca7fa09760ddc8796c861e542a110d687"
+  },
+  "item_id": "test/joplin/pleasant/pleasant_1.png",
+  "mean_offset_error": 0.14666666666666667,
+  "missing_note_count": 209,
+  "omr_ned": 0.23894939141575913,
+  "omr_ned_error": null,
+  "omr_ned_status": "valid",
+  "onset_duration_f1": 0.23747680890538034,
+  "onset_f1": 0.2782931354359926,
+  "peak_ram_bytes": 866516992,
+  "peak_vram_bytes": 0,
+  "pitch_f1": 0.9387755102040817,
+  "predicted_note_count": 266,
+  "reference_measure_count": 20,
+  "reference_note_count": 273,
+  "reference_quarter_length": "60",
+  "schema_version": 2,
+  "scoring_identity_sha256": "ed9e5b7e6f998b5787ae21dfc0b7f545c42fc0bc83b60fc717f002d6b34aa568",
+  "staff_accuracy": 0.390625,
+  "status": "succeeded",
+  "timeline_length_error": "2",
+  "timing_policy": "symmetric-rational-4096-roundoff-v1",
+  "timing_source": "screening_complete_path",
+  "vram_measurement_notes": [
+    "VRAM measurement: device-wide readings in resources.jsonl; not per-process",
+    "device-wide nvidia-smi sample; not per-process VRAM"
+  ]
+}
