@@ -9,7 +9,7 @@ reports, artifacts and phase handoffs remain beside their evidence.
 migration, and local release** plan (`2026-10-09-homr-465-app-integration`). All
 four execution phases are authorized by the 2026-10-09 implementation request;
 Phases 1–2 are complete; Phase 3's batch finished with 56 successes, one failure
-and two source orphans. Resume/audit and Git delivery remain pending at the selected
+and two source orphans. The work was pushed on 2026-10-16; resume/audit and Phase 4 closeout remain pending at the selected
 usage stop. The [execution handoff](../Research/omr/reports/homr-465-app-integration/handoff.md)
 records the next action. The installed app and saved engine now select 465.
 

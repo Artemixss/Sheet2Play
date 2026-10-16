@@ -262,18 +262,18 @@ page 24 and completed all 59 scores. Session closed at 7011.924 seconds;
 passed. The earlier user-directed stop before consolidation was respected, then
 superseded by the latest request to finish Stage 3.
 
-**Historical Zeus assistant-model pause (2026-09-30; scorer later resumed):** All59
-inference outcomes succeeded and result/artifact hashes verified, including324
-systems/1061 preserved raw files. Inference completed in64.8minutes without interruption.
-Fresh development/admission and46 fixtures/full239-test regression passed.
-Scoring parent77506 exited1 after sustained90% RAM pressure (peak94.8%) on page24;
-23saved scores passed exact identity/hash verification, all23 OMR-NED valid.
+**Historical Zeus assistant-model pause (2026-09-30; scorer later resumed):** All 59
+inference outcomes succeeded and result/artifact hashes verified, including 324
+systems/1061 preserved raw files. Inference completed in 64.8 minutes without interruption.
+Fresh development/admission and 46 fixtures/full239-test regression passed.
+Scoring parent 77506 exited 1 after sustained 90% RAM pressure (peak 94.8%) on page24;
+23saved scores passed exact identity/hash verification, all 23 OMR-NED valid.
 Page24 remains pending, not a model zero. No worker/lock remains; closed cumulative
-session5432.674seconds (90.5minutes), unchanged90% policy/four-hour cap.
+session 5432.674seconds (90.5 minutes), unchanged 90% policy/four-hour cap.
 Read the [CPU job record](Research/omr/reports/screening/v1/stage3-cpu/job-record.md)
 and [screening handoff](Research/omr/SCREENING_HANDOFF.md). The user resumed scoring,
 free RAM/recheck resources and identities, then retry the unchanged scorer with
-`--retry-pending` using the same session and23cached scores. User's intended split:
+`--retry-pending` using the same session and 23 cached scores. User's intended split:
 cheaper assistant supervises remaining scoring and stops after59scores/summary
 verify; later stronger assistant performs consolidated report/final review.
 Stage3 remains incomplete. No automatic restart, confirmation, Stage5, training or promotion.

@@ -1,87 +1,35 @@
 # Sheet2Play
 
-Machine-wide rules live in `~/.Codex/AGENTS.md` and apply here too. This file covers only
-what is specific to this repository.
+Each tool's own user-level instructions (for Codex, `~/.codex/AGENTS.md`) also apply. This
+file covers only what is specific to this repository.
 
 ## Read before working
 
 - Start with the short startup section of [CONTEXT.md](CONTEXT.md), ending at
   `<!-- STARTUP_CONTEXT_END -->`. Follow its links for the requested task; do not read
-  the entire historical context or every Markdown file for routine orientation.
-- All project plans are indexed in [plans/README.md](plans/README.md).
-  For research work, read [MAIN_PLAN.md](plans/MAIN_PLAN.md) and its linked
-  handoff. A request such as "implement Phase 2" refers to that plan unless
-  the user specifies another. Keep phase status and the next action there;
-  entry-point documents should link to them instead of duplicating status.
-  Archived plans and dated handoffs preserve evidence, not current work orders.
-- Repeated Windows commit exhaustion has no verified initiating cause or durable
-  remedy. [Enforced CPU safeguards](Research/omr/reports/zeus-attribution/phase2/safety-fix-20261004/REPORT.md)
-  remain mandatory: use the recorded supervisor, inspect live jobs/locks and
-  preserve failed receipts. Defaults are 85% RAM/commit stops, 4 GiB reserve,
-  worker containment and deadlines. Git count/private-memory telemetry is
-  informational; do not invoke Git during recovery or automatically retry
-  pressure failures. Retain the active plan's usage stop and separate GPU
-  admission. Historical screen/evaluation identities remain frozen.
-  when checking frozen contracts or prior decisions. Inspect the relevant code;
-  a handoff supplements its plan rather than replacing it. Reuse already-loaded context
-  unless it changed, was compacted away, or a specific uncertainty requires another read.
-- The user's latest explicit decisions govern scope. The plan defines objectives and
-  acceptance criteria; handoffs record implementation state, evidence, and deviations.
-  Resolve material conflicts before dependent work rather than silently choosing a document.
-- In the historical comparison sequence, Phases 1 and 2 are complete. Phase 2R and its bounded coordinate correction are complete
-  with selective candidate readiness. The user selected the bounded screening plan in
-  [the canonical comparison plan](plans/archive/2026-09-26-omr-screening-comparison.superseded.md) on 2026-09-26;
-  it replaces the exhaustive-first phase order. [The screening handoff](Research/omr/SCREENING_HANDOFF.md)
-  records Stages 1–3 complete and the completed corrected HOMR-only Stage 4.
-  All five ready candidates and the consolidated report are complete. The interrupted
-  [Phase 3 handoff](Research/omr/PHASE3_HANDOFF.md) and its job record preserve
-  the old run's state. Check live processes and logs before touching it. A request
-  to execute a screening stage authorizes that stage, not the later confirmation
-  run, training, or production promotion.
-- Historical research sections and superseded proposals are evidence, not work orders.
-  A plan in another conversation is not assumed to be loaded. Retrieve or request it
-  when needed, and keep the approved version linked here.
-- The user raised the active screening RAM admission/pressure threshold to 90% on
-  2026-09-27. Use the [v4 screening manifest](Research/omr/reports/screening/v1/manifest-v4-3af78028afa2.json)
-  for new candidate work and re-admit candidates on that manifest before inference.
-  The authorized corrected HOMR-only Stage 4 uses the
-  [combined v4 manifest](Research/omr/reports/screening/v1/manifest-v4-e31f2e628e16.json)
-  and fresh admissions for both repaired candidates; the sample, scoring and 90% policy are unchanged.
-  [Fine-tune repair Phases 1–3](plans/archive/2026-09-28-homr-finetune-export-repair.done.md) are complete;
-  the user subsequently authorized its Phase 4 screening and HOMR-only analysis.
-  Both corrected HOMR screens/scores and HOMR-only Stage 4 analysis are complete.
-  The user authorized final consolidation on 2026-09-30 after Zeus scoring completed.
-  Canonical Stage 3 is complete: five candidates, 59 pages/18 compositions each,
-  all 295 result/score pairs and summary/artifact hashes verified. The
-  [consolidated report](Research/omr/reports/screening/v1/2c98d5638c36/reports/consolidated-stage3-836fb923bb33/REPORT.md)
-  records primary F1 0.4061 shipped / 0.3844 fine-tuned / 0.2857 corrected 455 /
-  0.0986 Audiveris / 0.0228 Zeus. No challenger has supported superiority across
-  eight paired claims; the shipped/fine-tuned difference is inconclusive.
-  All sessions are closed with no worker/lock. Zeus's historical RAM-interrupted
-  score was retried after RAM relief and all 59 scores verified. No inference or
-  scoring rerun for consolidation. Canonical Stage 4 is now complete: the
-  [evaluation and decision](Research/omr/reports/screening/v1/stage4-evaluation/REPORT.md)
-  recommends retaining shipped HOMR, with no accuracy-led challenger confirmation.
-  Fresh audit verified 295 results/scores and 1,257 declared artifacts; 14 focused
-  tests and full regression (239 passed, 2 skipped, 9 subtests) passed. The 343-page
-  remainder is screen-disjoint, not wholly untouched: 207 pages were previously
-  processed; 135 pages/44 whole groups have no recorded prior attempt, with
-  composer/review/training limitations. See the
-  [Stage 4 job record](Research/omr/reports/screening/v1/stage4-evaluation/job-record.md).
-  At that comparison closeout, the options were ending comparison, bounded Stage 5/readiness,
-  or preregistered confirmation after eligibility is resolved. The [main plan entry point](plans/MAIN_PLAN.md)
-  owns the current research lifecycle and next authorization decision. Stop before later
-  execution, training, cloud spending or promotion.
-  Their [CPU job record](Research/omr/reports/screening/v1/stage3-cpu/job-record.md)
-  and [v5 readable CPU manifest](Research/omr/reports/screening/v1/manifest-v5-607ff64134da.json)
-  pin the expanded readable runtime inventory and explicit CPU profile; sample,
-  weights, scoring and 90% policy are unchanged. Use fresh CPU admissions, preserve
-  historical manifests, and inspect live jobs before resuming. Stop before untouched
-  confirmation, Stage 5, training or promotion until separately requested. See the
-  [completed HOMR Stage 4 job record](Research/omr/reports/screening/v1/stage4-homr/job-record.md)
-  and the [repair record](Research/omr/reports/screening/finetune-export/job-record.md).
-  Existing 75% screening manifests and reports are historical. The frozen Phase-1
-  practical-eligibility rule is separate and unchanged.
+  the entire historical context or every Markdown file for routine orientation. Reuse
+  already-loaded context unless it changed or was compacted away.
+- [plans/README.md](plans/README.md) indexes every plan. For research or integration
+  work, read [MAIN_PLAN.md](plans/MAIN_PLAN.md) and the handoff it links. "Implement
+  Phase N" means that plan unless the user names another. Phase status and the next
+  action live there; other entry points link to it rather than restating it.
+- The user's latest explicit decision governs scope. The plan sets objectives and
+  acceptance criteria; handoffs record implementation state, evidence and deviations,
+  and supplement the plan rather than replacing it. Resolve a material conflict between
+  documents before dependent work instead of silently choosing one. Inspect the
+  relevant code rather than trusting a document's description of it.
+- Archived plans, dated handoffs and historical CONTEXT sections are evidence, not work
+  orders. Their frozen manifests, scoring protocols and evaluation identities remain the
+  contract for any rerun: see the [Phase 1 handoff](Research/omr/PHASE1_HANDOFF.md) for
+  the evaluation freeze and the [screening handoff](Research/omr/SCREENING_HANDOFF.md) for
+  the screening manifests and RAM admission policy. A request to execute one stage
+  authorizes that stage, not the confirmation run, training or promotion after it.
+- Windows commit exhaustion has crashed this machine repeatedly with no verified cause or
+  durable remedy, so the [enforced CPU safeguards](Research/omr/reports/zeus-attribution/phase2/safety-fix-20261004/REPORT.md)
+  are mandatory for substantive jobs: the recorded supervisor, one heavy worker, 85%
+  RAM/commit stops, a 4 GiB reserve, worker containment and deadlines. GPU admission is
+  separate. Inspect live jobs and locks before launching, preserve failed receipts, and
+  never automatically retry a pressure failure or invoke Git during crash recovery.
 - Keep shared repository rules here. [CLAUDE.md](CLAUDE.md) points here instead of
   maintaining a second copy. Update the active-work links when completing a phase.
 
@@ -107,18 +55,11 @@ what is specific to this repository.
 
 ## Efficient execution without weaker validation
 
-- Follow the [context checkpoint workflow](docs/agent-checkpoints.md) when nearing a
-  compaction boundary or explicitly asked to prepare one. Update only task-relevant
-  documents with changed facts; save the current authorized objective, evidence,
-  unresolved issues, live jobs and exact next action in the per-chat HANDOFF.md.
-  Refresh it after subsequent material changes until compaction; reconcile missing
-  or stale state against the compacted conversation and current code/evidence.
-  After compaction, recover that handoff and continue the same task. A context reset
+- **Codex only:** near a compaction boundary, or when asked to prepare one, follow the
+  [context checkpoint workflow](docs/agent-checkpoints.md) and keep the per-chat
+  HANDOFF.md current with the authorized objective, evidence, live jobs and exact next
+  action. Claude Code sessions do not use this workflow. In any tool, a context reset
   does not authorize another phase or justify repeating completed work.
-  These settings are shared by all chats in this checkout but require configuration
-  reload for already-loaded chats. Do not claim automatic activation from saved config,
-  fixture tests or manually prepared checkpoints; verify the loaded threshold and a real
-  automatic checkpoint. Do not manually invoke live hooks to pass an automatic test.
 - For project exploration, inspect the root layout, dependency/build manifests, entry
   points, and relevant tests first. Report architecture, how the user runs it, current
   work, and concrete unknowns. Explore subsystems only to answer the request.
@@ -161,7 +102,7 @@ what is specific to this repository.
   add the process/session identifier, completed work, remaining work, last validation, and
   exact next action. On resume, check whether it is still running before launching another
   copy. Reuse cached results only when input/code/configuration identities still match.
-- Keep one focused implementation task per phase when organizng new work; do not create
+- Keep one focused implementation task per phase when organizing new work; do not create
   tasks without a user request or restart an existing task just for a small follow-up.
   Do not change model/effort settings, delegate, weaken safeguards, or reduce acceptance
   criteria solely to meet a token target. Optimize retrieval and orchestration first.

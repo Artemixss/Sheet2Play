@@ -5,6 +5,9 @@
 **Status:** Active plan; implementation authorized on 2026-10-09 by "implement
 main plan". Phases 1–2 are complete; Phase 3's batch is complete and its final
 audit is pending. Execution stopped at the selected 5% remaining usage threshold.
+On 2026-10-16, at the user's request, all uncommitted work was committed and
+pushed to origin/main (`5184b78`..`4416d82`) ahead of the Phase 3 audit. Phase 4's
+delivery report, migration totals and archive still follow that audit.
 Advance through the four phases only after
 each acceptance gate passes. The [execution handoff](../Research/omr/reports/homr-465-app-integration/handoff.md)
 owns current commands, evidence and resumable state.
@@ -48,7 +51,7 @@ research promotion gate was met.
 | 1 | Implement and qualify the isolated 465 app path | Sol 6.1 High: runtime, identity and compatibility decisions | Complete; [acceptance evidence](../Research/omr/reports/homr-465-app-integration/REPORT.md) |
 | 2 | Validate and publish the installed app | Sol 6.1 Medium: defined release and persistence checks | Complete; all seven release steps, 77 tests, fourteen installed scans, real-library scan/restart |
 | 3 | Rescan the recoverable HOMR library | Sol 6.1 Medium: resumable migration with fixed contracts | Batch complete: 56 successes / 258 pages, one failed 8-page score, two source orphans; fresh-process resume and final audit pending |
-| 4 | Commit, push and close out | Sol 6.1 Medium: focused delivery and evidence review | Pending; GitHub commit, release evidence and migration totals |
+| 4 | Commit, push and close out | Sol 6.1 Medium: focused delivery and evidence review | Code and evidence pushed 2026-10-16 (`4416d82`); release evidence, migration totals and archive pending |
 
 **Next planned action:** After allowance relief, prove fresh-process resume without
 repeated inference, then audit all old/new hashes and recent references. Phase 2
@@ -56,12 +59,12 @@ passed the full scratch/installed gates, persisted fallback and direct XML check
 14 installed development scans (native p95 ratio 0.799767), and one real private
 scan with restart/reopen. Only the saved engine field changed to 465; audio and
 other settings are preserved. The earlier usage stop remains dated evidence in
-the handoff. Phase 3's full release passed87 tests and all seven steps; the frozen
-inventory has57 recoverable scores/266 pages and two source orphans. One orphan
+the handoff. Phase 3's full release passed 87 tests and all seven steps; the frozen
+inventory has 57 recoverable scores/266 pages and two source orphans. One orphan
 retains MIDI and the other lacks MIDI; neither can be re-recognized without a source.
 The batch finished with no resource stop and no pending entries; one native
 exporter failure is accounted for without a retry. No live worker/lock remains.
-Phase 3 acceptance awaits resume/audit; Git delivery has not begun. See the handoff
+Phase 3 acceptance awaits resume/audit; the work is pushed, Phase 4 closeout is not done. See the handoff
 before launching or resuming any job.
 Keep the user's selected model/effort until they request a change; no automatic
 delegation or new chats. On execution, keep a single owning handoff and per-phase
