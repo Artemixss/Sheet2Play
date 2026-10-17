@@ -9,7 +9,8 @@ reports, artifacts and phase handoffs remain beside their evidence.
 (`2026-10-17-displacement-correction`): stop one measure's timing error from shifting
 the rest of the score. The user approved it on 2026-10-17 and authorized Phase 1 only
 (build the exact-label ruler and record baselines). Phase 1 baselines were recorded
-on 2026-10-17, and Phase 2 waits on the user's review. The
+on 2026-10-17; Phase 2 (where scores gain their beats) was authorized and completed the same
+day, and Phase 3 waits on the user's review. The
 [handoff](../Research/omr/reports/displacement/handoff.md) records state and the next
 action.
 

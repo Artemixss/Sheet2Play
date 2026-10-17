@@ -3,8 +3,9 @@
 **Plan ID:** `2026-10-17-displacement-correction`
 **Status:** Active. Written 2026-10-17. On the same day the user approved the plan
 and authorized **Phase 1 only** ("approved do small 465 then start displacement phase 1").
-Phases 2–4 each need their own request. Phase 1 baselines were recorded on 2026-10-17;
-Phase 2 waits on the user's review. The predecessor
+Phases 2–4 each need their own request. Phase 1 baselines were recorded on 2026-10-17.
+The user then authorized Phase 2 ("approved, start displacement phase 2"), completed the same
+day; Phase 3 waits on the user's review. The predecessor
 [465 integration plan](archive/2026-10-09-homr-465-app-integration.done.md) is archived
 as done. The [handoff](../Research/omr/reports/displacement/handoff.md) records current
 state and the next action.
@@ -93,6 +94,16 @@ offset to a mechanism:
 least two verified examples per mechanism (page crop, tokens, MusicXML).
 **Accept when** named mechanisms account for most of the gained beats on the development set.
 This phase changes no code.
+
+**Result (2026-10-17): accepted.** Named mechanisms account for 100% of displaced notes on the
+development set, each family above 2% with at least two verified examples (lost page occurs
+once). The largest is one the list above did not name: **layout**, HOMR's MusicXML placing
+notes wrongly (voices, backups, cross-staff chords) while the tokens are mostly or entirely
+right. It is 52% (465) and 49% (426) of displaced notes, and fixing it alone moves 465's
+measure-level notes-in-place from 0.32 to 0.54. Tuplets follow at 12–13% (missing, two-note
+tremolos, HOMR's stripping heuristic), then garbled measures, page rounding and dropped systems.
+Meter errors are real (HOMR computes the numerator as the page median) but move few notes
+directly. See the [Phase 2 report](../Research/omr/reports/displacement/phase2/REPORT.md).
 
 ## Phase 3 — Blind correction on the research path
 

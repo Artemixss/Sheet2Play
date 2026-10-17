@@ -163,3 +163,5 @@ Research/omr/reports/zeus-attribution/phase2/crash-recurrence-20261004/System.js
 # Displacement plan: supervisor receipts and capture identities hold local user paths; keep them local.
 Research/omr/reports/displacement/phase*/jobs/
 Research/omr/reports/displacement/phase*/capture-identity.json
+# Phase 2's full attribution (3.7 MB of events) rebuilds from the local captures; ledger.json is tracked.
+Research/omr/reports/displacement/phase2/attribution.json

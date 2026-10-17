@@ -9,6 +9,9 @@ small 465 then start displacement phase 1". The 465 integration closeout ran fir
 is archived. Phases 2–4 each need their own request. Phase 1 includes the baseline
 inference of shipped 465 and 426 on the new sets. Phase 1 changes no shipped code.
 
+After reviewing the Phase 1 baselines the user authorized **Phase 2** on 2026-10-17:
+"approved, start displacement phase 2". Phase 2 changes no code (research tooling only).
+
 ## Phase 1 status: started 2026-10-17, baselines recorded 2026-10-17
 
 ### Decisions and deviations recorded at start
@@ -174,9 +177,43 @@ column is fitted against the truth.
 - User library MusicXML check set: waiting on the user's downloads into
   `%LOCALAPPDATA%\Sheet2Play\reference-xml\`. Optional for the engraved set.
 
+## Phase 2 status: complete 2026-10-17
+
+Full write-up: [phase2/REPORT.md](phase2/REPORT.md). Ledger: [phase2/ledger.json](phase2/ledger.json).
+Tools: [displacement_attribution.py](../../displacement_attribution.py) (attribution, run under
+the app's interpreter) and [displacement_evidence.py](../../displacement_evidence.py) (426 log
+index, measure views, crops). Tests: `tests/test_displacement_attribution.py` (12 pass); the full
+Bridge + research suite passes under the supervisor (`phase2/jobs/regression`). Final run:
+`phase2/jobs/attribution-final`, 347 s, every recognition reproduced the app payload note for
+note and undoing every mechanism puts every note in place.
+
+- **Accepted:** named mechanisms account for 100% of displaced notes on dev, and every family
+  above 2% of displaced notes has at least two verified examples (page crop, MusicXML, and 426
+  tokens), except lost page, which occurs once.
+- **Headline:** **layout**, HOMR's MusicXML placing notes wrongly while the tokens are mostly
+  or entirely right, is 52% (465) and 49% (426) of displaced notes, in 32 and 31 of 39 scores.
+  Fixing it alone moves 465's notes-in-place from 0.32 to 0.54. Tuplets are 12–13% (missing,
+  two-note tremolos read as plain notes, and in 426 HOMR's `_fix_over_eager_tuplets` heuristic).
+  Garbled measures 7–9%, page rounding 5%, dropped systems 3–4% (plus about 490 notes never
+  decoded), repeat expansion 1–3%.
+- **Deviations from the plan's mechanism list.** Meter errors (#161/#167) are real (HOMR
+  computes the numerator as the page median) but cause little displacement directly: without
+  re-timing a written meter cannot change a measure's length, so meter counts only where 426
+  re-timed (0.8%). Pickups cause about 1%. The plan's "stitching at page boundaries" is page
+  rounding (5%). New mechanisms the plan did not list: layout, tremolos, dropped systems, pages
+  split into parallel parts, page-wise repeat expansion, the exporter's right-barline forward
+  repeat, and the 426 bridge's page reuse.
+- **Found and handed off, not fixed:** `bridge.select_generated_output` reuses the previous
+  page's MusicXML when HOMR 426 writes nothing for a page (5902873, page 2). Offered as a
+  separate task.
+- **Known gaps:** "in place" is measure-level, not onset F1; 465 logs no tokens, so its tuplet
+  losses cannot be split between the model and the stripping heuristic; the Phase 1 scan missed
+  repeats stored on the vocal staff (manifest unchanged).
+
 ## Next action
 
-Phase 1 is complete for the engraved set. **Needs the user:** review these baselines and
-decide whether to authorize Phase 2 (measure-level attribution of gained beats on dev).
-Optionally, download 6–10 library MusicXML files into
+Phase 2 is complete. **Needs the user:** review [phase2/REPORT.md](phase2/REPORT.md) and decide
+whether to authorize Phase 3. The ledger points Phase 3 at layout first: rebuild each measure's
+placement from the decoded durations, per staff, on the cached pages (or correct the exporter),
+then tuplets and tremolos, then page rounding. Optionally, download 6–10 library MusicXML files into
 `%LOCALAPPDATA%\Sheet2Play\reference-xml\` for the direction check.
