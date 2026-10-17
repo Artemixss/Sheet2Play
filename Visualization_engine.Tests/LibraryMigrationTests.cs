@@ -122,6 +122,44 @@ public sealed class LibraryMigrationTests
     }
 
     [Fact]
+    public void RecentMappingOntoAnAlreadyListed465CacheKeepsOneNewestEntry()
+    {
+        using TemporaryDirectory directory = new();
+        string path = Path.Combine(directory.Path, "recent.json");
+        RecentSongEntry[] before =
+        [
+            new("songs\\midi\\homr465\\new.mid.cache.json", "Opened as 465", OmrEngine.Homr465, DateTimeOffset.Parse("2026-10-01T00:00:00Z")),
+            new("songs/midi/custom/manual.mid", "Other", OmrEngine.DirectMidi, DateTimeOffset.Parse("2026-10-02T00:00:00Z")),
+            new("songs\\midi\\homr\\success.mid.cache.json", "Opened as 426", OmrEngine.Homr, DateTimeOffset.Parse("2026-10-03T00:00:00Z"))
+        ];
+        LibraryMigrationState.Write(path, before, overwrite: false);
+        RecentSongsStore.MapCommittedCache("songs/midi/homr/success.mid.cache.json", "songs/midi/homr465/new.mid.cache.json", path);
+        RecentSongEntry[] after = LibraryMigrationState.Read<RecentSongEntry[]>(path);
+        Assert.Equal(["Other", "Opened as 426"], after.Select(e => e.DisplayName));
+        Assert.Equal("songs/midi/homr465/new.mid.cache.json", after[1].ManifestRelativePath);
+        Assert.Equal(OmrEngine.Homr465, after[1].Engine);
+        Assert.Equal(before[2].LastOpenedUtc, after[1].LastOpenedUtc);
+    }
+
+    [Fact]
+    public void RecentLoadToleratesAStoreThatAlreadyListsAManifestTwice()
+    {
+        using TemporaryDirectory directory = new();
+        string path = Path.Combine(directory.Path, "recent.json");
+        const string manifest = "songs\\midi\\homr465\\same.mid.cache.json";
+        LibraryMigrationState.Write(path, new RecentSongEntry[]
+        {
+            new(manifest, "Newer", OmrEngine.Homr465, DateTimeOffset.Parse("2026-10-14T20:33:29Z")),
+            new(manifest, "Older", OmrEngine.Homr465, DateTimeOffset.Parse("2026-10-14T20:33:16Z")),
+            new("songs/midi/custom/manual.mid", "Other", OmrEngine.DirectMidi, DateTimeOffset.Parse("2026-10-13T00:00:00Z"))
+        }, overwrite: false);
+        string hash = LibraryMigrationState.Hash(path);
+        IReadOnlyList<RecentSongEntry> entries = RecentSongsStore.Load(path);
+        Assert.Equal(["Newer", "Other"], entries.Select(e => e.DisplayName));
+        Assert.Equal(hash, LibraryMigrationState.Hash(path));
+    }
+
+    [Fact]
     public void MigrationPathsRejectTraversalAndAbsolutePaths()
     {
         using TemporaryDirectory directory = new();

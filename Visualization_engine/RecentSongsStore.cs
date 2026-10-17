@@ -29,7 +29,7 @@ public static class RecentSongsStore
     {
         lock (Gate)
         {
-            return ReadEntries(storePath ?? DefaultPath)
+            return KeepLatestPerManifest(ReadEntries(storePath ?? DefaultPath))
                 .OrderByDescending(entry => entry.LastOpenedUtc)
                 .Take(MaximumEntries)
                 .ToArray();
@@ -158,8 +158,26 @@ public static class RecentSongsStore
                 entries[index] = entry with { ManifestRelativePath = newManifest, Engine = OmrEngine.Homr465 };
                 changed = true;
             }
-            if (changed) WriteEntries(path, entries, throwOnFailure: true);
+            // The 465 cache may already be in the list from opening it directly; mapping the
+            // 426 entry onto it must not leave the same manifest listed twice.
+            if (changed) WriteEntries(path, KeepLatestPerManifest(entries), throwOnFailure: true);
         }
+    }
+
+    private static List<RecentSongEntry> KeepLatestPerManifest(List<RecentSongEntry> entries)
+    {
+        Dictionary<string, int> latest = new(StringComparer.OrdinalIgnoreCase);
+        for (int index = 0; index < entries.Count; index++)
+        {
+            string key = entries[index].ManifestRelativePath.Replace('\\', '/');
+            if (!latest.TryGetValue(key, out int kept) ||
+                entries[index].LastOpenedUtc > entries[kept].LastOpenedUtc)
+            {
+                latest[key] = index;
+            }
+        }
+        HashSet<int> retained = [.. latest.Values];
+        return entries.Where((_, index) => retained.Contains(index)).ToList();
     }
 
     private static void WriteEntries(string path, IReadOnlyCollection<RecentSongEntry> entries, bool throwOnFailure = false)
