@@ -1,234 +1,120 @@
-# HOMR 465 integration, library migration, and local release
+# Displacement correction: stop one measure's error from shifting the rest of the score
 
-**Plan ID:** `2026-10-09-homr-465-app-integration`  
-**Selected:** 2026-10-09 (Europe/Istanbul).  
-**Status:** Active plan; implementation authorized on 2026-10-09 by "implement
-main plan". Phases 1–2 are complete; Phase 3's batch is complete and its final
-audit is pending. Execution stopped at the selected 5% remaining usage threshold.
-On 2026-10-16, at the user's request, all uncommitted work was committed and
-pushed to origin/main (`5184b78`..`4416d82`) ahead of the Phase 3 audit. Phase 4's
-delivery report, migration totals and archive still follow that audit.
-Advance through the four phases only after
-each acceptance gate passes. The [execution handoff](../Research/omr/reports/homr-465-app-integration/handoff.md)
-owns current commands, evidence and resumable state.
+**Plan ID:** `2026-10-17-displacement-correction`
+**Status:** Active. Written 2026-10-17. On the same day the user approved the plan
+and authorized **Phase 1 only** ("approved do small 465 then start displacement phase 1").
+Phases 2–4 each need their own request. The predecessor
+[465 integration plan](archive/2026-10-09-homr-465-app-integration.done.md) is archived
+as done. The [handoff](../Research/omr/reports/displacement/handoff.md) records current
+state and the next action.
 
-## Goal and selected decisions
+## Why this, and what the evidence does and does not show
 
-Make pinned no-title HOMR **465** the default for new scans after practical app
-validation, retain a visible **426** fallback, update the EXE the user launches,
-rescan recoverable existing HOMR scores, and commit/push the focused changes
-directly to **origin/main**. The user selected measured aggregate improvement
-plus app checks as the local adoption criterion; untouched scientific confirmation
-is a separate future task.
+The app reads pitch well and places notes in time badly. On exact labels most of that
+timing loss is **displacement**: the engine gains or loses beats somewhere, and every later
+note inherits the shift. On OLiMPiC whole scores rebuilt with exact MusicXML, onset F1 is
+0.5206 as measured and 0.7714 once each 16-quarter window is shifted by its own offset,
+against a shuffled control of 0.1660; single systems lose far less (0.6607 to 0.7516). See
+[FINDINGS](../Research/omr/reports/diagnosis/FINDINGS.md).
 
-The [completed research plan](archive/2026-10-06-homr-timing-465.done.md),
-[Phase 4 report](../Research/omr/reports/homr-timing-465/phase4/REPORT.md),
-[acceptance ledger](../Research/omr/reports/homr-timing-465/phase4/acceptance-ledger.md)
-and [prior handoff](../Research/omr/reports/homr-timing-465/handoff.md) preserve
-the evidence and limitations. Their dated recommendation for an opt-in trial
-predates this selection. Do not rewrite their experiments or claim their full
-research promotion gate was met.
+Limits that shape this plan:
 
-- The observed 59-page/18-composition comparison gave primary F1 **0.5313290603
-  for 465 versus 0.4139483028 for 426**. Twelve compositions improved; six worsened.
-  This supports an aggregate gain on that sample, not improvement on every score.
-- Known harms include the extra A5 in `three_voices` and severe `tuplet_aligned`
-  regression. Preserve these disclosures and the independent-voice tie limitation.
-  Do not hard-code notes, durations or crop changes to conceal them.
-- Convert cached songs by recognizing their original PDF/images again. Existing
-  MIDI cannot be relabelled or transformed into a genuine 465 recognition result.
-- The read-only library inventory found **57 recoverable HOMR scores / 266 pages**,
-  plus **two older records lacking matching retained sources**. The frozen migration
-  inventory confirmed that one orphan retains MIDI and the other lacks MIDI.
-  Direct MIDI, direct MusicXML and Zeus imports are outside it.
-- Preserve the existing audio offset and other settings. No training, other-engine
-  research, frozen 59-page rerun, new model downloads or cloud spending is included.
+- **The correction figures are oracles.** The offsets were fitted against the reference. They
+  bound what a blind corrector could recover; they do not promise it.
+- **The library has no verified truth.** Its references are MuseScore MIDI downloads, which
+  show a pair is the same music but not that its onsets match the printed page. Library
+  figures are suggestive only.
+- **The 465 app path has no measure re-timing.** PR #146's re-timing was the larger part of
+  426's +0.08 onset F1 gain (with PR #141), but the 465 runtime is unpatched upstream source,
+  and 465 with re-timing was never tested.
 
-## Phase status and next action
+## Constraints
 
-| Phase | Objective | Recommended executor | Status / required evidence |
-| --- | --- | --- | --- |
-| 1 | Implement and qualify the isolated 465 app path | Sol 6.1 High: runtime, identity and compatibility decisions | Complete; [acceptance evidence](../Research/omr/reports/homr-465-app-integration/REPORT.md) |
-| 2 | Validate and publish the installed app | Sol 6.1 Medium: defined release and persistence checks | Complete; all seven release steps, 77 tests, fourteen installed scans, real-library scan/restart |
-| 3 | Rescan the recoverable HOMR library | Sol 6.1 Medium: resumable migration with fixed contracts | Batch complete: 56 successes / 258 pages, one failed 8-page score, two source orphans; fresh-process resume and final audit pending |
-| 4 | Commit, push and close out | Sol 6.1 Medium: focused delivery and evidence review | Code and evidence pushed 2026-10-16 (`4416d82`); release evidence, migration totals and archive pending |
+Experimental changes stay opt-in and leave the shipped engine untouched until measured.
+Substantive jobs use the [enforced supervisor](../Research/omr/reports/zeus-attribution/phase2/safety-fix-20261004/REPORT.md)
+and separate GPU admission. Private library files stay local and ignored. No training,
+engine replacement or cloud spending. Corrections run on cached recognitions, so each engine
+is inferred once per corpus and every variant is cheap post-processing.
 
-**Next planned action:** After allowance relief, prove fresh-process resume without
-repeated inference, then audit all old/new hashes and recent references. Phase 2
-passed the full scratch/installed gates, persisted fallback and direct XML checks,
-14 installed development scans (native p95 ratio 0.799767), and one real private
-scan with restart/reopen. Only the saved engine field changed to 465; audio and
-other settings are preserved. The earlier usage stop remains dated evidence in
-the handoff. Phase 3's full release passed 87 tests and all seven steps; the frozen
-inventory has 57 recoverable scores/266 pages and two source orphans. One orphan
-retains MIDI and the other lacks MIDI; neither can be re-recognized without a source.
-The batch finished with no resource stop and no pending entries; one native
-exporter failure is accounted for without a retry. No live worker/lock remains.
-Phase 3 acceptance awaits resume/audit; the work is pushed, Phase 4 closeout is not done. See the handoff
-before launching or resuming any job.
-Keep the user's selected model/effort until they request a change; no automatic
-delegation or new chats. On execution, keep a single owning handoff and per-phase
-evidence under `Research/omr/reports/homr-465-app-integration/`, linked here.
+## Phase 1 — Build the ruler
 
-## Runtime, interface and compatibility contracts
+*Effort: standard. Defined tooling, checkable outputs.*
 
-- Append `OmrEngine.Homr465` without changing existing enum values. Serialized
-  `homr` continues to mean shipped 426; `homr465` selects the new candidate. Extend
-  the visible engine selector, progress, error and recovery paths with explicit
-  labels and a direct 426 fallback.
-- Use source revision **`33baa326900faa12702df8c4bdcbea034a3d6a34`**, the matching
-  465 FP16 encoder/decoder and pinned segnet 308 FP16 from the
-  [frozen configuration](../Research/omr/reports/homr-timing-465/phase2/candidate-configuration.json).
-  Verify its recorded source and payload hashes. Preserve the frozen research
-  configuration; assign the app runtime a separately recorded identity.
-- Provision isolated source/model assets under **`Bridge/.runtime/homr-465`**
-  using already-local artifacts and existing
-  **`Bridge/.venv-homr-gpu/Scripts/python.exe`**. Preserve installed 426
-  `site-packages`, weights and caches. Runtime code must work from the published
-  app without importing tooling from a Research directory.
-- Retain native page processing, `title_detection=false`, 300-DPI rendering,
-  `CUDAExecutionProvider`, eight intra-op and one inter-op thread. Carry forward
-  the recorded processing settings. Verify imported module origins and actual
-  segmentation/encoder/decoder providers; wrong assets or unavailable CUDA fail
-  explicitly. Do not silently substitute CPU, 426 or a moving upstream revision.
-- Route native 465 MusicXML through the existing HOMR normalization and MIDI
-  path. The research-only direct-MusicXML revision branch is not a production
-  inference implementation. Leave unrelated direct-XML work and the known tie
-  defect outside this integration.
-- Keep Bridge schema version **2**. Add optional `model_revision` and
-  `runtime_profile_sha256` fields, required and validated for `homr465` while
-  preserving old 426 responses. A shared profile manifest pins source, weights,
-  settings, relevant dependencies and normalizer identity; publish it with Bridge.
-- Persist the same validated identity in 465 caches. Key new cache entries by
-  profile identity and source SHA-256 so different files or profiles cannot reuse
-  each other's MIDI. Preserve legacy 426 cache layout and contracts; keep good
-  426 versions available when a new recognition is worse or fails.
-- Add optional **`SHEET2PLAY_SETTINGS_PATH`** to isolate scratch settings as well
-  as the existing `SHEET2PLAY_HOME` library override. For the real installation,
-  verify **`C:\Users\bur4x\AppData\Local\Sheet2Play`** explicitly: the tool
-  sandbox's redirected LocalApplicationData directory is not the user's library.
+1. **Engraved exact set.** Extract the piano parts of the local CC0 OpenScore Lieder corpus
+   and engrave them with MuseScore 4 through the project's own `build_dataset.py`. The
+   source MusicXML is then exact truth, engraved by the program that produced the library's
+   PDFs. Select multi-page scores across the library's range (2-12 pages), favouring
+   independent voices and held notes under moving lines. Freeze a manifest with hashes, split
+   into **development (about 40 scores)** for diagnosis and tuning and **test (about 40)** scored
+   once. Keep the 11 generated polyrhythm cases and 20 rebuilt OLiMPiC scores as existing
+   exact controls.
+2. **The user's library check set.** The user downloads MusicXML from the same MuseScore
+   score page as 6-10 library PDFs, preferring songs in the confirmed pairs. Accept a file
+   only if its measure count and page breaks match the PDF and nearly every reference note
+   appears in the current transcription. These stay local, are never used for tuning, and
+   serve as the real-world direction check.
+3. **Baseline.** Score shipped 465 and 426, uncorrected, on both sets: composition-macro
+   pitch/onset/duration F1 with paired statistics, the oracle drift profile, and per-score
+   drift shape.
 
-## Execution phases and acceptance
+**Accept when** both manifests are frozen with hashes, every library XML passes the match
+check or is excluded with its reason, and the baselines are recorded.
+**Replan if** Lieder piano parts prove much sparser than the library (notes per measure,
+voices per staff); then propose a public-domain PDMX piano subset, which needs a download
+the user approves.
 
-### Phase 1 — Implement and qualify
+## Phase 2 — Find where scores gain their beats
 
-1. Inspect the working tree, live jobs/locks, permissions, runtime assets and
-   resources. Preserve unrelated edits and snapshot the installed EXE/runtime,
-   settings and cache metadata. Record commands, identities, logs and resumable
-   progress before substantial jobs.
-2. Implement the isolated launcher/profile, bridge dispatch and result validation,
-   visible selector/fallback, settings isolation and separate cache identity.
-   Reuse portable candidate-launcher and supervisor logic; the installed app
-   must not depend on a Research checkout or mutate the frozen artifacts.
-3. Qualify fresh native inference in the intended app runtime against a matched
-   no-title 426 control using existing rendered development controls and bounded
-   OpenScore diagnostic probes. Ceiling: **64 native captures including probes**;
-   do not retry repeatedly until success. Generated controls supply numerical
-   expectations; OpenScore is diagnostic-only.
-4. Reuse the existing [32-input downstream manifest](../Research/omr/reports/homr-timing-465/phase3/playback-manifest.json)
-   for normalization, JSON, MIDI and controller checks, adding new engine/cache
-   integration coverage. This manifest contains XML and fixture inputs; it is
-   not a 32-image inference benchmark.
+*Effort: high. Diagnosis and attribution.*
 
-**Accept when:** profile/source/model/provider identities agree, legacy 426 still
-works, every bounded probe has a receipt or explicit model failure, and affected
-fixtures plus full relevant Bridge/research/frontend checks pass. Stop dependent
-work on identity/provider/import mismatch, unresolved resource interruption,
-cross-profile cache reuse or new unexplained integration-induced musical harm.
-Known recognition errors remain disclosed; they do not justify speculative fixes.
+With exact labels, measure numbers align. For each development score, compare every measure's
+decoded duration with the truth and the bar length, and attribute each change in cumulative
+offset to a mechanism:
 
-### Phase 2 — Validate and publish
+- overflow or underflow inside a measure (voices, polyrhythm, chord splits as in #150);
+- a dropped or duplicated measure (#188); a measure-count check detects these;
+- meter errors: computed versus recognized signature (#161), mixed meters (#167), pickups;
+- tuplets, grace notes, and stitching at system and page boundaries.
 
-1. Use a separately published scratch app with isolated library **and** settings
-   first. Verify scan/import/preview/reopen, persisted identities, fallback,
-   playback data and representative voice/timing behavior.
-2. Back up the installed release and real user metadata. Run the complete release
-   gate with no `SkipTests` or `NoLaunch` bypass:
+**Deliverable:** a ledger of gained beats by mechanism, with share of total drift and at
+least two verified examples per mechanism (page crop, tokens, MusicXML).
+**Accept when** named mechanisms account for most of the gained beats on the development set.
+This phase changes no code.
 
-   ```powershell
-   powershell -ExecutionPolicy Bypass -File scripts\verify-release.ps1
-   ```
+## Phase 3 — Blind correction on the research path
 
-3. Extend release asset checks for the profile and external 465 runtime. Set the
-   new-install default to 465 and, after the gates pass, update this user's real
-   saved engine selection once while preserving audio and all other settings.
-   A later explicit choice of 426 must be respected.
-4. Verify actual **`dist\Sheet2Play.exe`** against the real settings/library,
-   selected source/model/provider, one scan/import and restart/reopen. The Desktop
-   and Start Menu shortcuts already target this EXE; preserve that launch route.
+*Effort: high. Design choices with musical edge cases.*
 
-**Accept when:** the full gate passes with retained logs/screenshot evidence and
-the published app proves correct engine dispatch, cache identity and persistence.
-Installed-runtime p95 page latency must be at most **2×** the matched control;
-record resource use. Preserve audio offset and check physical playback when
-observable; do not claim verified sound from MIDI/controller tests alone.
+Compare on the development set, against the uncorrected control:
 
-### Phase 3 — Migrate the cached HOMR library
+- **C1, PR #146 re-timing ported to the current exporter**, with the guard the September work
+  left open: leave a measure alone when its decoded length is already plausible. That
+  targets the 18 of 100 canary systems the original re-timing pushed below span 1.00.
+- **C2, barline re-anchoring in the normalizer:** each measure starts where the previous one
+  ends at its bar length, and an over- or underfull measure is repaired inside its own
+  bounds. Pickups, final bars, meter changes and repeat endings are handled explicitly. It
+  is engine-agnostic, so it would carry to 480.
+- **C1 + C2**, if Phase 2 shows they address different mechanisms.
 
-1. Build and freeze an inventory from existing HOMR manifests, retained source
-   SHA-256 values and recoverable PDFs/images. Reconfirm the expected 57 scores /
-   266 pages and two orphan records without exposing private scores externally.
-2. Extend the existing headless reconvert path with **inventory and resume** modes.
-   Use the same app pipeline/cache writer; process one score at a time. Do not
-   force-reprocess every PDF or rerun already validated migration successes.
-3. Validate complete-score processing, MIDI roundtrip, hashes and candidate
-   identity before committing each new cache. Preserve original sources and 426
-   entries. Prefer successful 465 versions while keeping older versions visible.
-4. Map recent-song references only after a successful cache commit, preserving
-   their ordering/timestamps. Failed or unavailable items keep their old references.
-   Record per-item `success`, `failed`, `unavailable` or `pending` with receipts.
-   Ordinary model failures are accounted for and the next item may proceed;
-   resource/identity failures stop the job.
+Tune on development data only, then score the frozen test set once.
 
-**Accept when:** every inventory entry is accounted for, each recoverable item is
-converted or explicitly failed, the two orphan records are explained, and restart/
-resume preserves completed work. Do not say all songs were converted while any
-recoverable item remains pending. Old caches and rollback remain available.
+**Accept when** the selected variant improves onset F1 on the held-out test set over the
+control, with a paired confidence interval excluding zero; pitch F1 does not drop by more
+than 0.005; scores already near-correct (span 0.98-1.02, onset F1 0.9 or above) lose no
+more than 0.01 each; and the library XML set moves in the same direction.
+**Replan if** the best variant gains less than +0.03 onset F1, or harms a musical feature
+(pickups, meter changes, tuplets) systematically.
 
-### Phase 4 — Commit, push and close out
+## Phase 4 — Ship behind a visible setting
 
-1. Review and stage only this integration's code, necessary prerequisites, tests,
-   pinned setup/profile, attribution and task-relevant documentation. Preserve
-   upstream license/attribution. Exclude model payloads, virtual environments,
-   private PDFs, song caches and unrelated work; do not add AI co-author trailers.
-2. Commit and push directly to **`origin/main`**, as selected. No PR or force-push;
-   stop and resolve unexpected remote conflicts without discarding anyone's work.
-   The setup must reproduce the pinned runtime; this machine reuses existing bytes.
-3. Deliver the pushed commit, verified EXE path, release evidence, migration totals,
-   failures/unavailable items, known regressions and rollback steps. Archive this
-   plan as `.done.md` only when the delivery and accounting requirements are met.
+*Effort: standard. Defined release path. Needs separate authorization.*
 
-**Accept when:** GitHub push succeeds, the user's installed EXE is verified, all
-migration records are accounted for, and rollback is practical. Report partial
-completion honestly if a delivery or migration requirement remains unmet.
+Add the accepted correction to the app as a setting with a visible on-screen control, off by
+default. Include the correction's identity in the cache key, so corrected and uncorrected
+MIDI never share a cache entry. Pass the full release gate and verify the published EXE.
+Make it the default only after the user reviews the test-set and library results.
 
-## Validation, safeguards and replanning
+## Out of scope
 
-- Validate affected contract/unit fixtures, one representative development item,
-  then full relevant Bridge/research and frontend suites, followed by the release
-  gate and published-app checks. Repeat only for relevant changes or failures.
-- Cover missing/wrong assets, unavailable CUDA, legacy 426 responses and caches,
-  changed profile/source hashes, duplicate filenames, restart/reopen, interrupted
-  migration/resume and failed conversions without overwriting good old caches.
-- Preserve corrected offset-entry/held-note/triplet controls and representative
-  voice/staff, tie, tuplet, pickup, tempo and MIDI quantization checks. Retain the
-  extra A5 and tuplet regression as known recognition limitations.
-- Use the [enforced Windows supervisor](../Research/omr/reports/zeus-attribution/phase2/safety-fix-20261004/REPORT.md)
-  for substantive jobs: one heavy worker, **85% RAM/system-commit stops**, **4 GiB
-  reserve and aggregate worker cap**, process containment and bounded deadlines.
-  Retain the 16-process and four-hour unattended-session bounds. GPU admission is
-  separate, capped at **90% VRAM**, with no competing training workload.
-- Retain the selected **5% remaining five-hour usage stop**. Check allowance at
-  meaningful execution boundaries and stop with a resumable checkpoint. Quota
-  pressure does not authorize weakened validation or incomplete work marked done.
-- Preserve failed receipts and partials. Never automatically retry pressure
-  failures or invoke Git during recovery. Verify resolved workspace paths before
-  recursive release-folder operations; confirm applicable permissions before
-  writing real user metadata outside the workspace.
-- Return to review on unresolved runtime incompatibility, new musical corruption,
-  resource interruption, latency-gate failure or unexpected library/remote state.
-  Keep the working 426 fallback. Untouched confirmation, broader repairs, training
-  or further candidates require a separate decision.
-
-[All plans](README.md).
-
+Training, run 480 adoption (the [separate upstream task](2026-10-17-upstream-exporter-480.md)),
+pitch-level misreadings where the notes themselves are wrong, and the audio offset.

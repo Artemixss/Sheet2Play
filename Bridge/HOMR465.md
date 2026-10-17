@@ -74,5 +74,5 @@ recognition improvement does not eliminate the known extra A5 in `three_voices`,
 the `tuplet_aligned` regression or the independent-voice tie limitation.
 
 Execution status and acceptance evidence:
-[main plan](../plans/MAIN_PLAN.md),
+[main plan](../plans/archive/2026-10-09-homr-465-app-integration.done.md),
 [handoff](../Research/omr/reports/homr-465-app-integration/handoff.md).

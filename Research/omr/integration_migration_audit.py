@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from collections import Counter
+from datetime import datetime
 import json
 from pathlib import Path
 import re
@@ -10,6 +11,9 @@ from integration_qualify import WORKSPACE, sha256, save_new
 
 ROOT = WORKSPACE / "Research/omr/reports/homr-465-app-integration/phase3"
 LIBRARY = Path(r"C:\Users\bur4x\AppData\Local\Sheet2Play")
+# The first resume launch (jobs/library-migration-resume) failed before start: Windows
+# cannot resolve "dist/Sheet2Play.exe" with forward slashes. Its receipt is retained.
+RESUME_JOB = ROOT / "jobs/library-migration-resume-backslash"
 
 
 def library_path(relative: str) -> Path:
@@ -106,8 +110,18 @@ def audit() -> None:
     after = [normalize_recent(row) for row in json.loads((LIBRARY / "recent.json").read_text())]
     expected_recents = [{**row, "manifest_relative_path": mapped[row["manifest_relative_path"]], "engine": "homr465"}
                         if row["engine"] == "homr" and row["manifest_relative_path"] in mapped else row for row in before]
+    recents_mode = "strict"
     if expected_recents != after:
-        raise ValueError("Recent references/order/timestamps do not match committed successes")
+        # Normal app use after the batch replaces recents, so strict equality can lapse.
+        # Then every differing entry must postdate the batch and none may still use a
+        # migrated 426 manifest.
+        batch_end = json.loads((ROOT / "jobs/library-migration/result.json").read_text())["final"]["utc"]
+        if any(row not in expected_recents and datetime.fromisoformat(row["last_opened_utc"]) <=
+               datetime.fromisoformat(batch_end) for row in after) or any(
+               row["engine"] == "homr" and row["manifest_relative_path"] in mapped for row in after) or not all(
+               library_path(row["manifest_relative_path"]).exists() for row in after):
+            raise ValueError("Recent references/order/timestamps do not match committed successes")
+        recents_mode = "superseded_by_later_use"
     if json.loads((ROOT / "settings-before.json").read_text()) != json.loads((LIBRARY / "settings.json").read_text()):
         raise ValueError("Migration changed saved settings")
     backup_records = json.loads((ROOT.parent / "phase2/installed-backup/metadata.json").read_text())
@@ -149,8 +163,8 @@ def audit() -> None:
             native_count += 1
     if not counts["failed"] and native_count != expected_native_pages:
         raise ValueError("Completed native page receipts do not cover every fresh score")
-    resume_log = (ROOT / "jobs/library-migration-resume/worker.log").read_text(errors="replace")
-    resume_result = json.loads((ROOT / "jobs/library-migration-resume/result.json").read_text())
+    resume_log = (RESUME_JOB / "worker.log").read_text(errors="replace")
+    resume_result = json.loads((RESUME_JOB / "result.json").read_text())
     if resume_result["status"] != "complete" or "HOMR 465 receipt=" in resume_log or \
             resume_log.count("success reused-journal") != counts["success"]:
         raise ValueError("Fresh-process resume did not validate every success without inference")
@@ -162,11 +176,12 @@ def audit() -> None:
         "native_status_counts": dict(native_statuses),
         "preserved_baseline_files": preserved_count,
         "old_caches_sources_preserved": True, "settings_preserved": True,
-        "recents_order_timestamps_preserved": True, "recent_count": len(after),
+        "recents_order_timestamps_preserved": recents_mode == "strict", "recents_mode": recents_mode,
+        "recent_count": len(after),
         "inventory_sha256": sha256(ROOT / "inventory.json"), "journal_sha256": sha256(ROOT / "journal.json"),
         "physical_audio_tested": False})
     print(json.dumps({"counts": dict(counts), "pages": 266, "native_completed_pages": native_count,
-                      "old_caches_sources_preserved": True, "settings_recents_preserved": True}))
+                      "old_caches_sources_preserved": True, "recents_mode": recents_mode}))
 
 
 if __name__ == "__main__":

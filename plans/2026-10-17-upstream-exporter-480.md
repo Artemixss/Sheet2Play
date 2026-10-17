@@ -2,7 +2,7 @@
 
 **Plan ID:** `2026-10-17-upstream-exporter-480`
 **Status:** Draft, selected by the user on 2026-10-17 as a separate bounded task. Not yet
-authorized for execution. It does not block the [displacement plan](2026-10-17-displacement-correction.md).
+authorized for execution. It does not block the [displacement plan](MAIN_PLAN.md).
 **Evidence:** [October 17 upstream audit](../Research/omr/reports/diagnosis/UPSTREAM_AUDIT_2026-10-17.md).
 
 ## Goal

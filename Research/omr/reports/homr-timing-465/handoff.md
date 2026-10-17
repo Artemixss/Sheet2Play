@@ -7,7 +7,7 @@ plan `2026-10-06-homr-timing-465`.
 [Plans/status index](../../../../plans/README.md).
 
 **Lifecycle update, 2026-10-09:** the user selected the follow-up
-[HOMR 465 app integration plan](../../../../plans/MAIN_PLAN.md)
+[HOMR 465 app integration plan](../../../../plans/archive/2026-10-09-homr-465-app-integration.done.md)
 (`2026-10-09-homr-465-app-integration`). It owns the current objectives, pending
 phases and conditional default adoption/library migration. This research plan
 remains complete with qualifications. The dated recommendation and authorization

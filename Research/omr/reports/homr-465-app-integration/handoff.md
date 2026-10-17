@@ -1,7 +1,21 @@
 # HOMR 465 app integration handoff
 
-Owner: [MAIN_PLAN.md](../../../../plans/MAIN_PLAN.md),
+Owner: [archived plan](../../../../plans/archive/2026-10-09-homr-465-app-integration.done.md),
 `2026-10-09-homr-465-app-integration`.
+
+**Lifecycle: completed 2026-10-17.** Phase 3 was accepted and Phase 4 closed out.
+The plan is archived as `.done.md`, and no authorized action remains here. See the
+[report](REPORT.md) for the Phase 3 acceptance and Phase 4 delivery sections.
+
+Three deviations from the queued commands below, each with its failed receipt kept:
+
+- The resume ran as `dist\Sheet2Play.exe` (job `library-migration-resume-backslash`).
+  The forward-slash spelling cannot launch on Windows.
+- The audit's inner interpreter path also uses backslashes.
+- The audit's strict recents check was relaxed for entries opened after the batch.
+  It passed as `migration-audit-recents-relaxed`.
+
+The sections below are dated history.
 
 ## Authorized objective and status
 

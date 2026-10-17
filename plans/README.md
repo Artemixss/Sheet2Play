@@ -5,31 +5,24 @@ reports, artifacts and phase handoffs remain beside their evidence.
 
 ## Research plan entry point
 
-[MAIN_PLAN.md](MAIN_PLAN.md) owns the selected **HOMR 465 integration, library
-migration, and local release** plan (`2026-10-09-homr-465-app-integration`). All
-four execution phases are authorized by the 2026-10-09 implementation request;
-Phases 1–2 are complete; Phase 3's batch finished with 56 successes, one failure
-and two source orphans. The work was pushed on 2026-10-16; resume/audit and Phase 4 closeout remain pending at the selected
-usage stop. The [execution handoff](../Research/omr/reports/homr-465-app-integration/handoff.md)
-records the next action. The installed app and saved engine now select 465.
+[MAIN_PLAN.md](MAIN_PLAN.md) owns the selected **displacement correction** plan
+(`2026-10-17-displacement-correction`): stop one measure's timing error from shifting
+the rest of the score. The user approved it on 2026-10-17 and authorized Phase 1 only
+(build the exact-label ruler and record baselines). The
+[handoff](../Research/omr/reports/displacement/handoff.md) records state and the next
+action.
 
-The completed predecessor and its [handoff](../Research/omr/reports/homr-timing-465/handoff.md)
-retain the research evidence. The active plan records the user's later selection
-of conditional 465 default adoption, a 426 fallback and recoverable-cache migration.
-
-## Draft plans
-
-Written 2026-10-17 for the user's review; neither is authorized for execution yet.
+## Other selected plans
 
 | Plan | Status |
 | --- | --- |
-| [Displacement correction](2026-10-17-displacement-correction.md) | Draft; becomes MAIN_PLAN once selected and the 465 plan is archived |
-| [Current upstream exporter and run 480](2026-10-17-upstream-exporter-480.md) | Draft; separate bounded task selected by the user, independent of displacement |
+| [Current upstream exporter and run 480](2026-10-17-upstream-exporter-480.md) | Draft, a separate bounded task the user selected. Not yet authorized; it is independent of displacement. |
 
 ## Archived plans
 
 | Plan | Lifecycle status | Completion / handoff evidence |
 | --- | --- | --- |
+| [HOMR 465 integration, library migration and local release](archive/2026-10-09-homr-465-app-integration.done.md) | **Completed**, Phases 1–4, 2026-10-17. 465 is the default with a 426 fallback; migration: 56 success, 1 failed, 2 unavailable | [Report (acceptance, delivery, rollback)](../Research/omr/reports/homr-465-app-integration/REPORT.md), [handoff](../Research/omr/reports/homr-465-app-integration/handoff.md) |
 | [HOMR 465 and shipped-engine rhythm repairs](archive/2026-10-06-homr-timing-465.done.md) | **Completed with qualifications**, Phases 1–4, 2026-10-08; recommendation only, no production adoption | [Phase 4 report/ledger](../Research/omr/reports/homr-timing-465/phase4/REPORT.md), [proposed bounded trial](../Research/omr/reports/homr-timing-465/phase4/adoption-proposal.md), [handoff](../Research/omr/reports/homr-timing-465/handoff.md) |
 | [Zeus attribution, shared timing repair and Rokot readiness](archive/2026-10-03-zeus-attribution-repair.superseded.md) | **Superseded**, 2026-10-07; Phases 1–2 and bounded Phase 4 complete, Phase 3 qualified, Phase 5/Rokot deferred | [Phase 2 independent closeout](../Research/omr/reports/zeus-attribution/phase2/closeout-20261004/REPORT.md), [Phase 3 report](../Research/omr/reports/zeus-attribution/phase3/REPORT.md), [Phase 4 acceptance/handoff](../Research/omr/reports/zeus-attribution/phase4/handoff.md) |
 | [HOMR fine-tune export repair](archive/2026-09-28-homr-finetune-export-repair.done.md) | **Completed** Phases 1–4, 2026-09-28 | [Completion/job record](../Research/omr/reports/screening/finetune-export/job-record.md), [authorized Phase 4 closeout](../Research/omr/reports/screening/v1/stage4-homr/job-record.md) |
