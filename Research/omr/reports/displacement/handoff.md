@@ -12,6 +12,17 @@ inference of shipped 465 and 426 on the new sets. Phase 1 changes no shipped cod
 After reviewing the Phase 1 baselines the user authorized **Phase 2** on 2026-10-17:
 "approved, start displacement phase 2". Phase 2 changes no code (research tooling only).
 
+After Phase 2 the user authorized **Phase 3** on 2026-10-17 ("focus on finishing phase 3"),
+asking that HOMR exporter source fixes be set aside as a separate matter. Phase 3 runs on the
+research path only. The user's later order of work: remaining timing loss, then the frontend
+and MusicXML-based playback (pedals, a MuseScore-like piano SFZ); none of it starts now.
+
+## Phase 3 status: variant frozen 2026-10-17, test set not yet scored
+
+`displacement_correct.py` froze **anchor-holes** (`phase3/freeze.json`, source SHA-256
+`e06208b1…`) after tuning on dev only (`phase3/development.json`). The test set is scored once
+with `--test`, which refuses a changed script or an existing `phase3/test.json`.
+
 ## Phase 1 status: started 2026-10-17, baselines recorded 2026-10-17
 
 ### Decisions and deviations recorded at start
