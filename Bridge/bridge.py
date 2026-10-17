@@ -210,23 +210,30 @@ def list_musicxml_files(directory: Path) -> dict[Path, tuple[int, int]]:
 def select_generated_output(
     input_path: Path,
     files_before: dict[Path, tuple[int, int]],
+    started_at_ns: int,
 ) -> Path:
-    # Pages share one directory, so only a new or rewritten file named after this
-    # page counts. Anything else is another page's output, never a substitute.
     files_after = list_musicxml_files(input_path.parent)
-    stem = input_path.stem.casefold()
-    changed = [
-        path
-        for path, value in files_after.items()
-        if path.stem.casefold() == stem and files_before.get(path) != value
-    ]
+    changed = [path for path, value in files_after.items() if files_before.get(path) != value]
+    if not changed:
+        changed = [
+            path
+            for path, (modified, _) in files_after.items()
+            if modified >= started_at_ns - 2_000_000_000
+        ]
     if not changed:
         raise BridgeError(
             "NORMALIZATION_FAILED",
             "homr_output",
-            f"homr produced no MusicXML for {input_path.name}",
+            f"homr completed without creating MusicXML in {input_path.parent}",
         )
-    return min(changed, key=lambda path: (-files_after[path][0], path.name.casefold()))
+    return min(
+        changed,
+        key=lambda path: (
+            path.stem.casefold() != input_path.stem.casefold(),
+            -files_after[path][0],
+            path.name.casefold(),
+        ),
+    )
 
 
 def run_homr(input_path: Path) -> Path:
@@ -236,6 +243,7 @@ def run_homr(input_path: Path) -> Path:
             "RUNTIME_MISSING", "homr", f"homr launcher is missing: {HOMR_LAUNCHER_FILE}"
         )
     files_before = list_musicxml_files(input_path.parent)
+    started_at_ns = time.time_ns()
     environment = os.environ.copy()
     environment["PYTHONUNBUFFERED"] = "1"
     started = time.perf_counter()
@@ -256,7 +264,7 @@ def run_homr(input_path: Path) -> Path:
         raise BridgeError(
             "NORMALIZATION_FAILED", "homr", f"homr failed with exit code {completed.returncode}"
         )
-    return select_generated_output(input_path, files_before)
+    return select_generated_output(input_path, files_before, started_at_ns)
 
 
 def run_homr465_page(input_path: Path) -> Path:
@@ -363,12 +371,7 @@ def run_homr_engine(input_path: Path, engine: str = "homr") -> EngineOutput:
                     page_count=page_count,
                     completed_pages=page_number - 1,
                 )
-                try:
-                    outputs.append(run_homr465_page(omr_input) if engine == "homr465" else run_homr(omr_input))
-                except BridgeError as error:
-                    if error.page is None:
-                        error.page = page_number
-                    raise
+                outputs.append(run_homr465_page(omr_input) if engine == "homr465" else run_homr(omr_input))
                 emit_progress(
                     engine=engine,
                     stage="page_inference",
