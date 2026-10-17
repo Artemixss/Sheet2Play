@@ -121,6 +121,60 @@ class BridgeTests(unittest.TestCase):
         self.assertEqual(record["code"], "INPUT_INVALID")
         self.assertEqual(record["stage"], "input")
 
+    def test_homr_page_without_output_never_reuses_previous_page(self) -> None:
+        # HOMR can log a page error and still exit 0; the next page in the same
+        # directory must not pick up the page before it.
+        with tempfile.TemporaryDirectory() as temporary:
+            directory = Path(temporary)
+            pages = [directory / "page-0001.png", directory / "page-0002.png"]
+            for page in pages:
+                page.write_bytes(b"png")
+
+            @contextlib.contextmanager
+            def prepared(_input_path: Path):
+                yield pages
+
+            def fake_homr(command, **_kwargs):
+                image = Path(command[-1])
+                if image.name == "page-0001.png":
+                    image.with_suffix(".musicxml").write_text("<score-partwise/>", encoding="utf-8")
+                return mock.Mock(returncode=0)
+
+            with (
+                mock.patch.object(bridge, "prepare_homr_inputs", prepared),
+                mock.patch.object(bridge, "resolve_homr_python", return_value=Path(sys.executable)),
+                mock.patch.object(bridge.subprocess, "run", side_effect=fake_homr),
+                mock.patch.object(
+                    bridge, "normalize_musicxml", return_value=self._engine_output("C4", 60).score
+                ) as normalize,
+                contextlib.redirect_stderr(io.StringIO()),
+            ):
+                with self.assertRaises(bridge.BridgeError) as raised:
+                    bridge.run_homr_engine(directory / "score.pdf")
+
+            self.assertEqual(raised.exception.code, "NORMALIZATION_FAILED")
+            self.assertEqual(raised.exception.stage, "homr_output")
+            self.assertEqual(raised.exception.page, 2)
+            normalize.assert_not_called()
+
+    def test_homr_selects_each_page_own_output_in_sequence(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            directory = Path(temporary)
+            pages = [directory / "page-0001.png", directory / "page-0002.png"]
+
+            def fake_homr(command, **_kwargs):
+                Path(command[-1]).with_suffix(".musicxml").write_text("<score-partwise/>", encoding="utf-8")
+                return mock.Mock(returncode=0)
+
+            with (
+                mock.patch.object(bridge, "resolve_homr_python", return_value=Path(sys.executable)),
+                mock.patch.object(bridge.subprocess, "run", side_effect=fake_homr),
+                contextlib.redirect_stderr(io.StringIO()),
+            ):
+                outputs = [bridge.run_homr(page) for page in pages]
+
+            self.assertEqual([path.name for path in outputs], ["page-0001.musicxml", "page-0002.musicxml"])
+
     @staticmethod
     def _transcoda_result() -> bridge.OmrResult:
         return bridge.OmrResult(
