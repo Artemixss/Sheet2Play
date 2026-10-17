@@ -17,6 +17,80 @@ asking that HOMR exporter source fixes be set aside as a separate matter. Phase 
 research path only. The user's later order of work: remaining timing loss, then the frontend
 and MusicXML-based playback (pedals, a MuseScore-like piano SFZ); none of it starts now.
 
+## Phase 3 replan: started 2026-10-17
+
+User decision, 2026-10-17: "go with option 1 then 2, approved for HOMR runs". Option 1 gates
+the frozen correction away from real meter changes; option 2 repairs in-measure placement from
+465's per-note page positions (`<!-- imgpos: x, y -->` on every note, already in the cached
+pages). HOMR inference on new scores is approved. Shipped code is unchanged.
+
+**New sets** ([displacement_heldout.py](../../displacement_heldout.py), receipts in
+`phase3b/jobs/`). From the Phase 1 scan, never reusing a ruler score, short and medium bins:
+
+- **dev-b** (20): songs by Phase 1 dev composers whose source writes more than one bar length,
+  most polyphonic first, at most 5 per composer. For developing the gate; nothing held out.
+- **test-b** (54): composers in neither Phase 1 split. Every bar-length-changing song (26 of a
+  target 28: the whole pool) and 28 single-meter songs (at most 3 per composer). Held out.
+- Test-composer songs stay unused, for option 2's held-out set later.
+- Two MuseScore exit-1303 failures; 9 rejected in all. Manifest
+  `phase3b/manifest.json`, SHA-256 `e7cd309d94f2d67f583b45a6b6b6cbe87d6e015b3ebea7bab5954512876e9d8e`.
+
+**Deviation:** `Sheet2Play.exe` was republished after the Phase 1 capture (`55f4cab`, the
+recent-songs store, frontend only). The capture never runs the executable, so the replan capture
+requires Phase 1's bridge files and interpreter byte for byte and records both executable hashes.
+
+**Pre-registered acceptance for option 1** (on test-b, scored once, after freezing on dev + dev-b),
+each engine, gated variant against control: onset F1 gain with a 95% interval above zero; the
+meter-change stratum's mean change at or above −0.01; pitch F1 change at or above −0.005; no
+near-correct score losing more than 0.01. Stratum means are reported separately.
+
+**Development (dev 40 + dev-b 20, before any test-b scoring).** Per-measure ledger
+([displacement_meter.py](../../displacement_meter.py)): of the measures anchor-holes moves, a
+harm (the label kept the decoded length) is most likely where two or more hole-free measures on
+the page share the decoded length; with none, 753 fixes against 13 harms. Gates on voice
+coverage, x inversions, measure width, the page's share at the meter and decisions per score did
+not separate real one-off meter changes from errors. A new layout repair, **fit** (a measure
+longer than the page meter whose late-started voices can all be moved back inside the bar), finds
+overflows anchor-holes never touches, because a single late note leaves no hole.
+
+| Onset F1 gain (95% interval) | dev 465 | dev 426 | dev-b 465 | dev-b 426 |
+|---|---|---|---|---|
+| anchor-holes (Phase 3 frozen) | +0.107 | +0.116 | +0.087 [−0.023, 0.186] | +0.080 |
+| anchor-holes-keep3 | +0.116 | +0.114 | +0.096 [−0.013, 0.195] | +0.088 |
+| fit + anchor-holes-keep3 | **+0.151** [0.083, 0.225] | **+0.126** | +0.077 [−0.035, 0.183] | **+0.090** |
+
+On dev-b, 465's near-correct 5937814 (0.9995) loses 0.672 under every anchoring variant: one
+real 9-quarter bar on a 6-quarter page, hole-marked and seen once, which no tested gate detects.
+The pre-registered near-correct check is therefore expected to be at risk on test-b for 465.
+
+**Pre-registered pair, chosen before scoring test-b:** primary **anchor-holes-keep3** (option 1,
+the meter gate), secondary **fit+anchor-holes-keep3** (adds the first option-2 repair). Both are
+scored once on test-b against the acceptance above; the primary decides option 1. 465's
+position-based run placement (`place`) is recorded on development only: on spot checks it
+moved almost nothing, because the fault Phase 2 called layout is mostly a voice started late
+by a whole note, not notes out of page order.
+
+**Capture** (launched 2026-10-17, working directory the repository root):
+
+```
+Research/omr/.venv/Scripts/python.exe -B Research/omr/guarded_execution.py --output Research/omr/reports/displacement/phase3b/jobs/capture-all-1 --max-seconds 14300 -- 'Bridge\.venv-homr-gpu\Scripts\python.exe' -I -B Research/omr/displacement_capture.py --manifest Research/omr/reports/displacement/phase3b/manifest.json
+```
+
+Smoke (`jobs/capture-smoke-2`, 6018965): both engines ok, peak 71% RAM (66% idle with other
+apps open). Resume rules are Phase 1's: rerun with a new `--output`; finished items are skipped.
+
+- `jobs/capture-all-1`: refused at start, an identity-check bug in the new code (fixed).
+- `jobs/capture-all-2` (3,910 s, exit 2): 75 runs ok, then the app's own 465 guard stopped
+  test-b 6239101 with `RESOURCE_STOP` (physical RAM 85.0%). Cause: research analysis run beside
+  the capture on a machine idling at 66–81% with other apps open. The stopped attempt is kept in
+  `data/displacement-ruler/failed-attempts/phase3b-resource-stop/`. dev-b is complete (40 runs);
+  test-b has 72 runs left. Not retried automatically: resume with `--output .../capture-all-3`
+  only when idle RAM is well below 75%, with nothing else running.
+- `jobs/capture-all-3` (954 s, exit 2): 20 more runs ok, then the 465 guard stopped test-b 6575466
+  on **VRAM** at 90%: a game (tModLoader) held about 5.2 of the GPU's 6 GiB. Peak RAM 64%.
+  Attempt kept as `failed-attempts/phase3b-resource-stop/homr465-6575466-vram`. Left: 26 test-b
+  scores (52 runs, about 50 minutes). Resume with `--output .../capture-all-4` when the GPU is free.
+
 ## Phase 3 status: test scored 2026-10-17, not accepted, replan
 
 Write-up: [phase3/REPORT.md](phase3/REPORT.md). The frozen correction, **anchor-holes**

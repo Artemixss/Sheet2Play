@@ -22,17 +22,39 @@ recurring or repeated lengths (errors recur too), anchoring only over-long measu
 pages at HOMR's time-signature marks, and packing voices to close their holes (it moves onsets
 that were right).
 
+Phase 3 replan (option 1, a meter-change gate; option 2, layout repair), developed on dev and
+the meter-change set dev-b (`displacement_heldout.py`):
+
+- anchor-holes-OPTIONS: anchor-holes with gates, joined by "-": keepN keeps a hole measure's
+  length when N hole-free measures on the page share it (a recurring real meter); nb also when a
+  hole-free neighbour does; cover when some voice spells the decoded length out from beat 0;
+  coverunder, cover for short measures only.
+- fit, fit+VARIANT: in a measure longer than the page meter, every voice that runs past the bar
+  moves earlier to end on it, all or nothing (`fit_shifts`); then VARIANT (default: decoded).
+- place, place+VARIANT: 465 only. Runs of a voice re-placed from the page's note positions
+  (`imgpos`) where they start later than notes clearly to their right (`place_measure`).
+
+Dropped on dev and dev-b: the cover gates (they cost most of the gain), and, in the per-measure
+ledger `displacement_meter.py`, gates on x inversions, measure width, the page's share of
+measures at the meter, and decisions per score: none separates a real one-off meter change from
+an error.
+
 Run with the app's interpreter so music21 is the app's version:
 
     Bridge\\.venv-homr-gpu\\Scripts\\python.exe -I -B Research/omr/displacement_correct.py
     ... --freeze anchor-holes     # record the selected variant and this file's hash
     ... --test                    # score it on the test set, once
+    ... --splits dev dev-b --variants V... --output reports/displacement/phase3b/development.json
+    ... --freeze-b PRIMARY SECONDARY   # the replan's pre-registered pair, and this file's hash
+    ... --test-b                       # score both on test-b, once
 """
 
 from __future__ import annotations
 
 import argparse
+import copy
 import json
+import re
 import statistics
 import sys
 from collections import Counter, defaultdict
@@ -52,6 +74,9 @@ from displacement_attribution import app_pages, exact, page_advance  # noqa: E40
 REPORT = HERE / "reports/displacement/phase3"
 RULER = HERE / "data/displacement-ruler"
 MANIFEST = HERE / "reports/displacement/phase1/manifest.json"
+# The Phase 3 replan sets: dev-b (meter changes, dev composers) and test-b (new composers).
+MANIFEST_B = HERE / "reports/displacement/phase3b/manifest.json"
+REPORT_B = HERE / "reports/displacement/phase3b"
 ENGINES = ("homr465", "homr")
 VARIANTS = ("control", "anchor", "anchor-holes", "anchor-holes-local3", "anchor-holes-local6")
 
@@ -65,6 +90,7 @@ class Element:
     pitches: tuple[int, ...]  # empty for a rest
     voice: str
     original: Fraction  # the app's start within the page, for the control check
+    x: int | None = None  # 465's page position of the notehead (`imgpos`), when loaded
 
 
 @dataclass
@@ -82,14 +108,30 @@ class Staff:
     measures: list[PageMeasure]
 
 
-def load_page(path: Path) -> tuple[list[Staff], Fraction, Fraction]:
-    """A page as the app's normalizer reads it: per-staff measures, decoded length, rounding bar."""
+IMGPOS = re.compile(r"<note>((?:(?!</note>).)*?)<!-- imgpos: (\d+), (\d+) -->", re.DOTALL)
+
+
+def load_page(path: Path, positions: bool = False) -> tuple[list[Staff], Fraction, Fraction]:
+    """A page as the app's normalizer reads it: per-staff measures, decoded length, rounding bar.
+
+    With `positions`, each note's `imgpos` comment (465 writes one per note) is copied into
+    the note's `default-x` first, which music21 keeps as `style.absoluteX` and which changes
+    no timing.
+    """
+    import tempfile
+
     import musicxml_normalizer as normalizer
     from music21 import chord, converter, meter, note, stream
 
-    score = normalizer._prepare_score(
-        lambda: normalizer._parse_musicxml_with_repair(converter, path, force_source=False),
-        str(path), expand_repeats=True)
+    with tempfile.TemporaryDirectory() as folder:
+        source = path
+        if positions:
+            source = Path(folder) / path.name
+            source.write_text(IMGPOS.sub(lambda match: f'<note default-x="{match.group(2)}">{match.group(1)}',
+                                         path.read_text(encoding="utf-8")), encoding="utf-8")
+        score = normalizer._prepare_score(
+            lambda: normalizer._parse_musicxml_with_repair(converter, source, force_source=False),
+            str(source), expand_repeats=True)
     coordinates = normalizer._musicxml_part_coordinates(score.parts)
     staves = []
     for part in score.parts:
@@ -114,10 +156,13 @@ def load_page(path: Path) -> tuple[list[Staff], Fraction, Fraction]:
                 if isinstance(element, (note.Note, chord.Chord)):
                     pitches = tuple(int(round(pitch.midi)) for pitch in element.pitches)
                 original = exact(element.getOffsetInHierarchy(part))
+                members = element.notes if isinstance(element, chord.Chord) else (element,)
+                xs = [member.style.absoluteX for member in members if isinstance(member.style.absoluteX, (int, float))]
                 row.elements.append(Element(
                     offset=original - start, duration=exact(element.duration.quarterLength),
                     container=voices[id(container)] if in_voice else 0, pitches=pitches,
-                    voice=normalizer._voice_identifier(element, stream), original=original))
+                    voice=normalizer._voice_identifier(element, stream), original=original,
+                    x=int(min(xs)) if xs else None))
             rows.append(row)
         staves.append(Staff(part_index, staff_index, rows))
     return staves, exact(score.highestTime), exact(normalizer._extract_measure_beats(score))
@@ -147,9 +192,171 @@ def internal_holes(measure: PageMeasure, main_only: bool = False) -> bool:
     return False
 
 
+JUMP = 15  # px: a voice's next note this far left of its last one starts a new run (a lost <backup>)
+STALL = 3  # px: or at the same x, which no two successive notes of one voice share
+CLEAR = 20  # px: one note is clearly left of another; 93% of one onset's notes spread less
+MATCH = 12  # px: a run's first note lines up with a note of another run
+
+
+def place_measure(items: list[tuple[int, Element]]) -> tuple[list[Fraction], int]:
+    """New in-measure offsets for one measure of a part, staves together, and the runs moved.
+
+    A run is a voice's notes in time order until x jumps back or stalls. Its durations are
+    trusted and its start is not: a lost `<backup>` starts a run where the previous one ended.
+    Notes clearly left of another must not start later. Each run with such inversions is tried
+    at the onsets of the other runs' notes it lines up with (and at the bar start, if it is
+    leftmost), and moves only where that removes inversions; the best move goes first.
+    """
+    offsets = [element.offset for _, element in items]
+    if not items or any(element.x is None for _, element in items):
+        return offsets, 0
+    groups: dict[tuple[int, int], list[int]] = defaultdict(list)
+    for index, (staff, element) in enumerate(items):
+        groups[(staff, element.container)].append(index)
+    segments: list[list[int]] = []
+    for members in groups.values():
+        members.sort(key=lambda index: (items[index][1].offset, items[index][1].x))
+        current = [members[0]]
+        for previous, index in zip(members, members[1:]):
+            step = items[index][1].x - items[previous][1].x
+            if items[index][1].offset > items[previous][1].offset and (step < -JUMP or abs(step) <= STALL):
+                segments.append(current)
+                current = []
+            current.append(index)
+        segments.append(current)
+    if len(segments) < 2:
+        return offsets, 0
+    xs = [element.x for _, element in items]
+    leftmost = min(xs)
+
+    def inversions(segment: list[int], trial: list[Fraction]) -> int:
+        inside = set(segment)
+        return sum(1 for a in segment for b in range(len(items)) if b not in inside and (
+            (xs[a] < xs[b] - CLEAR and trial[a] > trial[b]) or (xs[b] < xs[a] - CLEAR and trial[b] > trial[a])))
+
+    moved = 0
+    for _ in range(len(segments)):
+        best = None
+        for segment in segments:
+            now = inversions(segment, offsets)
+            if not now:
+                continue
+            first = segment[0]
+            inside = set(segment)
+            shifts = {offsets[other] - offsets[first] for other in range(len(items))
+                      if other not in inside and abs(xs[other] - xs[first]) <= MATCH}
+            if xs[first] <= leftmost + MATCH:
+                shifts.add(-offsets[first])
+            for shift in shifts:
+                if shift == 0 or offsets[first] + shift < 0:
+                    continue
+                trial = list(offsets)
+                for index in segment:
+                    trial[index] += shift
+                gain = now - inversions(segment, trial)
+                if gain > 0 and (best is None or (gain, -abs(shift)) > best[0]):
+                    best = ((gain, -abs(shift)), segment, shift)
+        if best is None:
+            break
+        _, segment, shift = best
+        for index in segment:
+            offsets[index] += shift
+        moved += 1
+    return offsets, moved
+
+
+def place(staves: list[Staff]) -> tuple[list[Staff], int]:
+    """Each part's measures re-placed by `place_measure`; a moved measure's length is its notes' end."""
+    placed = copy.deepcopy(staves)
+    moved = 0
+    by_part: dict[int, list[Staff]] = defaultdict(list)
+    for staff in placed:
+        by_part[staff.part].append(staff)
+    for part_staves in by_part.values():
+        for index in range(max(len(staff.measures) for staff in part_staves)):
+            items = [(number, element) for number, staff in enumerate(part_staves) if index < len(staff.measures)
+                     for element in staff.measures[index].elements]
+            offsets, count = place_measure(items)
+            if not count:
+                continue
+            moved += count
+            for (_, element), offset in zip(items, offsets):
+                element.offset = offset
+            end = max(element.offset + element.duration for _, element in items)
+            for staff in part_staves:
+                if index < len(staff.measures):
+                    staff.measures[index].advance = end
+    return placed, moved
+
+
+def fit_shifts(measures: list[PageMeasure], bar: Fraction) -> list[dict[int, Fraction]] | None:
+    """How far to move each voice that runs past the bar so it ends on it, or None if one cannot.
+
+    A lost or short `<backup>` starts a whole voice late, so the measure overflows although its
+    notes are right. Moving it is allowed only if every voice of the measure, on both staves,
+    then fits the bar. A real longer bar has a voice from beat 0 past the page meter, so it never
+    fits and is left alone, as is a measure whose notes are wrong rather than misplaced.
+    """
+    shifts = []
+    for measure in measures:
+        by_container: dict[int, list[Element]] = defaultdict(list)
+        for element in measure.elements:
+            by_container[element.container].append(element)
+        moves = {}
+        for container, elements in by_container.items():
+            excess = max(element.offset + element.duration for element in elements) - bar
+            if excess > 0:
+                if min(element.offset for element in elements) < excess:
+                    return None
+                moves[container] = excess
+        shifts.append(moves)
+    return shifts
+
+
+def x_inversions(measures: list[PageMeasure]) -> int | None:
+    """Pairs of notes, staves together, where the one clearly left on the page starts later.
+
+    A correctly placed bar, however long, starts its notes in page order; a voice that a lost
+    `<backup>` started late sits back at the left. None where 465 gave no positions (426).
+    """
+    elements = [element for measure in measures for element in measure.elements]
+    if not elements or any(element.x is None for element in elements):
+        return None
+    ordered = sorted(elements, key=lambda element: element.x)
+    return sum(1 for index, left in enumerate(ordered) for right in ordered[index + 1:]
+               if left.x < right.x - CLEAR and left.offset > right.offset)
+
+
+def covers(measure: PageMeasure, length: Fraction) -> bool:
+    """Whether one voice runs without a gap from beat 0 to `length`: the decoded bar is written out.
+
+    A lost `<backup>` overflows a bar by starting a voice late, so no voice covers the overflow;
+    a real longer (or shorter) bar is spelled out by at least one voice from its first beat.
+    """
+    by_container: dict[int, list[Element]] = defaultdict(list)
+    for element in measure.elements:
+        by_container[element.container].append(element)
+    for elements in by_container.values():
+        cursor = Fraction(0)
+        for element in sorted(elements, key=lambda element: element.offset):
+            if element.offset > cursor:
+                break
+            cursor = max(cursor, element.offset + element.duration)
+        if cursor >= length:
+            return True
+    return False
+
+
 def lay_out(staves: list[Staff], variant: str, first_page: bool) -> tuple[list[tuple[int, int, int, str, Fraction, Fraction]], Fraction]:
     """Notes of one page as (part, staff, midi, voice, start, duration), and the page's length."""
     notes = []
+    if variant.startswith("place"):
+        staves, _ = place(staves)
+        variant = variant.removeprefix("place").removeprefix("+") or "decoded"
+    fit = variant.startswith("fit")
+    if fit:
+        staves = copy.deepcopy(staves)  # pages are shared between variants
+        variant = variant.removeprefix("fit").removeprefix("+") or "decoded"
     if variant == "control":
         for staff in staves:
             for measure in staff.measures:
@@ -182,14 +389,51 @@ def lay_out(staves: list[Staff], variant: str, first_page: bool) -> tuple[list[t
             tied = [length for length, seen in near.items() if seen == best]
             return fallback if fallback in tied else min(tied, key=lambda length: abs(length - fallback))
 
+        hole_free = Counter(length for length, hole in zip(lengths, holes) if not hole)
+
+        def recurring(index: int, least: int, neighbour: bool) -> bool:
+            """Whether hole-free measures on the page share this one's decoded length: a real meter."""
+            if neighbour and any(0 <= other < count and not holes[other] and lengths[other] == lengths[index]
+                                 for other in (index - 1, index + 1)):
+                return True
+            return hole_free[lengths[index]] >= least
+
+        if fit:
+            for index in range(count):
+                bar = bars[index]
+                present = [staff.measures[index] for staff in part_staves if index < len(staff.measures)]
+                shifts = fit_shifts(present, bar) if 0 < bar < lengths[index] else None
+                if shifts is None:
+                    continue
+                for measure, moves in zip(present, shifts):
+                    for element in measure.elements:
+                        element.offset -= moves.get(element.container, Fraction(0))
+                lengths[index] = bar
+                holes[index] = any(internal_holes(measure) for measure in present)
+            hole_free = Counter(length for length, hole in zip(lengths, holes) if not hole)
+
+        covered = [any(covers(staff.measures[index], lengths[index]) for staff in part_staves
+                       if index < len(staff.measures)) for index in range(count)]
         chosen = []
         for index, (length, bar) in enumerate(zip(lengths, bars)):
-            if bar <= 0 or (first_page and index == 0 and length < bar):
+            if variant == "decoded" or bar <= 0 or (first_page and index == 0 and length < bar):
                 chosen.append(length)  # no meter to anchor to, or an opening pickup
             elif variant == "anchor":
                 chosen.append(bar)
             elif variant == "anchor-holes":
                 chosen.append(bar if holes[index] else length)
+            elif variant.startswith("anchor-holes-") and not variant.startswith("anchor-holes-local"):
+                # Gates, combinable: keepN (N hole-free measures share the length), nb (or a
+                # hole-free neighbour does), cover (a voice spells the decoded bar out), coverunder
+                # (cover, for a short bar only).
+                options = variant.removeprefix("anchor-holes-").split("-")
+                least = next((int(option[4:]) for option in options if option.startswith("keep")), None)
+                anchored = holes[index]
+                if least is not None and recurring(index, least, "nb" in options):
+                    anchored = False
+                if covered[index] and ("cover" in options or ("coverunder" in options and length < bar)):
+                    anchored = False
+                chosen.append(bar if anchored else length)
             elif variant.startswith("anchor-holes-local"):
                 reach = int(variant.removeprefix("anchor-holes-local"))
                 chosen.append(local_bar(index, reach, bar) if holes[index] else length)
@@ -239,8 +483,21 @@ def score(notes: list[tuple], truth: list) -> dict[str, float]:
 
 
 FREEZE = REPORT / "freeze.json"
+FREEZE_B = REPORT_B / "freeze.json"
+TEST_B_OUTPUT = REPORT_B / "test.json"
+DEVELOPMENT_B = REPORT_B / "development.json"
 TEST_OUTPUT = REPORT / "test.json"
 BASELINE = HERE / "reports/displacement/phase1/baseline.json"
+BASELINES_B = (REPORT_B / "baseline-dev-b.json", REPORT_B / "baseline.json")
+
+
+def manifest_items(splits: tuple[str, ...]) -> list[dict[str, Any]]:
+    """Items of the named splits from the Phase 1 ruler and the replan sets, in manifest order."""
+    items = []
+    for path in (MANIFEST, MANIFEST_B):
+        if path.is_file():
+            items.extend(item for item in json.loads(path.read_text())["items"] if item["split"] in splits)
+    return items
 
 
 def source_hash() -> str:
@@ -263,7 +520,8 @@ def evaluate(items: list[dict[str, Any]], variants: tuple[str, ...], truth_flags
                 rows[item["id"]][engine] = {variant: {"onset_duration_f1": 0.0, "onset_f1": 0.0, "pitch_f1": 0.0}
                                             for variant in variants} | {"status": result["status"]}
                 continue
-            pages = [load_page(path) for path, _ in app_pages(item, engine)]
+            positions = any(variant.startswith("place") for variant in variants)
+            pages = [load_page(path, positions) for path, _ in app_pages(item, engine)]
             entry: dict[str, Any] = {"status": "ok"}
             for variant in variants:
                 notes = predict(pages, variant)
@@ -284,6 +542,9 @@ def summarise(items: list[dict[str, Any]], rows: dict[str, Any], variants: tuple
     from summarize_homr_pair import bootstrap_interval
 
     baseline = json.loads(BASELINE.read_text())["rows"]
+    for path in BASELINES_B:
+        if path.is_file():
+            baseline |= json.loads(path.read_text())["rows"]
     summary: dict[str, Any] = {}
     for engine in ENGINES:
         engine_rows = [(item["id"], rows[item["id"]][engine]) for item in items]
@@ -314,11 +575,47 @@ def summarise(items: list[dict[str, Any]], rows: dict[str, Any], variants: tuple
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--ids", nargs="*", help="development scores to inspect")
+    parser.add_argument("--variants", nargs="*", help="development variants to run (control is always run)")
+    parser.add_argument("--splits", nargs="*", default=["dev"], help="development splits: dev, dev-b")
     parser.add_argument("--output", type=Path, default=REPORT / "development.json")
     parser.add_argument("--freeze", metavar="VARIANT", help="record the selected variant and this script's hash")
     parser.add_argument("--test", action="store_true", help="score the frozen variant on the test set, once")
+    parser.add_argument("--freeze-b", nargs=2, metavar=("PRIMARY", "SECONDARY"),
+                        help="record the replan's two variants from phase3b/development.json, and this script's hash")
+    parser.add_argument("--test-b", action="store_true", help="score the frozen replan variants on test-b, once")
     args = parser.parse_args()
     manifest = json.loads(MANIFEST.read_text())
+
+    if args.freeze_b:
+        development = json.loads(DEVELOPMENT_B.read_text())
+        if sorted(development["split"]) != ["dev", "dev-b"] or any(
+                variant not in development["variants"] or variant == "control" for variant in args.freeze_b):
+            parser.error("freeze from a dev + dev-b run that scored both variants")
+        if FREEZE_B.exists():
+            parser.error(f"{FREEZE_B.name} exists: the replan is frozen once")
+        FREEZE_B.write_text(json.dumps({
+            "primary": args.freeze_b[0], "secondary": args.freeze_b[1], "source_sha256": source_hash(),
+            "development": {variant: {engine: development["summary"][engine][variant] for engine in ENGINES}
+                            for variant in args.freeze_b}}, indent=1) + "\n", encoding="utf-8")
+        print(f"froze {args.freeze_b} at {source_hash()}")
+        return 0
+
+    if args.test_b:
+        frozen = json.loads(FREEZE_B.read_text())
+        if frozen["source_sha256"] != source_hash():
+            parser.error("this script changed after freezing; the frozen variants are no longer the code here")
+        if TEST_B_OUTPUT.exists():
+            parser.error(f"{TEST_B_OUTPUT.name} exists: test-b is scored once")
+        items = manifest_items(("test-b",))
+        variants = ("control", frozen["primary"], frozen["secondary"])
+        rows = evaluate(items, variants, manifest["truth_flags"])
+        summary = {"all": summarise(items, rows, variants)}
+        for stratum in sorted({item["stratum"] for item in items}):
+            summary[stratum] = summarise([item for item in items if item["stratum"] == stratum], rows, variants)
+        TEST_B_OUTPUT.write_text(json.dumps({"split": "test-b", "frozen": frozen, "summary": summary, "rows": rows},
+                                            indent=1) + "\n", encoding="utf-8")
+        print(json.dumps(summary, indent=1))
+        return 0
 
     if args.freeze:
         if args.freeze not in VARIANTS or args.freeze == "control":
@@ -345,13 +642,14 @@ def main() -> int:
         print(json.dumps(summary, indent=1))
         return 0
 
-    items = [item for item in manifest["items"] if (item["id"] in args.ids if args.ids else item["split"] == "dev")]
-    if any(item["split"] != "dev" for item in items):
-        parser.error("tuning runs on the development split only; the test set is scored once, after freezing")
-    rows = evaluate(items, VARIANTS, manifest["truth_flags"])
-    summary = summarise(items, rows, VARIANTS)
+    if set(args.splits) - {"dev", "dev-b"}:
+        parser.error("tuning runs on development splits only; held-out sets are scored once, after freezing")
+    items = [item for item in manifest_items(tuple(args.splits)) if not args.ids or item["id"] in args.ids]
+    variants = ("control", *args.variants) if args.variants else VARIANTS
+    rows = evaluate(items, variants, manifest["truth_flags"])
+    summary = summarise(items, rows, variants)
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(json.dumps({"split": "dev", "variants": VARIANTS, "summary": summary, "rows": rows},
+    args.output.write_text(json.dumps({"split": args.splits, "variants": variants, "summary": summary, "rows": rows},
                                       indent=1) + "\n", encoding="utf-8")
     print(json.dumps(summary, indent=1))
     return 0

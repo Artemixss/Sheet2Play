@@ -70,21 +70,33 @@ def write_json(path: Path, value: object) -> None:
     path.write_text(json.dumps(value, indent=1) + "\n", encoding="utf-8")
 
 
-def run_identity() -> dict[str, object]:
+def run_identity(manifest: Path) -> dict[str, object]:
     files = ["bridge.py", "musicxml_normalizer.py", "homr465_native.py", "homr465_profile.py",
              "homr465-profile.json", "homr_gpu.py", "render_pdf.py", "guarded_execution.py"]
     return {"bridge": {name: sha256(BRIDGE / name) for name in files},
             "executable_sha256": sha256(WORKSPACE / "dist" / "Sheet2Play.exe"),
-            "python": sys.executable, "manifest_sha256": sha256(MANIFEST)}
+            "python": sys.executable, "manifest_sha256": sha256(manifest)}
 
 
-def check_identity() -> None:
-    identity = run_identity()
-    if IDENTITY.exists():
-        if json.loads(IDENTITY.read_text()) != identity:
+def check_identity(manifest: Path) -> None:
+    """Each manifest records its run identity beside it; every later set must run Phase 1's bridge.
+
+    The capture never runs the executable, so a later set records its hash without requiring
+    Phase 1's: a frontend-only republish leaves recognition unchanged.
+    """
+    identity = run_identity(manifest)
+    record = manifest.parent / IDENTITY.name
+    if record.exists():
+        recorded = json.loads(record.read_text())
+        recorded.pop("phase1_executable_sha256", None)
+        if recorded != identity:
             raise SystemExit("Shipped bridge, executable or manifest changed since the first capture")
-    else:
-        write_json(IDENTITY, identity)
+        return
+    first = json.loads(IDENTITY.read_text())
+    if any(first[key] != identity[key] for key in ("bridge", "python")):
+        raise SystemExit("Shipped bridge or interpreter differs from the Phase 1 capture")
+    identity["phase1_executable_sha256"] = first["executable_sha256"]
+    write_json(record, identity)
 
 
 def capture(item: dict[str, object], engine: str) -> dict[str, object]:
@@ -128,11 +140,13 @@ def capture(item: dict[str, object], engine: str) -> dict[str, object]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("--split", choices=("dev", "test", "all"), default="all")
+    parser.add_argument("--split", default="all", help="dev, test, dev-b, test-b, or all")
     parser.add_argument("--ids", nargs="*", help="Restrict to these manifest ids.")
+    parser.add_argument("--manifest", type=Path, default=MANIFEST,
+                        help="A frozen manifest; the Phase 3 replan sets use phase3b/manifest.json.")
     args = parser.parse_args()
-    check_identity()
-    items = [item for item in json.loads(MANIFEST.read_text())["items"]
+    check_identity(args.manifest.resolve())
+    items = [item for item in json.loads(args.manifest.read_text())["items"]
              if args.split in ("all", item["split"]) and (not args.ids or item["id"] in args.ids)]
     session = time.monotonic()
     for index, item in enumerate(items):

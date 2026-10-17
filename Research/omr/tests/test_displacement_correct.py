@@ -63,6 +63,57 @@ class LayOutTest(unittest.TestCase):
         self.assertEqual(len(notes), 4 + 2 + 3 + 4)
 
 
+class MeterGateTest(unittest.TestCase):
+    """anchor-holes-keepN keeps a hole measure's length when N hole-free measures share it."""
+
+    def hole_bar(self, length: Fraction) -> PageMeasure:
+        notes = [element(Fraction(0), Fraction(1)), element(length - 1, Fraction(1))]
+        return measure(length, notes)
+
+    def page(self) -> list[Staff]:
+        # A 4/4 page that turns to 3/4: two clean 3/4 bars, then a 3/4 bar with a held-over hole
+        # (a real meter), and later a 4/4 bar a lost backup stretched to 6 (an error).
+        three = [measure(Fraction(3), quarters(3)), measure(Fraction(3), quarters(3))]
+        bars = [measure(Fraction(4), quarters(4)), measure(Fraction(4), quarters(4)), *three,
+                self.hole_bar(Fraction(3)), self.hole_bar(Fraction(6)), measure(Fraction(4), quarters(4))]
+        return [Staff(part=0, staff=0, measures=bars)]
+
+    def test_a_recurring_minority_meter_survives(self) -> None:
+        _, plain = lay_out(self.page(), "anchor-holes", first_page=False)
+        _, gated = lay_out(self.page(), "anchor-holes-keep2", first_page=False)
+        self.assertEqual(plain, 4 + 4 + 3 + 3 + 4 + 4 + 4)
+        self.assertEqual(gated, 4 + 4 + 3 + 3 + 3 + 4 + 4)
+
+    def test_a_length_seen_once_is_still_anchored(self) -> None:
+        _, gated = lay_out(self.page(), "anchor-holes-keep3", first_page=False)
+        self.assertEqual(gated, 4 + 4 + 3 + 3 + 4 + 4 + 4)
+
+    def test_a_clean_neighbour_counts_with_nb(self) -> None:
+        _, gated = lay_out(self.page(), "anchor-holes-keep9-nb", first_page=False)
+        self.assertEqual(gated, 4 + 4 + 3 + 3 + 3 + 4 + 4)
+
+
+class FitTest(unittest.TestCase):
+    """fit moves a voice a lost backup started late, and only if the whole bar then fits."""
+
+    def test_a_late_voice_moves_back_to_the_bar(self) -> None:
+        # 2/4: the upper voice is right; a half note in voice 2 starts at 1/4 instead of 0.
+        late = measure(Fraction(9, 4), quarters(2) + [element(Fraction(1, 4), Fraction(2), container=2)],
+                       bar=Fraction(2))
+        page = [Staff(part=0, staff=0, measures=[late, measure(Fraction(2), quarters(2), bar=Fraction(2))])]
+        notes, length = lay_out(page, "fit", first_page=False)
+        self.assertEqual(length, 4)
+        self.assertEqual(starts(notes), [0, 0, 1, 2, 3])
+
+    def test_a_real_longer_bar_is_left_alone(self) -> None:
+        # A 3/4 bar on a 2/4 page: its main voice runs from beat 0, so nothing can fit.
+        longer = measure(Fraction(3), quarters(3) + [element(Fraction(1), Fraction(2), container=2)], bar=Fraction(2))
+        page = [Staff(part=0, staff=0, measures=[longer])]
+        notes, length = lay_out(page, "fit", first_page=False)
+        self.assertEqual(length, 3)
+        self.assertEqual(starts(notes), [0, 1, 1, 2])
+
+
 class FreezeTest(unittest.TestCase):
     def test_the_hash_ignores_line_endings(self) -> None:
         self.assertEqual(len(source_hash()), 64)

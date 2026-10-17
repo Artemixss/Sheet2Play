@@ -12,6 +12,8 @@ and the onset F1 recovered when each 16-quarter window takes its own offset. Tha
 an oracle, fitted against the truth; it bounds what a blind correction could recover.
 
     python displacement_score.py              # writes reports/displacement/phase1/baseline.json
+    python displacement_score.py --manifest reports/displacement/phase3b/manifest.json
+                                              # the replan sets, baseline.json beside their manifest
 """
 
 from __future__ import annotations
@@ -88,24 +90,33 @@ def summarise(items: list[dict[str, Any]], rows: dict[str, dict[str, dict[str, A
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("--output", type=Path, default=REPORT / "baseline.json")
+    parser.add_argument("--manifest", type=Path, default=REPORT / "manifest.json")
+    parser.add_argument("--output", type=Path, help="default: baseline.json beside the manifest")
+    parser.add_argument("--splits", nargs="*", help="score only these splits, so a held-out set stays unseen")
     args = parser.parse_args()
-    manifest = json.loads((REPORT / "manifest.json").read_text())
+    manifest = json.loads(args.manifest.read_text())
+    if args.splits:
+        manifest["items"] = [item for item in manifest["items"] if item["split"] in args.splits]
+    output = args.output or args.manifest.parent / "baseline.json"
     flags = manifest["truth_flags"]
     rows: dict[str, dict[str, dict[str, Any]]] = {}
     for item in manifest["items"]:
         truth, _ = ground_truth_notes(HERE / item["label"], **flags)
         rows[item["id"]] = {engine: score_item(item, engine, truth) for engine in ENGINES}
-    report = {"manifest": "manifest.json", "truth_flags": flags, "bootstrap": {"resamples": RESAMPLES, "seed": SEED,
+    report = {"manifest": args.manifest.name, "truth_flags": flags, "bootstrap": {"resamples": RESAMPLES, "seed": SEED,
               "group": "composition (one item each)"}, "metrics_primary": METRICS[0], "summary": {}}
-    for split in ("dev", "test"):
+    splits = list(dict.fromkeys(item["split"] for item in manifest["items"]))
+    strata = sorted({item["stratum"] for item in manifest["items"] if "stratum" in item})
+    for split in splits:
         for bin_name in (None, "short", "medium", "long"):
             chosen = [item for item in manifest["items"]
                       if item["split"] == split and (bin_name is None or item["bin"] == bin_name)]
             if chosen:
                 report["summary"][split if bin_name is None else f"{split}/{bin_name}"] = summarise(chosen, rows)
+    for name in strata:
+        report["summary"][name] = summarise([item for item in manifest["items"] if item.get("stratum") == name], rows)
     report["rows"] = rows
-    args.output.write_text(json.dumps(report, indent=1) + "\n", encoding="utf-8")
+    output.write_text(json.dumps(report, indent=1) + "\n", encoding="utf-8")
     print(json.dumps({key: {engine: {metric: value[engine][metric] for metric in METRICS + ("failures", "oracle_recovered_onset_f1")}
                             for engine in ENGINES} | {"paired_onset_duration": value["paired"]["onset_duration_f1"]}
                       for key, value in report["summary"].items() if "/" not in key}, indent=1))

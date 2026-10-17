@@ -165,3 +165,5 @@ Research/omr/reports/displacement/phase*/jobs/
 Research/omr/reports/displacement/phase*/capture-identity.json
 # Phase 2's full attribution (3.7 MB of events) rebuilds from the local captures; ledger.json is tracked.
 Research/omr/reports/displacement/phase2/attribution.json
+# The replan's per-measure ledger rebuilds from the local captures with displacement_meter.py.
+Research/omr/reports/displacement/phase3b/meter-ledger.json
