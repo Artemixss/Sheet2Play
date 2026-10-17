@@ -9,7 +9,7 @@ small 465 then start displacement phase 1". The 465 integration closeout ran fir
 is archived. Phases 2–4 each need their own request. Phase 1 includes the baseline
 inference of shipped 465 and 426 on the new sets. Phase 1 changes no shipped code.
 
-## Phase 1 status: started 2026-10-17
+## Phase 1 status: started 2026-10-17, baselines recorded 2026-10-17
 
 ### Decisions and deviations recorded at start
 
@@ -65,6 +65,110 @@ under the supervisor, with its receipts in `phase1/jobs/`.
   breaking ties. Short and medium are capped at 5 per composer. Dev and test are split
   by composer, so no composer appears in both.
 
+- **Freeze** (`jobs/freeze`). 80 items: dev 40 (short 10, medium 14, long 16) and test
+  40 (short 10, medium 10, long 20), with 15 composers each side. Pages: 2 (36), 3 (19),
+  4 (12), 5 (8), 6 (3), 8 (1), 10 (1). Six rejected: four single-page and two MuseScore
+  re-import failures (exit 1303). Every label normalizes; the normalizer drops grace notes
+  on both sides. Manifest SHA-256 `d640f889b2ac5c52e4416e439ecf861ed2cf3e746bcdfe87961cdaa41698093c`.
+- **Worker cap (user decision, 2026-10-17).** The first smoke capture of shipped 426
+  failed with ONNX "bad allocation" in its CPU PaddleOCR title detector. The 4 GiB
+  per-worker job limit caused it; the system peaked at 52% RAM. That attempt is kept
+  under `data/displacement-ruler/failed-attempts/`. At the user's request the supervisor
+  now has no per-worker cap by default, and the 85% stops and commit reserve remain.
+  The app's own per-page 465 guard in `Bridge/execution_safety` is shipped code and is
+  unchanged.
+- **Smoke** (`jobs/capture-smoke`, `jobs/capture-smoke-nocap`, dev score 5079459, 2 pages).
+  465 had onset F1 0.4156 and oracle 0.8296 (ramp shape); 426 had 0.0512 and 0.7050,
+  span 1.48 (global offset). The peak was 55% RAM and 50% commit.
+
+### Full baseline capture (launched 2026-10-17)
+
+```
+Research/omr/.venv/Scripts/python.exe -B Research/omr/guarded_execution.py --output Research/omr/reports/displacement/phase1/jobs/capture-all-1 --max-seconds 14300 -- 'Bridge\.venv-homr-gpu\Scripts\python.exe' -I -B Research/omr/displacement_capture.py
+```
+
+The working directory is the repository root. Captures go to
+`data/displacement-ruler/captures/<engine>/<id>/`, and `result.json` is written last.
+The script stops itself after 13,500 s with exit 3. To resume, rerun the same command
+with a new `--output` (`capture-all-2`, and so on); finished items are skipped. A
+directory without `result.json` is an interrupted attempt: inspect it and move it to
+`failed-attempts/` before resuming. Never retry a pressure stop automatically. After all
+160 captures, run `displacement_score.py` (supervised), then record the baselines here.
+
+### Baseline results (2026-10-17)
+
+**Capture** (`jobs/capture-all-1`, 10,649 s, exit 0, no stop). All 160 engine×score
+results exist: 158 from this job and the two smoke items it skipped. Failures: 426 on
+5079629 (no MusicXML written), 465 on 5866060 and 4978478 (`AssertionError` inside HOMR).
+All three are `NORMALIZATION_FAILED`, ordinary failures that score 0.0 under the protocol.
+Peak was 56% RAM and 57% commit.
+
+**Scoring** (`jobs/score-baseline`, then `jobs/score-baseline-2` after a change that only
+makes error paths repo-relative, so no Windows user path is tracked; summaries are
+identical). Output: [phase1/baseline.json](phase1/baseline.json). The 884 normalizer
+"invalid note timing" warnings are the labels' grace notes (905 `<grace>` elements before
+chord grouping), dropped as noted under Freeze. Test was scored for the baseline only.
+Nothing was tuned on it, and it stays held out until a Phase 3 correction is frozen.
+
+Composition-macro F1, failures counted as 0. "Oracle" is onset F1 after each 16-quarter
+window takes its own best offset, fitted against the truth: a ceiling, not a result.
+
+| Split | Engine | Pitch+onset+dur | Onset | Pitch | Oracle onset | Failures |
+|---|---|---|---|---|---|---|
+| dev (40) | 465 | 0.3295 | 0.3513 | 0.9226 | 0.6893 | 1 |
+| dev (40) | 426 | 0.2965 | 0.3123 | 0.9166 | 0.6331 | 1 |
+| test (40) | 465 | 0.4403 | 0.4606 | 0.9615 | 0.8530 | 1 |
+| test (40) | 426 | 0.3976 | 0.4216 | 0.9791 | 0.8055 | 0 |
+
+Paired 465 − 426 (composition bootstrap, 10,000 resamples, fixed seed):
+
+| Split | Primary | 95% interval | One-sided p | Oracle onset |
+|---|---|---|---|---|
+| dev | +0.0330 | [−0.0457, +0.1164] | 0.213 | +0.0562 [−0.0139, +0.1200], p 0.053 |
+| test | +0.0427 | [−0.0572, +0.1420] | 0.207 | +0.0474 [−0.0256, +0.1090], p 0.091 |
+
+465 scores higher on 25 of 40 items in each split. Neither split shows a gain distinguishable
+from zero. Pitch is read well (0.92–0.98) and timing is where the loss is.
+
+**Drift.** Per-window offsets lift onset F1 by a mean of 0.34 (dev) and 0.39 (test) per
+successful recognition. The shuffled control lifts only 0.08 to 0.15 (dev) and 0.11 to 0.17
+(test). So, as on OLiMPiC, most of the timing loss on this ruler is displacement, not
+misread rhythms. Shapes (successful items, dev / test):
+
+| Shape | 465 dev | 426 dev | 465 test | 426 test |
+|---|---|---|---|---|
+| global offset (one shift recovers the score) | 15 | 13 | 19 | 18 |
+| scatter | 12 | 14 | 5 | 7 |
+| flat | 6 | 5 | 7 | 7 |
+| steps | 5 | 5 | 7 | 4 |
+| ramp | 1 | 2 | 1 | 4 |
+
+Median span ratio is 1.00–1.05, so total length is nearly right. "Global offset" is the
+largest group: a single constant shift recovers the whole score, which points at an error
+at or near the start (the plan lists pickups and meter) rather than steady accumulation.
+This is a lead for Phase 2, not a finding. Dev is harder than test (more scatter): the
+splits are by composer, and the two sides differ in style.
+
+**Bins** (pitch+onset+dur, 465 / 426): dev short 0.492 / 0.290, medium 0.294 / 0.292, long
+0.259 / 0.304; test short 0.559 / 0.309, medium 0.280 / 0.283, long 0.461 / 0.499. The bins
+hold 10 to 20 items each, too few to read as a trend.
+
+**Speed** (page seconds p50 / p95): 465 23.2 / 35.8 (dev), 23.7 / 41.6 (test); 426 15.7 /
+23.7, 16.4 / 34.6.
+
+**Limits.** Both engines trained on Lieder music (see Decisions), so absolute F1 is likely
+optimistic. Corrections must be compared paired on these same recognitions. The oracle
+column is fitted against the truth.
+
+### Phase 1 acceptance
+
+- Engraved manifest frozen with hash: **done**.
+- Baselines recorded for the engraved set: **done** (above).
+- Library MusicXML check set: **not started, needs the user.** It is optional for the
+  engraved ruler but is the plan's only real-world direction check. Until it exists, the
+  "every library XML passes the match check" criterion has nothing to check.
+- Replan trigger (Lieder sparser than the library): **did not fire** (denser, see Pilot).
+
 ### Not started
 
 - User library MusicXML check set: waiting on the user's downloads into
@@ -72,5 +176,7 @@ under the supervisor, with its receipts in `phase1/jobs/`.
 
 ## Next action
 
-Build and freeze the engraved candidate manifest, then validate one representative
-score end to end before the full baseline runs.
+Phase 1 is complete for the engraved set. **Needs the user:** review these baselines and
+decide whether to authorize Phase 2 (measure-level attribution of gained beats on dev).
+Optionally, download 6–10 library MusicXML files into
+`%LOCALAPPDATA%\Sheet2Play\reference-xml\` for the direction check.

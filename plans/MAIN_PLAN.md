@@ -3,7 +3,8 @@
 **Plan ID:** `2026-10-17-displacement-correction`
 **Status:** Active. Written 2026-10-17. On the same day the user approved the plan
 and authorized **Phase 1 only** ("approved do small 465 then start displacement phase 1").
-Phases 2–4 each need their own request. The predecessor
+Phases 2–4 each need their own request. Phase 1 baselines were recorded on 2026-10-17;
+Phase 2 waits on the user's review. The predecessor
 [465 integration plan](archive/2026-10-09-homr-465-app-integration.done.md) is archived
 as done. The [handoff](../Research/omr/reports/displacement/handoff.md) records current
 state and the next action.
@@ -63,6 +64,17 @@ check or is excluded with its reason, and the baselines are recorded.
 **Replan if** Lieder piano parts prove much sparser than the library (notes per measure,
 voices per staff); then propose a public-domain PDMX piano subset, which needs a download
 the user approves.
+
+**Result (2026-10-17): complete for the engraved set; library check set waits on the user.**
+80 Lieder piano-only scores (dev 40, test 40) were frozen and captured with both shipped
+engines. Pitch+onset+duration F1, 465 / 426: dev 0.330 / 0.297, test 0.440 / 0.398. The
+paired 465 gain is not distinguishable from zero (dev +0.033 [−0.046, +0.116], test +0.043
+[−0.057, +0.142]). Pitch F1 is 0.92–0.98. The oracle per-window offset lifts onset F1 by
+about 0.34–0.39, against 0.06–0.07 for a shuffled control. The most common drift shape
+is a single global offset. Lieder pages are denser than the library, so the replan
+trigger did not fire. Both engines trained on Lieder, so absolute figures are optimistic.
+Details are in the
+[handoff](../Research/omr/reports/displacement/handoff.md).
 
 ## Phase 2 — Find where scores gain their beats
 

@@ -36,6 +36,7 @@ from summarize_homr_pair import RESAMPLES, SEED, bootstrap_interval  # noqa: E40
 
 REPORT = HERE / "reports/displacement/phase1"
 CAPTURES = HERE / "data/displacement-ruler/captures"
+WORKSPACE = HERE.parents[1]
 ENGINES = ("homr465", "homr")
 METRICS = ("onset_duration_f1", "onset_f1", "pitch_f1")
 
@@ -45,7 +46,8 @@ def score_item(item: dict[str, Any], engine: str, truth: list) -> dict[str, Any]
     row: dict[str, Any] = {"status": result["status"], "elapsed_seconds": result["elapsed_seconds"],
                            "page_seconds": result["page_seconds"]}
     if result["status"] != "ok":
-        row.update({metric: 0.0 for metric in METRICS}, code=result.get("code"), error=result.get("error"))
+        row.update({metric: 0.0 for metric in METRICS}, code=result.get("code"),
+                   error=(result.get("error") or "").replace(str(WORKSPACE) + "\\", "") or None)
         return row
     payload = json.loads((CAPTURES / engine / item["id"] / "payload.json").read_text())
     predicted = notes_from_payload(payload)
