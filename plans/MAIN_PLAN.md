@@ -5,7 +5,8 @@
 and authorized **Phase 1 only** ("approved do small 465 then start displacement phase 1").
 Phases 2–4 each need their own request. Phase 1 baselines were recorded on 2026-10-17.
 The user then authorized Phase 2 ("approved, start displacement phase 2"), completed the same
-day; Phase 3 waits on the user's review. The predecessor
+day. Phase 3 was authorized and scored on 2026-10-17: not accepted, replan pending
+the user. The predecessor
 [465 integration plan](archive/2026-10-09-homr-465-app-integration.done.md) is archived
 as done. The [handoff](../Research/omr/reports/displacement/handoff.md) records current
 state and the next action.
@@ -128,6 +129,16 @@ than 0.005; scores already near-correct (span 0.98-1.02, onset F1 0.9 or above) 
 more than 0.01 each; and the library XML set moves in the same direction.
 **Replan if** the best variant gains less than +0.03 onset F1, or harms a musical feature
 (pickups, meter changes, tuplets) systematically.
+
+**Result (2026-10-17): not accepted; replan.** Phase 2 changed the candidates: C1 needs 465
+tokens the in-process engine never logged (so it would need inference), and the layout fault
+became the main target. Of the variants tuned on dev, **anchor-holes** (re-anchor a measure to
+the page meter only where a voice leaves a hole between notes) was frozen and scored once on
+test: onset F1 +0.158 [0.072, 0.252] on 465 and +0.131 [0.054, 0.212] on 426, pitch unchanged.
+It fails the near-correct guard on 465 (one score −0.546) and harms scores with many meter
+changes on both engines (−0.16 and −0.20 on average), while single-meter scores gain about
++0.2. The test set is spent. See the
+[Phase 3 report](../Research/omr/reports/displacement/phase3/REPORT.md).
 
 ## Phase 4 — Ship behind a visible setting
 

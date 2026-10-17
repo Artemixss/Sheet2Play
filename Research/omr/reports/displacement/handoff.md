@@ -17,11 +17,15 @@ asking that HOMR exporter source fixes be set aside as a separate matter. Phase 
 research path only. The user's later order of work: remaining timing loss, then the frontend
 and MusicXML-based playback (pedals, a MuseScore-like piano SFZ); none of it starts now.
 
-## Phase 3 status: variant frozen 2026-10-17, test set not yet scored
+## Phase 3 status: test scored 2026-10-17, not accepted, replan
 
-`displacement_correct.py` froze **anchor-holes** (`phase3/freeze.json`, source SHA-256
-`e06208b1…`) after tuning on dev only (`phase3/development.json`). The test set is scored once
-with `--test`, which refuses a changed script or an existing `phase3/test.json`.
+Write-up: [phase3/REPORT.md](phase3/REPORT.md). The frozen correction, **anchor-holes**
+(`displacement_correct.py`, commit `a0c6bcc`), re-anchors a measure to the page meter only where
+a voice leaves a hole between notes. Test set, scored once: onset F1 +0.158 [0.072, 0.252] on 465
+(0.461 → 0.618) and +0.131 [0.054, 0.212] on 426, pitch unchanged. But on 465 one near-correct
+score (5052787) loses 0.546, and the four test scores with more than five time signatures lose on
+average (−0.164 on 465, −0.201 on 426), so the plan's accept fails and its replan trigger fired.
+Single-meter scores gain +0.205 (465) and +0.172 (426). The test set is spent for this plan.
 
 ## Phase 1 status: started 2026-10-17, baselines recorded 2026-10-17
 
@@ -223,8 +227,9 @@ note and undoing every mechanism puts every note in place.
 
 ## Next action
 
-Phase 2 is complete. **Needs the user:** review [phase2/REPORT.md](phase2/REPORT.md) and decide
-whether to authorize Phase 3. The ledger points Phase 3 at layout first: rebuild each measure's
-placement from the decoded durations, per staff, on the cached pages (or correct the exporter),
-then tuplets and tremolos, then page rounding. Optionally, download 6–10 library MusicXML files into
-`%LOCALAPPDATA%\Sheet2Play\reference-xml\` for the direction check.
+**Needs the user: a replan decision for Phase 3.** The options in the Phase 3 report are: gate
+the correction to pages without real meter changes, which needs a blind meter-change detector
+and a fresh held-out set (new scores from the 1,069-candidate scan, which means new captures,
+that is, inference the user must approve); repair the layout fault properly from note positions
+(465's `imgpos`) or the exporter fix set aside earlier; or the user's library MusicXML check
+set as the held-out direction check. Nothing ships until a variant is accepted (Phase 4).

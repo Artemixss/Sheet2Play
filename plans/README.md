@@ -10,7 +10,8 @@ reports, artifacts and phase handoffs remain beside their evidence.
 the rest of the score. The user approved it on 2026-10-17 and authorized Phase 1 only
 (build the exact-label ruler and record baselines). Phase 1 baselines were recorded
 on 2026-10-17; Phase 2 (where scores gain their beats) was authorized and completed the same
-day, and Phase 3 waits on the user's review. The
+day. Phase 3 was scored on its test set the same day: not accepted (it harms meter changes),
+so a replan waits on the user. The
 [handoff](../Research/omr/reports/displacement/handoff.md) records state and the next
 action.
 
