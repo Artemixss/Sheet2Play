@@ -19,6 +19,21 @@ and MusicXML-based playback (pedals, a MuseScore-like piano SFZ); none of it sta
 
 ## Phase 3 replan: started 2026-10-17
 
+**Result (test-b, scored once 2026-10-17): option 1 accepted on research path.** All 148
+captures ok. Onset F1, control → frozen, gain [95%]:
+
+| test-b | 465 primary keep3 | 465 secondary fit+keep3 | 426 primary | 426 secondary |
+|---|---|---|---|---|
+| all (54) | 0.413 → 0.566, +0.152 [0.091, 0.219] | → 0.586, **+0.172** [0.105, 0.243] | 0.414 → 0.513, +0.099 [0.050, 0.154] | +0.101 [0.052, 0.156] |
+| meter change (26) | +0.127 [0.055, 0.211] | +0.141 | +0.097 [0.046, 0.155] | +0.098 |
+| single meter (28) | +0.176 | +0.202 | +0.101 | +0.104 |
+
+Pitch change 0.000; no near-correct score loses (10 on 465, 7 on 426); worst drop −0.025 on
+465, −0.350 on 426 (one single-meter score). Every pre-registered check passes for both variants.
+The dev-b one-off-meter risk did not appear on test-b. Results: `phase3b/test.json`. Next: Phase 4
+(ship behind a setting) needs the user's request; option 2's imgpos placement gained +0.001 on
+development and is not pursued.
+
 User decision, 2026-10-17: "go with option 1 then 2, approved for HOMR runs". Option 1 gates
 the frozen correction away from real meter changes; option 2 repairs in-measure placement from
 465's per-note page positions (`<!-- imgpos: x, y -->` on every note, already in the cached
@@ -90,6 +105,11 @@ apps open). Resume rules are Phase 1's: rerun with a new `--output`; finished it
   on **VRAM** at 90%: a game (tModLoader) held about 5.2 of the GPU's 6 GiB. Peak RAM 64%.
   Attempt kept as `failed-attempts/phase3b-resource-stop/homr465-6575466-vram`. Left: 26 test-b
   scores (52 runs, about 50 minutes). Resume with `--output .../capture-all-4` when the GPU is free.
+- `jobs/capture-all-4`: launched once the GPU read 0 MiB used and RAM 44%, nothing else running.
+- **Frozen** before any test-b scoring: commit `da98480`, `phase3b/freeze.json`, source SHA-256
+  `c162af5fc91066859e93a4b83551ae392475964a4614435697ab3d84c2753ad1`. After the capture: score the
+  test-b baseline (`displacement_score.py --manifest ... --splits test-b`, its near-correct spans),
+  then `displacement_correct.py --test-b` once.
 
 ## Phase 3 status: test scored 2026-10-17, not accepted, replan
 

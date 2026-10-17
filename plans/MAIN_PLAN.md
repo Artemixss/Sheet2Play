@@ -130,7 +130,7 @@ more than 0.01 each; and the library XML set moves in the same direction.
 **Replan if** the best variant gains less than +0.03 onset F1, or harms a musical feature
 (pickups, meter changes, tuplets) systematically.
 
-**Result (2026-10-17): not accepted; replan.** Phase 2 changed the candidates: C1 needs 465
+**Replan result (2026-10-17): accepted on test-b** (anchor-holes-keep3, +0.152 onset F1 on 465, +0.099 on 426; fit+keep3 +0.172 / +0.101; meter-change songs gain too; see the handoff). **Original result (2026-10-17): not accepted; replan.** Phase 2 changed the candidates: C1 needs 465
 tokens the in-process engine never logged (so it would need inference), and the layout fault
 became the main target. Of the variants tuned on dev, **anchor-holes** (re-anchor a measure to
 the page meter only where a voice leaves a hole between notes) was frozen and scored once on
