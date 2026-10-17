@@ -211,6 +211,7 @@ internal static partial class Program
 		DialogState dialogState = new DialogState();
 		GameState state = GameState.WaitingForFile;
 		OmrEngine selectedEngine = AppSettingsStore.LoadEngine();
+		timingCorrectionEnabled = AppSettingsStore.LoadTimingCorrection();
 		LoadRequest pendingRequest = null;
 		PlaybackController playbackController = null;
 		SongLoadResult songLoadResult = null;
@@ -609,7 +610,7 @@ internal static partial class Program
 	{
 		try
 		{
-			SongLoadResult value = ((request.RecentSong is not null) ? SongCache.LoadRecent(request.RecentSong) : SongCache.LoadOrCreateDetailed(request.InputPath ?? throw new InvalidOperationException("Load request has no source path."), request.Engine, cancellationToken, progress, request.BypassKnownFailure, request.ForceReprocess));
+			SongLoadResult value = ((request.RecentSong is not null) ? SongCache.LoadRecent(request.RecentSong) : SongCache.LoadOrCreateDetailed(request.InputPath ?? throw new InvalidOperationException("Load request has no source path."), request.Engine, cancellationToken, progress, request.BypassKnownFailure, request.ForceReprocess, timingCorrection: timingCorrectionEnabled));
 			results.Complete(value);
 		}
 		catch (Exception error)
@@ -638,7 +639,7 @@ internal static partial class Program
 		{
 			return false;
 		}
-		return SongCache.HasCachedResult(inputPath, request.Engine);
+		return SongCache.HasCachedResult(inputPath, request.Engine, timingCorrectionEnabled);
 	}
 
 	private static ReuseAction DrawConfirmReuse(UiLayout layout, LoadRequest? request)
@@ -715,6 +716,14 @@ internal static partial class Program
 		Rectangle refreshButton = new Rectangle(browseButton.X - 112f * scale, browseButton.Y, 98f * scale, browseButton.Height);
 		refreshRequested = UiTheme.DrawButton(refreshButton, "Refresh", UiTheme.Muted);
 		UiTheme.DrawText("OMR ENGINE", (int)contentLeft, (int)(174f * scale), Math.Max(12, (int)(14f * scale)), UiTheme.Muted);
+		// The timing fix is a user setting, so it gets a visible switch on the engine row
+		// rather than only a stored preference. It applies to the HOMR engines only.
+		Rectangle timingToggle = new Rectangle(contentLeft + contentWidth - 236f * scale, 168f * scale, 236f * scale, 24f * scale);
+		if (DrawTimingToggle(timingToggle, timingCorrectionEnabled, OmrPipeline.SupportsTimingCorrection(selectedEngine), scale))
+		{
+			timingCorrectionEnabled = !timingCorrectionEnabled;
+			PersistTimingCorrection(timingCorrectionEnabled);
+		}
 		float engineCardGap = 16f * scale;
 		float engineCardWidth = (contentWidth - engineCardGap) / 2f;
 		float omrCardWidth = (contentWidth - 2f * engineCardGap) / 3f;
@@ -1269,6 +1278,34 @@ internal static partial class Program
 		return false;
 	}
 
+	/// <summary>
+	/// The timing fix switch: on/off pill, muted when the selected engine has nothing for it to
+	/// correct. Returns true on a click.
+	/// </summary>
+	private static bool DrawTimingToggle(Rectangle bounds, bool enabled, bool applies, float scale)
+	{
+		bool hovered = Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), bounds);
+		Color accent = applies ? UiTheme.Lime : UiTheme.Muted;
+		Raylib.DrawRectangleRounded(bounds, 0.5f, 10, enabled ? new Color((int)accent.R, (int)accent.G, (int)accent.B, 38) : (hovered ? UiTheme.Elevated : UiTheme.Surface));
+		Raylib.DrawRectangleRoundedLinesEx(bounds, 0.5f, 10, enabled ? 2 : 1, enabled ? accent : UiTheme.Border);
+		int textSize = Math.Max(11, (int)(13f * scale));
+		string label = "TIMING FIX  " + (enabled ? "ON" : "OFF") + (applies ? "" : " \u00b7 HOMR only");
+		UiTheme.DrawText(label, (int)(bounds.X + 12f * scale), (int)(bounds.Y + (bounds.Height - textSize) / 2f), textSize, enabled ? UiTheme.Text : UiTheme.Muted);
+		return hovered && Raylib.IsMouseButtonPressed(MouseButton.Left);
+	}
+
+	private static void PersistTimingCorrection(bool enabled)
+	{
+		try
+		{
+			AppSettingsStore.SaveTimingCorrection(enabled);
+		}
+		catch (Exception ex)
+		{
+			Console.Error.WriteLine("[SETTINGS] Timing fix was not persisted: " + ex.Message);
+		}
+	}
+
 	private static void PersistEngine(OmrEngine engine)
 	{
 		try
@@ -1676,6 +1713,9 @@ internal static partial class Program
 	/// one audio output per process.
 	/// </summary>
 	private static AudioBackend activeAudioBackend = AudioBackend.MidiDevice;
+
+	/// <summary>Whether new HOMR conversions run the timing correction; the landing-page switch.</summary>
+	private static bool timingCorrectionEnabled;
 
 	/// <summary>
 	/// What the audio badge shows, as plain data rather than a live query, so the headless

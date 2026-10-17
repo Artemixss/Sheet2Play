@@ -137,7 +137,11 @@ public static class OmrPipeline
     public const string ZeusModelSha256 =
         "df0d842596ccd199882ff958e628d59327ca6cba";
 
+    public const string TimingCorrectionScriptName = "timing_correction.py";
+
     private static readonly TimeSpan DefaultTimeout = TimeSpan.FromMinutes(30);
+    private static readonly Lazy<string?> DefaultTimingCorrectionSha256 = new(() =>
+        GetTimingCorrectionSha256(GetDefaultBridgeScriptPath()));
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
         PropertyNameCaseInsensitive = false,
@@ -152,7 +156,8 @@ public static class OmrPipeline
         string pythonExecutable = "python",
         TimeSpan? timeout = null,
         CancellationToken cancellationToken = default,
-        IProgress<OmrProgress>? progress = null)
+        IProgress<OmrProgress>? progress = null,
+        bool timingCorrection = false)
     {
         return RunAsync(
                 inputPath,
@@ -161,9 +166,33 @@ public static class OmrPipeline
                 pythonExecutable,
                 timeout,
                 cancellationToken,
-                progress)
+                progress,
+                timingCorrection)
             .GetAwaiter()
             .GetResult();
+    }
+
+    /// <summary>
+    /// Whether the timing correction applies: it re-lays HOMR's per-page MusicXML, so only the
+    /// two HOMR engines have anything for it to correct.
+    /// </summary>
+    public static bool SupportsTimingCorrection(OmrEngine engine) =>
+        engine is OmrEngine.Homr or OmrEngine.Homr465;
+
+    /// <summary>
+    /// SHA-256 of the shipped timing correction beside the default bridge, or null when it is
+    /// missing. Corrected caches are keyed by it, so a changed correction never reuses MIDI
+    /// that an earlier version wrote.
+    /// </summary>
+    public static string? TimingCorrectionSha256 => DefaultTimingCorrectionSha256.Value;
+
+    internal static string? GetTimingCorrectionSha256(string bridgeScriptPath)
+    {
+        string? directory = Path.GetDirectoryName(bridgeScriptPath);
+        string scriptPath = Path.Combine(directory ?? "", TimingCorrectionScriptName);
+        return directory is not null && File.Exists(scriptPath)
+            ? Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(scriptPath)))
+            : null;
     }
 
     public static async Task<OmrResult> RunAsync(
@@ -173,7 +202,8 @@ public static class OmrPipeline
         string pythonExecutable = "python",
         TimeSpan? timeout = null,
         CancellationToken cancellationToken = default,
-        IProgress<OmrProgress>? progress = null)
+        IProgress<OmrProgress>? progress = null,
+        bool timingCorrection = false)
     {
         if (!Enum.IsDefined(engine))
         {
@@ -221,9 +251,16 @@ public static class OmrPipeline
                 errorCode: "RUNTIME_MISSING",
                 stage: "runtime_start");
         }
+        // The correction runs the same bridge from its own entry script beside it, so the
+        // interpreter and runtime checks above are those of the uncorrected engine.
+        string entryScriptPath = timingCorrection && SupportsTimingCorrection(engine)
+            ? ValidateFilePath(
+                Path.Combine(Path.GetDirectoryName(validatedBridgePath)!, TimingCorrectionScriptName),
+                "Timing correction script")
+            : validatedBridgePath;
         ProcessStartInfo startInfo = CreateStartInfo(
             effectivePythonExecutable,
-            validatedBridgePath,
+            entryScriptPath,
             validatedInputPath,
             engine);
 

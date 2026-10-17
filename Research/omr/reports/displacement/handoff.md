@@ -17,6 +17,35 @@ asking that HOMR exporter source fixes be set aside as a separate matter. Phase 
 research path only. The user's later order of work: remaining timing loss, then the frontend
 and MusicXML-based playback (pedals, a MuseScore-like piano SFZ); none of it starts now.
 
+## Phase 4 status: shipped 2026-10-18, off by default
+
+User request, 2026-10-18: "push it and start phase 4". Shipped variant: the secondary,
+**fit+anchor-holes-keep3**, better than the primary on both engines on test-b.
+
+- **Correction:** [Bridge/timing_correction.py](../../../../Bridge/timing_correction.py), a port of
+  the frozen research code. It is its own entry point: it wraps `bridge.normalize_musicxml` so
+  each HOMR page is normalized, then corrected, then stitched by the bridge's unchanged
+  `combine_score_pages`, and runs `bridge.main`. Other engines run unchanged. A page whose notes
+  cannot be matched one to one keeps the app's reading, logged on stderr (`[timing]`).
+- **No 465 identity bump:** no pinned Bridge file changed; the profile hash is still
+  `1fd5b26e…`, so the library's 465 caches stay valid.
+- **App:** a **TIMING FIX** switch on the landing page's engine row, saved as
+  `timing_correction` in settings.json (false when absent). `OmrPipeline.Run(timingCorrection:)`
+  starts the correction script with the same interpreter and runtime checks. Corrected MIDI is
+  keyed by the script's SHA-256: file `<song>.timing-<12 hex>.mid` and manifest field
+  `timing_correction_sha256`, so it never shares an entry with the plain conversion or with
+  another version of the correction. The retained source PDF is shared. Library rows and the
+  player title read "· timing fix".
+- **Evidence:** shipped and research paths agree note for note on all 305 cached recognitions
+  (`displacement_ship_check.py`, `phase4/jobs/ship-check`, 0 mismatches, 0 fallbacks). One live
+  run of the published entry on HOMR 465 (`phase4/jobs/e2e-6654252`) matches the research
+  prediction exactly, onset F1 0.208 → 0.904. Tests: Bridge + research 442 passed, 2 skipped;
+  xunit 94 passed (5 new in `TimingCorrectionTests`); `verify-release.ps1` passed every step,
+  screenshot `dist/_verify/launch.png` shows the switch.
+- **Not done:** default on (plan: only after the user reviews test-set and library results);
+  the library MusicXML check set still does not exist. A real one-off meter change can still be
+  anchored wrongly (dev-b 5937814).
+
 ## Phase 3 replan: started 2026-10-17
 
 **Result (test-b, scored once 2026-10-17): option 1 accepted on research path.** All 148
@@ -321,7 +350,11 @@ note and undoing every mechanism puts every note in place.
 
 ## Next action
 
-**Needs the user: a replan decision for Phase 3.** The options in the Phase 3 report are: gate
+**Needs the user.** Phase 4 is shipped off by default. Turning it on by default needs the user's
+review (try the switch on library songs). After that, the user's order of work: the remaining
+timing loss (in-measure placement), then the frontend and MusicXML-based playback.
+
+Superseded 2026-10-17 by the replan above: **a replan decision for Phase 3.** The options in the Phase 3 report are: gate
 the correction to pages without real meter changes, which needs a blind meter-change detector
 and a fresh held-out set (new scores from the 1,069-candidate scan, which means new captures,
 that is, inference the user must approve); repair the layout fault properly from note positions

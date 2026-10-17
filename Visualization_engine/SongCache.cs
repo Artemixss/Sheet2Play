@@ -80,7 +80,8 @@ public static class SongCache
         IProgress<OmrProgress>? progress = null,
         bool bypassKnownFailure = false,
         bool forceReprocess = false,
-        bool recordRecent = true)
+        bool recordRecent = true,
+        bool timingCorrection = false)
     {
         string applicationDirectory = FindApplicationDirectory();
         
@@ -130,6 +131,7 @@ public static class SongCache
             engine = OmrEngine.MusicXml;
         }
 
+        string? timingIdentity = ResolveTimingIdentity(engine, timingCorrection);
         SongLoadResult result = LoadOrCreateCore(
             inputPath,
             engine,
@@ -139,11 +141,13 @@ public static class SongCache
                     path,
                     selectedEngine,
                     cancellationToken: token,
-                    progress: progress),
+                    progress: progress,
+                    timingCorrection: timingIdentity is not null),
             cancellationToken,
             progress,
             bypassKnownFailure,
-            forceReprocess);
+            forceReprocess,
+            timingIdentity);
         if (recordRecent) TouchRecent(result);
         return result;
     }
@@ -152,17 +156,38 @@ public static class SongCache
     /// Reports whether a validated cache already exists for this source file and engine,
     /// so the UI can offer to reuse it instead of running the pipeline again.
     /// </summary>
-    public static bool HasCachedResult(string sourcePath, OmrEngine engine)
+    public static bool HasCachedResult(string sourcePath, OmrEngine engine, bool timingCorrection = false)
     {
         try
         {
-            return IsCacheHit(sourcePath, engine, FindApplicationDirectory());
+            return IsCacheHit(
+                sourcePath,
+                engine,
+                FindApplicationDirectory(),
+                ResolveTimingIdentity(engine, timingCorrection));
         }
         catch (Exception exception) when (
             exception is IOException or UnauthorizedAccessException or ArgumentException)
         {
             return false;
         }
+    }
+
+    /// <summary>
+    /// The timing correction's identity when it applies to this conversion, else null. Turning
+    /// it on with the script missing is an error rather than a silent uncorrected run, which
+    /// would otherwise be cached and shown as corrected.
+    /// </summary>
+    private static string? ResolveTimingIdentity(OmrEngine engine, bool timingCorrection)
+    {
+        if (!timingCorrection || !OmrPipeline.SupportsTimingCorrection(engine))
+        {
+            return null;
+        }
+        return OmrPipeline.TimingCorrectionSha256 ?? throw new OmrPipelineException(
+            $"The timing correction ({OmrPipeline.TimingCorrectionScriptName}) is missing from the Bridge folder.",
+            errorCode: "RUNTIME_MISSING",
+            stage: "runtime_start");
     }
 
     private static SongLoadResult LoadOrCreateCore(
@@ -173,13 +198,14 @@ public static class SongCache
         CancellationToken cancellationToken,
         IProgress<OmrProgress>? progress = null,
         bool bypassKnownFailure = false,
-        bool forceReprocess = false)
+        bool forceReprocess = false,
+        string? timingIdentity = null)
     {
         ArgumentNullException.ThrowIfNull(pipeline);
         cancellationToken.ThrowIfCancellationRequested();
         string sourcePath = ValidateInputPath(inputPath);
         string sourceHash = ComputeSha256(sourcePath);
-        CachePaths cachePaths = CreateCachePaths(sourcePath, engine, applicationDirectory, sourceHash);
+        CachePaths cachePaths = CreateCachePaths(sourcePath, engine, applicationDirectory, sourceHash, timingIdentity);
         Directory.CreateDirectory(cachePaths.MidiDirectory);
         Directory.CreateDirectory(cachePaths.PdfDirectory);
 
@@ -191,7 +217,7 @@ public static class SongCache
                 $"[SONG CACHE] engine={OmrPipeline.GetEngineName(engine)} " +
                 $"source_sha256={sourceHash} decision=forced_rerun path=\"{cachePaths.MidiPath}\"");
         }
-        else if (TryReadCache(sourceHash, engine, cachePaths, out List<VisualNote>? cachedNotes))
+        else if (TryReadCache(sourceHash, engine, cachePaths, out List<VisualNote>? cachedNotes, timingIdentity))
         {
             Console.Error.WriteLine(
                 $"[SONG CACHE] engine={OmrPipeline.GetEngineName(engine)} " +
@@ -204,7 +230,8 @@ public static class SongCache
                 engine,
                 loadedFromCache: true,
                 cachePaths,
-                applicationDirectory);
+                applicationDirectory,
+                timingIdentity);
         }
 
         ReportProgress(progress, engine, OmrProgressStages.CacheLookup, OmrProgressStatuses.Completed,
@@ -252,7 +279,7 @@ public static class SongCache
         {
             ReportProgress(progress, engine, OmrProgressStages.MidiWrite,
                 OmrProgressStatuses.Started, "Writing MIDI cache");
-            PersistCache(sourcePath, sourceHash, engine, cachePaths, result, generatedNotes);
+            PersistCache(sourcePath, sourceHash, engine, cachePaths, result, generatedNotes, timingIdentity);
             ReportProgress(progress, engine, OmrProgressStages.MidiWrite,
                 OmrProgressStatuses.Completed, "MIDI cache written");
             ReportProgress(progress, engine, OmrProgressStages.CacheValidation,
@@ -280,8 +307,12 @@ public static class SongCache
             engine,
             loadedFromCache: false,
             cachePaths,
-            applicationDirectory);
+            applicationDirectory,
+            timingIdentity);
     }
+
+    /// <summary>Shown after a song's name wherever its corrected conversion is listed or played.</summary>
+    internal const string TimingCorrectionLabel = " \u00b7 timing fix";
 
     private static SongLoadResult CreateLoadResult(
         List<VisualNote> notes,
@@ -289,10 +320,11 @@ public static class SongCache
         OmrEngine engine,
         bool loadedFromCache,
         CachePaths paths,
-        string applicationDirectory) =>
+        string applicationDirectory,
+        string? timingIdentity = null) =>
         new(
             notes,
-            Path.GetFileNameWithoutExtension(sourcePath),
+            Path.GetFileNameWithoutExtension(sourcePath) + (timingIdentity is null ? "" : TimingCorrectionLabel),
             engine,
             loadedFromCache,
             File.Exists(paths.ManifestPath)
@@ -620,7 +652,7 @@ public static class SongCache
             }
             result = new SongLoadResult(
                 notes,
-                displayName,
+                displayName + (manifest.TimingCorrectionSha256 is null ? "" : TimingCorrectionLabel),
                 entry.Engine,
                 LoadedFromCache: true,
                 Path.GetRelativePath(applicationDirectory, manifestPath));
@@ -705,7 +737,8 @@ public static class SongCache
         string sourcePath,
         OmrEngine engine,
         string applicationDirectory,
-        string? sourceHash = null)
+        string? sourceHash = null,
+        string? timingIdentity = null)
     {
         string songsDirectory = Path.Combine(applicationDirectory, "songs");
         string pdfDirectory = Path.Combine(songsDirectory, "pdf");
@@ -720,7 +753,10 @@ public static class SongCache
             songName = $"{sourceHash ?? ComputeSha256(sourcePath)}-{OmrPipeline.Homr465ProfileSha256}";
             retainedSourceName = songName + Path.GetExtension(sourcePath);
         }
-        string midiPath = Path.Combine(midiDirectory, $"{songName}.mid");
+        // A corrected conversion never shares an entry with the uncorrected one or with another
+        // version of the correction; the retained source PDF stays one file for both.
+        string midiName = timingIdentity is null ? songName : $"{songName}.timing-{timingIdentity[..12]}";
+        string midiPath = Path.Combine(midiDirectory, $"{midiName}.mid");
         return new CachePaths(
             pdfDirectory,
             midiDirectory,
@@ -780,7 +816,8 @@ public static class SongCache
         string sourceHash,
         OmrEngine engine,
         CachePaths cachePaths,
-        out List<VisualNote> notes)
+        out List<VisualNote> notes,
+        string? timingIdentity = null)
     {
         notes = [];
         if (!File.Exists(cachePaths.MidiPath) || !File.Exists(cachePaths.ManifestPath))
@@ -797,6 +834,7 @@ public static class SongCache
             if (manifest is null ||
                 manifest.SourceSha256 != sourceHash ||
                 manifest.Engine != engine ||
+                manifest.TimingCorrectionSha256 != timingIdentity ||
                 (engine == OmrEngine.Homr465 && manifest.RuntimeProfileSha256 != OmrPipeline.Homr465ProfileSha256) ||
                 manifest.EngineRevision != OmrPipeline.GetEngineRevision(engine) ||
                 manifest.ModelRevision != OmrPipeline.GetModelRevision(engine) ||
@@ -1034,7 +1072,8 @@ public static class SongCache
         OmrEngine engine,
         CachePaths cachePaths,
         OmrResult result,
-        IReadOnlyList<VisualNote> expectedNotes)
+        IReadOnlyList<VisualNote> expectedNotes,
+        string? timingIdentity = null)
     {
         string temporaryMidiPath = Path.Combine(
             cachePaths.MidiDirectory,
@@ -1067,7 +1106,8 @@ public static class SongCache
                 MidiSha256: midiSha256,
                 DurationSeconds: durationSeconds,
                 DisplayName: Path.GetFileNameWithoutExtension(sourcePath),
-                RuntimeProfileSha256: result.RuntimeProfileSha256);
+                RuntimeProfileSha256: result.RuntimeProfileSha256,
+                TimingCorrectionSha256: timingIdentity);
             string manifestJson = JsonSerializer.Serialize(manifest, ManifestJsonOptions);
             File.WriteAllText(temporaryManifestPath, manifestJson);
 
@@ -1341,9 +1381,10 @@ public static class SongCache
     internal static string GetMidiPathForTesting(
         string sourcePath,
         OmrEngine engine,
-        string applicationDirectory)
+        string applicationDirectory,
+        string? timingIdentity = null)
     {
-        return CreateCachePaths(sourcePath, engine, applicationDirectory).MidiPath;
+        return CreateCachePaths(sourcePath, engine, applicationDirectory, timingIdentity: timingIdentity).MidiPath;
     }
 
     internal static void WriteMidiForTesting(string outputPath, OmrResult result)
@@ -1379,21 +1420,25 @@ public static class SongCache
     internal static bool IsCacheHitForTesting(
         string sourcePath,
         OmrEngine engine,
-        string applicationDirectory) =>
-        IsCacheHit(sourcePath, engine, applicationDirectory);
+        string applicationDirectory,
+        string? timingIdentity = null) =>
+        IsCacheHit(sourcePath, engine, applicationDirectory, timingIdentity);
 
     private static bool IsCacheHit(
         string sourcePath,
         OmrEngine engine,
-        string applicationDirectory)
+        string applicationDirectory,
+        string? timingIdentity = null)
     {
         string validatedSource = ValidateInputPath(sourcePath);
-        CachePaths paths = CreateCachePaths(validatedSource, engine, applicationDirectory);
+        string sourceHash = ComputeSha256(validatedSource);
+        CachePaths paths = CreateCachePaths(validatedSource, engine, applicationDirectory, sourceHash, timingIdentity);
         return TryReadCache(
-            ComputeSha256(validatedSource),
+            sourceHash,
             engine,
             paths,
-            out _);
+            out _,
+            timingIdentity);
     }
 
     internal static List<VisualNote> LoadOrCreateForTesting(
@@ -1414,8 +1459,10 @@ public static class SongCache
         string inputPath,
         OmrEngine engine,
         string applicationDirectory,
-        Func<string, OmrEngine, CancellationToken, OmrResult> pipeline) =>
-        LoadOrCreateCore(inputPath, engine, applicationDirectory, pipeline, CancellationToken.None);
+        Func<string, OmrEngine, CancellationToken, OmrResult> pipeline,
+        string? timingIdentity = null) =>
+        LoadOrCreateCore(inputPath, engine, applicationDirectory, pipeline, CancellationToken.None,
+            timingIdentity: timingIdentity);
 
     internal static IReadOnlyList<PdfLibraryEntry> GetPdfLibraryForTesting(
         string applicationDirectory) => GetPdfLibraryCore(applicationDirectory);
@@ -1458,7 +1505,8 @@ public static class SongCache
         string? MidiSha256 = null,
         double? DurationSeconds = null,
         string? DisplayName = null,
-        string? RuntimeProfileSha256 = null);
+        string? RuntimeProfileSha256 = null,
+        string? TimingCorrectionSha256 = null);
 
     private sealed record LegacyOmrSettings(
         string Device,

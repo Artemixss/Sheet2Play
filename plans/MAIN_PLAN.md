@@ -5,8 +5,10 @@
 and authorized **Phase 1 only** ("approved do small 465 then start displacement phase 1").
 Phases 2–4 each need their own request. Phase 1 baselines were recorded on 2026-10-17.
 The user then authorized Phase 2 ("approved, start displacement phase 2"), completed the same
-day. Phase 3 was authorized and scored on 2026-10-17: not accepted, replan pending
-the user. The predecessor
+day. Phase 3 was authorized and scored on 2026-10-17: not accepted, then replanned at the
+user's choice ("go with option 1 then 2") and accepted on a fresh held-out set. The user
+authorized Phase 4 ("push it and start phase 4"); it shipped on 2026-10-18 behind a visible
+switch, off by default. Making it the default waits on the user's review. The predecessor
 [465 integration plan](archive/2026-10-09-homr-465-app-integration.done.md) is archived
 as done. The [handoff](../Research/omr/reports/displacement/handoff.md) records current
 state and the next action.
@@ -148,6 +150,14 @@ Add the accepted correction to the app as a setting with a visible on-screen con
 default. Include the correction's identity in the cache key, so corrected and uncorrected
 MIDI never share a cache entry. Pass the full release gate and verify the published EXE.
 Make it the default only after the user reviews the test-set and library results.
+
+**Result (2026-10-18): shipped, off by default.** `Bridge/timing_correction.py` (the frozen
+`fit+anchor-holes-keep3`) runs in place of `bridge.py` for the two HOMR engines when the landing
+page's **TIMING FIX** switch is on. No pinned HOMR 465 file changed, so the 465 identity and the
+library's caches stand. Corrected MIDI is keyed by the script's SHA-256 (its own file name and a
+manifest field) and listed as "· timing fix". Same notes as research on all 305 cached
+recognitions, and on one live 465 run (6654252: onset F1 0.208 → 0.904); release gate passed.
+Details: the [handoff](../Research/omr/reports/displacement/handoff.md).
 
 ## Out of scope
 

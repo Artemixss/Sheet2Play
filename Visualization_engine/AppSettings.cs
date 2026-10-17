@@ -106,6 +106,21 @@ public static class AppSettingsStore
         Write(ReadOrRepair(settingsPath) with { AudioBackend = backend }, settingsPath);
     }
 
+    /// <summary>
+    /// Whether HOMR conversions run the timing correction (Bridge/timing_correction.py). Off
+    /// until the user turns it on: it is measured on engraved scores, not yet on their library.
+    /// </summary>
+    public static bool LoadTimingCorrection() => LoadTimingCorrectionFromPath(GetSettingsPath());
+
+    internal static bool LoadTimingCorrectionFromPath(string settingsPath) =>
+        ReadOrRepair(settingsPath).TimingCorrection;
+
+    public static void SaveTimingCorrection(bool enabled) =>
+        SaveTimingCorrectionToPath(enabled, GetSettingsPath());
+
+    internal static void SaveTimingCorrectionToPath(bool enabled, string settingsPath) =>
+        Write(ReadOrRepair(settingsPath) with { TimingCorrection = enabled }, settingsPath);
+
     public static string? LoadSoundFontPath() => LoadSoundFontPathFromPath(GetSettingsPath());
 
     internal static string? LoadSoundFontPathFromPath(string settingsPath) =>
@@ -281,5 +296,6 @@ public static class AppSettingsStore
         int AudioOffsetMilliseconds = DefaultAudioOffsetMilliseconds,
         AudioBackend AudioBackend = AudioBackend.SoundFont,
         int SynthAudioOffsetMilliseconds = UnsetSynthAudioOffset,
-        string? SoundFontPath = null);
+        string? SoundFontPath = null,
+        bool TimingCorrection = false);
 }

@@ -10,8 +10,9 @@ reports, artifacts and phase handoffs remain beside their evidence.
 the rest of the score. The user approved it on 2026-10-17 and authorized Phase 1 only
 (build the exact-label ruler and record baselines). Phase 1 baselines were recorded
 on 2026-10-17; Phase 2 (where scores gain their beats) was authorized and completed the same
-day. Phase 3 was scored on its test set the same day: not accepted (it harms meter changes),
-so a replan waits on the user. The
+day. Phase 3 was scored on its test set the same day: not accepted (it harms meter changes); the
+replan was accepted on a fresh held-out set, and Phase 4 shipped it on 2026-10-18 behind an
+off-by-default **TIMING FIX** switch. The
 [handoff](../Research/omr/reports/displacement/handoff.md) records state and the next
 action.
 
