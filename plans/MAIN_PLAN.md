@@ -32,7 +32,8 @@ Limits that shape this plan:
 
 Experimental changes stay opt-in and leave the shipped engine untouched until measured.
 Substantive jobs use the [enforced supervisor](../Research/omr/reports/zeus-attribution/phase2/safety-fix-20261004/REPORT.md)
-and separate GPU admission. Private library files stay local and ignored. No training,
+and separate GPU admission. Since 2026-10-17 it applies no per-worker memory cap by default
+(user decision); the 85% RAM/commit stops and the system commit reserve remain. Private library files stay local and ignored. No training,
 engine replacement or cloud spending. Corrections run on cached recognitions, so each engine
 is inferred once per corpus and every variant is cheap post-processing.
 

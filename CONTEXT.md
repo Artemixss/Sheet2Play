@@ -21,7 +21,8 @@ in archived records are not current work orders.
 **Resource constraints:** the [repeated Windows commit exhaustion](Research/omr/reports/zeus-attribution/phase2/crash-recurrence-20261004/REPORT.md)
 has no verified initiating cause or durable remedy. The [enforced CPU safeguards](Research/omr/reports/zeus-attribution/phase2/safety-fix-20261004/REPORT.md)
 remain mandatory: recorded supervisor, one heavy worker, 85% RAM/commit stops,
-4 GiB reserve, worker containment and bounded deadlines. Keep the plan's existing
+4 GiB system commit reserve, worker containment and bounded deadlines (no
+per-worker memory cap by default since 2026-10-17, at the user's request). Keep the plan's existing
 usage stop and separate GPU admission. Check live jobs/locks before execution;
 never automatically retry pressure failures or invoke Git during recovery.
 C-only system-managed paging and the prior 18 GiB allocation are recorded

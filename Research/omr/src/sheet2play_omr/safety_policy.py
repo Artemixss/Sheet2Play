@@ -9,19 +9,23 @@ GIB = 1024**3
 
 @dataclass(frozen=True)
 class SafetyLimits:
-    worker_bytes: int = 4 * GIB
+    # Optional per-worker memory cap. None (the default since 2026-10-17, at the user's request)
+    # leaves a worker bounded by the system stops below instead of a fixed allowance.
+    worker_bytes: int | None = None
     max_seconds: float = 4 * 3600 - 30
     active_processes: int = 16
     system_stop_percent: int = 85
     commit_headroom_bytes: int = 4 * GIB
 
     def __post_init__(self) -> None:
-        for name in ("worker_bytes", "active_processes", "system_stop_percent", "commit_headroom_bytes"):
+        for name in ("active_processes", "system_stop_percent", "commit_headroom_bytes"):
             value = getattr(self, name)
             if isinstance(value, bool) or not isinstance(value, int) or value <= 0:
                 raise ValueError(f"{name} must be a positive integer")
-        if not 64 * 1024**2 <= self.worker_bytes <= 4 * GIB:
-            raise ValueError("Worker allowance must be between 64 MiB and 4 GiB")
+        if self.worker_bytes is not None and (
+                isinstance(self.worker_bytes, bool) or not isinstance(self.worker_bytes, int)
+                or self.worker_bytes < 64 * 1024**2):
+            raise ValueError("A worker allowance, when set, must be an integer of at least 64 MiB")
         if not 50 <= self.system_stop_percent <= 90:
             raise ValueError("System pressure threshold must be between 50 and 90 percent")
         if not 2 * GIB <= self.commit_headroom_bytes <= 8 * GIB:
@@ -66,6 +70,6 @@ def admission_reason(sample: dict, limits: SafetyLimits) -> str | None:
     reason = blocking_reason(sample, 0, limits)
     if reason:
         return reason
-    if sample["commit_limit_bytes"] - sample["committed_bytes"] < limits.worker_bytes + limits.commit_headroom_bytes:
+    if limits.worker_bytes is not None and             sample["commit_limit_bytes"] - sample["committed_bytes"] < limits.worker_bytes + limits.commit_headroom_bytes:
         return "insufficient_commit_headroom_for_worker_budget"
     return None

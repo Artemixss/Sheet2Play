@@ -159,3 +159,7 @@ Research/omr/reports/zeus-attribution/phase2/crash-investigation-20261004/Operat
 Research/omr/reports/zeus-attribution/phase2/crash-investigation-20261004/System.json
 Research/omr/reports/zeus-attribution/phase2/crash-recurrence-20261004/Detector.json
 Research/omr/reports/zeus-attribution/phase2/crash-recurrence-20261004/System.json
+
+# Displacement plan: supervisor receipts and capture identities hold local user paths; keep them local.
+Research/omr/reports/displacement/phase*/jobs/
+Research/omr/reports/displacement/phase*/capture-identity.json

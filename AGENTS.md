@@ -27,8 +27,10 @@ file covers only what is specific to this repository.
 - Windows commit exhaustion has crashed this machine repeatedly with no verified cause or
   durable remedy, so the [enforced CPU safeguards](Research/omr/reports/zeus-attribution/phase2/safety-fix-20261004/REPORT.md)
   are mandatory for substantive jobs: the recorded supervisor, one heavy worker, 85%
-  RAM/commit stops, a 4 GiB reserve, worker containment and deadlines. GPU admission is
-  separate. Inspect live jobs and locks before launching, preserve failed receipts, and
+  RAM/commit stops, a 4 GiB system commit reserve, worker containment and deadlines.
+  Since 2026-10-17, at the user's request, workers have no per-worker memory cap by
+  default (`--worker-limit-mib` sets one when wanted); the system stops still apply.
+  GPU admission is separate. Inspect live jobs and locks before launching, preserve failed receipts, and
   never automatically retry a pressure failure or invoke Git during crash recovery.
 - Keep shared repository rules here. [CLAUDE.md](CLAUDE.md) points here instead of
   maintaining a second copy. Update the active-work links when completing a phase.

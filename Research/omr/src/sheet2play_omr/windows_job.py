@@ -87,14 +87,14 @@ def _kernel32() -> ctypes.WinDLL:
 
 
 class WindowsJob:
-    """Cap aggregate committed memory/processes and kill the assigned tree on close.
+    """Cap processes (and memory, when a limit is given) and kill the assigned tree on close.
 
     The caller must hold the child at a start gate until ``assign`` succeeds.
     Processes outside this Job Object are neither limited nor terminated.
     """
 
-    def __init__(self, memory_limit_bytes: int, active_process_limit: int) -> None:
-        self._memory_limit_bytes = _positive_native_integer(
+    def __init__(self, memory_limit_bytes: int | None, active_process_limit: int) -> None:
+        self._memory_limit_bytes = None if memory_limit_bytes is None else _positive_native_integer(
             memory_limit_bytes, "memory_limit_bytes", ctypes.sizeof(_SIZE_T)
         )
         self._active_process_limit = _positive_native_integer(
@@ -114,12 +114,12 @@ class WindowsJob:
         try:
             limits = _ExtendedLimitInformation()
             limits.BasicLimitInformation.LimitFlags = (
-                _JOB_OBJECT_LIMIT_ACTIVE_PROCESS
-                | _JOB_OBJECT_LIMIT_JOB_MEMORY
-                | _JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE
+                _JOB_OBJECT_LIMIT_ACTIVE_PROCESS | _JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE
             )
             limits.BasicLimitInformation.ActiveProcessLimit = self._active_process_limit
-            limits.JobMemoryLimit = self._memory_limit_bytes
+            if self._memory_limit_bytes is not None:
+                limits.BasicLimitInformation.LimitFlags |= _JOB_OBJECT_LIMIT_JOB_MEMORY
+                limits.JobMemoryLimit = self._memory_limit_bytes
             if not self._kernel.SetInformationJobObject(
                 self._handle, _JOB_OBJECT_EXTENDED_LIMIT_INFORMATION,
                 ctypes.byref(limits), ctypes.sizeof(limits),

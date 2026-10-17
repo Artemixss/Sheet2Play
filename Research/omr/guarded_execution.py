@@ -183,12 +183,14 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--max-seconds", type=float, default=4 * 3600 - 30)
-    parser.add_argument("--worker-limit-mib", type=int, default=4096)
+    parser.add_argument("--worker-limit-mib", type=int, default=None,
+                        help="Optional aggregate memory cap for the worker tree; none by default.")
     parser.add_argument("command", nargs=argparse.REMAINDER)
     args = parser.parse_args()
     command = args.command[1:] if args.command[:1] == ["--"] else args.command
     result = run_guarded(command, Path.cwd(), args.output.resolve(), SafetyLimits(
-        worker_bytes=args.worker_limit_mib * 1024**2, max_seconds=args.max_seconds))
+        worker_bytes=None if args.worker_limit_mib is None else args.worker_limit_mib * 1024**2,
+        max_seconds=args.max_seconds))
     print(json.dumps({key: result[key] for key in (
         "status", "stop_reason", "worker_exit_code", "elapsed_seconds")}))
     return 0 if result["status"] == "complete" else 2

@@ -59,12 +59,19 @@ def test_pressure_boundaries(changes, expected):
 
 
 def test_admission_reserves_budget_and_continuous_checks_allow_exact_headroom():
-    limits = SafetyLimits()
+    limits = SafetyLimits(worker_bytes=4 * GIB)
     sample = _safe_sample(committed_bytes=24 * GIB)
     assert admission_reason(sample, limits) is None
     assert admission_reason({**sample, "committed_bytes": 24 * GIB + 1}, limits) == "insufficient_commit_headroom_for_worker_budget"
     assert blocking_reason(_safe_sample(committed_bytes=7 * GIB, commit_limit_bytes=11 * GIB), 0, limits) is None
     assert blocking_reason(_safe_sample(), limits.max_seconds, limits) == "session_deadline"
+
+
+def test_worker_cap_is_optional_and_unbounded_by_default():
+    assert SafetyLimits().worker_bytes is None
+    assert SafetyLimits(worker_bytes=8 * GIB).worker_bytes == 8 * GIB
+    # Without a cap, admission needs only the system reserve that blocking_reason enforces.
+    assert admission_reason(_safe_sample(committed_bytes=24 * GIB + 1), SafetyLimits()) is None
 
 
 @pytest.mark.parametrize("count", [8, 15, 108, 150])
@@ -86,7 +93,7 @@ def test_invalid_measurements_fail_closed(changes):
 
 @pytest.mark.parametrize("changes", [
     {"max_seconds": True}, {"max_seconds": 14400}, {"max_seconds": float("inf")},
-    {"worker_bytes": 5 * GIB}, {"worker_bytes": True}, {"active_processes": 0},
+    {"worker_bytes": 32 * 1024**2}, {"worker_bytes": True}, {"active_processes": 0},
     {"system_stop_percent": 91}, {"system_stop_percent": True},
     {"commit_headroom_bytes": GIB}, {"commit_headroom_bytes": 9 * GIB},
 ])
