@@ -45,9 +45,47 @@ for both candidates on dev and dev-b, and 3.6 hours on test and test-b.
   the receipt, inspect any directory without `result.json`, then rerun the same command: it
   skips finished scores.
 
+  Finished 2026-10-18: all 120 recognitions ok (`jobs/dev-1`, local).
+
+## Development result (dev + dev-b, 60 scores)
+
+`upstream_score.py`, [score-dev-dev-b.json](score-dev-dev-b.json). "Fixed" is the shipped timing
+fix, `fit+anchor-all-keep3-even-time`. Onset F1 means:
+
+| | Raw | Fixed | Pitch |
+| --- | --- | --- | --- |
+| Shipped `homr465` | 0.321 | 0.505 | 0.934 |
+| `homr465-ab369ac` | 0.331 | 0.525 | 0.953 |
+| `homr480-ab369ac` | 0.420 | 0.585 | 0.954 |
+
+- **480 against shipped, fixed:** +0.080 onset F1 [+0.028, +0.137], 36 better, 23 worse, worst
+  −0.421; raw +0.099 [+0.036, +0.163].
+- **480's weights alone** (against `homr465-ab369ac`): fixed +0.060 [+0.018, +0.106], raw +0.089
+  [+0.028, +0.152], pitch +0.001 [−0.001, +0.004].
+- **Upstream code alone** (465 weights): fixed +0.020 [−0.007, +0.050], raw +0.010
+  [+0.000, +0.023]. Its pitch gain, +0.019, is mostly dev-b 5866060, which shipped 465 fails
+  and upstream main reads.
+- **Practical fit:** page p95 44.7 s for 480 against 31.7 s for 465 on the same code, ratio 1.41,
+  inside the plan's 2x gate; peak VRAM 1,569 of 6,141 MiB (25.5%) for both.
+
+## Pre-registered test rule (recorded before test and test-b were recognised)
+
+On test + test-b (94 scores), scored once with the same script: `homr480-ab369ac` is an
+improvement for the app if its fixed onset F1 beats shipped `homr465` fixed with a paired 95%
+interval above zero, its pitch F1 is not lower by more than 0.005, it fails no more scores than
+shipped 465, page p95 stays within 2x of `homr465-ab369ac`, and VRAM stays under 90%. The same
+figures are reported for `homr465-ab369ac`. Adopting either as the app default is the user's
+decision under the plan, after the release gate; this rule only says whether the evidence
+supports it.
+
 ## Next action
 
-Score raw and timing-fixed onset, pitch and duration F1 on dev and dev-b against the shipped
-`homr465` captures with paired bootstrap, before deciding whether test and test-b are worth
-running. The plan's frozen 59-page sample and the generated controls (`tuplet_aligned` among
-them) are not wired to this runner yet.
+Recognise test and test-b with both candidates (256 pages, about four hours; the supervisor's
+3.75-hour limit may stop it once, and the same command resumes):
+
+```
+Research/omr/.venv/Scripts/python.exe -B Research/omr/guarded_execution.py --output Research/omr/reports/upstream-480/jobs/test-1 --max-seconds 14300 -- 'Bridge\.venv-homr-gpu\Scripts\python.exe' -I -B Research/omr/upstream_capture.py --splits test test-b
+```
+
+Then `upstream_score.py --splits test test-b`. The plan's frozen 59-page sample and the
+generated controls (`tuplet_aligned` among them) are not wired to this runner yet.
