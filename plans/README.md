@@ -20,7 +20,7 @@ action.
 
 | Plan | Status |
 | --- | --- |
-| [Remaining timing loss after the shipped fix](2026-10-18-remaining-timing-loss.md) | Requested 2026-10-18; Phase 3 scored once: gain on both engines, one near-correct failure; waits on the user's decision. [Handoff](../Research/omr/reports/timing/handoff.md) |
+| [Remaining timing loss after the shipped fix](2026-10-18-remaining-timing-loss.md) | Requested 2026-10-18; shipped the same day behind the off-by-default TIMING FIX switch after the user accepted one near-correct failure. [Handoff](../Research/omr/reports/timing/handoff.md) |
 | [Current upstream exporter and run 480](2026-10-17-upstream-exporter-480.md) | Authorized 2026-10-18; weights and upstream source acquired, inference waits for free VRAM. [Handoff](../Research/omr/reports/upstream-480/handoff.md) |
 
 ## Archived plans

@@ -39,6 +39,27 @@ LOST_BACKUP_PAGE = """<?xml version="1.0" encoding="UTF-8"?>
 """
 
 
+def page_of(*measures: str) -> str:
+    """A 2/4 piano page whose measures hold the given notes, the first carrying the attributes."""
+    body = "".join(f'<measure number="{number}">{notes}</measure>' for number, notes in enumerate(measures, start=1))
+    body = body.replace('<measure number="1">', '<measure number="1"><attributes><divisions>1</divisions>'
+                        '<time><beats>2</beats><beat-type>4</beat-type></time><clef><sign>G</sign><line>2</line>'
+                        '</clef></attributes>', 1)
+    return ('<?xml version="1.0" encoding="UTF-8"?><score-partwise version="4.0"><part-list>'
+            '<score-part id="P1"><part-name>Piano</part-name></score-part></part-list>'
+            f'<part id="P1">{body}</part></score-partwise>')
+
+
+def note(step: str, octave: int, beats: int, voice: int = 1) -> str:
+    kind = {1: "quarter", 2: "half"}[beats]
+    return (f"<note><pitch><step>{step}</step><octave>{octave}</octave></pitch><duration>{beats}</duration>"
+            f"<voice>{voice}</voice><type>{kind}</type></note>")
+
+
+def backup(beats: int) -> str:
+    return f"<backup><duration>{beats}</duration></backup>"
+
+
 def starts(score) -> dict[int, float]:
     return {note.midi_pitch: note.start_beat for note in score.notes}
 
@@ -56,6 +77,33 @@ class TimingCorrectionTests(unittest.TestCase):
         self.assertEqual(corrected.total_beats, 6.0)
         # The next page starts on the corrected bar line, through the bridge's own stitching.
         self.assertEqual(combine_score_pages([corrected, corrected]).notes[-1].start_beat, 10.0)
+
+    def correct(self, xml: str):
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary) / "page.musicxml"
+            path.write_text(xml, encoding="utf-8")
+            page = normalize_musicxml(path)
+            return page, timing_correction.correct_page(path, page, first_page=False)
+
+    def test_an_overlong_bar_without_holes_is_anchored(self) -> None:
+        # Measure 2 reads an extra quarter in its upper voice: three beats against the lower
+        # voice's two, no hole, too long to fit. Its voices end unevenly, so it is anchored.
+        page, corrected = self.correct(page_of(
+            note("C", 4, 2),
+            note("E", 4, 1) + note("F", 4, 1) + note("G", 4, 1) + backup(3) + note("G", 3, 2, voice=2),
+            note("D", 4, 2)))
+        self.assertEqual(page.total_beats, 7.0)
+        self.assertEqual(corrected.total_beats, 6.0)
+        self.assertEqual(starts(corrected)[62], 4.0)
+
+    def test_a_short_bar_whose_voices_end_together_keeps_its_length(self) -> None:
+        # A real one-beat bar: both voices end on beat one, so it is not stretched to the meter.
+        page, corrected = self.correct(page_of(
+            note("C", 4, 2), note("C", 4, 2),
+            note("E", 4, 1) + backup(1) + note("G", 3, 1, voice=2),
+            note("D", 4, 2)))
+        self.assertEqual(corrected.total_beats, page.total_beats)
+        self.assertEqual(starts(corrected)[62], 5.0)
 
     def test_a_page_that_cannot_be_matched_keeps_the_app_reading(self) -> None:
         page = SimpleNamespace(name="page")

@@ -23,7 +23,8 @@ User request, 2026-10-18: "push it and start phase 4". Shipped variant: the seco
 **fit+anchor-holes-keep3**, better than the primary on both engines on test-b.
 
 - **Correction:** [Bridge/timing_correction.py](../../../../Bridge/timing_correction.py), a port of
-  the frozen research code. It is its own entry point: it wraps `bridge.normalize_musicxml` so
+  the frozen research code. Since 2026-10-18 it ports the remaining-timing plan's wider rule
+  instead ([timing handoff](../timing/handoff.md)). It is its own entry point: it wraps `bridge.normalize_musicxml` so
   each HOMR page is normalized, then corrected, then stitched by the bridge's unchanged
   `combine_score_pages`, and runs `bridge.main`. Other engines run unchanged. A page whose notes
   cannot be matched one to one keeps the app's reading, logged on stderr (`[timing]`).

@@ -54,8 +54,20 @@ meter-change score, goes from 0.995 to 0.952 on 465 (27 near-correct scores on 4
 no other loses). The largest gains are 5987667 on 465 (0.026 to 0.966) and 6518134 on both
 engines (465: 0.097 to 0.866). No test score was inspected beyond these totals.
 
+## Phase 4: shipped (2026-10-18)
+
+The user accepted the candidate despite the near-correct failure ("accept it and ship it").
+[Bridge/timing_correction.py](../../../../Bridge/timing_correction.py) now ports
+`fit+anchor-all-keep3-even-time`, still behind the off-by-default **TIMING FIX** switch; no C#
+change. Its SHA-256 keys the corrected cache, so only songs converted with the switch on re-run,
+and no pinned 465 file changed.
+
+- Shipped and research paths agree note for note on all 305 cached recognitions, with no page
+  fallbacks (`displacement_ship_check.py`, now pointed at this freeze; `phase4/jobs/ship-check-1`).
+- Tests: Bridge and research 451 passed, 2 skipped (`phase4/jobs/regression-1`; 2 new Bridge
+  tests, 7 in `test_timing_correct.py`); `verify-release.ps1` passed every step, xunit 94 passed,
+  and the published `dist/Bridge/timing_correction.py` matches the source.
+
 ## Next action
 
-The user decides between accepting the candidate despite the one near-correct failure, which
-would port it to `Bridge/timing_correction.py` behind the existing switch (Phase 4), and a
-replan, which needs a fresh held-out set because diagnosing 6222828 would spend test-b.
+None authorized. Making the switch the default still waits on the user's review.

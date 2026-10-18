@@ -1,10 +1,11 @@
 """HOMR timing correction: re-lay each page's measures where a lost `<backup>` misplaced them.
 
-Shipped behind the app's "Timing fix" setting, off by default. Research: displacement plan,
-Phase 3 replan (`Research/omr/reports/displacement/handoff.md`). On a held-out set of 54
-engraved scores, scored once, it raised onset F1 from 0.413 to 0.586 with HOMR 465 and from
-0.414 to 0.515 with 426, pitch unchanged and no near-correct score worse. This module is a
-port of the frozen research variant `fit+anchor-holes-keep3` (`displacement_correct.py`).
+Shipped behind the app's "Timing fix" setting, off by default. This module is a port of the
+frozen research variant `fit+anchor-all-keep3-even-time` (`Research/omr/timing_correct.py`;
+`Research/omr/reports/timing/handoff.md`). On 94 held-out engraved scores, scored once, it
+raised onset F1 over the previous fix (`fit+anchor-holes-keep3`) from 0.606 to 0.680 with
+HOMR 465 and from 0.545 to 0.588 with 426, pitch unchanged; one near-correct 465 score went
+from 0.995 to 0.952. Over the uncorrected engines that is about 0.43 to 0.68 and 0.42 to 0.59.
 
 HOMR's MusicXML sometimes drops or shortens a `<backup>`, so a whole voice starts late and
 its measure overflows although its notes are right. Every later note then plays late. Per
@@ -13,14 +14,16 @@ page, both staves of a part together:
 1. **fit**: a measure longer than the page meter whose late voices can all be moved back to
    end on the bar is fitted, all or nothing. A real longer bar has a voice from beat 0 past
    the meter, so it never fits and is left alone.
-2. **anchor**: a measure in which some voice leaves a hole between two of its notes (the
-   other mark of a lost `<backup>`) advances by the page meter, unless three hole-free
-   measures on the page share its decoded length (a real recurring meter).
+2. **anchor**: every measure advances by its meter, unless it looks like a real bar of its
+   own length: three hole-free measures on the page share its decoded length (a recurring
+   meter), or it has no hole between two notes of a voice (the other mark of a lost
+   `<backup>`) and either every voice ends on its decoded length or HOMR recognised a time
+   signature at it. An opening pickup keeps its length.
 
 Notes keep their place inside their measure, and pages are stitched by the bridge's own
-`combine_score_pages`, which reads the corrected page length. The meter is HOMR's page
-meter, the median decoded measure length, which is why a real one-off meter change can
-still be anchored wrongly; the research found no blind signal for it.
+`combine_score_pages`, which reads the corrected page length. The meter is the one music21
+gives the measure, normally HOMR's page meter, so a real one-off meter change whose voices
+end unevenly and whose time signature HOMR missed is still anchored wrongly.
 
 Run in place of `bridge.py`, with the same arguments. It changes only the normalized pages
 of the HOMR engines; any other engine runs unchanged. This file is not one of the pinned
@@ -61,6 +64,7 @@ class PageMeasure:
     advance: Fraction
     bar: Fraction
     elements: list[Element] = field(default_factory=list)
+    time_here: bool = False  # HOMR recognised a time signature at this measure, after the page's first
 
 
 @dataclass
@@ -91,7 +95,8 @@ def load_page(path: Path) -> list[Staff]:
                 else max(end, start + exact(measure.highestTime))
             signature = measure.timeSignature or measure.getContextByClass(meter.TimeSignature)
             row = PageMeasure(start, following - start,
-                              exact(signature.barDuration.quarterLength) if signature else Fraction(0))
+                              exact(signature.barDuration.quarterLength) if signature else Fraction(0),
+                              time_here=index > 0 and measure.timeSignature is not None)
             voices = {id(voice): position + 1 for position, voice in enumerate(measure.getElementsByClass(stream.Voice))}
             for element in measure.recurse().notesAndRests:
                 if element.duration.isGrace or element.duration.quarterLength <= 0:
@@ -148,6 +153,17 @@ def fit_shifts(measures: list[PageMeasure], bar: Fraction) -> list[dict[int, Fra
     return shifts
 
 
+def evenly_ended(measures: list[PageMeasure], offsets: list[list[Fraction]]) -> bool:
+    """Whether every voice of the measure, on every staff, ends at the same point."""
+    ends = set()
+    for measure, measure_offsets in zip(measures, offsets):
+        by_container: dict[int, Fraction] = {}
+        for element, offset in zip(measure.elements, measure_offsets):
+            by_container[element.container] = max(by_container.get(element.container, offset), offset + element.duration)
+        ends.update(by_container.values())
+    return len(ends) == 1
+
+
 @dataclass
 class Layout:
     starts: dict[tuple, list[Fraction]]  # (part, staff, midi, voice, original, duration) -> new starts
@@ -187,7 +203,11 @@ def lay_out(staves: list[Staff], first_page: bool) -> Layout:
         chosen = []
         for index, (length, bar) in enumerate(zip(lengths, bars)):
             pickup = first_page and index == 0 and length < bar
-            if bar > 0 and not pickup and holes[index] and hole_free[length] < KEEP_RECURRING:
+            kept = hole_free[length] >= KEEP_RECURRING
+            if not holes[index] and (evenly_ended(present[index], offsets[index])
+                                     or any(measure.time_here for measure in present[index])):
+                kept = True
+            if bar > 0 and not pickup and not kept:
                 chosen.append(bar)
                 layout.anchored += int(bar != length)
             else:

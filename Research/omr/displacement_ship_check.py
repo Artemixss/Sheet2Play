@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Check that the shipped timing correction is the frozen research variant, note for note.
 
-Phase 4 of the displacement plan ships `Bridge/timing_correction.py`, a port of
-`displacement_correct.py`'s `fit+anchor-holes-keep3`. For every cached recognition of the
-ruler and the replan sets, this runs the shipped path (the bridge normalizer, the shipped
+`Bridge/timing_correction.py` ports the frozen variant of the remaining-timing-loss plan,
+`fit+anchor-all-keep3-even-time` (`timing_correct.py`, `reports/timing/phase2/freeze.json`); the
+displacement plan's Phase 4 shipped `fit+anchor-holes-keep3` the same way. For every cached
+recognition of the ruler and the replan sets, this runs the shipped path (the bridge normalizer, the shipped
 correction per page, the bridge's `combine_score_pages`) and the research path (`predict`),
 and fails unless both place every note identically. No inference, no labels.
 
@@ -25,9 +26,10 @@ sys.path.insert(0, str(HERE))
 import musicxml_normalizer as normalizer  # noqa: E402
 import timing_correction  # noqa: E402
 from displacement_attribution import app_pages  # noqa: E402
-from displacement_correct import ENGINES, RULER, load_page, manifest_items, predict  # noqa: E402
+from displacement_correct import ENGINES, RULER, manifest_items, predict  # noqa: E402
+from timing_correct import FREEZE, load_page  # noqa: E402
 
-VARIANT = "fit+anchor-holes-keep3"
+VARIANT = json.loads(FREEZE.read_text())["variant"]
 
 
 def key(start: float, pitch: int, duration: float) -> tuple[int, int, int]:
