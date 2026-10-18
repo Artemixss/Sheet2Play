@@ -28,19 +28,26 @@ them unchanged. The set is the displacement plan's 154 engraved scores: dev 123 
 dev-b 53, test 130, test-b 126. At the shipped capture's 25 s per page that is about 2.5 hours
 for both candidates on dev and dev-b, and 3.6 hours on test and test-b.
 
+## Runs
+
+- **Smoke, 2026-10-18 (passed):** dev 6654252 on both candidates, `jobs/smoke-1` (local), 104 s.
+  Receipts: every model on `CUDAExecutionProvider`, HOMR modules from the `ab369ac` tree, 465's
+  decoder FP16 and 480's FP32. Pages took about 16 s on 465 and 20 s on 480.
+- **Dev and dev-b, started 2026-10-18:** 60 scores, 176 pages, both candidates, run from the
+  workspace root:
+
+  ```
+  Research/omr/.venv/Scripts/python.exe -B Research/omr/guarded_execution.py --output Research/omr/reports/upstream-480/jobs/dev-1 --max-seconds 14300 -- 'Bridge\.venv-homr-gpu\Scripts\python.exe' -I -B Research/omr/upstream_capture.py --splits dev dev-b
+  ```
+
+  Progress is one `result.json` per score in `data/displacement-ruler/captures/<candidate>/`;
+  the log is `jobs/dev-1/worker.log`. If interrupted, check that no supervisor is alive, keep
+  the receipt, inspect any directory without `result.json`, then rerun the same command: it
+  skips finished scores.
+
 ## Next action
 
-All inference needs VRAM below the 90% stop; on 2026-10-18 a game held 93%. Once it is free:
-
-1. Smoke, one two-page dev score:
-
-   ```
-   Research/omr/.venv/Scripts/python.exe -B Research/omr/guarded_execution.py --output Research/omr/reports/upstream-480/jobs/smoke-1 --max-seconds 1800 -- 'Bridge\.venv-homr-gpu\Scripts\python.exe' -I -B Research/omr/upstream_capture.py --splits dev --ids 6654252
-   ```
-
-2. Dev and dev-b with `--splits dev dev-b`, output `jobs/dev-1`; it stops itself after 3.75 hours
-   and resumes from the first score without `result.json`.
-3. Score raw and timing-fixed onset, pitch and duration F1 against the shipped `homr465`
-   captures with paired bootstrap, before deciding whether test and test-b are worth running.
-   The plan's frozen 59-page sample and the generated controls (`tuplet_aligned` among them)
-   are not wired to this runner yet.
+Score raw and timing-fixed onset, pitch and duration F1 on dev and dev-b against the shipped
+`homr465` captures with paired bootstrap, before deciding whether test and test-b are worth
+running. The plan's frozen 59-page sample and the generated controls (`tuplet_aligned` among
+them) are not wired to this runner yet.
