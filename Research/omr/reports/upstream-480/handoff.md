@@ -90,6 +90,15 @@ Research/omr/.venv/Scripts/python.exe -B Research/omr/guarded_execution.py --out
 Started 2026-10-18 and stopped at the user's request ("continue the test later") after one score
 (6902355, both candidates ok). The interrupted 480 attempt on 7006856 was moved, unchanged, to
 `data/upstream-480-interrupted/`; rerunning the command above resumes from 7006856.
+Resumed at the user's request ("ok continue") as `jobs/test-2`, same command with that output;
+the stopped supervisor's stale `.research-worker.lock` (process gone) was kept in `jobs/test-1/`.
+`test-2` failed its first page in 7 s with `RESOURCE_STOP`: not pressure, but the per-page lock
+`home-upstream/omr-jobs/.worker.lock` the stop had also left (owner gone). That lock and the
+failed 7006856 attempt were kept in `data/upstream-480-interrupted/`, and the same command
+resumed as `jobs/test-3`.
+Stopped again 2026-10-19 at the user's request after 121 of about 184 recognitions, all ok. Both
+locks and the unfinished 465 attempt on 6484095 are kept in `data/upstream-480-interrupted/stop-20261019/`,
+so the same command (with a new output folder) resumes from 6484095.
 
 Then `upstream_score.py --splits test test-b`. The plan's frozen 59-page sample and the
 generated controls (`tuplet_aligned` among them) are not wired to this runner yet.
