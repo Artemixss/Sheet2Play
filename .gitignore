@@ -169,3 +169,8 @@ Research/omr/reports/displacement/phase2/attribution.json
 Research/omr/reports/displacement/phase3b/meter-ledger.json
 # Phase 4's live end-to-end output is a full engine payload; the job receipt records the run.
 Research/omr/reports/displacement/phase4/e2e/
+# Remaining-timing and upstream-480 receipts hold local paths too; the anchor ledger rebuilds
+# from the local captures with timing_meter.py.
+Research/omr/reports/timing/phase*/jobs/
+Research/omr/reports/timing/phase2/anchor-ledger.json
+Research/omr/reports/upstream-480/jobs/

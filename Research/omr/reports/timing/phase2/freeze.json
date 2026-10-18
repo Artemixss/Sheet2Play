@@ -1,0 +1,39 @@
+{
+ "variant": "fit+anchor-all-keep3-even-time",
+ "control": "fit+anchor-holes-keep3",
+ "source_sha256": "c3b6004f78b465c5b3f0bfeee8deca7ae3d8ca0dec73c1a8ae54f864b90fdb37",
+ "development": {
+  "homr465": {
+   "onset_duration_f1": 0.4758,
+   "onset_f1": 0.5051,
+   "pitch_f1": 0.9344,
+   "onset_gain": 0.1841,
+   "onset_gain_95": [
+    0.1153,
+    0.2532
+   ],
+   "one_sided_p": 0.0001,
+   "pitch_change": -0.0,
+   "scores_better": 48,
+   "scores_worse": 7,
+   "worst_drop": -0.672,
+   "near_correct_worst_drop": -0.672
+  },
+  "homr": {
+   "onset_duration_f1": 0.4692,
+   "onset_f1": 0.4973,
+   "pitch_f1": 0.9255,
+   "onset_gain": 0.1865,
+   "onset_gain_95": [
+    0.1272,
+    0.2506
+   ],
+   "one_sided_p": 0.0001,
+   "pitch_change": -0.0,
+   "scores_better": 47,
+   "scores_worse": 3,
+   "worst_drop": -0.0202,
+   "near_correct_worst_drop": 0.0
+  }
+ }
+}
