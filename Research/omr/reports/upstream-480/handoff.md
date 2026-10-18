@@ -87,5 +87,9 @@ Recognise test and test-b with both candidates (256 pages, about four hours; the
 Research/omr/.venv/Scripts/python.exe -B Research/omr/guarded_execution.py --output Research/omr/reports/upstream-480/jobs/test-1 --max-seconds 14300 -- 'Bridge\.venv-homr-gpu\Scripts\python.exe' -I -B Research/omr/upstream_capture.py --splits test test-b
 ```
 
+Started 2026-10-18 and stopped at the user's request ("continue the test later") after one score
+(6902355, both candidates ok). The interrupted 480 attempt on 7006856 was moved, unchanged, to
+`data/upstream-480-interrupted/`; rerunning the command above resumes from 7006856.
+
 Then `upstream_score.py --splits test test-b`. The plan's frozen 59-page sample and the
 generated controls (`tuplet_aligned` among them) are not wired to this runner yet.
