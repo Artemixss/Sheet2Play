@@ -37,12 +37,25 @@ stays small on both engines. Its one near-correct loss on dev is 5799023 on 465 
 was stopped there. The known one-bar meter change 5937814 still loses 0.672 against the raw
 engine, under the shipped fix too.
 
+## Phase 3: held-out score (2026-10-18, not accepted as pre-registered)
+
+Scored once on test and test-b (94 scores) from cached recognitions, with `timing_correct.py
+--test` under the supervisor (`phase3/jobs/test-1`, local); [test.json](phase2/test.json).
+Against the shipped fix:
+
+| | Shipped | Candidate | Gain | 95% | Better / worse | Worst |
+| --- | --- | --- | --- | --- | --- | --- |
+| 465 | 0.606 | 0.680 | +0.074 | +0.039, +0.113 | 27 / 4 | −0.045 |
+| 426 | 0.545 | 0.588 | +0.042 | +0.017, +0.073 | 26 / 9 | −0.120 |
+
+Pitch is unchanged. The gain holds in every subset: test, test-b, and test-b's meter-change and
+single-meter strata, on both engines. The near-correct guard fails once: test-b 6222828, a
+meter-change score, goes from 0.995 to 0.952 on 465 (27 near-correct scores on 465, 22 on 426;
+no other loses). The largest gains are 5987667 on 465 (0.026 to 0.966) and 6518134 on both
+engines (465: 0.097 to 0.866). No test score was inspected beyond these totals.
+
 ## Next action
 
-Phase 3: score the frozen candidate once on test and test-b, from cached recognitions:
-
-```
-Research/omr/.venv/Scripts/python.exe -B Research/omr/guarded_execution.py --output Research/omr/reports/timing/phase3/jobs/test-1 --max-seconds 3600 -- 'Bridge\.venv-homr-gpu\Scripts\python.exe' -I -B Research/omr/timing_correct.py --test
-```
-
-It writes `phase2/test.json` once and refuses if the code changed after freezing.
+The user decides between accepting the candidate despite the one near-correct failure, which
+would port it to `Bridge/timing_correction.py` behind the existing switch (Phase 4), and a
+replan, which needs a fresh held-out set because diagnosing 6222828 would spend test-b.

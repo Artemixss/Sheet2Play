@@ -3,7 +3,9 @@
 **Plan ID:** `2026-10-18-remaining-timing-loss`
 **Status:** Requested by the user on 2026-10-18 ("complete the remaining timing losses"),
 after the [displacement plan](MAIN_PLAN.md) shipped its correction behind the off-by-default
-**TIMING FIX** switch. Phases 1-2 are done and a candidate is frozen; the
+**TIMING FIX** switch. Phases 1-2 are done; Phase 3 scored the frozen candidate once on
+2026-10-18 (gain on both engines, one near-correct failure, so not accepted as
+pre-registered) and waits on the user's decision. The
 [handoff](../Research/omr/reports/timing/handoff.md) records state, evidence and the next action.
 
 ## Why
