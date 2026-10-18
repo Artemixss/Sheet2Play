@@ -68,6 +68,16 @@ and no pinned 465 file changed.
   tests, 7 in `test_timing_correct.py`); `verify-release.ps1` passed every step, xunit 94 passed,
   and the published `dist/Bridge/timing_correction.py` matches the source.
 
+- Library spot check (2026-10-18; per-song rows stay local in `data/library-timing/`): the
+  published entry converted three library PDFs the user named. On the one with a confirmed
+  MuseScore pair (11 pages), onset agreement with that MIDI rose from 0.045 to 0.693, pitch
+  0.981 both, length 885.7 to 874.0 beats against the reference's 872.0; this is agreement with
+  an imperfect reference, not accuracy. The user's complaint about its length (about seven
+  minutes against four) is mostly tempo: the reference plays at 110-186 BPM and the app at its
+  default 120. One of the three changed not at all (every page already decoded to whole bars).
+  All sides were read from MIDI ticks: `evaluate_library.notes_from_midi` uses music21's import,
+  which quantizes onsets and splits notes at bar lines (3,832 notes read as 4,725 here).
+
 ## Next action
 
 None authorized. Making the switch the default still waits on the user's review.
