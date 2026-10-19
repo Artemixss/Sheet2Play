@@ -99,8 +99,47 @@ was `test-2`'s stale-lock stop, re-run).
 - **480's weights alone,** fixed: +0.044 [+0.004, +0.082]. **Upstream code alone** (465 weights):
   +0.024 [+0.001, +0.054], pitch +0.015, and it reads the score shipped 465 fails.
 
+## Adoption (2026-10-19): HOMR 480 is the app default, HOMR 465 the secondary
+
+The user chose it after the test result ("make 480 default and 465 as secondary nothing else").
+HOMR 426 and Zeus are unchanged and still selectable.
+
+- **Bridge:** engine `homr480`, run by `homr480_native.py` against `homr480-profile.json`
+  (`82dc0b01…`) and `.runtime/homr-480`, provisioned by `Research/omr/homr480_provision.py`; see
+  [Bridge/HOMR465.md](../../../../Bridge/HOMR465.md#homr-480). `bridge.py` changed, so 465's profile
+  was re-pinned (`1fd5b26e…` to `c06852f3…`, one line) and the library's 465 caches went stale.
+  The timing fix covers `homr480`; its own hash changed, so corrected caches re-run too.
+- **App:** `OmrEngine.Homr480`, the default for new or unreadable settings; landing-page cards HOMR
+  480 (default), HOMR 465 (secondary), HOMR 426, Zeus; 480's error screen offers "Retry HOMR 465".
+  The user's own settings were switched to `homr480`.
+- **Evidence:** xunit 102 passed (8 new, `Homr480IntegrationTests`); Bridge and research 451
+  passed, 2 skipped (`jobs/regression-1`); the workspace and the published bridge both reproduce
+  the research capture's notes exactly for `homr480` and the shipped capture's for `homr465` on
+  dev 6654252 (`jobs/e2e-bridge-1`, `jobs/e2e-dist-1`); `verify-release.ps1` passed all 8 steps,
+  including the new pinned-480 check (51 runtime assets, 15 Bridge files).
+- **Not done:** no batch re-conversion of the library (`Sheet2Play.exe --reconvert homr480`
+  would do it, several GPU hours); `AGENTS.md`, `README.md` and `CONTEXT.md` still name 465 as the
+  default, because another session holds uncommitted rewrites of all three.
+
+## Flagged follow-up: the two large 480 regressions (after the session's compaction)
+
+The user asked to investigate these further after compacting. Both are deterministic: a
+repeat run (`jobs/rerun-bad-2`, `data/upstream-480-rerun/`) wrote byte-identical page MusicXML.
+Onset F1, pitch F1 in brackets:
+
+| test-b score | 465 | 480 raw | 480 + timing fix |
+| --- | --- | --- | --- |
+| 6222828 (meter change) | 0.995 [0.998] | **0.999** [1.000] | 0.361 |
+| 6785268 | 0.988 [0.990] | **0.060** [0.982] | 0.148 |
+
+- **6222828 is a timing-fix fault, not a recognition one:** 480 reads it almost perfectly and the
+  fix then anchors a real meter change. It is the same score that failed the timing plan's
+  near-correct guard on 465 (0.995 to 0.952). With the switch off (the default) 480 is fine here.
+- **6785268 is a 480 misreading:** pitch is right but onsets are displaced, so bar lengths or
+  voice placement differ from 465's reading of the same pages. Compare 480's and 465's page
+  MusicXML bar by bar (`displacement_attribution` and `timing_residual` read both captures).
+
 ## Next action
 
-The user decides whether to make 480 (or upstream main with 465) the app default. Doing so needs
-a new pinned runtime profile beside 465, a frontend pin, the release gate and the library
-migration path, per the plan; nothing is changed yet. 
+The flagged follow-up above, when the user asks. Making the timing fix the default still waits
+on the user's review.

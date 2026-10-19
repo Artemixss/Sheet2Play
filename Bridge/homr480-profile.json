@@ -1,0 +1,310 @@
+{
+  "bridge_files": [
+    {
+      "path": "bridge.py",
+      "sha256": "6445447bfedbd74bb95c712600fe71d766c6bb8a73c07e5e58ca90a17481a1a9"
+    },
+    {
+      "path": "render_pdf.py",
+      "sha256": "0281f504c2f658adccb484317091830616e3bf5c6c692ab788f3a3346a9c5e6d"
+    },
+    {
+      "path": "progress_protocol.py",
+      "sha256": "3918bf5afe37b536d062de9e6d79a79a3d1356c71ca478beda698066011018f7"
+    },
+    {
+      "path": "musicxml_normalizer.py",
+      "sha256": "2e56906636a7164784492ac47c0f0fd628e4f15e172390b58e2792160f819c8e"
+    },
+    {
+      "path": "homr_gpu.py",
+      "sha256": "e0b4c4f95031713c73507d7bc14bee00a10355746a107e49cbdf8999704a4f97"
+    },
+    {
+      "path": "homr465_profile.py",
+      "sha256": "dcd20d9a43245ad07a9494d81e06da6f034ff451c350547a0dd8730650ae9323"
+    },
+    {
+      "path": "homr465_native.py",
+      "sha256": "f60ae94825485bcc47b449eb21377bf623a3807affd1c6c5a5a54a30b8a45aad"
+    },
+    {
+      "path": "homr480_profile.py",
+      "sha256": "2f4a1db652c9c15f1a4113e6ea597095e534d81c71bd5e8c6bc9e3c179a7293d"
+    },
+    {
+      "path": "homr480_native.py",
+      "sha256": "62fd9c1831614e9dabb70cdf0fe163f755791d27c3a1e042b66a0eb8014df6c4"
+    },
+    {
+      "path": "guarded_execution.py",
+      "sha256": "691aed89121967b592eb105412d55746cc8c2018851e093f8ac7463e3b7936ac"
+    },
+    {
+      "path": "guarded_worker.py",
+      "sha256": "27a53ce5cb4bff58b55fc405aabbb327cc3ee2f46139a14eec510cc3a98786d2"
+    },
+    {
+      "path": "execution_safety/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "execution_safety/execution_resources.py",
+      "sha256": "63ffad9eb9766c70c40ce9636a8986370f6e4aaa06e59678953ccfe0130f46d2"
+    },
+    {
+      "path": "execution_safety/safety_policy.py",
+      "sha256": "b20b2d6b82e8b54958874241898430dcbe7a3b435f421d3e3a253aed3cf254d8"
+    },
+    {
+      "path": "execution_safety/windows_job.py",
+      "sha256": "e9ccdcca7f64e364d7b52f75ae899b922cdadcf60bf2e0ea8aeaaa4bedb25358"
+    }
+  ],
+  "inter_op_threads": 1,
+  "model_revision": "480-5eed84636c96eca5ce6d8e2f62580b74e7ed85e8-fp16-encoder-fp32-decoder",
+  "models": {
+    "encoder": {
+      "path": "models/encoder_pytorch_model_480-5eed84636c96eca5ce6d8e2f62580b74e7ed85e8_fp16.onnx",
+      "sha256": "c1450a582576e9bc16152e4c61b9c2f2283da549e1ee890f051883f5e1c7329e"
+    },
+    "decoder": {
+      "path": "models/decoder_pytorch_model_480-5eed84636c96eca5ce6d8e2f62580b74e7ed85e8.onnx",
+      "sha256": "4727ac741dca23de8eabbcd8dd2dfa33d5f1ec9cecb64465e6c0fb348616fc8c"
+    },
+    "segnet": {
+      "path": "models/segnet_308-3296ccd40960f90ca6ab9c035cca945675d30a0f_fp16.onnx",
+      "sha256": "60f495496cb41473c0521d0811d8f44b9d5cff892d287974a8aebb3eaee2fa83"
+    }
+  },
+  "package_versions": {
+    "Pillow": "12.3.0",
+    "music21": "10.5.0",
+    "numpy": "2.4.6",
+    "nvidia-cublas-cu12": "12.9.2.10",
+    "nvidia-cuda-nvrtc-cu12": "12.9.86",
+    "nvidia-cuda-runtime-cu12": "12.9.79",
+    "nvidia-cudnn-cu12": "9.25.1.1",
+    "nvidia-cufft-cu12": "11.4.1.4",
+    "nvidia-curand-cu12": "10.3.10.19",
+    "nvidia-nvjitlink-cu12": "12.9.86",
+    "onnxruntime-gpu": "1.24.1",
+    "opencv-python-headless": "4.14.0.94",
+    "psutil": "7.2.2",
+    "pypdfium2": "5.13.0",
+    "rapidocr": "3.9.2",
+    "requests": "2.34.2",
+    "typing_extensions": "4.16.0"
+  },
+  "pdf_dpi": 300,
+  "processing": {
+    "coreml_encoder": false,
+    "enable_cache": false,
+    "enable_debug": true,
+    "read_staff_positions": false,
+    "segnet_use_gpu": true,
+    "selected_staff": -1,
+    "title_detection": false,
+    "transformer_use_gpu": true,
+    "write_staff_positions": true
+  },
+  "provider": "CUDAExecutionProvider",
+  "runtime_directory": ".runtime/homr-480",
+  "schema_version": 1,
+  "source_files": [
+    {
+      "path": "source/LICENSE",
+      "sha256": "a6de0dc64ada3b5141517c0167b109dfc2adb3d1d8b27ff1745f337331b2a5f4"
+    },
+    {
+      "path": "source/homr/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "source/homr/autocrop.py",
+      "sha256": "807750bf7cc3011a498746f43045eaa973c6235c42327c2db91e821afba23694"
+    },
+    {
+      "path": "source/homr/bar_line_detection.py",
+      "sha256": "0fd0ec988d240842a72348770769ef1a2c3a47a95da8996017aed04455589a6d"
+    },
+    {
+      "path": "source/homr/bounding_boxes.py",
+      "sha256": "cf5c27212f3b9763dd460cbefe99fd0a66e8f7bf53ea50d02d8849482a02a51f"
+    },
+    {
+      "path": "source/homr/brace_dot_detection.py",
+      "sha256": "ab5aade1a8653b3a44b300217404618f2bd8319d34173e7cd4dc26d66d45a7b7"
+    },
+    {
+      "path": "source/homr/circle_of_fifths.py",
+      "sha256": "3974ab21de851225a3f23f27868165c9b9ea9730984c3589ef180f1162056ae9"
+    },
+    {
+      "path": "source/homr/color_adjust.py",
+      "sha256": "01d971bded1397042bfa76ab9d691e6a3e6bf9bb4283f9d1dab382b0088d96fc"
+    },
+    {
+      "path": "source/homr/constants.py",
+      "sha256": "98d7114ec0509575e2b61ede66d7f42e8c0a90eb25aaa82ab7dd0e92e10fefa0"
+    },
+    {
+      "path": "source/homr/debug.py",
+      "sha256": "dc9e208c605389a967b58a4edee955bfa8ab559d2ac66cd3f677877c8c42b5b3"
+    },
+    {
+      "path": "source/homr/download_utils.py",
+      "sha256": "f2cd05ee4f03092da4135ed67404b6c2d3dd0048a41f8e7f3779a859a7b9a925"
+    },
+    {
+      "path": "source/homr/find_peaks.py",
+      "sha256": "6fd390137077cab7d64104931e3d06b0149581d7217b855ae4080addad21e8f2"
+    },
+    {
+      "path": "source/homr/image_utils.py",
+      "sha256": "b293ffad901fee69e11fcee672f2fc7aa61a44216143b95b8a916655400eea06"
+    },
+    {
+      "path": "source/homr/main.py",
+      "sha256": "3408146ec31515ae00d47232d70aa1921881f2fad2e1379c06ffd4a9f13a1547"
+    },
+    {
+      "path": "source/homr/model.py",
+      "sha256": "a6a54044f6e4b3381646b0f1d593be1da7f332fb6c37b2d423bf00cf83b26933"
+    },
+    {
+      "path": "source/homr/music_xml_generator.py",
+      "sha256": "248ed9b45f5797e64e1d50c7309093a4df891c143b153e97eff66451e23e5ce8"
+    },
+    {
+      "path": "source/homr/noise_filtering.py",
+      "sha256": "0752bba4acca214407408b8f4e4f0540893e07a288f1272f3bfbd4395eca724b"
+    },
+    {
+      "path": "source/homr/note_detection.py",
+      "sha256": "7dc0b3f8038c47d5b4f263ae16b241ac358e12e2d13055aaa6593aaf0be1014b"
+    },
+    {
+      "path": "source/homr/onnx_providers.py",
+      "sha256": "f25106805b3dbf52878b13c0ef3dd78be63442aaf1ba9c0bae1830e9221d8fa7"
+    },
+    {
+      "path": "source/homr/pdf_utils.py",
+      "sha256": "ac71d8dd0bef1fd1c7607560eb9dfa54187bae8b475c2e8a5e033ea1862c6a27"
+    },
+    {
+      "path": "source/homr/point_mapping.py",
+      "sha256": "cce31c7e1e4d228641cb6503168c59d7e22371e5a361aec8a8029f576a07ad42"
+    },
+    {
+      "path": "source/homr/relieur.py",
+      "sha256": "f26dd41f459b421ba5704a98f4b2cea088fefc835a287fddd8d6af45c318626f"
+    },
+    {
+      "path": "source/homr/resize.py",
+      "sha256": "cc2ff7992ed5c2473529ab686912be8148c2a28059683362a6a346424cc97906"
+    },
+    {
+      "path": "source/homr/segmentation/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "source/homr/segmentation/config.py",
+      "sha256": "735c9ef5b30b9737221ca0ef31b4c28b04ee865f9885510da31fcad2c59df147"
+    },
+    {
+      "path": "source/homr/segmentation/inference_segnet.py",
+      "sha256": "368273a64bb392d8dd1843492f7b5ac292cdf6513c79cade4f4e35c08772d757"
+    },
+    {
+      "path": "source/homr/simple_logging.py",
+      "sha256": "0a289e6deb8d55e0bcd709f4651246a417efb744447a9340b3cd5eb5669271ed"
+    },
+    {
+      "path": "source/homr/staff_detection.py",
+      "sha256": "d5a2f28eadf56b904ed1c8e0c8f6aa659031978ef2e8cba950e17cc4d1f180c0"
+    },
+    {
+      "path": "source/homr/staff_dewarping.py",
+      "sha256": "6b44e0b843e40c1fc7399d88b696707dea17f5b425418da40d66418d41d9752c"
+    },
+    {
+      "path": "source/homr/staff_parsing.py",
+      "sha256": "fbf7a6e0e8ea82404de5b81053c3e3a02fa23146d965c309a52bad52dcb1c8dc"
+    },
+    {
+      "path": "source/homr/staff_parsing_tromr.py",
+      "sha256": "96456c2feb7c306dd056e5ab59f170b4a19bbee7d22fa214965856cfe85669e4"
+    },
+    {
+      "path": "source/homr/staff_position_save_load.py",
+      "sha256": "5e44ada123fa9dd65fadf0fa684db2cce8468cdeba880f9dfb9367e20f175fb0"
+    },
+    {
+      "path": "source/homr/staff_regions.py",
+      "sha256": "58fb2f8b5fa8a22c8570b1cd2f0a8dde364642b641060434e759892862a85c01"
+    },
+    {
+      "path": "source/homr/system_repair.py",
+      "sha256": "54c384942983a191bc0048b50e91c9b3ad919f1dfa75854c9367b45c658088d3"
+    },
+    {
+      "path": "source/homr/title_detection.py",
+      "sha256": "93d8c60bd5c79c989a30ed920e66422f59b25c503872461409614065159b4bea"
+    },
+    {
+      "path": "source/homr/transformer/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "source/homr/transformer/configs.py",
+      "sha256": "2fdac1d1b961c8a5304d6ff34891848469507217c467aa313e8fd2d98385fc64"
+    },
+    {
+      "path": "source/homr/transformer/decoder_inference.py",
+      "sha256": "8f91d0062bbd90687fa4c4e7abcd8ebe6fec250b013789b1121de6a4b50d7323"
+    },
+    {
+      "path": "source/homr/transformer/encoder_inference.py",
+      "sha256": "27851bd0719d703218def26d8c830dbb708788f7e6b968662a6538ce0fd7b602"
+    },
+    {
+      "path": "source/homr/transformer/staff2score.py",
+      "sha256": "ef6bc035a497c440b52f4d31b2757361a97dcc91ad1c7656d1fda7649a319e0c"
+    },
+    {
+      "path": "source/homr/transformer/tokenizer_lift.json",
+      "sha256": "acebcd85936f2d2c4b8d67c2a90bb487a327e7eeca3b889896469f34d5157f85"
+    },
+    {
+      "path": "source/homr/transformer/tokenizer_note.json",
+      "sha256": "be294c8adb4febeb93a1e257c7aa35ac34e5298071afa8f2af8d1cf5a33eae20"
+    },
+    {
+      "path": "source/homr/transformer/tokenizer_pitch.json",
+      "sha256": "66ce099b2d3fcbdf7269d2600198628af8548bd410ec6a9ac478db7007ec9933"
+    },
+    {
+      "path": "source/homr/transformer/tokenizer_rhythm.json",
+      "sha256": "3e64ccafd628436439e664aac40ea3820982cbd90171c9895d2c7cf2b9efb76e"
+    },
+    {
+      "path": "source/homr/transformer/utils.py",
+      "sha256": "4ac26b2a45b94c573c7c1b5d261f8ef49986c18fad508d0cc295812307d340da"
+    },
+    {
+      "path": "source/homr/transformer/vocabulary.py",
+      "sha256": "51205b457b99e8f267b8a8bdc86639289aa67de7b79c9f8524b95f1381b3d701"
+    },
+    {
+      "path": "source/homr/type_definitions.py",
+      "sha256": "f98c9ac820aae6c81b384c676a9c7848093723756c2f3628f8950c97a18fa3bb"
+    },
+    {
+      "path": "source/pyproject.toml",
+      "sha256": "d9dbb40092325dc46a991c9192f9431b0fdd2f51f31a7dd482cd3bc9de9f29ca"
+    }
+  ],
+  "source_revision": "ab369ac54277afab582afa4725441f7cbba76593",
+  "threads": 8
+}

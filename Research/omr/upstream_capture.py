@@ -120,8 +120,8 @@ def page_runner(name: str):
     return run_page
 
 
-def capture(item: dict[str, object], name: str) -> dict[str, object]:
-    destination = RULER / "captures" / name / str(item["id"])
+def capture(item: dict[str, object], name: str, root: Path) -> dict[str, object]:
+    destination = root / name / str(item["id"])
     pages_directory = destination / "pages"
     pages_directory.mkdir(parents=True)
     shipped = json.loads((RULER / "captures/homr465" / str(item["id"]) / "result.json").read_text())
@@ -172,14 +172,17 @@ def main() -> int:
     parser.add_argument("--splits", nargs="+", default=["dev", "dev-b"], help="dev, test, dev-b, test-b")
     parser.add_argument("--ids", nargs="*", help="Restrict to these manifest ids.")
     parser.add_argument("--candidates", nargs="+", default=list(NAMES), choices=NAMES)
+    parser.add_argument("--captures", type=Path, default=RULER / "captures",
+                        help="Where to write captures; a repeat run goes elsewhere to keep the first.")
     args = parser.parse_args()
+    args.captures = args.captures.resolve()  # the renderer runs in the pages directory
     candidates()
     items = [item for manifest in MANIFESTS for item in json.loads(manifest.read_text())["items"]
              if item["split"] in args.splits and (not args.ids or item["id"] in args.ids)]
     session = time.monotonic()
     for index, item in enumerate(items):
         for name in args.candidates if index % 2 == 0 else list(reversed(args.candidates)):
-            destination = RULER / "captures" / name / str(item["id"])
+            destination = args.captures / name / str(item["id"])
             if (destination / "result.json").exists():
                 continue
             if destination.exists():
@@ -187,7 +190,7 @@ def main() -> int:
             if time.monotonic() - session > SESSION_SECONDS:
                 print(json.dumps({"stopped": "session limit", "next": item["id"]}), flush=True)
                 return 3
-            result = capture(item, name)
+            result = capture(item, name, args.captures)
             print(json.dumps({key: result.get(key) for key in (
                 "id", "engine", "status", "code", "notes", "pages", "elapsed_seconds")}), flush=True)
             if result.get("code") in STOPPING_CODES:

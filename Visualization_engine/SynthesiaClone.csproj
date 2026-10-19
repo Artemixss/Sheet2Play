@@ -52,7 +52,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="..\Bridge\homr465-profile.json" Link="Bridge\homr465-profile.json">
+    <Content Include="..\Bridge\homr465-profile.json;..\Bridge\homr480-profile.json" Link="Bridge\%(Filename)%(Extension)">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
@@ -67,6 +67,11 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="..\Bridge\.runtime\homr-465\**\*" Link="Bridge\.runtime\homr-465\%(RecursiveDir)%(Filename)%(Extension)" Exclude="..\Bridge\.runtime\homr-465\**\__pycache__\**;..\Bridge\.runtime\homr-465\**\*.pyc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+    <Content Include="..\Bridge\.runtime\homr-480\**\*" Link="Bridge\.runtime\homr-480\%(RecursiveDir)%(Filename)%(Extension)" Exclude="..\Bridge\.runtime\homr-480\**\__pycache__\**;..\Bridge\.runtime\homr-480\**\*.pyc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>

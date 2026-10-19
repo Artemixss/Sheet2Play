@@ -223,7 +223,7 @@ public static class AppSettingsStore
             return settings with { AudioOffsetMilliseconds = Clamp(settings.AudioOffsetMilliseconds) };
         }
 
-        AppSettings defaults = new(OmrEngine.Homr465, DefaultAudioOffsetMilliseconds);
+        AppSettings defaults = new(OmrEngine.Homr480, DefaultAudioOffsetMilliseconds);
         try
         {
             Write(defaults, settingsPath);
@@ -254,7 +254,7 @@ public static class AppSettingsStore
             exception is IOException or UnauthorizedAccessException or JsonException)
         {
             Console.Error.WriteLine(
-                $"[SETTINGS] Could not read {settingsPath}; using homr465. {exception.Message}");
+                $"[SETTINGS] Could not read {settingsPath}; using homr480. {exception.Message}");
             return null;
         }
     }

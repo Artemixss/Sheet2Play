@@ -40,7 +40,7 @@ from pathlib import Path
 from typing import Sequence
 
 KEEP_RECURRING = 3  # hole-free measures sharing a decoded length that mark it as a real meter
-HOMR_ENGINES = {"homr", "homr465"}
+HOMR_ENGINES = {"homr", "homr465", "homr480"}
 
 
 def exact(value: float) -> Fraction:

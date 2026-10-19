@@ -1,7 +1,8 @@
 # Pinned HOMR 465 runtime
 
-HOMR465 is the default after the main plan's development and installed-app gates
-passed. HOMR426 remains available in the visible selector and error recovery.
+Since 2026-10-19 HOMR 480 is the default engine and HOMR465 the secondary one: 480's
+error screen offers 465, and 465's offers HOMR426, which stays in the visible selector.
+The 480 runtime is described [below](#homr-480).
 
 `homr465-profile.json` pins local source revision
 `33baa326900faa12702df8c4bdcbea034a3d6a34`, the 465 FP16 encoder/decoder, segmentation
@@ -76,3 +77,23 @@ the `tuplet_aligned` regression or the independent-voice tie limitation.
 Execution status and acceptance evidence:
 [main plan](../plans/archive/2026-10-09-homr-465-app-integration.done.md),
 [handoff](../Research/omr/reports/homr-465-app-integration/handoff.md).
+
+## HOMR 480
+
+`homr480-profile.json` pins upstream main `ab369ac54277afab582afa4725441f7cbba76593`, run
+480's FP16 encoder and FP32 decoder (upstream publishes no FP16 decoder for 480) and 465's
+segnet 308 FP16, with 465's settings, threads, dependencies and no-title policy. The runtime
+lives in `.runtime/homr-480` and `homr480_native.py` runs it like `homr465_native.py`, except
+that the decoder's precision is read from its own inputs, because upstream's CUDA path assumes
+an FP16 decoder. `bridge.py` runs both engines through the same guarded per-page path.
+
+Provision it with `Research/omr/homr480_provision.py`, from the hash-checked acquisition in
+`Research/omr/.runtime/homr-480-upstream` (receipts in `Research/omr/reports/upstream-480/`). Both
+profiles pin `bridge.py` and the shared Bridge files, so editing any of them invalidates both:
+rerun the provisioner, which refreshes both profiles, then update `Homr465ProfileSha256` and
+`Homr480ProfileSha256` in `OmrPipeline.cs`; existing caches of that engine then re-run. Adding
+480 changed `bridge.py` this way on 2026-10-19 (465 profile `1fd5b26e…` to `c06852f3…`).
+
+On the held-out engraved set 480 raised onset F1 with the timing fix from 0.680 to 0.747
+and pitch from 0.958 to 0.973, with occasional large single-score losses; see the
+[upstream handoff](../Research/omr/reports/upstream-480/handoff.md).

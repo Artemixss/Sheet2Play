@@ -2,9 +2,10 @@
 
 **Plan ID:** `2026-10-17-upstream-exporter-480`
 **Status:** Selected by the user on 2026-10-17 as a separate bounded task; authorized on
-2026-10-18 ("approved, download run 480 weights and test the new things"). It does not block
-the [displacement plan](MAIN_PLAN.md). The [handoff](../Research/omr/reports/upstream-480/handoff.md)
-records state and the next action.
+2026-10-18 ("approved, download run 480 weights and test the new things"). The test set
+passed the pre-registered rule, and on 2026-10-19 the user made 480 the app default with 465 as
+the secondary. Open: two large single-score regressions, flagged for investigation. The
+[handoff](../Research/omr/reports/upstream-480/handoff.md) records state and the next action.
 **Evidence:** [October 17 upstream audit](../Research/omr/reports/diagnosis/UPSTREAM_AUDIT_2026-10-17.md).
 
 ## Goal

@@ -270,9 +270,11 @@ if ($unshipped.Count -gt 0) {
     Add-Step 'Runtime assets referenced in C# are shipped' $true "All $($referenced.Count) referenced asset filename(s) present."
 }
 
+# HOMR 480 is the default engine and 465 the secondary; each ships its own pinned profile.
+foreach ($pinned in @('465', '480')) {
 try {
-    $profilePath = Join-Path $OutputPath 'Bridge\homr465-profile.json'
-    $sourceProfile = Join-Path $repoRoot 'Bridge\homr465-profile.json'
+    $profilePath = Join-Path $OutputPath "Bridge\homr$($pinned)-profile.json"
+    $sourceProfile = Join-Path $repoRoot "Bridge\homr$($pinned)-profile.json"
     if ((Get-AssetHash $profilePath) -ne (Get-AssetHash $sourceProfile)) {
         throw 'Published profile differs from the source profile.'
     }
@@ -283,7 +285,7 @@ try {
     foreach ($row in $assets) {
         $asset = Join-Path $runtimeRoot $row.path
         if ((Get-AssetHash $asset) -ne $row.sha256) {
-            throw "Published 465 asset differs: $($row.path)"
+            throw "Published $pinned asset differs: $($row.path)"
         }
     }
     foreach ($row in $profile.bridge_files) {
@@ -294,9 +296,10 @@ try {
     if (-not (Test-Path -LiteralPath (Join-Path $runtimeRoot 'source\LICENSE'))) {
         throw 'Upstream HOMR license is missing.'
     }
-    Add-Step 'Pinned HOMR 465 profile and runtime hashes' $true "$($assets.Count) runtime assets and $($profile.bridge_files.Count) Bridge files verified."
+    Add-Step "Pinned HOMR $pinned profile and runtime hashes" $true "$($assets.Count) runtime assets and $($profile.bridge_files.Count) Bridge files verified."
 } catch {
-    Add-Step 'Pinned HOMR 465 profile and runtime hashes' $false $_.Exception.Message
+    Add-Step "Pinned HOMR $pinned profile and runtime hashes" $false $_.Exception.Message
+}
 }
 if (@($steps | Where-Object { -not $_.Passed }).Count -gt 0) {
     Stop-Verification 'published asset validation failed'

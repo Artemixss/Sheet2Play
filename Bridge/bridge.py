@@ -110,7 +110,7 @@ def parse_arguments(arguments: Sequence[str] | None = None) -> argparse.Namespac
     parser.add_argument("input_path", type=Path, help="Path to a sheet image or PDF")
     parser.add_argument(
         "--engine",
-        choices=("homr", "homr465", "zeus", "musicxml"),
+        choices=("homr", "homr465", "homr480", "zeus", "musicxml"),
         default="homr",
         help="OMR engine; homr is production and Zeus is an experimental local engine, musicxml parses direct MXL files",
     )
@@ -267,10 +267,20 @@ def run_homr(input_path: Path) -> Path:
     return select_generated_output(input_path, files_before, started_at_ns)
 
 
-def run_homr465_page(input_path: Path) -> Path:
+# The pinned native engines: launcher, profile module and log label. HOMR 480 is the default,
+# HOMR 465 the secondary; both run the same guarded per-page path.
+NATIVE_ENGINES = {
+    "homr465": ("homr465_native.py", "homr465_profile", "HOMR 465"),
+    "homr480": ("homr480_native.py", "homr480_profile", "HOMR 480"),
+}
+
+
+def run_native_page(input_path: Path, engine: str) -> Path:
     from guarded_execution import run_guarded
     from execution_safety.safety_policy import SafetyLimits
+    import importlib
     import uuid
+    launcher, profile_module, label = NATIVE_ENGINES[engine]
     root = Path(os.environ.get("SHEET2PLAY_HOME") or Path(os.environ.get("LOCALAPPDATA", str(Path.home()))) / "Sheet2Play")
     if os.environ.get("SHEET2PLAY_HOME"):
         root = Path(os.environ["SHEET2PLAY_HOME"])
@@ -278,24 +288,31 @@ def run_homr465_page(input_path: Path) -> Path:
     job_root.mkdir(parents=True, exist_ok=True)
     output = job_root / str(uuid.uuid4())
     receipt = output / "native.json"
-    command = [str(resolve_homr_python()), "-B", str(Path(__file__).with_name("homr465_native.py")), str(input_path), str(receipt)]
+    command = [str(resolve_homr_python()), "-B", str(Path(__file__).with_name(launcher)), str(input_path), str(receipt)]
     result = run_guarded(command, input_path.parent, output, SafetyLimits(max_seconds=1800), lock_path=job_root / ".worker.lock")
-    LOGGER.info("HOMR 465 receipt=%s status=%s", output, result["status"])
+    LOGGER.info("%s receipt=%s status=%s", label, output, result["status"])
     if result["status"] != "complete":
         details = json.loads(receipt.read_text(encoding="utf-8")) if receipt.is_file() else {}
-        error = str(details.get("error") or result["stop_reason"] or "Native HOMR 465 failed")
+        error = str(details.get("error") or result["stop_reason"] or f"Native {label} failed")
         code = "RESOURCE_STOP" if result["status"] == "blocked" or result["worker_exit_code"] == 90 else "NORMALIZATION_FAILED"
         if "ProfileError" in error:
             code = "MODEL_INVALID"
         elif "CUDA" in error:
             code = "CUDA_UNAVAILABLE"
-        raise BridgeError(code, "homr465", f"{error}; receipt: {output}")
+        raise BridgeError(code, engine, f"{error}; receipt: {output}")
     details = json.loads(receipt.read_text(encoding="utf-8"))
-    from homr465_profile import load_profile
-    profile, identity = load_profile()
+    profile, identity = importlib.import_module(profile_module).load_profile()
     if details.get("runtime_profile_sha256") != identity or details.get("model_revision") != profile["model_revision"]:
-        raise BridgeError("MODEL_INVALID", "runtime_profile", "Native 465 receipt identity mismatch")
+        raise BridgeError("MODEL_INVALID", "runtime_profile", f"Native {label[5:]} receipt identity mismatch")
     return input_path.with_suffix(".musicxml")
+
+
+def run_homr465_page(input_path: Path) -> Path:
+    return run_native_page(input_path, "homr465")
+
+
+def run_homr480_page(input_path: Path) -> Path:
+    return run_native_page(input_path, "homr480")
 
 
 def render_pdf_pages(input_path: Path, output_directory: Path) -> list[Path]:
@@ -371,7 +388,8 @@ def run_homr_engine(input_path: Path, engine: str = "homr") -> EngineOutput:
                     page_count=page_count,
                     completed_pages=page_number - 1,
                 )
-                outputs.append(run_homr465_page(omr_input) if engine == "homr465" else run_homr(omr_input))
+                outputs.append(run_homr465_page(omr_input) if engine == "homr465"
+                               else run_homr480_page(omr_input) if engine == "homr480" else run_homr(omr_input))
                 emit_progress(
                     engine=engine,
                     stage="page_inference",
@@ -781,17 +799,19 @@ def main(arguments: Sequence[str] | None = None) -> int:
             source_hash,
             input_path,
         )
-        if engine in {"homr", "homr465"}:
+        if engine in {"homr", "homr465", "homr480"}:
             model_revision = profile_identity = None
-            if engine == "homr465":
-                from homr465_profile import SOURCE_REVISION, load_profile
+            if engine in NATIVE_ENGINES:
+                import importlib
+                profile_module = importlib.import_module(NATIVE_ENGINES[engine][1])
+                SOURCE_REVISION, load_profile = profile_module.SOURCE_REVISION, profile_module.load_profile
                 try:
                     profile, profile_identity = load_profile()
                 except RuntimeError as error:
                     raise BridgeError("MODEL_INVALID", "runtime_profile", str(error)) from error
                 revision = SOURCE_REVISION
                 model_revision = profile["model_revision"]
-            output = run_homr_engine(input_path, engine) if engine == "homr465" else run_homr_engine(input_path)
+            output = run_homr_engine(input_path, engine) if engine in NATIVE_ENGINES else run_homr_engine(input_path)
             try:
                 notes = add_seconds(output.score)
             except MusicXmlNormalizationError as error:

@@ -264,7 +264,7 @@ public static class SongCache
         }
         cancellationToken.ThrowIfCancellationRequested();
         OmrFailureStore.Remove(sourceHash, engine);
-        if (engine == OmrEngine.Homr465)
+        if (OmrPipeline.IsPinnedNative(engine))
         {
             OmrPipeline.ValidateResult(result, engine);
         }
@@ -546,7 +546,12 @@ public static class SongCache
         }
 
         return cachedSongs
-            .OrderBy(static entry => entry.RecentSong.Engine == OmrEngine.Homr465 ? -1 : (int)entry.RecentSong.Engine)
+            .OrderBy(static entry => entry.RecentSong.Engine switch
+            {
+                OmrEngine.Homr480 => -2,
+                OmrEngine.Homr465 => -1,
+                OmrEngine other => (int)other
+            })
             .ThenBy(static entry => entry.RecentSong.DisplayName, StringComparer.CurrentCultureIgnoreCase)
             .ToArray();
     }
@@ -612,7 +617,7 @@ public static class SongCache
                 out bool requiresUpgrade);
             if (manifest is null ||
                 manifest.Engine != entry.Engine ||
-                (entry.Engine == OmrEngine.Homr465 && manifest.RuntimeProfileSha256 != OmrPipeline.Homr465ProfileSha256) ||
+                (OmrPipeline.IsPinnedNative(entry.Engine) && manifest.RuntimeProfileSha256 != OmrPipeline.GetProfileSha256(entry.Engine)) ||
                 manifest.EngineRevision != OmrPipeline.GetEngineRevision(entry.Engine) ||
                 manifest.ModelRevision != OmrPipeline.GetModelRevision(entry.Engine) ||
                 manifest.BridgeSchemaVersion != OmrPipeline.SchemaVersion ||
@@ -748,9 +753,9 @@ public static class SongCache
             OmrPipeline.GetEngineName(engine));
         string songName = Path.GetFileNameWithoutExtension(sourcePath);
         string retainedSourceName = Path.GetFileName(sourcePath);
-        if (engine == OmrEngine.Homr465)
+        if (OmrPipeline.IsPinnedNative(engine))
         {
-            songName = $"{sourceHash ?? ComputeSha256(sourcePath)}-{OmrPipeline.Homr465ProfileSha256}";
+            songName = $"{sourceHash ?? ComputeSha256(sourcePath)}-{OmrPipeline.GetProfileSha256(engine)}";
             retainedSourceName = songName + Path.GetExtension(sourcePath);
         }
         // A corrected conversion never shares an entry with the uncorrected one or with another
@@ -835,7 +840,7 @@ public static class SongCache
                 manifest.SourceSha256 != sourceHash ||
                 manifest.Engine != engine ||
                 manifest.TimingCorrectionSha256 != timingIdentity ||
-                (engine == OmrEngine.Homr465 && manifest.RuntimeProfileSha256 != OmrPipeline.Homr465ProfileSha256) ||
+                (OmrPipeline.IsPinnedNative(engine) && manifest.RuntimeProfileSha256 != OmrPipeline.GetProfileSha256(engine)) ||
                 manifest.EngineRevision != OmrPipeline.GetEngineRevision(engine) ||
                 manifest.ModelRevision != OmrPipeline.GetModelRevision(engine) ||
                 manifest.BridgeSchemaVersion != OmrPipeline.SchemaVersion ||
@@ -1018,6 +1023,13 @@ public static class SongCache
             Preprocessing: "native-no-title-8:1",
             DefaultTempoBpm: 120,
             ModelSha256: OmrPipeline.Homr465ProfileSha256),
+        OmrEngine.Homr480 => new OmrSettings(
+            Device: "cuda",
+            CudaDevice: "CUDAExecutionProvider",
+            PdfDpi: 300,
+            Preprocessing: "native-no-title-8:1",
+            DefaultTempoBpm: 120,
+            ModelSha256: OmrPipeline.Homr480ProfileSha256),
         OmrEngine.Zeus => new OmrSettings(
             Device: "cuda",
             // A specific card name, recorded when this engine was first wired up, where the Homr
@@ -1111,7 +1123,7 @@ public static class SongCache
             string manifestJson = JsonSerializer.Serialize(manifest, ManifestJsonOptions);
             File.WriteAllText(temporaryManifestPath, manifestJson);
 
-            if ((engine == OmrEngine.Homr465 || string.Equals(
+            if ((OmrPipeline.IsPinnedNative(engine) || string.Equals(
                     Path.GetExtension(sourcePath),
                     ".pdf",
                     StringComparison.OrdinalIgnoreCase)) &&

@@ -726,11 +726,18 @@ internal static partial class Program
 		}
 		float engineCardGap = 16f * scale;
 		float engineCardWidth = (contentWidth - engineCardGap) / 2f;
-		float omrCardWidth = (contentWidth - 2f * engineCardGap) / 3f;
-		Rectangle homr465Card = new Rectangle(contentLeft, 194f * scale, omrCardWidth, 64f * scale);
-		Rectangle homrCard = new Rectangle(contentLeft + omrCardWidth + engineCardGap, 194f * scale, omrCardWidth, 64f * scale);
-		Rectangle zeusCard = new Rectangle(contentLeft + 2f * (omrCardWidth + engineCardGap), 194f * scale, omrCardWidth, 64f * scale);
-		if (DrawEngineCard(homr465Card, "HOMR 465", "Newer recognition model", UiTheme.Lime, selectedEngine == OmrEngine.Homr465))
+		// HOMR 480 is the default engine and 465 the secondary; 426 and Zeus stay selectable.
+		float omrCardWidth = (contentWidth - 3f * engineCardGap) / 4f;
+		Rectangle homr480Card = new Rectangle(contentLeft, 194f * scale, omrCardWidth, 64f * scale);
+		Rectangle homr465Card = new Rectangle(contentLeft + omrCardWidth + engineCardGap, 194f * scale, omrCardWidth, 64f * scale);
+		Rectangle homrCard = new Rectangle(contentLeft + 2f * (omrCardWidth + engineCardGap), 194f * scale, omrCardWidth, 64f * scale);
+		Rectangle zeusCard = new Rectangle(contentLeft + 3f * (omrCardWidth + engineCardGap), 194f * scale, omrCardWidth, 64f * scale);
+		if (DrawEngineCard(homr480Card, "HOMR 480", "Default recognition model", UiTheme.Lime, selectedEngine == OmrEngine.Homr480))
+		{
+			selectedEngine = OmrEngine.Homr480;
+			PersistEngine(selectedEngine);
+		}
+		if (DrawEngineCard(homr465Card, "HOMR 465", "Secondary model", UiTheme.Lime, selectedEngine == OmrEngine.Homr465))
 		{
 			selectedEngine = OmrEngine.Homr465;
 			PersistEngine(selectedEngine);
@@ -1037,6 +1044,7 @@ internal static partial class Program
 	{
 		OmrEngine.Homr => "426",
 		OmrEngine.Homr465 => "465",
+		OmrEngine.Homr480 => "480",
 		OmrEngine.Zeus => "ZEUS",
 		OmrEngine.MusicXml => "MXML",
 		OmrEngine.DirectMidi => "MIDI",
@@ -1395,8 +1403,8 @@ internal static partial class Program
 		float buttonWidth = (bounds.Width - 60f * scale - gap * 2f) / 3f;
 		if (request?.InputPath != null)
 		{
-			string label = ((request.Engine is OmrEngine.Zeus or OmrEngine.Homr465) ? "Retry HOMR 426" : "Retry Zeus");
-			Color accent = ((request.Engine is OmrEngine.Zeus or OmrEngine.Homr465) ? UiTheme.Lime : UiTheme.Sky);
+			string label = OmrRecoveryPolicy.GetAlternateLabel(request.Engine);
+			Color accent = ((OmrRecoveryPolicy.GetAlternateEngine(request.Engine) == OmrEngine.Zeus) ? UiTheme.Sky : UiTheme.Lime);
 			if (UiTheme.DrawButton(new Rectangle(bounds.X + 30f * scale, y, buttonWidth, 44f * scale), label, accent))
 			{
 				return ErrorAction.RetryAlternate;
@@ -1462,7 +1470,7 @@ internal static partial class Program
 		case ErrorAction.RetryAlternate:
 			if (request?.InputPath != null)
 			{
-				loadRequests.Enqueue(new LoadRequest(request.InputPath, (request.Engine is OmrEngine.Zeus or OmrEngine.Homr465) ? OmrEngine.Homr : OmrEngine.Zeus, BypassKnownFailure: false, null));
+				loadRequests.Enqueue(new LoadRequest(request.InputPath, OmrRecoveryPolicy.GetAlternateEngine(request.Engine), BypassKnownFailure: false, null));
 			}
 			break;
 		case ErrorAction.ChooseFile:
