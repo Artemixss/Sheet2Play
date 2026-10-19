@@ -81,6 +81,10 @@ internal static partial class Program
 		{
 			return RunOmrVerification(args);
 		}
+		if (args.Length > 0 && args[0] == "--verify-library")
+		{
+			return RunLibraryVerification(args);
+		}
 		if (args.Length > 0 && string.Equals(args[0], "--smoke", StringComparison.OrdinalIgnoreCase))
 		{
 			string outputDirectory = ((args.Length > 1)

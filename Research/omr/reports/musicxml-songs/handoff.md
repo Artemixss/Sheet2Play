@@ -1,10 +1,15 @@
 # MusicXML songs: handoff
 
 **Owning plan:** [`2026-10-19-musicxml-songs`](../../../../plans/2026-10-19-musicxml-songs.md)
-**Phase status:** Phase 1 **complete and accepted** on 2026-10-19 (authorized the same day, "start
-phase 1"); see the [Phase 1 report](phase1/REPORT.md). No later phase is authorized.
-**Next authorized action:** none. Phase 2 (C# song model and cache v3) needs its own request. The
-user wants any C# engine rework as a separate request at the end of the plan, before Phase 6.
+**Phase status:** Phase 1 **complete and accepted** on 2026-10-19 ([report](phase1/REPORT.md)),
+committed as `af0332b`. Phase 2 requested the same day ("ok commit phase 1 and continue with
+phase") and **accepted**: every criterion met, release gate 8 of 8 ([Phase 2 report](phase2/REPORT.md)).
+Phase 3 requested the same day ("commit phase 2 then continue with the next phase").
+**Next authorized action:** Phase 3, expressive playback. Phase 4 needs its own request. The user
+wants any C# engine rework as a separate request at the end of the plan, before Phase 6.
+**Phase 2 evidence:** 3 fresh 480 conversions equal their bridge notes (0.0000 ms); the timing fix
+re-interprets in 1.37 s with no OMR; all 85 previously playing library songs still play; xunit 117
+passed. Evidence that lists private library paths stays local (`phase2/library-*`, `convert-*`).
 **Acceptance evidence:** [`phase1/summary.json`](phase1/summary.json): parity 292/292 recognitions
 without repeats (and the 14 with repeats exact once expansion is off), feature counts 207/207 labels,
 100/100 repeatable, 306 combined scores open under the refined MuseScore rule, 3.2 s and 82 MiB for

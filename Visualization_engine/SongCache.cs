@@ -38,7 +38,7 @@ public sealed record CachedSongEntry(
     int NoteCount,
     double DurationSeconds);
 
-public static class SongCache
+public static partial class SongCache
 {
     private const int CacheManifestVersion = 2;
     private const short TicksPerQuarterNote = 480;
@@ -131,6 +131,29 @@ public static class SongCache
             engine = OmrEngine.MusicXml;
         }
 
+        if (OmrPipeline.SupportsSongPackage(engine))
+        {
+            SongLoadResult packaged = LoadOrCreatePackageCore(
+                inputPath,
+                engine,
+                DefaultPackageContext(applicationDirectory),
+                (path, selectedEngine, songOutput, timing, token) =>
+                    OmrPipeline.Run(
+                        path,
+                        selectedEngine,
+                        cancellationToken: token,
+                        progress: progress,
+                        timingCorrection: timing,
+                        songOutputDirectory: songOutput),
+                cancellationToken,
+                progress,
+                bypassKnownFailure,
+                forceReprocess,
+                timingCorrection);
+            if (recordRecent) TouchRecent(packaged);
+            return packaged;
+        }
+
         string? timingIdentity = ResolveTimingIdentity(engine, timingCorrection);
         SongLoadResult result = LoadOrCreateCore(
             inputPath,
@@ -160,11 +183,14 @@ public static class SongCache
     {
         try
         {
-            return IsCacheHit(
-                sourcePath,
-                engine,
-                FindApplicationDirectory(),
-                ResolveTimingIdentity(engine, timingCorrection));
+            // A stored package counts whatever the timing fix: switching it only re-interprets.
+            string applicationDirectory = FindApplicationDirectory();
+            return (OmrPipeline.SupportsSongPackage(engine) && IsPackageHit(sourcePath, engine, applicationDirectory)) ||
+                   IsCacheHit(
+                       sourcePath,
+                       engine,
+                       applicationDirectory,
+                       ResolveTimingIdentity(engine, timingCorrection));
         }
         catch (Exception exception) when (
             exception is IOException or UnauthorizedAccessException or ArgumentException)
@@ -268,6 +294,23 @@ public static class SongCache
         {
             OmrPipeline.ValidateResult(result, engine);
         }
+        return CompleteLegacyConversion(sourcePath, sourceHash, engine, cachePaths, result, timingIdentity,
+            applicationDirectory, progress);
+    }
+
+    /// <summary>Writes a conversion's notes as a validated MIDI cache and loads them.</summary>
+    private static SongLoadResult CompleteLegacyConversion(
+        string sourcePath,
+        string sourceHash,
+        OmrEngine engine,
+        CachePaths cachePaths,
+        OmrResult result,
+        string? timingIdentity,
+        string applicationDirectory,
+        IProgress<OmrProgress>? progress)
+    {
+        Directory.CreateDirectory(cachePaths.MidiDirectory);
+        Directory.CreateDirectory(cachePaths.PdfDirectory);
         List<VisualNote> generatedNotes = MapOmrNotes(result.Notes);
         if (generatedNotes.Count == 0)
         {
@@ -478,21 +521,36 @@ public static class SongCache
     }
 
     private static IReadOnlyList<CachedSongEntry> GetCachedSongsCore(
-        string applicationDirectory)
+        string applicationDirectory,
+        PackageContext? context = null)
     {
+        context ??= DefaultPackageContext(applicationDirectory);
         string midiRoot = Path.Combine(applicationDirectory, "songs", "midi");
-        if (!Directory.Exists(midiRoot))
-        {
-            return [];
-        }
-
         Dictionary<string, DateTimeOffset> lastOpenedByManifest = RecentSongsStore.Load()
             .ToDictionary(
                 static entry => entry.ManifestRelativePath,
                 static entry => entry.LastOpenedUtc,
                 StringComparer.OrdinalIgnoreCase);
         List<CachedSongEntry> cachedSongs = [];
-        foreach (OmrEngine engine in Enum.GetValues<OmrEngine>())
+        foreach ((string interpretationPath, OmrEngine packageEngine) in EnumeratePackageEntries(applicationDirectory))
+        {
+            string relativePath = Path.GetRelativePath(applicationDirectory, interpretationPath);
+            DateTimeOffset lastOpened = lastOpenedByManifest.TryGetValue(relativePath, out DateTimeOffset stored)
+                ? stored
+                : File.GetLastWriteTimeUtc(interpretationPath);
+            RecentSongEntry candidate = new(relativePath, "", packageEngine, lastOpened);
+            if (TryLoadRecentCore(candidate, applicationDirectory, out SongLoadResult? loaded, context: context) &&
+                loaded is not null)
+            {
+                cachedSongs.Add(new CachedSongEntry(
+                    candidate with { ManifestRelativePath = loaded.ManifestRelativePath!, DisplayName = loaded.DisplayName },
+                    loaded.NoteCount,
+                    GetTotalDuration(loaded.Notes)));
+            }
+        }
+        // A MIDI cache whose source now has a package is superseded by it and not listed.
+        HashSet<(OmrEngine, string)> packaged = PackagedSources(applicationDirectory);
+        foreach (OmrEngine engine in Directory.Exists(midiRoot) ? Enum.GetValues<OmrEngine>() : [])
         {
             string engineDirectory = Path.Combine(
                 midiRoot,
@@ -509,6 +567,10 @@ public static class SongCache
                              "*.mid.cache.json",
                              SearchOption.TopDirectoryOnly))
                 {
+                    if (IsSupersededMidiCache(manifestPath, engine, packaged))
+                    {
+                        continue;
+                    }
                     string relativePath = Path.GetRelativePath(
                         applicationDirectory,
                         manifestPath);
@@ -560,7 +622,7 @@ public static class SongCache
     {
         ArgumentNullException.ThrowIfNull(entry);
         string applicationDirectory = FindApplicationDirectory();
-        if (!TryLoadRecentCore(entry, applicationDirectory, out SongLoadResult? result) ||
+        if (!TryLoadRecentCore(entry, applicationDirectory, out SongLoadResult? result, allowInterpretation: true) ||
             result is null)
         {
             if (recordRecent) RecentSongsStore.Remove(entry.ManifestRelativePath);
@@ -574,7 +636,9 @@ public static class SongCache
     private static bool TryLoadRecentCore(
         RecentSongEntry entry,
         string applicationDirectory,
-        out SongLoadResult? result)
+        out SongLoadResult? result,
+        bool allowInterpretation = false,
+        PackageContext? context = null)
     {
         result = null;
         try
@@ -587,6 +651,12 @@ public static class SongCache
             if (!manifestPath.StartsWith(applicationRoot, StringComparison.OrdinalIgnoreCase))
             {
                 return false;
+            }
+
+            if (string.Equals(Path.GetFileName(manifestPath), InterpretationManifestName, StringComparison.OrdinalIgnoreCase))
+            {
+                return TryLoadPackageEntry(entry, manifestPath, context ?? DefaultPackageContext(applicationDirectory),
+                    allowInterpretation, out result);
             }
 
             if (manifestPath.EndsWith(".mid", StringComparison.OrdinalIgnoreCase) && File.Exists(manifestPath))
@@ -666,7 +736,7 @@ public static class SongCache
         catch (Exception exception) when (
             exception is IOException or UnauthorizedAccessException or InvalidDataException or
             JsonException or CryptographicException or OverflowException or ArgumentException or
-            MidiException)
+            MidiException or OmrPipelineException)
         {
             Console.Error.WriteLine($"[RECENT SONGS] Invalid entry: {exception.Message}");
             return false;
@@ -676,12 +746,16 @@ public static class SongCache
     private static void SeedRecentSongs(string applicationDirectory)
     {
         string midiRoot = Path.Combine(applicationDirectory, "songs", "midi");
-        if (!Directory.Exists(midiRoot))
-        {
-            return;
-        }
         List<RecentSongEntry> candidates = [];
-        foreach (OmrEngine engine in Enum.GetValues<OmrEngine>())
+        foreach ((string interpretationPath, OmrEngine packageEngine) in EnumeratePackageEntries(applicationDirectory))
+        {
+            candidates.Add(new RecentSongEntry(
+                Path.GetRelativePath(applicationDirectory, interpretationPath),
+                "",
+                packageEngine,
+                File.GetLastWriteTimeUtc(interpretationPath)));
+        }
+        foreach (OmrEngine engine in Directory.Exists(midiRoot) ? Enum.GetValues<OmrEngine>() : [])
         {
             string engineDirectory = Path.Combine(midiRoot, OmrPipeline.GetEngineName(engine));
             if (!Directory.Exists(engineDirectory))
@@ -704,9 +778,11 @@ public static class SongCache
                      .OrderBy(entry => entry.LastOpenedUtc)
                      .TakeLast(10))
         {
-            if (TryLoadRecentCore(candidate, applicationDirectory, out _))
+            if (TryLoadRecentCore(candidate, applicationDirectory, out SongLoadResult? loaded))
             {
-                RecentSongsStore.Touch(candidate);
+                RecentSongsStore.Touch(string.IsNullOrEmpty(candidate.DisplayName) && loaded is not null
+                    ? candidate with { DisplayName = loaded.DisplayName }
+                    : candidate);
             }
         }
     }

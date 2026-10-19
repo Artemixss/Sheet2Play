@@ -2,7 +2,9 @@
 
 **Plan ID:** `2026-10-19-musicxml-songs`
 **Status:** Proposed 2026-10-19 and approved the same day; the user authorized **Phase 1 only**
-("start phase 1"). Phase 1 was completed and accepted the same day; Phase 2 is not authorized.
+("start phase 1"). Phase 1 was completed and accepted the same day. Phase 2 was requested the
+same day ("ok commit phase 1 and continue with phase") and accepted once the release gate passed.
+Phase 3 was requested the same day ("commit phase 2 then continue with the next phase").
 [Handoff](../Research/omr/reports/musicxml-songs/handoff.md). If an acceptance criterion is not met, ask before changing it, unless the fix
 is small. Each later phase needs its own request. The user also said the C# engine may be
 reworked (they wrote it and expect flaws), but in a separate request, at the end of this plan
@@ -270,6 +272,16 @@ wrong across pages, ignores `times`, and misplaces staves of uneven length. See 
 the engine. Add `SongModel`/`SongTimeline`/`SongPackageCache`, keep legacy MIDI reading, and make
 TIMING FIX a re-interpretation. Playback uses notes from the model. Expression stays off, and
 repeats expand across the whole score.
+
+**Result (2026-10-19): accepted.** Three fresh HOMR 480
+conversions equal their bridge notes (largest difference 0.0000 ms); the timing fix re-interprets a
+converted song in 1.37 s without OMR; all 85 library songs that played before still play with
+identical notes. The "118 legacy caches" count was wrong: 61 already failed before this phase (the
+58 HOMR 465 caches went stale when `237e398` re-pinned 465). xunit 117 passed. The release gate
+passed all 8 steps on its third run; the first two failed only the launch step, the same way for
+the build before this phase, while the screen was not presenting frames, and the user confirmed the
+published app opens. See the
+[Phase 2 report](../Research/omr/reports/musicxml-songs/phase2/REPORT.md).
 
 **Accept when:**
 - Three fresh 480 library conversions give the same onsets as their v2 JSON within 1 ms (scores

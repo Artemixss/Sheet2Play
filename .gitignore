@@ -174,3 +174,7 @@ Research/omr/reports/displacement/phase4/e2e/
 Research/omr/reports/timing/phase*/jobs/
 Research/omr/reports/timing/phase2/anchor-ledger.json
 Research/omr/reports/upstream-480/jobs/
+# MusicXML songs: the app's library listings and conversion receipts name private songs and paths.
+Research/omr/reports/musicxml-songs/phase*/library-*/
+Research/omr/reports/musicxml-songs/phase*/convert-*/
+Research/omr/reports/musicxml-songs/phase*/timing-toggle/

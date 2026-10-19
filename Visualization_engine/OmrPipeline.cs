@@ -143,6 +143,10 @@ public static class OmrPipeline
         "df0d842596ccd199882ff958e628d59327ca6cba";
 
     public const string TimingCorrectionScriptName = "timing_correction.py";
+    // The song package entry (keeps the MusicXML a conversion reads) and the interpreter that
+    // turns a package's MusicXML into the performance the app plays. Neither is a pinned file.
+    public const string SongEntryScriptName = "song_entry.py";
+    public const string SongModelScriptName = "song_model.py";
 
     private static readonly TimeSpan DefaultTimeout = TimeSpan.FromMinutes(30);
     private static readonly Lazy<string?> DefaultTimingCorrectionSha256 = new(() =>
@@ -162,7 +166,8 @@ public static class OmrPipeline
         TimeSpan? timeout = null,
         CancellationToken cancellationToken = default,
         IProgress<OmrProgress>? progress = null,
-        bool timingCorrection = false)
+        bool timingCorrection = false,
+        string? songOutputDirectory = null)
     {
         return RunAsync(
                 inputPath,
@@ -172,7 +177,8 @@ public static class OmrPipeline
                 timeout,
                 cancellationToken,
                 progress,
-                timingCorrection)
+                timingCorrection,
+                songOutputDirectory)
             .GetAwaiter()
             .GetResult();
     }
@@ -190,6 +196,16 @@ public static class OmrPipeline
     /// </summary>
     public static bool IsPinnedNative(OmrEngine engine) =>
         engine is OmrEngine.Homr465 or OmrEngine.Homr480;
+
+    /// <summary>
+    /// The engines whose conversions read MusicXML, so a song keeps that MusicXML and plays from
+    /// it. Zeus produces notes directly and keeps the MIDI cache.
+    /// </summary>
+    public static bool SupportsSongPackage(OmrEngine engine) =>
+        engine is OmrEngine.Homr or OmrEngine.Homr465 or OmrEngine.Homr480 or OmrEngine.MusicXml;
+
+    /// <summary>The folder holding the shipped bridge and its sibling scripts.</summary>
+    internal static string DefaultBridgeDirectory => Path.GetDirectoryName(GetDefaultBridgeScriptPath())!;
 
     public static string GetProfileSha256(OmrEngine engine) => engine switch
     {
@@ -224,7 +240,8 @@ public static class OmrPipeline
         TimeSpan? timeout = null,
         CancellationToken cancellationToken = default,
         IProgress<OmrProgress>? progress = null,
-        bool timingCorrection = false)
+        bool timingCorrection = false,
+        string? songOutputDirectory = null)
     {
         if (!Enum.IsDefined(engine))
         {
@@ -273,18 +290,33 @@ public static class OmrPipeline
                 errorCode: "RUNTIME_MISSING",
                 stage: "runtime_start");
         }
-        // The correction runs the same bridge from its own entry script beside it, so the
-        // interpreter and runtime checks above are those of the uncorrected engine.
-        string entryScriptPath = timingCorrection && SupportsTimingCorrection(engine)
-            ? ValidateFilePath(
-                Path.Combine(Path.GetDirectoryName(validatedBridgePath)!, TimingCorrectionScriptName),
-                "Timing correction script")
-            : validatedBridgePath;
+        // The correction and the song package run the same bridge from their own entry scripts
+        // beside it, so the interpreter and runtime checks above are those of the plain engine.
+        // The song entry applies the correction itself when asked.
+        string bridgeDirectory = Path.GetDirectoryName(validatedBridgePath)!;
+        List<string> entryArguments = [];
+        string entryScriptPath;
+        if (songOutputDirectory is not null && SupportsSongPackage(engine))
+        {
+            entryScriptPath = ValidateFilePath(Path.Combine(bridgeDirectory, SongEntryScriptName), "Song entry script");
+            entryArguments.AddRange(["--song-output", Path.GetFullPath(songOutputDirectory)]);
+            if (timingCorrection && SupportsTimingCorrection(engine))
+            {
+                entryArguments.Add("--timing-correction");
+            }
+        }
+        else
+        {
+            entryScriptPath = timingCorrection && SupportsTimingCorrection(engine)
+                ? ValidateFilePath(Path.Combine(bridgeDirectory, TimingCorrectionScriptName), "Timing correction script")
+                : validatedBridgePath;
+        }
         ProcessStartInfo startInfo = CreateStartInfo(
             effectivePythonExecutable,
             entryScriptPath,
             validatedInputPath,
-            engine);
+            engine,
+            entryArguments);
 
         using Process process = new() { StartInfo = startInfo };
         try
@@ -472,7 +504,8 @@ public static class OmrPipeline
         string pythonExecutable,
         string bridgeScriptPath,
         string inputPath,
-        OmrEngine engine)
+        OmrEngine engine,
+        IReadOnlyList<string>? entryArguments = null)
     {
         ProcessStartInfo startInfo = new()
         {
@@ -486,6 +519,10 @@ public static class OmrPipeline
             CreateNoWindow = true
         };
         startInfo.ArgumentList.Add(bridgeScriptPath);
+        foreach (string argument in entryArguments ?? [])
+        {
+            startInfo.ArgumentList.Add(argument);
+        }
         startInfo.ArgumentList.Add("--engine");
         startInfo.ArgumentList.Add(GetEngineName(engine));
         startInfo.ArgumentList.Add(inputPath);

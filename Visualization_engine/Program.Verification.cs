@@ -11,8 +11,12 @@ internal static partial class Program
     {
         try
         {
-            if (arguments.Length != 4 || !Enum.TryParse(arguments[2], true, out OmrEngine engine) ||
-                engine is not (OmrEngine.Homr or OmrEngine.Homr465 or OmrEngine.MusicXml))
+            // --verify-omr[-reopen] INPUT|MANIFEST ENGINE EVIDENCE_DIR [--timing-fix]; the last
+            // verifies the timing-fix interpretation, as the landing page switch selects it.
+            bool timingFix = arguments.Length == 5 && arguments[4] == "--timing-fix";
+            if (arguments.Length is not (4 or 5) || (arguments.Length == 5 && arguments[4] != "--timing-fix") ||
+                !Enum.TryParse(arguments[2], true, out OmrEngine engine) ||
+                engine is not (OmrEngine.Homr or OmrEngine.Homr465 or OmrEngine.Homr480 or OmrEngine.MusicXml))
                 throw new ArgumentException("Expected input (or manifest), engine, and exclusive evidence directory.");
             string destination = Path.GetFullPath(arguments[3]);
             if (Directory.Exists(destination)) throw new IOException("Evidence directory already exists.");
@@ -20,7 +24,7 @@ internal static partial class Program
             Stopwatch elapsed = Stopwatch.StartNew();
             SongLoadResult song = arguments[0] == "--verify-omr-reopen"
                 ? SongCache.LoadRecent(new(arguments[1], "Verification", engine, DateTimeOffset.MinValue), recordRecent: false)
-                : SongCache.LoadOrCreateDetailed(arguments[1], engine, recordRecent: false);
+                : SongCache.LoadOrCreateDetailed(arguments[1], engine, recordRecent: false, timingCorrection: timingFix);
             elapsed.Stop();
             if (song.ManifestRelativePath is null || song.NoteCount == 0 || song.Engine != engine)
                 throw new InvalidDataException("Verified scan has no valid cache or the wrong engine.");
@@ -29,12 +33,20 @@ internal static partial class Program
             if (!reopened.LoadedFromCache || reopened.NoteCount != song.NoteCount)
                 throw new InvalidDataException("Cache reopen did not preserve the complete score.");
             string manifestPath = Path.Combine(SongCache.ApplicationDirectory, song.ManifestRelativePath);
-            string midiPath = manifestPath[..^".cache.json".Length];
-            using JsonDocument manifest = JsonDocument.Parse(File.ReadAllText(manifestPath));
-            if (engine == OmrEngine.Homr465 &&
-                (manifest.RootElement.GetProperty("runtime_profile_sha256").GetString() != OmrPipeline.Homr465ProfileSha256 ||
-                 manifest.RootElement.GetProperty("model_revision").GetString() != OmrPipeline.Homr465ModelRevision))
-                throw new InvalidDataException("Published cache identity does not match HOMR 465.");
+            // A song package's interpretation names its performance, and the package manifest two
+            // folders up holds the conversion's identity; a MIDI cache holds both in one manifest.
+            bool packaged = Path.GetFileName(manifestPath) == "interpretation.json";
+            string contentPath = packaged
+                ? Path.Combine(Path.GetDirectoryName(manifestPath)!, "performance.json")
+                : manifestPath[..^".cache.json".Length];
+            string identityPath = packaged
+                ? Path.Combine(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(manifestPath)!)!)!, "song.json")
+                : manifestPath;
+            using JsonDocument manifest = JsonDocument.Parse(File.ReadAllText(identityPath));
+            if (OmrPipeline.IsPinnedNative(engine) &&
+                (manifest.RootElement.GetProperty("runtime_profile_sha256").GetString() != OmrPipeline.GetProfileSha256(engine) ||
+                 manifest.RootElement.GetProperty("model_revision").GetString() != OmrPipeline.GetModelRevision(engine)))
+                throw new InvalidDataException($"Published cache identity does not match {OmrPipeline.GetEngineName(engine)}.");
             RenderVerifiedPreview(song, destination);
             var report = new
             {
@@ -46,7 +58,9 @@ internal static partial class Program
                 engine = song.Engine.ToString(),
                 manifest = song.ManifestRelativePath,
                 manifestSha256 = VerificationHash(manifestPath),
-                midiSha256 = VerificationHash(midiPath),
+                kind = packaged ? "song-package" : "midi-cache",
+                contentSha256 = VerificationHash(contentPath),
+                timingFix,
                 song.NoteCount,
                 song.LoadedFromCache,
                 elapsedSeconds = elapsed.Elapsed.TotalSeconds,
@@ -64,6 +78,92 @@ internal static partial class Program
             return 1;
         }
     }
+
+    /// <summary>
+    /// Opens every song the library holds the way the app does - each MIDI cache, each custom
+    /// MIDI file and each song package - and builds its playback session, without converting
+    /// or interpreting anything. <c>--verify-library EVIDENCE_DIR</c> writes <c>library.json</c>.
+    /// </summary>
+    private static int RunLibraryVerification(string[] arguments)
+    {
+        try
+        {
+            if (arguments.Length != 2)
+                throw new ArgumentException("Expected an exclusive evidence directory.");
+            string destination = Path.GetFullPath(arguments[1]);
+            if (Directory.Exists(destination)) throw new IOException("Evidence directory already exists.");
+            Directory.CreateDirectory(destination);
+            string library = SongCache.ApplicationDirectory;
+            List<LibraryCheck> rows = [];
+
+            void Check(string kind, string path, OmrEngine engine, Func<SongLoadResult> load)
+            {
+                try
+                {
+                    SongLoadResult song = load();
+                    PlaybackSession session = new(song.Notes);
+                    rows.Add(new LibraryCheck(kind, path, engine.ToString(), true, session.Notes.Count,
+                        Math.Round(session.TotalDuration, 3), null));
+                }
+                catch (Exception error)
+                {
+                    rows.Add(new LibraryCheck(kind, path, engine.ToString(), false, 0, 0,
+                        $"{error.GetType().Name}: {error.Message}"));
+                }
+            }
+
+            string midiRoot = Path.Combine(library, "songs", "midi");
+            foreach (OmrEngine engine in Enum.GetValues<OmrEngine>().Where(engine => engine != OmrEngine.DirectMidi))
+            {
+                string folder = Path.Combine(midiRoot, OmrPipeline.GetEngineName(engine));
+                if (!Directory.Exists(folder)) continue;
+                foreach (string manifest in Directory.EnumerateFiles(folder, "*.mid.cache.json").Order())
+                {
+                    string relative = Path.GetRelativePath(library, manifest);
+                    Check("midi-cache", relative, engine, () => SongCache.LoadRecent(
+                        new(relative, Path.GetFileName(manifest), engine, DateTimeOffset.MinValue), recordRecent: false));
+                }
+            }
+            string custom = Path.Combine(midiRoot, "custom");
+            if (Directory.Exists(custom))
+            {
+                foreach (string file in Directory.EnumerateFiles(custom).Where(file =>
+                             Path.GetExtension(file).ToLowerInvariant() is ".mid" or ".midi").Order())
+                {
+                    Check("custom-midi", Path.GetRelativePath(library, file), OmrEngine.DirectMidi,
+                        () => SongCache.LoadOrCreateDetailed(file, OmrEngine.DirectMidi, recordRecent: false));
+                }
+            }
+            foreach (CachedSongEntry entry in SongCache.GetCachedSongs()
+                         .Where(entry => entry.RecentSong.ManifestRelativePath.EndsWith("interpretation.json")))
+            {
+                Check("song-package", entry.RecentSong.ManifestRelativePath, entry.RecentSong.Engine,
+                    () => SongCache.LoadRecent(entry.RecentSong, recordRecent: false));
+            }
+
+            var report = new
+            {
+                executable = Environment.ProcessPath,
+                executableSha256 = VerificationHash(Environment.ProcessPath!),
+                library,
+                checkedUtc = DateTimeOffset.UtcNow,
+                rows
+            };
+            File.WriteAllText(Path.Combine(destination, "library.json"),
+                JsonSerializer.Serialize(report, new JsonSerializerOptions { WriteIndented = true }));
+            int failed = rows.Count(static row => !row.Ok);
+            Console.WriteLine($"Checked {rows.Count} songs: {rows.Count - failed} played, {failed} failed.");
+            return failed == 0 ? 0 : 1;
+        }
+        catch (Exception error)
+        {
+            Console.Error.WriteLine(error);
+            return 1;
+        }
+    }
+
+    private sealed record LibraryCheck(string Kind, string Path, string Engine, bool Ok, int Notes, double Seconds,
+        string? Error);
 
     private static string VerificationHash(string path)
     {
