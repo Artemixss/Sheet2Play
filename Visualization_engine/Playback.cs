@@ -33,6 +33,11 @@ public interface IMidiOutput
     void NoteOn(int midiPitch, int velocity);
     void NoteOff(int midiPitch);
     void AllNotesOff();
+
+    /// <summary>Sets the sustain pedal (CC64): 0 is up, 127 fully down.</summary>
+    void SetSustain(int value)
+    {
+    }
 }
 
 /// <summary>
@@ -79,6 +84,13 @@ public sealed class DryWetMidiOutput(OutputDevice outputDevice) : IMidiOutput
         {
             NoteOff(pitch);
         }
+    }
+
+    public void SetSustain(int value)
+    {
+        outputDevice.SendEvent(new ControlChangeEvent(
+            (SevenBitNumber)64,
+            (SevenBitNumber)ValidateMidiValue(value, nameof(value))));
     }
 
     private static byte ValidateMidiValue(int value, string parameterName)
@@ -178,7 +190,10 @@ public sealed class PlaybackSession
     private readonly Note[] notes;
     private readonly IReadOnlyList<Note> readOnlyNotes;
 
-    public PlaybackSession(IEnumerable<Note> sourceNotes, double audioOffsetSeconds = 0.055)
+    /// <param name="pedal">Sustain pedal changes, in time order. Played after the notes at the same time when
+    /// pressed and before them when released, so a change at a chord catches that chord and not the last.</param>
+    public PlaybackSession(IEnumerable<Note> sourceNotes, double audioOffsetSeconds = 0.055,
+        IReadOnlyList<PedalChange>? pedal = null)
     {
         ArgumentNullException.ThrowIfNull(sourceNotes);
         if (!double.IsFinite(audioOffsetSeconds) || audioOffsetSeconds < 0)
@@ -215,15 +230,35 @@ public sealed class PlaybackSession
         // Events carry their true score times. The offset is applied at dispatch instead,
         // because baking it in here fixes it in song-time: at 0.5x speed a 55ms bake
         // becomes 110ms of real-world lead, and at 2x it becomes 27.5ms.
+        Pedal = Array.AsReadOnly((pedal ?? []).Where(static change =>
+                double.IsFinite(change.Time) && change.Time >= 0 && change.Value is >= 0 and <= 127)
+            .OrderBy(static change => change.Time)
+            .ToArray());
         Events = notes.SelectMany(note => new[]
             {
                 new PlaybackEvent(note.StartTime, note.TargetKeyIndex, note.Velocity, true),
                 new PlaybackEvent(note.EndTime, note.TargetKeyIndex, note.Velocity, false)
             })
+            .Concat(Pedal.Select(static change => PlaybackEvent.ForPedal(change.Time, change.Value)))
             .OrderBy(item => item.Time)
-            .ThenBy(item => item.IsNoteOn ? 1 : 0)
+            .ThenBy(item => item.Rank)
             .ThenBy(item => item.KeyIndex)
             .ToArray();
+    }
+
+    public IReadOnlyList<PedalChange> Pedal { get; }
+
+    /// <summary>The sustain pedal value in force once every event before <paramref name="count"/> has played.</summary>
+    internal int PedalBefore(int count)
+    {
+        for (int index = Math.Min(count, Events.Length) - 1; index >= 0; index--)
+        {
+            if (Events[index].IsPedal)
+            {
+                return Events[index].Velocity;
+            }
+        }
+        return 0;
     }
 
     private static bool IsPlayable(Note note) =>
@@ -290,11 +325,19 @@ public sealed class PlaybackSession
     }
 }
 
+/// <summary>A note on, a note off, or a pedal change, whose CC64 value is in <see cref="Velocity"/>.</summary>
 internal readonly record struct PlaybackEvent(
     double Time,
     int KeyIndex,
     int Velocity,
-    bool IsNoteOn);
+    bool IsNoteOn,
+    bool IsPedal = false)
+{
+    public static PlaybackEvent ForPedal(double time, int value) => new(time, -1, value, false, IsPedal: true);
+
+    /// <summary>Order at one time: pedal release, note offs, note ons, pedal press.</summary>
+    public int Rank => IsPedal ? (Velocity >= 64 ? 3 : 0) : IsNoteOn ? 2 : 1;
+}
 
 public sealed class PlaybackController
 {
@@ -457,6 +500,11 @@ public sealed class PlaybackController
 
     private void ApplyEvent(PlaybackEvent item)
     {
+        if (item.IsPedal)
+        {
+            midiOutput.SetSustain(item.Velocity);
+            return;
+        }
         if (item.IsNoteOn)
         {
             activePitchCounts[item.KeyIndex]++;
@@ -480,6 +528,10 @@ public sealed class PlaybackController
 
     private void ApplyVisualEvent(PlaybackEvent item)
     {
+        if (item.IsPedal)
+        {
+            return;
+        }
         if (item.IsNoteOn)
         {
             visualPitchCounts[item.KeyIndex]++;
@@ -502,10 +554,19 @@ public sealed class PlaybackController
             Array.Clear(activePitchCounts);
             Array.Clear(visualPitchCounts);
         }
+        Span<int> velocities = stackalloc int[88];
         for (int index = 0; index < eventCursor; index++)
         {
             PlaybackEvent item = session.Events[index];
+            if (item.IsPedal)
+            {
+                continue;
+            }
             activePitchCounts[item.KeyIndex] += item.IsNoteOn ? 1 : -1;
+            if (item.IsNoteOn)
+            {
+                velocities[item.KeyIndex] = item.Velocity;
+            }
             if (activePitchCounts[item.KeyIndex] < 0)
             {
                 activePitchCounts[item.KeyIndex] = 0;
@@ -516,23 +577,38 @@ public sealed class PlaybackController
         for (int index = 0; index < visualCursor; index++)
         {
             PlaybackEvent item = session.Events[index];
+            if (item.IsPedal)
+            {
+                continue;
+            }
             visualPitchCounts[item.KeyIndex] += item.IsNoteOn ? 1 : -1;
             if (visualPitchCounts[item.KeyIndex] < 0)
             {
                 visualPitchCounts[item.KeyIndex] = 0;
             }
         }
+        // The pedal goes down before the held keys sound again, as a player would hold it.
+        int pedal = session.PedalBefore(eventCursor);
+        if (pedal > 0)
+        {
+            midiOutput.SetSustain(pedal);
+        }
         for (int keyIndex = 0; keyIndex < activePitchCounts.Length; keyIndex++)
         {
             if (activePitchCounts[keyIndex] > 0)
             {
-                midiOutput.NoteOn(keyIndex + 21, 80);
+                midiOutput.NoteOn(keyIndex + 21, velocities[keyIndex]);
             }
         }
     }
 
     private void Silence()
     {
+        // The pedal comes up first, or a held pedal would keep every released note ringing.
+        if (session.Pedal.Count > 0)
+        {
+            midiOutput.SetSustain(0);
+        }
         midiOutput.AllNotesOff();
         Array.Clear(activePitchCounts);
         Array.Clear(visualPitchCounts);

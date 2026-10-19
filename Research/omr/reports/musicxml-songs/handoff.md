@@ -4,9 +4,17 @@
 **Phase status:** Phase 1 **complete and accepted** on 2026-10-19 ([report](phase1/REPORT.md)),
 committed as `af0332b`. Phase 2 requested the same day ("ok commit phase 1 and continue with
 phase") and **accepted**: every criterion met, release gate 8 of 8 ([Phase 2 report](phase2/REPORT.md)).
-Phase 3 requested the same day ("commit phase 2 then continue with the next phase").
-**Next authorized action:** Phase 3, expressive playback. Phase 4 needs its own request. The user
-wants any C# engine rework as a separate request at the end of the plan, before Phase 6.
+Phase 3 requested the same day ("commit phase 2 then continue with the next phase"),
+**accepted** (gate 8 of 8, [Phase 3 report](phase3/REPORT.md)) and committed after the panel was
+made collapsible at the user's suggestion. Phase 4 requested the same day ("after that commit phase 3
+then continue with the next phase").
+**Next authorized action:** Phase 4a, the SFZ decision spike (no shipped change); 4b waits on the
+user's pick. The user wants any C# engine rework as a separate request at the end of the plan, before
+Phase 6.
+**Phase 3 evidence:** [`phase3/tempo/summary.json`](phase3/tempo/summary.json) (fixture exact
+against MuseScore 4; corpus exact up to the first fermata or "rit."); `--verify-library` with
+expression off identical for all 90 playing songs (local, `phase3/library-after`); xunit 139
+passed, 22 of them in `ExpressionTests`.
 **Phase 2 evidence:** 3 fresh 480 conversions equal their bridge notes (0.0000 ms); the timing fix
 re-interprets in 1.37 s with no OMR; all 85 previously playing library songs still play; xunit 117
 passed. Evidence that lists private library paths stays local (`phase2/library-*`, `convert-*`).

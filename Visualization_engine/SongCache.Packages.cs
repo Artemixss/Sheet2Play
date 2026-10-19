@@ -257,7 +257,7 @@ public static partial class SongCache
         if (TryReadInterpretation(derived, key, timing, out SongPerformance? performance, out List<VisualNote>? notes))
         {
             LogPackage(engine, package.Manifest.SourceSha256, "hit", derived);
-            return PackageResult(package, notes!, timing, derived, context.ApplicationDirectory);
+            return PackageResult(package, notes!, performance!, timing, derived, context.ApplicationDirectory);
         }
         if (!allowInterpretation)
         {
@@ -271,7 +271,7 @@ public static partial class SongCache
         try
         {
             context.Interpret(engine, package.Sources, package.Imported, timing, staging, cancellationToken);
-            notes = WriteInterpretation(staging, key, timing);
+            (notes, performance) = WriteInterpretation(staging, key, timing);
             ReplaceDirectory(staging, derived);
         }
         finally
@@ -284,16 +284,17 @@ public static partial class SongCache
             $"decision=reinterpret omr=false seconds={elapsed.Elapsed.TotalSeconds:F2} path=\"{derived}\"");
         ReportProgress(progress, engine, OmrProgressStages.Normalization, OmrProgressStatuses.Completed,
             "Stored score read");
-        return PackageResult(package, notes, timing, derived, context.ApplicationDirectory);
+        return PackageResult(package, notes, performance, timing, derived, context.ApplicationDirectory);
     }
 
-    private static SongLoadResult PackageResult(ValidPackage package, List<VisualNote> notes, bool timing,
-        string derived, string applicationDirectory) =>
+    private static SongLoadResult PackageResult(ValidPackage package, List<VisualNote> notes,
+        SongPerformance performance, bool timing, string derived, string applicationDirectory) =>
         new(notes,
             package.Manifest.DisplayName + (timing ? TimingCorrectionLabel : ""),
             package.Manifest.Engine,
             LoadedFromCache: true,
-            Path.GetRelativePath(applicationDirectory, Path.Combine(derived, InterpretationManifestName)));
+            Path.GetRelativePath(applicationDirectory, Path.Combine(derived, InterpretationManifestName)),
+            performance);
 
     // --- Conversion ----------------------------------------------------------------------------
 
@@ -335,9 +336,9 @@ public static partial class SongCache
         if (Directory.Exists(derived) && !File.Exists(Path.Combine(derived, InterpretationManifestName)))
         {
             // The song entry interpreted the pages it kept; record that interpretation.
-            List<VisualNote> notes = WriteInterpretation(derived, key, timing);
+            (List<VisualNote> notes, SongPerformance performance) = WriteInterpretation(derived, key, timing);
             LogPackage(engine, sourceHash, "saved", derived);
-            return PackageResult(package, notes, timing, derived, context.ApplicationDirectory);
+            return PackageResult(package, notes, performance, timing, derived, context.ApplicationDirectory);
         }
         return LoadInterpretation(package, context, timing, allowInterpretation: true, progress, cancellationToken);
     }
@@ -519,7 +520,8 @@ public static partial class SongCache
     }
 
     /// <summary>Checks an interpretation in <paramref name="directory"/> and writes its manifest.</summary>
-    private static List<VisualNote> WriteInterpretation(string directory, string key, bool timing)
+    private static (List<VisualNote> Notes, SongPerformance Performance) WriteInterpretation(string directory,
+        string key, bool timing)
     {
         string performancePath = Path.Combine(directory, PerformanceName);
         string scorePath = Path.Combine(directory, CombinedScoreName);
@@ -540,7 +542,7 @@ public static partial class SongCache
         WriteJsonAtomic(Path.Combine(directory, InterpretationManifestName), new InterpretationManifest(
             key, timing, ComputeSha256(performancePath), ComputeSha256(scorePath), notes.Count,
             GetTotalDuration(notes), DateTimeOffset.UtcNow));
-        return notes;
+        return (notes, performance);
     }
 
     private static void RemoveStaleInterpretations(PackagePaths paths, string currentKey, bool timing)
@@ -609,11 +611,11 @@ public static partial class SongCache
             return result is not null;
         }
         string staleKey = Path.GetFileName(derived);
-        if (!TryReadInterpretation(derived, staleKey, timing, out _, out List<VisualNote>? notes))
+        if (!TryReadInterpretation(derived, staleKey, timing, out SongPerformance? stale, out List<VisualNote>? notes))
         {
             return false;
         }
-        result = PackageResult(package, notes!, timing, derived, context.ApplicationDirectory);
+        result = PackageResult(package, notes!, stale!, timing, derived, context.ApplicationDirectory);
         return true;
     }
 

@@ -102,8 +102,20 @@ internal static partial class Program
                 {
                     SongLoadResult song = load();
                     PlaybackSession session = new(song.Notes);
-                    rows.Add(new LibraryCheck(kind, path, engine.ToString(), true, session.Notes.Count,
-                        Math.Round(session.TotalDuration, 3), null));
+                    // With expression off a song must play exactly as before expression existed.
+                    SongPlayback off = ExpressionPlayback.ForSong(song, ExpressionOptions.None);
+                    bool unchanged = new PlaybackSession(off.Notes, pedal: off.Pedal).Events.SequenceEqual(session.Events);
+                    SongPlayback on = ExpressionPlayback.ForSong(song, new ExpressionOptions());
+                    PlaybackSession expressed = new(on.Notes, pedal: on.Pedal);
+                    ExpressionAvailability available = ExpressionPlayback.Availability(song);
+                    rows.Add(new LibraryCheck(kind, path, engine.ToString(), unchanged, session.Notes.Count,
+                        Math.Round(session.TotalDuration, 3),
+                        unchanged ? null : "With expression off the events differ from the plain notes.",
+                        unchanged, expressed.Notes.Count, expressed.Pedal.Count,
+                        expressed.Notes.Select(static note => note.Velocity).Distinct().Count(),
+                        Math.Round(expressed.TotalDuration, 3),
+                        $"pedal={available.Pedal} dynamics={available.Dynamics} " +
+                        $"articulations={available.Articulations} repeats={available.Repeats}"));
                 }
                 catch (Exception error)
                 {
@@ -163,7 +175,8 @@ internal static partial class Program
     }
 
     private sealed record LibraryCheck(string Kind, string Path, string Engine, bool Ok, int Notes, double Seconds,
-        string? Error);
+        string? Error, bool? ExpressionOffUnchanged = null, int? ExpressedNotes = null, int? PedalChanges = null,
+        int? DistinctVelocities = null, double? ExpressedSeconds = null, string? Available = null);
 
     private static string VerificationHash(string path)
     {

@@ -1,0 +1,437 @@
+{
+  "plan": "2026-10-19-musicxml-songs",
+  "phase": 3,
+  "criterion": "bar onsets within 50 ms and length within 1% of MuseScore 4's MIDI export",
+  "app": "Sheet2Play.exe",
+  "musescore": "C:\\Program Files\\MuseScore 4\\bin\\MuseScore4.exe",
+  "scores": 6,
+  "errors": [],
+  "without_fermata_or_gradual_tempo": {
+    "scores": [
+      "fixture"
+    ],
+    "pass": true
+  },
+  "bars_before_first_stretch_pass": true,
+  "rows": [
+    {
+      "id": "fixture",
+      "source": "Research/omr/fixtures/expression-tempo.musicxml",
+      "marks": {
+        "tempo_sounds": 4,
+        "fermatas": 0,
+        "gradual_tempo_words": 0,
+        "pedals": 5,
+        "dynamics": 4,
+        "wedges": 4
+      },
+      "interpret_seconds": 0.97,
+      "musescore_exit": 0,
+      "first_stretched_bar": null,
+      "max_bar_difference_before_stretch": 0,
+      "bars_before_stretch_pass": true,
+      "timeline": {
+        "bars": 8,
+        "maxBarDifferenceSeconds": 0,
+        "appEndSeconds": 22.2667,
+        "referenceEndSeconds": 22.2667,
+        "lengthDifferencePercent": 0,
+        "appLastNoteOff": 22.2667,
+        "referenceLastNoteOff": 22.2646,
+        "appNotes": 42,
+        "referenceNotes": 42,
+        "matchedNotes": 41,
+        "unmatchedReferenceNotes": 1,
+        "firstUnmatchedReferenceNotes": [
+          [
+            74,
+            19.7667
+          ]
+        ],
+        "onsetErrorMedianSeconds": 0,
+        "onsetErrorP95Seconds": 0,
+        "velocityCorrelation": 0.9998,
+        "velocityMeanAbsoluteDifference": 0.1,
+        "appPedalChanges": 8,
+        "referencePedalChanges": 6,
+        "pedalErrorMedianSeconds": 0.0035,
+        "pedalErrorMaxSeconds": 4.7988,
+        "tempoMarks": 4
+      },
+      "bars_pass": true,
+      "length_pass": true
+    },
+    {
+      "id": "6166579",
+      "source": "Research/omr/data/displacement-ruler/6166579/label.musicxml",
+      "marks": {
+        "tempo_sounds": 69,
+        "fermatas": 4,
+        "gradual_tempo_words": 12,
+        "pedals": 6,
+        "dynamics": 63,
+        "wedges": 56
+      },
+      "interpret_seconds": 6.97,
+      "musescore_exit": 0,
+      "first_stretched_bar": 57,
+      "max_bar_difference_before_stretch": 0,
+      "bars_before_stretch_pass": true,
+      "timeline": {
+        "bars": 333,
+        "maxBarDifferenceSeconds": 2.3857,
+        "appEndSeconds": 694.8419,
+        "referenceEndSeconds": 697.2276,
+        "lengthDifferencePercent": -0.3422,
+        "appLastNoteOff": 694.8419,
+        "referenceLastNoteOff": 697.226,
+        "appNotes": 5747,
+        "referenceNotes": 5763,
+        "matchedNotes": 1759,
+        "unmatchedReferenceNotes": 4004,
+        "firstUnmatchedReferenceNotes": [
+          [
+            80,
+            58.8462
+          ],
+          [
+            85,
+            144.6296
+          ],
+          [
+            88,
+            145.0842
+          ],
+          [
+            92,
+            145.5387
+          ],
+          [
+            85,
+            148.2646
+          ],
+          [
+            88,
+            148.7818
+          ],
+          [
+            73,
+            149.0404
+          ],
+          [
+            73,
+            149.5577
+          ],
+          [
+            76,
+            149.5577
+          ],
+          [
+            81,
+            149.8163
+          ],
+          [
+            81,
+            150.2042
+          ],
+          [
+            85,
+            150.3335
+          ],
+          [
+            66,
+            150.5922
+          ],
+          [
+            66,
+            150.9801
+          ],
+          [
+            69,
+            151.1094
+          ],
+          [
+            73,
+            151.1094
+          ],
+          [
+            93,
+            151.368
+          ],
+          [
+            93,
+            151.7559
+          ],
+          [
+            97,
+            151.8853
+          ],
+          [
+            65,
+            152.1439
+          ]
+        ],
+        "onsetErrorMedianSeconds": 0,
+        "onsetErrorP95Seconds": 0.2006,
+        "velocityCorrelation": 0.8998,
+        "velocityMeanAbsoluteDifference": 3.68,
+        "appPedalChanges": 6,
+        "referencePedalChanges": 6,
+        "pedalErrorMedianSeconds": 2.3873,
+        "pedalErrorMaxSeconds": 2.3889,
+        "tempoMarks": 69
+      },
+      "bars_pass": false,
+      "length_pass": true
+    },
+    {
+      "id": "6650388",
+      "source": "Research/omr/data/displacement-ruler/6650388/label.musicxml",
+      "marks": {
+        "tempo_sounds": 1,
+        "fermatas": 4,
+        "gradual_tempo_words": 0,
+        "pedals": 0,
+        "dynamics": 12,
+        "wedges": 4
+      },
+      "interpret_seconds": 1.33,
+      "musescore_exit": 0,
+      "first_stretched_bar": 12,
+      "max_bar_difference_before_stretch": 0,
+      "bars_before_stretch_pass": true,
+      "timeline": {
+        "bars": 39,
+        "maxBarDifferenceSeconds": 1.9958,
+        "appEndSeconds": 108,
+        "referenceEndSeconds": 109.9958,
+        "lengthDifferencePercent": -1.8145,
+        "appLastNoteOff": 108,
+        "referenceLastNoteOff": 109.9438,
+        "appNotes": 721,
+        "referenceNotes": 721,
+        "matchedNotes": 326,
+        "unmatchedReferenceNotes": 395,
+        "firstUnmatchedReferenceNotes": [
+          [
+            62,
+            36.9979
+          ],
+          [
+            62,
+            36.9979
+          ],
+          [
+            62,
+            36.9979
+          ],
+          [
+            67,
+            37.2479
+          ],
+          [
+            71,
+            37.4979
+          ],
+          [
+            67,
+            37.4979
+          ],
+          [
+            62,
+            37.4979
+          ],
+          [
+            66,
+            37.9979
+          ],
+          [
+            72,
+            38.4979
+          ],
+          [
+            64,
+            38.4979
+          ],
+          [
+            60,
+            38.4979
+          ],
+          [
+            55,
+            38.4979
+          ],
+          [
+            63,
+            38.9979
+          ],
+          [
+            55,
+            38.9979
+          ],
+          [
+            71,
+            39.9979
+          ],
+          [
+            62,
+            39.9979
+          ],
+          [
+            54,
+            39.9979
+          ],
+          [
+            69,
+            40.2479
+          ],
+          [
+            62,
+            40.4979
+          ],
+          [
+            59,
+            40.4979
+          ]
+        ],
+        "onsetErrorMedianSeconds": 0,
+        "onsetErrorP95Seconds": 0.0042,
+        "velocityCorrelation": 0.9412,
+        "velocityMeanAbsoluteDifference": 0.7,
+        "appPedalChanges": 0,
+        "referencePedalChanges": 0,
+        "pedalErrorMedianSeconds": 0,
+        "pedalErrorMaxSeconds": 0,
+        "tempoMarks": 1
+      },
+      "bars_pass": false,
+      "length_pass": false
+    },
+    {
+      "id": "6785268",
+      "source": "Research/omr/data/displacement-ruler/6785268/label.musicxml",
+      "marks": {
+        "tempo_sounds": 1,
+        "fermatas": 4,
+        "gradual_tempo_words": 0,
+        "pedals": 2,
+        "dynamics": 4,
+        "wedges": 12
+      },
+      "interpret_seconds": 1.5,
+      "musescore_exit": 0,
+      "first_stretched_bar": 72,
+      "max_bar_difference_before_stretch": 0,
+      "bars_before_stretch_pass": true,
+      "timeline": {
+        "bars": 81,
+        "maxBarDifferenceSeconds": 0,
+        "appEndSeconds": 182.25,
+        "referenceEndSeconds": 184.4984,
+        "lengthDifferencePercent": -1.2187,
+        "appLastNoteOff": 182.25,
+        "referenceLastNoteOff": 184.2719,
+        "appNotes": 775,
+        "referenceNotes": 768,
+        "matchedNotes": 768,
+        "unmatchedReferenceNotes": 0,
+        "firstUnmatchedReferenceNotes": [],
+        "onsetErrorMedianSeconds": 0,
+        "onsetErrorP95Seconds": 0,
+        "velocityCorrelation": 0.9999,
+        "velocityMeanAbsoluteDifference": 0.02,
+        "appPedalChanges": 2,
+        "referencePedalChanges": 2,
+        "pedalErrorMedianSeconds": 2.2484,
+        "pedalErrorMaxSeconds": 2.2484,
+        "tempoMarks": 1
+      },
+      "bars_pass": true,
+      "length_pass": false
+    },
+    {
+      "id": "6895220",
+      "source": "Research/omr/data/displacement-ruler/6895220/label.musicxml",
+      "marks": {
+        "tempo_sounds": 1,
+        "fermatas": 2,
+        "gradual_tempo_words": 1,
+        "pedals": 36,
+        "dynamics": 44,
+        "wedges": 36
+      },
+      "interpret_seconds": 3.01,
+      "musescore_exit": 0,
+      "first_stretched_bar": 65,
+      "max_bar_difference_before_stretch": 0,
+      "bars_before_stretch_pass": true,
+      "timeline": {
+        "bars": 96,
+        "maxBarDifferenceSeconds": 0,
+        "appEndSeconds": 236.3478,
+        "referenceEndSeconds": 239.8242,
+        "lengthDifferencePercent": -1.4496,
+        "appLastNoteOff": 236.3478,
+        "referenceLastNoteOff": 239.4746,
+        "appNotes": 2441,
+        "referenceNotes": 2440,
+        "matchedNotes": 2440,
+        "unmatchedReferenceNotes": 0,
+        "firstUnmatchedReferenceNotes": [],
+        "onsetErrorMedianSeconds": 0,
+        "onsetErrorP95Seconds": 0,
+        "velocityCorrelation": 0.9593,
+        "velocityMeanAbsoluteDifference": 2.41,
+        "appPedalChanges": 36,
+        "referencePedalChanges": 36,
+        "pedalErrorMedianSeconds": 0.0021,
+        "pedalErrorMaxSeconds": 0.0036,
+        "tempoMarks": 1
+      },
+      "bars_pass": true,
+      "length_pass": false
+    },
+    {
+      "id": "6902355",
+      "source": "Research/omr/data/displacement-ruler/6902355/label.musicxml",
+      "marks": {
+        "tempo_sounds": 2,
+        "fermatas": 1,
+        "gradual_tempo_words": 0,
+        "pedals": 34,
+        "dynamics": 10,
+        "wedges": 12
+      },
+      "interpret_seconds": 1.6,
+      "musescore_exit": 0,
+      "first_stretched_bar": 68,
+      "max_bar_difference_before_stretch": 0,
+      "bars_before_stretch_pass": true,
+      "timeline": {
+        "bars": 69,
+        "maxBarDifferenceSeconds": 0,
+        "appEndSeconds": 227.0769,
+        "referenceEndSeconds": 230.536,
+        "lengthDifferencePercent": -1.5005,
+        "appLastNoteOff": 227.0769,
+        "referenceLastNoteOff": 230.5336,
+        "appNotes": 949,
+        "referenceNotes": 947,
+        "matchedNotes": 947,
+        "unmatchedReferenceNotes": 0,
+        "firstUnmatchedReferenceNotes": [],
+        "onsetErrorMedianSeconds": 0,
+        "onsetErrorP95Seconds": 0,
+        "velocityCorrelation": 0.8356,
+        "velocityMeanAbsoluteDifference": 4.2,
+        "appPedalChanges": 34,
+        "referencePedalChanges": 34,
+        "pedalErrorMedianSeconds": 0.0048,
+        "pedalErrorMaxSeconds": 0.0048,
+        "tempoMarks": 2
+      },
+      "bars_pass": true,
+      "length_pass": false
+    }
+  ]
+}

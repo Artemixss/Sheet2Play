@@ -81,6 +81,10 @@ internal static partial class Program
 		{
 			return RunOmrVerification(args);
 		}
+		if (args.Length > 0 && args[0] == "--verify-timeline")
+		{
+			return RunTimelineVerification(args);
+		}
 		if (args.Length > 0 && args[0] == "--verify-library")
 		{
 			return RunLibraryVerification(args);
@@ -216,6 +220,7 @@ internal static partial class Program
 		GameState state = GameState.WaitingForFile;
 		OmrEngine selectedEngine = AppSettingsStore.LoadEngine();
 		timingCorrectionEnabled = AppSettingsStore.LoadTimingCorrection();
+		LoadExpressionSettings();
 		LoadRequest pendingRequest = null;
 		PlaybackController playbackController = null;
 		SongLoadResult songLoadResult = null;
@@ -267,6 +272,7 @@ internal static partial class Program
 				double resumePosition = playbackController?.Position ?? 0.0;
 				bool wasPlaying = playbackController?.IsPlaying ?? false;
 				IReadOnlyList<Note> currentNotes = playbackController?.Session.Notes;
+				IReadOnlyList<PedalChange> currentPedal = playbackController?.Session.Pedal;
 
 				playbackController?.Stop();
 				midiOutput.AllNotesOff();
@@ -297,7 +303,7 @@ internal static partial class Program
 				{
 					double switchedOffset = AppSettingsStore.ResolveAudioOffsetMilliseconds(
 						audioOutput.Backend, audioOutput.BufferedSeconds) / 1000.0;
-					PlaybackSession switchedSession = new(currentNotes, switchedOffset);
+					PlaybackSession switchedSession = new(currentNotes, switchedOffset, currentPedal);
 					playbackController = new PlaybackController(
 						switchedSession,
 						midiOutput,
@@ -309,6 +315,10 @@ internal static partial class Program
 			{
 				exportRequested = false;
 				StartAudioExport(audioOutput, songLoadResult, playbackController);
+			}
+			if (expressionChanged)
+			{
+				playbackController = ApplyExpressionChange(playbackController, songLoadResult, midiOutput, audioOutput);
 			}
 			// Before Update(), so it reads a freshly anchored position. No-ops until a song has
 			// been loaded, since the synth engine is built per song.
@@ -352,7 +362,7 @@ internal static partial class Program
 							// resolved per backend rather than shared.
 							double offsetSeconds = AppSettingsStore.ResolveAudioOffsetMilliseconds(
 								audioOutput.Backend, audioOutput.BufferedSeconds) / 1000.0;
-							PlaybackSession newSession = new(value.Notes, offsetSeconds);
+							PlaybackSession newSession = CreateSongSession(value, offsetSeconds);
 							playbackController = new PlaybackController(
 								newSession,
 								midiOutput,
@@ -1566,7 +1576,7 @@ internal static partial class Program
 		{
 			UiTheme.DrawBadge(new Rectangle((float)layout.Width - 108f * scale, 14f * scale, 88f * scale, 30f * scale), "CACHE", UiTheme.Muted);
 		}
-		UiTheme.DrawText($"{song.NoteCount:N0} notes", (int)(106f * scale), (int)(46f * scale), Math.Max(11, (int)(13f * scale)), UiTheme.Muted);
+		UiTheme.DrawText($"{playback.Session.Notes.Count:N0} notes", (int)(106f * scale), (int)(46f * scale), Math.Max(11, (int)(13f * scale)), UiTheme.Muted);
 		float transportLeft = (float)layout.Width / 2f - 92f * scale;
 		if (UiTheme.DrawButton(new Rectangle(transportLeft, 10f * scale, 52f * scale, 38f * scale), "−5", UiTheme.Sky))
 		{
@@ -1632,6 +1642,8 @@ internal static partial class Program
 			UiTheme.DrawText(statusLabel, layout.Width / 2 - UiTheme.MeasureText(statusLabel, statusFontSize) / 2, layout.HeaderHeight + 18, statusFontSize, UiTheme.Warning);
 		}
 		DrawAudioOffsetControl(playback, offsetEditor, layout);
+		// After the notes, so a falling note never covers a switch.
+		DrawExpressionPanel(song, layout);
 		return false;
 	}
 
@@ -1770,7 +1782,8 @@ internal static partial class Program
 		}
 
 		MeltySynth.SoundFont soundFont = audioOutput.SoundFont;
-		IReadOnlyList<Note> notes = playback.Session.Notes;
+		// The session the user is hearing, pedal and all, so the file sounds like the playback.
+		PlaybackSession exportSession = playback.Session;
 		string displayName = song.DisplayName;
 		exportRunning = true;
 		exportStatus = "Rendering...";
@@ -1782,7 +1795,6 @@ internal static partial class Program
 				Directory.CreateDirectory(ExportDirectory);
 				string safeName = string.Join("_", displayName.Split(Path.GetInvalidFileNameChars()));
 				string target = Path.Combine(ExportDirectory, safeName + ".mp3");
-				PlaybackSession exportSession = new(notes);
 
 				using Mp3FileSink sink = new(target, RenderSampleRate, RenderBlockFrames);
 				SoundFontEngine synth = new(soundFont, sink, exportSession, RenderSampleRate);

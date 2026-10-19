@@ -11,12 +11,17 @@ using VisualNote = SynthesiaClone.Note;
 
 namespace SynthesiaClone;
 
+/// <param name="Notes">The song's notes without expression, as the cache checks them.</param>
+/// <param name="Performance">The score's performance, for a song played from its MusicXML.</param>
+/// <param name="Pedal">The sustain pedal a MIDI file records.</param>
 public sealed record SongLoadResult(
     List<Note> Notes,
     string DisplayName,
     OmrEngine Engine,
     bool LoadedFromCache,
-    string? ManifestRelativePath)
+    string? ManifestRelativePath,
+    SongPerformance? Performance = null,
+    IReadOnlyList<PedalChange>? Pedal = null)
 {
     public int NoteCount => Notes.Count;
 }
@@ -120,7 +125,8 @@ public static partial class SongCache
                 DisplayName: Path.GetFileNameWithoutExtension(inputPath),
                 Engine: OmrEngine.DirectMidi,
                 LoadedFromCache: true,
-                ManifestRelativePath: Path.GetRelativePath(applicationDirectory, inputPath)
+                ManifestRelativePath: Path.GetRelativePath(applicationDirectory, inputPath),
+                Pedal: ReadMidiPedal(inputPath)
             );
             if (recordRecent) TouchRecent(midiResult);
             return midiResult;
@@ -666,7 +672,8 @@ public static partial class SongCache
                     Path.GetFileNameWithoutExtension(manifestPath),
                     entry.Engine,
                     true,
-                    entry.ManifestRelativePath);
+                    entry.ManifestRelativePath,
+                    Pedal: ReadMidiPedal(manifestPath));
                 return true;
             }
 
@@ -1391,6 +1398,37 @@ public static partial class SongCache
         });
         return notes;
     }
+
+    /// <summary>
+    /// The sustain pedal (CC64) a MIDI file records, as one pedal: down while any channel holds it.
+    /// </summary>
+    internal static List<PedalChange> ReadMidiPedal(string midiPath)
+    {
+        MidiFile midiFile = MidiFile.Read(midiPath);
+        TempoMap tempoMap = midiFile.GetTempoMap();
+        int[] channels = new int[16];
+        int state = 0;
+        List<PedalChange> changes = [];
+        foreach (TimedEvent timed in midiFile.GetTimedEvents())
+        {
+            if (timed.Event is not ControlChangeEvent { ControlNumber: var number } control || number != 64)
+            {
+                continue;
+            }
+            channels[control.Channel] = control.ControlValue;
+            int value = channels.Max();
+            if (value == state)
+            {
+                continue;
+            }
+            double seconds = TimeConverter.ConvertTo<MetricTimeSpan>(timed.Time, tempoMap).TotalSeconds;
+            changes.Add(new PedalChange(seconds, value));
+            state = value;
+        }
+        return changes;
+    }
+
+    internal static List<PedalChange> ReadMidiPedalForTesting(string midiPath) => ReadMidiPedal(midiPath);
 
     private static void ValidateRoundTrip(
         IReadOnlyList<VisualNote> expected,

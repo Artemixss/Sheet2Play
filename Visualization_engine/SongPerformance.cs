@@ -216,53 +216,141 @@ public sealed record SongTempo(
 
 /// <summary>How a performance becomes the notes the player plays.</summary>
 /// <param name="ExpandRepeats">Walk the play order; otherwise every measure once, in order.</param>
-/// <param name="IncludeGraceNotes">Grace notes need a playing rule before they sound; until then they are left out, as the bridge leaves them out.</param>
+/// <param name="IncludeGraceNotes">Play grace notes, just before the note each decorates. The bridge leaves them out, so the default does too.</param>
 /// <param name="DefaultTempoBpm">The tempo until the score's first mark, in quarter notes per minute.</param>
+/// <param name="Pedal">Produce pedal changes from the pedal marks.</param>
+/// <param name="Dynamics">Velocities from dynamics and hairpins; otherwise 80 for every note.</param>
+/// <param name="Articulations">Shorten, accent and roll notes by their articulations.</param>
+/// <remarks>The defaults are the timeline before expression existed, which the cache checks against.</remarks>
 public sealed record SongTimelineOptions(
     bool ExpandRepeats = true,
     bool IncludeGraceNotes = false,
-    double DefaultTempoBpm = 120);
+    double DefaultTempoBpm = 120,
+    bool Pedal = false,
+    bool Dynamics = false,
+    bool Articulations = false)
+{
+    /// <summary>The timeline the EXPRESSION panel asks for. Grace notes play with the articulations.</summary>
+    public static SongTimelineOptions For(ExpressionOptions expression) => new(
+        ExpandRepeats: expression.Repeats,
+        IncludeGraceNotes: expression.Articulations,
+        Pedal: expression.Pedal,
+        Dynamics: expression.Dynamics,
+        Articulations: expression.Articulations);
+}
 
-/// <summary>Turns a <see cref="SongPerformance"/> into timed notes.</summary>
+/// <summary>Turns a <see cref="SongPerformance"/> into timed notes and pedal.</summary>
 public static class SongTimeline
 {
-    private const int DefaultVelocity = 80;
-
     /// <summary>Measure indices in the order they play.</summary>
     public static IReadOnlyList<int> Order(SongPerformance performance, SongTimelineOptions options) =>
         options.ExpandRepeats ? performance.PlayOrder : Enumerable.Range(0, performance.Measures.Count).ToArray();
 
-    public static List<Note> BuildNotes(SongPerformance performance, SongTimelineOptions? options = null)
+    public static List<Note> BuildNotes(SongPerformance performance, SongTimelineOptions? options = null) =>
+        Build(performance, options).Notes;
+
+    public static SongPlayback Build(SongPerformance performance, SongTimelineOptions? options = null)
     {
         options ??= new SongTimelineOptions();
         IReadOnlyList<int> order = Order(performance, options);
-        Dictionary<int, List<SongNote>> notesByMeasure = performance.Notes
-            .Where(note => options.IncludeGraceNotes || !note.Grace)
-            .GroupBy(static note => note.Measure)
-            .ToDictionary(static group => group.Key, static group => group.ToList());
         double[] starts = MeasureStarts(performance, order);
         TempoMap tempo = BuildTempoMap(performance, order, starts, options.DefaultTempoBpm);
+        List<Note> notes = PlaceNotes(performance, options, order, starts, tempo);
+        IReadOnlyList<PedalChange> pedal = options.Pedal
+            ? SongExpression.Pedal(performance, order, starts, tempo.SecondsAt)
+            : [];
+        return new SongPlayback(notes, pedal);
+    }
 
-        List<Note> notes = [];
+    private static List<Note> PlaceNotes(SongPerformance performance, SongTimelineOptions options,
+        IReadOnlyList<int> order, double[] starts, TempoMap tempo)
+    {
+        Dictionary<int, List<SongNote>> notesByMeasure = performance.Notes
+            .Where(static note => !note.Grace)
+            .GroupBy(static note => note.Measure)
+            .ToDictionary(static group => group.Key, static group => group.ToList());
+        Dictionary<int, List<SongNote>> gracesByMeasure = options.IncludeGraceNotes
+            ? performance.Notes
+                .Where(static note => note.Grace)
+                .GroupBy(static note => note.Measure)
+                .ToDictionary(static group => group.Key, static group => group.ToList())
+            : [];
+        SongExpression.DynamicsMap? dynamics = options.Dynamics
+            ? SongExpression.Dynamics(performance, order, starts)
+            : null;
+
+        List<SongExpression.PlacedNote> placed = [];
         for (int occurrence = 0; occurrence < order.Count; occurrence++)
         {
-            if (!notesByMeasure.TryGetValue(order[occurrence], out List<SongNote>? measureNotes))
+            if (notesByMeasure.TryGetValue(order[occurrence], out List<SongNote>? measureNotes))
             {
-                continue;
-            }
-            foreach (SongNote note in measureNotes)
-            {
-                int keyIndex = note.Midi - 21;
-                if (keyIndex is < 0 or >= 88)
+                foreach (SongNote note in measureNotes)
                 {
-                    continue;
+                    int keyIndex = note.Midi - 21;
+                    if (keyIndex is < 0 or >= 88)
+                    {
+                        continue;
+                    }
+                    double startBeat = starts[occurrence] + note.Offset;
+                    double startSeconds = tempo.SecondsAt(startBeat);
+                    double endSeconds = tempo.SecondsAt(startBeat + note.Duration);
+                    int velocity = dynamics?.VelocityAt(note.Part, startBeat) ?? SongExpression.DefaultVelocity;
+                    if (options.Articulations)
+                    {
+                        double factor = SongExpression.LengthFactor(note.Articulations);
+                        if (factor != 1.0)
+                        {
+                            endSeconds = SongExpression.SoundingEnd(startSeconds, endSeconds,
+                                tempo.SecondsAt(startBeat + note.Duration * factor));
+                        }
+                        velocity = Math.Clamp(velocity + SongExpression.AccentBoost(note.Articulations), 1, 127);
+                    }
+                    placed.Add(new SongExpression.PlacedNote
+                    {
+                        Occurrence = occurrence,
+                        Part = note.Part,
+                        KeyIndex = keyIndex,
+                        StartBeat = startBeat,
+                        Start = startSeconds,
+                        End = endSeconds,
+                        Velocity = velocity,
+                        Rolled = options.Articulations && note.Articulations.Contains("arpeggiate")
+                    });
                 }
-                double startBeat = starts[occurrence] + note.Offset;
-                double startSeconds = tempo.SecondsAt(startBeat);
-                double endSeconds = tempo.SecondsAt(startBeat + note.Duration);
-                Color color = keyIndex >= 39 ? Color.SkyBlue : Color.Lime;
-                notes.Add(new Note(keyIndex, startSeconds, Math.Max(0, endSeconds - startSeconds), DefaultVelocity, color));
             }
+            if (gracesByMeasure.TryGetValue(order[occurrence], out List<SongNote>? graces))
+            {
+                foreach ((SongNote note, double startBeat, double endBeat) in
+                         SongExpression.PlaceGraces(graces, starts[occurrence], starts[0]))
+                {
+                    int keyIndex = note.Midi - 21;
+                    if (keyIndex is < 0 or >= 88)
+                    {
+                        continue;
+                    }
+                    placed.Add(new SongExpression.PlacedNote
+                    {
+                        Occurrence = occurrence,
+                        Part = note.Part,
+                        KeyIndex = keyIndex,
+                        StartBeat = startBeat,
+                        Start = tempo.SecondsAt(startBeat),
+                        End = tempo.SecondsAt(endBeat),
+                        Velocity = dynamics?.VelocityAt(note.Part, endBeat) ?? SongExpression.DefaultVelocity
+                    });
+                }
+            }
+        }
+        if (options.Articulations)
+        {
+            SongExpression.Roll(placed);
+        }
+
+        List<Note> notes = new(placed.Count);
+        foreach (SongExpression.PlacedNote note in placed)
+        {
+            Color color = note.KeyIndex >= 39 ? Color.SkyBlue : Color.Lime;
+            notes.Add(new Note(note.KeyIndex, note.Start, Math.Max(0, note.End - note.Start), note.Velocity, color));
         }
         notes.Sort(static (left, right) =>
         {
@@ -270,6 +358,56 @@ public static class SongTimeline
             return startComparison != 0 ? startComparison : left.TargetKeyIndex.CompareTo(right.TargetKeyIndex);
         });
         return notes;
+    }
+
+    /// <summary>Each played measure's start, in beats and seconds, and where the last one ends.</summary>
+    public static (IReadOnlyList<(int Measure, double Beat, double Seconds)> Bars, double EndBeat, double EndSeconds)
+        BarTimes(SongPerformance performance, SongTimelineOptions? options = null)
+    {
+        options ??= new SongTimelineOptions();
+        IReadOnlyList<int> order = Order(performance, options);
+        double[] starts = MeasureStarts(performance, order);
+        TempoMap tempo = BuildTempoMap(performance, order, starts, options.DefaultTempoBpm);
+        List<(int, double, double)> bars = order.Select((measure, occurrence) =>
+            (measure, starts[occurrence], tempo.SecondsAt(starts[occurrence]))).ToList();
+        double end = starts[^1] + performance.Measures[order[^1]].LengthBeats;
+        return (bars, end, tempo.SecondsAt(end));
+    }
+
+    /// <summary>
+    /// Where <paramref name="seconds"/> on one timeline is on another: the same point of the same
+    /// measure, on its first pass when the other timeline plays it more than once.
+    /// </summary>
+    public static double MapPosition(SongPerformance performance, SongTimelineOptions from, SongTimelineOptions to,
+        double seconds)
+    {
+        IReadOnlyList<int> fromOrder = Order(performance, from);
+        double[] fromStarts = MeasureStarts(performance, fromOrder);
+        TempoMap fromTempo = BuildTempoMap(performance, fromOrder, fromStarts, from.DefaultTempoBpm);
+        IReadOnlyList<int> toOrder = Order(performance, to);
+        double[] toStarts = MeasureStarts(performance, toOrder);
+        TempoMap toTempo = BuildTempoMap(performance, toOrder, toStarts, to.DefaultTempoBpm);
+
+        double beat = fromTempo.BeatAt(Math.Max(0, seconds));
+        int occurrence = Array.BinarySearch(fromStarts, beat);
+        occurrence = occurrence >= 0 ? occurrence : Math.Max(0, ~occurrence - 1);
+        double within = beat - fromStarts[occurrence];
+        int target = from.ExpandRepeats == to.ExpandRepeats && occurrence < toOrder.Count
+            ? occurrence
+            : IndexOf(toOrder, fromOrder[occurrence]);
+        return target < 0 ? Math.Max(0, seconds) : toTempo.SecondsAt(toStarts[target] + within);
+    }
+
+    private static int IndexOf(IReadOnlyList<int> order, int measure)
+    {
+        for (int index = 0; index < order.Count; index++)
+        {
+            if (order[index] == measure)
+            {
+                return index;
+            }
+        }
+        return -1;
     }
 
     /// <summary>The beat at which each entry of <paramref name="order"/> starts.</summary>
@@ -350,6 +488,16 @@ public static class SongTimeline
                 index = Math.Max(0, ~index - 1);
             }
             return seconds[index] + (beat - beats[index]) * 60.0 / bpms[index];
+        }
+
+        public double BeatAt(double time)
+        {
+            int index = Array.BinarySearch(seconds, time);
+            if (index < 0)
+            {
+                index = Math.Max(0, ~index - 1);
+            }
+            return beats[index] + (time - seconds[index]) * bpms[index] / 60.0;
         }
     }
 }

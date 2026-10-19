@@ -30,7 +30,8 @@ internal static partial class Program
 		if (args.Length < 2 || args[1].StartsWith("--", StringComparison.Ordinal))
 		{
 			Console.Error.WriteLine(
-				"[RENDER] Usage: --render-audio <song> [output.wav] [--rate 1.0] [--soundfont <file>] [--tail 3.0]");
+				"[RENDER] Usage: --render-audio <song> [output.wav] [--rate 1.0] [--soundfont <file>] [--tail 3.0] " +
+				"[--no-expression]");
 			return 1;
 		}
 
@@ -81,7 +82,14 @@ internal static partial class Program
 			return 1;
 		}
 
-		PlaybackSession session = new(song.Notes);
+		// The EXPRESSION panel's saved switches, so the file sounds like the app; --no-expression
+		// gives the plain notes for comparison.
+		ExpressionOptions renderExpression = args.Contains("--no-expression")
+			? ExpressionOptions.None
+			: AppSettingsStore.LoadExpression();
+		SongPlayback rendered = ExpressionPlayback.ForSong(song, renderExpression);
+		PlaybackSession session = new(rendered.Notes, pedal: rendered.Pedal);
+		Console.WriteLine($"[RENDER] expression {Describe(renderExpression)} pedal_changes={session.Pedal.Count}");
 		Console.WriteLine(
 			$"[RENDER] source    {Path.GetFileName(source)} " +
 			$"({session.Notes.Count} notes, {PlaybackFormatting.FormatTime(session.TotalDuration)})");

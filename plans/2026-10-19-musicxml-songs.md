@@ -4,7 +4,9 @@
 **Status:** Proposed 2026-10-19 and approved the same day; the user authorized **Phase 1 only**
 ("start phase 1"). Phase 1 was completed and accepted the same day. Phase 2 was requested the
 same day ("ok commit phase 1 and continue with phase") and accepted once the release gate passed.
-Phase 3 was requested the same day ("commit phase 2 then continue with the next phase").
+Phase 3 was requested the same day ("commit phase 2 then continue with the next phase"),
+shipped, and committed after the user asked for a collapsible panel. Phase 4 was requested the
+same day ("after that commit phase 3 then continue with the next phase").
 [Handoff](../Research/omr/reports/musicxml-songs/handoff.md). If an acceptance criterion is not met, ask before changing it, unless the fix
 is small. Each later phase needs its own request. The user also said the C# engine may be
 reworked (they wrote it and expect flaws), but in a separate request, at the end of this plan
@@ -299,6 +301,18 @@ published app opens. See the
 Pedal, dynamics, articulation and tempo-mark playback; CC64 for MeltySynth, the MIDI device and
 export; CC64 read from direct MIDI files. Visible controls in an **EXPRESSION** panel: Pedal,
 Dynamics, Articulations and Repeats, each ON/OFF.
+
+**Result (2026-10-19): accepted.** Pedal state right at 1,000 of 1,000 seeks in the
+MIDI controller and the synth; the synth holds voices under the pedal and, with expression off,
+renders sample for sample like Phase 2; velocities order pp to ff and hairpins are monotone. The
+tempo criterion is met on a hand-written fixture (bars 0 ms, length 0% against MuseScore 4's
+export), because "Beyond This Station" exists here only as MIDI; five corpus scores match at every
+bar up to their first fermata or "rit.", which MuseScore stretches and this plan leaves unplayed.
+With expression off all 90 playing library songs give identical events; 13 custom MIDI files now
+play their pedal. Grace notes play just before the beat under ARTICULATIONS. At the user's
+suggestion the panel opens sideways from an EXPRESSION button, closed at each start. xunit 139 passed;
+release gate 8 of 8. See the
+[Phase 3 report](../Research/omr/reports/musicxml-songs/phase3/REPORT.md).
 
 **Accept when:**
 - The pedal state is correct at 100% of 1,000 random seek points on fixtures.

@@ -121,6 +121,31 @@ public static class AppSettingsStore
     internal static void SaveTimingCorrectionToPath(bool enabled, string settingsPath) =>
         Write(ReadOrRepair(settingsPath) with { TimingCorrection = enabled }, settingsPath);
 
+    /// <summary>The EXPRESSION panel's switches. All on until the user turns one off.</summary>
+    public static ExpressionOptions LoadExpression() => LoadExpressionFromPath(GetSettingsPath());
+
+    internal static ExpressionOptions LoadExpressionFromPath(string settingsPath)
+    {
+        AppSettings settings = ReadOrRepair(settingsPath);
+        return new ExpressionOptions(settings.ExpressionPedal, settings.ExpressionDynamics,
+            settings.ExpressionArticulations, settings.ExpressionRepeats);
+    }
+
+    public static void SaveExpression(ExpressionOptions expression) =>
+        SaveExpressionToPath(expression, GetSettingsPath());
+
+    internal static void SaveExpressionToPath(ExpressionOptions expression, string settingsPath)
+    {
+        ArgumentNullException.ThrowIfNull(expression);
+        Write(ReadOrRepair(settingsPath) with
+        {
+            ExpressionPedal = expression.Pedal,
+            ExpressionDynamics = expression.Dynamics,
+            ExpressionArticulations = expression.Articulations,
+            ExpressionRepeats = expression.Repeats
+        }, settingsPath);
+    }
+
     public static string? LoadSoundFontPath() => LoadSoundFontPathFromPath(GetSettingsPath());
 
     internal static string? LoadSoundFontPathFromPath(string settingsPath) =>
@@ -297,5 +322,9 @@ public static class AppSettingsStore
         AudioBackend AudioBackend = AudioBackend.SoundFont,
         int SynthAudioOffsetMilliseconds = UnsetSynthAudioOffset,
         string? SoundFontPath = null,
-        bool TimingCorrection = false);
+        bool TimingCorrection = false,
+        bool ExpressionPedal = true,
+        bool ExpressionDynamics = true,
+        bool ExpressionArticulations = true,
+        bool ExpressionRepeats = true);
 }

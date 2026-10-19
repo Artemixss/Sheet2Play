@@ -55,9 +55,14 @@ public sealed class SoundFontEngine
     /// </summary>
     public const int MaximumPolyphony = 256;
 
+    private const int ControlChange = 0xB0;
+    private const int SustainController = 64;
+
     private readonly Synthesizer synthesizer;
     private readonly IAudioSink sink;
+    private readonly PlaybackSession session;
     private readonly PlaybackEvent[] events;
+    private readonly bool hasPedal;
     private readonly int sampleRate;
 
     // Allocated once. The render path must not allocate: a gen-2 collection mid-song is an
@@ -90,7 +95,9 @@ public sealed class SoundFontEngine
             EnableReverbAndChorus = true
         });
 
+        this.session = session;
         events = session.Events;
+        hasPedal = session.Pedal.Count > 0;
         left = new float[sink.BlockFrames];
         right = new float[sink.BlockFrames];
         interleaved = new float[sink.BlockFrames * 2];
@@ -106,11 +113,27 @@ public sealed class SoundFontEngine
 
     public bool IsRunning => running;
 
-    public void Start() => running = true;
+    /// <summary>The last sustain pedal value sent to the synthesiser.</summary>
+    public int PedalValue { get; private set; }
+
+    public void Start()
+    {
+        running = true;
+        // A pause lifted the pedal; put it back where the score has it at this point.
+        if (hasPedal)
+        {
+            SetPedal(session.PedalBefore(cursor));
+        }
+    }
 
     public void Stop()
     {
         running = false;
+        // The pedal comes up first, or every voice it holds would ring on through the pause.
+        if (hasPedal)
+        {
+            SetPedal(0);
+        }
         // Release rather than cut: the envelopes and the reverb tail keep decaying, which is
         // what a piano does when you stop playing it.
         synthesizer.NoteOffAll(immediate: false);
@@ -136,11 +159,20 @@ public sealed class SoundFontEngine
         // Re-trigger notes that started before this point and have not ended, so seeking into
         // a held chord does not land in silence. Their real velocities come from the events,
         // which is why the engine keeps the schedule rather than a count of active pitches.
+        PedalValue = 0;
+        if (hasPedal)
+        {
+            SetPedal(session.PedalBefore(cursor));
+        }
         Span<int> depth = stackalloc int[88];
         Span<int> velocity = stackalloc int[88];
         for (int index = 0; index < cursor; index++)
         {
             PlaybackEvent item = events[index];
+            if (item.IsPedal)
+            {
+                continue;
+            }
             if (item.IsNoteOn)
             {
                 depth[item.KeyIndex]++;
@@ -250,9 +282,19 @@ public sealed class SoundFontEngine
         sink.Submit(interleaved);
     }
 
+    private void SetPedal(int value)
+    {
+        synthesizer.ProcessMidiMessage(0, ControlChange, SustainController, value);
+        PedalValue = value;
+    }
+
     private void Apply(PlaybackEvent item)
     {
-        if (item.IsNoteOn)
+        if (item.IsPedal)
+        {
+            SetPedal(item.Velocity);
+        }
+        else if (item.IsNoteOn)
         {
             synthesizer.NoteOn(0, item.KeyIndex + 21, item.Velocity);
         }

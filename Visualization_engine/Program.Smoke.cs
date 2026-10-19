@@ -130,6 +130,24 @@ internal static partial class Program
 				DrawPlayback(playback, song, piano, false, 0.0, new PlaybackRateEditor(), new AudioOffsetEditor(),
 					ref state, layout);
 			});
+
+			// A song played from its score with the EXPRESSION panel open, so its switches show lit;
+			// the screen above shows the panel closed.
+			failures += Capture(outputDirectory, "07-playback-expression", layout, () =>
+			{
+				List<Note> notes = SampleNotes();
+				PlaybackController playback = new(
+					new PlaybackSession(notes),
+					new NullMidiOutput(),
+					new PlaybackClock(() => 0));
+				SongLoadResult song = new(notes, "Sample Score", OmrEngine.MusicXml, true, null, SmokePerformance());
+				Keyboard piano = new(layout.Width, layout.HitLineY, layout.KeyboardHeight);
+				GameState state = GameState.Playing;
+				expressionPanelOpen = true;
+				DrawPlayback(playback, song, piano, false, 0.0, new PlaybackRateEditor(), new AudioOffsetEditor(),
+					ref state, layout);
+				expressionPanelOpen = false;
+			});
 		}
 		catch (Exception exception)
 		{
@@ -226,4 +244,17 @@ internal static partial class Program
 		}
 		return notes;
 	}
+
+	/// <summary>Two measures played twice, with a pedal mark, a dynamic and a staccato.</summary>
+	private static SongPerformance SmokePerformance() => new(
+		SongPerformance.CurrentSchemaVersion, "musicxml", [], false, [], [],
+		[
+			new SongMeasure(0, 0, "1", 0, 4, 4, [4, 4], false, true, 0, null, false, null),
+			new SongMeasure(1, 0, "2", 4, 4, 4, [4, 4], false, false, 1, null, false, null)
+		],
+		[0, 1, 0, 1],
+		[new SongNote("C4", 60, 0, 0, 1, 0, 0, "1", false, false, false, ["staccato"], [])],
+		[new SongPedal(0, 0, 0, 1, "start", "mark")],
+		[new SongDynamic(0, 0, 0, 0, "p", null)],
+		[], [], default, []);
 }
