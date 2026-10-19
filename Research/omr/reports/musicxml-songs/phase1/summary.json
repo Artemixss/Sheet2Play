@@ -1,0 +1,663 @@
+{
+ "acceptance": {
+  "parity": {
+   "passed": true,
+   "required": 292,
+   "failures": []
+  },
+  "features": {
+   "passed": true,
+   "labels": 207,
+   "failures": []
+  },
+  "rebuild": {
+   "passed": true,
+   "repeatability_checks": 100,
+   "not_repeatable": 0,
+   "combined_checked": 306,
+   "combined_failures": [],
+   "musescore_strict_refusals": 100,
+   "musescore_forced_failures": [
+    "6573780 homr465",
+    "5879039 homr480-ab369ac"
+   ],
+   "rule": "music21 opens every combined score with the model's measure count; MuseScore opens it, or refuses it only where it refuses one of its own pages, and opens it with --force unless it also fails on one of its pages with --force"
+  },
+  "cost": {
+   "passed": true,
+   "slowest_seconds": 3.224,
+   "limit_seconds": 10.0
+  },
+  "pins": {
+   "passed": true
+  }
+ },
+ "recognitions": 306,
+ "recognitions_with_repeats": [
+  {
+   "id": "6077132",
+   "engine": "homr465",
+   "sequential_plain": {
+    "missing": 144,
+    "extra": 24
+   },
+   "played_plain": {
+    "missing": 135,
+    "extra": 716
+   },
+   "sequential_timing": {
+    "missing": 123,
+    "extra": 3
+   },
+   "played_timing": {
+    "missing": 112,
+    "extra": 693
+   },
+   "fallbacks_match": true,
+   "played_measures": 117,
+   "measures": 59
+  },
+  {
+   "id": "5057985",
+   "engine": "homr465",
+   "sequential_plain": {
+    "missing": 1308,
+    "extra": 749
+   },
+   "played_plain": {
+    "missing": 1308,
+    "extra": 995
+   },
+   "sequential_timing": {
+    "missing": 1241,
+    "extra": 682
+   },
+   "played_timing": {
+    "missing": 1298,
+    "extra": 985
+   },
+   "fallbacks_match": true,
+   "played_measures": 109,
+   "measures": 85
+  },
+  {
+   "id": "6009685",
+   "engine": "homr465",
+   "sequential_plain": {
+    "missing": 1670,
+    "extra": 899
+   },
+   "played_plain": {
+    "missing": 1548,
+    "extra": 2301
+   },
+   "sequential_timing": {
+    "missing": 1364,
+    "extra": 593
+   },
+   "played_timing": {
+    "missing": 1221,
+    "extra": 1974
+   },
+   "fallbacks_match": true,
+   "played_measures": 107,
+   "measures": 64
+  },
+  {
+   "id": "6592481",
+   "engine": "homr465",
+   "sequential_plain": {
+    "missing": 1526,
+    "extra": 600
+   },
+   "played_plain": {
+    "missing": 1548,
+    "extra": 883
+   },
+   "sequential_timing": {
+    "missing": 1512,
+    "extra": 586
+   },
+   "played_timing": {
+    "missing": 1554,
+    "extra": 889
+   },
+   "fallbacks_match": true,
+   "played_measures": 89,
+   "measures": 70
+  },
+  {
+   "id": "6486038",
+   "engine": "homr465",
+   "sequential_plain": {
+    "missing": 985,
+    "extra": 173
+   },
+   "played_plain": {
+    "missing": 961,
+    "extra": 235
+   },
+   "sequential_timing": {
+    "missing": 943,
+    "extra": 131
+   },
+   "played_timing": {
+    "missing": 930,
+    "extra": 204
+   },
+   "fallbacks_match": true,
+   "played_measures": 110,
+   "measures": 98
+  },
+  {
+   "id": "6610246",
+   "engine": "homr465",
+   "sequential_plain": {
+    "missing": 5283,
+    "extra": 535
+   },
+   "played_plain": {
+    "missing": 5268,
+    "extra": 739
+   },
+   "sequential_timing": {
+    "missing": 5283,
+    "extra": 535
+   },
+   "played_timing": {
+    "missing": 5268,
+    "extra": 739
+   },
+   "fallbacks_match": true,
+   "played_measures": 68,
+   "measures": 54
+  },
+  {
+   "id": "6989284",
+   "engine": "homr465",
+   "sequential_plain": {
+    "missing": 1057,
+    "extra": 614
+   },
+   "played_plain": {
+    "missing": 1029,
+    "extra": 902
+   },
+   "sequential_timing": {
+    "missing": 1021,
+    "extra": 578
+   },
+   "played_timing": {
+    "missing": 989,
+    "extra": 862
+   },
+   "fallbacks_match": true,
+   "played_measures": 58,
+   "measures": 41
+  },
+  {
+   "id": "6077132",
+   "engine": "homr480-ab369ac",
+   "sequential_plain": {
+    "missing": 123,
+    "extra": 3
+   },
+   "played_plain": {
+    "missing": 96,
+    "extra": 670
+   },
+   "sequential_timing": {
+    "missing": 123,
+    "extra": 3
+   },
+   "played_timing": {
+    "missing": 93,
+    "extra": 667
+   },
+   "fallbacks_match": true,
+   "played_measures": 115,
+   "measures": 58
+  },
+  {
+   "id": "5057985",
+   "engine": "homr480-ab369ac",
+   "sequential_plain": {
+    "missing": 1311,
+    "extra": 752
+   },
+   "played_plain": {
+    "missing": 1309,
+    "extra": 996
+   },
+   "sequential_timing": {
+    "missing": 1240,
+    "extra": 681
+   },
+   "played_timing": {
+    "missing": 1299,
+    "extra": 986
+   },
+   "fallbacks_match": true,
+   "played_measures": 109,
+   "measures": 85
+  },
+  {
+   "id": "6009685",
+   "engine": "homr480-ab369ac",
+   "sequential_plain": {
+    "missing": 2893,
+    "extra": 1775
+   },
+   "played_plain": {
+    "missing": 2745,
+    "extra": 2857
+   },
+   "sequential_timing": {
+    "missing": 2526,
+    "extra": 1408
+   },
+   "played_timing": {
+    "missing": 2336,
+    "extra": 2448
+   },
+   "fallbacks_match": true,
+   "played_measures": 99,
+   "measures": 65
+  },
+  {
+   "id": "6592481",
+   "engine": "homr480-ab369ac",
+   "sequential_plain": {
+    "missing": 1508,
+    "extra": 582
+   },
+   "played_plain": {
+    "missing": 1557,
+    "extra": 892
+   },
+   "sequential_timing": {
+    "missing": 1508,
+    "extra": 582
+   },
+   "played_timing": {
+    "missing": 1557,
+    "extra": 892
+   },
+   "fallbacks_match": true,
+   "played_measures": 89,
+   "measures": 70
+  },
+  {
+   "id": "6486038",
+   "engine": "homr480-ab369ac",
+   "sequential_plain": {
+    "missing": 942,
+    "extra": 133
+   },
+   "played_plain": {
+    "missing": 934,
+    "extra": 211
+   },
+   "sequential_timing": {
+    "missing": 942,
+    "extra": 133
+   },
+   "played_timing": {
+    "missing": 932,
+    "extra": 209
+   },
+   "fallbacks_match": true,
+   "played_measures": 111,
+   "measures": 99
+  },
+  {
+   "id": "6610246",
+   "engine": "homr480-ab369ac",
+   "sequential_plain": {
+    "missing": 5282,
+    "extra": 534
+   },
+   "played_plain": {
+    "missing": 5270,
+    "extra": 741
+   },
+   "sequential_timing": {
+    "missing": 5282,
+    "extra": 534
+   },
+   "played_timing": {
+    "missing": 5270,
+    "extra": 741
+   },
+   "fallbacks_match": true,
+   "played_measures": 68,
+   "measures": 54
+  },
+  {
+   "id": "6989284",
+   "engine": "homr480-ab369ac",
+   "sequential_plain": {
+    "missing": 1017,
+    "extra": 574
+   },
+   "played_plain": {
+    "missing": 990,
+    "extra": 863
+   },
+   "sequential_timing": {
+    "missing": 1017,
+    "extra": 574
+   },
+   "played_timing": {
+    "missing": 988,
+    "extra": 861
+   },
+   "fallbacks_match": true,
+   "played_measures": 58,
+   "measures": 41
+  }
+ ],
+ "labels_with_repeats": [
+  {
+   "id": "5057985",
+   "played": {
+    "missing": 0,
+    "extra": 0
+   },
+   "played_measures": 109,
+   "measures": 85
+  },
+  {
+   "id": "5726490",
+   "played": {
+    "missing": 0,
+    "extra": 0
+   },
+   "played_measures": 52,
+   "measures": 33
+  },
+  {
+   "id": "5840434",
+   "played": {
+    "missing": 627,
+    "extra": 627
+   },
+   "played_measures": 74,
+   "measures": 28
+  },
+  {
+   "id": "5988489",
+   "played": {
+    "missing": 0,
+    "extra": 0
+   },
+   "played_measures": 86,
+   "measures": 47
+  },
+  {
+   "id": "6009685",
+   "played": {
+    "missing": 0,
+    "extra": 0
+   },
+   "played_measures": 98,
+   "measures": 64
+  },
+  {
+   "id": "6061301",
+   "played": {
+    "missing": 1037,
+    "extra": 1037
+   },
+   "played_measures": 281,
+   "measures": 154
+  },
+  {
+   "id": "6062682",
+   "played": {
+    "missing": 0,
+    "extra": 0
+   },
+   "played_measures": 168,
+   "measures": 84
+  },
+  {
+   "id": "6077132",
+   "played": {
+    "missing": 685,
+    "extra": 685
+   },
+   "played_measures": 117,
+   "measures": 59
+  },
+  {
+   "id": "6151215",
+   "played": {
+    "missing": 0,
+    "extra": 0
+   },
+   "played_measures": 40,
+   "measures": 23
+  },
+  {
+   "id": "6179338",
+   "played": {
+    "missing": 0,
+    "extra": 0
+   },
+   "played_measures": 49,
+   "measures": 39
+  },
+  {
+   "id": "6486038",
+   "played": {
+    "missing": 0,
+    "extra": 0
+   },
+   "played_measures": 111,
+   "measures": 99
+  },
+  {
+   "id": "6592481",
+   "played": {
+    "missing": 0,
+    "extra": 0
+   },
+   "played_measures": 89,
+   "measures": 70
+  },
+  {
+   "id": "6609481",
+   "played": {
+    "missing": 0,
+    "extra": 0
+   },
+   "played_measures": 106,
+   "measures": 97
+  },
+  {
+   "id": "6610246",
+   "played": {
+    "missing": 0,
+    "extra": 0
+   },
+   "played_measures": 68,
+   "measures": 54
+  },
+  {
+   "id": "6969398",
+   "played": {
+    "missing": 157,
+    "extra": 157
+   },
+   "played_measures": 57,
+   "measures": 33
+  },
+  {
+   "id": "6989284",
+   "played": {
+    "missing": 0,
+    "extra": 0
+   },
+   "played_measures": 58,
+   "measures": 41
+  }
+ ],
+ "label_parity_failures_without_repeats": [],
+ "label_totals": {
+  "pedal_marks": 3355,
+  "damper_sounds": 0,
+  "dynamics_marks": 4590,
+  "dynamics_sounds": 4589,
+  "wedges": 7392,
+  "metronome_marks": 5,
+  "tempo_sounds": 74,
+  "articulation_marks": 24352,
+  "pedal_events": 3355,
+  "pedal_starts": 1662,
+  "music21_pedal_spanners": 1647,
+  "labels_with_pedals": 106,
+  "labels_with_tempo": 5,
+  "unjoined_marked_notes": 70
+ },
+ "pdf_features_by_engine": {
+  "homr465": {
+   "articulation:accent": 2373,
+   "articulation:arpeggiate": 1773,
+   "articulation:breath-mark": 15,
+   "articulation:fermata": 290,
+   "articulation:inverted-turn": 14,
+   "articulation:staccatissimo": 156,
+   "articulation:staccato": 5534,
+   "articulation:tenuto": 978,
+   "articulation:tremolo": 1217,
+   "articulation:trill-mark": 67,
+   "articulation_marks": 12787,
+   "dynamics_marks": 0,
+   "endings": 0,
+   "grace_notes": 1042,
+   "jump_marks": 0,
+   "measures": 11676,
+   "metronome_marks": 0,
+   "notes": 210970,
+   "pedal_marks": 0,
+   "played_measures": 11863,
+   "repeat_backward": 9,
+   "repeat_forward": 7,
+   "slurs": 14665,
+   "tempo_sounds": 0,
+   "tied_notes": 2449,
+   "unjoined_marked_notes": 11,
+   "wedges": 0
+  },
+  "homr480-ab369ac": {
+   "articulation:accent": 2593,
+   "articulation:arpeggiate": 2092,
+   "articulation:breath-mark": 14,
+   "articulation:fermata": 300,
+   "articulation:inverted-turn": 15,
+   "articulation:staccatissimo": 161,
+   "articulation:staccato": 5843,
+   "articulation:tenuto": 1054,
+   "articulation:tremolo": 1283,
+   "articulation:trill-mark": 73,
+   "articulation_marks": 13809,
+   "dynamics_marks": 0,
+   "endings": 0,
+   "grace_notes": 1120,
+   "jump_marks": 0,
+   "measures": 12099,
+   "metronome_marks": 0,
+   "notes": 216840,
+   "pedal_marks": 0,
+   "played_measures": 12276,
+   "repeat_backward": 9,
+   "repeat_forward": 8,
+   "slurs": 14753,
+   "tempo_sounds": 0,
+   "tied_notes": 2516,
+   "unjoined_marked_notes": 15,
+   "wedges": 0
+  }
+ },
+ "cost": [
+  {
+   "id": "6166579",
+   "engine": "homr465",
+   "pages": 10,
+   "notes": 5728,
+   "exit": 0,
+   "interpret_seconds": 3.224,
+   "process_seconds": 3.46,
+   "peak_working_set_mib": 81.4
+  },
+  {
+   "id": "5879039",
+   "engine": "homr465",
+   "pages": 8,
+   "notes": 3499,
+   "exit": 0,
+   "interpret_seconds": 2.478,
+   "process_seconds": 2.73,
+   "peak_working_set_mib": 79.4
+  },
+  {
+   "id": "5911190",
+   "engine": "homr465",
+   "pages": 6,
+   "notes": 2804,
+   "exit": 0,
+   "interpret_seconds": 2.669,
+   "process_seconds": 2.92,
+   "peak_working_set_mib": 80.6
+  },
+  {
+   "id": "6166579",
+   "engine": "homr480-ab369ac",
+   "pages": 10,
+   "notes": 5725,
+   "exit": 0,
+   "interpret_seconds": 3.193,
+   "process_seconds": 3.45,
+   "peak_working_set_mib": 82.4
+  },
+  {
+   "id": "5879039",
+   "engine": "homr480-ab369ac",
+   "pages": 8,
+   "notes": 3553,
+   "exit": 0,
+   "interpret_seconds": 2.517,
+   "process_seconds": 2.77,
+   "peak_working_set_mib": 78.3
+  },
+  {
+   "id": "5911190",
+   "engine": "homr480-ab369ac",
+   "pages": 6,
+   "notes": 2829,
+   "exit": 0,
+   "interpret_seconds": 2.419,
+   "process_seconds": 2.67,
+   "peak_working_set_mib": 81.2
+  }
+ ],
+ "pins": [
+  {
+   "runtime": "465",
+   "bridge_files": 13,
+   "changed": [],
+   "profile_matches_csharp": true
+  },
+  {
+   "runtime": "480",
+   "bridge_files": 15,
+   "changed": [],
+   "profile_matches_csharp": true
+  }
+ ],
+ "interpret_seconds": {
+  "plain": 2.558,
+  "timing": 2.65
+ }
+}

@@ -20,6 +20,7 @@ action.
 
 | Plan | Status |
 | --- | --- |
+| [MusicXML songs: keep the score, play its expression, then an SFZ piano and frontend](2026-10-19-musicxml-songs.md) | Approved 2026-10-19; Phase 1 (song package and performance model in the bridge) completed and accepted the same day, no shipped change. Phase 2 not authorized. Runs before the per-song tempo plan. [Handoff](../Research/omr/reports/musicxml-songs/handoff.md) |
 | [Remaining timing loss after the shipped fix](2026-10-18-remaining-timing-loss.md) | Requested 2026-10-18; shipped the same day behind the off-by-default TIMING FIX switch after the user accepted one near-correct failure. [Handoff](../Research/omr/reports/timing/handoff.md) |
 | [Current upstream exporter and run 480](2026-10-17-upstream-exporter-480.md) | Passed the held-out rule; 480 is the app default and 465 the secondary since 2026-10-19. Two regressions flagged for investigation. [Handoff](../Research/omr/reports/upstream-480/handoff.md) |
 
