@@ -78,27 +78,29 @@ figures are reported for `homr465-ab369ac`. Adopting either as the app default i
 decision under the plan, after the release gate; this rule only says whether the evidence
 supports it.
 
+Finished 2026-10-19 as `jobs/test-4`: 188 recognitions ok on both candidates (the only failure
+was `test-2`'s stale-lock stop, re-run).
+
+## Test result (test + test-b, 94 scores, scored once): passes the pre-registered rule
+
+[score-test-test-b.json](score-test-test-b.json). Onset F1 means:
+
+| | Raw | Fixed | Pitch |
+| --- | --- | --- | --- |
+| Shipped `homr465` | 0.433 | 0.680 | 0.958 |
+| `homr465-ab369ac` | 0.451 | 0.704 | 0.972 |
+| `homr480-ab369ac` | 0.584 | 0.747 | 0.973 |
+
+- **480 against shipped, fixed:** +0.068 [+0.024, +0.113], 67 better, 18 worse; raw +0.151
+  [+0.081, +0.221]. Pitch +0.015 [+0.002, +0.039]. Failures: 0 against shipped's 1 (4978478).
+  Page p95 51.8 s against 37.1 s, ratio 1.40. Every condition of the rule holds.
+- **But large single losses:** test-b 6785268 falls from 0.988 to 0.148 and 6222828 from 0.952 to
+  0.361 (fixed); 5987757 loses 0.32.
+- **480's weights alone,** fixed: +0.044 [+0.004, +0.082]. **Upstream code alone** (465 weights):
+  +0.024 [+0.001, +0.054], pitch +0.015, and it reads the score shipped 465 fails.
+
 ## Next action
 
-Recognise test and test-b with both candidates (256 pages, about four hours; the supervisor's
-3.75-hour limit may stop it once, and the same command resumes):
-
-```
-Research/omr/.venv/Scripts/python.exe -B Research/omr/guarded_execution.py --output Research/omr/reports/upstream-480/jobs/test-1 --max-seconds 14300 -- 'Bridge\.venv-homr-gpu\Scripts\python.exe' -I -B Research/omr/upstream_capture.py --splits test test-b
-```
-
-Started 2026-10-18 and stopped at the user's request ("continue the test later") after one score
-(6902355, both candidates ok). The interrupted 480 attempt on 7006856 was moved, unchanged, to
-`data/upstream-480-interrupted/`; rerunning the command above resumes from 7006856.
-Resumed at the user's request ("ok continue") as `jobs/test-2`, same command with that output;
-the stopped supervisor's stale `.research-worker.lock` (process gone) was kept in `jobs/test-1/`.
-`test-2` failed its first page in 7 s with `RESOURCE_STOP`: not pressure, but the per-page lock
-`home-upstream/omr-jobs/.worker.lock` the stop had also left (owner gone). That lock and the
-failed 7006856 attempt were kept in `data/upstream-480-interrupted/`, and the same command
-resumed as `jobs/test-3`.
-Stopped again 2026-10-19 at the user's request after 121 of about 184 recognitions, all ok. Both
-locks and the unfinished 465 attempt on 6484095 are kept in `data/upstream-480-interrupted/stop-20261019/`,
-so the same command (with a new output folder) resumes from 6484095.
-
-Then `upstream_score.py --splits test test-b`. The plan's frozen 59-page sample and the
-generated controls (`tuplet_aligned` among them) are not wired to this runner yet.
+The user decides whether to make 480 (or upstream main with 465) the app default. Doing so needs
+a new pinned runtime profile beside 465, a frontend pin, the release gate and the library
+migration path, per the plan; nothing is changed yet. 
