@@ -83,7 +83,7 @@ internal static partial class Program
 		$"auto_pedal={(options.AutoPedal ? "on" : "off")}";
 
 	/// <summary>
-	/// The EXPRESSION button, bottom-left above the Export button, and when it is open the switches
+	/// The EXPRESSION button, bottom-left above the EXPORT button, and when it is open the switches
 	/// to its right. A switch whose mark the song does not have says so, because HOMR reads no pedal
 	/// or dynamics and the user should not hunt for them.
 	/// </summary>
@@ -148,25 +148,36 @@ internal static partial class Program
 	{
 		int off = new[] { expression.Pedal, expression.Dynamics, expression.Articulations, expression.Repeats }
 			.Count(static enabled => !enabled);
-		int textSize = Math.Max(10, (int)(12f * scale));
 		string label = "EXPRESSION" + (off > 0 ? $" · {off} OFF" : "");
+		return DrawPanelButton(ref x, y, height, label, off > 0 ? UiTheme.Warning : UiTheme.Text,
+			expressionPanelOpen, scale);
+	}
+
+	/// <summary>
+	/// A button that opens and closes a row of controls to its right, as EXPRESSION and EXPORT do.
+	/// Returns true on a click.
+	/// </summary>
+	private static bool DrawPanelButton(ref float x, float y, float height, string label, Color text, bool open,
+		float scale)
+	{
+		int textSize = Math.Max(10, (int)(12f * scale));
 		float chevron = 6f * scale;
-		Rectangle bounds = new Rectangle(x, y, (float)UiTheme.MeasureText(label, textSize) + 34f * scale, height);
+		Rectangle bounds = new Rectangle(x, y, (float)LabelWidth(label, textSize) + 34f * scale, height);
 		x += bounds.Width + 6f * scale;
 
 		bool hovered = Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), bounds);
-		Raylib.DrawRectangleRounded(bounds, 0.5f, 10, hovered || expressionPanelOpen ? UiTheme.Elevated : UiTheme.Surface);
-		Raylib.DrawRectangleRoundedLinesEx(bounds, 0.5f, 10, 1, expressionPanelOpen ? UiTheme.Sky : UiTheme.Border);
-		Color text = off > 0 ? UiTheme.Warning : UiTheme.Text;
+		Raylib.DrawRectangleRounded(bounds, 0.5f, 10, hovered || open ? UiTheme.Elevated : UiTheme.Surface);
+		Raylib.DrawRectangleRoundedLinesEx(bounds, 0.5f, 10, 1, open ? UiTheme.Sky : UiTheme.Border);
 		UiTheme.DrawText(label, (int)(bounds.X + 10f * scale), (int)(bounds.Y + (bounds.Height - textSize) / 2f),
 			textSize, text);
 		// Drawn rather than typed: the UI font is loaded without the arrow characters.
 		float tipX = bounds.X + bounds.Width - 12f * scale;
 		float middleY = bounds.Y + bounds.Height / 2f;
-		float backX = expressionPanelOpen ? tipX + chevron * 0.6f : tipX - chevron * 0.6f;
+		float backX = open ? tipX + chevron * 0.6f : tipX - chevron * 0.6f;
+		float pointX = open ? tipX - chevron * 0.6f : tipX + chevron * 0.6f;
 		float thickness = Math.Max(1.5f, 1.6f * scale);
-		Raylib.DrawLineEx(new Vector2(backX, middleY - chevron * 0.75f), new Vector2(expressionPanelOpen ? tipX - chevron * 0.6f : tipX + chevron * 0.6f, middleY), thickness, UiTheme.Muted);
-		Raylib.DrawLineEx(new Vector2(backX, middleY + chevron * 0.75f), new Vector2(expressionPanelOpen ? tipX - chevron * 0.6f : tipX + chevron * 0.6f, middleY), thickness, UiTheme.Muted);
+		Raylib.DrawLineEx(new Vector2(backX, middleY - chevron * 0.75f), new Vector2(pointX, middleY), thickness, UiTheme.Muted);
+		Raylib.DrawLineEx(new Vector2(backX, middleY + chevron * 0.75f), new Vector2(pointX, middleY), thickness, UiTheme.Muted);
 		return hovered && Raylib.IsMouseButtonPressed(MouseButton.Left);
 	}
 

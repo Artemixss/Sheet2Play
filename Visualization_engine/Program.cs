@@ -1891,22 +1891,26 @@ internal static partial class Program
 		Path.Combine(SongCache.ApplicationDirectory, "exports");
 
 	/// <summary>
-	/// Draws the Export button and whatever it last had to say, bottom-left, mirroring the audio
-	/// offset control on the right.
+	/// Draws the EXPORT button, its actions when it is open, and whatever an export last had to say,
+	/// bottom-left, mirroring the audio offset control on the right.
 	/// </summary>
 	private static void DrawExportControl(SongLoadResult song, UiLayout layout)
 	{
 		float scale = layout.Scale;
 		float height = 26f * scale;
 		float y = (float)layout.HitLineY - height - 12f * scale;
-		Rectangle button = new Rectangle(16f * scale, y, 104f * scale, height);
+		float statusX = 16f * scale;
 
-		if (UiTheme.DrawButton(button, exportRunning ? "Exporting..." : "Export MP3", UiTheme.Lime)
-			&& !exportRunning)
+		// Says it is rendering while closed too, so a long MP3 export is not hidden behind the panel.
+		if (DrawPanelButton(ref statusX, y, height, exportRunning ? "EXPORT · RENDERING" : "EXPORT", UiTheme.Text,
+			exportPanelOpen, scale))
 		{
-			exportRequested = true;
+			exportPanelOpen = !exportPanelOpen;
 		}
-		float statusX = DrawSongActions(song, button, scale);
+		if (exportPanelOpen)
+		{
+			DrawSongActions(song, ref statusX, y, height, scale);
+		}
 
 		if (exportStatus is not null)
 		{

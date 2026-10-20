@@ -6,8 +6,8 @@ namespace SynthesiaClone;
 
 /// <summary>
 /// The playback screen's view of the score (<c>plans/2026-10-19-musicxml-songs.md</c>, Phase 5): bar
-/// lines, the pedal lane, the song badges, and the Export MIDI, Export MusicXML and Re-convert buttons
-/// beside Export MP3.
+/// lines, the pedal lane, the song badges, and the EXPORT panel's MIDI, MusicXML and Re-convert
+/// actions beside MP3.
 /// </summary>
 internal static partial class Program
 {
@@ -176,35 +176,58 @@ internal static partial class Program
 	}
 
 	/// <summary>
-	/// Export MIDI, Export MusicXML and Re-convert, right of Export MP3. Returns where the status text
-	/// may start. A button the song cannot use is shown disabled rather than hidden, so the row does
-	/// not shift between songs.
+	/// Whether the EXPORT panel's actions are showing. Closed at every start, like EXPRESSION, so
+	/// the playback screen opens with two small buttons rather than a row of large ones.
 	/// </summary>
-	private static float DrawSongActions(SongLoadResult song, Rectangle mp3Button, float scale)
+	private static bool exportPanelOpen;
+
+	/// <summary>
+	/// The EXPORT panel's actions, right of its button: MP3, MIDI, MusicXML, then Re-convert set a
+	/// little apart because it replaces the song rather than writing a copy. An action the song
+	/// cannot use is shown disabled rather than hidden, so the row does not shift between songs.
+	/// </summary>
+	private static void DrawSongActions(SongLoadResult song, ref float x, float y, float height, float scale)
 	{
-		float x = mp3Button.X + mp3Button.Width + 8f * scale;
-		bool Action(string label, Color accent, bool enabled)
+		if (DrawPanelAction(ref x, y, height, exportRunning ? "MP3 · RENDERING" : "MP3", UiTheme.Lime,
+			!exportRunning, scale))
 		{
-			int textSize = Math.Max(14, (int)(18f * Math.Min(1.4f, mp3Button.Height / 44f)));
-			Rectangle bounds = new Rectangle(x, mp3Button.Y, (float)LabelWidth(label, textSize) + 24f * scale,
-				mp3Button.Height);
-			x += bounds.Width + 8f * scale;
-			return UiTheme.DrawButton(bounds, label, accent, enabled);
+			exportRequested = true;
 		}
-		if (Action("Export MIDI", UiTheme.Lime, enabled: true))
+		if (DrawPanelAction(ref x, y, height, "MIDI", UiTheme.Lime, enabled: true, scale))
 		{
 			songExportRequested = SongExport.Midi;
 		}
-		if (Action("Export MusicXML", UiTheme.Lime, HasScore(song)))
+		if (DrawPanelAction(ref x, y, height, "MUSICXML", UiTheme.Lime, HasScore(song), scale))
 		{
 			songExportRequested = SongExport.MusicXml;
 		}
-		if (Action(reconvertEngine == OmrEngine.Homr465 ? "Re-convert · 465" : "Re-convert · 480", UiTheme.Warning,
-			OmrEngines.RunsOmr(song.Engine)))
+		x += 8f * scale;
+		if (DrawPanelAction(ref x, y, height, reconvertEngine == OmrEngine.Homr465 ? "RE-CONVERT · 465" : "RE-CONVERT · 480",
+			UiTheme.Warning, OmrEngines.RunsOmr(song.Engine), scale))
 		{
 			reconvertRequested = true;
 		}
-		return x;
+	}
+
+	/// <summary>
+	/// One action pill, the size of an EXPRESSION switch. It does something rather than holding a
+	/// state, so its label carries the accent and its outline lights only under the mouse.
+	/// Returns true on a click.
+	/// </summary>
+	private static bool DrawPanelAction(ref float x, float y, float height, string label, Color accent, bool enabled,
+		float scale)
+	{
+		int textSize = Math.Max(10, (int)(12f * scale));
+		Rectangle bounds = new Rectangle(x, y, (float)LabelWidth(label, textSize) + 20f * scale, height);
+		x += bounds.Width + 6f * scale;
+
+		bool hovered = enabled && Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), bounds);
+		// Opaque, so the notes falling behind do not show through.
+		Raylib.DrawRectangleRounded(bounds, 0.5f, 10, hovered ? UiTheme.Elevated : UiTheme.Surface);
+		Raylib.DrawRectangleRoundedLinesEx(bounds, 0.5f, 10, 1, hovered ? accent : UiTheme.Border);
+		UiTheme.DrawText(label, (int)(bounds.X + 10f * scale), (int)(bounds.Y + (bounds.Height - textSize) / 2f),
+			textSize, enabled ? accent : UiTheme.Muted);
+		return hovered && Raylib.IsMouseButtonPressed(MouseButton.Left);
 	}
 
 	/// <summary>Writes the playing song as MIDI or copies its MusicXML into the exports folder.</summary>

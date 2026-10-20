@@ -48,7 +48,9 @@ judgement ("im not sure wheter they should stay at backand or not ... do what yo
   `exports\` atomically and replace an earlier export. Re-convert finds the song's source in
   `songs\pdf` by the hash its package or cache recorded and re-runs recognition with the engine
   selected on the home screen (forced, so the existing conversion is replaced); it is disabled for
-  imports and MIDI files.
+  imports and MIDI files. After the user's review these three, with MP3, moved behind an EXPORT
+  button below EXPRESSION that opens and closes them the same way and starts closed, so the
+  playback screen opens with two small buttons instead of a row of large ones.
 - **Notes no longer draw over the header.** A note entering at the top starts at the header's edge
   (its top is clamped), so a long note cannot cover the new facts line. Its bottom edge, the hit-line
   rules, fall speed and look-ahead are unchanged.

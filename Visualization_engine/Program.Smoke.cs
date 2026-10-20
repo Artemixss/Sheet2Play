@@ -172,7 +172,8 @@ internal static partial class Program
 					errorCode: "MODEL_INVALID", stage: "admission", exitCode: 8),
 					new LoadRequest(@"C:\scores\Sample Score.pdf", OmrEngine.Homr465, false, null)));
 
-			// A conversion cached as MIDI before songs kept their score: the legacy badge, Re-convert lit.
+			// A conversion cached as MIDI before songs kept their score: the legacy badge, and the screen
+			// as it opens, with EXPRESSION and EXPORT closed.
 			failures += Capture(outputDirectory, "07-playback", layout, () =>
 			{
 				songOverlay = SongOverlay.Empty;
@@ -213,8 +214,8 @@ internal static partial class Program
 			});
 
 			// A HOMR 480 song part-way through a repeat: hands coloured by staff, bar lines and the
-			// "2nd time" readout, the pedal lane with one span held and one to come, the TIMING FIX
-			// badge and the score's counts, and the status line after an Export MIDI.
+			// pedal lane with one span held and one to come, the TIMING FIX badge and the score's counts,
+			// and the EXPORT panel open with its status line after a MIDI export.
 			failures += Capture(outputDirectory, "07-playback-score", layout, () =>
 			{
 				SongPerformance performance = SmokeScore();
@@ -231,6 +232,7 @@ internal static partial class Program
 				GameState state = GameState.Playing;
 				string? status = exportStatus;
 				exportStatus = @"Saved to C:\Users\you\AppData\Local\Sheet2Play\exports\Sample Score.mid";
+				exportPanelOpen = true;
 				try
 				{
 					DrawPlayback(playback, song, piano, false, 0.0, new PlaybackRateEditor(), new AudioOffsetEditor(),
@@ -238,6 +240,7 @@ internal static partial class Program
 				}
 				finally
 				{
+					exportPanelOpen = false;
 					exportStatus = status;
 					songOverlay = SongOverlay.Empty;
 				}
