@@ -28,8 +28,12 @@ The by-ear sync check was not reported separately and stays open.
 **Phase 5 requested 2026-10-20** ("then we can begin phase 5"), with two removals added in the same
 message: drop the MIDI device so only the two pianos remain ("we can remove midi synth one let it be
 only 2 pianos"), and show only HOMR 480 and 465 in the frontend ("remove model 426 and zeus"; the
-backend is left to judgement). The user wants any C# engine rework as a separate request at the end
-of the plan, before Phase 6.
+backend is left to judgement). **Shipped, not committed** ([Phase 5 report](phase5/REPORT.md)): two
+engine cards and two piano cards, 426 and Zeus kept in the backend, bar lines and readout, pedal
+lane, staff colours, badges, Export MIDI, Export MusicXML and Re-convert; xunit 163; gate 8 of 8.
+**Next authorized action:** the user checks Phase 5 in `dist\Sheet2Play.exe` and approves the
+commit. The C# engine rework and Phase 6 each need their own request; the user wants the rework at
+the end of the plan, before Phase 6.
 **Phase 3 evidence:** [`phase3/tempo/summary.json`](phase3/tempo/summary.json) (fixture exact
 against MuseScore 4; corpus exact up to the first fermata or "rit."); `--verify-library` with
 expression off identical for all 90 playing songs (local, `phase3/library-after`); xunit 139
@@ -41,6 +45,30 @@ passed. Evidence that lists private library paths stays local (`phase2/library-*
 without repeats (and the 14 with repeats exact once expansion is off), feature counts 207/207 labels,
 100/100 repeatable, 306 combined scores open under the refined MuseScore rule, 3.2 s and 82 MiB for
 the largest score, pinned files unchanged. Full Python suites: 476 passed, 2 skipped.
+
+## Job record: 30 songs with HOMR 480 and the timing fix (2026-10-20)
+
+Requested by the user after the Phase 5 feedback ("i request a 20-30 songs not all i have to be
+converted with timing fix+480"; "you pick 30"). Not Phase 6: a chosen subset, through the app's own
+conversion path.
+
+- **Command** (working directory: repository root):
+  `tmp\batch-app\Sheet2Play-batch.exe --convert-batch tmp\batch-480\songs.txt tmp\batch-480\journal.jsonl`
+  (`--engine homr480` and the timing fix are the defaults). The exe is a renamed copy of the
+  published `dist` (gate 8 of 8, xunit 170), so the release gate, which stops every `Sheet2Play`
+  process, does not stop the batch.
+- **Inputs:** `tmp\batch-480\songs.txt`, 30 named PDFs in `%LOCALAPPDATA%\Sheet2Play\songs\pdf` with no
+  HOMR 480 package, shortest first (about 165 pages). Library writes: one package per song under
+  `songs\scores\homr480`, as an app conversion writes it.
+- **Safeguards:** one song at a time; each page runs in the pipeline's supervised worker; before each
+  song the batch stops, resumable, at 85% RAM or commit or under 4 GiB of commit left.
+- **Progress and resume:** `tmp\batch-480\journal.jsonl` (one line per attempt) and
+  `tmp\batch-480\run.log`. Rerunning the same command skips every song already converted; check that
+  no `Sheet2Play-batch` process is running first.
+- **Result (finished the same day):** 30 of 30 converted, 0 failed, 66.8 minutes of recognition;
+  every entry is a package with the timing-fix interpretation and its `score.musicxml`. The library
+  now has 39 HOMR 480 packages. The thinnest result is "Blinding Lights" (1 page, 101 notes), worth
+  a listen. No memory stop was hit.
 
 ## Phase 1 — what exists
 

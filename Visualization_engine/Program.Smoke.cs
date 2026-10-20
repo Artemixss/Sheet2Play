@@ -89,9 +89,37 @@ internal static partial class Program
 				}
 			});
 
+			// Neither piano installed: playback is silent and the bar says how to install one.
+			failures += Capture(outputDirectory, "01-landing-no-piano", layout, () =>
+			{
+				AudioBackend backend = activeAudioBackend;
+				AudioOutputStatus? status = activeAudioStatus;
+				PianoStatus? piano = installedPiano;
+				SoundFontStatus? font = installedSoundFont;
+				activeAudioBackend = AudioBackend.Silent;
+				activeAudioStatus = new AudioOutputStatus(AudioBackend.Silent, null, 0, null, AudioOutput.NoPianoProblem);
+				installedPiano = new PianoStatus(null, null, 0, "Salamander is not installed.");
+				installedSoundFont = null;
+				try
+				{
+					OmrEngine engine = OmrEngine.Homr480;
+					OmrEngine? filter = null;
+					int a = 0, b = 0, c = 0;
+					DrawLanding(layout, ref engine, [], [], [], ref a, ref b, ref filter, ref c, new LibrarySearchState(),
+						AudioOutput.NoPianoProblem, out _, out _);
+				}
+				finally
+				{
+					activeAudioBackend = backend;
+					activeAudioStatus = status;
+					installedPiano = piano;
+					installedSoundFont = font;
+				}
+			});
+
 			failures += Capture(outputDirectory, "02-landing-populated", layout, () =>
 			{
-				OmrEngine engine = OmrEngine.Homr;
+				OmrEngine engine = OmrEngine.Homr480;
 				OmrEngine? filter = null;
 				int a = 0, b = 0, c = 0;
 				DrawLanding(layout, ref engine, SamplePdfs(), SampleCached(), SampleMidis(),
@@ -101,24 +129,25 @@ internal static partial class Program
 			// Same page filtered to one engine, to prove the tab selection renders.
 			failures += Capture(outputDirectory, "03-landing-filtered-zeus", layout, () =>
 			{
-				OmrEngine engine = OmrEngine.Zeus;
+				// Zeus is no longer offered, but the songs it converted still play from the playlist.
+				OmrEngine engine = OmrEngine.Homr465;
 				OmrEngine? filter = OmrEngine.Zeus;
 				int a = 0, b = 0, c = 0;
 				DrawLanding(layout, ref engine, SamplePdfs(), SampleCached(), SampleMidis(),
-					ref a, ref b, ref filter, ref c, new LibrarySearchState(), "Zeus finished with warnings.", out _, out _);
+					ref a, ref b, ref filter, ref c, new LibrarySearchState(), "Conversion cancelled. No partial cache was saved.", out _, out _);
 			});
 
 			failures += Capture(outputDirectory, "04-confirm-reuse", layout, () =>
 				DrawConfirmReuse(layout, new LoadRequest(
-					@"C:\scores\Sample Score.pdf", OmrEngine.Homr, false, null)));
+					@"C:\scores\Sample Score.pdf", OmrEngine.Homr480, false, null)));
 
 			failures += Capture(outputDirectory, "05-processing", layout, () =>
 			{
 				LoadProgressModel model = new();
-				model.Start("Sample Score.pdf", OmrEngine.Homr);
+				model.Start("Sample Score.pdf", OmrEngine.Homr480);
 				model.Apply(new OmrProgress
 				{
-					Engine = OmrEngine.Homr,
+					Engine = OmrEngine.Homr480,
 					Stage = OmrProgressStages.MusicXmlExport,
 					Status = OmrProgressStatuses.Started,
 					Message = "Exporting MusicXML",
@@ -136,15 +165,17 @@ internal static partial class Program
 					stage: "normalize",
 					exitCode: 7,
 					page: 8),
-					new LoadRequest(@"C:\scores\Sample Score.pdf", OmrEngine.Homr, false, null)));
+					new LoadRequest(@"C:\scores\Sample Score.pdf", OmrEngine.Homr480, false, null)));
 
 			failures += Capture(outputDirectory, "06-error-465-fallback", layout, () =>
 				DrawError(layout, new OmrPipelineException("Pinned model assets are unavailable.",
 					errorCode: "MODEL_INVALID", stage: "admission", exitCode: 8),
 					new LoadRequest(@"C:\scores\Sample Score.pdf", OmrEngine.Homr465, false, null)));
 
+			// A conversion cached as MIDI before songs kept their score: the legacy badge, Re-convert lit.
 			failures += Capture(outputDirectory, "07-playback", layout, () =>
 			{
+				songOverlay = SongOverlay.Empty;
 				List<Note> notes = SampleNotes();
 				// Frozen clock. A live one starts counting the moment the controller is
 				// built, so a millisecond or two passes before the notes are drawn and they
@@ -173,10 +204,43 @@ internal static partial class Program
 				SongLoadResult song = new(notes, "Sample Score", OmrEngine.MusicXml, true, null, SmokePerformance());
 				Keyboard piano = new(layout.Width, layout.HitLineY, layout.KeyboardHeight);
 				GameState state = GameState.Playing;
+				RebuildOverlay(song, expression, ExpressionPlayback.ForSong(song, expression).Pedal);
 				expressionPanelOpen = true;
 				DrawPlayback(playback, song, piano, false, 0.0, new PlaybackRateEditor(), new AudioOffsetEditor(),
 					ref state, layout);
 				expressionPanelOpen = false;
+				songOverlay = SongOverlay.Empty;
+			});
+
+			// A HOMR 480 song part-way through a repeat: hands coloured by staff, bar lines and the
+			// "2nd time" readout, the pedal lane with one span held and one to come, the TIMING FIX
+			// badge and the score's counts, and the status line after an Export MIDI.
+			failures += Capture(outputDirectory, "07-playback-score", layout, () =>
+			{
+				SongPerformance performance = SmokeScore();
+				SongPlayback timeline = ExpressionPlayback.ForSong(
+					new SongLoadResult([], "Sample Score", OmrEngine.Homr480, true, null, performance), expression);
+				SongLoadResult song = new(timeline.Notes, "Sample Score", OmrEngine.Homr480, true, null, performance);
+				PlaybackController playback = new(
+					new PlaybackSession(timeline.Notes, pedal: timeline.Pedal),
+					new NullMidiOutput(),
+					new PlaybackClock(() => 0));
+				playback.Seek(9.0, resume: false);
+				RebuildOverlay(song, expression, timeline.Pedal);
+				Keyboard piano = new(layout.Width, layout.HitLineY, layout.KeyboardHeight);
+				GameState state = GameState.Playing;
+				string? status = exportStatus;
+				exportStatus = @"Saved to C:\Users\you\AppData\Local\Sheet2Play\exports\Sample Score.mid";
+				try
+				{
+					DrawPlayback(playback, song, piano, false, 0.0, new PlaybackRateEditor(), new AudioOffsetEditor(),
+						ref state, layout);
+				}
+				finally
+				{
+					exportStatus = status;
+					songOverlay = SongOverlay.Empty;
+				}
 			});
 		}
 		catch (Exception exception)
@@ -287,4 +351,40 @@ internal static partial class Program
 		[new SongPedal(0, 0, 0, 1, "start", "mark")],
 		[new SongDynamic(0, 0, 0, 0, "p", null)],
 		[], [], default, []);
+
+	/// <summary>
+	/// Four bars of a two-staff piano part, bars 3 and 4 repeated, with the pedal held through bar 2
+	/// and pressed again in bar 4, and feature counts for the header.
+	/// </summary>
+	private static SongPerformance SmokeScore()
+	{
+		List<SongNote> notes = [];
+		for (int measure = 0; measure < 4; measure++)
+		{
+			for (int beat = 0; beat < 4; beat++)
+			{
+				notes.Add(new SongNote("E5", 76 + (measure + beat) % 5, measure, beat, 1, 0, 0, "1", false, false, false,
+					beat == 0 ? ["accent"] : [], []));
+			}
+			notes.Add(new SongNote("C3", 48 + measure, measure, 0, 4, 0, 1, "2", false, false, false, [], []));
+		}
+		using System.Text.Json.JsonDocument features = System.Text.Json.JsonDocument.Parse(
+			"""{"articulation_marks": 4, "pedal_marks": 3, "dynamics_marks": 0, "repeat_backward": 1}""");
+		return new SongPerformance(
+			SongPerformance.CurrentSchemaVersion, "omr-pages", [], true, [new SongPart(0, 2, "Piano")], [],
+			[
+				new SongMeasure(0, 0, "1", 0, 4, 4, [4, 4], false, false, 0, null, false, null),
+				new SongMeasure(1, 0, "2", 4, 4, 4, [4, 4], false, false, 0, null, false, null),
+				new SongMeasure(2, 0, "3", 8, 4, 4, [4, 4], false, true, 0, null, false, null),
+				new SongMeasure(3, 0, "4", 12, 4, 4, [4, 4], false, false, 1, null, false, null)
+			],
+			[0, 1, 2, 3, 2, 3],
+			notes,
+			[
+				new SongPedal(1, 0, 0, 1, "start", "mark"),
+				new SongPedal(1, 3.5, 0, 1, "stop", "mark"),
+				new SongPedal(3, 1, 0, 1, "start", "mark")
+			],
+			[], [], [], features.RootElement.Clone(), []);
+	}
 }

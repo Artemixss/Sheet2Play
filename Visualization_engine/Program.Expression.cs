@@ -43,6 +43,7 @@ internal static partial class Program
 	{
 		SongPlayback playback = ExpressionPlayback.ForSong(song, expression);
 		sessionExpression = expression;
+		RebuildOverlay(song, expression, playback.Pedal);
 		return new PlaybackSession(playback.Notes, audioOffsetSeconds, playback.Pedal);
 	}
 
@@ -78,7 +79,8 @@ internal static partial class Program
 
 	private static string Describe(ExpressionOptions options) =>
 		$"pedal={(options.Pedal ? "on" : "off")} dynamics={(options.Dynamics ? "on" : "off")} " +
-		$"articulations={(options.Articulations ? "on" : "off")} repeats={(options.Repeats ? "on" : "off")}";
+		$"articulations={(options.Articulations ? "on" : "off")} repeats={(options.Repeats ? "on" : "off")} " +
+		$"auto_pedal={(options.AutoPedal ? "on" : "off")}";
 
 	/// <summary>
 	/// The EXPRESSION button, bottom-left above the Export button, and when it is open the switches
@@ -117,6 +119,11 @@ internal static partial class Program
 		if (DrawExpressionSwitch(ref x, y, height, "REPEATS", expression.Repeats, available.Repeats, scale))
 		{
 			changed = expression with { Repeats = !expression.Repeats };
+		}
+		// Off by default, and not counted as OFF on the button: it adds a pedal the score does not have.
+		if (DrawExpressionSwitch(ref x, y, height, "AUTO PEDAL", expression.AutoPedal, available.AutoPedal, scale))
+		{
+			changed = expression with { AutoPedal = !expression.AutoPedal };
 		}
 		if (changed != expression)
 		{

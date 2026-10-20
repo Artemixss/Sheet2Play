@@ -50,7 +50,7 @@ internal static partial class Program
 		try
 		{
 			// Not recorded as recently opened: a measurement is not the user opening a song.
-			song = SongCache.LoadOrCreateDetailed(source, AppSettingsStore.LoadEngine(), recordRecent: false);
+			song = SongCache.LoadOrCreateDetailed(source, OmrEngines.ToOffered(AppSettingsStore.LoadEngine()), recordRecent: false);
 		}
 		catch (Exception error)
 		{
@@ -70,11 +70,14 @@ internal static partial class Program
 		if (audioOption is null)
 		{
 			session = new(song.Notes);
+			songOverlay = SongOverlay.For(song.Performance, new SongTimelineOptions(), []);
 		}
 		else
 		{
-			SongPlayback expressive = ExpressionPlayback.ForSong(song, AppSettingsStore.LoadExpression());
+			ExpressionOptions options = AppSettingsStore.LoadExpression();
+			SongPlayback expressive = ExpressionPlayback.ForSong(song, options);
 			session = new(expressive.Notes, pedal: expressive.Pedal);
+			RebuildOverlay(song, options, expressive.Pedal);
 		}
 		start = Math.Clamp(start, 0, Math.Max(0, session.TotalDuration - 1));
 
@@ -118,8 +121,8 @@ internal static partial class Program
 				playback = new(session, new NullMidiOutput(), new PlaybackClock());
 				playback.SetPlaybackRate(rate);
 				playback.Seek(start, resume: true);
-				activeAudioBackend = AudioBackend.MidiDevice;
-				activeAudioStatus = new AudioOutputStatus(AudioBackend.MidiDevice, null, 0, "bench", null);
+				activeAudioBackend = AudioBackend.Silent;
+				activeAudioStatus = new AudioOutputStatus(AudioBackend.Silent, null, 0, null, null);
 			}
 			else if (audioOption is null)
 			{
@@ -128,8 +131,8 @@ internal static partial class Program
 					new NullMidiOutput(),
 					new PlaybackClock(() => position));
 				playback.Seek(start, resume: false);
-				activeAudioBackend = AudioBackend.MidiDevice;
-				activeAudioStatus = new AudioOutputStatus(AudioBackend.MidiDevice, null, 0, "bench", null);
+				activeAudioBackend = AudioBackend.Silent;
+				activeAudioStatus = new AudioOutputStatus(AudioBackend.Silent, null, 0, null, null);
 			}
 			else
 			{
@@ -163,6 +166,8 @@ internal static partial class Program
 			// Where each underrun happened, so one at the start (filling an empty stream) can be told
 			// from one mid-song.
 			List<double> underrunsAt = [];
+			// Every frame's draw time, for the percentiles Phase 5's frame-time criterion is stated in.
+			List<double> frameTimes = new(frames);
 			double step = 1.0 / 144.0;
 
 			for (int frame = 0; frame < frames; frame++)
@@ -189,8 +194,10 @@ internal static partial class Program
 				// Recorded BEFORE EndDrawing, matching the main loop. Under vsync, EndDrawing blocks
 				// until the next refresh, so including it would measure the wait rather than the
 				// work and report every frame as "late" by construction.
-				tracker.Record((System.Diagnostics.Stopwatch.GetTimestamp()
-					/ (double)System.Diagnostics.Stopwatch.Frequency - frameStarted) * 1000.0);
+				double frameMilliseconds = (System.Diagnostics.Stopwatch.GetTimestamp()
+					/ (double)System.Diagnostics.Stopwatch.Frequency - frameStarted) * 1000.0;
+				tracker.Record(frameMilliseconds);
+				frameTimes.Add(frameMilliseconds);
 				Raylib.EndDrawing();
 
 				double lookAhead = Math.Max(1.0, (double)(layout.HitLineY - layout.HeaderHeight) / layout.FallSpeed + 1.0);
@@ -203,6 +210,9 @@ internal static partial class Program
 			Console.WriteLine($"[BENCH] window    {width}x{height}   from {start:0.0}s, {frames} frames");
 			Console.WriteLine($"[BENCH] visible   {visiblePeak} notes at peak");
 			Console.WriteLine(tracker.Summarise(Path.GetFileNameWithoutExtension(source)));
+			frameTimes.Sort();
+			Console.WriteLine($"[BENCH] frame     p50 {Percentile(frameTimes, 0.50):0.00} ms   " +
+				$"p95 {Percentile(frameTimes, 0.95):0.00} ms   p99 {Percentile(frameTimes, 0.99):0.00} ms");
 			if (audio is not null)
 			{
 				Console.WriteLine($"[BENCH] audio     {playback.Position - start:0.0} song seconds at {rate:0.00}x, " +
@@ -223,4 +233,8 @@ internal static partial class Program
 			Raylib.CloseWindow();
 		}
 	}
+
+	/// <summary>Nearest-rank percentile of an ascending list; 0 when it is empty.</summary>
+	private static double Percentile(List<double> sorted, double fraction) =>
+		sorted.Count == 0 ? 0 : sorted[Math.Clamp((int)Math.Ceiling(fraction * sorted.Count) - 1, 0, sorted.Count - 1)];
 }

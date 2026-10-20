@@ -167,6 +167,9 @@ public static partial class SongCache
         ReportProgress(progress, engine, OmrProgressStages.CacheLookup, OmrProgressStatuses.Completed,
             "Cache miss; starting OMR");
         LogPackage(engine, sourceHash, "miss", sourcePath);
+        // Convert the library's copy, so the file the user picked may move while the model runs.
+        sourcePath = RetainSource(sourcePath, engine, context.ApplicationDirectory);
+        cachePaths = CreateCachePaths(sourcePath, engine, context.ApplicationDirectory, sourceHash, timingIdentity);
         if (!bypassKnownFailure &&
             OmrFailureStore.TryGet(sourceHash, engine, out OmrFailureEntry? knownFailure) &&
             knownFailure is not null)
@@ -203,7 +206,6 @@ public static partial class SongCache
                 // Just converted: the player's CACHE badge must not show.
                 packaged = packaged with { LoadedFromCache = false };
                 CrossCheck(packaged, result, engine, sourceHash, context.ApplicationDirectory);
-                RetainSource(sourcePath, engine, context.ApplicationDirectory);
                 ReportProgress(progress, engine, OmrProgressStages.Complete, OmrProgressStatuses.Completed,
                     "Song is ready");
                 return packaged;
@@ -388,19 +390,27 @@ public static partial class SongCache
 
     /// <summary>
     /// Keeps a PDF or image chosen from outside the library in <c>songs/pdf</c> under its own
-    /// name, so the library lists it. An import already lives in <c>songs/midi/custom</c>.
+    /// name, so the library lists it, and returns where it is kept. An import already lives in
+    /// <c>songs/midi/custom</c>, and a source already in the library is returned as it is.
     /// </summary>
-    private static void RetainSource(string sourcePath, OmrEngine engine, string applicationDirectory)
+    /// <remarks>
+    /// Done before recognition, and the conversion then reads the kept copy. The song entry hashes
+    /// its source again after recognition, so a file moved or deleted while the model ran used to
+    /// lose the package, and then the MIDI cache, which copies it too: the song played once from
+    /// memory as MIDI (legacy) and was never saved. On a copy failure the original is returned and
+    /// the conversion goes ahead as before.
+    /// </remarks>
+    private static string RetainSource(string sourcePath, OmrEngine engine, string applicationDirectory)
     {
         if (engine == OmrEngine.MusicXml)
         {
-            return;
+            return sourcePath;
         }
         string pdfDirectory = Path.Combine(applicationDirectory, "songs", "pdf");
         string source = Path.GetFullPath(sourcePath);
         if (string.Equals(Path.GetDirectoryName(source), Path.GetFullPath(pdfDirectory), StringComparison.OrdinalIgnoreCase))
         {
-            return;
+            return source;
         }
         try
         {
@@ -410,13 +420,13 @@ public static partial class SongCache
             {
                 if (ComputeSha256(target) == ComputeSha256(source))
                 {
-                    return;
+                    return target;
                 }
                 target = Path.Combine(pdfDirectory,
                     $"{Path.GetFileNameWithoutExtension(source)} ({ComputeSha256(source)[..8]}){Path.GetExtension(source)}");
                 if (File.Exists(target))
                 {
-                    return;
+                    return ComputeSha256(target) == ComputeSha256(source) ? target : source;
                 }
             }
             string temporary = Path.Combine(pdfDirectory, $".{Path.GetFileName(target)}.{Guid.NewGuid():N}.tmp");
@@ -430,10 +440,12 @@ public static partial class SongCache
             {
                 DeleteTemporaryFile(temporary);
             }
+            return target;
         }
         catch (Exception exception) when (exception is IOException or UnauthorizedAccessException)
         {
             Console.Error.WriteLine($"[SONG CACHE] decision=source_not_retained error=\"{exception.Message}\"");
+            return source;
         }
     }
 

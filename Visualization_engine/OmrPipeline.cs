@@ -17,6 +17,23 @@ public enum OmrEngine
     Homr480
 }
 
+public static class OmrEngines
+{
+    /// <summary>
+    /// The engines the home screen offers, the default first. HOMR 426 and Zeus were taken off it on
+    /// 2026-10-20 at the user's request ("only 480 and 465 remains in the frontend"); they stay
+    /// here so songs converted with them keep loading and the research tools keep running.
+    /// </summary>
+    public static readonly IReadOnlyList<OmrEngine> Offered = [OmrEngine.Homr480, OmrEngine.Homr465];
+
+    /// <summary>The engine a stored choice converts with: an offered one as it is, anything else HOMR 480.</summary>
+    public static OmrEngine ToOffered(OmrEngine engine) => engine == OmrEngine.Homr465 ? engine : OmrEngine.Homr480;
+
+    /// <summary>True for the engines that read a score image, as opposed to importing a file.</summary>
+    public static bool RunsOmr(OmrEngine engine) =>
+        engine is OmrEngine.Homr or OmrEngine.Zeus or OmrEngine.Homr465 or OmrEngine.Homr480;
+}
+
 public sealed class TempoChange
 {
     [JsonPropertyName("start_beat")]

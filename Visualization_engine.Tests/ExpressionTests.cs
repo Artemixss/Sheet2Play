@@ -36,7 +36,7 @@ public sealed class ExpressionTests
         SongPlayback on = SongTimeline.Build(performance, SongTimelineOptions.For(new ExpressionOptions()));
         Assert.NotEmpty(on.Pedal);
         Assert.Contains(on.Notes, note => note.Velocity != 80);
-        Assert.Equal(new ExpressionAvailability(true, true, true, true), SongExpression.Availability(performance));
+        Assert.Equal(new ExpressionAvailability(true, true, true, true, AutoPedal: true), SongExpression.Availability(performance));
     }
 
     // --- Dynamics ----------------------------------------------------------------------------

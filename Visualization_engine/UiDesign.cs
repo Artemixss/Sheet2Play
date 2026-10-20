@@ -145,8 +145,10 @@ public static class UiTheme
                         Math.Min(255, Elevated.B + 16),
                         255)
                     : Elevated;
-        Raylib.DrawRectangleRounded(bounds, 0.16f, 10, fill);
-        Raylib.DrawRectangleRoundedLinesEx(bounds, 0.16f, 10, 1.5f, selected ? accent : Border);
+        // Four segments per corner: at this roundness a corner is 2-4 px, where ten were
+        // indistinguishable and cost a measurable share of a playback frame's dozen buttons.
+        Raylib.DrawRectangleRounded(bounds, 0.16f, 4, fill);
+        Raylib.DrawRectangleRoundedLinesEx(bounds, 0.16f, 4, 1.5f, selected ? accent : Border);
         int fontSize = Math.Max(14, (int)(18 * Math.Min(1.4f, bounds.Height / 44f)));
         int textWidth = MeasureText(label, fontSize);
         Color textColor = enabled ? Text : Muted;

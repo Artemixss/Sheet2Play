@@ -11,7 +11,9 @@ public enum AudioBackend
     SoundFont,
 
     /// <summary>
-    /// An external Windows MIDI device, such as VirtualMIDISynth.
+    /// An external Windows MIDI device, such as VirtualMIDISynth. No longer offered: it was removed
+    /// on 2026-10-20 at the user's request. Kept so a settings file that names it still reads, and
+    /// opens the SFZ piano instead.
     /// </summary>
     MidiDevice,
 
@@ -19,16 +21,27 @@ public enum AudioBackend
     /// The built-in SFZ piano (Salamander), rendering audio inside this process like
     /// <see cref="SoundFont"/>. Falls back to it when the SFZ piano is not installed.
     /// </summary>
-    SfzPiano
+    SfzPiano,
+
+    /// <summary>
+    /// No piano could be opened. Song time comes from a stopwatch, so the notes still fall, in
+    /// silence. Never saved as a choice; only what the app ended up with.
+    /// </summary>
+    Silent
 }
 
 public static class AudioBackends
 {
     /// <summary>
     /// True for the pianos rendered in this process. They share one audio stream, so they share its
-    /// latency and therefore one audio offset; the MIDI device keeps its own.
+    /// latency and therefore one audio offset.
     /// </summary>
-    public static bool IsBuiltIn(this AudioBackend backend) => backend != AudioBackend.MidiDevice;
+    public static bool IsBuiltIn(this AudioBackend backend) =>
+        backend is AudioBackend.SoundFont or AudioBackend.SfzPiano;
+
+    /// <summary>The piano a stored choice opens: the two pianos as they are, anything else Salamander.</summary>
+    public static AudioBackend Offered(this AudioBackend backend) =>
+        backend == AudioBackend.SoundFont ? AudioBackend.SoundFont : AudioBackend.SfzPiano;
 }
 
 /// <summary>

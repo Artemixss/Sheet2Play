@@ -112,6 +112,10 @@ internal static partial class Program
 		{
 			return RunBench(args);
 		}
+		if (args.Length > 0 && string.Equals(args[0], "--convert-batch", StringComparison.OrdinalIgnoreCase))
+		{
+			return RunConvertBatch(args);
+		}
 		if (args.Length > 0 && string.Equals(args[0], "--build-piano-bank", StringComparison.OrdinalIgnoreCase))
 		{
 			return RunBuildPianoBank(args);
@@ -133,7 +137,7 @@ internal static partial class Program
 	private static int RunReconvert(string[] args)
 	{
 		if (args.Length > 1 && args[1] is "inventory" or "resume") return RunMigration(args);
-		OmrEngine engine = OmrEngine.Homr;
+		OmrEngine engine = OmrEngine.Homr480;
 		if (args.Length > 1 && Enum.TryParse(args[1], ignoreCase: true, out OmrEngine parsed))
 		{
 			engine = parsed;
@@ -188,11 +192,11 @@ internal static partial class Program
 		// Kept as a ceiling for drivers that override the vsync hint.
 		Raylib.SetTargetFPS(144);
 		UiTheme.InitializeFonts();
-		AudioBackend preferredBackend = AppSettingsStore.LoadAudioBackend();
+		// A stored MIDI device choice opens Salamander: the device is no longer offered.
+		AudioBackend preferredBackend = AppSettingsStore.LoadAudioBackend().Offered();
 
-		// The built-in synth loads a soundfont from disk in well under a second; opening a cold
-		// VirtualMIDISynth makes it page in gigabytes of samples and takes seconds. Say which is
-		// happening, because a silent multi-second stall reads as a hang.
+		// A piano loads from disk before the first frame; from a cold disk that can take seconds.
+		// Say which is happening, because a silent multi-second stall reads as a hang.
 		DrawStartupNotice(StartupNotice(preferredBackend));
 		// Not a using declaration: switching backend disposes this and builds another, and a
 		// using declaration cannot be reassigned. Disposed at the end of the method instead.
@@ -221,7 +225,8 @@ internal static partial class Program
 		Task task = null;
 		DialogState dialogState = new DialogState();
 		GameState state = GameState.WaitingForFile;
-		OmrEngine selectedEngine = AppSettingsStore.LoadEngine();
+		// A stored 426 or Zeus choice converts with 480: neither is offered any more.
+		OmrEngine selectedEngine = OmrEngines.ToOffered(AppSettingsStore.LoadEngine());
 		timingCorrectionEnabled = AppSettingsStore.LoadTimingCorrection();
 		LoadExpressionSettings();
 		LoadRequest pendingRequest = null;
@@ -281,11 +286,8 @@ internal static partial class Program
 				midiOutput.AllNotesOff();
 				audioOutput.Dispose();
 
-				// Paint before the switch, for the same reason startup does: opening a cold
-				// VirtualMIDISynth pages in gigabytes of samples and blocks for seconds, and a
-				// frame loop that stops pumping gets marked "Not Responding" by Windows. Measured
-				// at roughly ten seconds on one development machine, far too long to leave a frozen
-				// window with no explanation.
+				// Paint before the switch, for the same reason startup does: a frame loop that stops
+				// pumping while a piano loads gets marked "Not Responding" by Windows.
 				DrawStartupNotice(StartupNotice(requestedBackend));
 
 				audioOutput = AudioOutput.Create(
@@ -317,6 +319,25 @@ internal static partial class Program
 			{
 				exportRequested = false;
 				StartAudioExport(audioOutput, songLoadResult, playbackController);
+			}
+			if (songExportRequested is SongExport songExport)
+			{
+				songExportRequested = null;
+				ExportSong(songExport, songLoadResult, playbackController);
+			}
+			reconvertEngine = selectedEngine;
+			if (reconvertRequested)
+			{
+				reconvertRequested = false;
+				if (CreateReconvertRequest(songLoadResult) is LoadRequest reconvert)
+				{
+					// Back to the library, where queued loads are picked up; the Processing screen follows.
+					playbackController?.Stop();
+					playbackRateEditor.Cancel();
+					sliderDragging = false;
+					state = GameState.WaitingForFile;
+					loadRequests.Enqueue(reconvert);
+				}
 			}
 			if (expressionChanged)
 			{
@@ -534,8 +555,8 @@ internal static partial class Program
 	/// Presents a single frame so the window has painted before a slow blocking call.
 	/// </summary>
 	/// <remarks>
-	/// Opening the MIDI device makes the synthesiser load its sound bank, and a large one -
-	/// several gigabytes of piano samples for VirtualMIDISynth here - takes long enough that
+	/// Written for the MIDI device, since removed, whose synthesiser loaded several gigabytes of
+	/// piano samples on open; a piano loading from a cold disk can still take long enough that
 	/// Windows marks the process Not Responding. The window is created by InitWindow before
 	/// that happens, so without this the user sees a blank white rectangle and reasonably
 	/// concludes the app has hung. It only looks that way on a cold synthesiser: once the
@@ -565,8 +586,7 @@ internal static partial class Program
 	private static string StartupNotice(AudioBackend backend) => backend switch
 	{
 		AudioBackend.SfzPiano => "Loading piano...",
-		AudioBackend.SoundFont => "Loading soundfont...",
-		_ => "Connecting to audio device..."
+		_ => "Loading soundfont..."
 	};
 
 	private unsafe static void StartFilePicker(ConcurrentQueue<string> selectedFiles, DialogState dialogState)
@@ -750,12 +770,11 @@ internal static partial class Program
 			PersistTimingCorrection(timingCorrectionEnabled);
 		}
 		float engineCardGap = 16f * scale;
-		// HOMR 480 is the default engine and 465 the secondary; 426 and Zeus stay selectable.
-		float omrCardWidth = (contentWidth - 3f * engineCardGap) / 4f;
+		// HOMR 480 is the default engine and 465 the secondary. 426 and Zeus are no longer offered
+		// (OmrEngines.Offered); songs converted with them still play from the cache playlist.
+		float omrCardWidth = (contentWidth - engineCardGap) / 2f;
 		Rectangle homr480Card = new Rectangle(contentLeft, 194f * scale, omrCardWidth, 64f * scale);
 		Rectangle homr465Card = new Rectangle(contentLeft + omrCardWidth + engineCardGap, 194f * scale, omrCardWidth, 64f * scale);
-		Rectangle homrCard = new Rectangle(contentLeft + 2f * (omrCardWidth + engineCardGap), 194f * scale, omrCardWidth, 64f * scale);
-		Rectangle zeusCard = new Rectangle(contentLeft + 3f * (omrCardWidth + engineCardGap), 194f * scale, omrCardWidth, 64f * scale);
 		if (DrawEngineCard(homr480Card, "HOMR 480", "Default recognition model", UiTheme.Lime, selectedEngine == OmrEngine.Homr480))
 		{
 			selectedEngine = OmrEngine.Homr480;
@@ -764,27 +783,6 @@ internal static partial class Program
 		if (DrawEngineCard(homr465Card, "HOMR 465", "Secondary model", UiTheme.Lime, selectedEngine == OmrEngine.Homr465))
 		{
 			selectedEngine = OmrEngine.Homr465;
-			PersistEngine(selectedEngine);
-		}
-		if (DrawEngineCard(zeusCard, "Zeus GPU", "Experimental rhythm · CUDA-only", UiTheme.Sky, selectedEngine == OmrEngine.Zeus))
-		{
-			selectedEngine = OmrEngine.Zeus;
-			PersistEngine(selectedEngine);
-		}
-		if (DrawEngineCard(homrCard, "HOMR 426", "Previous model · fallback", UiTheme.Lime, selectedEngine == OmrEngine.Homr))
-		{
-			selectedEngine = OmrEngine.Homr;
-			PersistEngine(selectedEngine);
-		}
-		// Gated on focus: these would otherwise fire on the o and h in a typed query.
-		if (!librarySearch.IsTyping && Raylib.IsKeyPressed(KeyboardKey.O))
-		{
-			selectedEngine = OmrEngine.Zeus;
-			PersistEngine(selectedEngine);
-		}
-		else if (!librarySearch.IsTyping && Raylib.IsKeyPressed(KeyboardKey.H))
-		{
-			selectedEngine = OmrEngine.Homr;
 			PersistEngine(selectedEngine);
 		}
 		// PIANO sits between the engine row and the library panels. The piano is a user-adjustable
@@ -800,10 +798,9 @@ internal static partial class Program
 			UiTheme.DrawText(shown, (int)(contentLeft + contentWidth) - UiTheme.MeasureText(shown, attributionSize),
 				(int)(276f * scale), attributionSize, UiTheme.Muted);
 		}
-		float pianoCardWidth = (contentWidth - 2f * engineCardGap) / 3f;
+		float pianoCardWidth = (contentWidth - engineCardGap) / 2f;
 		Rectangle sfzCard = new Rectangle(contentLeft, 294f * scale, pianoCardWidth, 64f * scale);
 		Rectangle synthCard = new Rectangle(contentLeft + pianoCardWidth + engineCardGap, 294f * scale, pianoCardWidth, 64f * scale);
-		Rectangle deviceCard = new Rectangle(contentLeft + 2f * (pianoCardWidth + engineCardGap), 294f * scale, pianoCardWidth, 64f * scale);
 		int audioDescriptionSize = Math.Max(12, (int)(14f * scale));
 		int audioDescriptionWidth = (int)(pianoCardWidth - 60f * scale);
 		// Every dot and description follows activeAudioBackend - what is actually making sound -
@@ -819,14 +816,6 @@ internal static partial class Program
 			: installedSoundFont?.Name is string installedFont
 				? UiTheme.Ellipsize(installedFont, audioDescriptionSize, audioDescriptionWidth - (int)(60f * scale)) + " · reverb"
 				: "No soundfont installed";
-		string deviceDescription = activeAudioStatus?.DeviceName is string deviceName
-			? UiTheme.Ellipsize(deviceName, audioDescriptionSize, audioDescriptionWidth - (int)(60f * scale)) + " · external"
-			// Only claim there is no device when we actually went looking. With a built-in piano
-			// playing, the MIDI device is never opened, so its absence is unknown rather than
-			// established.
-			: activeAudioBackend == AudioBackend.MidiDevice
-				? "No MIDI device found"
-				: "VirtualMIDISynth or similar";
 		if (DrawEngineCard(sfzCard, sfzTitle, sfzDescription, UiTheme.Lime, activeAudioBackend == AudioBackend.SfzPiano))
 		{
 			PersistAudioBackend(AudioBackend.SfzPiano);
@@ -834,10 +823,6 @@ internal static partial class Program
 		if (DrawEngineCard(synthCard, "YDP", synthDescription, UiTheme.Lime, activeAudioBackend == AudioBackend.SoundFont))
 		{
 			PersistAudioBackend(AudioBackend.SoundFont);
-		}
-		if (DrawEngineCard(deviceCard, "MIDI device", deviceDescription, UiTheme.Sky, activeAudioBackend == AudioBackend.MidiDevice))
-		{
-			PersistAudioBackend(AudioBackend.MidiDevice);
 		}
 		float panelsTop = 374f * scale;
 		float panelGap = 14f * scale;
@@ -1012,7 +997,17 @@ internal static partial class Program
 			Raylib.DrawRectangleRounded(rec, 0.12f, 8, UiTheme.Elevated);
 			int fontSize = Math.Max(12, (int)(15f * scale));
 			UiTheme.DrawText(UiTheme.Ellipsize(entry.RecentSong.DisplayName, fontSize, (int)(rec.Width - 94f * scale)), (int)(rec.X + 12f * scale), (int)(rec.Y + 7f * scale), fontSize, UiTheme.Text);
-			UiTheme.DrawText($"{entry.NoteCount:N0} notes · {PlaybackFormatting.FormatTime(entry.DurationSeconds)}", (int)(rec.X + 12f * scale), (int)(rec.Y + 27f * scale), Math.Max(10, (int)(12f * scale)), UiTheme.Muted);
+			int detailSize = Math.Max(10, (int)(12f * scale));
+			string detail = $"{entry.NoteCount:N0} notes · {PlaybackFormatting.FormatTime(entry.DurationSeconds)}";
+			UiTheme.DrawText(detail, (int)(rec.X + 12f * scale), (int)(rec.Y + 27f * scale), detailSize, UiTheme.Muted);
+			// A conversion cached as MIDI before songs kept their score; Re-convert on its playback screen
+			// replaces it with one that does.
+			if (OmrEngines.RunsOmr(entry.RecentSong.Engine) &&
+				entry.RecentSong.ManifestRelativePath.EndsWith(".mid.cache.json", StringComparison.OrdinalIgnoreCase))
+			{
+				UiTheme.DrawText("· MIDI (legacy)", (int)(rec.X + 16f * scale) + UiTheme.MeasureText(detail, detailSize),
+					(int)(rec.Y + 27f * scale), detailSize, UiTheme.Warning);
+			}
 			if (UiTheme.DrawButton(new Rectangle(rec.X + rec.Width - 70f * scale, rec.Y + 7f * scale, 60f * scale, rec.Height - 14f * scale), "Play", accent))
 			{
 				result = entry;
@@ -1448,8 +1443,7 @@ internal static partial class Program
 		if (request?.InputPath != null)
 		{
 			string label = OmrRecoveryPolicy.GetAlternateLabel(request.Engine);
-			Color accent = ((OmrRecoveryPolicy.GetAlternateEngine(request.Engine) == OmrEngine.Zeus) ? UiTheme.Sky : UiTheme.Lime);
-			if (UiTheme.DrawButton(new Rectangle(bounds.X + 30f * scale, y, buttonWidth, 44f * scale), label, accent))
+			if (UiTheme.DrawButton(new Rectangle(bounds.X + 30f * scale, y, buttonWidth, 44f * scale), label, UiTheme.Lime))
 			{
 				return ErrorAction.RetryAlternate;
 			}
@@ -1580,7 +1574,6 @@ internal static partial class Program
 		{
 			return true;
 		}
-		DrawExportControl(song, layout);
 		UiTheme.DrawText(UiTheme.Ellipsize(song.DisplayName, Math.Max(15, (int)(18f * scale)), (int)((double)layout.Width * 0.38)), (int)(106f * scale), (int)(20f * scale), Math.Max(15, (int)(18f * scale)), UiTheme.Text);
 		Color accent = ((song.Engine == OmrEngine.Zeus) ? UiTheme.Sky : UiTheme.Lime);
 		// Which output is making the sound. Not decoration: the audio offset below is stored per
@@ -1592,8 +1585,7 @@ internal static partial class Program
 			{
 				{ IsSilent: true } => ("SILENT", UiTheme.Muted),
 				{ Backend: AudioBackend.SoundFont } => ("YDP", UiTheme.Lime),
-				{ Backend: AudioBackend.SfzPiano } => ("SFZ", UiTheme.Lime),
-				_ => ("MIDI", UiTheme.Sky)
+				_ => ("SFZ", UiTheme.Lime)
 			};
 			// Left of the playback-rate control, which starts at Width - 400. The two badges on
 			// the right of the header are already up against it.
@@ -1607,7 +1599,7 @@ internal static partial class Program
 		{
 			UiTheme.DrawBadge(new Rectangle((float)layout.Width - 108f * scale, 14f * scale, 88f * scale, 30f * scale), "CACHE", UiTheme.Muted);
 		}
-		UiTheme.DrawText($"{playback.Session.Notes.Count:N0} notes", (int)(106f * scale), (int)(46f * scale), Math.Max(11, (int)(13f * scale)), UiTheme.Muted);
+		DrawSongFacts(playback, song, layout);
 		float transportLeft = (float)layout.Width / 2f - 92f * scale;
 		if (UiTheme.DrawButton(new Rectangle(transportLeft, 10f * scale, 52f * scale, 38f * scale), "−5", UiTheme.Sky))
 		{
@@ -1647,6 +1639,8 @@ internal static partial class Program
 				Raylib.DrawLine(key.X, layout.HeaderHeight, key.X, layout.HitLineY, new Color((int)UiTheme.Border.R, (int)UiTheme.Border.G, (int)UiTheme.Border.B, 72));
 			}
 		}
+		DrawBarLines(position, layout);
+		DrawPedalLane(position, layout);
 		double lookAhead = Math.Max(1.0, (double)(layout.HitLineY - layout.HeaderHeight) / layout.FallSpeed + 1.0);
 		(int Start, int End) visibleRange = playback.Session.GetVisibleRange(position, 1.0, lookAhead);
 		for (int index = visibleRange.Start; index < visibleRange.End; index++)
@@ -1658,7 +1652,9 @@ internal static partial class Program
 			int topY = bottomY - noteHeight;
 			if (topY <= layout.Height && bottomY >= layout.HeaderHeight)
 			{
-				DrawFallingNote(note, key, topY, bottomY, scale);
+				// A note entering at the top starts at the header rather than drawing over the song's
+				// facts. Clamped rather than clipped with a scissor, which would flush the draw batch.
+				DrawFallingNote(note, key, Math.Max(topY, layout.HeaderHeight), bottomY, scale);
 			}
 		}
 		piano.Draw();
@@ -1673,8 +1669,9 @@ internal static partial class Program
 			UiTheme.DrawText(statusLabel, layout.Width / 2 - UiTheme.MeasureText(statusLabel, statusFontSize) / 2, layout.HeaderHeight + 18, statusFontSize, UiTheme.Warning);
 		}
 		DrawAudioOffsetControl(playback, offsetEditor, layout);
-		// After the notes, so a falling note never covers a switch.
+		// After the notes, so a falling note never covers a switch or a button.
 		DrawExpressionPanel(song, layout);
+		DrawExportControl(song, layout);
 		return false;
 	}
 
@@ -1767,7 +1764,7 @@ internal static partial class Program
 	/// offset control is reached through several layers of drawing code, and there is exactly
 	/// one audio output per process.
 	/// </summary>
-	private static AudioBackend activeAudioBackend = AudioBackend.MidiDevice;
+	private static AudioBackend activeAudioBackend = AudioBackend.Silent;
 
 	/// <summary>Whether new HOMR conversions run the timing correction; the landing-page switch.</summary>
 	private static bool timingCorrectionEnabled;
@@ -1909,13 +1906,16 @@ internal static partial class Program
 		{
 			exportRequested = true;
 		}
+		float statusX = DrawSongActions(song, button, scale);
 
 		if (exportStatus is not null)
 		{
 			int labelSize = Math.Max(10, (int)(12f * scale));
+			// Stops short of the AUDIO OFFSET control on the right.
+			int statusWidth = (int)((float)layout.Width - 250f * scale - statusX);
 			UiTheme.DrawText(
-				UiTheme.Ellipsize(exportStatus, labelSize, (int)((float)layout.Width * 0.55f)),
-				(int)(button.X + button.Width + 10f * scale),
+				UiTheme.Ellipsize(exportStatus, labelSize, Math.Max(0, statusWidth)),
+				(int)(statusX + 2f * scale),
 				(int)(y + (height - (float)labelSize) / 2f),
 				labelSize,
 				UiTheme.Muted);
@@ -2021,10 +2021,9 @@ internal static partial class Program
 
 	/// <summary>Applies the offset and persists it, so calibration survives a restart.</summary>
 	/// <remarks>
-	/// Saved against the backend it was measured on. The two are not interchangeable: the stored
-	/// MIDI-device value is the user's own by-ear calibration against VirtualMIDISynth, and the
-	/// built-in synth's latency is a fraction of it, so writing one over the other would either
-	/// mis-time the synth or destroy a measurement that cannot be recovered.
+	/// Saved as the built-in pianos' offset. The MIDI device's by-ear calibration against
+	/// VirtualMIDISynth is a different measurement, so it is left stored as it was and never
+	/// overwritten, although the device is no longer offered.
 	/// </remarks>
 	private static void ApplyAudioOffset(PlaybackController playback, int milliseconds)
 	{
@@ -2032,14 +2031,7 @@ internal static partial class Program
 		if (updated != (int)Math.Round(playback.AudioOffsetSeconds * 1000.0))
 		{
 			playback.SetAudioOffsetSeconds((double)updated / 1000.0);
-			if (activeAudioBackend.IsBuiltIn())
-			{
-				AppSettingsStore.SaveSynthAudioOffsetMilliseconds(updated);
-			}
-			else
-			{
-				AppSettingsStore.SaveAudioOffsetMilliseconds(updated);
-			}
+			AppSettingsStore.SaveSynthAudioOffsetMilliseconds(updated);
 		}
 	}
 

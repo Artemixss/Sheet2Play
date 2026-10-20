@@ -62,13 +62,31 @@ public sealed class Homr480IntegrationTests
     }
 
     [Fact]
+    public void TheMidiCacheDoesNotCopyALibraryPdfUnderItsHashedName()
+    {
+        // That copy is what filled the PDF list with rows named <source sha>-<profile sha>.
+        using TemporaryDirectory temporary = new();
+        Directory.CreateDirectory(Path.Combine(temporary.Path, "songs", "pdf"));
+        string source = temporary.CreateFile(Path.Combine("songs", "pdf", "score.pdf"), "pdf bytes");
+
+        SongCache.LoadOrCreateDetailedForTesting(source, OmrEngine.Homr480, temporary.Path, (_, _, _) => CreateResult());
+
+        Assert.Equal(["score.pdf"],
+            Directory.GetFiles(Path.Combine(temporary.Path, "songs", "pdf")).Select(Path.GetFileName));
+        Assert.Single(SongCache.GetCachedSongsForTesting(temporary.Path));
+    }
+
+    [Fact]
     public void Homr480FallsBackToTheSecondaryHomr465()
     {
         Assert.Contains(OmrRecoveryAction.RetryWithHomr, OmrRecoveryPolicy.GetActions(OmrEngine.Homr480));
         Assert.Equal(OmrEngine.Homr465, OmrRecoveryPolicy.GetAlternateEngine(OmrEngine.Homr480));
         Assert.Equal("Retry HOMR 465", OmrRecoveryPolicy.GetAlternateLabel(OmrEngine.Homr480));
-        Assert.Equal(OmrEngine.Homr, OmrRecoveryPolicy.GetAlternateEngine(OmrEngine.Homr465));
-        Assert.Equal("Retry HOMR 426", OmrRecoveryPolicy.GetAlternateLabel(OmrEngine.Zeus));
+        // 426 and Zeus are no longer offered, so nothing falls back to them; 465 falls back to 480.
+        Assert.Equal(OmrEngine.Homr480, OmrRecoveryPolicy.GetAlternateEngine(OmrEngine.Homr465));
+        Assert.Equal("Retry HOMR 480", OmrRecoveryPolicy.GetAlternateLabel(OmrEngine.Homr465));
+        Assert.Equal(OmrEngine.Homr480, OmrRecoveryPolicy.GetAlternateEngine(OmrEngine.Homr));
+        Assert.Equal("Retry HOMR 480", OmrRecoveryPolicy.GetAlternateLabel(OmrEngine.Zeus));
         Assert.Equal("Retry HOMR 480", OmrRecoveryPolicy.GetSameEngineLabel(OmrEngine.Homr480));
     }
 

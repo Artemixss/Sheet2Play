@@ -331,6 +331,24 @@ public sealed class SongPackageTests
         return JsonSerializer.Serialize(document);
     }
 
+    [Fact]
+    public void AFileMovedAwayWhileItIsRecognisedStillBecomesALibrarySong()
+    {
+        // Browse to a PDF outside the library, then cut it elsewhere while the model runs: the song
+        // used to play once from memory as MIDI (legacy), with no package and no MIDI cache.
+        using Library library = new();
+        library.DuringRecognition = () => File.Delete(library.Source);
+
+        SongLoadResult result = library.Load(timing: true);
+
+        string kept = Path.Combine(library.Root, "songs", "pdf", "score.pdf");
+        Assert.Equal(kept, library.RecognisedPath);
+        Assert.True(File.Exists(kept));
+        Assert.NotNull(result.Performance);
+        Assert.True(result.Performance!.TimingCorrection);
+        Assert.Single(Directory.GetDirectories(Path.Combine(library.Root, "songs", "scores", "homr480")));
+    }
+
     /// <summary>
     /// A library folder, a stand-in bridge folder and stand-ins for the song entry and the
     /// interpreter that write what the real ones write.
@@ -356,6 +374,12 @@ public sealed class SongPackageTests
         public int OmrRuns { get; private set; }
         public int Interpretations { get; private set; }
 
+        /// <summary>Runs while the stand-in recognition does, as a user moving the file would.</summary>
+        public Action? DuringRecognition { get; set; }
+
+        /// <summary>The file the stand-in recognition was asked to read.</summary>
+        public string? RecognisedPath { get; private set; }
+
         public string PackageDirectory => Directory.GetDirectories(Path.Combine(Root, "songs", "scores", "homr480")).Single();
 
         public SongLoadResult Load(bool timing = false, bool forceReprocess = false) =>
@@ -365,6 +389,8 @@ public sealed class SongPackageTests
         private OmrResult Pipeline(string path, OmrEngine engine, string output, bool timing, CancellationToken token)
         {
             OmrRuns++;
+            RecognisedPath = path;
+            DuringRecognition?.Invoke();
             if (WritePackage)
             {
                 string staging = output + ".staging";

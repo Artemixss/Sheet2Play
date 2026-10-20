@@ -128,7 +128,7 @@ public static class AppSettingsStore
     {
         AppSettings settings = ReadOrRepair(settingsPath);
         return new ExpressionOptions(settings.ExpressionPedal, settings.ExpressionDynamics,
-            settings.ExpressionArticulations, settings.ExpressionRepeats);
+            settings.ExpressionArticulations, settings.ExpressionRepeats, settings.ExpressionAutoPedal);
     }
 
     public static void SaveExpression(ExpressionOptions expression) =>
@@ -142,7 +142,8 @@ public static class AppSettingsStore
             ExpressionPedal = expression.Pedal,
             ExpressionDynamics = expression.Dynamics,
             ExpressionArticulations = expression.Articulations,
-            ExpressionRepeats = expression.Repeats
+            ExpressionRepeats = expression.Repeats,
+            ExpressionAutoPedal = expression.AutoPedal
         }, settingsPath);
     }
 
@@ -190,11 +191,9 @@ public static class AppSettingsStore
     /// </remarks>
     public static int ResolveAudioOffsetMilliseconds(AudioBackend backend, double bufferedSeconds)
     {
-        if (backend == AudioBackend.MidiDevice)
-        {
-            return LoadAudioOffsetMilliseconds();
-        }
-
+        // Silent has no latency to cover, but follows the pianos so the control's number does not
+        // jump when a piano is installed. The MIDI device's own offset (audio_offset_milliseconds)
+        // stays stored, unused since the device was removed.
         int stored = LoadSynthAudioOffsetMilliseconds();
         if (stored != UnsetSynthAudioOffset)
         {
@@ -328,5 +327,6 @@ public static class AppSettingsStore
         bool ExpressionPedal = true,
         bool ExpressionDynamics = true,
         bool ExpressionArticulations = true,
-        bool ExpressionRepeats = true);
+        bool ExpressionRepeats = true,
+        bool ExpressionAutoPedal = false);
 }

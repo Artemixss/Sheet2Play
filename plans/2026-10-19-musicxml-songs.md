@@ -370,6 +370,14 @@ Bar lines and bar readout, pedal lane, staff colours, song badges (engine, timin
 (legacy)", found features such as "34 articulations · 0 pedals"), Re-convert, Export MusicXML and
 Export MIDI.
 
+**Phase 5 (2026-10-20):** requested with two removals the user added ("we can remove midi synth one
+let it be only 2 pianos", "only 480 and 465 remains in the frontend"): the MIDI device is gone (no
+piano installed now means silent playback with a notice), the home screen offers HOMR 480 and 465
+only, and 426 and Zeus stay in the backend so their 59 cached songs keep playing until Phase 6.
+Shipped the same day with every listed item; see the
+[Phase 5 report](../Research/omr/reports/musicxml-songs/phase5/REPORT.md). The user's check in the
+published exe remains.
+
 **Accept when:** `--smoke` snapshots cover every new screen and state; every new setting has a
 visible control; frame time p95 (`Program.Bench`) stays within 10% of the pre-change baseline on
 the densest song; the user checks it in the published exe; the release gate passes.

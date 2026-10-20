@@ -476,9 +476,9 @@ public static partial class SongCache
                                file.EndsWith(".tiff", StringComparison.OrdinalIgnoreCase) ||
                                file.EndsWith(".webp", StringComparison.OrdinalIgnoreCase))
                 .Select(static path => new FileInfo(path))
-                .Select(static file => new PdfLibraryEntry(
+                .Select(file => new PdfLibraryEntry(
                     file.FullName,
-                    Path.GetFileNameWithoutExtension(file.Name),
+                    LibraryName(applicationDirectory, Path.GetFileNameWithoutExtension(file.Name)),
                     file.Length,
                     file.LastWriteTimeUtc))
                 .OrderBy(static entry => entry.DisplayName, StringComparer.CurrentCultureIgnoreCase)
@@ -491,6 +491,48 @@ public static partial class SongCache
             return [];
         }
     }
+
+    /// <summary>
+    /// The name a library file is listed under: its own, or for a copy the MIDI cache kept under its
+    /// hash (<c>&lt;source sha&gt;-&lt;profile sha&gt;</c>), the song's name from that cache or its
+    /// package, so the list never shows a row of hex.
+    /// </summary>
+    private static string LibraryName(string applicationDirectory, string fileName)
+    {
+        if (!System.Text.RegularExpressions.Regex.IsMatch(fileName, "^[0-9a-f]{64}-[0-9a-f]{64}$"))
+        {
+            return fileName;
+        }
+        string songs = Path.Combine(applicationDirectory, "songs");
+        IEnumerable<string> records =
+            SafeFiles(Path.Combine(songs, "midi"), fileName + "*.mid.cache.json", SearchOption.AllDirectories)
+                .Concat(SafeDirectories(Path.Combine(songs, ScoresFolderName), fileName[..64] + "*")
+                    .Select(static package => Path.Combine(package, PackageManifestName)));
+        foreach (string record in records)
+        {
+            try
+            {
+                using JsonDocument document = JsonDocument.Parse(File.ReadAllText(record));
+                if (document.RootElement.TryGetProperty("display_name", out JsonElement name) &&
+                    name.GetString() is string display && !string.IsNullOrWhiteSpace(display))
+                {
+                    return display;
+                }
+            }
+            catch (Exception exception) when (exception is IOException or UnauthorizedAccessException or JsonException)
+            {
+            }
+        }
+        return $"Unnamed score ({fileName[..8]})";
+    }
+
+    private static IEnumerable<string> SafeFiles(string directory, string pattern, SearchOption option) =>
+        Directory.Exists(directory) ? Directory.EnumerateFiles(directory, pattern, option) : [];
+
+    private static IEnumerable<string> SafeDirectories(string scores, string pattern) =>
+        Directory.Exists(scores)
+            ? Directory.EnumerateDirectories(scores).SelectMany(engine => Directory.EnumerateDirectories(engine, pattern))
+            : [];
 
     private static IReadOnlyList<MidiLibraryEntry> GetMidiLibraryCore(
         string applicationDirectory)
@@ -1206,6 +1248,8 @@ public static partial class SongCache
             string manifestJson = JsonSerializer.Serialize(manifest, ManifestJsonOptions);
             File.WriteAllText(temporaryManifestPath, manifestJson);
 
+            // A source already in the library is not copied again under the cache's hashed name:
+            // that copy is what filled the PDF list with numbered duplicates.
             if ((OmrPipeline.IsPinnedNative(engine) || string.Equals(
                     Path.GetExtension(sourcePath),
                     ".pdf",
@@ -1213,6 +1257,10 @@ public static partial class SongCache
                 !string.Equals(
                     Path.GetFullPath(sourcePath),
                     Path.GetFullPath(cachePaths.PdfPath),
+                    StringComparison.OrdinalIgnoreCase) &&
+                !string.Equals(
+                    Path.GetDirectoryName(Path.GetFullPath(sourcePath)),
+                    Path.GetFullPath(cachePaths.PdfDirectory),
                     StringComparison.OrdinalIgnoreCase))
             {
                 temporaryPdfPath = Path.Combine(

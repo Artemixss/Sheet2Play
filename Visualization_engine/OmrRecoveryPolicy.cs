@@ -10,22 +10,14 @@ internal enum OmrRecoveryAction
 internal static class OmrRecoveryPolicy
 {
     public static IReadOnlyList<OmrRecoveryAction> GetActions(OmrEngine engine) =>
-        engine switch
-        {
-            OmrEngine.Homr =>
-            [
-                OmrRecoveryAction.RetrySameEngine,
-                OmrRecoveryAction.ChooseAnotherFile
-            ],
-            OmrEngine.Zeus or OmrEngine.Homr465 or OmrEngine.Homr480 =>
+        OmrEngines.RunsOmr(engine)
+            ?
             [
                 OmrRecoveryAction.RetrySameEngine,
                 OmrRecoveryAction.RetryWithHomr,
                 OmrRecoveryAction.ChooseAnotherFile
-            ],
-            _ => throw new ArgumentOutOfRangeException(
-                nameof(engine), engine, "Unknown OMR engine.")
-        };
+            ]
+            : throw new ArgumentOutOfRangeException(nameof(engine), engine, "Unknown OMR engine.");
 
     public static string GetSameEngineLabel(OmrEngine engine) => engine switch
     {
@@ -38,20 +30,15 @@ internal static class OmrRecoveryPolicy
     };
 
     /// <summary>
-    /// The engine the error screen offers instead: HOMR 480, the default, falls back to the
-    /// secondary HOMR 465; 465 and Zeus fall back to HOMR 426; 426 to Zeus.
+    /// The engine the error screen offers instead, always one the home screen offers: HOMR 480, the
+    /// default, falls back to the secondary HOMR 465, and every other engine to HOMR 480.
     /// </summary>
-    public static OmrEngine GetAlternateEngine(OmrEngine engine) => engine switch
-    {
-        OmrEngine.Homr480 => OmrEngine.Homr465,
-        OmrEngine.Zeus or OmrEngine.Homr465 => OmrEngine.Homr,
-        _ => OmrEngine.Zeus
-    };
+    public static OmrEngine GetAlternateEngine(OmrEngine engine) =>
+        engine == OmrEngine.Homr480 ? OmrEngine.Homr465 : OmrEngine.Homr480;
 
     public static string GetAlternateLabel(OmrEngine engine) => GetAlternateEngine(engine) switch
     {
         OmrEngine.Homr465 => "Retry HOMR 465",
-        OmrEngine.Homr => "Retry HOMR 426",
-        _ => "Retry Zeus"
+        _ => "Retry HOMR 480"
     };
 }

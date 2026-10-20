@@ -151,9 +151,11 @@ public sealed class FrontendProgressTests
                 OmrRecoveryAction.ChooseAnotherFile
             ],
             OmrRecoveryPolicy.GetActions(OmrEngine.Zeus));
+        // A 426 failure, from a song converted before 426 left the home screen, can retry with 480.
         Assert.Equal(
             [
                 OmrRecoveryAction.RetrySameEngine,
+                OmrRecoveryAction.RetryWithHomr,
                 OmrRecoveryAction.ChooseAnotherFile
             ],
             OmrRecoveryPolicy.GetActions(OmrEngine.Homr));

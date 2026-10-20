@@ -44,6 +44,27 @@ public sealed record SongPerformance(
         UnmappedMemberHandling = JsonUnmappedMemberHandling.Disallow
     };
 
+    /// <summary>
+    /// What the score was found to hold, for the playback screen: "34 articulations · 0 pedals ·
+    /// 2 dynamics · 1 repeat". Zero counts are shown too, because HOMR reads no pedal or dynamics
+    /// and saying so is the point.
+    /// </summary>
+    public string FeatureSummary()
+    {
+        int Count(string name) =>
+            Features.ValueKind == JsonValueKind.Object &&
+            Features.TryGetProperty(name, out JsonElement value) &&
+            value.TryGetInt32(out int count)
+                ? count
+                : 0;
+        static string Counted(int count, string noun) => $"{count:N0} {noun}{(count == 1 ? "" : "s")}";
+        return string.Join(" · ",
+            Counted(Count("articulation_marks"), "articulation"),
+            Counted(Count("pedal_marks"), "pedal"),
+            Counted(Count("dynamics_marks"), "dynamic"),
+            Counted(Count("repeat_backward") + Count("jump_marks"), "repeat"));
+    }
+
     /// <summary>Parses and checks a performance document; throws <see cref="InvalidDataException"/>.</summary>
     public static SongPerformance Parse(string json)
     {
@@ -221,6 +242,7 @@ public sealed record SongTempo(
 /// <param name="Pedal">Produce pedal changes from the pedal marks.</param>
 /// <param name="Dynamics">Velocities from dynamics and hairpins; otherwise 80 for every note.</param>
 /// <param name="Articulations">Shorten, accent and roll notes by their articulations.</param>
+/// <param name="AutoPedal">Pedal by bar and bass in place of the pedal marks (<see cref="SongExpression.AutoPedal"/>).</param>
 /// <remarks>The defaults are the timeline before expression existed, which the cache checks against.</remarks>
 public sealed record SongTimelineOptions(
     bool ExpandRepeats = true,
@@ -228,7 +250,8 @@ public sealed record SongTimelineOptions(
     double DefaultTempoBpm = 120,
     bool Pedal = false,
     bool Dynamics = false,
-    bool Articulations = false)
+    bool Articulations = false,
+    bool AutoPedal = false)
 {
     /// <summary>The timeline the EXPRESSION panel asks for. Grace notes play with the articulations.</summary>
     public static SongTimelineOptions For(ExpressionOptions expression) => new(
@@ -236,7 +259,8 @@ public sealed record SongTimelineOptions(
         IncludeGraceNotes: expression.Articulations,
         Pedal: expression.Pedal,
         Dynamics: expression.Dynamics,
-        Articulations: expression.Articulations);
+        Articulations: expression.Articulations,
+        AutoPedal: expression.AutoPedal);
 }
 
 /// <summary>Turns a <see cref="SongPerformance"/> into timed notes and pedal.</summary>
@@ -256,9 +280,11 @@ public static class SongTimeline
         double[] starts = MeasureStarts(performance, order);
         TempoMap tempo = BuildTempoMap(performance, order, starts, options.DefaultTempoBpm);
         List<Note> notes = PlaceNotes(performance, options, order, starts, tempo);
-        IReadOnlyList<PedalChange> pedal = options.Pedal
-            ? SongExpression.Pedal(performance, order, starts, tempo.SecondsAt)
-            : [];
+        IReadOnlyList<PedalChange> pedal = options.AutoPedal
+            ? SongExpression.AutoPedal(performance, order, starts, tempo.SecondsAt)
+            : options.Pedal
+                ? SongExpression.Pedal(performance, order, starts, tempo.SecondsAt)
+                : [];
         return new SongPlayback(notes, pedal);
     }
 
@@ -309,6 +335,7 @@ public static class SongTimeline
                     {
                         Occurrence = occurrence,
                         Part = note.Part,
+                        Staff = note.Staff,
                         KeyIndex = keyIndex,
                         StartBeat = startBeat,
                         Start = startSeconds,
@@ -332,6 +359,7 @@ public static class SongTimeline
                     {
                         Occurrence = occurrence,
                         Part = note.Part,
+                        Staff = note.Staff,
                         KeyIndex = keyIndex,
                         StartBeat = startBeat,
                         Start = tempo.SecondsAt(startBeat),
@@ -346,10 +374,17 @@ public static class SongTimeline
             SongExpression.Roll(placed);
         }
 
+        // Hand colour by staff: the upper staff of a two-staff part is the right hand. A part with one
+        // staff says nothing about hands, so it keeps the split at middle C that MIDI songs use.
+        HashSet<int> twoHanded = performance.Parts
+            .Where(static part => part.Staves >= 2)
+            .Select(static part => part.Index)
+            .ToHashSet();
         List<Note> notes = new(placed.Count);
         foreach (SongExpression.PlacedNote note in placed)
         {
-            Color color = note.KeyIndex >= 39 ? Color.SkyBlue : Color.Lime;
+            bool rightHand = twoHanded.Contains(note.Part) ? note.Staff == 0 : note.KeyIndex >= 39;
+            Color color = rightHand ? Color.SkyBlue : Color.Lime;
             notes.Add(new Note(note.KeyIndex, note.Start, Math.Max(0, note.End - note.Start), note.Velocity, color));
         }
         notes.Sort(static (left, right) =>

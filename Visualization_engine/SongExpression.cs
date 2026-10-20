@@ -6,18 +6,23 @@ namespace SynthesiaClone;
 /// <param name="Articulations">Staccato and its relatives shorten, accents strike harder, marked chords
 /// roll, and grace notes play.</param>
 /// <param name="Repeats">Walk the score's repeats and voltas; otherwise every measure once, in order.</param>
+/// <param name="AutoPedal">Pedal a score as a pianist would, re-pressing at each bar and each new
+/// bass note, in place of its pedal marks. Off unless the user turns it on: OMR reads no pedal marks,
+/// so this is a guess at what the score leaves unwritten.</param>
 public sealed record ExpressionOptions(
     bool Pedal = true,
     bool Dynamics = true,
     bool Articulations = true,
-    bool Repeats = true)
+    bool Repeats = true,
+    bool AutoPedal = false)
 {
     /// <summary>No expression, repeats played: exactly what the app played before expression existed.</summary>
     public static ExpressionOptions None { get; } = new(Pedal: false, Dynamics: false, Articulations: false);
 }
 
 /// <summary>Which expression a song has anything for, so the panel can say when a switch does nothing.</summary>
-public sealed record ExpressionAvailability(bool Pedal, bool Dynamics, bool Articulations, bool Repeats)
+public sealed record ExpressionAvailability(bool Pedal, bool Dynamics, bool Articulations, bool Repeats,
+    bool AutoPedal = false)
 {
     public static ExpressionAvailability Nothing { get; } = new(false, false, false, false);
 }
@@ -87,7 +92,8 @@ public static class SongExpression
             Pedal: performance.Pedals.Any(static pedal => PedalValues(pedal).Length > 0),
             Dynamics: performance.Wedges.Count > 0 || performance.Dynamics.Any(static mark => Resolve(mark) is not (null, null)),
             Articulations: articulations,
-            Repeats: repeats);
+            Repeats: repeats,
+            AutoPedal: performance.Notes.Any(static note => !note.Grace));
     }
 
     // --- Articulations --------------------------------------------------------------------------
@@ -245,6 +251,86 @@ public static class SongExpression
             state = value;
         }
         return changes;
+    }
+
+    /// <summary>How long after a change the pedal goes down again, in seconds.</summary>
+    /// <remarks>
+    /// Legato pedalling: the pedal comes up as the new harmony is struck, clearing the old one, and
+    /// goes down a moment later, while the fingers still hold the new notes, so they ring on.
+    /// </remarks>
+    public const double AutoPedalCatchSeconds = 0.08;
+
+    /// <summary>
+    /// Pedal changes a pianist might play where the score marks none: up and down again at every bar,
+    /// and within a bar wherever the bass moves to a lower note of a different pitch class, which is
+    /// where the harmony usually changes. The bass is the left hand (the lower staff of a two-staff
+    /// part), or every note when no part has two staves.
+    /// </summary>
+    /// <remarks>
+    /// A heuristic, not a reading: broken chords and sustained accompaniments come out rich, while a
+    /// bass that climbs within one harmony is held through, and a fast melody over a held bass blurs
+    /// a little, as it would under a real foot. The last change is released when the song ends.
+    /// </remarks>
+    internal static IReadOnlyList<PedalChange> AutoPedal(SongPerformance performance, IReadOnlyList<int> order,
+        double[] starts, Func<double, double> seconds)
+    {
+        HashSet<int> twoHanded = performance.Parts
+            .Where(static part => part.Staves >= 2)
+            .Select(static part => part.Index)
+            .ToHashSet();
+        Dictionary<int, List<SongNote>> bassByMeasure = performance.Notes
+            .Where(note => !note.Grace && (twoHanded.Count == 0 || (twoHanded.Contains(note.Part) && note.Staff >= 1)))
+            .GroupBy(static note => note.Measure)
+            .ToDictionary(static group => group.Key, static group => group.ToList());
+
+        List<double> changes = [];
+        for (int occurrence = 0; occurrence < order.Count; occurrence++)
+        {
+            changes.Add(starts[occurrence]);
+            if (!bassByMeasure.TryGetValue(order[occurrence], out List<SongNote>? bass))
+            {
+                continue;
+            }
+            // The lowest bass note since the last change: a note above it belongs to the same harmony.
+            int? lowest = null;
+            foreach (IGrouping<double, SongNote> onset in bass.GroupBy(static note => note.Offset).OrderBy(static group => group.Key))
+            {
+                int pitch = onset.Min(static note => note.Midi);
+                if (lowest is int current && pitch < current && pitch % 12 != current % 12)
+                {
+                    changes.Add(starts[occurrence] + onset.Key);
+                    lowest = pitch;
+                }
+                else
+                {
+                    lowest = Math.Min(lowest ?? pitch, pitch);
+                }
+            }
+        }
+        double endBeat = starts[^1] + performance.Measures[order[^1]].LengthBeats;
+
+        List<PedalChange> pedal = [];
+        double previousSeconds = double.NegativeInfinity;
+        foreach (double beat in changes.Distinct().Order())
+        {
+            double at = Math.Max(0, seconds(beat));
+            if (at - previousSeconds < AutoPedalCatchSeconds * 2)
+            {
+                // Too close to the last change to lift and catch again; hold through.
+                continue;
+            }
+            if (pedal.Count > 0)
+            {
+                pedal.Add(new PedalChange(at, 0));
+            }
+            pedal.Add(new PedalChange(at + AutoPedalCatchSeconds, 127));
+            previousSeconds = at;
+        }
+        if (pedal.Count > 0)
+        {
+            pedal.Add(new PedalChange(Math.Max(pedal[^1].Time, seconds(endBeat)), 0));
+        }
+        return pedal;
     }
 
     // --- Dynamics -------------------------------------------------------------------------------
@@ -453,6 +539,7 @@ public static class SongExpression
     {
         public required int Occurrence { get; init; }
         public required int Part { get; init; }
+        public int Staff { get; init; }
         public required int KeyIndex { get; init; }
         public required double StartBeat { get; init; }
         public required double Start { get; set; }

@@ -1,6 +1,5 @@
 using System.Runtime.InteropServices;
 using MeltySynth;
-using Melanchall.DryWetMidi.Multimedia;
 
 namespace SynthesiaClone;
 
@@ -25,7 +24,7 @@ public sealed record AudioOutputStatus(
     {
         AudioBackend.SoundFont => SoundFontName is null,
         AudioBackend.SfzPiano => Piano is null,
-        _ => DeviceName is null
+        _ => true
     };
 }
 
@@ -33,22 +32,19 @@ public sealed record AudioOutputStatus(
 /// Owns whichever output is actually making sound, and mints a timebase per song.
 /// </summary>
 /// <remarks>
-/// The backends differ in more than timbre, which is why this exists rather than a single
-/// <see cref="IMidiOutput"/>:
-///
-/// - An external MIDI device is a push target. Notes go out early by the audio offset to cover
-///   the synthesiser's latency, and song time comes from a stopwatch.
-/// - The built-in pianos (SoundFont and SFZ) render the audio here, so they own the schedule and
-///   report song time from the samples they have produced. Nothing is pushed to them, so their
-///   <see cref="IMidiOutput"/> is the null sink and every note reaches them through the timebase.
+/// The pianos (SoundFont and SFZ) render the audio here, so they own the schedule and report song
+/// time from the samples they have produced. Nothing is pushed to them, so their
+/// <see cref="IMidiOutput"/> is the null sink and every note reaches them through the timebase.
+/// With no piano at all, song time comes from a stopwatch and the app plays silently.
 ///
 /// The built-in pianos render on their own audio thread, not in the frame loop: the SFZ piano's
 /// worst block on the densest song took three quarters of its budget in Phase 4a, which leaves no
 /// room for a frame being drawn on the same thread.
 ///
 /// Selection resolves before it defaults: asking for the SFZ piano when it is not installed falls
-/// back to the SoundFont piano, and asking for either built-in piano on a machine without it falls
-/// back to the MIDI device rather than going silent, and says so.
+/// back to the SoundFont piano, and with neither the app runs silently and says how to install one.
+/// The external MIDI device was removed on 2026-10-20 at the user's request ("let it be only 2
+/// pianos"); a setting that still names it opens the SFZ piano.
 /// </remarks>
 public sealed class AudioOutput : IDisposable
 {
@@ -68,7 +64,6 @@ public sealed class AudioOutput : IDisposable
     private readonly SoundFont? soundFont;
     private readonly SfzPiano? sfzPiano;
     private readonly RaylibAudioSink? sink;
-    private readonly OutputDevice? outputDevice;
     private readonly object engineGate = new();
     private readonly Thread? audioThread;
     private volatile LockedPianoEngine? engine;
@@ -80,16 +75,14 @@ public sealed class AudioOutput : IDisposable
         SoundFont? soundFont,
         SfzPiano? sfzPiano,
         RaylibAudioSink? sink,
-        OutputDevice? outputDevice,
-        IMidiOutput midiOutput,
         AudioOutputStatus status)
     {
         Backend = backend;
         this.soundFont = soundFont;
         this.sfzPiano = sfzPiano;
         this.sink = sink;
-        this.outputDevice = outputDevice;
-        MidiOutput = midiOutput;
+        // Nothing is pushed to a piano; it plays from the timebase's schedule.
+        MidiOutput = new NullMidiOutput();
         Status = status;
         if (sink is not null)
         {
@@ -127,6 +120,7 @@ public sealed class AudioOutput : IDisposable
     public static AudioOutput Create(AudioBackend preferred, string? soundFontPath)
     {
         string? carriedProblem = null;
+        preferred = preferred.Offered();
         if (preferred == AudioBackend.SfzPiano)
         {
             (SfzPiano? piano, PianoStatus pianoStatus) = PianoLibrary.Load();
@@ -143,12 +137,10 @@ public sealed class AudioOutput : IDisposable
                         null,
                         piano,
                         audioSink,
-                        outputDevice: null,
-                        midiOutput: new NullMidiOutput(),
                         new AudioOutputStatus(AudioBackend.SfzPiano, null, pianoStatus.Bytes, null, null, piano.Description));
                 }
                 Console.Error.WriteLine("[AUDIO] " + audioProblem);
-                return CreateMidiDevice(audioProblem);
+                return CreateSilent(audioProblem);
             }
             Console.Error.WriteLine("[AUDIO] " + pianoStatus.Problem);
             // Not installed is not a reason to go silent: the SoundFont piano is the next best.
@@ -172,96 +164,31 @@ public sealed class AudioOutput : IDisposable
                         font,
                         null,
                         audioSink,
-                        outputDevice: null,
-                        // Nothing is pushed to the synth; it plays from the timebase's schedule.
-                        midiOutput: new NullMidiOutput(),
                         new AudioOutputStatus(
                             AudioBackend.SoundFont, fontStatus.Name, fontStatus.Bytes, null, carriedProblem));
                 }
                 Console.Error.WriteLine("[AUDIO] " + audioProblem);
-                return CreateMidiDevice(audioProblem);
+                return CreateSilent(audioProblem);
             }
             Console.Error.WriteLine("[AUDIO] " + fontStatus.Problem);
-            return CreateMidiDevice(carriedProblem ?? fontStatus.Problem);
+            // Salamander was asked for and is missing too, so neither piano can play.
+            return CreateSilent(carriedProblem is null ? fontStatus.Problem : NoPianoProblem);
         }
 
-        return CreateMidiDevice(null);
+        return CreateSilent(NoPianoProblem);
     }
 
-    private static AudioOutput CreateMidiDevice(string? carriedProblem)
-    {
-        OutputDevice? device = TryOpenMidiDevice(out string? deviceProblem);
-        if (device is null)
-        {
-            return new AudioOutput(
-                AudioBackend.MidiDevice,
-                null,
-                null,
-                null,
-                null,
-                new NullMidiOutput(),
-                new AudioOutputStatus(
-                    AudioBackend.MidiDevice, null, 0, null, carriedProblem ?? deviceProblem));
-        }
+    /// <summary>What the home screen says when neither piano is installed.</summary>
+    public const string NoPianoProblem =
+        "No piano is installed, so playback is silent. Run scripts\\install-piano.ps1 for Salamander, then pick it under PIANO.";
 
-        device.PrepareForEventsSending();
-        IMidiOutput output = new DryWetMidiOutput(device);
-        output.AllNotesOff();
-        return new AudioOutput(
-            AudioBackend.MidiDevice,
-            null,
-            null,
-            null,
-            device,
-            output,
-            new AudioOutputStatus(AudioBackend.MidiDevice, null, 0, device.Name, carriedProblem));
-    }
-
-    /// <summary>
-    /// Opens a MIDI synthesiser, preferring VirtualMIDISynth and falling back to any available
-    /// device. Returns null when the machine has no MIDI output at all; the caller then runs
-    /// silently rather than failing to start.
-    /// </summary>
-    private static OutputDevice? TryOpenMidiDevice(out string? problem)
-    {
-        problem = null;
-        try
-        {
-            OutputDevice byName = OutputDevice.GetByName("VirtualMIDISynth #1");
-            Console.WriteLine("[AUDIO SYSTEM] Connected to VirtualMIDISynth.");
-            return byName;
-        }
-        catch (Exception missingPreferred)
-        {
-            OutputDevice? fallback;
-            try
-            {
-                fallback = OutputDevice.GetAll().FirstOrDefault();
-            }
-            catch (Exception discovery)
-            {
-                Console.Error.WriteLine("[AUDIO SYSTEM] Could not enumerate MIDI devices. " + discovery.Message);
-                fallback = null;
-            }
-
-            if (fallback is null)
-            {
-                problem = "No MIDI output device found. Playback is silent; install a MIDI " +
-                    "synthesizer such as VirtualMIDISynth, or use a built-in piano.";
-                Console.Error.WriteLine("[AUDIO SYSTEM] " + problem + " " + missingPreferred.Message);
-                return null;
-            }
-
-            Console.Error.WriteLine(
-                "[AUDIO SYSTEM] VirtualMIDISynth unavailable; using " + fallback.Name +
-                ". " + missingPreferred.Message);
-            return fallback;
-        }
-    }
+    /// <summary>Plays nothing: song time comes from a stopwatch, so the notes still fall.</summary>
+    private static AudioOutput CreateSilent(string? problem) =>
+        new(AudioBackend.Silent, null, null, null, new AudioOutputStatus(AudioBackend.Silent, null, 0, null, problem));
 
     /// <summary>
     /// A piano of the kind playing now, for an offline render into <paramref name="target"/>, or
-    /// null with the MIDI device, whose samples live inside the external synthesiser. Safe to use
+    /// null when none is playing. Safe to use
     /// on another thread: it shares only the read-only SoundFont or SFZ bank.
     /// </summary>
     public IPianoEngine? CreateOfflineEngine(IAudioSink target, PlaybackSession session, int sampleRate)
@@ -276,8 +203,8 @@ public sealed class AudioOutput : IDisposable
     }
 
     /// <summary>
-    /// Builds the clock for a song. A built-in piano returns a timebase that owns the audio; the
-    /// MIDI backend returns the stopwatch clock the app has always used.
+    /// Builds the clock for a song. A piano returns a timebase that owns the audio; with none, the
+    /// stopwatch clock keeps the notes falling in silence.
     /// </summary>
     public IPlaybackTimebase CreateTimebase(PlaybackSession session, double audioOffsetSeconds)
     {
@@ -348,7 +275,6 @@ public sealed class AudioOutput : IDisposable
             timeEndPeriod(1);
         }
         sink?.Dispose();
-        outputDevice?.Dispose();
     }
 
     [DllImport("winmm.dll")]
