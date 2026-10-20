@@ -3,10 +3,13 @@
 **Plan:** [`2026-10-19-musicxml-songs`](../../../../../plans/2026-10-19-musicxml-songs.md), Phase 4a, requested
 2026-10-19 ("after that commit phase 3 then continue with the next phase"). No shipped change.
 **Result: the managed SFZ player meets every criterion that can be measured without the user's
-ears; sfizz is not measured, because using it needs a download the user has not approved.** The
-pick between YDP and Salamander is the user's (4b waits on it). Not committed.
+ears, and beats sfizz on every measure that differs; the two sound the same.** Committed as
+`ef02e4b`; the sfizz comparison was added on 2026-10-20 after the user approved the download.
+**The user picked the "2 Salamander" renders** (managed player with reverb) and asked to keep YDP
+selectable as well for now ("for testing keep implementing both").
 The listening files (`listen/`), the bank and the raw measurements (`measure/`) stay local: they are
-renders of the user's own songs and 1.3 GB of third-party samples.
+renders of the user's own songs and 1.3 GB of third-party samples. The renders the user did not
+pick were moved to `listen/not-chosen/`.
 
 ## What was built
 
@@ -80,12 +83,38 @@ conversion (no pedal: HOMR reads none).
 - `--render-audio` records the song in the user's recent list, and the recent list does not follow
   `SHEET2PLAY_HOME`, so Phase 3's render of the fixture from a throwaway library added a dead entry
   to the real list. It was removed (backup kept outside the repository). Left for the C# rework.
-- sfizz 1.2.3 (January 2024) ships for Windows as `sfizz-1.2.3-win64.zip`, 8.3 MB, from the
-  sfztools GitHub releases; whether it holds the library or only plugins is unknown until it is
-  downloaded.
+## sfizz comparison (2026-10-20)
+
+`sfizz-1.2.3-win64.zip` (8.3 MB, SHA-256 `7431cbe9b7f2e71a9ff4b12fbbe82c766dbf75b1eedecca627e7506cb06a9fcc`,
+sfztools GitHub releases) holds `sfizz.dll` (imports only KERNEL32), `sfizz_render.exe`, a test
+binary and static libraries; no headers. It was kept in the session scratchpad, outside the
+repository. `SfzSpike sfizz` drives `sfizz.dll` through its C API (`SfizzSynth.cs`, signatures from
+the 1.2.3 `sfizz.h`) with exactly the events and sample offsets the managed player gets, on
+Salamander's original 24-bit `.sfz`. sfizz streams from disk on its own threads, so its timing runs
+are paced in real time; the managed player was rerun the same day (dry, no reverb, as sfizz is).
+Raw results: `measure/sfizz.json` and `measure/sfizz.log` (local).
+
+| Measure | Managed (same day) | sfizz 1.2.3 |
+| --- | --- | --- |
+| Load, warm | 0.13 s (4a) | 0.34 s (4.7 s on first open) |
+| Commit added at load | 8.5 MB (4a) | 66 MB |
+| Densest song, 10 min at 1.0x | **0 late blocks**, max 11.2 ms, CPU 8.3% | 8 late blocks, max 28.1 ms, CPU 20.1% |
+| Same at 2.0x | **0 late blocks**, max 8.3 ms, CPU 10.5% | 52 late blocks, max 46.1 ms, CPU 22.8% |
+| 256 voices held | max 6.0 ms (4a) | max 10.7 ms, CPU 19.3% |
+| Live output equals a render that waited for the disk | yes (the bank is mapped) | **no** (max difference 0.27 on the densest song's first pass); 3 "could not enqueue the file to load (queue capacity 256)" at 2.0x |
+| Opcode coverage | 100% | 100% (no unknown opcode, 641 regions) |
+| Offline renders deterministic | yes | yes (freewheeling) |
+
+- **Sound:** on the three listening songs the two players' loudness envelopes correlate 0.976 to
+  0.997 and every octave band from 63 Hz to 8 kHz is within 0.3 dB, so sfizz offers nothing the
+  user would hear. (A 6 dB-in-20 ms onset count was also logged; it disagrees in both directions and
+  is too noisy to read.)
+- **Verdict:** keep the managed player. sfizz would add a native DLL to ship and hash-check, more
+  than twice the CPU, late blocks and streaming misses on the densest song, for the same sound.
+  Not pursued further, as the user asked.
 
 ## Next action
 
-The user picks the piano from `listen/`, and says whether sfizz should be compared (which needs the
-download above). Phase 4b then puts the pick into the app: installer with a pinned hash, PIANO
-selector, attribution, its own audio thread, and the release gate.
+Phase 4b, requested on 2026-10-20 ("you can continue phase 4"): Salamander through the managed
+player as the default piano, YDP still selectable, installer with a pinned hash, PIANO selector,
+attribution, its own audio thread, and the release gate.
