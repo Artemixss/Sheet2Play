@@ -41,9 +41,13 @@ internal static partial class Program
 		// Fabricated rather than queried, so these PNGs are identical on any machine - including
 		// one with no audio device and no soundfont installed. The audio system is never opened
 		// here; InitAudioDevice belongs to RunApplication alone.
-		activeAudioBackend = AudioBackend.SoundFont;
+		PianoDescription salamander = new("Salamander Grand Piano V3", "Salamander", "SalamanderGrandPianoV3.sfz",
+			"Salamander Grand Piano V3 by Alexander Holm, CC BY 3.0");
+		activeAudioBackend = AudioBackend.SfzPiano;
 		activeAudioStatus = new AudioOutputStatus(
-			AudioBackend.SoundFont, "YDP-GrandPiano.sf2", 118_398_836, null, null);
+			AudioBackend.SfzPiano, null, 1_307_297_224, null, null, salamander);
+		installedPiano = new PianoStatus(@"C:\pianos\salamander", salamander, 1_307_297_224, null);
+		installedSoundFont = new SoundFontStatus(@"C:\soundfonts\YDP-GrandPiano.sf2", 118_398_836, null);
 
 		int failures = 0;
 		try
@@ -57,6 +61,32 @@ internal static partial class Program
 				int a = 0, b = 0, c = 0;
 				DrawLanding(layout, ref engine, [], [], [], ref a, ref b, ref filter, ref c, new LibrarySearchState(),
 					null, out _, out _);
+			});
+
+			// The SFZ piano asked for but not installed: YDP plays, and the bar says why.
+			failures += Capture(outputDirectory, "01-landing-piano-not-installed", layout, () =>
+			{
+				AudioBackend backend = activeAudioBackend;
+				AudioOutputStatus? status = activeAudioStatus;
+				PianoStatus? piano = installedPiano;
+				const string problem = "Salamander is not installed. Run scripts\\install-piano.ps1, then pick it again.";
+				activeAudioBackend = AudioBackend.SoundFont;
+				activeAudioStatus = new AudioOutputStatus(AudioBackend.SoundFont, "YDP-GrandPiano.sf2", 118_398_836, null, problem);
+				installedPiano = new PianoStatus(null, null, 0, problem);
+				try
+				{
+					OmrEngine engine = OmrEngine.Homr480;
+					OmrEngine? filter = null;
+					int a = 0, b = 0, c = 0;
+					DrawLanding(layout, ref engine, [], [], [], ref a, ref b, ref filter, ref c, new LibrarySearchState(),
+						problem, out _, out _);
+				}
+				finally
+				{
+					activeAudioBackend = backend;
+					activeAudioStatus = status;
+					installedPiano = piano;
+				}
 			});
 
 			failures += Capture(outputDirectory, "02-landing-populated", layout, () =>

@@ -316,10 +316,12 @@ public static class AppSettingsStore
         }
     }
 
+    // The SFZ piano is the user's pick from Phase 4a; without it installed, Create falls back to the
+    // SoundFont piano and says why.
     private sealed record AppSettings(
         OmrEngine OmrEngine,
         int AudioOffsetMilliseconds = DefaultAudioOffsetMilliseconds,
-        AudioBackend AudioBackend = AudioBackend.SoundFont,
+        AudioBackend AudioBackend = AudioBackend.SfzPiano,
         int SynthAudioOffsetMilliseconds = UnsetSynthAudioOffset,
         string? SoundFontPath = null,
         bool TimingCorrection = false,

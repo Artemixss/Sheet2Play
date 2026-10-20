@@ -13,6 +13,12 @@ namespace SynthesiaClone;
 /// That isolation is the point. If a dense score cannot be drawn inside a frame budget here, where
 /// no audio is being synthesised at all, then the frame drops are not caused by the audio engine -
 /// which is the question this was written to settle.
+///
+/// <c>--audio sfz|ydp</c> asks the opposite question: whether the piano keeps up while the screen is
+/// drawn. It opens the real audio output, muted, plays the song on the audio thread at real time
+/// (<c>--rate</c> for faster), draws every frame at 144 fps as the app does, and reports the
+/// stream's underruns, the piano's load time and the commit charge it added. <c>--audio clock</c> is
+/// its control: the same real-time playback on the stopwatch clock, with no audio at all.
 /// </summary>
 internal static partial class Program
 {
@@ -23,7 +29,8 @@ internal static partial class Program
 		if (args.Length < 2 || args[1].StartsWith("--", StringComparison.Ordinal))
 		{
 			Console.Error.WriteLine(
-				"[BENCH] Usage: --bench <song> [--frames 600] [--start 30] [--width 1280] [--height 720]");
+				"[BENCH] Usage: --bench <song> [--frames 600] [--start 30] [--width 1280] [--height 720] " +
+				"[--audio sfz|ydp|clock] [--rate 1.0]");
 			return 1;
 		}
 
@@ -42,7 +49,8 @@ internal static partial class Program
 		SongLoadResult song;
 		try
 		{
-			song = SongCache.LoadOrCreateDetailed(source, AppSettingsStore.LoadEngine());
+			// Not recorded as recently opened: a measurement is not the user opening a song.
+			song = SongCache.LoadOrCreateDetailed(source, AppSettingsStore.LoadEngine(), recordRecent: false);
 		}
 		catch (Exception error)
 		{
@@ -50,7 +58,24 @@ internal static partial class Program
 			return 1;
 		}
 
-		PlaybackSession session = new(song.Notes);
+		string? audioOption = GetDemoOption(args, "--audio");
+		if (audioOption is not (null or "sfz" or "ydp" or "clock"))
+		{
+			Console.Error.WriteLine("[BENCH] --audio is sfz, ydp or clock.");
+			return 1;
+		}
+		double rate = ParseDemoDouble(GetDemoOption(args, "--rate"), 1.0);
+		// With audio, the song plays as the app plays it: expression, pedal and all.
+		PlaybackSession session;
+		if (audioOption is null)
+		{
+			session = new(song.Notes);
+		}
+		else
+		{
+			SongPlayback expressive = ExpressionPlayback.ForSong(song, AppSettingsStore.LoadExpression());
+			session = new(expressive.Notes, pedal: expressive.Pedal);
+		}
 		start = Math.Clamp(start, 0, Math.Max(0, session.TotalDuration - 1));
 
 		// --vsync reproduces the real app's presentation: VSyncHint plus SetTargetFPS(144), on a
@@ -59,6 +84,8 @@ internal static partial class Program
 		// late if the two throttles disagree.
 		bool withVsync = args.Any(a => string.Equals(a, "--vsync", StringComparison.OrdinalIgnoreCase));
 		bool withTargetFps = args.Any(a => string.Equals(a, "--target-fps", StringComparison.OrdinalIgnoreCase));
+		// Audio plays in real time, so the frames must be paced like the app's.
+		withTargetFps |= audioOption is not null;
 		if (withVsync)
 		{
 			Raylib.SetConfigFlags(ConfigFlags.VSyncHint);
@@ -83,22 +110,73 @@ internal static partial class Program
 			// the run reproducible and lets the position advance at a fixed rate regardless of how
 			// long a frame actually took.
 			double position = start;
-			PlaybackController playback = new(
-				session,
-				new NullMidiOutput(),
-				new PlaybackClock(() => position));
-			playback.Seek(start, resume: false);
-
-			activeAudioBackend = AudioBackend.MidiDevice;
-			activeAudioStatus = new AudioOutputStatus(AudioBackend.MidiDevice, null, 0, "bench", null);
+			AudioOutput? audio = null;
+			PlaybackController playback;
+			bool live = audioOption is not null;
+			if (audioOption == "clock")
+			{
+				playback = new(session, new NullMidiOutput(), new PlaybackClock());
+				playback.SetPlaybackRate(rate);
+				playback.Seek(start, resume: true);
+				activeAudioBackend = AudioBackend.MidiDevice;
+				activeAudioStatus = new AudioOutputStatus(AudioBackend.MidiDevice, null, 0, "bench", null);
+			}
+			else if (audioOption is null)
+			{
+				playback = new(
+					session,
+					new NullMidiOutput(),
+					new PlaybackClock(() => position));
+				playback.Seek(start, resume: false);
+				activeAudioBackend = AudioBackend.MidiDevice;
+				activeAudioStatus = new AudioOutputStatus(AudioBackend.MidiDevice, null, 0, "bench", null);
+			}
+			else
+			{
+				AudioBackend backend = audioOption == "sfz" ? AudioBackend.SfzPiano : AudioBackend.SoundFont;
+				using System.Diagnostics.Process self = System.Diagnostics.Process.GetCurrentProcess();
+				self.Refresh();
+				long privateBefore = self.PrivateMemorySize64;
+				System.Diagnostics.Stopwatch loading = System.Diagnostics.Stopwatch.StartNew();
+				audio = AudioOutput.Create(backend, AppSettingsStore.LoadSoundFontPath());
+				double loadSeconds = loading.Elapsed.TotalSeconds;
+				self.Refresh();
+				if (audio.Backend != backend)
+				{
+					Console.Error.WriteLine($"[BENCH] Could not open {backend}: {audio.Status.Problem}");
+					audio.Dispose();
+					return 1;
+				}
+				audio.Mute();
+				Console.WriteLine($"[BENCH] piano     {backend}, loaded in {loadSeconds:0.00} s, " +
+					$"commit +{(self.PrivateMemorySize64 - privateBefore) / 1024.0 / 1024.0:0.0} MB");
+				double offset = AppSettingsStore.ResolveAudioOffsetMilliseconds(backend, audio.BufferedSeconds) / 1000.0;
+				playback = new(session, audio.MidiOutput, audio.CreateTimebase(session, offset));
+				playback.SetPlaybackRate(rate);
+				playback.Seek(start, resume: true);
+				activeAudioBackend = audio.Backend;
+				activeAudioStatus = audio.Status;
+			}
 
 			FrameTimeTracker tracker = new();
 			int visiblePeak = 0;
+			// Where each underrun happened, so one at the start (filling an empty stream) can be told
+			// from one mid-song.
+			List<double> underrunsAt = [];
 			double step = 1.0 / 144.0;
 
 			for (int frame = 0; frame < frames; frame++)
 			{
 				position = start + (frame * step);
+				if (live)
+				{
+					audio?.Pump();
+					playback.Update();
+					if (audio is not null && audio.UnderrunCount > underrunsAt.Count)
+					{
+						underrunsAt.Add(playback.Position);
+					}
+				}
 				double frameStarted = System.Diagnostics.Stopwatch.GetTimestamp()
 					/ (double)System.Diagnostics.Stopwatch.Frequency;
 
@@ -116,7 +194,7 @@ internal static partial class Program
 				Raylib.EndDrawing();
 
 				double lookAhead = Math.Max(1.0, (double)(layout.HitLineY - layout.HeaderHeight) / layout.FallSpeed + 1.0);
-				(int Start, int End) range = session.GetVisibleRange(position, 1.0, lookAhead);
+				(int Start, int End) range = session.GetVisibleRange(live ? playback.Position : position, 1.0, lookAhead);
 				visiblePeak = Math.Max(visiblePeak, range.End - range.Start);
 			}
 
@@ -125,6 +203,13 @@ internal static partial class Program
 			Console.WriteLine($"[BENCH] window    {width}x{height}   from {start:0.0}s, {frames} frames");
 			Console.WriteLine($"[BENCH] visible   {visiblePeak} notes at peak");
 			Console.WriteLine(tracker.Summarise(Path.GetFileNameWithoutExtension(source)));
+			if (audio is not null)
+			{
+				Console.WriteLine($"[BENCH] audio     {playback.Position - start:0.0} song seconds at {rate:0.00}x, " +
+					$"{audio.UnderrunCount} underruns" +
+					(underrunsAt.Count == 0 ? string.Empty : $" (at {string.Join(", ", underrunsAt.Select(at => $"{at:0.00} s"))})"));
+				audio.Dispose();
+			}
 			return 0;
 		}
 		catch (Exception error)

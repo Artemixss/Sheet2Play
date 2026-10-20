@@ -112,6 +112,10 @@ internal static partial class Program
 		{
 			return RunBench(args);
 		}
+		if (args.Length > 0 && string.Equals(args[0], "--build-piano-bank", StringComparison.OrdinalIgnoreCase))
+		{
+			return RunBuildPianoBank(args);
+		}
 		RunApplication();
 		return 0;
 	}
@@ -189,9 +193,7 @@ internal static partial class Program
 		// The built-in synth loads a soundfont from disk in well under a second; opening a cold
 		// VirtualMIDISynth makes it page in gigabytes of samples and takes seconds. Say which is
 		// happening, because a silent multi-second stall reads as a hang.
-		DrawStartupNotice(preferredBackend == AudioBackend.SoundFont
-			? "Loading soundfont..."
-			: "Connecting to audio device...");
+		DrawStartupNotice(StartupNotice(preferredBackend));
 		// Not a using declaration: switching backend disposes this and builds another, and a
 		// using declaration cannot be reassigned. Disposed at the end of the method instead.
 		AudioOutput audioOutput = AudioOutput.Create(
@@ -204,6 +206,7 @@ internal static partial class Program
 		// cannot be opened, and the offset must be saved against what is actually playing.
 		activeAudioBackend = audioOutput.Backend;
 		activeAudioStatus = audioOutput.Status;
+		RefreshInstalledPianos();
 		UiLayout layout = UiLayout.Create(Raylib.GetScreenWidth(), Raylib.GetScreenHeight());
 		Keyboard keyboard = new Keyboard(layout.Width, layout.HitLineY, layout.KeyboardHeight);
 		int lastWidth = layout.Width;
@@ -283,9 +286,7 @@ internal static partial class Program
 				// frame loop that stops pumping gets marked "Not Responding" by Windows. Measured
 				// at roughly ten seconds on one development machine, far too long to leave a frozen
 				// window with no explanation.
-				DrawStartupNotice(requestedBackend == AudioBackend.SoundFont
-					? "Loading soundfont..."
-					: "Connecting to audio device...");
+				DrawStartupNotice(StartupNotice(requestedBackend));
 
 				audioOutput = AudioOutput.Create(
 					requestedBackend,
@@ -293,6 +294,7 @@ internal static partial class Program
 				midiOutput = audioOutput.MidiOutput;
 				activeAudioBackend = audioOutput.Backend;
 				activeAudioStatus = audioOutput.Status;
+				RefreshInstalledPianos();
 				LogAudioDecision("switch", requestedBackend, audioOutput);
 				message = audioOutput.Status.Problem;
 
@@ -452,6 +454,8 @@ internal static partial class Program
 					pdfLibrary = SongCache.GetPdfLibrary();
 					cachedSongs = SongCache.GetCachedSongs();
 					midiLibrary = SongCache.GetMidiLibrary();
+					// So a piano installed while the app is open shows up without a restart.
+					RefreshInstalledPianos();
 					pdfScrollOffset = 0;
 					cacheScrollOffset = 0;
 					midiScrollOffset = 0;
@@ -557,6 +561,13 @@ internal static partial class Program
 		UiTheme.DrawText(hint, hintX, y + fontSize + 14, hintSize, UiTheme.Muted);
 		Raylib.EndDrawing();
 	}
+
+	private static string StartupNotice(AudioBackend backend) => backend switch
+	{
+		AudioBackend.SfzPiano => "Loading piano...",
+		AudioBackend.SoundFont => "Loading soundfont...",
+		_ => "Connecting to audio device..."
+	};
 
 	private unsafe static void StartFilePicker(ConcurrentQueue<string> selectedFiles, DialogState dialogState)
 	{
@@ -739,7 +750,6 @@ internal static partial class Program
 			PersistTimingCorrection(timingCorrectionEnabled);
 		}
 		float engineCardGap = 16f * scale;
-		float engineCardWidth = (contentWidth - engineCardGap) / 2f;
 		// HOMR 480 is the default engine and 465 the secondary; 426 and Zeus stay selectable.
 		float omrCardWidth = (contentWidth - 3f * engineCardGap) / 4f;
 		Rectangle homr480Card = new Rectangle(contentLeft, 194f * scale, omrCardWidth, 64f * scale);
@@ -777,31 +787,51 @@ internal static partial class Program
 			selectedEngine = OmrEngine.Homr;
 			PersistEngine(selectedEngine);
 		}
-		// AUDIO OUTPUT sits between the engine row and the library panels. The backend is a
-		// user-adjustable setting, so it gets a visible control rather than only a shortcut.
-		UiTheme.DrawText("AUDIO OUTPUT", (int)contentLeft, (int)(274f * scale), Math.Max(12, (int)(14f * scale)), UiTheme.Muted);
-		Rectangle synthCard = new Rectangle(contentLeft, 294f * scale, engineCardWidth, 64f * scale);
-		Rectangle deviceCard = new Rectangle(contentLeft + engineCardWidth + engineCardGap, 294f * scale, engineCardWidth, 64f * scale);
+		// PIANO sits between the engine row and the library panels. The piano is a user-adjustable
+		// setting, so it gets a visible control rather than only a shortcut.
+		UiTheme.DrawText("PIANO", (int)contentLeft, (int)(274f * scale), Math.Max(12, (int)(14f * scale)), UiTheme.Muted);
+		// The sample licences (CC BY) require attribution wherever the samples are offered.
+		string attribution = PianoAttribution();
+		if (attribution.Length > 0)
+		{
+			int attributionSize = Math.Max(11, (int)(12f * scale));
+			int attributionWidth = (int)(contentWidth - 80f * scale);
+			string shown = UiTheme.Ellipsize(attribution, attributionSize, attributionWidth);
+			UiTheme.DrawText(shown, (int)(contentLeft + contentWidth) - UiTheme.MeasureText(shown, attributionSize),
+				(int)(276f * scale), attributionSize, UiTheme.Muted);
+		}
+		float pianoCardWidth = (contentWidth - 2f * engineCardGap) / 3f;
+		Rectangle sfzCard = new Rectangle(contentLeft, 294f * scale, pianoCardWidth, 64f * scale);
+		Rectangle synthCard = new Rectangle(contentLeft + pianoCardWidth + engineCardGap, 294f * scale, pianoCardWidth, 64f * scale);
+		Rectangle deviceCard = new Rectangle(contentLeft + 2f * (pianoCardWidth + engineCardGap), 294f * scale, pianoCardWidth, 64f * scale);
 		int audioDescriptionSize = Math.Max(12, (int)(14f * scale));
-		int audioDescriptionWidth = (int)(engineCardWidth - 60f * scale);
-		// Both the dot and the text follow activeAudioBackend - what is actually making sound -
-		// because switching now takes effect immediately. When they disagreed, a card could show
-		// the dot while the other backend played, which is exactly how a silent fallback became
+		int audioDescriptionWidth = (int)(pianoCardWidth - 60f * scale);
+		// Every dot and description follows activeAudioBackend - what is actually making sound -
+		// because switching takes effect immediately. When they disagreed, a card could show the
+		// dot while another backend played, which is exactly how a silent fallback became
 		// indistinguishable from "you just clicked this".
+		string sfzTitle = installedPiano?.Description?.ShortName ?? "Salamander";
+		string sfzDescription = installedPiano?.Description is PianoDescription installed && installedPiano.IsAvailable
+			? UiTheme.Ellipsize(installed.Name, audioDescriptionSize, audioDescriptionWidth - (int)(60f * scale)) + " · reverb"
+			: "Not installed";
 		string synthDescription = activeAudioStatus?.SoundFontName is string fontName
-			? UiTheme.Ellipsize(fontName, audioDescriptionSize, audioDescriptionWidth) + " · reverb"
-			: activeAudioBackend == AudioBackend.SoundFont
-				? "No soundfont installed"
-				: "Soundfont · reverb";
+			? UiTheme.Ellipsize(fontName, audioDescriptionSize, audioDescriptionWidth - (int)(60f * scale)) + " · reverb"
+			: installedSoundFont?.Name is string installedFont
+				? UiTheme.Ellipsize(installedFont, audioDescriptionSize, audioDescriptionWidth - (int)(60f * scale)) + " · reverb"
+				: "No soundfont installed";
 		string deviceDescription = activeAudioStatus?.DeviceName is string deviceName
-			? UiTheme.Ellipsize(deviceName, audioDescriptionSize, audioDescriptionWidth) + " · external"
-			// Only claim there is no device when we actually went looking. With the built-in
-			// synth playing, the MIDI device is never opened, so its absence is unknown
-			// rather than established.
+			? UiTheme.Ellipsize(deviceName, audioDescriptionSize, audioDescriptionWidth - (int)(60f * scale)) + " · external"
+			// Only claim there is no device when we actually went looking. With a built-in piano
+			// playing, the MIDI device is never opened, so its absence is unknown rather than
+			// established.
 			: activeAudioBackend == AudioBackend.MidiDevice
 				? "No MIDI device found"
 				: "VirtualMIDISynth or similar";
-		if (DrawEngineCard(synthCard, "Built-in synth", synthDescription, UiTheme.Lime, activeAudioBackend == AudioBackend.SoundFont))
+		if (DrawEngineCard(sfzCard, sfzTitle, sfzDescription, UiTheme.Lime, activeAudioBackend == AudioBackend.SfzPiano))
+		{
+			PersistAudioBackend(AudioBackend.SfzPiano);
+		}
+		if (DrawEngineCard(synthCard, "YDP", synthDescription, UiTheme.Lime, activeAudioBackend == AudioBackend.SoundFont))
 		{
 			PersistAudioBackend(AudioBackend.SoundFont);
 		}
@@ -1561,7 +1591,8 @@ internal static partial class Program
 			(string audioLabel, Color audioAccent) = audio switch
 			{
 				{ IsSilent: true } => ("SILENT", UiTheme.Muted),
-				{ Backend: AudioBackend.SoundFont } => ("SYNTH", UiTheme.Lime),
+				{ Backend: AudioBackend.SoundFont } => ("YDP", UiTheme.Lime),
+				{ Backend: AudioBackend.SfzPiano } => ("SFZ", UiTheme.Lime),
 				_ => ("MIDI", UiTheme.Sky)
 			};
 			// Left of the playback-rate control, which starts at Width - 400. The two badges on
@@ -1749,17 +1780,48 @@ internal static partial class Program
 	private static AudioOutputStatus? activeAudioStatus;
 
 	/// <summary>
+	/// Which pianos are installed, for the PIANO cards and the attribution line. Looked up when the
+	/// output opens or switches rather than every frame, and fabricated by <c>--smoke</c>.
+	/// </summary>
+	private static PianoStatus? installedPiano;
+
+	private static SoundFontStatus? installedSoundFont;
+
+	private const string YdpAttribution = "YDP Grand Piano by FreePats, CC BY 3.0";
+
+	private static void RefreshInstalledPianos()
+	{
+		installedPiano = PianoLibrary.Resolve();
+		installedSoundFont = SoundFontLibrary.Resolve(AppSettingsStore.LoadSoundFontPath());
+	}
+
+	/// <summary>The credit line for every sample set the PIANO row offers.</summary>
+	private static string PianoAttribution()
+	{
+		List<string> credits = [];
+		if (installedPiano?.Description is PianoDescription piano && installedPiano.IsAvailable)
+		{
+			credits.Add(piano.Attribution);
+		}
+		string? fontName = activeAudioStatus?.SoundFontName ?? installedSoundFont?.Name;
+		if (fontName is not null && fontName.StartsWith("YDP", StringComparison.OrdinalIgnoreCase))
+		{
+			credits.Add(YdpAttribution);
+		}
+		return string.Join("  ·  ", credits);
+	}
+
+	/// <summary>
 	/// Renders the loaded song to an MP3 on a worker thread.
 	/// </summary>
 	/// <remarks>
 	/// Off the frame loop because a full song takes seconds even at ~50x real time, and blocking the
-	/// loop is what made the backend switch look like a hang. MeltySynth is not thread-safe, so the
-	/// worker builds its own <see cref="SoundFontEngine"/> and shares only the immutable, already
-	/// parsed <see cref="MeltySynth.SoundFont"/> - loading the 118MB font a second time would be
-	/// both slow and pointless.
+	/// loop is what made the backend switch look like a hang. Neither piano engine is thread-safe, so
+	/// the worker builds its own and shares only the read-only samples (the parsed SoundFont or the
+	/// mapped SFZ bank) - loading them a second time would be both slow and pointless.
 	///
-	/// Requires the built-in synth: the MIDI-device backend has no soundfont to render with, because
-	/// the samples live inside the external synthesiser.
+	/// Requires a built-in piano, and renders with the one playing: the MIDI-device backend has no
+	/// samples to render with, because they live inside the external synthesiser.
 	/// </remarks>
 	private static void StartAudioExport(
 		AudioOutput audioOutput,
@@ -1775,13 +1837,12 @@ internal static partial class Program
 			exportStatus = "Nothing loaded to export.";
 			return;
 		}
-		if (audioOutput.SoundFont is null)
+		if (!audioOutput.CanRender)
 		{
-			exportStatus = "Export needs the built-in synth - switch AUDIO OUTPUT on the home screen.";
+			exportStatus = "Export needs a built-in piano - pick Salamander or YDP under PIANO on the home screen.";
 			return;
 		}
 
-		MeltySynth.SoundFont soundFont = audioOutput.SoundFont;
 		// The session the user is hearing, pedal and all, so the file sounds like the playback.
 		PlaybackSession exportSession = playback.Session;
 		string displayName = song.DisplayName;
@@ -1797,7 +1858,7 @@ internal static partial class Program
 				string target = Path.Combine(ExportDirectory, safeName + ".mp3");
 
 				using Mp3FileSink sink = new(target, RenderSampleRate, RenderBlockFrames);
-				SoundFontEngine synth = new(soundFont, sink, exportSession, RenderSampleRate);
+				IPianoEngine synth = audioOutput.CreateOfflineEngine(sink, exportSession, RenderSampleRate)!;
 				synth.Seek(0);
 				synth.Start();
 				double until = exportSession.TotalDuration + RenderDefaultTailSeconds;
@@ -1942,6 +2003,7 @@ internal static partial class Program
 				$"{DateTime.Now:yyyy-MM-dd HH:mm:ss}  {reason,-8}  requested={requested}  " +
 				$"active={result.Backend}" +
 				(status.SoundFontName is null ? string.Empty : $"  soundfont={status.SoundFontName}") +
+				(status.Piano is null ? string.Empty : $"  piano={status.Piano.Name}") +
 				(status.DeviceName is null ? string.Empty : $"  device={status.DeviceName}") +
 				(result.Backend != requested ? "  FELL BACK" : string.Empty) +
 				(status.Problem is null ? string.Empty : $"  problem={status.Problem}");
@@ -1970,7 +2032,7 @@ internal static partial class Program
 		if (updated != (int)Math.Round(playback.AudioOffsetSeconds * 1000.0))
 		{
 			playback.SetAudioOffsetSeconds((double)updated / 1000.0);
-			if (activeAudioBackend == AudioBackend.SoundFont)
+			if (activeAudioBackend.IsBuiltIn())
 			{
 				AppSettingsStore.SaveSynthAudioOffsetMilliseconds(updated);
 			}

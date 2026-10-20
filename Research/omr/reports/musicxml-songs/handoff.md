@@ -10,9 +10,26 @@ made collapsible at the user's suggestion. Phase 4 requested the same day ("afte
 then continue with the next phase").
 **Phase 4a:** done the same day, no shipped change ([Phase 4a report](phase4a/REPORT.md)): the managed
 SFZ player passes every measurable criterion; sfizz is unmeasured pending a download approval.
-**Next authorized action:** none until the user picks YDP or Salamander from `phase4a/listen/`
-(local) and says whether to compare sfizz. 4b then implements the pick. The user wants any C# engine rework as a separate request at the end of the plan, before
-Phase 6.
+Committed as `ef02e4b` on 2026-10-20. The user then chose **both pianos** in the PIANO selector
+("for testing keep implementing both"; some may be removed later on performance), and approved the
+sfizz comparison ("if the zip doesn't contain anything useful don't keep chasing").
+**sfizz comparison (2026-10-20, done):** same sound as the managed player, but 8 and 52 late
+blocks at 1.0x and 2.0x on the densest song (managed: 0 and 0), twice the CPU, and live disk
+streaming that falls behind. Not pursued ([4a report](phase4a/REPORT.md#sfizz-comparison-2026-10-20)).
+**The user then picked the "2 Salamander" renders** (managed player with reverb) and requested 4b
+the same day ("my choice would be those with the 2's ... you can continue phase 4").
+**Phase 4b (2026-10-20): shipped, sound approved, committed** ([report](phase4b/REPORT.md)): Salamander through
+the managed player as the default piano (YDP and the MIDI device still selectable), audio on its own
+thread, PIANO row with attribution, `scripts\install-piano.ps1` (pinned content hash), installed on
+this machine from the local copy. Densest song in the published app: 0 underruns at 1.0x and 2.0x,
+commit +3.2 MB, load 0.10 s; xunit 149; gate 8 of 8. The user approved the sound and the commit
+on 2026-10-20 ("i checked the audio is realy nice i mean salamander ... i approve the commits").
+The by-ear sync check was not reported separately and stays open.
+**Phase 5 requested 2026-10-20** ("then we can begin phase 5"), with two removals added in the same
+message: drop the MIDI device so only the two pianos remain ("we can remove midi synth one let it be
+only 2 pianos"), and show only HOMR 480 and 465 in the frontend ("remove model 426 and zeus"; the
+backend is left to judgement). The user wants any C# engine rework as a separate request at the end
+of the plan, before Phase 6.
 **Phase 3 evidence:** [`phase3/tempo/summary.json`](phase3/tempo/summary.json) (fixture exact
 against MuseScore 4; corpus exact up to the first fermata or "rit."); `--verify-library` with
 expression off identical for all 90 playing songs (local, `phase3/library-after`); xunit 139

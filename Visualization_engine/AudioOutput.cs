@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using MeltySynth;
 using Melanchall.DryWetMidi.Multimedia;
 
@@ -11,16 +12,19 @@ namespace SynthesiaClone;
 /// <c>--smoke</c> can fabricate any state - including the degraded ones - and still render a
 /// reproducible PNG on a machine with no audio device and no soundfont.
 /// </remarks>
+/// <param name="Piano">The SFZ piano playing, when <see cref="Backend"/> is <see cref="AudioBackend.SfzPiano"/>.</param>
 public sealed record AudioOutputStatus(
     AudioBackend Backend,
     string? SoundFontName,
     long SoundFontBytes,
     string? DeviceName,
-    string? Problem)
+    string? Problem,
+    PianoDescription? Piano = null)
 {
     public bool IsSilent => Backend switch
     {
         AudioBackend.SoundFont => SoundFontName is null,
+        AudioBackend.SfzPiano => Piano is null,
         _ => DeviceName is null
     };
 }
@@ -29,17 +33,22 @@ public sealed record AudioOutputStatus(
 /// Owns whichever output is actually making sound, and mints a timebase per song.
 /// </summary>
 /// <remarks>
-/// The two backends differ in more than timbre, which is why this exists rather than a single
+/// The backends differ in more than timbre, which is why this exists rather than a single
 /// <see cref="IMidiOutput"/>:
 ///
 /// - An external MIDI device is a push target. Notes go out early by the audio offset to cover
 ///   the synthesiser's latency, and song time comes from a stopwatch.
-/// - The built-in synth renders the audio here, so it owns the schedule and reports song time
-///   from the samples it has produced. Nothing is pushed to it, so its
-///   <see cref="IMidiOutput"/> is the null sink and every note reaches it through the timebase.
+/// - The built-in pianos (SoundFont and SFZ) render the audio here, so they own the schedule and
+///   report song time from the samples they have produced. Nothing is pushed to them, so their
+///   <see cref="IMidiOutput"/> is the null sink and every note reaches them through the timebase.
 ///
-/// Selection resolves before it defaults: asking for the synth on a machine with no soundfont
-/// falls back to the MIDI device rather than going silent, and says so.
+/// The built-in pianos render on their own audio thread, not in the frame loop: the SFZ piano's
+/// worst block on the densest song took three quarters of its budget in Phase 4a, which leaves no
+/// room for a frame being drawn on the same thread.
+///
+/// Selection resolves before it defaults: asking for the SFZ piano when it is not installed falls
+/// back to the SoundFont piano, and asking for either built-in piano on a machine without it falls
+/// back to the MIDI device rather than going silent, and says so.
 /// </remarks>
 public sealed class AudioOutput : IDisposable
 {
@@ -57,14 +66,19 @@ public sealed class AudioOutput : IDisposable
     public const int BlockFrames = 1024;
 
     private readonly SoundFont? soundFont;
+    private readonly SfzPiano? sfzPiano;
     private readonly RaylibAudioSink? sink;
     private readonly OutputDevice? outputDevice;
-    private SoundFontEngine? engine;
+    private readonly object engineGate = new();
+    private readonly Thread? audioThread;
+    private volatile LockedPianoEngine? engine;
+    private volatile bool disposing;
     private SoundFontTimebase? timebase;
 
     private AudioOutput(
         AudioBackend backend,
         SoundFont? soundFont,
+        SfzPiano? sfzPiano,
         RaylibAudioSink? sink,
         OutputDevice? outputDevice,
         IMidiOutput midiOutput,
@@ -72,30 +86,76 @@ public sealed class AudioOutput : IDisposable
     {
         Backend = backend;
         this.soundFont = soundFont;
+        this.sfzPiano = sfzPiano;
         this.sink = sink;
         this.outputDevice = outputDevice;
         MidiOutput = midiOutput;
         Status = status;
+        if (sink is not null)
+        {
+            // Sleep(1) has to mean about a millisecond, not the default 15.6 ms timer tick.
+            timeBeginPeriod(1);
+            audioThread = new Thread(RunAudio)
+            {
+                Name = "Sheet2Play audio",
+                IsBackground = true,
+                Priority = ThreadPriority.Highest
+            };
+            audioThread.Start();
+        }
     }
 
     public AudioBackend Backend { get; }
     public IMidiOutput MidiOutput { get; }
     public AudioOutputStatus Status { get; }
 
-    /// <summary>The immutable soundfont, shared with the offline exporter rather than reloaded.</summary>
-    public SoundFont? SoundFont => soundFont;
+    /// <summary>True when a built-in piano is playing, so offline export can render the same sound.</summary>
+    public bool CanRender => soundFont is not null || sfzPiano is not null;
 
     /// <summary>Seconds of audio in flight, which is the latency the offset has to cover.</summary>
     public double BufferedSeconds => sink?.BufferedSeconds ?? 0;
 
     public int UnderrunCount => engine?.UnderrunCount ?? 0;
 
+    /// <summary>Silences the stream without stopping it, so a measurement still runs in real time.</summary>
+    public void Mute() => sink?.SetVolume(0f);
+
     /// <summary>
-    /// Opens the requested backend, falling back to the other when it cannot be had. Never
-    /// throws: a machine with no audio at all still runs and visualises.
+    /// Opens the requested backend, falling back when it cannot be had. Never throws: a machine
+    /// with no audio at all still runs and visualises.
     /// </summary>
     public static AudioOutput Create(AudioBackend preferred, string? soundFontPath)
     {
+        string? carriedProblem = null;
+        if (preferred == AudioBackend.SfzPiano)
+        {
+            (SfzPiano? piano, PianoStatus pianoStatus) = PianoLibrary.Load();
+            if (piano is not null)
+            {
+                (RaylibAudioSink? audioSink, string? audioProblem) = RaylibAudioSink.TryCreate(SampleRate, BlockFrames);
+                if (audioSink is not null)
+                {
+                    Console.WriteLine($"[AUDIO] built-in SFZ piano, {piano.Description.Name} " +
+                        $"({pianoStatus.Bytes / 1024.0 / 1024.0:0} MB bank), " +
+                        $"{audioSink.BufferedSeconds * 1000:0} ms buffered");
+                    return new AudioOutput(
+                        AudioBackend.SfzPiano,
+                        null,
+                        piano,
+                        audioSink,
+                        outputDevice: null,
+                        midiOutput: new NullMidiOutput(),
+                        new AudioOutputStatus(AudioBackend.SfzPiano, null, pianoStatus.Bytes, null, null, piano.Description));
+                }
+                Console.Error.WriteLine("[AUDIO] " + audioProblem);
+                return CreateMidiDevice(audioProblem);
+            }
+            Console.Error.WriteLine("[AUDIO] " + pianoStatus.Problem);
+            // Not installed is not a reason to go silent: the SoundFont piano is the next best.
+            carriedProblem = pianoStatus.Problem;
+            preferred = AudioBackend.SoundFont;
+        }
+
         if (preferred == AudioBackend.SoundFont)
         {
             (SoundFont? font, SoundFontStatus fontStatus) = SoundFontLibrary.Load(soundFontPath);
@@ -110,18 +170,19 @@ public sealed class AudioOutput : IDisposable
                     return new AudioOutput(
                         AudioBackend.SoundFont,
                         font,
+                        null,
                         audioSink,
                         outputDevice: null,
                         // Nothing is pushed to the synth; it plays from the timebase's schedule.
                         midiOutput: new NullMidiOutput(),
                         new AudioOutputStatus(
-                            AudioBackend.SoundFont, fontStatus.Name, fontStatus.Bytes, null, null));
+                            AudioBackend.SoundFont, fontStatus.Name, fontStatus.Bytes, null, carriedProblem));
                 }
                 Console.Error.WriteLine("[AUDIO] " + audioProblem);
                 return CreateMidiDevice(audioProblem);
             }
             Console.Error.WriteLine("[AUDIO] " + fontStatus.Problem);
-            return CreateMidiDevice(fontStatus.Problem);
+            return CreateMidiDevice(carriedProblem ?? fontStatus.Problem);
         }
 
         return CreateMidiDevice(null);
@@ -137,6 +198,7 @@ public sealed class AudioOutput : IDisposable
                 null,
                 null,
                 null,
+                null,
                 new NullMidiOutput(),
                 new AudioOutputStatus(
                     AudioBackend.MidiDevice, null, 0, null, carriedProblem ?? deviceProblem));
@@ -147,6 +209,7 @@ public sealed class AudioOutput : IDisposable
         output.AllNotesOff();
         return new AudioOutput(
             AudioBackend.MidiDevice,
+            null,
             null,
             null,
             device,
@@ -184,7 +247,7 @@ public sealed class AudioOutput : IDisposable
             if (fallback is null)
             {
                 problem = "No MIDI output device found. Playback is silent; install a MIDI " +
-                    "synthesizer such as VirtualMIDISynth, or use the built-in synth.";
+                    "synthesizer such as VirtualMIDISynth, or use a built-in piano.";
                 Console.Error.WriteLine("[AUDIO SYSTEM] " + problem + " " + missingPreferred.Message);
                 return null;
             }
@@ -197,49 +260,100 @@ public sealed class AudioOutput : IDisposable
     }
 
     /// <summary>
-    /// Builds the clock for a song. The synth backend returns a timebase that owns the audio;
-    /// the MIDI backend returns the stopwatch clock the app has always used.
+    /// A piano of the kind playing now, for an offline render into <paramref name="target"/>, or
+    /// null with the MIDI device, whose samples live inside the external synthesiser. Safe to use
+    /// on another thread: it shares only the read-only SoundFont or SFZ bank.
+    /// </summary>
+    public IPianoEngine? CreateOfflineEngine(IAudioSink target, PlaybackSession session, int sampleRate)
+    {
+        ArgumentNullException.ThrowIfNull(target);
+        ArgumentNullException.ThrowIfNull(session);
+        if (sfzPiano is not null)
+        {
+            return new SfzEngine(sfzPiano, target, session, sampleRate);
+        }
+        return soundFont is null ? null : new SoundFontEngine(soundFont, target, session, sampleRate);
+    }
+
+    /// <summary>
+    /// Builds the clock for a song. A built-in piano returns a timebase that owns the audio; the
+    /// MIDI backend returns the stopwatch clock the app has always used.
     /// </summary>
     public IPlaybackTimebase CreateTimebase(PlaybackSession session, double audioOffsetSeconds)
     {
         ArgumentNullException.ThrowIfNull(session);
-        if (soundFont is null || sink is null)
+        if (sink is null || !CanRender)
         {
             return new PlaybackClock();
         }
 
-        // A fresh Synthesizer per song, sharing the already-parsed SoundFont so the sample data
-        // is not read again.
-        engine = new SoundFontEngine(soundFont, sink, session, SampleRate);
-        SoundFontTimebase newTimebase = new(engine, sink.BlockPeriodSeconds);
+        // A fresh engine per song, sharing the already-loaded samples. Swapped in under the lock,
+        // so the audio thread finishes the old song's block before it starts on the new one.
+        IPianoEngine inner = CreateOfflineEngine(sink, session, SampleRate)!;
+        LockedPianoEngine newEngine = new(inner, engineGate);
+        lock (engineGate)
+        {
+            engine = newEngine;
+        }
+        SoundFontTimebase newTimebase = new(newEngine, sink.BlockPeriodSeconds);
         newTimebase.SetOutputLatencySeconds(audioOffsetSeconds);
         timebase = newTimebase;
         return newTimebase;
     }
 
     /// <summary>
-    /// Keeps the audio stream fed and re-anchors song time. Cheap, and called every frame.
+    /// Re-anchors song time to the audio rendered so far. Cheap, and called every frame.
     /// </summary>
     /// <remarks>
-    /// It does nothing until a song has been loaded, because the engine is built per song in
-    /// <see cref="CreateTimebase"/>. An earlier comment here claimed the stream was kept fed "on
-    /// every screen", which was not true before the first load - and after returning Home the engine
-    /// keeps rendering silence rather than stopping. Neither is expensive, but the comment was
-    /// describing intent rather than behaviour.
+    /// The audio thread keeps the stream fed; this only reads where it has got to. It does nothing
+    /// until a song has been loaded, because the engine is built per song in
+    /// <see cref="CreateTimebase"/>, and after returning Home the engine keeps rendering silence.
     /// </remarks>
-    public void Pump()
+    public void Pump() => timebase?.Latch();
+
+    /// <summary>
+    /// Feeds the stream whenever a sub-buffer frees up. A millisecond's poll is far inside the
+    /// 21 ms a sub-buffer lasts, and Raylib's stream calls take its own lock, so this thread may
+    /// use them while the frame loop draws.
+    /// </summary>
+    private void RunAudio()
     {
-        if (engine is null)
+        while (!disposing)
         {
-            return;
+            try
+            {
+                engine?.Pump();
+            }
+            catch (Exception error)
+            {
+                // A failure here would otherwise kill the process from a background thread.
+                Console.Error.WriteLine("[AUDIO] Render failed: " + error);
+                engine = null;
+            }
+            Thread.Sleep(1);
         }
-        engine.Pump();
-        timebase?.Latch();
     }
 
     public void Dispose()
     {
+        if (disposing)
+        {
+            return;
+        }
+        disposing = true;
+        // The thread stops before the stream it writes to is released.
+        audioThread?.Join();
+        if (audioThread is not null)
+        {
+            timeEndPeriod(1);
+        }
         sink?.Dispose();
         outputDevice?.Dispose();
     }
+
+    [DllImport("winmm.dll")]
+    private static extern uint timeBeginPeriod(uint milliseconds);
+
+    [DllImport("winmm.dll")]
+    private static extern uint timeEndPeriod(uint milliseconds);
 }

@@ -78,6 +78,15 @@ public sealed class RaylibAudioSink : IAudioSink, IUnderrunAware, IDisposable
         }
     }
 
+    /// <summary>Output gain; <c>--bench --audio</c> sets 0 so a measurement run plays in silence.</summary>
+    public void SetVolume(float volume)
+    {
+        if (started && !disposed)
+        {
+            Raylib.SetAudioStreamVolume(stream, volume);
+        }
+    }
+
     public unsafe void Submit(ReadOnlySpan<float> interleaved)
     {
         if (disposed || !started)

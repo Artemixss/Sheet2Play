@@ -13,7 +13,22 @@ public enum AudioBackend
     /// <summary>
     /// An external Windows MIDI device, such as VirtualMIDISynth.
     /// </summary>
-    MidiDevice
+    MidiDevice,
+
+    /// <summary>
+    /// The built-in SFZ piano (Salamander), rendering audio inside this process like
+    /// <see cref="SoundFont"/>. Falls back to it when the SFZ piano is not installed.
+    /// </summary>
+    SfzPiano
+}
+
+public static class AudioBackends
+{
+    /// <summary>
+    /// True for the pianos rendered in this process. They share one audio stream, so they share its
+    /// latency and therefore one audio offset; the MIDI device keeps its own.
+    /// </summary>
+    public static bool IsBuiltIn(this AudioBackend backend) => backend != AudioBackend.MidiDevice;
 }
 
 /// <summary>

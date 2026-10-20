@@ -3,7 +3,7 @@ using MeltySynth;
 namespace SynthesiaClone;
 
 /// <summary>
-/// Renders a song to an audio file with the built-in synthesiser, via `--render-audio`.
+/// Renders a song to an audio file with a built-in piano, via `--render-audio`.
 ///
 /// This exists so the app can produce the file the user would otherwise get from an online
 /// MIDI-to-MP3 converter, with the same properties that make those renders sound better than
@@ -30,8 +30,8 @@ internal static partial class Program
 		if (args.Length < 2 || args[1].StartsWith("--", StringComparison.Ordinal))
 		{
 			Console.Error.WriteLine(
-				"[RENDER] Usage: --render-audio <song> [output.wav] [--rate 1.0] [--soundfont <file>] [--tail 3.0] " +
-				"[--no-expression]");
+				"[RENDER] Usage: --render-audio <song> [output.wav] [--rate 1.0] [--piano sfz|ydp] [--soundfont <file>] " +
+				"[--tail 3.0] [--no-expression]");
 			return 1;
 		}
 
@@ -48,6 +48,14 @@ internal static partial class Program
 		double rate = ParseDemoDouble(GetDemoOption(args, "--rate"), 1.0);
 		double tail = ParseDemoDouble(GetDemoOption(args, "--tail"), RenderDefaultTailSeconds);
 		string? soundFontOption = GetDemoOption(args, "--soundfont");
+		// The piano the app plays, unless asked for the other.
+		string pianoOption = GetDemoOption(args, "--piano")
+			?? (AppSettingsStore.LoadAudioBackend() == AudioBackend.SfzPiano ? "sfz" : "ydp");
+		if (pianoOption is not ("sfz" or "ydp"))
+		{
+			Console.Error.WriteLine("[RENDER] --piano is sfz or ydp.");
+			return 1;
+		}
 
 		if (rate is < PlaybackRateRules.Minimum or > PlaybackRateRules.Maximum)
 		{
@@ -56,17 +64,34 @@ internal static partial class Program
 			return 1;
 		}
 
-		(SoundFont? soundFont, SoundFontStatus status) = SoundFontLibrary.Load(soundFontOption);
-		if (soundFont is null)
+		SoundFont? soundFont = null;
+		SfzPiano? sfzPiano = null;
+		if (pianoOption == "sfz")
 		{
-			Console.Error.WriteLine("[RENDER] " + status.Problem);
-			foreach (string folder in SoundFontLibrary.SearchFolders())
+			(sfzPiano, PianoStatus pianoStatus) = PianoLibrary.Load();
+			if (sfzPiano is null)
 			{
-				Console.Error.WriteLine("[RENDER] searched " + folder);
+				Console.Error.WriteLine("[RENDER] " + pianoStatus.Problem);
+				Console.Error.WriteLine("[RENDER] searched " + PianoLibrary.Folder);
+				return 1;
 			}
-			return 1;
+			Console.WriteLine($"[RENDER] piano     {sfzPiano.Description.Name} ({pianoStatus.Bytes / 1024.0 / 1024.0:0} MB bank)");
 		}
-		Console.WriteLine($"[RENDER] soundfont {status.Name} ({status.Bytes / 1024.0 / 1024.0:0.0} MB)");
+		else
+		{
+			SoundFontStatus status;
+			(soundFont, status) = SoundFontLibrary.Load(soundFontOption);
+			if (soundFont is null)
+			{
+				Console.Error.WriteLine("[RENDER] " + status.Problem);
+				foreach (string folder in SoundFontLibrary.SearchFolders())
+				{
+					Console.Error.WriteLine("[RENDER] searched " + folder);
+				}
+				return 1;
+			}
+			Console.WriteLine($"[RENDER] soundfont {status.Name} ({status.Bytes / 1024.0 / 1024.0:0.0} MB)");
+		}
 
 		// LoadOrCreateDetailed routes .mid and .mxl itself, so this only matters for a source
 		// that actually needs recognition - and then the user's own engine choice is right.
@@ -107,7 +132,9 @@ internal static partial class Program
 				: new WavFileSink(output, RenderSampleRate, RenderBlockFrames);
 			using (sink as IDisposable)
 			{
-				SoundFontEngine synth = new(soundFont, sink, session, RenderSampleRate);
+				IPianoEngine synth = sfzPiano is not null
+					? new SfzEngine(sfzPiano, sink, session, RenderSampleRate)
+					: new SoundFontEngine(soundFont!, sink, session, RenderSampleRate);
 				synth.SetRate(rate);
 				synth.Seek(0);
 				synth.Start();

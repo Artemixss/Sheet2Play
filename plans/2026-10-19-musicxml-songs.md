@@ -6,8 +6,10 @@
 same day ("ok commit phase 1 and continue with phase") and accepted once the release gate passed.
 Phase 3 was requested the same day ("commit phase 2 then continue with the next phase"),
 shipped, and committed after the user asked for a collapsible panel. Phase 4 was requested the
-same day ("after that commit phase 3 then continue with the next phase"); 4a is done and 4b waits
-on the user's pick.
+same day ("after that commit phase 3 then continue with the next phase"); 4a is done (committed
+`ef02e4b`, sfizz compared on 2026-10-20), and on 2026-10-20 the user picked the managed Salamander
+with reverb, kept YDP selectable, and requested 4b ("you can continue phase 4"). 4b was approved
+and committed on 2026-10-20, and Phase 5 was requested the same day ("then we can begin phase 5").
 [Handoff](../Research/omr/reports/musicxml-songs/handoff.md). If an acceptance criterion is not met, ask before changing it, unless the fix
 is small. Each later phase needs its own request. The user also said the C# engine may be
 reworked (they wrote it and expect flaws), but in a separate request, at the end of this plan
@@ -343,6 +345,17 @@ renders ten minutes of the densest library song at 1.0× and 2.0× with no late 
 of a 21 ms budget), is deterministic, and covers 100% of the opcodes Salamander uses. Sample
 lead-ins (median 9 ms) are trimmed so onsets match the falling notes. Listening files for three
 songs are local. See the [Phase 4a report](../Research/omr/reports/musicxml-songs/phase4a/REPORT.md).
+sfizz, compared on 2026-10-20 after the user approved the download, sounds the same but had 8 and
+52 late blocks at 1.0x and 2.0x on the densest song (managed: 0 and 0) at twice the CPU, and its live
+disk streaming fell behind; it is not used.
+
+**4b (2026-10-20):** the user picked the "2 Salamander" renders (managed player, reverb) and asked to
+keep YDP selectable for testing ("depending on performance i might delete some in future"). Shipped
+the same day: in the published app the densest song plays with 0 underruns at 1.0x and 2.0x, the
+bank adds 3.2 MB of commit and loads in 0.10 s, renders are deterministic, and the gate passes. The
+user approved the sound and the commit the same day ("i checked the audio is realy nice i mean
+salamander"); the by-ear sync check was not reported separately. See the
+[Phase 4b report](../Research/omr/reports/musicxml-songs/phase4b/REPORT.md).
 
 **Accept when:** commit charge rises by no more than 300 MB with the bank loaded; there are no
 underruns on the library's densest song at 1.0× and 2.0×; a warm load takes under 5 s; offline

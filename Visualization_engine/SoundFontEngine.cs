@@ -38,7 +38,7 @@ public interface IAudioSink
 /// Not thread-safe, because MeltySynth is not. One instance per thread; the offline exporter
 /// builds its own and shares only the immutable <see cref="MeltySynth.SoundFont"/>.
 /// </remarks>
-public sealed class SoundFontEngine
+public sealed class SoundFontEngine : IPianoEngine
 {
     /// <summary>
     /// MeltySynth's internal render granularity, and therefore the real onset resolution.
@@ -76,6 +76,7 @@ public sealed class SoundFontEngine
     private double rate = 1.0;
     private double stagedRate = 1.0;
     private bool running;
+    private bool filled;
 
     public SoundFontEngine(SoundFont soundFont, IAudioSink sink, PlaybackSession session, int sampleRate)
     {
@@ -205,16 +206,21 @@ public sealed class SoundFontEngine
         // which could never be true: the loop only exits once the sink stops wanting blocks, so the
         // final Submit always cleared the flag. It counted zero underruns no matter what happened,
         // which is worse than no counter at all - it reads as evidence that there were none.
+        //
+        // Except on an engine's first fill: a stream that has not been fed yet has both sub-buffers
+        // free by definition. Counting that put one "underrun" at 0.00 s on every song in the Phase 4b
+        // bench, with either piano, which would hide whether any real one happened.
         int rendered = 0;
         while (sink.WantsBlock)
         {
             RenderBlock();
             rendered++;
         }
-        if (rendered > 1)
+        if (rendered > 1 && filled)
         {
             UnderrunCount++;
         }
+        filled |= rendered > 0;
     }
 
     /// <summary>
@@ -225,7 +231,7 @@ public sealed class SoundFontEngine
     /// Always submits a full block. A short write is either zero-padded or rejected depending
     /// on the sink, and both show up as clicks.
     /// </remarks>
-    internal void RenderBlock()
+    public void RenderBlock()
     {
         int frames = sink.BlockFrames;
         rate = stagedRate;
@@ -348,7 +354,7 @@ public interface IUnderrunAware
 /// </remarks>
 public sealed class SoundFontTimebase : IPlaybackTimebase
 {
-    private readonly SoundFontEngine engine;
+    private readonly IPianoEngine engine;
     private readonly Func<double> timestampSeconds;
     private readonly double blockPeriodSeconds;
 
@@ -362,7 +368,7 @@ public sealed class SoundFontTimebase : IPlaybackTimebase
     private double playbackRate = 1.0;
 
     public SoundFontTimebase(
-        SoundFontEngine engine,
+        IPianoEngine engine,
         double blockPeriodSeconds,
         Func<double>? timestampSeconds = null)
     {
