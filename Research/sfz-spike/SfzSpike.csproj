@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Phase 4a of plans/2026-10-19-musicxml-songs.md: a decision spike, not part of the app.
+       It references the app for song loading, sessions, the SoundFont engine and the WAV sink,
+       so both pianos render the same events. Nothing here is published. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AssemblyName>SfzSpike</AssemblyName>
+    <TieredPGO>true</TieredPGO>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Visualization_engine\SynthesiaClone.csproj" />
+  </ItemGroup>
+</Project>

@@ -8,8 +8,10 @@ Phase 3 requested the same day ("commit phase 2 then continue with the next phas
 **accepted** (gate 8 of 8, [Phase 3 report](phase3/REPORT.md)) and committed after the panel was
 made collapsible at the user's suggestion. Phase 4 requested the same day ("after that commit phase 3
 then continue with the next phase").
-**Next authorized action:** Phase 4a, the SFZ decision spike (no shipped change); 4b waits on the
-user's pick. The user wants any C# engine rework as a separate request at the end of the plan, before
+**Phase 4a:** done the same day, no shipped change ([Phase 4a report](phase4a/REPORT.md)): the managed
+SFZ player passes every measurable criterion; sfizz is unmeasured pending a download approval.
+**Next authorized action:** none until the user picks YDP or Salamander from `phase4a/listen/`
+(local) and says whether to compare sfizz. 4b then implements the pick. The user wants any C# engine rework as a separate request at the end of the plan, before
 Phase 6.
 **Phase 3 evidence:** [`phase3/tempo/summary.json`](phase3/tempo/summary.json) (fixture exact
 against MuseScore 4; corpus exact up to the first fermata or "rit."); `--verify-library` with

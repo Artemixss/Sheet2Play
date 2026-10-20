@@ -6,7 +6,8 @@
 same day ("ok commit phase 1 and continue with phase") and accepted once the release gate passed.
 Phase 3 was requested the same day ("commit phase 2 then continue with the next phase"),
 shipped, and committed after the user asked for a collapsible panel. Phase 4 was requested the
-same day ("after that commit phase 3 then continue with the next phase").
+same day ("after that commit phase 3 then continue with the next phase"); 4a is done and 4b waits
+on the user's pick.
 [Handoff](../Research/omr/reports/musicxml-songs/handoff.md). If an acceptance criterion is not met, ask before changing it, unless the fix
 is small. Each later phase needs its own request. The user also said the C# engine may be
 reworked (they wrote it and expect flaws), but in a separate request, at the end of this plan
@@ -334,6 +335,14 @@ Measure commit charge, working set, load time, CPU per block at 256 voices, unde
 compare by ear. The user picks.
 **4b:** implement the pick, plus the installer, the **PIANO** selector (YDP / Salamander /
 MIDI device) and the attribution text.
+
+**4a result (2026-10-19): the managed player passes every measurable criterion; sfizz not
+measured** (it needs a download the user has not approved). Salamander through a managed SFZ
+player over a memory-mapped 16-bit bank adds 8.5 MB of commit (YDP 113 MB), loads in 0.13 s warm,
+renders ten minutes of the densest library song at 1.0× and 2.0× with no late block (worst 16 ms
+of a 21 ms budget), is deterministic, and covers 100% of the opcodes Salamander uses. Sample
+lead-ins (median 9 ms) are trimmed so onsets match the falling notes. Listening files for three
+songs are local. See the [Phase 4a report](../Research/omr/reports/musicxml-songs/phase4a/REPORT.md).
 
 **Accept when:** commit charge rises by no more than 300 MB with the bank loaded; there are no
 underruns on the library's densest song at 1.0× and 2.0×; a warm load takes under 5 s; offline
