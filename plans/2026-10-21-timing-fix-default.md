@@ -256,6 +256,22 @@ Implemented 2026-10-21 in the main checkout, on top of `04614e6`. Not committed.
   corrected after a short re-read. Switching the fix off and reopening plays it uncorrected. An
   MP3 export is named after the plain song.
 
+### Follow-up: the TEMPO button follows the song (2026-10-21)
+
+Asked by the user after Phase 2 was committed (`fdb93b7`), with a screenshot showing
+"TEMPO ♩=101 · 4 CHANGES" while bar 37 played at 111: "I want the tempo number dynamic in the
+UI, so when it changes to 111 for example it should say it". This is in the same spirit: the
+button now says what plays rather than the start tempo.
+
+- `Program.Tempo.cs`: the button shows `SongTempoMaps.TempoAt(shown, bar playing)`. It falls
+  back to the start tempo when the changes do not apply (CHECK BARS) or when no bar is playing.
+  The controls right of it start at the widest the button has been for the song, so the open
+  panel's row only ever moves right, and only once.
+- Smoke: new `07-playback-tempo-playing` (paused in the last bar) shows **♩=186 · 2 CHANGES**.
+  `07-playback-tempo`, paused in bar 2, still shows the start tempo of 110. README: the button
+  shows the tempo of the bar playing.
+- Not committed; it waits on the user's check.
+
 ## Out of scope
 
 - Changing `timing_correction.py`, or fixing the meter-change fault behind 6222828. That

@@ -44,7 +44,8 @@ MIDI playback timing.
   bar lines and a pedal lane fall with the notes; an **EXPORT** panel writes WAV, MP3, MIDI
   or the score's MusicXML, and re-converts the song.
 * A **TEMPO** panel sets a song's start tempo and tempo changes by bar, because recognition
-  reads no tempo marks and a PDF otherwise plays at 120. The tempo marks printed in the PDF
+  reads no tempo marks and a PDF otherwise plays at 120. Its button shows the tempo of the bar
+  playing now. The tempo marks printed in the PDF
   ("♩ = 110") are read after each conversion and **play by default**; **PRINTED** lists them,
   and **IGNORE** drops a misread one. Any tempo you set yourself replaces them for that song.
   Songs converted earlier get theirs from **READ PRINTED MARKS**, or all at once with

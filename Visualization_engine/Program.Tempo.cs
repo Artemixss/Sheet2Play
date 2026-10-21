@@ -45,6 +45,11 @@ internal static partial class Program
 	/// <summary>Whether the panel is showing. Closed at every start, like EXPRESSION.</summary>
 	private static bool tempoPanelOpen;
 
+	/// <summary>Where the controls right of the TEMPO button start for this song: its widest so far.</summary>
+	private static SongLoadResult? tempoRowSong;
+
+	private static float tempoRowX;
+
 	private static int tempoListScroll;
 
 	/// <summary>Why the last edit was not saved, shown in the panel until the next edit.</summary>
@@ -302,8 +307,8 @@ internal static partial class Program
 	/// <summary>
 	/// The TEMPO button, bottom-left above EXPRESSION, and when it is open the start tempo, RESET
 	/// and "+ CHANGE AT BAR N" to its right, with the song's changes listed above. The button always
-	/// says the start tempo, and in the warning colour when the song is on the 120 fallback, so a
-	/// song that has no real tempo yet is never hidden behind a closed panel.
+	/// says the tempo of the bar playing, and in the warning colour when the song is on the 120
+	/// fallback, so a song that has no real tempo yet is never hidden behind a closed panel.
 	/// </summary>
 	private static void DrawTempoPanel(SongLoadResult song, double position, UiLayout layout)
 	{
@@ -336,12 +341,22 @@ internal static partial class Program
 			: !changesApply
 				? " · CHECK BARS"
 				: changeCount > 0 ? $" · {changeCount} CHANGE{(changeCount == 1 ? "" : "S")}" : "";
+		// The tempo playing now rather than the start tempo, so a change at bar 37 to 111 shows as 111
+		// while bar 37 plays.
+		int barIndex = songOverlay.BarIndexAt(position);
+		TempoMark playing = changesApply && barIndex >= 0
+			? SongTempoMaps.TempoAt(shown, songOverlay.Bars[barIndex].Measure)
+			: shown.Start;
 		if (DrawPanelButton(ref x, y, height, "TEMPO  ", fallback || !changesApply ? UiTheme.Warning : UiTheme.Text,
-			tempoPanelOpen, scale, shown.Start.Unit, "=" + TempoRules.Format(shown.Start.Bpm) + suffix))
+			tempoPanelOpen, scale, playing.Unit, "=" + TempoRules.Format(playing.Bpm) + suffix))
 		{
 			tempoPanelOpen = !tempoPanelOpen;
 			tempoEditor.Cancel();
 		}
+		// The button's width follows the tempo; the controls right of it keep the widest it has been
+		// for this song, so they do not jump back and forth as it plays.
+		x = ReferenceEquals(tempoRowSong, song) ? Math.Max(x, tempoRowX) : x;
+		(tempoRowSong, tempoRowX) = (song, x);
 		if (!tempoPanelOpen)
 		{
 			return;
@@ -366,7 +381,6 @@ internal static partial class Program
 			return;
 		}
 		DrawPrintedAction(song, performance, ref x, y, height, scale);
-		int barIndex = songOverlay.BarIndexAt(position);
 		if (barIndex >= 0)
 		{
 			OverlayBar bar = songOverlay.Bars[barIndex];

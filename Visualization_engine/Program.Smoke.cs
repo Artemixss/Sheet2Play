@@ -290,6 +290,42 @@ internal static partial class Program
 				}
 			});
 
+			// The same map paused in the last bar, after the change to ♩ = 186: the closed button says the
+			// tempo playing, not the start tempo.
+			failures += Capture(outputDirectory, "07-playback-tempo-playing", layout, () =>
+			{
+				SongPerformance performance = SmokeScore();
+				SongTempoMap map = new(new TempoMark(110, BeatUnit.Quarter),
+				[
+					new BarTempo(2, 0, new TempoMark(110, BeatUnit.DottedQuarter)),
+					new BarTempo(3, 0, new TempoMark(186, BeatUnit.Quarter))
+				], OmrEngine.Homr480, performance.Measures.Count, DateTimeOffset.UtcNow);
+				TempoOverride? tempo = SongTempoMaps.Override(map, performance);
+				SongPlayback timeline = ExpressionPlayback.ForSong(
+					new SongLoadResult([], "Sample Score", OmrEngine.Homr480, true, null, performance), expression, tempo);
+				SongLoadResult song = new(timeline.Notes, "Sample Score", OmrEngine.Homr480, true, null, performance,
+					SourceSha256: "smoke-tempo");
+				PlaybackController playback = new(
+					new PlaybackSession(timeline.Notes, pedal: timeline.Pedal),
+					new NullMidiOutput(),
+					new PlaybackClock(() => 0));
+				playback.Seek(Math.Max(0, timeline.Notes.Max(static note => note.StartTime) - 0.01), resume: false);
+				RebuildOverlay(song, expression, tempo, timeline.Pedal);
+				Keyboard piano = new(layout.Width, layout.HitLineY, layout.KeyboardHeight);
+				GameState state = GameState.Playing;
+				PresetSmokeTempo(song, map);
+				try
+				{
+					DrawPlayback(playback, song, piano, false, 0.0, new PlaybackRateEditor(), new AudioOffsetEditor(),
+						ref state, layout);
+				}
+				finally
+				{
+					songOverlay = SongOverlay.Empty;
+					PresetSmokeTempo(null, null);
+				}
+			});
+
 			// A song without a tempo of the user's whose PDF prints a start tempo, a change and a tempo
 			// word: the printed marks play, the button says so, and the open list shows them PLAYING
 			// with IGNORE, and the word as a hint.
