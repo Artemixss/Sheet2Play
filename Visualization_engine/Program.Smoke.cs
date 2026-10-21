@@ -216,8 +216,8 @@ internal static partial class Program
 			});
 
 			// A HOMR 480 song part-way through a repeat: hands coloured by staff, bar lines and the
-			// pedal lane with one span held and one to come, the TIMING FIX badge and the score's counts,
-			// and the EXPORT panel open with its status line after a MIDI export.
+			// pedal lane with one span held and one to come, the score's counts (the timing fix is on but
+			// not labelled), and the EXPORT panel open with its status line after a MIDI export.
 			failures += Capture(outputDirectory, "07-playback-score", layout, () =>
 			{
 				SongPerformance performance = SmokeScore();

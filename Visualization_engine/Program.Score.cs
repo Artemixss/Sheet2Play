@@ -157,10 +157,6 @@ internal static partial class Program
 		{
 			Badge("MIDI (LEGACY)", UiTheme.Warning);
 		}
-		if (song.Performance?.TimingCorrection == true)
-		{
-			Badge("TIMING FIX", UiTheme.Sky);
-		}
 		int factsSize = Math.Max(11, (int)(13f * scale));
 		int width = (int)Math.Max(0f, right - x);
 		if (!ReferenceEquals(songFacts.Song, song) || !ReferenceEquals(songFacts.Session, playback.Session) ||

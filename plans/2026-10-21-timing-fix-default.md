@@ -4,8 +4,10 @@
 **Status:** Drafted 2026-10-21 at the user's request: converted songs should not say "timing fix"
 or "tempo". TIMING FIX and the song's tempo should simply be the default, with no labels in the
 UI or in file names. **Approved 2026-10-21** with D1-D4 as recommended ("approved, go with D1-D4
-and start phase 1"). **Phase 1** (on by default) is implemented and waits on the user's check and
-commit; see [Phase 1 result](#phase-1-result). Phase 2 is not started.
+and start phase 1"). **Phase 1** (on by default) was checked and committed the same day
+(`04614e6`; [Phase 1 result](#phase-1-result)). **Phase 2** (no labels, one row per song) was
+requested the same day ("commit it and start phase 2"). It is shipped to `dist\Sheet2Play.exe`
+and waits on the user's check and commit ([Phase 2 result](#phase-2-result)).
 **Related:** [Remaining timing loss](2026-10-18-remaining-timing-loss.md) (shipped the fix, off by
 default, and left "making the switch the default" out of scope),
 [upstream 480 handoff](../Research/omr/reports/upstream-480/handoff.md) (its next action says the
@@ -204,6 +206,55 @@ identities stay as they are.
   it corrected. Switching the fix off and reopening plays the uncorrected version. An MP3 export
   is named after the plain song.
 - The user checks it in the app. Committing waits for their word.
+
+### Phase 2 result
+
+Implemented 2026-10-21 in the main checkout, on top of `04614e6`. Not committed.
+
+- **Names:** `TimingCorrectionLabel` is gone. `CreateLoadResult` lost its `timingIdentity`
+  argument and `PackageResult` its `timing` argument, since both were only used for the suffix.
+  The legacy-cache path no longer appends it either.
+- **One row per song:** `EnumeratePackageEntries(applicationDirectory, timingCorrection)` yields
+  one interpretation per package: the switch's if it exists, else the newest.
+  `GetCachedSongs(bool timingCorrection = true)` passes the switch down; the default keeps
+  `MidiTester` compiling. Legacy MIDI caches are grouped by `RecentSongsStore.SongKey`, which
+  drops the `.timing-` part, and the cache for the current setting is tried first. The app sets
+  `timingCorrectionChanged` when the switch is clicked and relists the songs.
+- **Open at the current setting:** `LoadRecent(entry, recordRecent, bool? timingCorrection)` and
+  `TryLoadPackageEntry` play a package with the switch's setting, re-interpreting if needed.
+  `null` keeps the entry's own setting. The app passes the switch; `--verify-omr`, `--reconvert`
+  and the research tools pass nothing and behave as before.
+- **Recents:** `RecentSongsStore.SongKey` gives every interpretation of a package one key (the
+  package folder), and does the same for a legacy cache with and without `.timing-`. `Touch` and
+  `Load` keep one entry per key. A stored name ending in ` · timing fix` reads back without it.
+  The file format is unchanged.
+- **UI:** the playback header's TIMING FIX badge and the cache playlist's `· tempo` tag are gone,
+  and so is `CachedSongEntry.CustomTempo`. The smoke comment for `07-playback-score` is updated.
+  CONTEXT §3.5 now says a package is one row and one recent entry whatever the switch.
+- **Deviation:** there is no separate export-name test. The tests cannot reach `Program`, where
+  the MP3, MIDI and MusicXML names are built from `DisplayName`. The plain-name assertions on
+  corrected conversions (packages and legacy caches) cover what they are built from.
+- **Tests:** 203 of 203 passed. Changed: `CorrectedAndPlainConversionsNeverShareACacheEntry` now
+  expects plain names and one library row that follows the setting.
+  `SwitchingTheTimingFixReinterpretsTheStoredPagesWithoutOmr` now expects one row, and opening
+  that row with the other setting does not interpret again. New:
+  `ASongOpensWithTheCurrentTimingFixAndIsReinterpretedWithoutOmr` (re-interprets, runs no OMR, and
+  keeps both interpretations) and
+  `RecentSongsKeepOneEntryPerSongAndReadOldNamesWithoutTheSuffix`.
+- **Evidence:** `scripts\verify-release.ps1` passed all 8 steps and verified
+  `dist\Sheet2Play.exe`.
+  - **Library check:** `--verify-library` on the user's library lists 41 song packages, each
+    once, all loading (43 rows before). *STYX HELIX* (`629a9d40…`) and *Dexter Main theme*
+    (`7f5e9140…`) appear once each. No `song.json` name contains `timing fix`.
+  - **Smoke:** the smoke run counts 100 cached songs (102 before) and renders every screen.
+    `07-playback-score` has no TIMING FIX badge.
+  - **Known failures:** the same check fails 61 legacy MIDI caches (58 `homr465` from profile
+    `1fd5b26e…`, 3 `homr`). They went stale when 465 was re-pinned on 2026-10-19
+    ([upstream-480 handoff](../Research/omr/reports/upstream-480/handoff.md)), and this phase did
+    not change their validation.
+- **Left for the user's check in the app:** opening one of the 3 uncorrected-only songs plays it
+  corrected after a short re-read. Switching the fix off and reopening plays it uncorrected. An
+  MP3 export is named after the plain song.
 
 ## Out of scope
 

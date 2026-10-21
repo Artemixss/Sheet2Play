@@ -243,7 +243,7 @@ internal static partial class Program
 		Exception exception = null;
 		string message = audioWarning;
 		IReadOnlyList<PdfLibraryEntry> pdfLibrary = SongCache.GetPdfLibrary();
-		IReadOnlyList<CachedSongEntry> cachedSongs = SongCache.GetCachedSongs();
+		IReadOnlyList<CachedSongEntry> cachedSongs = SongCache.GetCachedSongs(timingCorrectionEnabled);
 		int pdfScrollOffset = 0;
 		int cacheScrollOffset = 0;
 		OmrEngine? cacheEngineFilter = null;
@@ -403,7 +403,7 @@ internal static partial class Program
 							exception = null;
 							message = null;
 							pdfLibrary = SongCache.GetPdfLibrary();
-							cachedSongs = SongCache.GetCachedSongs();
+							cachedSongs = SongCache.GetCachedSongs(timingCorrectionEnabled);
 							midiLibrary = SongCache.GetMidiLibrary();
 							state = GameState.Playing;
 						}
@@ -481,13 +481,19 @@ internal static partial class Program
 				if (refreshRequested)
 				{
 					pdfLibrary = SongCache.GetPdfLibrary();
-					cachedSongs = SongCache.GetCachedSongs();
+					cachedSongs = SongCache.GetCachedSongs(timingCorrectionEnabled);
 					midiLibrary = SongCache.GetMidiLibrary();
 					// So a piano installed while the app is open shows up without a restart.
 					RefreshInstalledPianos();
 					pdfScrollOffset = 0;
 					cacheScrollOffset = 0;
 					midiScrollOffset = 0;
+				}
+				// Each song is listed as it plays with the switch, which nothing on the row shows.
+				if (timingCorrectionChanged)
+				{
+					timingCorrectionChanged = false;
+					cachedSongs = SongCache.GetCachedSongs(timingCorrectionEnabled);
 				}
 				if (loadRequest is not null)
 				{
@@ -529,7 +535,7 @@ internal static partial class Program
 					if (tempoMapsEdited)
 					{
 						tempoMapsEdited = false;
-						cachedSongs = SongCache.GetCachedSongs();
+						cachedSongs = SongCache.GetCachedSongs(timingCorrectionEnabled);
 					}
 					state = GameState.WaitingForFile;
 				}
@@ -670,7 +676,7 @@ internal static partial class Program
 	{
 		try
 		{
-			SongLoadResult value = ((request.RecentSong is not null) ? SongCache.LoadRecent(request.RecentSong) : SongCache.LoadOrCreateDetailed(request.InputPath ?? throw new InvalidOperationException("Load request has no source path."), request.Engine, cancellationToken, progress, request.BypassKnownFailure, request.ForceReprocess, timingCorrection: timingCorrectionEnabled));
+			SongLoadResult value = ((request.RecentSong is not null) ? SongCache.LoadRecent(request.RecentSong, timingCorrection: timingCorrectionEnabled) : SongCache.LoadOrCreateDetailed(request.InputPath ?? throw new InvalidOperationException("Load request has no source path."), request.Engine, cancellationToken, progress, request.BypassKnownFailure, request.ForceReprocess, timingCorrection: timingCorrectionEnabled));
 			results.Complete(value);
 		}
 		catch (Exception error)
@@ -783,6 +789,7 @@ internal static partial class Program
 		if (DrawTimingToggle(timingToggle, timingCorrectionEnabled, OmrPipeline.SupportsTimingCorrection(selectedEngine), scale))
 		{
 			timingCorrectionEnabled = !timingCorrectionEnabled;
+			timingCorrectionChanged = true;
 			PersistTimingCorrection(timingCorrectionEnabled);
 		}
 		float engineCardGap = 16f * scale;
@@ -1023,12 +1030,6 @@ internal static partial class Program
 			{
 				UiTheme.DrawText("· MIDI (legacy)", (int)(rec.X + 16f * scale) + UiTheme.MeasureText(detail, detailSize),
 					(int)(rec.Y + 27f * scale), detailSize, UiTheme.Warning);
-			}
-			// Its length above is at the tempo set in the TEMPO panel, not HOMR's 120.
-			if (entry.CustomTempo)
-			{
-				UiTheme.DrawText("· tempo", (int)(rec.X + 16f * scale) + UiTheme.MeasureText(detail, detailSize),
-					(int)(rec.Y + 27f * scale), detailSize, UiTheme.Sky);
 			}
 			if (UiTheme.DrawButton(new Rectangle(rec.X + rec.Width - 70f * scale, rec.Y + 7f * scale, 60f * scale, rec.Height - 14f * scale), "Play", accent))
 			{
@@ -1789,8 +1790,14 @@ internal static partial class Program
 	/// </summary>
 	private static AudioBackend activeAudioBackend = AudioBackend.Silent;
 
-	/// <summary>Whether new HOMR conversions run the timing correction; the landing-page switch.</summary>
+	/// <summary>
+	/// Whether HOMR songs play with the timing correction, converted or opened; the landing-page
+	/// switch. Opening a song made with the other setting re-interprets its stored score.
+	/// </summary>
 	private static bool timingCorrectionEnabled;
+
+	/// <summary>Set by the switch, so the main loop relists the cached songs.</summary>
+	private static bool timingCorrectionChanged;
 
 	/// <summary>
 	/// What the audio badge shows, as plain data rather than a live query, so the headless

@@ -136,7 +136,6 @@ public sealed class SongPackageTests
         // Three notes a measure apart in 2/4: 2.5 s at 120, 5 s at the printed 60.
         CachedSongEntry printed = Assert.Single(SongCache.GetCachedSongsForTesting(library.Root, library.Bridge, Refuse, tempoMaps));
         Assert.Equal(5.0, printed.DurationSeconds, 9);
-        Assert.False(printed.CustomTempo);
 
         // The user's own tempo comes first, and ignoring the mark returns the song to 120.
         TempoMapStore.Save(song.SourceSha256!, new SongTempoMap(new TempoMark(240, BeatUnit.Quarter), [], OmrEngine.Homr480,
@@ -161,12 +160,10 @@ public sealed class SongPackageTests
         // Three notes a measure apart in 2/4; the last ends 2.5 s in at 120, and 5 s in at 60.
         CachedSongEntry plain = Assert.Single(SongCache.GetCachedSongsForTesting(library.Root, library.Bridge, Refuse, tempoMaps));
         Assert.Equal(2.5, plain.DurationSeconds, 9);
-        Assert.False(plain.CustomTempo);
         TempoMapStore.Save(song.SourceSha256!, new SongTempoMap(new TempoMark(60, BeatUnit.Quarter), [], OmrEngine.Homr480,
             song.Performance!.Measures.Count, DateTimeOffset.UtcNow), tempoMaps);
         CachedSongEntry slowed = Assert.Single(SongCache.GetCachedSongsForTesting(library.Root, library.Bridge, Refuse, tempoMaps));
         Assert.Equal(5.0, slowed.DurationSeconds, 9);
-        Assert.True(slowed.CustomTempo);
 
         // Tempo is playback policy: the package, its manifests and what it loads as are unchanged.
         Assert.Equal(before, PackageHashes(library.PackageDirectory));
@@ -188,14 +185,50 @@ public sealed class SongPackageTests
         SongLoadResult corrected = library.Load(timing: true);
         Assert.Equal(1, library.OmrRuns);
         Assert.Equal(1, library.Interpretations);
-        Assert.EndsWith(SongCache.TimingCorrectionLabel, corrected.DisplayName);
+        Assert.Equal(plain.DisplayName, corrected.DisplayName);
         Assert.NotEqual(plain.ManifestRelativePath, corrected.ManifestRelativePath);
 
         // Both interpretations stay; switching back loads the plain one as it is.
         SongLoadResult again = library.Load();
         Assert.Equal(1, library.Interpretations);
         Assert.Equal(plain.ManifestRelativePath, again.ManifestRelativePath);
-        Assert.Equal(2, SongCache.GetCachedSongsForTesting(library.Root, library.Bridge, library.Interpret).Count);
+
+        // One row for the song, the interpretation the switch picks; opening it with the other
+        // setting plays that one without interpreting again.
+        CachedSongEntry listed = Assert.Single(SongCache.GetCachedSongsForTesting(library.Root, library.Bridge, Refuse));
+        Assert.Equal(corrected.ManifestRelativePath, listed.RecentSong.ManifestRelativePath);
+        Assert.Equal(plain.ManifestRelativePath, Assert.Single(SongCache.GetCachedSongsForTesting(library.Root,
+            library.Bridge, Refuse, timingCorrection: false)).RecentSong.ManifestRelativePath);
+        Assert.True(SongCache.TryLoadRecentForTesting(listed.RecentSong, library.Root, library.Bridge, Refuse,
+            allowInterpretation: true, out SongLoadResult? opened, timingCorrection: false));
+        Assert.Equal(plain.ManifestRelativePath, opened!.ManifestRelativePath);
+        Assert.False(opened.Performance!.TimingCorrection);
+    }
+
+    [Fact]
+    public void ASongOpensWithTheCurrentTimingFixAndIsReinterpretedWithoutOmr()
+    {
+        using Library library = new();
+        SongLoadResult plain = library.Load();
+
+        // Only the plain interpretation exists: the song is listed from it, without the interpreter.
+        CachedSongEntry listed = Assert.Single(SongCache.GetCachedSongsForTesting(library.Root, library.Bridge, Refuse));
+        Assert.Equal(plain.ManifestRelativePath, listed.RecentSong.ManifestRelativePath);
+
+        // Opened with the switch on, its stored score is re-interpreted, and the plain one is kept.
+        Assert.True(SongCache.TryLoadRecentForTesting(listed.RecentSong, library.Root, library.Bridge, library.Interpret,
+            allowInterpretation: true, out SongLoadResult? opened, timingCorrection: true));
+        Assert.True(opened!.Performance!.TimingCorrection);
+        Assert.Equal(plain.DisplayName, opened.DisplayName);
+        Assert.NotEqual(plain.ManifestRelativePath, opened.ManifestRelativePath);
+        Assert.Equal(1, library.Interpretations);
+        Assert.Equal(1, library.OmrRuns);
+        Assert.Equal(2, Directory.GetDirectories(Path.Combine(library.PackageDirectory, "derived")).Length);
+
+        // A recent entry naming the plain interpretation still opens as the entry says without a setting.
+        Assert.True(SongCache.TryLoadRecentForTesting(listed.RecentSong, library.Root, library.Bridge, Refuse,
+            allowInterpretation: true, out SongLoadResult? asStored));
+        Assert.Equal(plain.ManifestRelativePath, asStored!.ManifestRelativePath);
     }
 
     [Fact]

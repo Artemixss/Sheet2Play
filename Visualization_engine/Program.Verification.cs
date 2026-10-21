@@ -147,7 +147,7 @@ internal static partial class Program
                         () => SongCache.LoadOrCreateDetailed(file, OmrEngine.DirectMidi, recordRecent: false));
                 }
             }
-            foreach (CachedSongEntry entry in SongCache.GetCachedSongs()
+            foreach (CachedSongEntry entry in SongCache.GetCachedSongs(AppSettingsStore.LoadTimingCorrection())
                          .Where(entry => entry.RecentSong.ManifestRelativePath.EndsWith("interpretation.json")))
             {
                 Check("song-package", entry.RecentSong.ManifestRelativePath, entry.RecentSong.Engine,

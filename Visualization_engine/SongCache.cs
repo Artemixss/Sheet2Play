@@ -40,12 +40,11 @@ public sealed record MidiLibraryEntry(
     long SizeBytes,
     DateTimeOffset LastModifiedUtc);
 
-/// <param name="CustomTempo">The song plays at a tempo set in the TEMPO panel, which <paramref name="DurationSeconds"/> follows.</param>
+/// <param name="DurationSeconds">At the tempo the song plays at: a tempo set in the TEMPO panel, else the printed marks.</param>
 public sealed record CachedSongEntry(
     RecentSongEntry RecentSong,
     int NoteCount,
-    double DurationSeconds,
-    bool CustomTempo = false);
+    double DurationSeconds);
 
 public static partial class SongCache
 {
@@ -266,8 +265,7 @@ public static partial class SongCache
                 engine,
                 loadedFromCache: true,
                 cachePaths,
-                applicationDirectory,
-                timingIdentity);
+                applicationDirectory);
         }
 
         ReportProgress(progress, engine, OmrProgressStages.CacheLookup, OmrProgressStatuses.Completed,
@@ -360,24 +358,21 @@ public static partial class SongCache
             engine,
             loadedFromCache: false,
             cachePaths,
-            applicationDirectory,
-            timingIdentity);
+            applicationDirectory);
     }
 
-    /// <summary>Shown after a song's name wherever its corrected conversion is listed or played.</summary>
-    internal const string TimingCorrectionLabel = " \u00b7 timing fix";
-
+    // A song is named after its source whatever the timing fix: the setting on the home screen
+    // says which conversion plays (plans/2026-10-21-timing-fix-default.md).
     private static SongLoadResult CreateLoadResult(
         List<VisualNote> notes,
         string sourcePath,
         OmrEngine engine,
         bool loadedFromCache,
         CachePaths paths,
-        string applicationDirectory,
-        string? timingIdentity = null) =>
+        string applicationDirectory) =>
         new(
             notes,
-            Path.GetFileNameWithoutExtension(sourcePath) + (timingIdentity is null ? "" : TimingCorrectionLabel),
+            Path.GetFileNameWithoutExtension(sourcePath),
             engine,
             loadedFromCache,
             File.Exists(paths.ManifestPath)
@@ -454,9 +449,10 @@ public static partial class SongCache
         return GetMidiLibraryCore(FindApplicationDirectory());
     }
 
-    public static IReadOnlyList<CachedSongEntry> GetCachedSongs()
+    /// <summary>The cached songs, one row each, listed as they play with this timing fix setting.</summary>
+    public static IReadOnlyList<CachedSongEntry> GetCachedSongs(bool timingCorrection = true)
     {
-        return GetCachedSongsCore(FindApplicationDirectory());
+        return GetCachedSongsCore(FindApplicationDirectory(), timingCorrection: timingCorrection);
     }
 
     private static IReadOnlyList<PdfLibraryEntry> GetPdfLibraryCore(
@@ -575,26 +571,31 @@ public static partial class SongCache
     private static IReadOnlyList<CachedSongEntry> GetCachedSongsCore(
         string applicationDirectory,
         PackageContext? context = null,
-        string? tempoMapPath = null)
+        string? tempoMapPath = null,
+        bool timingCorrection = true)
     {
         context ??= DefaultPackageContext(applicationDirectory);
         string midiRoot = Path.Combine(applicationDirectory, "songs", "midi");
-        Dictionary<string, DateTimeOffset> lastOpenedByManifest = RecentSongsStore.Load()
+        // By song rather than by file, so a song re-interpreted since it was opened keeps its date.
+        Dictionary<string, DateTimeOffset> lastOpenedBySong = RecentSongsStore.Load()
+            .GroupBy(static entry => RecentSongsStore.SongKey(entry.ManifestRelativePath), StringComparer.OrdinalIgnoreCase)
             .ToDictionary(
-                static entry => entry.ManifestRelativePath,
-                static entry => entry.LastOpenedUtc,
+                static song => song.Key,
+                static song => song.Max(static entry => entry.LastOpenedUtc),
                 StringComparer.OrdinalIgnoreCase);
+        DateTimeOffset LastOpened(string relativePath, string fullPath) =>
+            lastOpenedBySong.TryGetValue(RecentSongsStore.SongKey(relativePath), out DateTimeOffset stored)
+                ? stored
+                : File.GetLastWriteTimeUtc(fullPath);
         List<CachedSongEntry> cachedSongs = [];
         IReadOnlyDictionary<string, SongTempoMap> tempoMaps = TempoMapStore.LoadAll(tempoMapPath);
         IReadOnlyDictionary<string, List<string>> ignoredMarks = TempoMapStore.LoadAllIgnoredMarks(tempoMapPath);
         string? readerSha = TempoDetection.ReaderSha256(context.BridgeDirectory);
-        foreach ((string interpretationPath, OmrEngine packageEngine) in EnumeratePackageEntries(applicationDirectory))
+        foreach ((string interpretationPath, OmrEngine packageEngine) in
+                 EnumeratePackageEntries(applicationDirectory, timingCorrection))
         {
             string relativePath = Path.GetRelativePath(applicationDirectory, interpretationPath);
-            DateTimeOffset lastOpened = lastOpenedByManifest.TryGetValue(relativePath, out DateTimeOffset stored)
-                ? stored
-                : File.GetLastWriteTimeUtc(interpretationPath);
-            RecentSongEntry candidate = new(relativePath, "", packageEngine, lastOpened);
+            RecentSongEntry candidate = new(relativePath, "", packageEngine, LastOpened(relativePath, interpretationPath));
             if (TryLoadRecentCore(candidate, applicationDirectory, out SongLoadResult? loaded, context: context) &&
                 loaded is not null)
             {
@@ -612,8 +613,7 @@ public static partial class SongCache
                 cachedSongs.Add(new CachedSongEntry(
                     candidate with { ManifestRelativePath = loaded.ManifestRelativePath!, DisplayName = loaded.DisplayName },
                     loaded.NoteCount,
-                    duration,
-                    CustomTempo: map is not null));
+                    duration));
             }
         }
         // A MIDI cache whose source now has a package is superseded by it and not listed.
@@ -630,40 +630,44 @@ public static partial class SongCache
 
             try
             {
-                foreach (string manifestPath in Directory.EnumerateFiles(
-                             engineDirectory,
-                             "*.mid.cache.json",
-                             SearchOption.TopDirectoryOnly))
+                // A source cached both with and without the timing fix is one row: the cache for the
+                // current setting when it loads, else the other one.
+                bool corrected = timingCorrection && OmrPipeline.SupportsTimingCorrection(engine);
+                IEnumerable<IGrouping<string, string>> songs = Directory.EnumerateFiles(
+                        engineDirectory,
+                        "*.mid.cache.json",
+                        SearchOption.TopDirectoryOnly)
+                    .Where(manifestPath => !IsSupersededMidiCache(manifestPath, engine, packaged))
+                    .GroupBy(
+                        manifestPath => RecentSongsStore.SongKey(Path.GetRelativePath(applicationDirectory, manifestPath)),
+                        StringComparer.OrdinalIgnoreCase);
+                foreach (IGrouping<string, string> song in songs)
                 {
-                    if (IsSupersededMidiCache(manifestPath, engine, packaged))
+                    foreach (string manifestPath in song.OrderBy(manifestPath =>
+                                 Path.GetFileName(manifestPath).Contains(".timing-", StringComparison.Ordinal) != corrected))
                     {
-                        continue;
-                    }
-                    string relativePath = Path.GetRelativePath(
-                        applicationDirectory,
-                        manifestPath);
-                    string fileName = Path.GetFileName(manifestPath);
-                    string fallbackName = fileName[..^".mid.cache.json".Length];
-                    DateTimeOffset lastOpened = lastOpenedByManifest.TryGetValue(
-                        relativePath,
-                        out DateTimeOffset storedLastOpened)
-                        ? storedLastOpened
-                        : File.GetLastWriteTimeUtc(manifestPath);
-                    RecentSongEntry candidate = new(
-                        relativePath,
-                        fallbackName,
-                        engine,
-                        lastOpened);
-                    if (TryLoadRecentCore(
-                            candidate,
+                        string relativePath = Path.GetRelativePath(
                             applicationDirectory,
-                            out SongLoadResult? loaded) &&
-                        loaded is not null)
-                    {
-                        cachedSongs.Add(new CachedSongEntry(
-                            candidate with { DisplayName = loaded.DisplayName },
-                            loaded.NoteCount,
-                            GetTotalDuration(loaded.Notes)));
+                            manifestPath);
+                        string fileName = Path.GetFileName(manifestPath);
+                        string fallbackName = fileName[..^".mid.cache.json".Length];
+                        RecentSongEntry candidate = new(
+                            relativePath,
+                            fallbackName,
+                            engine,
+                            LastOpened(relativePath, manifestPath));
+                        if (TryLoadRecentCore(
+                                candidate,
+                                applicationDirectory,
+                                out SongLoadResult? loaded) &&
+                            loaded is not null)
+                        {
+                            cachedSongs.Add(new CachedSongEntry(
+                                candidate with { DisplayName = loaded.DisplayName },
+                                loaded.NoteCount,
+                                GetTotalDuration(loaded.Notes)));
+                            break;
+                        }
                     }
                 }
             }
@@ -686,11 +690,14 @@ public static partial class SongCache
             .ToArray();
     }
 
-    public static SongLoadResult LoadRecent(RecentSongEntry entry, bool recordRecent = true)
+    /// <param name="timingCorrection">The timing fix to play a song package with, re-interpreting it if
+    /// needed; null plays the interpretation the entry names.</param>
+    public static SongLoadResult LoadRecent(RecentSongEntry entry, bool recordRecent = true, bool? timingCorrection = null)
     {
         ArgumentNullException.ThrowIfNull(entry);
         string applicationDirectory = FindApplicationDirectory();
-        if (!TryLoadRecentCore(entry, applicationDirectory, out SongLoadResult? result, allowInterpretation: true) ||
+        if (!TryLoadRecentCore(entry, applicationDirectory, out SongLoadResult? result, allowInterpretation: true,
+                timingCorrection: timingCorrection) ||
             result is null)
         {
             if (recordRecent) RecentSongsStore.Remove(entry.ManifestRelativePath);
@@ -706,7 +713,8 @@ public static partial class SongCache
         string applicationDirectory,
         out SongLoadResult? result,
         bool allowInterpretation = false,
-        PackageContext? context = null)
+        PackageContext? context = null,
+        bool? timingCorrection = null)
     {
         result = null;
         try
@@ -724,7 +732,7 @@ public static partial class SongCache
             if (string.Equals(Path.GetFileName(manifestPath), InterpretationManifestName, StringComparison.OrdinalIgnoreCase))
             {
                 return TryLoadPackageEntry(entry, manifestPath, context ?? DefaultPackageContext(applicationDirectory),
-                    allowInterpretation, out result);
+                    allowInterpretation, timingCorrection, out result);
             }
 
             if (manifestPath.EndsWith(".mid", StringComparison.OrdinalIgnoreCase) && File.Exists(manifestPath))
@@ -796,7 +804,7 @@ public static partial class SongCache
             }
             result = new SongLoadResult(
                 notes,
-                displayName + (manifest.TimingCorrectionSha256 is null ? "" : TimingCorrectionLabel),
+                displayName,
                 entry.Engine,
                 LoadedFromCache: true,
                 Path.GetRelativePath(applicationDirectory, manifestPath));
@@ -816,7 +824,7 @@ public static partial class SongCache
     {
         string midiRoot = Path.Combine(applicationDirectory, "songs", "midi");
         List<RecentSongEntry> candidates = [];
-        foreach ((string interpretationPath, OmrEngine packageEngine) in EnumeratePackageEntries(applicationDirectory))
+        foreach ((string interpretationPath, OmrEngine packageEngine) in EnumeratePackageEntries(applicationDirectory, timingCorrection: true))
         {
             candidates.Add(new RecentSongEntry(
                 Path.GetRelativePath(applicationDirectory, interpretationPath),
@@ -1662,7 +1670,8 @@ public static partial class SongCache
         string applicationDirectory) => GetPdfLibraryCore(applicationDirectory);
 
     internal static IReadOnlyList<CachedSongEntry> GetCachedSongsForTesting(
-        string applicationDirectory) => GetCachedSongsCore(applicationDirectory);
+        string applicationDirectory, bool timingCorrection = true) =>
+        GetCachedSongsCore(applicationDirectory, timingCorrection: timingCorrection);
 
     private sealed record CachePaths(
         string PdfDirectory,

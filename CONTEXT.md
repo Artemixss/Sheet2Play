@@ -156,7 +156,9 @@ identity layers:
    `song_entry.py` SHA and page SHAs. Pinned engines put the profile SHA in the folder name.
 2. **Interpretation** (`derived/<key>/`, rebuilt from the stored pages in seconds): SHA of
    `song_model.py`, `timing_correction.py` (or `off`) and the schema. Turning TIMING FIX on or
-   off, or changing the interpreter, re-interprets on the next load with no OMR.
+   off, or changing the interpreter, re-interprets on the next load with no OMR. A package is
+   one library row and one recent entry whatever the switch: opening it plays the switch's
+   interpretation, and no name, badge or file name says which it is.
 3. **Playback policy** (never cached): repeats, pedal, dynamics, articulations, piano,
    playback rate and tempo, applied when `SongTimeline` builds the notes.
 

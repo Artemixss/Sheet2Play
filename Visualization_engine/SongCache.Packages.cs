@@ -167,7 +167,7 @@ public static partial class SongCache
                 ReportProgress(progress, engine, OmrProgressStages.Complete, OmrProgressStatuses.Completed,
                     "Loaded validated MIDI cache");
                 return CreateLoadResult(cachedNotes, sourcePath, engine, loadedFromCache: true, cachePaths,
-                    context.ApplicationDirectory, timingIdentity);
+                    context.ApplicationDirectory);
             }
         }
 
@@ -267,7 +267,7 @@ public static partial class SongCache
         if (TryReadInterpretation(derived, key, timing, out SongPerformance? performance, out List<VisualNote>? notes))
         {
             LogPackage(engine, package.Manifest.SourceSha256, "hit", derived);
-            return PackageResult(package, notes!, performance!, timing, derived, context.ApplicationDirectory);
+            return PackageResult(package, notes!, performance!, derived, context.ApplicationDirectory);
         }
         if (!allowInterpretation)
         {
@@ -294,13 +294,13 @@ public static partial class SongCache
             $"decision=reinterpret omr=false seconds={elapsed.Elapsed.TotalSeconds:F2} path=\"{derived}\"");
         ReportProgress(progress, engine, OmrProgressStages.Normalization, OmrProgressStatuses.Completed,
             "Stored score read");
-        return PackageResult(package, notes, performance, timing, derived, context.ApplicationDirectory);
+        return PackageResult(package, notes, performance, derived, context.ApplicationDirectory);
     }
 
     private static SongLoadResult PackageResult(ValidPackage package, List<VisualNote> notes,
-        SongPerformance performance, bool timing, string derived, string applicationDirectory) =>
+        SongPerformance performance, string derived, string applicationDirectory) =>
         new(notes,
-            package.Manifest.DisplayName + (timing ? TimingCorrectionLabel : ""),
+            package.Manifest.DisplayName,
             package.Manifest.Engine,
             LoadedFromCache: true,
             Path.GetRelativePath(applicationDirectory, Path.Combine(derived, InterpretationManifestName)),
@@ -376,7 +376,7 @@ public static partial class SongCache
             // The song entry interpreted the pages it kept; record that interpretation.
             (List<VisualNote> notes, SongPerformance performance) = WriteInterpretation(derived, key, timing);
             LogPackage(engine, sourceHash, "saved", derived);
-            return PackageResult(package, notes, performance, timing, derived, context.ApplicationDirectory);
+            return PackageResult(package, notes, performance, derived, context.ApplicationDirectory);
         }
         return LoadInterpretation(package, context, timing, allowInterpretation: true, progress, cancellationToken);
     }
@@ -633,8 +633,10 @@ public static partial class SongCache
     /// the interpreter, so an entry whose interpretation is out of date is listed from it as it
     /// stands; opening it re-interprets.
     /// </summary>
+    /// <param name="timingCorrection">The timing fix to open the song with, which nothing on the song
+    /// shows; null keeps the entry's own, as the verification tools need.</param>
     private static bool TryLoadPackageEntry(RecentSongEntry entry, string interpretationPath, PackageContext context,
-        bool allowInterpretation, out SongLoadResult? result)
+        bool allowInterpretation, bool? timingCorrection, out SongLoadResult? result)
     {
         result = null;
         string derived = Path.GetDirectoryName(interpretationPath)!;
@@ -645,6 +647,10 @@ public static partial class SongCache
             return false;
         }
         bool timing = ReadJson<InterpretationManifest>(interpretationPath).TimingCorrection;
+        if (allowInterpretation && timingCorrection is bool current)
+        {
+            timing = AppliesTimingCorrection(package.Manifest.Engine, current);
+        }
         string currentKey = SongInterpreter.InterpretationKey(context.BridgeDirectory, timing);
         if (Path.GetFileName(derived) == currentKey || allowInterpretation)
         {
@@ -663,12 +669,17 @@ public static partial class SongCache
         {
             return false;
         }
-        result = PackageResult(package, notes!, stale!, timing, derived, context.ApplicationDirectory);
+        result = PackageResult(package, notes!, stale!, derived, context.ApplicationDirectory);
         return true;
     }
 
-    /// <summary>Every interpretation in the library, one per package and timing setting.</summary>
-    private static IEnumerable<(string Path, OmrEngine Engine)> EnumeratePackageEntries(string applicationDirectory)
+    /// <summary>
+    /// One interpretation per package, so a song is one library row whatever the timing fix: the
+    /// one for <paramref name="timingCorrection"/> when it exists, else the newest, which opening
+    /// the song re-interprets.
+    /// </summary>
+    private static IEnumerable<(string Path, OmrEngine Engine)> EnumeratePackageEntries(string applicationDirectory,
+        bool timingCorrection)
     {
         string scoresRoot = Path.Combine(applicationDirectory, "songs", ScoresFolderName);
         if (!Directory.Exists(scoresRoot))
@@ -714,9 +725,14 @@ public static partial class SongCache
                         newest[timing] = (manifestPath, written);
                     }
                 }
-                foreach ((string path, _) in newest.Values)
+                if (newest.TryGetValue(AppliesTimingCorrection(engine, timingCorrection),
+                        out (string Path, DateTime Written) preferred))
                 {
-                    yield return (path, engine);
+                    yield return (preferred.Path, engine);
+                }
+                else if (newest.Count > 0)
+                {
+                    yield return (newest.Values.MaxBy(static item => item.Written).Path, engine);
                 }
             }
         }
@@ -726,7 +742,7 @@ public static partial class SongCache
     private static HashSet<(OmrEngine, string)> PackagedSources(string applicationDirectory)
     {
         HashSet<(OmrEngine, string)> packaged = [];
-        foreach ((string path, OmrEngine engine) in EnumeratePackageEntries(applicationDirectory))
+        foreach ((string path, OmrEngine engine) in EnumeratePackageEntries(applicationDirectory, timingCorrection: true))
         {
             string packageDirectory = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(path)!)!)!;
             try
@@ -829,14 +845,15 @@ public static partial class SongCache
             pipeline, CancellationToken.None, null, bypassKnownFailure: true, forceReprocess, timingCorrection);
 
     internal static bool TryLoadRecentForTesting(RecentSongEntry entry, string applicationDirectory,
-        string bridgeDirectory, SongInterpretation interpret, bool allowInterpretation, out SongLoadResult? result) =>
+        string bridgeDirectory, SongInterpretation interpret, bool allowInterpretation, out SongLoadResult? result,
+        bool? timingCorrection = null) =>
         TryLoadRecentCore(entry, applicationDirectory, out result, allowInterpretation,
-            new PackageContext(applicationDirectory, bridgeDirectory, interpret));
+            new PackageContext(applicationDirectory, bridgeDirectory, interpret), timingCorrection);
 
     internal static IReadOnlyList<CachedSongEntry> GetCachedSongsForTesting(string applicationDirectory,
-        string bridgeDirectory, SongInterpretation interpret, string? tempoMapPath = null) =>
+        string bridgeDirectory, SongInterpretation interpret, string? tempoMapPath = null, bool timingCorrection = true) =>
         GetCachedSongsCore(applicationDirectory, new PackageContext(applicationDirectory, bridgeDirectory, interpret),
-            tempoMapPath);
+            tempoMapPath, timingCorrection);
 
     internal static bool IsPackageHitForTesting(string sourcePath, OmrEngine engine, string applicationDirectory) =>
         IsPackageHit(sourcePath, engine, applicationDirectory);

@@ -69,8 +69,9 @@ public sealed class TimingCorrectionTests
         Assert.Equal(2, calls);
         Assert.NotEqual(plain.ManifestRelativePath, corrected.ManifestRelativePath);
         Assert.Contains(".timing-" + IdentityA[..12], corrected.ManifestRelativePath!);
+        // Named after the source either way: nothing on the song says which conversion it is.
         Assert.Equal("score", plain.DisplayName);
-        Assert.EndsWith(SongCache.TimingCorrectionLabel, corrected.DisplayName);
+        Assert.Equal("score", corrected.DisplayName);
 
         Assert.True(SongCache.IsCacheHitForTesting(source, OmrEngine.Homr, temporary.Path));
         Assert.True(SongCache.IsCacheHitForTesting(source, OmrEngine.Homr, temporary.Path, IdentityA));
@@ -81,9 +82,38 @@ public sealed class TimingCorrectionTests
 
         // The retained source is one file for both, so the PDF library shows the score once.
         Assert.Single(Directory.GetFiles(Path.Combine(temporary.Path, "songs", "pdf")));
-        IReadOnlyList<CachedSongEntry> library = SongCache.GetCachedSongsForTesting(temporary.Path);
-        Assert.Equal(2, library.Count);
-        Assert.Single(library, entry => entry.RecentSong.DisplayName.EndsWith(SongCache.TimingCorrectionLabel));
+        // The cache playlist lists the song once, as it plays with the switch.
+        CachedSongEntry listed = Assert.Single(SongCache.GetCachedSongsForTesting(temporary.Path));
+        Assert.Equal(corrected.ManifestRelativePath, listed.RecentSong.ManifestRelativePath);
+        listed = Assert.Single(SongCache.GetCachedSongsForTesting(temporary.Path, timingCorrection: false));
+        Assert.Equal(plain.ManifestRelativePath, listed.RecentSong.ManifestRelativePath);
+    }
+
+    [Fact]
+    public void RecentSongsKeepOneEntryPerSongAndReadOldNamesWithoutTheSuffix()
+    {
+        using TemporaryDirectory temporary = new();
+        string path = Path.Combine(temporary.Path, "recent.json");
+        const string Package = "songs/scores/homr480/abc-def";
+        DateTimeOffset now = DateTimeOffset.UtcNow;
+        File.WriteAllText(path, $$"""
+            [{"manifest_relative_path":"{{Package}}/derived/plain/interpretation.json",
+              "display_name":"Song · timing fix","engine":"homr480","last_opened_utc":"{{now:O}}"},
+             {"manifest_relative_path":"songs/midi/homr/score.timing-aaaaaaaaaaaa.mid.cache.json",
+              "display_name":"Score · timing fix","engine":"homr","last_opened_utc":"{{now:O}}"}]
+            """);
+        Assert.Equal(["Song", "Score"], RecentSongsStore.Load(path).Select(entry => entry.DisplayName).Order().Reverse());
+
+        // Re-interpreted with the other setting, or re-cached without the fix: still one entry each.
+        RecentSongsStore.Touch(new RecentSongEntry(Package + "/derived/corrected/interpretation.json", "Song",
+            OmrEngine.Homr480, now), path);
+        RecentSongsStore.Touch(new RecentSongEntry("songs/midi/homr/score.mid.cache.json", "Score",
+            OmrEngine.Homr, now), path);
+        IReadOnlyList<RecentSongEntry> entries = RecentSongsStore.Load(path);
+        Assert.Equal(2, entries.Count);
+        Assert.Contains(entries, entry => entry.ManifestRelativePath.EndsWith("corrected/interpretation.json"));
+        Assert.Contains(entries, entry => entry.ManifestRelativePath == "songs/midi/homr/score.mid.cache.json");
+        Assert.Equal(Package, RecentSongsStore.SongKey(Package.Replace('/', '\\') + "\\derived\\x\\interpretation.json"));
     }
 
     [Fact]

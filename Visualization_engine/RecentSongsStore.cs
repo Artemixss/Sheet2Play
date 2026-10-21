@@ -12,6 +12,9 @@ public sealed record RecentSongEntry(
 public static class RecentSongsStore
 {
     private const int MaximumEntries = 10;
+    // Songs were once named with this suffix when converted with the timing fix; the setting now
+    // says which conversion plays (plans/2026-10-21-timing-fix-default.md).
+    private const string RetiredTimingSuffix = " · timing fix";
     private static readonly object Gate = new();
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
@@ -29,7 +32,7 @@ public static class RecentSongsStore
     {
         lock (Gate)
         {
-            return KeepLatestPerManifest(ReadEntries(storePath ?? DefaultPath))
+            return KeepLatestPerSong(ReadEntries(storePath ?? DefaultPath))
                 .OrderByDescending(entry => entry.LastOpenedUtc)
                 .Take(MaximumEntries)
                 .ToArray();
@@ -43,11 +46,9 @@ public static class RecentSongsStore
         lock (Gate)
         {
             List<RecentSongEntry> entries = ReadEntries(path);
-            entries.RemoveAll(item =>
-                string.Equals(
-                    item.ManifestRelativePath,
-                    entry.ManifestRelativePath,
-                    StringComparison.OrdinalIgnoreCase));
+            // Another interpretation or cache of the same song is replaced, not listed beside it.
+            string song = SongKey(entry.ManifestRelativePath);
+            entries.RemoveAll(item => string.Equals(SongKey(item.ManifestRelativePath), song, StringComparison.OrdinalIgnoreCase));
             entries.Add(entry with { LastOpenedUtc = DateTimeOffset.UtcNow });
             WriteEntries(
                 path,
@@ -81,12 +82,12 @@ public static class RecentSongsStore
             {
                 return [];
             }
-            return JsonSerializer.Deserialize<List<RecentSongEntry>>(
-                       File.ReadAllText(path), JsonOptions) ?? [];
+            return WithoutRetiredSuffix(JsonSerializer.Deserialize<List<RecentSongEntry>>(
+                       File.ReadAllText(path), JsonOptions) ?? []);
         }
         catch (JsonException)
         {
-            return MigrateLegacyEntries(path);
+            return WithoutRetiredSuffix(MigrateLegacyEntries(path));
         }
         catch (Exception exception) when (
             exception is IOException or UnauthorizedAccessException)
@@ -160,16 +161,45 @@ public static class RecentSongsStore
             }
             // The 465 cache may already be in the list from opening it directly; mapping the
             // 426 entry onto it must not leave the same manifest listed twice.
-            if (changed) WriteEntries(path, KeepLatestPerManifest(entries), throwOnFailure: true);
+            if (changed) WriteEntries(path, KeepLatestPerSong(entries), throwOnFailure: true);
         }
     }
 
-    private static List<RecentSongEntry> KeepLatestPerManifest(List<RecentSongEntry> entries)
+    /// <summary>
+    /// What identifies a song across its files: a package folder for any of its interpretations, or
+    /// a MIDI cache's name without its <c>.timing-</c> part. Anything else is its own path.
+    /// </summary>
+    internal static string SongKey(string manifestRelativePath)
+    {
+        const string CacheSuffix = ".mid.cache.json";
+        string path = manifestRelativePath.Replace('\\', '/');
+        string[] parts = path.Split('/');
+        if (parts.Length > 3 && parts[^3].Equals("derived", StringComparison.OrdinalIgnoreCase) &&
+            parts[^1].Equals("interpretation.json", StringComparison.OrdinalIgnoreCase))
+        {
+            return string.Join('/', parts[..^3]);
+        }
+        if (path.EndsWith(CacheSuffix, StringComparison.OrdinalIgnoreCase))
+        {
+            string stem = path[..^CacheSuffix.Length];
+            int timing = stem.IndexOf(".timing-", stem.LastIndexOf('/') + 1, StringComparison.Ordinal);
+            return (timing >= 0 ? stem[..timing] : stem) + CacheSuffix;
+        }
+        return path;
+    }
+
+    private static List<RecentSongEntry> WithoutRetiredSuffix(List<RecentSongEntry> entries) =>
+        entries.Select(static entry => entry.DisplayName.EndsWith(RetiredTimingSuffix, StringComparison.Ordinal)
+                ? entry with { DisplayName = entry.DisplayName[..^RetiredTimingSuffix.Length] }
+                : entry)
+            .ToList();
+
+    private static List<RecentSongEntry> KeepLatestPerSong(List<RecentSongEntry> entries)
     {
         Dictionary<string, int> latest = new(StringComparer.OrdinalIgnoreCase);
         for (int index = 0; index < entries.Count; index++)
         {
-            string key = entries[index].ManifestRelativePath.Replace('\\', '/');
+            string key = SongKey(entries[index].ManifestRelativePath);
             if (!latest.TryGetValue(key, out int kept) ||
                 entries[index].LastOpenedUtc > entries[kept].LastOpenedUtc)
             {
