@@ -58,6 +58,12 @@ internal static partial class Program
 	/// <summary>The printed marks the user ignored for the playing song (<see cref="DetectedMark.Key"/>).</summary>
 	private static IReadOnlySet<string> tempoIgnored = new HashSet<string>();
 
+	/// <summary>
+	/// What the playing song plays without a map of the user's: its printed marks but the ignored
+	/// ones, or null when it has none it can use.
+	/// </summary>
+	private static SongTempoMap? tempoPrintedMap;
+
 	/// <summary>Whether the printed marks are listed. Closed for every song, like the panel.</summary>
 	private static bool tempoPrintedOpen;
 
@@ -84,14 +90,17 @@ internal static partial class Program
 	/// <summary>Where the field being typed into was drawn last frame, so a click elsewhere commits it.</summary>
 	private static Rectangle tempoEditBox;
 
-	/// <summary>The tempo <paramref name="song"/> plays at under its stored map; null plays its score.</summary>
+	/// <summary>
+	/// The tempo <paramref name="song"/> plays at: the user's map, else the marks printed in its PDF;
+	/// null plays its score.
+	/// </summary>
 	private static TempoOverride? TempoFor(SongLoadResult song)
 	{
 		LoadTempoMap(song);
-		return SongTempoMaps.Override(tempoMap, song.Performance);
+		return SongTempoMaps.Override(tempoMap ?? tempoPrintedMap, song.Performance);
 	}
 
-	/// <summary>The stored tempo for a song, read fresh, for the bench and offline render.</summary>
+	/// <summary>The same tempo, read fresh, for the bench and offline render.</summary>
 	internal static TempoOverride? StoredTempo(SongLoadResult song)
 	{
 		if (song.SourceSha256 is not string source || song.Performance is null)
@@ -100,7 +109,10 @@ internal static partial class Program
 		}
 		try
 		{
-			return SongTempoMaps.Override(TempoMapStore.Get(source), song.Performance);
+			SongTempoMap? map = TempoMapStore.Get(source) ?? TempoDetection.PrintedMap(SongCache.ApplicationDirectory,
+				TempoDetection.ReaderSha256(OmrPipeline.DefaultBridgeDirectory), source, song.Performance, song.Engine,
+				TempoMapStore.GetIgnoredMarks(source));
+			return SongTempoMaps.Override(map, song.Performance);
 		}
 		catch (Exception error) when (error is IOException or UnauthorizedAccessException or InvalidOperationException)
 		{
@@ -136,12 +148,26 @@ internal static partial class Program
 			Console.Error.WriteLine("[TEMPO] The tempo map was not read: " + error.Message);
 		}
 		LoadPrintedMarks(song.SourceSha256, performance);
+		RefreshPrintedMap(performance, song.Engine);
+	}
+
+	/// <summary>Rebuilds what the song plays from its printed marks, after they were read or one was ignored.</summary>
+	private static void RefreshPrintedMap(SongPerformance performance, OmrEngine engine)
+	{
+		SongTempoMap? previous = tempoPrintedMap;
+		tempoPrintedMap = tempoPrinted is null ? null : TempoDetection.PrintedMap(tempoPrinted, tempoIgnored, performance, engine);
+		// Without a map of the user's, the printed marks are what plays, so the session follows them.
+		if (tempoMap is null && !Equals(SongTempoMaps.Override(previous, performance), SongTempoMaps.Override(tempoPrintedMap, performance)))
+		{
+			tempoChanged = true;
+		}
 	}
 
 	/// <summary>The song's printed marks as stored for the bridge's reader, and the ones the user ignored.</summary>
 	private static void LoadPrintedMarks(string source, SongPerformance performance)
 	{
 		tempoPrinted = null;
+		tempoPrintedMap = null;
 		tempoPrintedPages = 0;
 		tempoPrintedBlindPages = 0;
 		tempoPrintedOpen = false;
@@ -220,8 +246,10 @@ internal static partial class Program
 			if (current)
 			{
 				ShowPrintedMarks(reading.Result, performance);
+				RefreshPrintedMap(performance, song.Engine);
 				tempoPrintedOpen = true;
 				tempoPrintedScroll = 0;
+				tempoMapsEdited = true;
 			}
 			return;
 		}
@@ -257,7 +285,7 @@ internal static partial class Program
 			tempoStatus = "Not saved: " + error.Message;
 			Console.Error.WriteLine("[TEMPO] The tempo map was not saved: " + error.Message);
 		}
-		Console.Error.WriteLine($"[TEMPO] {song.DisplayName}: {(map is null ? "reset to the score" : DescribeMap(map))}");
+		Console.Error.WriteLine($"[TEMPO] {song.DisplayName}: {(map is null ? "reset to the score or its printed marks" : DescribeMap(map))}");
 	}
 
 	private static string DescribeMap(SongTempoMap map) =>
@@ -296,15 +324,15 @@ internal static partial class Program
 
 		LoadTempoMap(song);
 		CollectPrintedMarks(song, performance);
-		SongTempoMap shown = tempoMap ?? tempoScoreMap!;
+		SongTempoMap shown = tempoMap ?? tempoPrintedMap ?? tempoScoreMap!;
 		bool changesApply = SongTempoMaps.ChangesApply(shown, performance);
-		bool fallback = tempoMap is null && performance.Tempos.All(static tempo => tempo.QuarterBpm is null);
+		bool printed = tempoMap is null && tempoPrintedMap is not null;
+		bool fallback = tempoMap is null && !printed && performance.Tempos.All(static tempo => tempo.QuarterBpm is null);
 		int changeCount = changesApply ? shown.Changes.Count : 0;
-		// A song still on 120 says when its PDF prints a tempo, so the mark is found without opening the panel.
-		bool markFound = fallback && tempoPrinted is not null &&
-			tempoPrinted.Any(mark => mark.Usable && !tempoIgnored.Contains(mark.Source.Key));
 		string suffix = fallback
-			? markFound ? " · DEFAULT · MARK FOUND" : " · DEFAULT"
+			? " · DEFAULT"
+			: printed
+				? " · PRINTED" + (changeCount > 0 ? $" · {changeCount} CHANGE{(changeCount == 1 ? "" : "S")}" : "")
 			: !changesApply
 				? " · CHECK BARS"
 				: changeCount > 0 ? $" · {changeCount} CHANGE{(changeCount == 1 ? "" : "S")}" : "";
@@ -518,10 +546,12 @@ internal static partial class Program
 	}
 
 	/// <summary>
-	/// The marks printed in the PDF, stacked upward from <paramref name="bottom"/> above the changes,
-	/// each with USE, which takes it into the song's map at its bar (the first bar's sets the start),
-	/// and IGNORE, which hides it for good. A word without a number ("Andante") is a hint only. A row
-	/// above them holds USE ALL, READ AGAIN and, once some are hidden, SHOW IGNORED.
+	/// The marks printed in the PDF, stacked upward from <paramref name="bottom"/> above the changes.
+	/// Until the user sets a tempo of their own they all play, and show PLAYING. Each has IGNORE,
+	/// which hides it for good and stops it playing, and once the user's own tempo replaces them,
+	/// USE, which takes one into it at its bar (the first bar's sets the start). A word without a
+	/// number ("Andante") is a hint only. A row above them holds USE ALL, READ AGAIN and, once some
+	/// are hidden, SHOW IGNORED.
 	/// </summary>
 	private static void DrawPrintedMarks(SongLoadResult song, SongPerformance performance, SongTempoMap shown,
 		bool changesApply, float bottom, float height, float scale, ref SongTempoMap? edited)
@@ -570,12 +600,13 @@ internal static partial class Program
 				DrawTempoLabel(ref x, rowY, height, 0, "NOT IN THIS CONVERSION'S PAGES", UiTheme.Warning, scale);
 			}
 			SongTempoMap basis = edited ?? shown;
+			// A playing mark keeps IGNORE: without a tempo of the user's, ignoring it is how a misread mark
+			// stops playing.
 			if (mark.Usable && TempoDetection.InUse(basis, mark))
 			{
 				DrawTempoLabel(ref x, rowY, height, 0, mark.Measure == 0 ? "PLAYING · START" : "PLAYING", UiTheme.Lime, scale);
-				continue;
 			}
-			if (mark.Usable && DrawPanelAction(ref x, rowY, height, "USE", UiTheme.Lime, CanUse(mark), scale))
+			else if (mark.Usable && DrawPanelAction(ref x, rowY, height, "USE", UiTheme.Lime, CanUse(mark), scale))
 			{
 				tempoEditor.Cancel();
 				edited = TempoDetection.Use(basis, mark);
@@ -624,6 +655,11 @@ internal static partial class Program
 	{
 		HashSet<string> kept = keys.ToHashSet(StringComparer.Ordinal);
 		tempoIgnored = kept;
+		if (song.Performance is SongPerformance performance)
+		{
+			RefreshPrintedMap(performance, song.Engine);
+		}
+		tempoMapsEdited = true;
 		try
 		{
 			TempoMapStore.SetIgnoredMarks(song.SourceSha256!, kept);

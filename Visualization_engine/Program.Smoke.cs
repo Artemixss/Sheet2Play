@@ -288,25 +288,13 @@ internal static partial class Program
 				}
 			});
 
-			// A song still on the 120 fallback whose PDF prints a start tempo, a change and a tempo word:
-			// the button says a mark was found, and the open list offers USE and IGNORE for each.
+			// A song without a tempo of the user's whose PDF prints a start tempo, a change and a tempo
+			// word: the printed marks play, the button says so, and the open list shows them PLAYING
+			// with IGNORE, and the word as a hint.
 			failures += Capture(outputDirectory, "07-playback-tempo-printed", layout, () =>
 			{
 				SongPerformance performance = SmokeScore();
-				SongPlayback timeline = ExpressionPlayback.ForSong(
-					new SongLoadResult([], "Sample Score", OmrEngine.Homr480, true, null, performance), expression, null);
-				SongLoadResult song = new(timeline.Notes, "Sample Score", OmrEngine.Homr480, true, null, performance,
-					SourceSha256: "smoke-printed");
-				PlaybackController playback = new(
-					new PlaybackSession(timeline.Notes, pedal: timeline.Pedal),
-					new NullMidiOutput(),
-					new PlaybackClock(() => 0));
-				playback.Seek(2.5, resume: false);
-				RebuildOverlay(song, expression, null, timeline.Pedal);
-				Keyboard piano = new(layout.Width, layout.HitLineY, layout.KeyboardHeight);
-				GameState state = GameState.Playing;
-				PresetSmokeTempo(song, null);
-				tempoPrinted =
+				IReadOnlyList<PrintedMark> marks =
 				[
 					new PrintedMark(new DetectedMark(0, 0, 0, 110, "quarter", "Andantino J= 110", "Andantino", "andantino"), 0,
 						new TempoMark(110, BeatUnit.Quarter)),
@@ -314,6 +302,23 @@ internal static partial class Program
 						new TempoMark(74, BeatUnit.DottedQuarter)),
 					new PrintedMark(new DetectedMark(0, 1, 3, null, null, "a tempo", "a tempo", "a tempo"), 3, null)
 				];
+				SongTempoMap printedMap = TempoDetection.PrintedMap(marks, new HashSet<string>(), performance, OmrEngine.Homr480)!;
+				TempoOverride? tempo = SongTempoMaps.Override(printedMap, performance);
+				SongPlayback timeline = ExpressionPlayback.ForSong(
+					new SongLoadResult([], "Sample Score", OmrEngine.Homr480, true, null, performance), expression, tempo);
+				SongLoadResult song = new(timeline.Notes, "Sample Score", OmrEngine.Homr480, true, null, performance,
+					SourceSha256: "smoke-printed");
+				PlaybackController playback = new(
+					new PlaybackSession(timeline.Notes, pedal: timeline.Pedal),
+					new NullMidiOutput(),
+					new PlaybackClock(() => 0));
+				playback.Seek(2.5, resume: false);
+				RebuildOverlay(song, expression, tempo, timeline.Pedal);
+				Keyboard piano = new(layout.Width, layout.HitLineY, layout.KeyboardHeight);
+				GameState state = GameState.Playing;
+				PresetSmokeTempo(song, null);
+				tempoPrinted = marks;
+				tempoPrintedMap = printedMap;
 				tempoPanelOpen = true;
 				tempoPrintedOpen = true;
 				try
@@ -456,6 +461,7 @@ internal static partial class Program
 		tempoMap = map;
 		tempoEditor.Cancel();
 		tempoPrinted = null;
+		tempoPrintedMap = null;
 		tempoPrintedOpen = false;
 		tempoPrintedScroll = 0;
 		tempoPrintedPages = 0;

@@ -184,6 +184,36 @@ public static class TempoDetection
     }
 
     /// <summary>
+    /// What a PDF conversion plays when the user has set no tempo of their own: its printed marks,
+    /// all but the ones the user ignored, each taken in as USE would. A song whose PDF prints a
+    /// change but no starting tempo starts at 120. Null when no mark can be used.
+    /// </summary>
+    public static SongTempoMap? PrintedMap(IReadOnlyList<PrintedMark> marks, IReadOnlySet<string> ignored,
+        SongPerformance performance, OmrEngine engine)
+    {
+        ArgumentNullException.ThrowIfNull(marks);
+        ArgumentNullException.ThrowIfNull(ignored);
+        ArgumentNullException.ThrowIfNull(performance);
+        List<PrintedMark> usable = marks.Where(mark => mark.Usable && !ignored.Contains(mark.Source.Key)).ToList();
+        return usable.Count == 0
+            ? null
+            : usable.Aggregate(new SongTempoMap(SongTempoMaps.Fallback, [], engine, performance.Measures.Count,
+                DateTimeOffset.UnixEpoch), Use);
+    }
+
+    /// <summary>The printed map for a stored song, read from the store; null without usable marks.</summary>
+    public static SongTempoMap? PrintedMap(string applicationDirectory, string? readerSha256, string sourceSha256,
+        SongPerformance performance, OmrEngine engine, IReadOnlySet<string> ignored)
+    {
+        if (performance.Kind != "omr-pages" ||
+            Load(applicationDirectory, sourceSha256, readerSha256) is not DetectedTempos detected)
+        {
+            return null;
+        }
+        return PrintedMap(Place(detected, performance), ignored, performance, engine);
+    }
+
+    /// <summary>
     /// Reads the PDF's marks into the store and returns them. Runs <c>tempo_marks.py</c> in the HOMR
     /// runtime; <paramref name="background"/> lowers its priority so playback keeps the CPU.
     /// </summary>

@@ -115,6 +115,41 @@ public sealed class SongPackageTests
     }
 
     [Fact]
+    public void AListedSongPlaysItsPrintedTempoUntilTheUserSetsOne()
+    {
+        using Library library = new();
+        SongLoadResult song = library.Load();
+        string tempoMaps = Path.Combine(library.Root, "tempo-maps.json");
+        // A reader in the bridge folder, and what it read from the PDF: a quarter at 60 over the first bar.
+        string reader = Path.Combine(library.Bridge, TempoDetection.ScriptName);
+        File.WriteAllText(reader, "# tempo reader\n");
+        string store = TempoDetection.StorePath(library.Root, song.SourceSha256!);
+        Directory.CreateDirectory(Path.GetDirectoryName(store)!);
+        File.WriteAllText(store, JsonSerializer.Serialize(new
+        {
+            schema_version = 1, reader_sha256 = Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(reader))),
+            source_sha256 = song.SourceSha256, pages = new[] { new { systems = 1, measures = 3 } },
+            marks = new[] { new { page = 0, system = 0, page_measure = 0, bpm = 60.0, unit = "quarter", text = "J = 60",
+                words = (string?)null, suggestion = (string?)null } }
+        }));
+
+        // Three notes a measure apart in 2/4: 2.5 s at 120, 5 s at the printed 60.
+        CachedSongEntry printed = Assert.Single(SongCache.GetCachedSongsForTesting(library.Root, library.Bridge, Refuse, tempoMaps));
+        Assert.Equal(5.0, printed.DurationSeconds, 9);
+        Assert.False(printed.CustomTempo);
+
+        // The user's own tempo comes first, and ignoring the mark returns the song to 120.
+        TempoMapStore.Save(song.SourceSha256!, new SongTempoMap(new TempoMark(240, BeatUnit.Quarter), [], OmrEngine.Homr480,
+            song.Performance!.Measures.Count, DateTimeOffset.UtcNow), tempoMaps);
+        Assert.Equal(1.25, Assert.Single(SongCache.GetCachedSongsForTesting(library.Root, library.Bridge, Refuse, tempoMaps))
+            .DurationSeconds, 9);
+        TempoMapStore.Remove(song.SourceSha256!, tempoMaps);
+        TempoMapStore.SetIgnoredMarks(song.SourceSha256!, ["0:0:60:quarter:J = 60"], tempoMaps);
+        Assert.Equal(2.5, Assert.Single(SongCache.GetCachedSongsForTesting(library.Root, library.Bridge, Refuse, tempoMaps))
+            .DurationSeconds, 9);
+    }
+
+    [Fact]
     public void ATempoMapRetimesTheListedSongAndLeavesItsPackageUntouched()
     {
         using Library library = new();

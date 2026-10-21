@@ -300,6 +300,29 @@ public sealed class TempoTests
     }
 
     [Fact]
+    public void ASongPlaysItsPrintedMarksButTheIgnoredOnesAndStartsAt120WithoutAStartMark()
+    {
+        SongPerformance performance = Performance([4, 4, 4, 4]);
+        PrintedMark start = new(Printed(0, 0, 110, "quarter"), 0, new TempoMark(110, BeatUnit.Quarter));
+        PrintedMark change = new(Printed(0, 2, 74, "dotted_quarter", "Calmando"), 2, new TempoMark(74, BeatUnit.DottedQuarter));
+        PrintedMark word = new(Printed(0, 3, null, null, "a tempo"), 3, null);
+
+        SongTempoMap map = TempoDetection.PrintedMap([start, change, word], new HashSet<string>(), performance, OmrEngine.Homr480)!;
+        Assert.Equal(new TempoMark(110, BeatUnit.Quarter), map.Start);
+        Assert.Equal([new BarTempo(2, 0, new TempoMark(74, BeatUnit.DottedQuarter))], map.Changes);
+        Assert.Equal(4, map.MeasureCount);
+        Assert.True(SongTempoMaps.ChangesApply(map, performance));
+
+        // Ignoring the start leaves the change on the 120 default; a word alone plays nothing.
+        SongTempoMap withoutStart = TempoDetection.PrintedMap([start, change], new HashSet<string> { start.Source.Key },
+            performance, OmrEngine.Homr480)!;
+        Assert.Equal(SongTempoMaps.Fallback, withoutStart.Start);
+        Assert.Single(withoutStart.Changes);
+        Assert.Null(TempoDetection.PrintedMap([word], new HashSet<string>(), performance, OmrEngine.Homr480));
+        Assert.Null(TempoDetection.PrintedMap([start], new HashSet<string> { start.Source.Key }, performance, OmrEngine.Homr480));
+    }
+
+    [Fact]
     public void StoredMarksCountOnlyForTheReaderAndPdfTheyWereReadWith()
     {
         using TemporaryDirectory temporary = new();

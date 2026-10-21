@@ -8,14 +8,20 @@
 - **Phase 2** (research) accepted and committed (`bf4ed00`, [report](phase2/REPORT.md)). The
   frozen OCR reader passed every pre-registered check on test and test-b, scored once: start tempo
   0.979, recall 0.963, mid-score bar 0.974, no false tempos.
-- **Phase 3** is **shipped, not committed** ([report](phase3/REPORT.md)). The TEMPO panel offers
-  the marks printed in a song's PDF with USE / IGNORE. The shipped reader matched the frozen one
-  on all 120 dev scores and 11 library songs. Release gate 8 of 8.
+- **Phase 3** USE / IGNORE version checked and committed (`30bcbff`, [report](phase3/REPORT.md)).
+  The user then made printed marks play by default. That amendment is **checked and committed**:
+  the user's map comes first, then the printed marks; all 61 library PDFs were read once
+  (37 print tempo numbers). Release gate 8 of 8.
 
-**Next authorized action:** the user checks the PRINTED list in `dist\Sheet2Play.exe` and
-approves the commit. The plan has no Phase 4.
+**Next authorized action:** the user checks that songs play at their printed tempo and approves the
+commit. The user named three next paths:
+1. close this plan;
+2. tempo words ("Andante", "più mosso") as guesses, which needs its own phase or plan;
+3. TIMING FIX and tempo on by default, with no labels in the UI or file names, which is unrelated
+   to this plan.
+None is authorized yet.
 
-## Phase 3 (requested 2026-10-21, "ok commit and push proceed with phase 3"): shipped, uncommitted
+## Phase 3 (requested 2026-10-21, "ok commit and push proceed with phase 3"): committed
 
 The user said to "finish the to do lists" after a usage break; the work below finished them.
 

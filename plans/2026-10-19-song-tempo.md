@@ -13,11 +13,11 @@ was requested the same day ("push it and start phase 2") and is **accepted**: th
 passed every pre-registered check on the test splits, scored once
 ([Phase 2 report](../Research/omr/reports/song-tempo/phase2/REPORT.md)). It was committed and
 pushed (`bf4ed00`). **Phase 3** was requested the same day ("ok commit and push proceed with phase
-3") and is **shipped** to `dist\Sheet2Play.exe` (release gate 8 of 8): printed marks are read after
-each PDF conversion or from the panel, and offered with USE / IGNORE
-([Phase 3 report](../Research/omr/reports/song-tempo/phase3/REPORT.md),
-[handoff](../Research/omr/reports/song-tempo/handoff.md)). It waits on the user's check and
-commit.
+3"). Printed marks are read after each PDF conversion or from the panel; the USE / IGNORE version
+was checked and committed (`30bcbff`). The user then made printed marks **play by default**, and
+every library PDF was read once. That amendment was checked by the user ("it works commit and
+push") and committed ([Phase 3 report](../Research/omr/reports/song-tempo/phase3/REPORT.md),
+[handoff](../Research/omr/reports/song-tempo/handoff.md)).
 **Related:** [MusicXML songs](2026-10-19-musicxml-songs.md), whose
 [Fit with the per-song tempo plan](2026-10-19-musicxml-songs.md#fit-with-the-per-song-tempo-plan)
 section is the hand-over this plan builds on.
@@ -83,9 +83,11 @@ That map gives about 4:58. At 120 the app plays 7:18.
 
 ## Tempo semantics (all phases)
 
-- **Precedence:** the user's map, then the score's own marks (MusicXML imports), then 120.
-  Printed marks read from a PDF (Phase 3) enter the user's map only when the user presses USE,
-  so they never play on their own. A user map **replaces** the score's marks as a whole. It is
+- **Precedence:** the user's map, then the marks printed in the PDF (Phase 3; all but the ones
+  the user ignored), then the score's own marks (MusicXML imports), then 120. The user decided on
+  2026-10-21, after checking Phase 3, that printed marks play by default ("i want is this tempo
+  change to be the default so apply this tempo change to my all songs"); before that they played
+  only after USE. A user map **replaces** the score's marks as a whole. It is
   not merged with them, so what plays is exactly what the panel lists.
 - **Repeats:** a change at a bar applies on every pass of that bar, which is the rule
   `BuildTempoMap` already uses for printed marks.
@@ -228,7 +230,7 @@ after Phase 1, so that reading has a store and a panel to feed.
   check (11 PDFs with a MuseScore MIDI) is run once after the test scoring and reported. It is not
   part of the rule.
 
-## Phase 3 — Ship detection (shipped 2026-10-21, waiting on the user's check)
+## Phase 3 — Ship detection (committed 2026-10-21, with the play-by-default amendment)
 
 *As built* ([report](../Research/omr/reports/song-tempo/phase3/REPORT.md)). The plan below put
 detection in `song_entry.py` and its result in each package's `derived/`. Instead:
@@ -238,7 +240,10 @@ detection in `song_entry.py` and its result in each package's `derived/`. Instea
 - songs already in the library read their marks from the panel's READ PRINTED MARKS, without
   OMR;
 - a page whose light grey staff lines the frozen layout cannot see is read again with lighter ink
-  counted (3 library PDFs; no measured page is affected).
+  counted (3 library PDFs; no measured page is affected);
+- after the user's check, printed marks **play by default** (user, 2026-10-21) unless the user
+  set a tempo of their own: IGNORE stops a mark playing, RESET returns to the printed tempo, and
+  `--read-printed-tempo` read every library PDF once.
 
 As planned:
 

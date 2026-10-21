@@ -129,6 +129,15 @@ public static class TempoMapStore
         }
     }
 
+    /// <summary>Every song's ignored marks, for the library's durations.</summary>
+    public static IReadOnlyDictionary<string, List<string>> LoadAllIgnoredMarks(string? storePath = null)
+    {
+        lock (Gate)
+        {
+            return Read(storePath ?? DefaultPath).IgnoredMarks;
+        }
+    }
+
     /// <summary>Replaces the song's ignored marks; none removes its entry.</summary>
     public static void SetIgnoredMarks(string sourceSha256, IEnumerable<string> keys, string? storePath = null)
     {

@@ -12,6 +12,56 @@ namespace SynthesiaClone;
 /// </summary>
 internal static partial class Program
 {
+	/// <summary>
+	/// <c>--read-printed-tempo</c>: reads the printed tempo marks of every PDF in the library that has
+	/// none for the bridge's reader yet, into the library's store, so every converted song plays at its
+	/// printed tempo without opening the TEMPO panel. Already read PDFs are skipped, so it can be run
+	/// again after new PDFs arrive or the reader changes. Prints one JSON line per PDF and a summary.
+	/// </summary>
+	private static int RunPrintedTempoLibrary()
+	{
+		string library = SongCache.ApplicationDirectory;
+		string bridge = OmrPipeline.DefaultBridgeDirectory;
+		if (TempoDetection.ReaderSha256(bridge) is not string reader)
+		{
+			Console.Error.WriteLine($"[TEMPO] The tempo reader ({TempoDetection.ScriptName}) is missing from {bridge}.");
+			return 1;
+		}
+		int read = 0, kept = 0, failed = 0, withMarks = 0;
+		foreach (PdfLibraryEntry entry in SongCache.GetPdfLibrary())
+		{
+			string source = SongCache.Sha256OfFile(entry.FullPath);
+			if (TempoDetection.Load(library, source, reader) is not null)
+			{
+				kept++;
+				continue;
+			}
+			Stopwatch clock = Stopwatch.StartNew();
+			try
+			{
+				DetectedTempos detected = TempoDetection.Detect(library, bridge, entry.FullPath, source, progress: null,
+					background: false);
+				read++;
+				int marks = detected.Marks.Count(static mark => mark.Bpm is not null);
+				withMarks += marks > 0 ? 1 : 0;
+				Console.WriteLine(JsonSerializer.Serialize(new
+				{
+					source_sha256 = source, pages = detected.Pages.Count, marks,
+					pages_without_staves = detected.Pages.Count(static page => page.Systems == 0),
+					seconds = Math.Round(clock.Elapsed.TotalSeconds, 1)
+				}));
+			}
+			catch (Exception exception) when (exception is TempoDetectionException or IOException or UnauthorizedAccessException)
+			{
+				failed++;
+				Console.WriteLine(JsonSerializer.Serialize(new { source_sha256 = source, error = exception.Message }));
+			}
+		}
+		Console.WriteLine(JsonSerializer.Serialize(new { reader_sha256 = reader, read, already_read = kept, failed,
+			read_with_numbered_marks = withMarks }));
+		return failed == 0 ? 0 : 1;
+	}
+
 	private static int RunTempoDetectionVerification(string[] arguments)
 	{
 		try

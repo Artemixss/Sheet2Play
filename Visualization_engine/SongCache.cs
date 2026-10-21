@@ -586,6 +586,8 @@ public static partial class SongCache
                 StringComparer.OrdinalIgnoreCase);
         List<CachedSongEntry> cachedSongs = [];
         IReadOnlyDictionary<string, SongTempoMap> tempoMaps = TempoMapStore.LoadAll(tempoMapPath);
+        IReadOnlyDictionary<string, List<string>> ignoredMarks = TempoMapStore.LoadAllIgnoredMarks(tempoMapPath);
+        string? readerSha = TempoDetection.ReaderSha256(context.BridgeDirectory);
         foreach ((string interpretationPath, OmrEngine packageEngine) in EnumeratePackageEntries(applicationDirectory))
         {
             string relativePath = Path.GetRelativePath(applicationDirectory, interpretationPath);
@@ -596,10 +598,14 @@ public static partial class SongCache
             if (TryLoadRecentCore(candidate, applicationDirectory, out SongLoadResult? loaded, context: context) &&
                 loaded is not null)
             {
-                // Listed at the tempo it plays at, so a song set to its real tempo shows its real length.
-                TempoOverride? tempo = loaded.SourceSha256 is string source
-                    ? SongTempoMaps.Override(tempoMaps.GetValueOrDefault(source), loaded.Performance)
+                // Listed at the tempo it plays at, so a song set to its real tempo shows its real length:
+                // the user's map, else the marks printed in its PDF.
+                SongTempoMap? map = loaded.SourceSha256 is string source ? tempoMaps.GetValueOrDefault(source) : null;
+                SongTempoMap? printed = map is null && loaded.SourceSha256 is string pdf && loaded.Performance is not null
+                    ? TempoDetection.PrintedMap(applicationDirectory, readerSha, pdf, loaded.Performance, loaded.Engine,
+                        ignoredMarks.GetValueOrDefault(pdf)?.ToHashSet(StringComparer.Ordinal) ?? [])
                     : null;
+                TempoOverride? tempo = SongTempoMaps.Override(map ?? printed, loaded.Performance);
                 double duration = tempo is null
                     ? GetTotalDuration(loaded.Notes)
                     : GetTotalDuration(SongTimeline.BuildNotes(loaded.Performance!, PlaybackTimeline with { Tempo = tempo }));
@@ -607,7 +613,7 @@ public static partial class SongCache
                     candidate with { ManifestRelativePath = loaded.ManifestRelativePath!, DisplayName = loaded.DisplayName },
                     loaded.NoteCount,
                     duration,
-                    CustomTempo: tempo is not null));
+                    CustomTempo: map is not null));
             }
         }
         // A MIDI cache whose source now has a package is superseded by it and not listed.

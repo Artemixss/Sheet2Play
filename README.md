@@ -44,10 +44,11 @@ MIDI playback timing.
   bar lines and a pedal lane fall with the notes; an **EXPORT** panel writes WAV, MP3, MIDI
   or the score's MusicXML, and re-converts the song.
 * A **TEMPO** panel sets a song's start tempo and tempo changes by bar, because recognition
-  reads no tempo marks and a PDF otherwise plays at 120. Each song keeps its own map. The
-  tempo marks printed in the PDF ("♩ = 110") are read after a conversion, or with **READ
-  PRINTED MARKS** for songs converted earlier, and listed under **PRINTED** with **USE** and
-  **IGNORE**; nothing changes until you use one.
+  reads no tempo marks and a PDF otherwise plays at 120. The tempo marks printed in the PDF
+  ("♩ = 110") are read after each conversion and **play by default**; **PRINTED** lists them,
+  and **IGNORE** drops a misread one. Any tempo you set yourself replaces them for that song.
+  Songs converted earlier get theirs from **READ PRINTED MARKS**, or all at once with
+  `dist\Sheet2Play.exe --read-printed-tempo`.
 * **TIMING FIX** (home screen, off by default) re-interprets HOMR's output so one measure's
   timing error does not shift the rest of the score. Switching it needs no new recognition.
 

@@ -3,8 +3,10 @@
 **Plan:** [`2026-10-19-song-tempo`](../../../../../plans/2026-10-19-song-tempo.md), Phase 3.
 **Requested:** 2026-10-21 ("ok commit and push proceed with phase 3"; then "finish the to do lists
 then i will check after that commit and push").
-**Status:** shipped to `dist\Sheet2Play.exe` (release gate 8 of 8). Waiting on the user's check
-and commit.
+**Status:** the USE / IGNORE version was checked by the user and committed (`30bcbff`). The user
+then made printed marks play by default ([amendment](#amendment-printed-marks-play-by-default)),
+which is shipped (release gate 8 of 8), checked by the user ("it works commit and push") and
+committed.
 
 ## What ships
 
@@ -94,6 +96,31 @@ all of it back when it exits.
 - Release gate `scripts\verify-release.ps1`: 8 of 8.
 - The new snapshot `07-playback-tempo-printed` shows the list. In `07-playback-tempo` the start
   row gains READ PRINTED MARKS between RESET and "+ CHANGE AT BAR 2"; nothing else moved.
+
+## Amendment: printed marks play by default
+
+The user, 2026-10-21, after checking the USE / IGNORE version: "i want is this tempo change to be
+the default so apply this tempo change to my all songs".
+
+- **Precedence** (`Program.Tempo.cs` `TempoFor` and `StoredTempo`, and the library durations in
+  `SongCache.cs`): the user's own map, then the PDF's printed marks, then the score's marks, then
+  120.
+- **The printed map** (`TempoDetection.PrintedMap`) takes in every usable mark the user did not
+  ignore, as USE would. A PDF that prints a change but no starting tempo starts at 120.
+- **The panel:**
+  - The button reads "TEMPO ♩=110 · PRINTED", plus the number of changes.
+  - Printed rows show PLAYING and keep IGNORE, which stops a misread mark playing.
+  - RESET returns to the printed tempo; any edit starts the user's map from what plays.
+  - The session re-times when marks are read or ignored.
+  - The library's "· tempo" tag still means a tempo the user set.
+- **Every library PDF read once:** `dist\Sheet2Play.exe --read-printed-tempo` (`jobs/library-read-1`,
+  296 s, peak system commit 46%) read 44 PDFs; 17 were read already, and none failed. Of the 61:
+  - 37 print tempo numbers (36 at bar 1) and now play them;
+  - 11 print tempo words only ("Andante", "Presto", "Tempo I"…);
+  - 13 print neither.
+- **Tests:** 2 more, 201 of 201. One builds the printed map; the other checks that a listed
+  song's length follows its printed tempo until the user sets one, and returns to 120 when the mark
+  is ignored. Release gate 8 of 8.
 
 ## Deviation from the plan
 

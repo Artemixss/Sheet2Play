@@ -93,6 +93,10 @@ internal static partial class Program
 		{
 			return RunTempoDetectionVerification(args);
 		}
+		if (args.Length == 1 && args[0] == "--read-printed-tempo")
+		{
+			return RunPrintedTempoLibrary();
+		}
 		if (args.Length > 0 && string.Equals(args[0], "--smoke", StringComparison.OrdinalIgnoreCase))
 		{
 			string outputDirectory = ((args.Length > 1)
