@@ -17,6 +17,7 @@ public static class OmrProgressStages
     public const string Normalization = "normalization";
     public const string MidiWrite = "midi_write";
     public const string CacheValidation = "cache_validation";
+    public const string TempoMarks = "tempo_marks";
     public const string Complete = "complete";
     public const string KnownFailure = "known_failure";
 }
@@ -154,6 +155,7 @@ public sealed class LoadProgressModel
                 OmrProgressStages.Normalization => Latest.Status == OmrProgressStatuses.Completed ? 0.95 : 0.90,
                 OmrProgressStages.MidiWrite => Latest.Status == OmrProgressStatuses.Completed ? 0.975 : 0.95,
                 OmrProgressStages.CacheValidation => Latest.Status == OmrProgressStatuses.Completed ? 0.995 : 0.975,
+                OmrProgressStages.TempoMarks => Latest.Status == OmrProgressStatuses.Completed ? 0.998 : 0.996,
                 OmrProgressStages.Complete => 1,
                 OmrProgressStages.KnownFailure => 0,
                 _ => 0.02

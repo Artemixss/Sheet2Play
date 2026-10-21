@@ -5,12 +5,48 @@
 - **Phase 1** shipped and committed 2026-10-21 (`9bd66f9`, [report](phase1/REPORT.md)). "Beyond
   This Station" with the user's map plays 298.82 s against the MuseScore MIDI's 298.82 s. With no
   map, all 129 playing library songs give identical events.
-- **Phase 2** (research) is **accepted, not committed** ([report](phase2/REPORT.md)). The frozen
-  OCR reader passed every pre-registered check on test and test-b, scored once: start tempo 0.979,
-  recall 0.963, mid-score bar 0.974, no false tempos, 187 MiB, 1.34 s per page.
+- **Phase 2** (research) accepted and committed (`bf4ed00`, [report](phase2/REPORT.md)). The
+  frozen OCR reader passed every pre-registered check on test and test-b, scored once: start tempo
+  0.979, recall 0.963, mid-score bar 0.974, no false tempos.
+- **Phase 3** is **shipped, not committed** ([report](phase3/REPORT.md)). The TEMPO panel offers
+  the marks printed in a song's PDF with USE / IGNORE. The shipped reader matched the frozen one
+  on all 120 dev scores and 11 library songs. Release gate 8 of 8.
 
-**Next authorized action:** the user checks the Phase 2 report and approves the commit. Phase 3
-(detected marks in the TEMPO panel, with Use / Ignore) needs its own request.
+**Next authorized action:** the user checks the PRINTED list in `dist\Sheet2Play.exe` and
+approves the commit. The plan has no Phase 4.
+
+## Phase 3 (requested 2026-10-21, "ok commit and push proceed with phase 3"): shipped, uncommitted
+
+The user said to "finish the to do lists" after a usage break; the work below finished them.
+
+- **Built:** see [the report](phase3/REPORT.md#what-ships).
+  - `Bridge/tempo_marks.py`, SHA `a04b8f16…`.
+  - `TempoDetection.cs`, the panel in `Program.Tempo.cs`, `--detect-tempo` in
+    `Program.TempoVerification.cs`.
+  - The conversion hook in `SongCache.Packages.cs`, `ignored_marks` in `TempoMapStore.cs`, and the
+    snapshot `07-playback-tempo-printed`.
+- **Found while checking:**
+  - 3 library PDFs draw light grey staff lines the frozen layout cannot see.
+  - `tempo_marks.py` reads such pages again with lighter ink counted. No measured page is
+    affected (866 dev and test pages all had staves).
+- **Deviation:** results live per source PDF in `songs\tempo-marks\`, and the app runs the
+  reader, not `song_entry.py`. Recorded in the plan.
+
+### Job record: Phase 3 checks
+
+Working directory: `Research/omr`. All jobs ran under the supervisor, one at a time.
+- **Parity, reader `9a6e0901…`:** `jobs/parity-1` (one failed launch before it: my console path
+  went through a folder not yet made, so nothing ran). Kept as `parity-before-light-ink/`.
+- **Survey:** `tempo_layout_survey.py --output reports/song-tempo/phase3/survey` (`jobs/layout-survey-1`, 37 s).
+- **Light staff lines:** a first memory try on the densest PDF (`jobs/ram-densest-1`) finished in
+  2 s with no staff found, which is how they were found.
+- **Final checks:** `bash reports/song-tempo/phase3/run-checks.sh 2 <pdfs>`
+  - That run's version of the script named its two PDFs; it now takes them as arguments.
+  - Results: parity `jobs/parity-2` identical (reader `a04b8f16…`); memory
+    `jobs/memory-densest-2` and `jobs/memory-largest-2`, peak private 836 and 828 MiB, system
+    commit 34%.
+- **Published exe:** `dist\Sheet2Play.exe --detect-tempo <pdf> <temporary store> <performance.json>`
+  on the plan's example song gave bar 1 ♩ = 110 and bar 25 ♩ = 186 in 15.2 s.
 
 ## Phase 2 (requested 2026-10-21, "push it and start phase 2"): accepted
 

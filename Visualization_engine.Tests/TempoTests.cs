@@ -239,6 +239,120 @@ public sealed class TempoTests
         Assert.Equal(1.5, BeatUnit.DottedQuarter.Quarters());
     }
 
+    // --- Printed marks -----------------------------------------------------------------------
+
+    [Fact]
+    public void APrintedMarkLandsOnItsPagesFirstBarPlusItsPlaceAndStaysWithinThePage()
+    {
+        // Two HOMR pages of 3 and 4 bars, as the PDF's two pages; the reader counted 5 bars on page 2.
+        SongPerformance performance = Performance([4, 4, 4, 4, 4, 4, 4], pageSizes: [3, 4]);
+        DetectedTempos detected = Detected([new DetectedPage(1, 3), new DetectedPage(1, 5)],
+            Printed(0, 0, 110, "quarter"), Printed(1, 1, 110, "dotted_quarter", "Calmando"), Printed(1, 4, 186, "quarter"),
+            Printed(1, 2, null, null, "a tempo"), Printed(1, 3, 72, "eighth+dot"));
+
+        IReadOnlyList<PrintedMark> placed = TempoDetection.Place(detected, performance);
+
+        Assert.Equal([0, 4, 5, 6, 6], placed.Select(mark => mark.Measure));
+        Assert.Equal(new TempoMark(110, BeatUnit.Quarter), placed[0].Tempo);
+        Assert.Equal(new TempoMark(110, BeatUnit.DottedQuarter), placed[1].Tempo);
+        // A tempo word is a hint without a tempo, and a unit the panel has no symbol for cannot be used.
+        Assert.Null(placed[2].Tempo);
+        Assert.Equal("a tempo", placed[2].Source.Suggestion);
+        Assert.False(placed[3].Usable);
+        Assert.Equal(new TempoMark(186, BeatUnit.Quarter), placed[4].Tempo);
+        // Words are what the panel shows beside a mark; the note glyph read as "J" or "√" is not one.
+        Assert.Equal(["Calmando", "a tempo"], placed.Select(static mark => mark.Words).OfType<string>());
+        Assert.Null(new PrintedMark(Printed(0, 0, 186, "quarter", "√"), 0, new TempoMark(186, BeatUnit.Quarter)).Words);
+    }
+
+    [Fact]
+    public void PrintedMarksAreNotPlacedOnAConversionWhosePagesDifferFromThePdfs()
+    {
+        SongPerformance performance = Performance([4, 4, 4], pageSizes: [3]);
+        DetectedTempos detected = Detected([new DetectedPage(1, 2), new DetectedPage(1, 1)], Printed(1, 0, 90, "half"));
+        PrintedMark mark = Assert.Single(TempoDetection.Place(detected, performance));
+        Assert.Null(mark.Measure);
+        Assert.False(mark.Usable);
+        DetectedTempos onePage = Detected([new DetectedPage(1, 3)], Printed(0, 0, 90, "half"));
+        Assert.Null(Assert.Single(TempoDetection.Place(onePage, Performance([4, 4, 4], kind: "musicxml"))).Measure);
+    }
+
+    [Fact]
+    public void UseTakesAMarkIntoTheMapAtItsBarAndTheFirstBarsSetsTheStart()
+    {
+        SongPerformance performance = Performance([4, 4, 4, 4]);
+        SongTempoMap map = SongTempoMaps.FromScore(performance, OmrEngine.Homr480);
+        PrintedMark start = new(Printed(0, 0, 110, "quarter"), 0, new TempoMark(110, BeatUnit.Quarter));
+        PrintedMark change = new(Printed(0, 2, 165, "quarter"), 2, new TempoMark(165, BeatUnit.Quarter));
+        PrintedMark corrected = change with { Tempo = new TempoMark(110, BeatUnit.DottedQuarter) };
+
+        Assert.False(TempoDetection.InUse(map, start));
+        map = TempoDetection.Use(TempoDetection.Use(map, start), change);
+        Assert.Equal(new TempoMark(110, BeatUnit.Quarter), map.Start);
+        Assert.Equal([new BarTempo(2, 0, new TempoMark(165, BeatUnit.Quarter))], map.Changes);
+        Assert.True(TempoDetection.InUse(map, start) && TempoDetection.InUse(map, change));
+        // Using another mark at the same bar replaces the change rather than stacking a second one.
+        map = TempoDetection.Use(map, corrected);
+        Assert.Equal([new BarTempo(2, 0, new TempoMark(110, BeatUnit.DottedQuarter))], map.Changes);
+        Assert.False(TempoDetection.InUse(map, change));
+        PrintedMark unplaced = change with { Measure = null };
+        Assert.Same(map, TempoDetection.Use(map, unplaced));
+    }
+
+    [Fact]
+    public void StoredMarksCountOnlyForTheReaderAndPdfTheyWereReadWith()
+    {
+        using TemporaryDirectory temporary = new();
+        string source = new('a', 64);
+        string path = TempoDetection.StorePath(temporary.Path, source);
+        Directory.CreateDirectory(Path.GetDirectoryName(path)!);
+        // As tempo_marks.py writes it, with the fields the app does not read.
+        File.WriteAllText(path, $$"""
+            {"schema_version": 1, "reader_sha256": "reader-1", "frozen_reader_sha256": "x", "ocr": {"engine": "rapidocr"},
+             "dpi": 300, "source_name": "song.pdf", "source_sha256": "{{source}}",
+             "pages": [{"systems": 7, "measures": 43, "light_ink": false}],
+             "marks": [{"page": 0, "system": 0, "box": [1, 2, 3, 4], "text": "Andantino J= 140", "source": "ocr", "bpm": 140.0,
+                        "unit": "quarter", "unit_source": "glyph", "words": "Andantino", "suggestion": "andantino",
+                        "page_measure": 0, "measure": 0}],
+             "seconds": 3.9}
+            """);
+
+        DetectedTempos read = TempoDetection.Load(temporary.Path, source, "reader-1")!;
+        DetectedMark mark = Assert.Single(read.Marks);
+        Assert.Equal((0, 140.0, "quarter", "Andantino"), (mark.PageMeasure!.Value, mark.Bpm!.Value, mark.Unit, mark.Words));
+        Assert.Equal([new DetectedPage(7, 43)], read.Pages);
+        Assert.Null(TempoDetection.Load(temporary.Path, source, "reader-2"));
+        Assert.Null(TempoDetection.Load(temporary.Path, source, null));
+        Assert.Null(TempoDetection.Load(temporary.Path, new string('b', 64), "reader-1"));
+    }
+
+    [Fact]
+    public void IgnoredMarksAreStoredPerSongAndAFileWithoutAnyIsWrittenAsBefore()
+    {
+        using TemporaryDirectory temporary = new();
+        string path = Path.Combine(temporary.Path, "tempo-maps.json");
+        SongTempoMap map = new(new TempoMark(90, BeatUnit.Half), [], OmrEngine.Homr480, 3, DateTimeOffset.UnixEpoch);
+        TempoMapStore.Save("song", map, path);
+        Assert.DoesNotContain("ignored", File.ReadAllText(path));
+
+        TempoMapStore.SetIgnoredMarks("song", ["0:3:72:quarter:J=72", "1:0:60:half:d=60"], path);
+        Assert.Equal(new HashSet<string> { "0:3:72:quarter:J=72", "1:0:60:half:d=60" }, TempoMapStore.GetIgnoredMarks("song", path));
+        Assert.Empty(TempoMapStore.GetIgnoredMarks("other", path));
+        Assert.Equal(map.Start, TempoMapStore.Get("song", path)!.Start);
+        TempoMapStore.Save("song", map with { Start = new TempoMark(100, BeatUnit.Half) }, path);
+        Assert.Equal(2, TempoMapStore.GetIgnoredMarks("song", path).Count);
+
+        TempoMapStore.SetIgnoredMarks("song", [], path);
+        Assert.Empty(TempoMapStore.GetIgnoredMarks("song", path));
+        Assert.DoesNotContain("ignored", File.ReadAllText(path));
+    }
+
+    private static DetectedMark Printed(int page, int pageMeasure, double? bpm, string? unit, string? words = null) =>
+        new(page, 0, pageMeasure, bpm, unit, $"{words} = {bpm}", words, bpm is null ? words : null);
+
+    private static DetectedTempos Detected(DetectedPage[] pages, params DetectedMark[] marks) =>
+        new(TempoDetection.SchemaVersion, "reader", new string('0', 64), pages, marks);
+
     // --- Helpers -----------------------------------------------------------------------------
 
     private static double[] Starts(IEnumerable<Note> notes) =>
@@ -251,14 +365,18 @@ public sealed class TempoTests
     };
 
     /// <summary>A performance with one short note at the start of each measure, so note starts are bar starts.</summary>
+    /// <param name="pageSizes">Measures per HOMR page; one page holds them all by default.</param>
     private static SongPerformance Performance(double[] lengths, string kind = "omr-pages", int[]? playOrder = null,
-        string[]? numbers = null, object[]? tempos = null)
+        string[]? numbers = null, object[]? tempos = null, int[]? pageSizes = null)
     {
         double[] starts = new double[lengths.Length];
         for (int index = 1; index < lengths.Length; index++)
         {
             starts[index] = starts[index - 1] + lengths[index - 1];
         }
+        int[] sizes = pageSizes ?? [lengths.Length];
+        int[] firsts = sizes.Select((_, page) => sizes.Take(page).Sum()).ToArray();
+        int PageOf(int measure) => Array.FindLastIndex(firsts, first => first <= measure);
         var document = new
         {
             schema_version = 3,
@@ -266,11 +384,13 @@ public sealed class TempoTests
             sources = new[] { new { name = "page-0001.musicxml", sha256 = new string('0', 64) } },
             timing_correction = false,
             parts = new[] { new { index = 0, staves = 1, name = "Piano" } },
-            pages = new[] { new { index = 0, name = "page-0001.musicxml", first_measure = 0, measures = lengths.Length,
-                start_beat = 0.0, decoded_beats = lengths.Sum(), advance_beats = lengths.Sum(), timing = "off" } },
+            pages = sizes.Select((size, page) => new { index = page, name = $"page-{page + 1:0000}.musicxml",
+                first_measure = firsts[page], measures = size, start_beat = starts[firsts[page]],
+                decoded_beats = lengths.Skip(firsts[page]).Take(size).Sum(), advance_beats = lengths.Skip(firsts[page]).Take(size).Sum(),
+                timing = "off" }),
             measures = lengths.Select((length, index) => new
             {
-                index, page = 0, number = numbers?[index] ?? (index + 1).ToString(), start_beat = starts[index],
+                index, page = PageOf(index), number = numbers?[index] ?? (index + 1).ToString(), start_beat = starts[index],
                 length_beats = length, bar_beats = length, time_signature = length == 6 ? new[] { 12, 8 } : new[] { (int)length, 4 },
                 pickup = false, repeat_start = false, repeat_end = 0, ending = (int[]?)null, ending_stop = false,
                 jumps = (object?)null

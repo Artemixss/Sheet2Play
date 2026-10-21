@@ -43,6 +43,8 @@ Visualization_engine/        C# app: SynthesiaClone.csproj, assembly Sheet2Play,
   SongExpression.cs          pedal, dynamics, articulations, auto pedal
   SongOverlay.cs             bars and pedal spans drawn over the note field
   TempoMapStore.cs           per-song tempo maps (TEMPO panel: Program.Tempo.cs)
+  TempoDetection.cs          printed tempo marks: runs Bridge/tempo_marks.py, places marks
+                             in bars for the panel's PRINTED list
   Playback.cs                playback clock, session
   AudioOutput.cs, Sfz*.cs,   piano backends: SFZ (Salamander), SoundFont (YDP via
   SoundFontEngine.cs         MeltySynth), silent when no piano is installed
@@ -53,7 +55,9 @@ MidiTester/                  MIDI regression harness + library diagnostics
 Bridge/                      bridge.py and its sibling imports (pinned by the 465/480
                              profiles); song_entry.py wraps it and writes the song
                              package; song_model.py derives performance.json from stored
-                             MusicXML; timing_correction.py is the TIMING FIX layout
+                             MusicXML; timing_correction.py is the TIMING FIX layout;
+                             tempo_marks.py reads printed tempo marks (Phase 2's frozen
+                             OCR reader, copied; run by the app, not the bridge)
 Omr/, Research/omr/          dataset tools, OMR experiments and engine evaluation
 plans/                       execution plans; MAIN_PLAN.md is the current one
 scripts/                     publish.ps1, install-shortcut.ps1, verify-release.ps1
@@ -93,6 +97,7 @@ Everything the app stores is in **`%LOCALAPPDATA%\Sheet2Play`** — note *Local*
 settings.json  recent.json  failed-omr.json  audio.log  tempo-maps.json
 songs\pdf\             source scores
 songs\scores\<engine>\ song packages, one folder per conversion (HOMR 480/465, MusicXML)
+songs\tempo-marks\     printed tempo marks per source PDF, valid for the tempo_marks.py SHA
 songs\midi\custom\     .mid / .mxl shown in the MIDI Player column
 songs\midi\<engine>\   legacy MIDI caches (426, Zeus, older 465), playable until re-converted
 pianos\  soundfonts\   installed Salamander bank and YDP SoundFont

@@ -152,7 +152,8 @@ compiler, so a build can succeed while the published app degrades or fails:
   fonts silently fall back to Raylib's default; the app still runs and looks wrong.
 - `Bridge/bridge.py` plus its sibling imports, and the unpinned `song_entry.py`,
   `song_model.py` and `timing_correction.py` beside it — `OmrPipeline.cs` and
-  `SongPerformance.cs`.
+  `SongPerformance.cs`; and the unpinned `tempo_marks.py` — `TempoDetection.cs`. A missing
+  reader only loses the TEMPO panel's printed marks.
 
 The pianos are not in `dist\`: `scripts\install-piano.ps1` (Salamander) and
 `scripts\install-soundfont.ps1` (YDP) install them under `%LOCALAPPDATA%\Sheet2Play`,

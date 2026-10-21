@@ -44,7 +44,10 @@ MIDI playback timing.
   bar lines and a pedal lane fall with the notes; an **EXPORT** panel writes WAV, MP3, MIDI
   or the score's MusicXML, and re-converts the song.
 * A **TEMPO** panel sets a song's start tempo and tempo changes by bar, because recognition
-  reads no tempo marks and a PDF otherwise plays at 120. Each song keeps its own map.
+  reads no tempo marks and a PDF otherwise plays at 120. Each song keeps its own map. The
+  tempo marks printed in the PDF ("♩ = 110") are read after a conversion, or with **READ
+  PRINTED MARKS** for songs converted earlier, and listed under **PRINTED** with **USE** and
+  **IGNORE**; nothing changes until you use one.
 * **TIMING FIX** (home screen, off by default) re-interprets HOMR's output so one measure's
   timing error does not shift the rest of the score. Switching it needs no new recognition.
 
@@ -145,6 +148,7 @@ way is available to both, and the checkout stays free of user content.
     tempo-maps.json      tempos set in the TEMPO panel, per song
     songs\pdf\           sheet music you want to convert
     songs\scores\        song packages (score + performance), one folder per conversion
+    songs\tempo-marks\   tempo marks read from each PDF, offered in the TEMPO panel
     songs\midi\custom\   .mid / .mxl files, shown in the MIDI Player column
     songs\midi\<engine>\ legacy MIDI caches from older conversions
     pianos\, soundfonts\ the installed Salamander and YDP pianos

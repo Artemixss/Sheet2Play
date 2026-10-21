@@ -11,9 +11,13 @@ was checked by the user and committed the same day (`9bd66f9`,
 [Phase 1 report](../Research/omr/reports/song-tempo/phase1/REPORT.md)). **Phase 2** (research)
 was requested the same day ("push it and start phase 2") and is **accepted**: the frozen OCR reader
 passed every pre-registered check on the test splits, scored once
-([Phase 2 report](../Research/omr/reports/song-tempo/phase2/REPORT.md),
+([Phase 2 report](../Research/omr/reports/song-tempo/phase2/REPORT.md)). It was committed and
+pushed (`bf4ed00`). **Phase 3** was requested the same day ("ok commit and push proceed with phase
+3") and is **shipped** to `dist\Sheet2Play.exe` (release gate 8 of 8): printed marks are read after
+each PDF conversion or from the panel, and offered with USE / IGNORE
+([Phase 3 report](../Research/omr/reports/song-tempo/phase3/REPORT.md),
 [handoff](../Research/omr/reports/song-tempo/handoff.md)). It waits on the user's check and
-commit. Phase 3 needs its own request.
+commit.
 **Related:** [MusicXML songs](2026-10-19-musicxml-songs.md), whose
 [Fit with the per-song tempo plan](2026-10-19-musicxml-songs.md#fit-with-the-per-song-tempo-plan)
 section is the hand-over this plan builds on.
@@ -79,8 +83,9 @@ That map gives about 4:58. At 120 the app plays 7:18.
 
 ## Tempo semantics (all phases)
 
-- **Precedence:** the user's map, then an accepted detected map (Phase 3), then the score's own
-  marks (MusicXML imports), then 120. A user map **replaces** the score's marks as a whole. It is
+- **Precedence:** the user's map, then the score's own marks (MusicXML imports), then 120.
+  Printed marks read from a PDF (Phase 3) enter the user's map only when the user presses USE,
+  so they never play on their own. A user map **replaces** the score's marks as a whole. It is
   not merged with them, so what plays is exactly what the panel lists.
 - **Repeats:** a change at a bar applies on every pass of that bar, which is the rule
   `BuildTempoMap` already uses for printed marks.
@@ -223,7 +228,19 @@ after Phase 1, so that reading has a store and a panel to feed.
   check (11 PDFs with a MuseScore MIDI) is run once after the test scoring and reported. It is not
   part of the rule.
 
-## Phase 3 — Ship detection (only if Phase 2 is accepted)
+## Phase 3 — Ship detection (shipped 2026-10-21, waiting on the user's check)
+
+*As built* ([report](../Research/omr/reports/song-tempo/phase3/REPORT.md)). The plan below put
+detection in `song_entry.py` and its result in each package's `derived/`. Instead:
+- the app runs `Bridge/tempo_marks.py` (the frozen reader, copied word for word, parity-checked);
+- the result is kept once per source PDF in `songs\tempo-marks\`, so the 480 and 465
+  conversions of a PDF share it, it survives re-conversion, and no bridge file changes;
+- songs already in the library read their marks from the panel's READ PRINTED MARKS, without
+  OMR;
+- a page whose light grey staff lines the frozen layout cannot see is read again with lighter ink
+  counted (3 library PDFs; no measured page is affected).
+
+As planned:
 
 - Detection runs after OMR from `song_entry.py`'s package step, outside the pinned files. It
   writes `derived/tempo-detected.json` keyed by the `tempo_read.py` SHA, the OCR model hashes,

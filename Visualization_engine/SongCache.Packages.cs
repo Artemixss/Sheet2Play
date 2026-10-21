@@ -44,12 +44,17 @@ public static partial class SongCache
         OmrEngine engine, IReadOnlyList<string> sources, bool imported, bool timingCorrection, string outputDirectory,
         CancellationToken cancellationToken);
 
+    /// <summary>Reads the tempo marks printed in a just-converted PDF, for the TEMPO panel.</summary>
+    internal delegate void TempoReading(string pdfPath, string sourceHash, CancellationToken cancellationToken);
+
     private static readonly SongTimelineOptions PlaybackTimeline = new();
 
+    /// <param name="ReadTempo">Null skips reading printed tempo marks, as the tests' contexts do.</param>
     private sealed record PackageContext(
         string ApplicationDirectory,
         string BridgeDirectory,
-        SongInterpretation Interpret);
+        SongInterpretation Interpret,
+        TempoReading? ReadTempo = null);
 
     private sealed record PackagePaths(string Directory)
     {
@@ -100,7 +105,9 @@ public static partial class SongCache
     private static PackageContext DefaultPackageContext(string applicationDirectory) =>
         new(applicationDirectory, OmrPipeline.DefaultBridgeDirectory,
             (engine, sources, imported, timing, output, token) => SongInterpreter.Run(
-                OmrPipeline.DefaultBridgeDirectory, engine, sources, imported, timing, output, token));
+                OmrPipeline.DefaultBridgeDirectory, engine, sources, imported, timing, output, token),
+            (pdf, hash, token) => TempoDetection.Detect(applicationDirectory, OmrPipeline.DefaultBridgeDirectory, pdf, hash,
+                progress: null, background: false, token));
 
     private static PackagePaths CreatePackagePaths(OmrEngine engine, string applicationDirectory, string sourceHash)
     {
@@ -206,6 +213,7 @@ public static partial class SongCache
                 // Just converted: the player's CACHE badge must not show.
                 packaged = packaged with { LoadedFromCache = false };
                 CrossCheck(packaged, result, engine, sourceHash, context.ApplicationDirectory);
+                ReadPrintedTempo(sourcePath, sourceHash, engine, context, progress, cancellationToken);
                 ReportProgress(progress, engine, OmrProgressStages.Complete, OmrProgressStatuses.Completed,
                     "Song is ready");
                 return packaged;
@@ -300,6 +308,33 @@ public static partial class SongCache
             SourceSha256: package.Manifest.SourceSha256);
 
     // --- Conversion ----------------------------------------------------------------------------
+
+    /// <summary>
+    /// Reads the tempo marks printed in a PDF the song was just converted from, so the TEMPO panel can
+    /// offer them. HOMR reads none. A failure costs only the offer, never the conversion.
+    /// </summary>
+    private static void ReadPrintedTempo(string sourcePath, string sourceHash, OmrEngine engine, PackageContext context,
+        IProgress<OmrProgress>? progress, CancellationToken cancellationToken)
+    {
+        if (context.ReadTempo is null || !sourcePath.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase))
+        {
+            return;
+        }
+        ReportProgress(progress, engine, OmrProgressStages.TempoMarks, OmrProgressStatuses.Started,
+            "Reading printed tempo marks");
+        try
+        {
+            context.ReadTempo(sourcePath, sourceHash, cancellationToken);
+            Console.Error.WriteLine($"[TEMPO] source_sha256={sourceHash} decision=printed_marks_read");
+        }
+        catch (Exception exception) when (exception is not OperationCanceledException)
+        {
+            Console.Error.WriteLine($"[TEMPO] source_sha256={sourceHash} decision=printed_marks_failed " +
+                $"error=\"{exception.Message}\"");
+        }
+        ReportProgress(progress, engine, OmrProgressStages.TempoMarks, OmrProgressStatuses.Completed,
+            "Printed tempo marks read");
+    }
 
     /// <summary>
     /// Records the package the song entry just wrote, interprets it if the entry could not, and
@@ -788,8 +823,9 @@ public static partial class SongCache
 
     internal static SongLoadResult LoadOrCreatePackageForTesting(string inputPath, OmrEngine engine,
         string applicationDirectory, string bridgeDirectory, SongPipeline pipeline, SongInterpretation interpret,
-        bool timingCorrection = false, bool forceReprocess = false) =>
-        LoadOrCreatePackageCore(inputPath, engine, new PackageContext(applicationDirectory, bridgeDirectory, interpret),
+        bool timingCorrection = false, bool forceReprocess = false, TempoReading? readTempo = null) =>
+        LoadOrCreatePackageCore(inputPath, engine,
+            new PackageContext(applicationDirectory, bridgeDirectory, interpret, readTempo),
             pipeline, CancellationToken.None, null, bypassKnownFailure: true, forceReprocess, timingCorrection);
 
     internal static bool TryLoadRecentForTesting(RecentSongEntry entry, string applicationDirectory,

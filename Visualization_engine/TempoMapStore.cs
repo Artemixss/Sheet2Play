@@ -96,7 +96,15 @@ public static class TempoMapStore
         }
     };
 
-    private sealed record TempoMapFile(int Version, Dictionary<string, SongTempoMap> Songs);
+    /// <param name="IgnoredMarks">
+    /// Per song, the printed marks the user chose IGNORE for (<see cref="DetectedMark.Key"/>). Left out
+    /// while empty, so a file without any is written as it always was.
+    /// </param>
+    private sealed record TempoMapFile(int Version, Dictionary<string, SongTempoMap> Songs,
+        [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        Dictionary<string, List<string>>? IgnoredMarks = null);
+
+    private sealed record Contents(Dictionary<string, SongTempoMap> Songs, Dictionary<string, List<string>> IgnoredMarks);
 
     public static string DefaultPath => Path.Combine(
         Path.GetDirectoryName(AppSettingsStore.GetSettingsPath())!,
@@ -106,7 +114,42 @@ public static class TempoMapStore
     {
         lock (Gate)
         {
-            return Read(storePath ?? DefaultPath).GetValueOrDefault(sourceSha256);
+            return Read(storePath ?? DefaultPath).Songs.GetValueOrDefault(sourceSha256);
+        }
+    }
+
+    /// <summary>The printed marks the user ignored for a song.</summary>
+    public static IReadOnlySet<string> GetIgnoredMarks(string sourceSha256, string? storePath = null)
+    {
+        lock (Gate)
+        {
+            return Read(storePath ?? DefaultPath).IgnoredMarks.GetValueOrDefault(sourceSha256) is List<string> keys
+                ? keys.ToHashSet(StringComparer.Ordinal)
+                : new HashSet<string>(StringComparer.Ordinal);
+        }
+    }
+
+    /// <summary>Replaces the song's ignored marks; none removes its entry.</summary>
+    public static void SetIgnoredMarks(string sourceSha256, IEnumerable<string> keys, string? storePath = null)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(sourceSha256);
+        List<string> kept = keys.Distinct(StringComparer.Ordinal).Order(StringComparer.Ordinal).ToList();
+        string path = storePath ?? DefaultPath;
+        lock (Gate)
+        {
+            Contents contents = Read(path);
+            if (kept.Count == 0)
+            {
+                if (!contents.IgnoredMarks.Remove(sourceSha256))
+                {
+                    return;
+                }
+            }
+            else
+            {
+                contents.IgnoredMarks[sourceSha256] = kept;
+            }
+            Write(path, contents);
         }
     }
 
@@ -115,7 +158,7 @@ public static class TempoMapStore
     {
         lock (Gate)
         {
-            return Read(storePath ?? DefaultPath);
+            return Read(storePath ?? DefaultPath).Songs;
         }
     }
 
@@ -130,9 +173,9 @@ public static class TempoMapStore
         string path = storePath ?? DefaultPath;
         lock (Gate)
         {
-            Dictionary<string, SongTempoMap> songs = Read(path);
-            songs[sourceSha256] = map;
-            Write(path, songs);
+            Contents contents = Read(path);
+            contents.Songs[sourceSha256] = map;
+            Write(path, contents);
         }
     }
 
@@ -141,10 +184,10 @@ public static class TempoMapStore
         string path = storePath ?? DefaultPath;
         lock (Gate)
         {
-            Dictionary<string, SongTempoMap> songs = Read(path);
-            if (songs.Remove(sourceSha256))
+            Contents contents = Read(path);
+            if (contents.Songs.Remove(sourceSha256))
             {
-                Write(path, songs);
+                Write(path, contents);
             }
         }
     }
@@ -156,11 +199,12 @@ public static class TempoMapStore
             double.IsFinite(change.Offset) && change.Offset >= 0 &&
             TempoRules.IsInRange(change.Tempo.Bpm) && Enum.IsDefined(change.Tempo.Unit));
 
-    private static Dictionary<string, SongTempoMap> Read(string path)
+    private static Contents Read(string path)
     {
+        Contents empty = new([], []);
         if (!File.Exists(path))
         {
-            return [];
+            return empty;
         }
         TempoMapFile? file;
         try
@@ -170,17 +214,17 @@ public static class TempoMapStore
         catch (JsonException exception)
         {
             SetAside(path, exception.Message);
-            return [];
+            return empty;
         }
         catch (Exception exception) when (exception is IOException or UnauthorizedAccessException)
         {
             Console.Error.WriteLine($"[TEMPO] Could not read {path}: {exception.Message}");
-            return [];
+            return empty;
         }
         if (file?.Songs is null || file.Version != FileVersion)
         {
             SetAside(path, $"unexpected version {file?.Version}");
-            return [];
+            return empty;
         }
         Dictionary<string, SongTempoMap> valid = new(StringComparer.Ordinal);
         foreach ((string source, SongTempoMap map) in file.Songs)
@@ -194,7 +238,15 @@ public static class TempoMapStore
                 Console.Error.WriteLine($"[TEMPO] Dropped an invalid tempo map for {source}.");
             }
         }
-        return valid;
+        Dictionary<string, List<string>> ignored = new(StringComparer.Ordinal);
+        foreach ((string source, List<string>? keys) in file.IgnoredMarks ?? [])
+        {
+            if (keys is not null && keys.Count > 0 && keys.All(static key => key is not null))
+            {
+                ignored[source] = keys;
+            }
+        }
+        return new Contents(valid, ignored);
     }
 
     /// <summary>Keeps an unreadable file under another name, so a repair never destroys typed-in maps.</summary>
@@ -212,7 +264,7 @@ public static class TempoMapStore
         }
     }
 
-    private static void Write(string path, Dictionary<string, SongTempoMap> songs)
+    private static void Write(string path, Contents contents)
     {
         string directory = Path.GetDirectoryName(path)
             ?? throw new InvalidOperationException("The tempo map path has no parent directory.");
@@ -220,7 +272,9 @@ public static class TempoMapStore
         string temporaryPath = Path.Combine(directory, $".{Path.GetFileName(path)}.{Guid.NewGuid():N}.tmp");
         try
         {
-            File.WriteAllText(temporaryPath, JsonSerializer.Serialize(new TempoMapFile(FileVersion, songs), JsonOptions));
+            File.WriteAllText(temporaryPath, JsonSerializer.Serialize(
+                new TempoMapFile(FileVersion, contents.Songs, contents.IgnoredMarks.Count > 0 ? contents.IgnoredMarks : null),
+                JsonOptions));
             File.Move(temporaryPath, path, overwrite: true);
         }
         finally

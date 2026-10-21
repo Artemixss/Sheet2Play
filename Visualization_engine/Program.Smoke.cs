@@ -287,6 +287,47 @@ internal static partial class Program
 					PresetSmokeTempo(null, null);
 				}
 			});
+
+			// A song still on the 120 fallback whose PDF prints a start tempo, a change and a tempo word:
+			// the button says a mark was found, and the open list offers USE and IGNORE for each.
+			failures += Capture(outputDirectory, "07-playback-tempo-printed", layout, () =>
+			{
+				SongPerformance performance = SmokeScore();
+				SongPlayback timeline = ExpressionPlayback.ForSong(
+					new SongLoadResult([], "Sample Score", OmrEngine.Homr480, true, null, performance), expression, null);
+				SongLoadResult song = new(timeline.Notes, "Sample Score", OmrEngine.Homr480, true, null, performance,
+					SourceSha256: "smoke-printed");
+				PlaybackController playback = new(
+					new PlaybackSession(timeline.Notes, pedal: timeline.Pedal),
+					new NullMidiOutput(),
+					new PlaybackClock(() => 0));
+				playback.Seek(2.5, resume: false);
+				RebuildOverlay(song, expression, null, timeline.Pedal);
+				Keyboard piano = new(layout.Width, layout.HitLineY, layout.KeyboardHeight);
+				GameState state = GameState.Playing;
+				PresetSmokeTempo(song, null);
+				tempoPrinted =
+				[
+					new PrintedMark(new DetectedMark(0, 0, 0, 110, "quarter", "Andantino J= 110", "Andantino", "andantino"), 0,
+						new TempoMark(110, BeatUnit.Quarter)),
+					new PrintedMark(new DetectedMark(0, 0, 2, 74, "dotted_quarter", "Calmando J. = 74", "Calmando", "calmando"), 2,
+						new TempoMark(74, BeatUnit.DottedQuarter)),
+					new PrintedMark(new DetectedMark(0, 1, 3, null, null, "a tempo", "a tempo", "a tempo"), 3, null)
+				];
+				tempoPanelOpen = true;
+				tempoPrintedOpen = true;
+				try
+				{
+					DrawPlayback(playback, song, piano, false, 0.0, new PlaybackRateEditor(), new AudioOffsetEditor(),
+						ref state, layout);
+				}
+				finally
+				{
+					tempoPanelOpen = false;
+					songOverlay = SongOverlay.Empty;
+					PresetSmokeTempo(null, null);
+				}
+			});
 		}
 		catch (Exception exception)
 		{
@@ -414,6 +455,12 @@ internal static partial class Program
 			: null;
 		tempoMap = map;
 		tempoEditor.Cancel();
+		tempoPrinted = null;
+		tempoPrintedOpen = false;
+		tempoPrintedScroll = 0;
+		tempoPrintedPages = 0;
+		tempoPrintedBlindPages = 0;
+		tempoIgnored = new HashSet<string>();
 	}
 
 	private static SongPerformance SmokeScore()

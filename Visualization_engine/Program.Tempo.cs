@@ -15,6 +15,9 @@ internal static partial class Program
 	/// <summary>Change rows shown at once above the panel; more scroll with the mouse wheel.</summary>
 	private const int TempoListRows = 6;
 
+	/// <summary>Printed-mark rows shown at once above the changes.</summary>
+	private const int PrintedListRows = 5;
+
 	/// <summary>The playing song's stored map, or null when it plays its score's marks.</summary>
 	private static SongTempoMap? tempoMap;
 
@@ -48,6 +51,35 @@ internal static partial class Program
 	private static string? tempoStatus;
 
 	private static readonly TempoEditor tempoEditor = new();
+
+	/// <summary>The marks printed in the playing song's PDF, in its measures; null until they are read.</summary>
+	private static IReadOnlyList<PrintedMark>? tempoPrinted;
+
+	/// <summary>The printed marks the user ignored for the playing song (<see cref="DetectedMark.Key"/>).</summary>
+	private static IReadOnlySet<string> tempoIgnored = new HashSet<string>();
+
+	/// <summary>Whether the printed marks are listed. Closed for every song, like the panel.</summary>
+	private static bool tempoPrintedOpen;
+
+	private static int tempoPrintedScroll;
+
+	/// <summary>The PDF's pages, and those on which the reader found no staff and so read nothing.</summary>
+	private static int tempoPrintedPages;
+
+	private static int tempoPrintedBlindPages;
+
+	/// <summary>The reading READ PRINTED MARKS started, while it runs, and the song it reads.</summary>
+	private static Task<DetectedTempos>? tempoReading;
+
+	private static string? tempoReadingSource;
+
+	/// <summary>The page the reading has finished and its page count, written by the reader's thread.</summary>
+	private static int tempoReadingPage;
+
+	private static int tempoReadingPages;
+
+	/// <summary>The bridge reader's hash, which stored marks must have been read with.</summary>
+	private static string? tempoReaderSha;
 
 	/// <summary>Where the field being typed into was drawn last frame, so a click elsewhere commits it.</summary>
 	private static Rectangle tempoEditBox;
@@ -102,6 +134,102 @@ internal static partial class Program
 		catch (Exception error) when (error is IOException or UnauthorizedAccessException or InvalidOperationException)
 		{
 			Console.Error.WriteLine("[TEMPO] The tempo map was not read: " + error.Message);
+		}
+		LoadPrintedMarks(song.SourceSha256, performance);
+	}
+
+	/// <summary>The song's printed marks as stored for the bridge's reader, and the ones the user ignored.</summary>
+	private static void LoadPrintedMarks(string source, SongPerformance performance)
+	{
+		tempoPrinted = null;
+		tempoPrintedPages = 0;
+		tempoPrintedBlindPages = 0;
+		tempoPrintedOpen = false;
+		tempoPrintedScroll = 0;
+		tempoIgnored = new HashSet<string>();
+		if (performance.Kind != "omr-pages")
+		{
+			return;
+		}
+		tempoReaderSha ??= TempoDetection.ReaderSha256(OmrPipeline.DefaultBridgeDirectory);
+		if (TempoDetection.Load(SongCache.ApplicationDirectory, source, tempoReaderSha) is DetectedTempos detected)
+		{
+			ShowPrintedMarks(detected, performance);
+		}
+		try
+		{
+			tempoIgnored = TempoMapStore.GetIgnoredMarks(source);
+		}
+		catch (Exception error) when (error is IOException or UnauthorizedAccessException or InvalidOperationException)
+		{
+			Console.Error.WriteLine("[TEMPO] The ignored marks were not read: " + error.Message);
+		}
+	}
+
+	/// <summary>
+	/// Reads the song's PDF in the background, at low priority so playback keeps the CPU. The PDF is
+	/// the library's copy the song was converted from, found by its hash.
+	/// </summary>
+	private static void StartReadingPrintedMarks(SongLoadResult song)
+	{
+		string source = song.SourceSha256!;
+		tempoReadingSource = source;
+		tempoReadingPage = 0;
+		tempoReadingPages = 0;
+		tempoStatus = null;
+		IProgress<(int Page, int Pages)> progress = new ReadingProgress();
+		tempoReading = Task.Run(() =>
+		{
+			string pdf = SongCache.FindSource(song) is string found && found.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase)
+				? found
+				: throw new TempoDetectionException("its PDF is no longer in the library");
+			return TempoDetection.Detect(SongCache.ApplicationDirectory, OmrPipeline.DefaultBridgeDirectory, pdf, source,
+				progress, background: true);
+		});
+		Console.Error.WriteLine($"[TEMPO] {song.DisplayName}: reading the printed marks");
+	}
+
+	private sealed class ReadingProgress : IProgress<(int Page, int Pages)>
+	{
+		public void Report((int Page, int Pages) value)
+		{
+			Volatile.Write(ref tempoReadingPages, value.Pages);
+			Volatile.Write(ref tempoReadingPage, value.Page);
+		}
+	}
+
+	private static void ShowPrintedMarks(DetectedTempos detected, SongPerformance performance)
+	{
+		tempoPrinted = TempoDetection.Place(detected, performance);
+		tempoPrintedPages = detected.Pages.Count;
+		tempoPrintedBlindPages = detected.Pages.Count(static page => page.Systems == 0);
+	}
+
+	/// <summary>Takes in a finished reading: the marks when it was for the playing song, else just its outcome.</summary>
+	private static void CollectPrintedMarks(SongLoadResult song, SongPerformance performance)
+	{
+		if (tempoReading is not { IsCompleted: true } reading)
+		{
+			return;
+		}
+		tempoReading = null;
+		bool current = tempoReadingSource == song.SourceSha256;
+		if (reading.IsCompletedSuccessfully)
+		{
+			Console.Error.WriteLine($"[TEMPO] printed marks read: {reading.Result.Marks.Count} for {tempoReadingSource}");
+			if (current)
+			{
+				ShowPrintedMarks(reading.Result, performance);
+				tempoPrintedOpen = true;
+				tempoPrintedScroll = 0;
+			}
+			return;
+		}
+		Exception error = reading.Exception?.GetBaseException() ?? new TempoDetectionException("cancelled");
+		Console.Error.WriteLine("[TEMPO] The printed marks were not read: " + error.Message);
+		if (current)
+		{
+			tempoStatus = "Marks not read: " + error.Message;
 		}
 	}
 
@@ -167,12 +295,16 @@ internal static partial class Program
 		}
 
 		LoadTempoMap(song);
+		CollectPrintedMarks(song, performance);
 		SongTempoMap shown = tempoMap ?? tempoScoreMap!;
 		bool changesApply = SongTempoMaps.ChangesApply(shown, performance);
 		bool fallback = tempoMap is null && performance.Tempos.All(static tempo => tempo.QuarterBpm is null);
 		int changeCount = changesApply ? shown.Changes.Count : 0;
+		// A song still on 120 says when its PDF prints a tempo, so the mark is found without opening the panel.
+		bool markFound = fallback && tempoPrinted is not null &&
+			tempoPrinted.Any(mark => mark.Usable && !tempoIgnored.Contains(mark.Source.Key));
 		string suffix = fallback
-			? " · DEFAULT"
+			? markFound ? " · DEFAULT · MARK FOUND" : " · DEFAULT"
 			: !changesApply
 				? " · CHECK BARS"
 				: changeCount > 0 ? $" · {changeCount} CHANGE{(changeCount == 1 ? "" : "S")}" : "";
@@ -205,6 +337,7 @@ internal static partial class Program
 			SaveTempoMap(song, null);
 			return;
 		}
+		DrawPrintedAction(song, performance, ref x, y, height, scale);
 		int barIndex = songOverlay.BarIndexAt(position);
 		if (barIndex >= 0)
 		{
@@ -231,7 +364,11 @@ internal static partial class Program
 				labelSize, UiTheme.Danger);
 		}
 
-		DrawTempoChanges(song, performance, shown, changesApply, y, height, scale, ref edited);
+		float changesTop = DrawTempoChanges(song, performance, shown, changesApply, y, height, scale, ref edited);
+		if (tempoPrintedOpen && tempoPrinted is not null)
+		{
+			DrawPrintedMarks(song, performance, shown, changesApply, changesTop, height, scale, ref edited);
+		}
 
 		if (edited is not null)
 		{
@@ -246,15 +383,16 @@ internal static partial class Program
 	/// <summary>
 	/// The changes, one row each, stacked upward from the start row with the earliest bar on top.
 	/// Changes set on a conversion with a different number of bars do not play, and are listed in
-	/// the warning colour with KEEP (they are right for this one too) and CLEAR.
+	/// the warning colour with KEEP (they are right for this one too) and CLEAR. Returns the top of
+	/// what it drew, <paramref name="y"/> when there are none.
 	/// </summary>
-	private static void DrawTempoChanges(SongLoadResult song, SongPerformance performance, SongTempoMap shown,
+	private static float DrawTempoChanges(SongLoadResult song, SongPerformance performance, SongTempoMap shown,
 		bool changesApply, float y, float height, float scale, ref SongTempoMap? edited)
 	{
 		int count = shown.Changes.Count;
 		if (count == 0)
 		{
-			return;
+			return y;
 		}
 		int textSize = Math.Max(10, (int)(12f * scale));
 		float rowStep = height + 6f * scale;
@@ -337,6 +475,164 @@ internal static partial class Program
 			{
 				edited = shown with { Changes = [], Engine = song.Engine, MeasureCount = performance.Measures.Count };
 			}
+		}
+		return count > visible || !changesApply ? aboveY : top;
+	}
+
+	/// <summary>
+	/// The start row's control for printed marks: READ PRINTED MARKS before the PDF was read, the
+	/// reading's progress while it runs, then PRINTED, which lists them. Only PDF conversions have one.
+	/// </summary>
+	private static void DrawPrintedAction(SongLoadResult song, SongPerformance performance, ref float x, float y,
+		float height, float scale)
+	{
+		if (performance.Kind != "omr-pages" || !OmrEngines.RunsOmr(song.Engine))
+		{
+			return;
+		}
+		if (tempoReading is not null)
+		{
+			int page = Volatile.Read(ref tempoReadingPage);
+			int pages = Volatile.Read(ref tempoReadingPages);
+			string label = tempoReadingSource != song.SourceSha256 ? "READING ANOTHER SONG'S MARKS"
+				: pages > 0 ? $"READING MARKS · PAGE {Math.Min(page + 1, pages)} OF {pages}"
+				: "READING MARKS…";
+			DrawPanelAction(ref x, y, height, label, UiTheme.Muted, enabled: false, scale);
+			return;
+		}
+		if (tempoPrinted is null)
+		{
+			if (DrawPanelAction(ref x, y, height, "READ PRINTED MARKS", UiTheme.Sky, enabled: true, scale))
+			{
+				tempoEditor.Cancel();
+				StartReadingPrintedMarks(song);
+			}
+			return;
+		}
+		int shownMarks = tempoPrinted.Count(mark => mark.Source.Bpm is not null && !tempoIgnored.Contains(mark.Source.Key));
+		if (DrawPanelButton(ref x, y, height, shownMarks == 0 ? "PRINTED · NONE" : $"PRINTED · {shownMarks}", UiTheme.Text,
+			tempoPrintedOpen, scale))
+		{
+			tempoPrintedOpen = !tempoPrintedOpen;
+		}
+	}
+
+	/// <summary>
+	/// The marks printed in the PDF, stacked upward from <paramref name="bottom"/> above the changes,
+	/// each with USE, which takes it into the song's map at its bar (the first bar's sets the start),
+	/// and IGNORE, which hides it for good. A word without a number ("Andante") is a hint only. A row
+	/// above them holds USE ALL, READ AGAIN and, once some are hidden, SHOW IGNORED.
+	/// </summary>
+	private static void DrawPrintedMarks(SongLoadResult song, SongPerformance performance, SongTempoMap shown,
+		bool changesApply, float bottom, float height, float scale, ref SongTempoMap? edited)
+	{
+		List<PrintedMark> rows = tempoPrinted!.Where(mark => !tempoIgnored.Contains(mark.Source.Key)).ToList();
+		int ignored = tempoPrinted!.Count - rows.Count;
+		int textSize = Math.Max(10, (int)(12f * scale));
+		float rowStep = height + 6f * scale;
+		float left = 16f * scale;
+		int visible = Math.Min(PrintedListRows, rows.Count);
+		tempoPrintedScroll = Math.Clamp(tempoPrintedScroll, 0, Math.Max(0, rows.Count - visible));
+		float top = bottom - 6f * scale - visible * rowStep;
+		Rectangle listArea = new Rectangle(left, top, 620f * scale, visible * rowStep);
+		if (rows.Count > visible && Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), listArea))
+		{
+			float wheel = Raylib.GetMouseWheelMove();
+			if (wheel != 0)
+			{
+				tempoPrintedScroll = Math.Clamp(tempoPrintedScroll - Math.Sign(wheel), 0, rows.Count - visible);
+			}
+		}
+		bool CanUse(PrintedMark mark) => mark.Usable && (mark.Measure == 0 || changesApply);
+		float barLabelWidth = LabelWidth("BAR 0000", textSize) + 20f * scale;
+		for (int row = 0; row < visible; row++)
+		{
+			PrintedMark mark = rows[tempoPrintedScroll + row];
+			float x = left;
+			float rowY = top + row * rowStep;
+			string place = mark.Measure is int measure
+				? "BAR " + SongTempoMaps.BarName(performance, measure)
+				: $"PAGE {mark.Source.Page + 1}";
+			DrawTempoLabel(ref x, rowY, height, barLabelWidth, place, mark.Measure is null ? UiTheme.Warning : UiTheme.Text,
+				scale);
+			string? words = mark.Words;
+			if (mark.Tempo is not null)
+			{
+				DrawTempoLabel(ref x, rowY, height, 0, words is null ? null : words + "  ", UiTheme.Text, scale, mark.Tempo);
+			}
+			else
+			{
+				DrawTempoLabel(ref x, rowY, height, 0, mark.Source.Bpm is null ? $"\"{words}\" · NO NUMBER, A HINT ONLY"
+					: $"\"{mark.Source.Text}\" · UNIT NOT READ", UiTheme.Muted, scale);
+			}
+			if (mark.Measure is null && mark.Source.Bpm is not null)
+			{
+				DrawTempoLabel(ref x, rowY, height, 0, "NOT IN THIS CONVERSION'S PAGES", UiTheme.Warning, scale);
+			}
+			SongTempoMap basis = edited ?? shown;
+			if (mark.Usable && TempoDetection.InUse(basis, mark))
+			{
+				DrawTempoLabel(ref x, rowY, height, 0, mark.Measure == 0 ? "PLAYING · START" : "PLAYING", UiTheme.Lime, scale);
+				continue;
+			}
+			if (mark.Usable && DrawPanelAction(ref x, rowY, height, "USE", UiTheme.Lime, CanUse(mark), scale))
+			{
+				tempoEditor.Cancel();
+				edited = TempoDetection.Use(basis, mark);
+			}
+			if (DrawPanelAction(ref x, rowY, height, "IGNORE", UiTheme.Warning, enabled: true, scale))
+			{
+				SetIgnoredPrintedMarks(song, tempoIgnored.Append(mark.Source.Key));
+			}
+		}
+
+		float headerY = top - rowStep;
+		float header = left;
+		int numbered = tempoPrinted.Count(static mark => mark.Source.Bpm is not null);
+		// A page whose staves the reader could not find was not read, which is not the same as having no mark.
+		bool blind = tempoPrintedPages > 0 && tempoPrintedBlindPages == tempoPrintedPages;
+		string title = blind ? "NO STAVES FOUND IN THE PDF · MARKS NOT READ"
+			: tempoPrinted.Count == 0 ? "NO TEMPO MARKS FOUND IN THE PDF"
+			: $"PRINTED IN THE PDF · {numbered} MARK{(numbered == 1 ? "" : "S")}" +
+				(rows.Count > visible ? $" · {tempoPrintedScroll + 1}-{tempoPrintedScroll + visible} OF {rows.Count} · SCROLL" : "");
+		if (!blind && tempoPrintedBlindPages > 0)
+		{
+			title += $" · {tempoPrintedBlindPages} PAGE{(tempoPrintedBlindPages == 1 ? "" : "S")} NOT READ";
+		}
+		DrawTempoLabel(ref header, headerY, height, 0, title, blind || tempoPrintedBlindPages > 0 ? UiTheme.Warning : UiTheme.Muted,
+			scale);
+		SongTempoMap current = edited ?? shown;
+		List<PrintedMark> unused = rows.Where(mark => CanUse(mark) && !TempoDetection.InUse(current, mark)).ToList();
+		if (DrawPanelAction(ref header, headerY, height, "USE ALL", UiTheme.Lime, unused.Count > 0, scale))
+		{
+			tempoEditor.Cancel();
+			edited = unused.Aggregate(edited ?? shown, TempoDetection.Use);
+		}
+		if (DrawPanelAction(ref header, headerY, height, "READ AGAIN", UiTheme.Sky, tempoReading is null, scale))
+		{
+			tempoEditor.Cancel();
+			StartReadingPrintedMarks(song);
+		}
+		if (ignored > 0 && DrawPanelAction(ref header, headerY, height, $"SHOW {ignored} IGNORED", UiTheme.Muted, enabled: true,
+			scale))
+		{
+			SetIgnoredPrintedMarks(song, []);
+		}
+	}
+
+	private static void SetIgnoredPrintedMarks(SongLoadResult song, IEnumerable<string> keys)
+	{
+		HashSet<string> kept = keys.ToHashSet(StringComparer.Ordinal);
+		tempoIgnored = kept;
+		try
+		{
+			TempoMapStore.SetIgnoredMarks(song.SourceSha256!, kept);
+		}
+		catch (Exception error) when (error is IOException or UnauthorizedAccessException or InvalidOperationException
+			or ArgumentException)
+		{
+			tempoStatus = "Not saved: " + error.Message;
+			Console.Error.WriteLine("[TEMPO] The ignored marks were not saved: " + error.Message);
 		}
 	}
 

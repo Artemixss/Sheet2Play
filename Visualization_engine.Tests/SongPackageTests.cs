@@ -92,6 +92,29 @@ public sealed class SongPackageTests
     }
 
     [Fact]
+    public void APdfConversionReadsItsPrintedTempoMarksAndAFailedReadingCostsOnlyTheMarks()
+    {
+        using Library library = new();
+        List<(string Pdf, string Hash)> readings = [];
+        library.ReadTempo = (pdf, hash, _) =>
+        {
+            readings.Add((pdf, hash));
+            throw new TempoDetectionException("the reader failed");
+        };
+
+        SongLoadResult converted = library.Load();
+        Assert.Equal([60, 62, 64], converted.Notes.Select(note => note.MidiPitch));
+        // The library's copy of the PDF, by the hash the song is stored under.
+        (string pdf, string hash) = Assert.Single(readings);
+        Assert.Equal(Path.Combine(library.Root, "songs", "pdf", "score.pdf"), pdf);
+        Assert.Equal(converted.SourceSha256, hash);
+
+        // Reopening a stored song reads nothing; the TEMPO panel offers that instead.
+        Assert.True(library.Load().LoadedFromCache);
+        Assert.Single(readings);
+    }
+
+    [Fact]
     public void ATempoMapRetimesTheListedSongAndLeavesItsPackageUntouched()
     {
         using Library library = new();
@@ -411,11 +434,14 @@ public sealed class SongPackageTests
         /// <summary>The file the stand-in recognition was asked to read.</summary>
         public string? RecognisedPath { get; private set; }
 
+        /// <summary>Stands in for reading the printed tempo marks after a conversion; null skips it.</summary>
+        public SongCache.TempoReading? ReadTempo { get; set; }
+
         public string PackageDirectory => Directory.GetDirectories(Path.Combine(Root, "songs", "scores", "homr480")).Single();
 
         public SongLoadResult Load(bool timing = false, bool forceReprocess = false) =>
             SongCache.LoadOrCreatePackageForTesting(Source, OmrEngine.Homr480, Root, Bridge, Pipeline, Interpret,
-                timing, forceReprocess);
+                timing, forceReprocess, ReadTempo);
 
         private OmrResult Pipeline(string path, OmrEngine engine, string output, bool timing, CancellationToken token)
         {
