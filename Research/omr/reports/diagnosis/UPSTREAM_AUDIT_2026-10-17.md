@@ -6,7 +6,7 @@ Upstream published a new checkpoint, **run 480**, and merged exporter and staff-
 fixes that the app's pinned 465 runtime (`33baa32`) predates. One of them removes the exact
 assertion that failed the only unsuccessful score in the 465 library migration. The user
 selected a [separate bounded task](../../../../plans/2026-10-17-upstream-exporter-480.md) to
-evaluate these; the [displacement plan](../../../../plans/2026-10-17-displacement-correction.md)
+evaluate these; the [displacement plan](../../../../plans/MAIN_PLAN.md)
 does not wait for it.
 
 This audit ran no inference, scoring, download or release. It read the GitHub REST API.

@@ -1,7 +1,8 @@
 # Pinned HOMR 465 runtime
 
-Since 2026-10-19 HOMR 480 is the default engine and HOMR465 the secondary one: 480's
-error screen offers 465, and 465's offers HOMR426, which stays in the visible selector.
+Since 2026-10-19 HOMR 480 is the default engine and HOMR465 the secondary one. Since
+2026-10-20 they are the only engines the home screen offers: 480's error screen offers 465,
+and 465's offers 480. HOMR426 and Zeus stay in the backend for their cached songs.
 The 480 runtime is described [below](#homr-480).
 
 `homr465-profile.json` pins local source revision

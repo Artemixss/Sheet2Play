@@ -31,9 +31,12 @@ only 2 pianos"), and show only HOMR 480 and 465 in the frontend ("remove model 4
 backend is left to judgement). **Shipped, not committed** ([Phase 5 report](phase5/REPORT.md)): two
 engine cards and two piano cards, 426 and Zeus kept in the backend, bar lines and readout, pedal
 lane, staff colours, badges, Export MIDI, Export MusicXML and Re-convert; xunit 163; gate 8 of 8.
-**Next authorized action:** the user checks Phase 5 in `dist\Sheet2Play.exe` and approves the
-commit. The C# engine rework and Phase 6 each need their own request; the user wants the rework at
-the end of the plan, before Phase 6.
+After the user's feedback round (bar text removed, EXPORT panel, auto pedal, browse fix, 30-song
+batch; xunit 170) Phase 5 was **committed on 2026-10-20** as `ff42206` and `7667005`, and the user
+called the plan done from their side.
+**Next authorized action:** none. The C# engine rework and Phase 6 each need their own request;
+the user wants the rework at the end of the plan, before Phase 6. The per-song tempo plan
+([`2026-10-19-song-tempo`](../../../../plans/2026-10-19-song-tempo.md)) builds on this one.
 **Phase 3 evidence:** [`phase3/tempo/summary.json`](phase3/tempo/summary.json) (fixture exact
 against MuseScore 4; corpus exact up to the first fermata or "rit."); `--verify-library` with
 expression off identical for all 90 playing songs (local, `phase3/library-after`); xunit 139

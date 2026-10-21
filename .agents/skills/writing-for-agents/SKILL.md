@@ -10,10 +10,10 @@ Adapted from [Matt Pocock's writing-for-agents](https://github.com/mattpocock/sk
 
 ## Find the authority and the reader's next decision
 
-Use the already-loaded repository instructions and relevant startup links. If unavailable,
-read [AGENTS.md](../../../AGENTS.md) and the startup section of
-[CONTEXT.md](../../../CONTEXT.md), stopping at `<!-- STARTUP_CONTEXT_END -->`.
-Follow only the links needed for the requested edit; do not inventory every Markdown file.
+Use the already-loaded repository instructions. If unavailable, read
+[AGENTS.md](../../../AGENTS.md); its "Where to look" table names the owning document for
+each task. Follow only the links needed for the requested edit; do not inventory every
+Markdown file.
 
 Identify what an arriving agent must decide or do, which source owns the answer, and what
 evidence supports it. An unverified assumption stays labelled as an assumption. The latest

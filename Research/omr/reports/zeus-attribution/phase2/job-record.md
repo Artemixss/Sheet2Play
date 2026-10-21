@@ -1,6 +1,6 @@
 # Phase 2 job record — 2026-10-04
 
-Authority: [MAIN_PLAN.md](../../../MAIN_PLAN.md), Phase 2 requested in this chat.
+Authority: [MAIN_PLAN.md](../../../../../plans/archive/2026-10-03-zeus-attribution-repair.superseded.md), Phase 2 requested in this chat.
 Scope: shared rational reading and all 295 cached outcome scores, statistics and report.
 No inference, Bridge change, training, cloud use, promotion or later phase execution.
 

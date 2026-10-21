@@ -1,118 +1,119 @@
 # Sheet2Play
 
-Each tool's own user-level instructions (for Codex, `~/.codex/AGENTS.md`) also apply. This
-file covers only what is specific to this repository.
+A Windows C#/Raylib desktop app (`dist\Sheet2Play.exe`) that turns sheet music into falling
+piano notes played through a sampled piano (Salamander SFZ by default, YDP SoundFont as the
+alternative). A Python bridge (`Bridge/`) runs optical music recognition: HOMR 480 by default,
+HOMR 465 as the secondary; 426 and Zeus remain in the backend only, for songs already cached
+with them. Each conversion is kept as a song package (its MusicXML plus a derived
+performance), which the app turns into notes at playback. `Research/omr/` is separate
+research tooling.
 
-## Read before working
+This file is the shared rulebook for Claude and Codex: Codex reads it directly and
+[CLAUDE.md](CLAUDE.md) imports it. Keep repository rules here, not in a second copy. Each
+tool's own user-level instructions (for Codex, `~/.codex/AGENTS.md`) also apply.
 
-- Start with the short startup section of [CONTEXT.md](CONTEXT.md), ending at
-  `<!-- STARTUP_CONTEXT_END -->`. Follow its links for the requested task; do not read
-  the entire historical context or every Markdown file for routine orientation. Reuse
-  already-loaded context unless it changed or was compacted away.
-- [plans/README.md](plans/README.md) indexes every plan. For research or integration
-  work, read [MAIN_PLAN.md](plans/MAIN_PLAN.md) and the handoff it links. "Implement
-  Phase N" means that plan unless the user names another. Phase status and the next
-  action live there; other entry points link to it rather than restating it.
-- The user's latest explicit decision governs scope. The plan sets objectives and
-  acceptance criteria; handoffs record implementation state, evidence and deviations,
-  and supplement the plan rather than replacing it. Resolve a material conflict between
-  documents before dependent work instead of silently choosing one. Inspect the
-  relevant code rather than trusting a document's description of it.
-- Archived plans, dated handoffs and historical CONTEXT sections are evidence, not work
-  orders. Their frozen manifests, scoring protocols and evaluation identities remain the
-  contract for any rerun: see the [Phase 1 handoff](Research/omr/PHASE1_HANDOFF.md) for
+## Where to look
+
+| Task | Read |
+| --- | --- |
+| Which plans exist and their status | [plans/README.md](plans/README.md) |
+| Current research work, or "implement Phase N" | [plans/MAIN_PLAN.md](plans/MAIN_PLAN.md) and the handoff it links, unless the user names another plan from the index |
+| How the app fits together, and known traps | [CONTEXT.md](CONTEXT.md), only the section you need |
+| Change frontend or bridge behaviour | [CONTEXT.md traps](CONTEXT.md#3-things-that-will-bite-you) and [verification](CONTEXT.md#4-verification), plus the affected code and tests |
+| Song packages, the timeline, expression, pianos | The [MusicXML songs plan](plans/2026-10-19-musicxml-songs.md) and its [handoff](Research/omr/reports/musicxml-songs/handoff.md) |
+| The HOMR 480 and 465 runtimes, and what editing a pinned Bridge file costs | [Bridge/HOMR465.md](Bridge/HOMR465.md) |
+| Rerun or check a frozen evaluation | [Phase 1 handoff](Research/omr/PHASE1_HANDOFF.md) and [frozen scoring protocol](Research/omr/reports/phase1/scoring-protocol.json) |
+| Completed or old work | The [archived plans table](plans/README.md#archived-plans), then only the relevant handoff or [FINDINGS](Research/omr/reports/diagnosis/FINDINGS.md) |
+| Upstream HOMR changes | The [latest upstream audit](Research/omr/reports/diagnosis/UPSTREAM_AUDIT_2026-10-17.md); older audits sit beside it |
+| Using, building or installing the app | [README.md](README.md) |
+
+Read only what the task needs. Do not open every Markdown file to get oriented, and reuse
+context you already loaded unless it changed or was compacted away.
+
+## Scope and authority
+
+- The user's latest explicit decision governs scope. The plan sets objectives and acceptance
+  criteria; handoffs record implementation state, evidence and deviations, and supplement the
+  plan rather than replacing it. Resolve a material conflict between documents before
+  dependent work instead of silently choosing one. Inspect the relevant code rather than
+  trusting a document's description of it.
+- "Implement Phase N" means MAIN_PLAN.md unless the user names another plan. Phase status
+  and the next action live there and in its handoff. Completing one phase does not authorize
+  the next, and a request to execute one stage authorizes that stage, not the confirmation
+  run, training or promotion after it.
+- Archived plans, older handoffs and dated reports are evidence, not work orders, whether or
+  not they say so. Their frozen manifests, scoring protocols and evaluation identities remain
+  the contract for any rerun: see the [Phase 1 handoff](Research/omr/PHASE1_HANDOFF.md) for
   the evaluation freeze and the [screening handoff](Research/omr/SCREENING_HANDOFF.md) for
-  the screening manifests and RAM admission policy. A request to execute one stage
-  authorizes that stage, not the confirmation run, training or promotion after it.
+  the screening manifests and RAM admission policy.
 - Windows commit exhaustion has crashed this machine repeatedly with no verified cause or
   durable remedy, so the [enforced CPU safeguards](Research/omr/reports/zeus-attribution/phase2/safety-fix-20261004/REPORT.md)
   are mandatory for substantive jobs: the recorded supervisor, one heavy worker, 85%
   RAM/commit stops, a 4 GiB system commit reserve, worker containment and deadlines.
   Since 2026-10-17, at the user's request, workers have no per-worker memory cap by
   default (`--worker-limit-mib` sets one when wanted); the system stops still apply.
-  GPU admission is separate. Inspect live jobs and locks before launching, preserve failed receipts, and
-  never automatically retry a pressure failure or invoke Git during crash recovery.
-- Keep shared repository rules here. [CLAUDE.md](CLAUDE.md) points here instead of
-  maintaining a second copy. Update the active-work links when completing a phase.
+  GPU admission is separate. Inspect live jobs and locks before launching, preserve failed
+  receipts, and never automatically retry a pressure failure or invoke Git during crash recovery.
 
 ## Plan lifecycle
 
 - Store project execution plans in `plans/`, indexed by [plans/README.md](plans/README.md).
-  Keep the current research plan at `plans/MAIN_PLAN.md`, with a descriptive
-  workstream, stable plan ID, phase status, evidence links and next planned step.
-  Completing one phase does not complete the whole plan or authorize the next phase.
-- On whole-plan completion, move its full text to `plans/archive/<plan-id>.done.md`
-  and update the index, startup links and linked handoffs. Use `.superseded.md`
-  or `.cancelled.md` for those outcomes; do not label unfinished work done.
-  Keep a concise status/redirect at old locations needed by historical links.
+  Keep the current research plan at `plans/MAIN_PLAN.md`, with a descriptive workstream,
+  stable plan ID, phase status, evidence links and next planned step.
+- On whole-plan completion, move its full text to `plans/archive/<plan-id>.done.md` and
+  update the index, the "Where to look" table above and linked handoffs. Use
+  `.superseded.md` or `.cancelled.md` for those outcomes; do not label unfinished work done.
+  When a file moves, update the links that point to it rather than leaving a redirect stub.
   Preserve handoffs, experimental evidence and frozen artifacts.
-- Keep handoffs beside their evidence and link them from the plan index. Each
-  handoff must state its owning plan, completed/interrupted/superseded phase
-  status, acceptance evidence and next authorized action. Update its lifecycle
-  note when later work supersedes a recorded stop; retain the dated history.
-- After archiving, keep `plans/MAIN_PLAN.md` as a short "No active plan" pointer
-  to the closed record until the user selects a new plan. Never overwrite an
-  unarchived plan or delete evidence merely to reduce documentation clutter.
-  Older plans are reference material, not work orders; load them only when relevant.
+- Keep handoffs beside their evidence and link them from the plan index. Each handoff states
+  its owning plan, phase status, acceptance evidence and next authorized action. Do not add
+  lifecycle banners or "does not authorize" disclaimers to older records; the evidence rule
+  above already covers them.
+- After archiving, keep `plans/MAIN_PLAN.md` as a short "No active plan" pointer to the
+  closed record until the user selects a new plan. Never overwrite an unarchived plan or
+  delete evidence merely to reduce documentation clutter.
 
-## Efficient execution without weaker validation
+## Execution
 
 - **Codex only:** near a compaction boundary, or when asked to prepare one, follow the
-  [context checkpoint workflow](docs/agent-checkpoints.md) and keep the per-chat
-  HANDOFF.md current with the authorized objective, evidence, live jobs and exact next
-  action. Claude Code sessions do not use this workflow. In any tool, a context reset
-  does not authorize another phase or justify repeating completed work.
-- For project exploration, inspect the root layout, dependency/build manifests, entry
-  points, and relevant tests first. Report architecture, how the user runs it, current
-  work, and concrete unknowns. Explore subsystems only to answer the request.
-- Before implementation, state the phase boundary, required evidence, and a short task
-  breakdown. Resolve recorded readiness gaps before dependent evaluation. Do not expand
-  into another phase or start training/promotion merely because a prerequisite is missing.
-- For multi-phase work, keep one evidence-grounded plan with each phase's objective,
-  deliverables, acceptance evidence, unverified assumptions, and review/replanning triggers.
-  Recommend an available model/effort at meaningful boundaries when useful, with a brief
-  task-based reason. Use supplied options without researching the model catalog.
-- Prefer standard effort for well-defined work with reliable checks; recommend stronger
-  reasoning for unresolved architecture, diagnosis, statistics, or consequential decisions.
-  Justify the highest effort by specific reasoning needs and parallel execution by useful
-  independent tasks. A separate planning agent is optional. Keep the user's selected
-  settings until they request a change; continue authorized work as checks pass, reviewing
-  consequential milestones and resolving material uncertainty before dependent work.
-- Prefer filename/symbol discovery (`rg --files`, `rg -l`, scoped `rg -n`) followed by
-  relevant sections/functions. Limit code searches by file type and directory. Query
-  selected JSON fields; do not dump full manifests, prediction arrays, or entire report trees.
-- Target roughly 2,000-4,000 output tokens for routine tool results. Increase the budget
-  for a specific needed artifact, not as a substitute for filtering. A truncated result
-  requires a narrower follow-up; never treat omitted text as reviewed.
-- Batch independent reads/checks, but summarize their outputs before returning them to
-  context. Keep edits and dependent checks sequential. Retain full diagnostic logs on disk
-  when running jobs; expose summaries and relevant failure excerpts to the model.
-- Preflight the interpreter, candidate runtime/weights, paths, required permissions/network,
-  and available resources before expensive execution. After a failure, identify its cause
-  before retrying. Do not repeat unchanged commands that already proved the same failure.
-- Validate in stages: contract/unit fixtures, one representative development item, then
-  the complete relevant development/regression suite. Run the release gate for shipped
-  changes when ready. After passing checks, repeat only for subsequent relevant changes,
-  failures, or an explicit unresolved concern. Never drop required coverage to save tokens.
-- For long jobs, prefer completion/change notifications when available. If polling is
-  necessary, use bounded waits appropriate to runtime (up to 60 seconds per blocking wait),
-  work on independent tasks between checks, and inspect only new progress or failure output.
-  Avoid repeated empty 30-second polls and model turns whose sole decision is "wait again".
-  Do not create recurring monitoring automations without a user request.
-- Before a long job, record its command, working directory, configuration/input identity,
-  log location, and resumable progress in the active handoff or job record. On interruption,
-  add the process/session identifier, completed work, remaining work, last validation, and
-  exact next action. On resume, check whether it is still running before launching another
-  copy. Reuse cached results only when input/code/configuration identities still match.
-- Keep one focused implementation task per phase when organizing new work; do not create
-  tasks without a user request or restart an existing task just for a small follow-up.
-  Do not change model/effort settings, delegate, weaken safeguards, or reduce acceptance
-  criteria solely to meet a token target. Optimize retrieval and orchestration first.
-- When auditing efficiency, separate cached input, uncached input, output, and reasoning
-  (already included in output). Count empty polls, truncations, and retries alongside quality
-  outcomes. Raw cumulative tokens are not a subscription-quota or monetary-cost estimate.
+  [context checkpoint workflow](docs/agent-checkpoints.md) and keep the per-chat HANDOFF.md
+  current. Claude Code sessions do not use it. In either tool, a context reset does not
+  authorize another phase or justify repeating completed work.
+- Before implementing, state the phase boundary, the evidence it needs and a short task
+  list. Do not expand into another phase, or start training or promotion, because a
+  prerequisite is missing. Keep the user's model and effort settings until they change
+  them, and do not create tasks, sessions or delegates without a user request.
+- Preflight the interpreter, runtime and weights, paths, permissions or network, and free
+  resources before expensive runs. After a failure, find the cause before retrying; never
+  repeat an unchanged command that already failed the same way.
+- Validate in stages: unit fixtures, one development item, then the full relevant suite,
+  and the release gate for shipped changes. Never drop required coverage, weaken safeguards
+  or lower acceptance criteria to save tokens.
+- Before a long job, record its command, working directory, input and configuration
+  identity, log path and resumable progress in the active handoff or job record. On
+  interruption, add the process id, what finished, what remains and the exact next action.
+  On resume, check whether it is still running before launching another copy, and reuse
+  cached results only when input, code and configuration identities still match.
+- Wait on long jobs with completion notifications where available, otherwise with bounded
+  waits of up to 60 seconds while doing independent work. Do not create recurring
+  monitoring automations without a user request.
+- Keep routine tool output to roughly 2,000-4,000 tokens. Query selected JSON fields instead
+  of dumping manifests, prediction arrays or report trees, keep full logs on disk and read
+  their summaries and failure excerpts. A truncated result needs a narrower follow-up; never
+  treat omitted text as reviewed.
 
-## Routine documentation searches
+## Searching
+
+- Never search from a drive or filesystem root: no `find /`, `find /c`, `dir /s C:\`,
+  `Get-ChildItem C:\ -Recurse` or `rg PATTERN C:\`, and nothing equally broad such as the
+  whole user profile. A root-wide `find` once ran for three hours and used about 10 GB of
+  memory. Search inside this repository, or name the specific install folder you need (for
+  HOMR: `Bridge/.venv-homr-gpu` or `Research/omr/vendor/homr`).
+- If a command times out, check for leftover processes it started (`find`, `rg`, `python`,
+  `powershell`) and stop them before continuing. This cleanup never covers the research
+  supervisor or workers recorded in `.research-worker.lock`, or the running app.
+- Prefer filename and symbol discovery (`rg --files`, `rg -l`, scoped `rg -n`), limited by
+  file type and directory, then read the relevant sections.
 
 Use `rg --files -g '*.md'` to list project documentation and `rg -n -g '*.md' PATTERN`
 to search it. The root `.rgignore` excludes downloaded datasets, vendored dependencies,
@@ -142,21 +143,6 @@ library/settings live in `%LOCALAPPDATA%\Sheet2Play` (or the configured library 
 Documentation-only changes require link/search checks, not an app shutdown or republish.
 Research-only changes require relevant research tests; publish if shipped behavior also changes.
 
-## Layout
-
-- `Visualization_engine/` — the C# frontend (`SynthesiaClone.csproj`, assembly
-  `Sheet2Play`). Raylib + DryWetMidi, net9.0-windows.
-- `Visualization_engine.Tests/` — xunit suite. `dotnet test`.
-- `Bridge/` — the Python OMR bridge. `bridge.py` is the entry point the frontend shells
-  out to; it imports `musicxml_normalizer` and `progress_protocol` as siblings.
-- `Omr/`, `Research/` — OMR experiments and notes.
-- `pianos/` — large sample payloads. Not shipped with the app; exclude from recursive
-  greps, they make repo-wide searches time out.
-
-The frontend source is recovered decompiler output, so it carries no original comments.
-Write new comments in the style of the surrounding hand-written files, not the decompiled
-ones.
-
 ## Runtime assets
 
 These load from disk relative to `AppContext.BaseDirectory` and are invisible to the
@@ -164,7 +150,13 @@ compiler, so a build can succeed while the published app degrades or fails:
 
 - `assets/fonts/Inter-Regular.ttf` and `Inter-SemiBold.ttf` — `UiDesign.cs`. Missing
   fonts silently fall back to Raylib's default; the app still runs and looks wrong.
-- `Bridge/bridge.py` plus its sibling imports — `OmrPipeline.cs`.
+- `Bridge/bridge.py` plus its sibling imports, and the unpinned `song_entry.py`,
+  `song_model.py` and `timing_correction.py` beside it — `OmrPipeline.cs` and
+  `SongPerformance.cs`.
+
+The pianos are not in `dist\`: `scripts\install-piano.ps1` (Salamander) and
+`scripts\install-soundfont.ps1` (YDP) install them under `%LOCALAPPDATA%\Sheet2Play`,
+because every publish wipes `dist\`. With neither installed the app plays silently and says so.
 
 Preserve the csproj's asset `ExcludeFromSingleFile` and the bridge's output/publish copy
 rules. They differ: do not assume every runtime dependency needs the same metadata.
@@ -194,17 +186,14 @@ Applies to the OMR fine-tuning and dataset work under `Omr/` and `Research/`.
 - For duration classification, report the full confusion matrix, majority baseline,
   balanced accuracy, and macro-F1; reject degenerate single-class predictors. These diagnostics
   complement the transcription metrics rather than substituting for them.
-- Keep Phase-1 manifests and scoring rules frozen. Debug adapters and select inference
-  settings on development data only; Phase 2 does not run frozen evaluation inference.
-- Use the local 6 GB GPU first for comparison without competing with separate training.
-  The existing HOMR fine-tune is outside this comparison; do not restart or alter it.
-  Cloud cost for the comparison is capped at $10 total including storage and transfer;
-  estimate first and stop before exceeding it. Keep private library files local.
+- Keep frozen manifests and scoring rules frozen. Tune and debug on development data only.
+- Keep private library files local. Spend on cloud compute only when the active plan allows it.
 - Keep the project's own dataset generator in any training plan, even when a public corpus
   covers the same ground.
 
 ## Conventions
 
 - User-adjustable settings need a visible on-screen control, not just a keyboard shortcut.
+- The frontend source is recovered decompiler output with no original comments. Write new
+  comments in the style of the surrounding hand-written files, not the decompiled ones.
 - Do not add AI `Co-Authored-By` trailers to commits in this repository.
-

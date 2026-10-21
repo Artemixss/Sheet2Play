@@ -10,12 +10,15 @@ same day ("after that commit phase 3 then continue with the next phase"); 4a is 
 `ef02e4b`, sfizz compared on 2026-10-20), and on 2026-10-20 the user picked the managed Salamander
 with reverb, kept YDP selectable, and requested 4b ("you can continue phase 4"). 4b was approved
 and committed on 2026-10-20, and Phase 5 was requested the same day ("then we can begin phase 5").
+Phase 5 shipped and, after the user's feedback round, was committed on 2026-10-20 (`ff42206`,
+`7667005`); the same day the user called the plan done from their side and moved on to the
+per-song tempo plan. **Phase 6 and the C# engine rework have not been requested.**
 [Handoff](../Research/omr/reports/musicxml-songs/handoff.md). If an acceptance criterion is not met, ask before changing it, unless the fix
 is small. Each later phase needs its own request. The user also said the C# engine may be
 reworked (they wrote it and expect flaws), but in a separate request, at the end of this plan
 right before Phase 6 converts most of the library.
-**Related:** the per-song tempo plan (`2026-10-19-song-tempo`, still in the session plan folder
-and to be saved as `plans/2026-10-19-song-tempo.md` when approved) runs after this one. This
+**Related:** the [per-song tempo plan](2026-10-19-song-tempo.md) (`2026-10-19-song-tempo`) runs
+after this one. This
 plan does not edit it; [Fit with the tempo plan](#fit-with-the-per-song-tempo-plan) lists what
 it hands over.
 
@@ -375,8 +378,8 @@ let it be only 2 pianos", "only 480 and 465 remains in the frontend"): the MIDI 
 piano installed now means silent playback with a notice), the home screen offers HOMR 480 and 465
 only, and 426 and Zeus stay in the backend so their 59 cached songs keep playing until Phase 6.
 Shipped the same day with every listed item; see the
-[Phase 5 report](../Research/omr/reports/musicxml-songs/phase5/REPORT.md). The user's check in the
-published exe remains.
+[Phase 5 report](../Research/omr/reports/musicxml-songs/phase5/REPORT.md). The user tried the
+published exe, asked for the feedback-round changes, and the result was committed on 2026-10-20.
 
 **Accept when:** `--smoke` snapshots cover every new screen and state; every new setting has a
 visible control; frame time p95 (`Program.Bench`) stays within 10% of the pre-change baseline on

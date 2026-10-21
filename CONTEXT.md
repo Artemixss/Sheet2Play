@@ -1,59 +1,8 @@
 # Sheet2Play — Context for AI Agents
 
-Orientation for an agent picking this project up cold. `README.md` covers how to use and
-build it; this file covers how it is put together, what is fragile, and why several things
-look the way they do.
-
-## Start here
-
-**Plans directory:** [plans/README.md](plans/README.md) indexes the active plan,
-completed/superseded archives and their handoffs.
-
-**Research plan entry point:** [MAIN_PLAN.md](plans/MAIN_PLAN.md) owns current
-work or the no-active-plan pointer after closeout. Follow it to the owning plan
-and handoff for phase status, evidence and the next authorization decision;
-this startup page does not duplicate them.
-
-**Preserved prior work:** [archived plans](plans/README.md#archived-plans)
-retain their original evidence and limitations. Dated next-action statements
-in archived records are not current work orders.
-
-**Resource constraints:** the [repeated Windows commit exhaustion](Research/omr/reports/zeus-attribution/phase2/crash-recurrence-20261004/REPORT.md)
-has no verified initiating cause or durable remedy. The [enforced CPU safeguards](Research/omr/reports/zeus-attribution/phase2/safety-fix-20261004/REPORT.md)
-remain mandatory: recorded supervisor, one heavy worker, 85% RAM/commit stops,
-4 GiB system commit reserve, worker containment and bounded deadlines (no
-per-worker memory cap by default since 2026-10-17, at the user's request). Keep the plan's existing
-usage stop and separate GPU admission. Check live jobs/locks before execution;
-never automatically retry pressure failures or invoke Git during recovery.
-C-only system-managed paging and the prior 18 GiB allocation are recorded
-historical evidence, not a substitute for fresh resource preflight.
-Historical screening/evaluation identities remain frozen.
-
-**Previous comparison:** screening Stages 1-4 are complete. The
-[historical comparison baseline](plans/archive/2026-09-26-omr-screening-comparison.superseded.md) owns its frozen
-contracts; the [Stage 4 decision](Research/omr/reports/screening/v1/stage4-evaluation/REPORT.md)
-retains shipped HOMR. Its numbered stages and older handoffs are background,
-not phases of the active main plan.
-
-Sheet2Play is a Windows C#/Raylib desktop app with a Python OMR bridge. The user launches
-`dist\Sheet2Play.exe`; research tooling under `Research/omr/` is separate from the app.
-
-| Task | Read next |
-| --- | --- |
-| Implement or review the current research phase | [MAIN_PLAN.md](plans/MAIN_PLAN.md), its current handoff and relevant code/tests |
-| Explore the project | [Architecture](#1-what-the-project-is), [layout](#2-layout), and [user README](README.md); inspect entry points/manifests |
-| Verify the comparison evaluation freeze | [Comparison Phase 1 handoff](Research/omr/PHASE1_HANDOFF.md) and [frozen scoring protocol](Research/omr/reports/phase1/scoring-protocol.json) |
-| Change frontend/bridge behavior | Relevant [invariants](#3-things-that-will-bite-you), affected code/tests, and [verification](#4-verification) |
-| Investigate completed work or an old proposal | [Historical milestones](#completed-and-historical-research-milestones), then only the relevant plan/handoff or [findings](Research/omr/reports/diagnosis/FINDINGS.md) |
-| Review upstream HOMR changes | [October 17 audit](Research/omr/reports/diagnosis/UPSTREAM_AUDIT_2026-10-17.md): run 480, exporter fixes after the app's pin, and the open measure-dropping issue #188; [October 6 audit](Research/omr/reports/diagnosis/UPSTREAM_AUDIT_2026-10-06.md): merged exporter fixes #171/#178; [September 29 audit](Research/omr/reports/diagnosis/UPSTREAM_AUDIT_2026-09-29.md) and [September 26 audit](Research/omr/reports/diagnosis/UPSTREAM_AUDIT_2026-09-26.md) preserve earlier findings. These notes do not authorize execution. |
-
-MAIN_PLAN.md defines active work or links its closed record; handoffs/reviews record execution and limitations.
-The user's latest explicit decisions govern scope. Follow [AGENTS.md](AGENTS.md) for
-plan lifecycle, efficient execution, search boundaries and release requirements.
-This index does not authorize the next phase. Update its active links when phase status
-changes. Load history and detailed sections below only when relevant to the request.
-
-<!-- STARTUP_CONTEXT_END -->
+Reference, not startup reading: [AGENTS.md](AGENTS.md) says which section to open for which
+task. `README.md` covers how to use and build the app; this file covers how it is put
+together, what is fragile, and the research background.
 
 ---
 
@@ -82,18 +31,33 @@ is not part of the shipped app.
 ## 2. Layout
 
 ```
-Visualization_engine/        C# app (assembly: Sheet2Play)
+Visualization_engine/        C# app: SynthesiaClone.csproj, assembly Sheet2Play,
+                             Raylib + DryWetMidi, net9.0-windows
   Program.cs                 main loop, state machine, all screen drawing
-  Program.Smoke.cs           headless --smoke rendering (partial of Program)
-  SongCache.cs               cache, library, app-root resolution
-  Playback.cs                playback clock, session, MIDI output
+  Program.*.cs               partials: Smoke (headless --smoke), Score (bar lines, pedal
+                             lane, EXPORT panel), Expression (EXPRESSION panel), Piano,
+                             Batch (--convert-batch), Bench, RenderAudio, Verification
+  SongCache.cs               legacy MIDI caches, library, app-root resolution
+  SongCache.Packages.cs      song packages: layout, identity, re-interpretation
+  SongPerformance.cs         performance.json reader and SongTimeline (beats -> seconds)
+  SongExpression.cs          pedal, dynamics, articulations, auto pedal
+  SongOverlay.cs             bars and pedal spans drawn over the note field
+  TempoMapStore.cs           per-song tempo maps (TEMPO panel: Program.Tempo.cs)
+  Playback.cs                playback clock, session
+  AudioOutput.cs, Sfz*.cs,   piano backends: SFZ (Salamander), SoundFont (YDP via
+  SoundFontEngine.cs         MeltySynth), silent when no piano is installed
   UiDesign.cs                UiTheme + UiLayout, fonts, drawing primitives
-  OmrPipeline.cs             engine enum, bridge invocation, error types
-Visualization_engine.Tests/  xUnit suite (discover counts at test time)
+  OmrPipeline.cs             engine enum, bridge invocation, profile pins, error types
+Visualization_engine.Tests/  xUnit suite (`dotnet test`; discover counts at test time)
 MidiTester/                  MIDI regression harness + library diagnostics
-Bridge/                      bridge.py and the Python OMR pipeline
-Research/omr/                dataset tools and engine evaluation
-scripts/                     publish.ps1, install-shortcut.ps1
+Bridge/                      bridge.py and its sibling imports (pinned by the 465/480
+                             profiles); song_entry.py wraps it and writes the song
+                             package; song_model.py derives performance.json from stored
+                             MusicXML; timing_correction.py is the TIMING FIX layout
+Omr/, Research/omr/          dataset tools, OMR experiments and engine evaluation
+plans/                       execution plans; MAIN_PLAN.md is the current one
+scripts/                     publish.ps1, install-shortcut.ps1, verify-release.ps1
+pianos/                      large piano samples; not shipped, excluded from searches
 ```
 
 ---
@@ -126,10 +90,13 @@ never pushed. Do not delete them.**
 Everything the app stores is in **`%LOCALAPPDATA%\Sheet2Play`** — note *Local*, not Roaming:
 
 ```
-settings.json  recent.json  failed-omr.json
-songs\pdf\            source scores
-songs\midi\custom\    .mid / .mxl shown in the MIDI Player column
-songs\midi\<engine>\  validated caches, one folder per engine
+settings.json  recent.json  failed-omr.json  audio.log  tempo-maps.json
+songs\pdf\             source scores
+songs\scores\<engine>\ song packages, one folder per conversion (HOMR 480/465, MusicXML)
+songs\midi\custom\     .mid / .mxl shown in the MIDI Player column
+songs\midi\<engine>\   legacy MIDI caches (426, Zeus, older 465), playable until re-converted
+pianos\  soundfonts\   installed Salamander bank and YDP SoundFont
+exports\               Export MIDI / MusicXML / WAV / MP3 output
 ```
 
 Resolution order is `SHEET2PLAY_HOME` → `%LOCALAPPDATA%\Sheet2Play`. There is deliberately
@@ -173,10 +140,30 @@ Do not "fix" these by making them strict again.
 ### 3.5 Cache identity
 
 Cached results are keyed on **SHA-256 of the source file plus the engine**, not the
-filename. Each cache carries a manifest recording the source hash, engine and model
-revision; a cached entry is invalidated when the model revision changes. Because a cache hit
-returns instantly and is indistinguishable from a fresh run, loading a source that already
-has a cache prompts the user, offering Use cached / Re-run / Cancel.
+filename. Because a cache hit returns instantly and is indistinguishable from a fresh run,
+loading a source that already has a cache prompts the user, offering Use cached / Re-run /
+Cancel.
+
+**Song packages** (HOMR 480/465 and MusicXML imports, `SongCache.Packages.cs`) have three
+identity layers:
+
+1. **Recognition** (only OMR rebuilds it): source SHA, engine, runtime profile SHA,
+   `song_entry.py` SHA and page SHAs. Pinned engines put the profile SHA in the folder name.
+2. **Interpretation** (`derived/<key>/`, rebuilt from the stored pages in seconds): SHA of
+   `song_model.py`, `timing_correction.py` (or `off`) and the schema. Turning TIMING FIX on or
+   off, or changing the interpreter, re-interprets on the next load with no OMR.
+3. **Playback policy** (never cached): repeats, pedal, dynamics, articulations, piano,
+   playback rate and tempo, applied when `SongTimeline` builds the notes.
+
+**Editing a pinned Bridge file re-converts the library.** `bridge.py`,
+`musicxml_normalizer.py` and the other files the 465/480 profiles pin are part of the profile
+SHA, so changing one means re-provisioning, updating both C# pins and re-running every
+465/480 song ([Bridge/HOMR465.md](Bridge/HOMR465.md#homr-480)). Put new behaviour in the
+unpinned `song_entry.py` / `song_model.py` path, or in C#, instead.
+
+**Legacy MIDI caches** (manifest v2: 426, Zeus, and 465 songs converted before packages)
+record source hash, engine and model revision, and are invalidated when the revision
+changes. They play as before with a MIDI (LEGACY) badge and a Re-convert action.
 
 ---
 
@@ -219,164 +206,23 @@ machine; LibreOffice is not installed. Neither is needed for the app.
 
 ---
 
-## Completed and historical research milestones
-
-Reference evidence only. These dated entries preserve previous decisions and
-interruptions; their old next-step and stop instructions are not the current queue.
-Current research lifecycle and the next authorization decision are recorded in [MAIN_PLAN.md](plans/MAIN_PLAN.md).
-
-**Canonical Stage 4 complete (2026-09-30):** The user requested evaluation of the
-completed five-candidate screen. The [Stage 4 review](Research/omr/reports/screening/v1/stage4-evaluation/REPORT.md)
-records **retain shipped HOMR; no accuracy-led challenger confirmation now**.
-Shipped/fine-tuned uncertainty is inconclusive; no promotion gate is met. Fresh
-audit verified 295 results, 295 scores, 1,257 declared artifacts, complete duration
-matrices and eight paired claims. Focused fixtures: 14 passed; full research/bridge:
-239 passed, 2 skipped, 9 subtests passed. No inference/scoring rerun or app change.
-The historical 343-page remainder is screen-disjoint, **not wholly untouched**:
-207 pages already had shipped inference. Only 135 pages/44 whole compositions
-have no recorded prior attempt, with composer/review/training limitations. Optional
-shipped/fine-tune estimates: 4.36 hours on that inventory, 11.07 on the 343-page
-extension. Read the [screening handoff](Research/omr/SCREENING_HANDOFF.md) and
-[Stage 4 job record](Research/omr/reports/screening/v1/stage4-evaluation/job-record.md).
-**Next decision:** end comparison, separately request bounded Stage 5/readiness,
-or authorize preregistered confirmation after eligibility is resolved. Stop before
-confirmation, Stage 5, training, cloud spending or promotion; none was started.
-
-**Stage 3 complete (2026-09-30):** The user authorized consolidation after Zeus
-scoring. The [five-candidate report](Research/omr/reports/screening/v1/2c98d5638c36/reports/consolidated-stage3-836fb923bb33/REPORT.md) verifies all **295 result/score
-pairs** on the unchanged 59-page / 18-composition sample. Primary F1: shipped HOMR
-0.4061, repaired fine-tuned HOMR 0.3844, corrected 455 0.2857, Audiveris 0.0986,
-neutral Zeus 0.0228. Eight composition-paired comparisons provide no supported
-challenger superiority; the shipped/fine-tuned gap is inconclusive. All scores and
-summary hashes passed audit; 14 report/statistics/analysis fixtures passed.
-Zeus's prior RAM interruption was resolved after RAM relief; all sessions are closed,
-no worker lock remains. Valid outputs do not explain Zeus's low transcription accuracy.
-Read the [screening handoff](Research/omr/SCREENING_HANDOFF.md) and
-[CPU job record](Research/omr/reports/screening/v1/stage3-cpu/job-record.md).
-**Historical next action, now completed above:** Stage 4 review/decision. Stop before
-untouched confirmation, Stage 5, training, cloud spending or promotion.
-
-**Historical Zeus scoring-only stop (2026-09-30; superseded by consolidation):**
-After the user freed RAM, the unchanged scorer reused 23 verified scores, retried
-page 24 and completed all 59 scores. Session closed at 7011.924 seconds;
-[final Zeus audit](Research/omr/reports/screening/v1/stage3-cpu/zeus-final-audit.json)
-passed. The earlier user-directed stop before consolidation was respected, then
-superseded by the latest request to finish Stage 3.
-
-**Historical Zeus assistant-model pause (2026-09-30; scorer later resumed):** All 59
-inference outcomes succeeded and result/artifact hashes verified, including 324
-systems/1061 preserved raw files. Inference completed in 64.8 minutes without interruption.
-Fresh development/admission and 46 fixtures/full239-test regression passed.
-Scoring parent 77506 exited 1 after sustained 90% RAM pressure (peak 94.8%) on page24;
-23saved scores passed exact identity/hash verification, all 23 OMR-NED valid.
-Page24 remains pending, not a model zero. No worker/lock remains; closed cumulative
-session 5432.674seconds (90.5 minutes), unchanged 90% policy/four-hour cap.
-Read the [CPU job record](Research/omr/reports/screening/v1/stage3-cpu/job-record.md)
-and [screening handoff](Research/omr/SCREENING_HANDOFF.md). The user resumed scoring,
-free RAM/recheck resources and identities, then retry the unchanged scorer with
-`--retry-pending` using the same session and 23 cached scores. User's intended split:
-cheaper assistant supervises remaining scoring and stops after59scores/summary
-verify; later stronger assistant performs consolidated report/final review.
-Stage3 remains incomplete. No automatic restart, confirmation, Stage5, training or promotion.
-
-**Historical Stage 3 stop before Zeus (2026-09-29; superseded above):** The user requested Zeus
-in a later prompt. Audiveris completed all 59 outcomes/scores, primary F1 0.0986,
-eight failures and 52.0 minutes; every identity/artifact/summary hash verified.
-No worker/lock remains. Zeus development, admission and screening have not started;
-Stage 3 and the five-candidate consolidation remain incomplete. Read the
-[CPU job record](Research/omr/reports/screening/v1/stage3-cpu/job-record.md) before
-resuming. It preserves runtime access failures and the separately pinned
-[v5 CPU manifest](Research/omr/reports/screening/v1/manifest-v5-607ff64134da.json),
-with complete readable package inventory and unchanged sample/scorer/90% policy.
-Audiveris inference/scoring parents 54939/26551 exited zero; no interruption,
-RAM peak 76.9%. Final regression: 239 passed, 2 skipped, 9 subtests passed.
-Preserved HOMR 177 results/scores verified. Wait for the later Zeus request, then
-reverify the runtime and run fresh development/admission before frozen inference.
-Zeus uses the neutral CPU recognition route with its existing GPU detector. Preserve
-all HOMR baselines, run one candidate/scorer at a time, and stop before confirmation.
-
-**Selected comparison plan (2026-09-26):** The user replaced the exhaustive-first
-sequence with a bounded, roughly 60-page composition-grouped screen. Read the
-[canonical comparison plan](plans/archive/2026-09-26-omr-screening-comparison.superseded.md) for the active work
-order: verify interrupted evidence, screen shipped/fine-tuned/455 HOMR first,
-then Audiveris and Zeus, report, and stop before any larger confirmation run.
-The [screening handoff](Research/omr/SCREENING_HANDOFF.md) records **Stages 1 and 2 complete and the requested HOMR-only part of Stage 3 complete**:
-255 interrupted reports verified (251 successes, four completed failures), all
-1,008 artifact hashes valid, and the primary/secondary audits reverified at
-402/402 and 611/611. Item 256 remains an empty partial attempt. Three sequential
-resource-limited HOMR development pages passed; RAM briefly peaked at 81.9%,
-so unattended stability remains unproven. The hard-freeze cause and fine-tune
-export mismatch was unresolved at that historical handoff (resolved below). Stage 2 froze a deterministic screen of **18 full
-composition groups/59 pages** with separate gated prepare, admit, run, score, and report
-commands. Shipped HOMR and pinned HOMR 455 each completed 59-page screens and scores;
-the [interim HOMR report](Research/omr/reports/screening/v1/2c98d5638c36/reports/interim-homr-dd1c0a4aeea5/REPORT.md)
-contains the paired comparison.
-
-**Historical fine-tune intake (2026-09-28; subsequent Stage 4 below supersedes its stop):** Phases 1–3 of [the saved repair plan](plans/archive/2026-09-28-homr-finetune-export-repair.done.md)
-are complete. The approved source/tokenizer/provenance bundle arrived from private
-`Artemixss/report` commit `9bf0d47`; strict checkpoint loads and CPU export parity passed.
-The historical decoder hash is stale. Three complete development pages passed through
-the local CUDA comparison path under the [final v4 child manifest](Research/omr/reports/screening/v1/manifest-v4-502777eed80a.json)
-and [fresh admission](Research/omr/reports/screening/v1/2c98d5638c36/admissions/fine_tuned_homr/9fa13d27f0b7/admission-23d1108e5364.json).
-Full regression: 213 passed, 2 skipped, 9 subtests passed. Remote CUDA error 9 is
-preserved separately; it did not reproduce locally. No training, re-export, new binary
-transfer, production change, or frozen fine-tune screening occurred. **Stop before
-Phase 4**; future screening needs a new request. [The job record](Research/omr/reports/screening/finetune-export/job-record.md)
-contains commands, identities, resource measurements and verification links. Remote-host
-tools could not retrieve the chat; that did not establish that the remote PC was offline.
-
-**HOMR-only Stage 4 complete (2026-09-28):** After the RAM-work pause, the user
-authorized corrected fine-tune/455 screening and analysis under the [combined v4 manifest](Research/omr/reports/screening/v1/manifest-v4-e31f2e628e16.json).
-Both passed fresh complete-page admission and completed all 59 outcomes/scores with
-verified identities/artifacts/summaries. Fine-tune: zero failures, 61.7 minutes; corrected
-455: one conversion failure, 61.1 minutes; no resource interruptions or live workers.
-The [final report](Research/omr/reports/screening/v1/2c98d5638c36/reports/homr-only-stage4-e35f73ca9f75/REPORT.md)
-gives primary F1 **0.4061 shipped / 0.3844 fine-tuned / 0.2857 corrected 455**.
-Paired intervals cross zero; neither challenger has supported superiority. Keep shipped
-HOMR. Full regression: 219 passed, 2 skipped, 9 subtests passed. [The job record](Research/omr/reports/screening/v1/stage4-homr/job-record.md)
-preserves exact commands, provenance, logs and timing milestones. **Stop here:**
-Audiveris/Zeus and consolidation remain for a separate request, followed by a separate
-decision before any untouched confirmation; no training or promotion occurred.
-
-**455 correction (2026-09-27):** [the interim HOMR review](Research/omr/SCREENING_HOMR_REVIEW.md)
-identified a decoder/source mismatch (three position classes versus five). The
-[screening handoff](Research/omr/SCREENING_HANDOFF.md) now records an independently
-validated repair: complete 455 release source, a checked-in ordered-vocabulary/ONNX
-contract, a new immutable v3 identity, three successful complete-page development
-runs, and admission. The old 455 outputs remain historical evidence, not a valid
-model-quality comparison; **no corrected 59-page screen or score exists**. The fine-tune
-was blocked then by missing provenance, now resolved by the intake above. A
-user-authorized 95% RAM limit applied only to the corrected development runs; future
-screening's 90% policy still needs a separately versioned runner/manifest. Audiveris
-and Zeus belong to another request. Preserve
-the retired sequence's stale state; check live processes before any later run. The
-[Phase 3 handoff](Research/omr/PHASE3_HANDOFF.md),
-[interruption handoff](Research/omr/PHASE3_EVALUATION_TRANSFER_HANDOFF.md),
-[progress review](Research/omr/PHASE3_PROGRESS_REVIEW.md), and job record are
-historical execution evidence, not the active work plan.
-
 ## 5. OMR research state
 
-**Historical research context; older proposals superseded as the execution plan.**
-Use the [plans index](plans/README.md) and [main plan](plans/MAIN_PLAN.md) with its
-current handoff for new work. The [archived comparison](plans/archive/2026-09-26-omr-screening-comparison.superseded.md)
-and [completed comparison Phase 1 handoff](Research/omr/PHASE1_HANDOFF.md) retain the
-historical contracts. Measurements below describe their original samples, revisions,
-and scorers; they are not eligible candidate
-rankings under the frozen protocol. Alignment-assisted scores are diagnostics only.
-Upstream PR status, checkpoint availability, costs, and training status are dated observations,
-not live facts. Verify them before acting. Retain the evidence without reviving old work orders.
+Background for research work. Figures below describe their original samples, revisions and
+scorers: they are diagnostics, not eligible candidate rankings, and upstream PR status is a
+dated observation. Current work lives in [MAIN_PLAN.md](plans/MAIN_PLAN.md).
 
 ### Engines in the app
 
-| Engine | Notes |
-| --- | --- |
-| `Homr` | Default. Reads pitch well, places notes in time badly on polyrhythm - see below. |
-| `Zeus` | GPU path. **Labelled "Oemer GPU" in some UI strings** - same engine, historical naming. |
-| `MusicXml` | Bypasses recognition; normalises a symbolic score directly. |
-| `DirectMidi` | Bypasses the bridge entirely; parsed in C# by DryWetMidi. |
+The [engine table in README](README.md#engines) is current: `Homr480` is the default
+(`AppSettings.cs`) and `Homr465` the secondary; they are the only engines the home screen
+offers. `Homr` (426) and `Zeus` stay in the backend for their cached songs and the research
+tools, and a stored choice of either converts with 480 (`OmrEngines.ToOffered`). `MusicXml`
+and `DirectMidi` are imports. The pinned 465 and 480 runtimes are documented in
+[Bridge/HOMR465.md](Bridge/HOMR465.md). The rest of this section describes the 426 path, which
+backs most of the research history.
 
-**homr is installed from git, not PyPI, plus one local patch.** `setup_gpu.ps1` pins commit
+**HOMR 426 is installed from git, not PyPI, plus one local patch.** `setup_gpu.ps1` pins commit
 `457e7c6` and then applies `Bridge/patches/homr-pr146-retiming.patch` to the installed
 package. The current engine revision is `homr-0.7.0.post38+457e7c6+pr146`.
 
@@ -564,121 +410,23 @@ is already what homr trains on - scraping MuseScore would reproduce its training
 OLiMPiC is derived from OpenScore Lieder - the same repertoire in two forms, not two
 corpora. Both are voice-and-piano, so neither matches dense piano.
 
-### Superseded engine evaluations
+### Lessons kept from superseded work
 
-The earlier `antoniorv6/smt-grandstaff` experiment did not establish an improvement over
-HOMR under its setup. Older SMT checkpoints are outside the current comparison.
-The former claim that LEGATO requires approximately 20 GB VRAM is withdrawn as an
-unverified assumption. Follow the canonical plan's dedicated checkpoint/loader requirements
-and measure actual RAM/VRAM on development examples; do not infer memory from the encoder name.
-
-One lesson from that work still applies generally: **rendering DPI dominated SMT results**,
-7x from resolution alone. homr, by contrast, is DPI-insensitive - it rescales each detected
-staff to a canonical height, so the hardcoded 300 in `render_pdf.py` is fine.
-
-### Historical fine-tuning notes — superseded as a work order
-
-Viable, and the prerequisites all exist: PyTorch weights for run 426 are published,
-`train_transformer` takes `resume` and `fine_tune` (lr 1e-5), and there is a backbone-freeze
-callback. Two traps:
-
-- Upstream's `fine_tune=True` unfreezes **only the lift (accidentals) branch** - a leftover
-  from PR #52. Rhythm is a perception failure, so a frozen encoder cannot fix it. The
-  vendored patch changes this.
-- Training auto-downloads and converts **all five** corpora unless `dataset_index` is
-  trimmed.
-
-Constraints: Linux (WSL2 works), documented VRAM floor **8 GB**, ~12 GB of data, 2-4 days.
-Training caps itself at 90% of VRAM (`SHEET2PLAY_VRAM_FRACTION`) so the machine stays usable.
-Watch throughput in the first 15 minutes - a contributor in liebharc/homr#61 hit 70 s/it
-under WSL, a 115-day run, while others get 1-2 s/it. Above ~10 s/it, stop; renting is ~$3-5.
-Rare-token collapse is the likeliest failure: adding rare tokens took someone's SER from 26%
-to 132%.
-
-### Earlier proposed next steps — superseded
-
-The priority order below is retained as historical rationale. It does not supersede the
-five phases in the canonical comparison plan or authorize a new training run.
-
-**1. Localised over-accounting.** This was "page count correlates -0.783 with onset accuracy and
-nobody knows why". It has been measured, and **the page-count correlation does not survive the
-measurement**. Full write-up in FINDINGS.md; the short version:
-
-- **The metric cannot tell displacement from scatter.** Onsets are matched by exact absolute
-  equality with no alignment, so a transcription that is musically correct but shifted in time
-  scores near zero while span stays 1.00 and pitch stays high. That is the signature the old
-  reading attributed to scatter.
-- **Correcting displacement takes the correlation to nothing.** Across the eleven scored pairs,
-  page count against onset F1 is -0.454; against onset F1 after each 16-quarter window is shifted
-  by its own measured offset, **-0.005**. Mean onset F1 on the seven confirmed pairs goes
-  **0.2922 to 0.6558**, against a shuffled-reference control of 0.1346.
-- **`Score J` is the clean case.** Pitch agreement 0.992, note ratio 0.997, onset F1
-  0.118. One shift of -8.25 quarters takes it to 0.806. The engine gains 8.25 beats inside the
-  first eighty and transcribes the remaining four hundred of an eight-page score essentially
-  perfectly.
-- **Page boundaries are not where the drift jumps.** 164 offset jumps across the scored songs, 32
-  in a window containing a page boundary, against a chance rate of 0.177 versus 0.195 observed.
-  This is the direct version of the earlier aggregate refutation.
-- **Three of the original seven references were not the same music as the PDF.** Pairing is now
-  a reviewed local `Research/omr/reports/library/pairs.json`, not filename equality, and it records
-  the pairings that must *not* be made as well as the ones that hold.
-- **Source quality beats score length.** `Score G` and `Score H` are two PDFs sharing a piece, a
-  reference and a page count; one recovers to 0.614 and the other to 0.198.
-
-**Confirmed on exact labels.** `build_olimpic_scores.py` rebuilds whole multi-page scores out of
-OLiMPiC's single systems - the per-system MusicXML carries consecutive measure numbers, so the
-systems tile the piece and concatenate into an exact label. Twenty rebuilt scores, two to six
-pages:
-
-| | single systems (n=100) | whole scores (n=20) |
-| --- | --- | --- |
-| onset F1 as measured | 0.6607 | **0.5206** |
-| after local correction | 0.7516 | **0.7714** |
-| shuffled-pitch control | 0.2245 | 0.1660 |
-
-A whole score scores 0.14 *worse* than its own systems, and after correction slightly *better*. The
-engine is no worse at a page than at a crop; everything it loses over length is displacement - on
-labels no MuseScore MIDI was involved in. `5071629` is the cleanest case anywhere in this project:
-pitch agreement 1.000, onset F1 0.154, and **0.963** after one shift.
-
-What is still open is the localised over-accounting itself: finding the measures where a score
-gains its extra beats. Two failures survive correction and they are different - real span
-inflation (`4985990`, 51% long over 141 measures, 0.157 after correction) and outright reading
-failures (pitch agreement 0.43-0.52, where timing never enters into it).
-
-**2. Training, whose target changed.** Do not start a fine-tune on the current vocabulary
-without re-reading the ceiling argument in FINDINGS.md. The short version:
-
-- Before the fixes, the ceiling was 0.690 against homr's 0.624 - no headroom, and training was
-  not worth GPU time.
-- The earlier claim of roughly +0.18 learnable headroom mixed sample sets and is superseded
-  by the matched-sample estimate below; it is not an acceptance target.
-- **The headroom is +0.096, not +0.182.** The larger figure compares means over different sample
-  sets. On the same 94 systems homr is 0.6636 against a ceiling of 0.7598, and correcting *both*
-  for displacement moves them together (0.7547 against 0.8510) - so the gap is real and not a
-  metric artifact, but it is half what CONTEXT used to claim. Against it, fixing displacement is
-  worth **+0.251** on whole scores and costs no GPU. Fix the displacement first.
-- **Upstream PR #156** is the more interesting target. It splits the position vocabulary into
-  `upper`/`upper2` and `lower`/`lower2`, which is what lets two voices on one staff be told
-  apart, and a collaborator has already trained it without regression. Its checkpoint (run
-  445) is **not published** - the release URL 404s - so getting its benefit means training it.
-  A clone sits at `Research/omr/vendor/homr-pr156/`.
-- PR #156 does **not** move the round-trip ceiling (0.689, the same as this tree straight
-  after PR #141). That is expected rather than damning: the oracle starts from correct ground
-  truth, so it cannot see a recognition fix. It means #156 and the shipped decoder fixes are
-  complementary, and the sensible training run stacks them.
-- Training runs on a second machine the user has access to; the environment is built by
-  `Research/omr/setup_training.sh`, which needs WSL2 because the dataset converters use a
-  Linux-only MuseScore AppImage. Watch seconds/iteration in the first 15 minutes and abort
-  above ~10 s/it - upstream issue #61 has a contributor who hit 70 s/it under WSL, which would
-  be a 115-day run.
-
-Ground truth for the library is thin: of 46 songs, 11 have a reference after the pairing review
-and 7 of those are confirmed. A MIDI is a rendered performance rather than the printed page, so
-note counts differ from the transcription by 0.16x to 1.47x. The user has suggested automating MuseScore
-downloads to fix this; if that happens it should fetch **MusicXML, not MIDI**, from the same
-score page as the PDF. For training data at scale, PDMX already provides 250K public-domain
-MuseScore scores with PDF, MIDI and MusicXML, so there is no reason to build a scraper.
+- **Rendering DPI dominated SMT results**, 7x from resolution alone, so sweep DPI before
+  judging any model. homr is DPI-insensitive: it rescales each detected staff to a canonical
+  height, so the hardcoded 300 in `render_pdf.py` is fine.
+- **Fine-tuning traps**, should training return: upstream's `fine_tune=True` unfreezes only
+  the lift (accidentals) branch, a leftover from PR #52, and a frozen encoder cannot fix a
+  perception failure (the vendored patch changes this). Training auto-downloads and converts
+  all five corpora unless `dataset_index` is trimmed. The documented VRAM floor is 8 GB, and
+  `SHEET2PLAY_VRAM_FRACTION` caps use at 90%. Watch seconds per iteration in the first 15
+  minutes and stop above about 10 s/it (liebharc/homr#61 hit 70 s/it under WSL). Rare-token
+  collapse is the likeliest failure.
+- **PR #156** (`upper2`/`lower2` positions, the likeliest way to raise the representation
+  ceiling) has no published checkpoint; a clone sits at `Research/omr/vendor/homr-pr156/`.
+- The displacement measurements behind the current plan, and the training-headroom estimate
+  (+0.096 on matched samples, against +0.251 from fixing displacement), are in
+  [FINDINGS](Research/omr/reports/diagnosis/FINDINGS.md).
 
 ## 6. Conventions
 
@@ -690,20 +438,3 @@ MuseScore scores with PDF, MIDI and MusicXML, so there is no reason to build a s
 - Code goes in `Research/omr/vendor/` when vendored from upstream; it is gitignored.
 - Model weights, datasets and `.runtime/` directories are gitignored — a 114 MB
   safetensors file and a 29 MB checkpoint were nearly committed once.
-
-
-## 7. Historical documentation maintenance
-
-### Documentation maintenance handoff — 2026-09-17
-
-The documentation cleanup is complete. Astra's supplied plan is saved as the canonical
-comparison plan, with its scientific body preserved except for two portable local links.
-Shared rules live in AGENTS.md; CLAUDE.md points there. Older proposals are labeled
-superseded, historical evidence is preserved, and stale roadmap/runbook references are repaired
-or explicitly marked unavailable. Routine ripgrep discovery now lists eight project Markdown
-files through `.rgignore`; downloaded material and licenses remain on disk.
-Local link checks and `git diff --check` passed. No runtime code or frozen evaluation artifacts
-were changed by this cleanup, so no app publish was needed. Changes remain uncommitted alongside
-pre-existing Phase-1 work; preserve that work. At that historical stop point Phase 2 had not
-started; later completed-phase handoffs supersede that historical status. Work stopped after
-the usage check reached 13% remaining, below the repository's 15% threshold.

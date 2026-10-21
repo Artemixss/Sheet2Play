@@ -5,7 +5,8 @@
 for two removals: the MIDI device ("we can remove midi synth one let it be only 2 pianos") and HOMR
 426 and Zeus from the home screen ("only 480 and 465 remains in the frontend"), leaving the backend to
 judgement ("im not sure wheter they should stay at backand or not ... do what you think is best").
-**Result: shipped and measured; waiting on the user's check in the published app.** Not committed.
+**Result: shipped and measured; after the [feedback round](#feedback-round-2026-10-20) committed on
+2026-10-20 as `ff42206` and `7667005`.**
 
 ## What shipped
 
@@ -139,8 +140,7 @@ playlist later, and "you pick 30 and also delete those random rumber duplicates 
 - **Check it in the published app** (`dist\Sheet2Play.exe`): open a 480 song and a legacy one, try
   the pedal lane on a MIDI file with pedal, and the three new buttons. Re-convert runs a full
   recognition, which was not run here.
-- `AGENTS.md` still says "HOMR 465 by default, HOMR 426 as the fallback", and `README.md` does not
-  mention the piano installer; another chat has uncommitted edits to both, so they were left alone.
+- `AGENTS.md`'s engine line and `README.md`'s piano installer were brought up to date on 2026-10-21.
 - The 426 and ZEUS tabs stay in the cache playlist while those songs exist.
 - **Playlist redesign**, deferred by the user until they have added UI skills: each song once, best
   version first, and a convert action for PDFs without a 480 version.

@@ -140,8 +140,8 @@ def kickoff_text(folder: Path, usage: Usage | None) -> str:
         "# Continue after compaction\n\n"
         "Resume the same latest user-authorized task, including later steering.\n"
         + handoff_instruction
-        + "Reuse already-loaded AGENTS.md/startup instructions. If unavailable, read\n"
-        "AGENTS.md and only CONTEXT.md's startup section. Read MAIN_PLAN.md and its\n"
+        + "Reuse already-loaded AGENTS.md instructions. If unavailable, read\n"
+        "AGENTS.md. Read MAIN_PLAN.md and its\n"
         "current phase handoff only if this task is research phase work. A plan's next\n"
         "phase is not permission to start it.\n\n"
         "Inspect relevant code/evidence for the next action. Check whether recorded\n"

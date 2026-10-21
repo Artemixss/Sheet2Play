@@ -1,6 +1,6 @@
 # Zeus provenance reconciliation — Phase 1
 
-2026-10-03. Scope: Phase 1 of the [user-supplied main plan](../../../MAIN_PLAN.md).
+2026-10-03. Scope: Phase 1 of the [user-supplied main plan](../../../../../plans/archive/2026-10-03-zeus-attribution-repair.superseded.md).
 Historical scores retain their existing identities. No model-quality or causal
 attribution verdict follows from this provenance audit.
 

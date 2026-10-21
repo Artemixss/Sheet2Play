@@ -13,10 +13,12 @@ run `Sheet2Play.exe`, keeping the folder together: the fonts and the Python brid
 the executable rather than inside it.
 
 The .NET runtime is bundled, so `.mid` and `.midi` playback needs nothing else installed.
-Converting sheet music with the default HOMR 465 engine additionally needs Python 3.11 x64,
-CUDA and the [pinned runtime setup](Bridge/HOMR465.md). Its assets and dependencies must be
-provisioned explicitly before scanning. Audio uses the built-in SoundFont synthesiser with an installed SoundFont,
-or an external MIDI synthesiser such as VirtualMIDISynth.
+Converting sheet music with the default HOMR 480 engine (or HOMR 465) additionally needs
+Python 3.11 x64, CUDA and the [pinned runtime setup](Bridge/HOMR465.md). Its assets and
+dependencies must be provisioned explicitly before scanning. Sound comes from a sampled piano
+the app plays itself: install the Salamander grand with `scripts\install-piano.ps1` (the
+default) and/or the YDP SoundFont with `scripts\install-soundfont.ps1`, and pick one under
+**PIANO** on the home screen. Without either, songs play silently and the home screen says so.
 
 ## Architecture
 
@@ -37,6 +39,14 @@ MIDI playback timing.
   sessions, because the right value depends on your output chain and moves by over 100 ms
   between wired output and Bluetooth.
 * Variable playback rate from 0.05x to 2.00x.
+* Songs converted from sheet music keep their score, so playback can follow it: an
+  **EXPRESSION** panel switches pedal, dynamics, articulations, repeats and auto pedal; faint
+  bar lines and a pedal lane fall with the notes; an **EXPORT** panel writes WAV, MP3, MIDI
+  or the score's MusicXML, and re-converts the song.
+* A **TEMPO** panel sets a song's start tempo and tempo changes by bar, because recognition
+  reads no tempo marks and a PDF otherwise plays at 120. Each song keeps its own map.
+* **TIMING FIX** (home screen, off by default) re-interprets HOMR's output so one measure's
+  timing error does not shift the rest of the score. Switching it needs no new recognition.
 
 ### 2. OMR bridge (Python)
 
@@ -48,28 +58,37 @@ frontend, which renders it as a live progress screen.
 tolerates recognition errors: notes with zero duration, impossible pitches, or microtonal
 pitches are skipped with a warning rather than aborting the whole score.
 
+`Bridge/song_entry.py` keeps each page's MusicXML as the bridge produces it, and
+`Bridge/song_model.py` derives a performance from it (measures, repeats, notes, pedal,
+dynamics, tempo marks). The C# side turns that into notes at playback, so playback settings
+never need a new recognition.
+
 ## Engines
 
-Select an engine on the landing page. The `H` / `O` shortcuts select legacy 426 / Zeus.
+Select an engine under **OMR ENGINE** on the landing page.
 
 | Engine | Input | Notes |
 | --- | --- | --- |
-| `Homr465` | PDF, images | Default. Pinned 465 FP16 models, CUDA and no title detection; explicit offline setup required. |
-| `Homr` | PDF, images | Visible HOMR 426 fallback; retains its existing assets and caches. |
-| `Zeus` | PDF, images | GPU/CUDA path. Pages are sliced into systems by `Bridge/detect_systems.py` before recognition. |
-| `MusicXml` | `.mxl`, `.musicxml`, `.xml` | Bypasses recognition entirely — normalizes the score directly. |
+| `Homr480` | PDF, images | Default. Current upstream HOMR (run 480), pinned profile, CUDA and no title detection; explicit offline setup required. |
+| `Homr465` | PDF, images | Secondary, offered when 480 fails. Pinned 465 FP16 models. |
+| `MusicXml` | `.mxl`, `.musicxml`, `.xml` | Bypasses recognition entirely; the score is kept and played as it is. |
 | `DirectMidi` | `.mid`, `.midi` | Bypasses the bridge entirely and parses in C# via DryWetMidi. |
+
+HOMR 426 (`Homr`) and `Zeus` are no longer offered. Songs already converted with them still
+play from the Cache Playlist under their own tabs, and **Re-convert** moves one to HOMR 480.
 
 `.mid` and `.mxl` files are exact by definition, so they never run OMR. Dropping one copies
 it into `songs/midi/custom/` and it appears in the MIDI Player column.
 
 ## Caching
 
-Every successful conversion is cached as a validated MIDI file plus a JSON manifest, keyed
-by the **SHA-256 of the source file and the engine**. Re-opening the same PDF with the same
-engine loads instantly instead of re-running recognition. HOMR 465 also keys its cache
-by the full pinned runtime-profile hash, so incompatible profiles cannot reuse MIDI.
-Its versions remain separate from the older 426 entries.
+Every successful conversion is kept, keyed by the **SHA-256 of the source file and the
+engine**, so re-opening the same PDF with the same engine loads instantly instead of
+re-running recognition. HOMR 480/465 and MusicXML songs are stored as a song package under
+`songs\scores\<engine>\`: the score's MusicXML plus a performance derived from it. HOMR
+480/465 also key it by their full pinned runtime-profile hash, so an incompatible profile
+cannot reuse it. Conversions made before packages existed (426, Zeus, older 465) stay as
+validated MIDI caches marked **MIDI (legacy)**.
 
 Because that makes it easy to *think* you re-ran an engine when you didn't, loading a source
 that already has a cache asks first, and offers **Use cached** / **Re-run** / **Cancel**.
@@ -81,8 +100,10 @@ Cached songs appear in the Cache Playlist, filterable by engine and sorted by na
 ## Requirements
 
 * [.NET 9 SDK](https://dotnet.microsoft.com/download)
-* Python 3.11 x64 and the [pinned HOMR 465 dependencies/assets](Bridge/HOMR465.md)
-* A compatible NVIDIA CUDA GPU for HOMR 465 or Zeus; direct MIDI/MusicXML import bypasses recognition
+* Python 3.11 x64 and the [pinned HOMR 480/465 dependencies/assets](Bridge/HOMR465.md)
+* A compatible NVIDIA CUDA GPU for HOMR 480/465; direct MIDI/MusicXML import bypasses recognition
+* A piano: `scripts\install-piano.ps1` (Salamander, about 1.3 GB installed) or
+  `scripts\install-soundfont.ps1` (YDP)
 
 ## Running
 
@@ -121,9 +142,13 @@ way is available to both, and the checkout stays free of user content.
     settings.json        selected engine and playback settings
     recent.json          recently opened songs
     failed-omr.json      remembered OMR failures
+    tempo-maps.json      tempos set in the TEMPO panel, per song
     songs\pdf\           sheet music you want to convert
+    songs\scores\        song packages (score + performance), one folder per conversion
     songs\midi\custom\   .mid / .mxl files, shown in the MIDI Player column
-    songs\midi\<engine>\ validated MIDI caches, one folder per engine
+    songs\midi\<engine>\ legacy MIDI caches from older conversions
+    pianos\, soundfonts\ the installed Salamander and YDP pianos
+    exports\             files written by the EXPORT panel
 ```
 
 Paste this into Explorer's address bar to open it:
@@ -149,7 +174,6 @@ Supported inputs: `.pdf`, `.png`, `.jpg`, `.jpeg`, `.bmp`, `.tif`, `.tiff`, `.we
 | `←` / `→` | Seek 5 seconds |
 | `[` / `]` | Audio offset by 5 ms, to sync sound with the falling notes |
 | `B` | Browse for a file |
-| `H` / `O` | Select the Homr / Zeus engine |
 | `F11` | Toggle fullscreen |
 | `Esc` | Cancel a conversion, or back out of a dialog |
 
@@ -208,29 +232,8 @@ README gets slow to load.
 
 HOMR is accurate enough for general sheet music but loses rhythmic precision on dense piano
 arrangements, which is the material this project actually receives. `Research/omr/` holds the
-work aimed at fixing that. It is research tooling, not part of the shipped app.
-
-### Historical engine evaluation — superseded as the current plan
-
-Use the [plans index](plans/README.md) and [current execution plan](plans/MAIN_PLAN.md)
-with its linked current handoff for new research work. The experiment below is
-retained for its rendering-resolution lesson; its results are not a current candidate ranking.
-
-The Sheet Music Transformer publishes checkpoints trained on pianoform scores, so the first
-question is whether one of them simply beats HOMR — no training required.
-
-```bash
-cd Research/omr
-.venv/Scripts/python.exe compare_engines.py --pdf <score.pdf> --pages 1 --dpi 200
-```
-
-This slices each page into systems, transcribes each one, and reports spine count, note
-count, barlines and whether the output is well-formed Humdrum.
-
-**Historical finding in that setup: it did not beat HOMR.** Output is well-formed and the meter is sometimes
-correct, but it recovers around 16 notes from a system holding well over fifty. Note that
-rendering resolution dominates the result — at 300 DPI the same page collapses to 4 notes,
-at 200 DPI it gives 28 — so sweep `--dpi` before drawing conclusions about any model.
+work aimed at fixing that. It is research tooling, not part of the shipped app. The
+[current research plan](plans/MAIN_PLAN.md) says what is being worked on now.
 
 ### Datasets
 
@@ -276,30 +279,28 @@ Your sheet music is not in here — see [Where your library lives](#where-your-l
 
 * [`CONTEXT.md`](CONTEXT.md) — architecture, invariants and known traps. Read this before
   making changes, especially automated ones.
-* [Plans directory and status index](plans/README.md) — active, completed and superseded
-  plans, with their phase handoffs and closeout evidence.
 * [Current research plan](plans/MAIN_PLAN.md) — workstream, phase status and next action.
-* [Historical comparison plan](plans/archive/2026-09-26-omr-screening-comparison.superseded.md) —
-  completed screening Stages 1–4 and preserved evaluation contracts.
-* [Completed comparison Phase 1](Research/omr/PHASE1_HANDOFF.md) — historical freeze and entry conditions.
-* [Completed comparison Phase 2](Research/omr/PHASE2_HANDOFF.md) — historical adapter/fixture evidence.
-* [Completed comparison Phase 2R](Research/omr/PHASE2R_HANDOFF.md) — historical readiness and candidate failures.
-* [Agent instructions](AGENTS.md) — repository rules and documentation search scope.
+* [Plans index](plans/README.md) — completed and superseded plans with their evidence.
+* [Agent instructions](AGENTS.md) — repository rules for Claude and Codex.
 
 ## Licence
 
 [MIT](LICENSE).
 
-The recognition engines keep their own licences. HOMR is AGPL-3.0; the published 465
-runtime retains its pinned upstream source and LICENSE. Model payloads and virtual
+The recognition engines keep their own licences. HOMR is AGPL-3.0; the published 465 and 480
+runtimes retain their pinned upstream source and LICENSE. Model payloads and virtual
 environments are excluded from Git and provisioned through the
 [documented setup](Bridge/HOMR465.md). The C#
 dependencies are `Melanchall.DryWetMidi` (MIT), `Raylib-cs` (Zlib) and `MeltySynth` (MIT).
 Sheet music under `Omr/` and `Research/` is sample material belonging to its respective
 owners.
 
-Two components carry obligations worth stating plainly:
+Three components carry obligations worth stating plainly:
 
+* **Salamander Grand Piano V3**, the default piano, is recorded by Alexander Holm and
+  licensed **CC BY 3.0** — attribution required, and shown in the app's PIANO row.
+  `scripts/install-piano.ps1` fetches it from FreePats, verifies a pinned content hash and
+  installs its licence text alongside. It is not committed to this repository.
 * **YDP Grand Piano**, the SoundFont the built-in synthesiser plays, is built from the
   Zenph Studios Yamaha Disklavier Pro multisamples by roberto@zenvoid.org for the
   [FreePats project](https://freepats.zenvoid.org/Piano/acoustic-grand-piano.html) and is

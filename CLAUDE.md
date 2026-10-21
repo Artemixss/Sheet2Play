@@ -1,11 +1,6 @@
 # Sheet2Play
 
-[Plans directory](plans/README.md) indexes current and archived plans and their handoffs.
+@AGENTS.md
 
-Read and follow [AGENTS.md](AGENTS.md) for shared repository instructions, verification,
-documentation search scope, and the active OMR plan/handoff. Keep those rules in one place;
-do not duplicate them here.
-
-Claude-specific machine preferences live in `~/.claude/CLAUDE.md`. Codex-specific machine
-preferences live in `~/.codex/AGENTS.md`; neither is a requirement to load the other tool's
-personal configuration.
+AGENTS.md, imported above, is the shared rulebook for Claude and Codex. Keep repository
+rules there, not here. [plans/README.md](plans/README.md) indexes current and archived plans.
