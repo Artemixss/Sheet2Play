@@ -16,7 +16,8 @@ pushed (`bf4ed00`). **Phase 3** was requested the same day ("ok commit and push 
 3"). Printed marks are read after each PDF conversion or from the panel; the USE / IGNORE version
 was checked and committed (`30bcbff`). The user then made printed marks **play by default**, and
 every library PDF was read once. That amendment was checked by the user ("it works commit and
-push") and committed ([Phase 3 report](../Research/omr/reports/song-tempo/phase3/REPORT.md),
+push") and committed (`b008fd7`). **Phase 4**, tempo words as measured guesses, was added the same
+day ("add tempo words as phase 4") and is not started ([Phase 3 report](../Research/omr/reports/song-tempo/phase3/REPORT.md),
 [handoff](../Research/omr/reports/song-tempo/handoff.md)).
 **Related:** [MusicXML songs](2026-10-19-musicxml-songs.md), whose
 [Fit with the per-song tempo plan](2026-10-19-musicxml-songs.md#fit-with-the-per-song-tempo-plan)
@@ -257,12 +258,74 @@ As planned:
   are shown as suggestions only.
 - Re-measure RAM and commit on the library's densest page before the release gate.
 
+## Phase 4 — Tempo words as guesses (added 2026-10-21; not started)
+
+*Effort: high.* Requested 2026-10-21 ("add tempo words as phase 4"). The user first said words
+should "stay as hint" and floated a percentage change when a word appears, without deciding.
+Phase 4 measures whether words can play safely, and ships only what passes.
+
+**Why a phase of its own.** Words fix no BPM. Published ranges disagree widely: Moderato is
+given as anywhere from about 86 to 126, Andante about 72 to 108, Adagio about 55 to 76, and
+MuseScore's tempo-text presets are editable defaults, not a standard. A guess can therefore make
+a song worse than 120, so it is measured before it plays.
+
+**What the library holds (2026-10-21, all 61 PDFs read):** 11 PDFs print only words and 13
+print nothing. About 35 word marks were found, most without a number: andante 4, presto,
+allegretto, prestissimo and "Tempo I" 3 each, then allegro, adagio, lento, animato, rubato and
+"a tempo" 2 each, and single moderato, maestoso, più mosso, meno mosso, più animato and mosso.
+That is too few to tune on, so the table comes from a public corpus, and the library is only a
+sanity check, as in Phase 2.
+
+**Three kinds of word, three rules:**
+
+| Kind | Examples | What plays | Why |
+| --- | --- | --- | --- |
+| Return | "a tempo", "Tempo I", "Tempo primo", "come prima", "l'istesso tempo" | The tempo it names: the one before the last relative change, the first tempo, or the same tempo | Exact whenever an earlier tempo is known; no guessing |
+| Relative | "più mosso", "meno mosso", "più lento", "animato", "più animato", "calmando", "doppio movimento" | The tempo before it times a factor (for example 1.15 or 0.87; "doppio movimento" 2) | A factor guess on a known tempo; the factor table is measured |
+| Absolute | Largo, Adagio, Lento, Andante, Andantino, Moderato, Allegretto, Allegro, Vivace, Presto, Prestissimo, with "molto", "assai", "con moto", "ma non troppo" | A BPM from the table, only where no number is printed at or before that bar | The weakest guess; it never overrides a printed number |
+
+Not played: rit., accel., rubato and fermatas (curves and pauses stay out of scope), and
+character words such as "Maestoso" or "Tranquillo" unless the corpus shows they carry a
+consistent tempo.
+
+**Research (unpinned code beside `tempo_read.py`; nothing pinned changes):**
+- **Word truth.** A public MusicXML corpus whose scores print a tempo word and a metronome mark
+  at the same bar (candidates: PDMX, the OpenScore Lieder and string-quartet sets), split by
+  composer into dev and held-out, with its own manifest and SHA. The word gives the input, the
+  printed number the truth. Relative factors come from the corpus's own consecutive numbered
+  pairs around a relative word.
+- **Reading the words.** Word recall on new seeded truth pages from the project's MuseScore
+  generator (new `test-c` seeds, because Phase 2's test splits are spent), and false words on
+  the unmarked controls.
+- **Baselines.** Each guess is scored against what plays today: 120 for absolute words, no
+  change for relative words.
+- **Freeze before the held-out read** (thresholds proposed, set from dev):
+  - absolute words: median |guess ÷ truth − 1| ≤ 0.15, and better than 120 on a paired test;
+  - relative words: median factor error ≤ 0.10, and better than no change;
+  - return words: exact on every seeded case;
+  - word reading: recall ≥ 0.90, false tempo words ≤ 0.02 per score.
+- **Library sanity check, not judged:** the 11 MIDI-paired songs and the words-only PDFs, start
+  tempo against the MIDI where one exists.
+
+**Ship (only what passes):**
+- The word table lives in the app (`TempoWords.cs`, versioned), so the frozen reader and its
+  per-PDF store stay as they are unless word reading itself needs a fix. A reader change changes
+  `reader_sha256` and the store reads again.
+- Precedence becomes: the user's map, then printed numbers, then return words, then passing
+  word guesses, then the score's own marks, then 120.
+- Guesses are labelled in the TEMPO panel ("Andante · GUESS ♩=…"), each with IGNORE, and they
+  play by default only if their kind passed the rule. A kind that fails stays a hint, as now.
+- Release gate, a library listing check (durations of the 11 words-only songs before and after),
+  and the user's check.
+
 ## Recommended order
 
 1. **Phase 1.** Fixes every song package at once with no OMR or pin change, and gives Phase 2 a
    place to land.
 2. **Phase 2** as research, after Phase 1 or alongside its review.
 3. **Phase 3** only on acceptance.
+4. **Phase 4** (tempo words) only when the user starts it; it reuses Phase 3's reader and
+   store.
 
 Phase 6 of the MusicXML plan (library re-conversion) is independent. Songs it converts gain the
 TEMPO panel automatically, and maps keyed by source SHA survive the re-conversion (start tempo

@@ -12,14 +12,11 @@
   The user then made printed marks play by default. That amendment is **checked and committed**:
   the user's map comes first, then the printed marks; all 61 library PDFs were read once
   (37 print tempo numbers). Release gate 8 of 8.
+- **Phase 4** (tempo words as measured guesses) added to the plan 2026-10-21 ("add tempo words
+  as phase 4"). Not started.
 
-**Next authorized action:** the user checks that songs play at their printed tempo and approves the
-commit. The user named three next paths:
-1. close this plan;
-2. tempo words ("Andante", "più mosso") as guesses, which needs its own phase or plan;
-3. TIMING FIX and tempo on by default, with no labels in the UI or file names, which is unrelated
-   to this plan.
-None is authorized yet.
+**Next authorized action:** none. Phase 4 starts when the user asks; its first step is choosing the
+word-truth corpus. TIMING FIX on by default with no labels runs in a separate session and plan.
 
 ## Phase 3 (requested 2026-10-21, "ok commit and push proceed with phase 3"): committed
 
