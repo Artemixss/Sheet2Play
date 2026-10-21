@@ -339,7 +339,7 @@ internal static partial class Program
 					loadRequests.Enqueue(reconvert);
 				}
 			}
-			if (expressionChanged)
+			if (expressionChanged || tempoChanged)
 			{
 				playbackController = ApplyExpressionChange(playbackController, songLoadResult, midiOutput, audioOutput);
 			}
@@ -435,7 +435,7 @@ internal static partial class Program
 			if (playbackController != null && state is GameState.Playing or GameState.Completed)
 			{
 				HandlePlaybackKeyboard(playbackController, playbackRateEditor, ref state, ref sliderDragging, ref resumeAfterSlider, ref sliderPreviewPosition, layout);
-				if (!playbackRateEditor.IsEditing && !audioOffsetEditor.IsEditing && !sliderDragging)
+				if (!playbackRateEditor.IsEditing && !audioOffsetEditor.IsEditing && !tempoEditor.IsEditing && !sliderDragging)
 				{
 					int offsetStep = 0;
 					if (Raylib.IsKeyPressed(KeyboardKey.LeftBracket))
@@ -516,6 +516,13 @@ internal static partial class Program
 				{
 					playbackController.Stop();
 					playbackRateEditor.Cancel();
+					tempoEditor.Cancel();
+					// The library lists songs at the tempo they play at.
+					if (tempoMapsEdited)
+					{
+						tempoMapsEdited = false;
+						cachedSongs = SongCache.GetCachedSongs();
+					}
 					state = GameState.WaitingForFile;
 				}
 				break;
@@ -1007,6 +1014,12 @@ internal static partial class Program
 			{
 				UiTheme.DrawText("· MIDI (legacy)", (int)(rec.X + 16f * scale) + UiTheme.MeasureText(detail, detailSize),
 					(int)(rec.Y + 27f * scale), detailSize, UiTheme.Warning);
+			}
+			// Its length above is at the tempo set in the TEMPO panel, not HOMR's 120.
+			if (entry.CustomTempo)
+			{
+				UiTheme.DrawText("· tempo", (int)(rec.X + 16f * scale) + UiTheme.MeasureText(detail, detailSize),
+					(int)(rec.Y + 27f * scale), detailSize, UiTheme.Sky);
 			}
 			if (UiTheme.DrawButton(new Rectangle(rec.X + rec.Width - 70f * scale, rec.Y + 7f * scale, 60f * scale, rec.Height - 14f * scale), "Play", accent))
 			{
@@ -1523,7 +1536,7 @@ internal static partial class Program
 
 	private static void HandlePlaybackKeyboard(PlaybackController playback, PlaybackRateEditor rateEditor, ref GameState state, ref bool sliderDragging, ref bool resumeAfterSlider, ref double sliderPreviewPosition, UiLayout layout)
 	{
-		if (!rateEditor.IsEditing)
+		if (!rateEditor.IsEditing && !tempoEditor.IsEditing)
 		{
 			Rectangle playbackSlider = GetPlaybackSlider(layout);
 			Rectangle rec = new Rectangle(playbackSlider.X - 8f, playbackSlider.Y - 16f, playbackSlider.Width + 16f, 42f);
@@ -1670,6 +1683,7 @@ internal static partial class Program
 		}
 		DrawAudioOffsetControl(playback, offsetEditor, layout);
 		// After the notes, so a falling note never covers a switch or a button.
+		DrawTempoPanel(song, position, layout);
 		DrawExpressionPanel(song, layout);
 		DrawExportControl(song, layout);
 		return false;

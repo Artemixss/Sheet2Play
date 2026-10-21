@@ -181,3 +181,6 @@ Research/omr/reports/musicxml-songs/phase*/timing-toggle/
 Research/omr/reports/musicxml-songs/phase*/tempo/jobs/
 Research/omr/reports/musicxml-songs/phase*/listen/
 Research/omr/reports/musicxml-songs/phase*/measure/
+# Per-song tempo: library listings and timeline reports name private songs and paths.
+Research/omr/reports/song-tempo/phase*/library-*/
+Research/omr/reports/song-tempo/phase*/timeline/

@@ -243,6 +243,7 @@ public sealed record SongTempo(
 /// <param name="Dynamics">Velocities from dynamics and hairpins; otherwise 80 for every note.</param>
 /// <param name="Articulations">Shorten, accent and roll notes by their articulations.</param>
 /// <param name="AutoPedal">Pedal by bar and bass in place of the pedal marks (<see cref="SongExpression.AutoPedal"/>).</param>
+/// <param name="Tempo">The user's tempo map, which replaces the score's marks and the default; null plays the score.</param>
 /// <remarks>The defaults are the timeline before expression existed, which the cache checks against.</remarks>
 public sealed record SongTimelineOptions(
     bool ExpandRepeats = true,
@@ -251,16 +252,33 @@ public sealed record SongTimelineOptions(
     bool Pedal = false,
     bool Dynamics = false,
     bool Articulations = false,
-    bool AutoPedal = false)
+    bool AutoPedal = false,
+    TempoOverride? Tempo = null)
 {
-    /// <summary>The timeline the EXPRESSION panel asks for. Grace notes play with the articulations.</summary>
-    public static SongTimelineOptions For(ExpressionOptions expression) => new(
+    /// <summary>The timeline the EXPRESSION and TEMPO panels ask for. Grace notes play with the articulations.</summary>
+    public static SongTimelineOptions For(ExpressionOptions expression, TempoOverride? tempo = null) => new(
         ExpandRepeats: expression.Repeats,
         IncludeGraceNotes: expression.Articulations,
         Pedal: expression.Pedal,
         Dynamics: expression.Dynamics,
         Articulations: expression.Articulations,
-        AutoPedal: expression.AutoPedal);
+        AutoPedal: expression.AutoPedal,
+        Tempo: tempo);
+}
+
+/// <summary>
+/// A tempo map in the timeline's terms, quarter notes per minute, from <see cref="SongTempoMaps.Override"/>.
+/// Equal when it times a song the same way, so a session is rebuilt only when the tempo really changed.
+/// </summary>
+public sealed record TempoOverride(double StartQuarterBpm, IReadOnlyList<TempoOverride.Change> Changes)
+{
+    /// <summary>A tempo from <paramref name="Offset"/> beats into measure <paramref name="Measure"/>, on every pass.</summary>
+    public readonly record struct Change(int Measure, double Offset, double QuarterBpm);
+
+    public bool Equals(TempoOverride? other) =>
+        other is not null && StartQuarterBpm == other.StartQuarterBpm && Changes.SequenceEqual(other.Changes);
+
+    public override int GetHashCode() => HashCode.Combine(StartQuarterBpm, Changes.Count);
 }
 
 /// <summary>Turns a <see cref="SongPerformance"/> into timed notes and pedal.</summary>
@@ -278,7 +296,7 @@ public static class SongTimeline
         options ??= new SongTimelineOptions();
         IReadOnlyList<int> order = Order(performance, options);
         double[] starts = MeasureStarts(performance, order);
-        TempoMap tempo = BuildTempoMap(performance, order, starts, options.DefaultTempoBpm);
+        TempoMap tempo = BuildTempoMap(performance, order, starts, options);
         List<Note> notes = PlaceNotes(performance, options, order, starts, tempo);
         IReadOnlyList<PedalChange> pedal = options.AutoPedal
             ? SongExpression.AutoPedal(performance, order, starts, tempo.SecondsAt)
@@ -402,7 +420,7 @@ public static class SongTimeline
         options ??= new SongTimelineOptions();
         IReadOnlyList<int> order = Order(performance, options);
         double[] starts = MeasureStarts(performance, order);
-        TempoMap tempo = BuildTempoMap(performance, order, starts, options.DefaultTempoBpm);
+        TempoMap tempo = BuildTempoMap(performance, order, starts, options);
         List<(int, double, double)> bars = order.Select((measure, occurrence) =>
             (measure, starts[occurrence], tempo.SecondsAt(starts[occurrence]))).ToList();
         double end = starts[^1] + performance.Measures[order[^1]].LengthBeats;
@@ -418,10 +436,10 @@ public static class SongTimeline
     {
         IReadOnlyList<int> fromOrder = Order(performance, from);
         double[] fromStarts = MeasureStarts(performance, fromOrder);
-        TempoMap fromTempo = BuildTempoMap(performance, fromOrder, fromStarts, from.DefaultTempoBpm);
+        TempoMap fromTempo = BuildTempoMap(performance, fromOrder, fromStarts, from);
         IReadOnlyList<int> toOrder = Order(performance, to);
         double[] toStarts = MeasureStarts(performance, toOrder);
-        TempoMap toTempo = BuildTempoMap(performance, toOrder, toStarts, to.DefaultTempoBpm);
+        TempoMap toTempo = BuildTempoMap(performance, toOrder, toStarts, to);
 
         double beat = fromTempo.BeatAt(Math.Max(0, seconds));
         int occurrence = Array.BinarySearch(fromStarts, beat);
@@ -464,28 +482,39 @@ public static class SongTimeline
     }
 
     private static TempoMap BuildTempoMap(SongPerformance performance, IReadOnlyList<int> order, double[] starts,
-        double defaultBpm)
+        SongTimelineOptions options)
     {
         // A mark sounds every time its measure plays; the tempo then holds until the next mark,
-        // including back across a repeat, as it does in a score played through.
-        Dictionary<int, List<SongTempo>> marksByMeasure = performance.Tempos
-            .Where(static tempo => tempo.QuarterBpm is not null)
-            .GroupBy(static tempo => tempo.Measure)
-            .ToDictionary(static group => group.Key, static group => group.ToList());
+        // including back across a repeat, as it does in a score played through. The user's map
+        // follows the same rule and replaces the score's marks as a whole, so what plays is
+        // exactly what the TEMPO panel lists.
+        IEnumerable<(int Measure, double Offset, double QuarterBpm)> marks = options.Tempo is TempoOverride tempo
+            ? tempo.Changes.Select(static change => (change.Measure, change.Offset, change.QuarterBpm))
+            : performance.Tempos
+                .Where(static mark => mark.QuarterBpm is not null)
+                .Select(static mark => (mark.Measure, mark.Offset, mark.QuarterBpm!.Value));
+        Dictionary<int, List<(double Offset, double QuarterBpm)>> marksByMeasure = marks
+            .GroupBy(static mark => mark.Measure)
+            .ToDictionary(static group => group.Key,
+                static group => group.Select(static mark => (mark.Offset, mark.QuarterBpm)).ToList());
         SortedDictionary<double, double> byBeat = [];
+        if (options.Tempo is TempoOverride start)
+        {
+            byBeat[0] = start.StartQuarterBpm;
+        }
         for (int occurrence = 0; occurrence < order.Count; occurrence++)
         {
-            if (marksByMeasure.TryGetValue(order[occurrence], out List<SongTempo>? marks))
+            if (marksByMeasure.TryGetValue(order[occurrence], out List<(double Offset, double QuarterBpm)>? found))
             {
-                foreach (SongTempo mark in marks)
+                foreach ((double offset, double quarterBpm) in found)
                 {
-                    byBeat[Math.Max(0, starts[occurrence] + mark.Offset)] = mark.QuarterBpm!.Value;
+                    byBeat[Math.Max(0, starts[occurrence] + offset)] = quarterBpm;
                 }
             }
         }
         if (!byBeat.ContainsKey(0))
         {
-            byBeat[0] = defaultBpm;
+            byBeat[0] = options.DefaultTempoBpm;
         }
         return new TempoMap(byBeat);
     }

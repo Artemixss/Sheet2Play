@@ -4,7 +4,8 @@ namespace SynthesiaClone;
 /// <param name="Pass">1 on the first time through, 2 on the second, and so on.</param>
 /// <param name="Passes">How many times the timeline plays this measure, so a bar that never repeats
 /// is not labelled "1st time".</param>
-public readonly record struct OverlayBar(double Seconds, string Number, int Pass, int Passes);
+/// <param name="Measure">The measure's index in the performance, which the TEMPO panel stores.</param>
+public readonly record struct OverlayBar(double Seconds, string Number, int Pass, int Passes, int Measure);
 
 /// <summary>
 /// What the playback screen draws over the falling notes for one timeline: the bar lines with their
@@ -56,9 +57,8 @@ public sealed class SongOverlay
             {
                 int pass = seen.GetValueOrDefault(measure) + 1;
                 seen[measure] = pass;
-                string number = performance.Measures[measure].Number;
-                bars.Add(new OverlayBar(seconds, string.IsNullOrWhiteSpace(number) ? (measure + 1).ToString() : number,
-                    pass, passes[measure]));
+                bars.Add(new OverlayBar(seconds, SongTempoMaps.BarName(performance, measure), pass, passes[measure],
+                    measure));
             }
         }
         return new SongOverlay(bars, PedalSpans(pedal));

@@ -38,29 +38,37 @@ internal static partial class Program
 		}
 	}
 
-	/// <summary>A playback session for a song under the panel's current switches.</summary>
+	/// <summary>A playback session for a song under the panels' current switches and tempo.</summary>
 	private static PlaybackSession CreateSongSession(SongLoadResult song, double audioOffsetSeconds)
 	{
-		SongPlayback playback = ExpressionPlayback.ForSong(song, expression);
+		TempoOverride? tempo = TempoFor(song);
+		SongPlayback playback = ExpressionPlayback.ForSong(song, expression, tempo);
 		sessionExpression = expression;
-		RebuildOverlay(song, expression, playback.Pedal);
+		sessionTempo = tempo;
+		RebuildOverlay(song, expression, tempo, playback.Pedal);
 		return new PlaybackSession(playback.Notes, audioOffsetSeconds, playback.Pedal);
 	}
 
 	/// <summary>
-	/// Rebuilds the playing session after a switch, keeping its place, its speed and whether it
-	/// was playing. Only Repeats moves the place, to the same point of the same measure.
+	/// Rebuilds the playing session after a switch or a tempo edit, keeping its place, its speed and
+	/// whether it was playing. Repeats and tempo move the place, to the same point of the same measure.
 	/// </summary>
 	private static PlaybackController? ApplyExpressionChange(PlaybackController? playback, SongLoadResult? song,
 		IMidiOutput midiOutput, AudioOutput audioOutput)
 	{
 		expressionChanged = false;
-		if (playback is null || song is null || expression == sessionExpression)
+		tempoChanged = false;
+		if (playback is null || song is null)
+		{
+			return playback;
+		}
+		TempoOverride? tempo = TempoFor(song);
+		if (expression == sessionExpression && Equals(tempo, sessionTempo))
 		{
 			return playback;
 		}
 		ExpressionOptions previous = sessionExpression;
-		double position = ExpressionPlayback.MapPosition(song, previous, expression, playback.Position);
+		double position = ExpressionPlayback.MapPosition(song, previous, expression, playback.Position, sessionTempo, tempo);
 		bool wasPlaying = playback.IsPlaying;
 		double rate = playback.PlaybackRate;
 		double offset = playback.AudioOffsetSeconds;
@@ -73,7 +81,8 @@ internal static partial class Program
 		}
 		rebuilt.Seek(position, wasPlaying);
 		Console.Error.WriteLine($"[EXPRESSION] {Describe(previous)} -> {Describe(expression)} " +
-			$"notes={session.Notes.Count} pedal={session.Pedal.Count} position={position:F2}");
+			$"tempo={DescribeTempo(sessionTempo)} notes={session.Notes.Count} pedal={session.Pedal.Count} " +
+			$"position={position:F2} duration={session.TotalDuration:F2}");
 		return rebuilt;
 	}
 
@@ -154,22 +163,34 @@ internal static partial class Program
 	}
 
 	/// <summary>
-	/// A button that opens and closes a row of controls to its right, as EXPRESSION and EXPORT do.
+	/// A button that opens and closes a row of controls to its right, as EXPRESSION, EXPORT and
+	/// TEMPO do. TEMPO passes a beat unit, drawn after the label, then <paramref name="afterUnit"/>.
 	/// Returns true on a click.
 	/// </summary>
 	private static bool DrawPanelButton(ref float x, float y, float height, string label, Color text, bool open,
-		float scale)
+		float scale, BeatUnit? unit = null, string afterUnit = "")
 	{
 		int textSize = Math.Max(10, (int)(12f * scale));
 		float chevron = 6f * scale;
-		Rectangle bounds = new Rectangle(x, y, (float)LabelWidth(label, textSize) + 34f * scale, height);
+		float glyphWidth = unit is BeatUnit measured ? BeatUnitGlyphWidth(measured, textSize) : 0f;
+		float labelWidth = LabelWidth(label, textSize) + glyphWidth + (afterUnit.Length > 0 ? LabelWidth(afterUnit, textSize) : 0);
+		Rectangle bounds = new Rectangle(x, y, labelWidth + 34f * scale, height);
 		x += bounds.Width + 6f * scale;
 
 		bool hovered = Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), bounds);
 		Raylib.DrawRectangleRounded(bounds, 0.5f, 10, hovered || open ? UiTheme.Elevated : UiTheme.Surface);
 		Raylib.DrawRectangleRoundedLinesEx(bounds, 0.5f, 10, 1, open ? UiTheme.Sky : UiTheme.Border);
-		UiTheme.DrawText(label, (int)(bounds.X + 10f * scale), (int)(bounds.Y + (bounds.Height - textSize) / 2f),
-			textSize, text);
+		int textY = (int)(bounds.Y + (bounds.Height - textSize) / 2f);
+		UiTheme.DrawText(label, (int)(bounds.X + 10f * scale), textY, textSize, text);
+		if (unit is BeatUnit drawn)
+		{
+			float glyphX = bounds.X + 10f * scale + LabelWidth(label, textSize);
+			DrawBeatUnitGlyph(drawn, glyphX, bounds.Y + bounds.Height / 2f, textSize, text);
+			if (afterUnit.Length > 0)
+			{
+				UiTheme.DrawText(afterUnit, (int)(glyphX + glyphWidth), textY, textSize, text);
+			}
+		}
 		// Drawn rather than typed: the UI font is loaded without the arrow characters.
 		float tipX = bounds.X + bounds.Width - 12f * scale;
 		float middleY = bounds.Y + bounds.Height / 2f;

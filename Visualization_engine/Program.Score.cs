@@ -54,10 +54,11 @@ internal static partial class Program
 		return width;
 	}
 
-	/// <summary>The overlay for a session built from <paramref name="song"/> under <paramref name="options"/>.</summary>
-	private static void RebuildOverlay(SongLoadResult song, ExpressionOptions options, IReadOnlyList<PedalChange> pedal)
+	/// <summary>The overlay for a session built from <paramref name="song"/> under <paramref name="options"/> and <paramref name="tempo"/>.</summary>
+	private static void RebuildOverlay(SongLoadResult song, ExpressionOptions options, TempoOverride? tempo,
+		IReadOnlyList<PedalChange> pedal)
 	{
-		songOverlay = SongOverlay.For(song.Performance, SongTimelineOptions.For(options), pedal);
+		songOverlay = SongOverlay.For(song.Performance, SongTimelineOptions.For(options, tempo), pedal);
 	}
 
 	/// <summary>

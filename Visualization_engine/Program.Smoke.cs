@@ -205,7 +205,7 @@ internal static partial class Program
 				SongLoadResult song = new(notes, "Sample Score", OmrEngine.MusicXml, true, null, SmokePerformance());
 				Keyboard piano = new(layout.Width, layout.HitLineY, layout.KeyboardHeight);
 				GameState state = GameState.Playing;
-				RebuildOverlay(song, expression, ExpressionPlayback.ForSong(song, expression).Pedal);
+				RebuildOverlay(song, expression, null, ExpressionPlayback.ForSong(song, expression).Pedal);
 				expressionPanelOpen = true;
 				DrawPlayback(playback, song, piano, false, 0.0, new PlaybackRateEditor(), new AudioOffsetEditor(),
 					ref state, layout);
@@ -221,18 +221,21 @@ internal static partial class Program
 				SongPerformance performance = SmokeScore();
 				SongPlayback timeline = ExpressionPlayback.ForSong(
 					new SongLoadResult([], "Sample Score", OmrEngine.Homr480, true, null, performance), expression);
-				SongLoadResult song = new(timeline.Notes, "Sample Score", OmrEngine.Homr480, true, null, performance);
+				SongLoadResult song = new(timeline.Notes, "Sample Score", OmrEngine.Homr480, true, null, performance,
+					SourceSha256: "smoke-score");
 				PlaybackController playback = new(
 					new PlaybackSession(timeline.Notes, pedal: timeline.Pedal),
 					new NullMidiOutput(),
 					new PlaybackClock(() => 0));
 				playback.Seek(9.0, resume: false);
-				RebuildOverlay(song, expression, timeline.Pedal);
+				RebuildOverlay(song, expression, null, timeline.Pedal);
 				Keyboard piano = new(layout.Width, layout.HitLineY, layout.KeyboardHeight);
 				GameState state = GameState.Playing;
 				string? status = exportStatus;
 				exportStatus = @"Saved to C:\Users\you\AppData\Local\Sheet2Play\exports\Sample Score.mid";
 				exportPanelOpen = true;
+				// No map: the closed TEMPO button warns that the song plays at the 120 fallback.
+				PresetSmokeTempo(song, null);
 				try
 				{
 					DrawPlayback(playback, song, piano, false, 0.0, new PlaybackRateEditor(), new AudioOffsetEditor(),
@@ -243,6 +246,45 @@ internal static partial class Program
 					exportPanelOpen = false;
 					exportStatus = status;
 					songOverlay = SongOverlay.Empty;
+					PresetSmokeTempo(null, null);
+				}
+			});
+
+			// The same song with the TEMPO panel open: a start of ♩ = 110 and two changes listed above
+			// it, paused in bar 2 so "+ CHANGE AT BAR 2" is offered.
+			failures += Capture(outputDirectory, "07-playback-tempo", layout, () =>
+			{
+				SongPerformance performance = SmokeScore();
+				SongTempoMap map = new(new TempoMark(110, BeatUnit.Quarter),
+				[
+					new BarTempo(2, 0, new TempoMark(110, BeatUnit.DottedQuarter)),
+					new BarTempo(3, 0, new TempoMark(186, BeatUnit.Quarter))
+				], OmrEngine.Homr480, performance.Measures.Count, DateTimeOffset.UtcNow);
+				TempoOverride? tempo = SongTempoMaps.Override(map, performance);
+				SongPlayback timeline = ExpressionPlayback.ForSong(
+					new SongLoadResult([], "Sample Score", OmrEngine.Homr480, true, null, performance), expression, tempo);
+				SongLoadResult song = new(timeline.Notes, "Sample Score", OmrEngine.Homr480, true, null, performance,
+					SourceSha256: "smoke-tempo");
+				PlaybackController playback = new(
+					new PlaybackSession(timeline.Notes, pedal: timeline.Pedal),
+					new NullMidiOutput(),
+					new PlaybackClock(() => 0));
+				playback.Seek(2.5, resume: false);
+				RebuildOverlay(song, expression, tempo, timeline.Pedal);
+				Keyboard piano = new(layout.Width, layout.HitLineY, layout.KeyboardHeight);
+				GameState state = GameState.Playing;
+				PresetSmokeTempo(song, map);
+				tempoPanelOpen = true;
+				try
+				{
+					DrawPlayback(playback, song, piano, false, 0.0, new PlaybackRateEditor(), new AudioOffsetEditor(),
+						ref state, layout);
+				}
+				finally
+				{
+					tempoPanelOpen = false;
+					songOverlay = SongOverlay.Empty;
+					PresetSmokeTempo(null, null);
 				}
 			});
 		}
@@ -359,6 +401,21 @@ internal static partial class Program
 	/// Four bars of a two-staff piano part, bars 3 and 4 repeated, with the pedal held through bar 2
 	/// and pressed again in bar 4, and feature counts for the header.
 	/// </summary>
+	/// <summary>
+	/// Puts the TEMPO panel's state in place for a snapshot, so it never reads or writes the user's
+	/// tempo-maps.json. Null clears it.
+	/// </summary>
+	private static void PresetSmokeTempo(SongLoadResult? song, SongTempoMap? map)
+	{
+		tempoMapSource = song?.SourceSha256;
+		tempoMapPerformance = song?.Performance;
+		tempoScoreMap = song?.Performance is SongPerformance performance
+			? SongTempoMaps.FromScore(performance, song.Engine)
+			: null;
+		tempoMap = map;
+		tempoEditor.Cancel();
+	}
+
 	private static SongPerformance SmokeScore()
 	{
 		List<SongNote> notes = [];

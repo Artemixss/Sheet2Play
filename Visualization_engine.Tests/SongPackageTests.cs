@@ -92,6 +92,37 @@ public sealed class SongPackageTests
     }
 
     [Fact]
+    public void ATempoMapRetimesTheListedSongAndLeavesItsPackageUntouched()
+    {
+        using Library library = new();
+        SongLoadResult song = library.Load();
+        Assert.Equal(Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(library.Source))), song.SourceSha256);
+        Dictionary<string, string> before = PackageHashes(library.PackageDirectory);
+        string tempoMaps = Path.Combine(library.Root, "tempo-maps.json");
+
+        // Three notes a measure apart in 2/4; the last ends 2.5 s in at 120, and 5 s in at 60.
+        CachedSongEntry plain = Assert.Single(SongCache.GetCachedSongsForTesting(library.Root, library.Bridge, Refuse, tempoMaps));
+        Assert.Equal(2.5, plain.DurationSeconds, 9);
+        Assert.False(plain.CustomTempo);
+        TempoMapStore.Save(song.SourceSha256!, new SongTempoMap(new TempoMark(60, BeatUnit.Quarter), [], OmrEngine.Homr480,
+            song.Performance!.Measures.Count, DateTimeOffset.UtcNow), tempoMaps);
+        CachedSongEntry slowed = Assert.Single(SongCache.GetCachedSongsForTesting(library.Root, library.Bridge, Refuse, tempoMaps));
+        Assert.Equal(5.0, slowed.DurationSeconds, 9);
+        Assert.True(slowed.CustomTempo);
+
+        // Tempo is playback policy: the package, its manifests and what it loads as are unchanged.
+        Assert.Equal(before, PackageHashes(library.PackageDirectory));
+        SongLoadResult reopened = library.Load();
+        Assert.Equal(1, library.OmrRuns);
+        Assert.Equal(song.Notes.Select(note => note.StartTime), reopened.Notes.Select(note => note.StartTime));
+    }
+
+    private static Dictionary<string, string> PackageHashes(string directory) =>
+        Directory.EnumerateFiles(directory, "*", SearchOption.AllDirectories).ToDictionary(
+            path => Path.GetRelativePath(directory, path),
+            path => Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(path))));
+
+    [Fact]
     public void SwitchingTheTimingFixReinterpretsTheStoredPagesWithoutOmr()
     {
         using Library library = new();

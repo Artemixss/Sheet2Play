@@ -296,7 +296,8 @@ public static partial class SongCache
             package.Manifest.Engine,
             LoadedFromCache: true,
             Path.GetRelativePath(applicationDirectory, Path.Combine(derived, InterpretationManifestName)),
-            performance);
+            performance,
+            SourceSha256: package.Manifest.SourceSha256);
 
     // --- Conversion ----------------------------------------------------------------------------
 
@@ -797,8 +798,9 @@ public static partial class SongCache
             new PackageContext(applicationDirectory, bridgeDirectory, interpret));
 
     internal static IReadOnlyList<CachedSongEntry> GetCachedSongsForTesting(string applicationDirectory,
-        string bridgeDirectory, SongInterpretation interpret) =>
-        GetCachedSongsCore(applicationDirectory, new PackageContext(applicationDirectory, bridgeDirectory, interpret));
+        string bridgeDirectory, SongInterpretation interpret, string? tempoMapPath = null) =>
+        GetCachedSongsCore(applicationDirectory, new PackageContext(applicationDirectory, bridgeDirectory, interpret),
+            tempoMapPath);
 
     internal static bool IsPackageHitForTesting(string sourcePath, OmrEngine engine, string applicationDirectory) =>
         IsPackageHit(sourcePath, engine, applicationDirectory);

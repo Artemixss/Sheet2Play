@@ -75,9 +75,10 @@ internal static partial class Program
 		else
 		{
 			ExpressionOptions options = AppSettingsStore.LoadExpression();
-			SongPlayback expressive = ExpressionPlayback.ForSong(song, options);
+			TempoOverride? tempo = StoredTempo(song);
+			SongPlayback expressive = ExpressionPlayback.ForSong(song, options, tempo);
 			session = new(expressive.Notes, pedal: expressive.Pedal);
-			RebuildOverlay(song, options, expressive.Pedal);
+			RebuildOverlay(song, options, tempo, expressive.Pedal);
 		}
 		start = Math.Clamp(start, 0, Math.Max(0, session.TotalDuration - 1));
 

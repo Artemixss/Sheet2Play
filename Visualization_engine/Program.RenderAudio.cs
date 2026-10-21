@@ -112,9 +112,12 @@ internal static partial class Program
 		ExpressionOptions renderExpression = args.Contains("--no-expression")
 			? ExpressionOptions.None
 			: AppSettingsStore.LoadExpression();
-		SongPlayback rendered = ExpressionPlayback.ForSong(song, renderExpression);
+		// And at the tempo set in the TEMPO panel, as the app plays it.
+		TempoOverride? renderTempo = StoredTempo(song);
+		SongPlayback rendered = ExpressionPlayback.ForSong(song, renderExpression, renderTempo);
 		PlaybackSession session = new(rendered.Notes, pedal: rendered.Pedal);
-		Console.WriteLine($"[RENDER] expression {Describe(renderExpression)} pedal_changes={session.Pedal.Count}");
+		Console.WriteLine($"[RENDER] expression {Describe(renderExpression)} tempo={DescribeTempo(renderTempo)} " +
+			$"pedal_changes={session.Pedal.Count}");
 		Console.WriteLine(
 			$"[RENDER] source    {Path.GetFileName(source)} " +
 			$"({session.Notes.Count} notes, {PlaybackFormatting.FormatTime(session.TotalDuration)})");

@@ -116,6 +116,17 @@ class ParityTests(SongModelCase):
         # The fix shortens the faulty measure to its 2/4 bar, so the next one starts on beat 4.
         self.assertEqual([measure["start_beat"] for measure in corrected["measures"]][:3], [0.0, 2.0, 4.0])
 
+    def test_the_timing_fix_keeps_every_measure_where_it_was(self) -> None:
+        # The app's TEMPO panel stores changes by measure index, so one map serves the song with the
+        # fix on and off only if both readings hold the same measures in the same order.
+        pages = [self.write("page-0001.musicxml", LOST_BACKUP_PAGE), self.write("page-0002.musicxml", SHORT_LAST_PAGE)]
+        plain = song_model.interpret(pages, timing_correction_enabled=False)
+        corrected = song_model.interpret(pages, timing_correction_enabled=True)
+        def identity(performance):
+            return [(measure["index"], measure["page"], measure["number"]) for measure in performance["measures"]]
+        self.assertEqual(identity(plain), identity(corrected))
+        self.assertEqual(plain["play_order"], corrected["play_order"])
+
     def test_staves_match_the_timing_fixs_own_reading(self) -> None:
         path = self.write("page.musicxml", LOST_BACKUP_PAGE)
         self.assertEqual(song_model.read_page(path).staves, timing_correction.load_page(path))

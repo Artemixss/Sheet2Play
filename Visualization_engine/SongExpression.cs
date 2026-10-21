@@ -549,16 +549,17 @@ public static class SongExpression
     }
 }
 
-/// <summary>A loaded song as the player plays it under the EXPRESSION panel's choices.</summary>
+/// <summary>A loaded song as the player plays it under the EXPRESSION and TEMPO panels' choices.</summary>
 public static class ExpressionPlayback
 {
-    public static SongPlayback ForSong(SongLoadResult song, ExpressionOptions expression)
+    /// <param name="tempo">The song's TEMPO map; a MIDI file keeps its own tempo, so it is ignored there.</param>
+    public static SongPlayback ForSong(SongLoadResult song, ExpressionOptions expression, TempoOverride? tempo = null)
     {
         ArgumentNullException.ThrowIfNull(song);
         ArgumentNullException.ThrowIfNull(expression);
         if (song.Performance is SongPerformance performance)
         {
-            return SongTimeline.Build(performance, SongTimelineOptions.For(expression));
+            return SongTimeline.Build(performance, SongTimelineOptions.For(expression, tempo));
         }
         // A MIDI file already carries its own velocities, lengths and repeats; only its pedal is optional.
         return new SongPlayback(song.Notes, expression.Pedal && song.Pedal is not null ? song.Pedal : []);
@@ -569,9 +570,14 @@ public static class ExpressionPlayback
             ? SongExpression.Availability(performance)
             : ExpressionAvailability.Nothing with { Pedal = song.Pedal is { Count: > 0 } };
 
-    /// <summary>Where a position under one set of choices is under another; only repeats move it.</summary>
-    public static double MapPosition(SongLoadResult song, ExpressionOptions from, ExpressionOptions to, double seconds) =>
-        song.Performance is SongPerformance performance && from.Repeats != to.Repeats
-            ? SongTimeline.MapPosition(performance, SongTimelineOptions.For(from), SongTimelineOptions.For(to), seconds)
+    /// <summary>
+    /// Where a position under one set of choices is under another: the same point of the same bar.
+    /// Only repeats and tempo move it.
+    /// </summary>
+    public static double MapPosition(SongLoadResult song, ExpressionOptions from, ExpressionOptions to, double seconds,
+        TempoOverride? fromTempo = null, TempoOverride? toTempo = null) =>
+        song.Performance is SongPerformance performance && (from.Repeats != to.Repeats || !Equals(fromTempo, toTempo))
+            ? SongTimeline.MapPosition(performance, SongTimelineOptions.For(from, fromTempo),
+                SongTimelineOptions.For(to, toTempo), seconds)
             : seconds;
 }

@@ -14,6 +14,7 @@ namespace SynthesiaClone;
 /// <param name="Notes">The song's notes without expression, as the cache checks them.</param>
 /// <param name="Performance">The score's performance, for a song played from its MusicXML.</param>
 /// <param name="Pedal">The sustain pedal a MIDI file records.</param>
+/// <param name="SourceSha256">The source file's hash, for a song played from a song package; the TEMPO panel keys its map by it.</param>
 public sealed record SongLoadResult(
     List<Note> Notes,
     string DisplayName,
@@ -21,7 +22,8 @@ public sealed record SongLoadResult(
     bool LoadedFromCache,
     string? ManifestRelativePath,
     SongPerformance? Performance = null,
-    IReadOnlyList<PedalChange>? Pedal = null)
+    IReadOnlyList<PedalChange>? Pedal = null,
+    string? SourceSha256 = null)
 {
     public int NoteCount => Notes.Count;
 }
@@ -38,10 +40,12 @@ public sealed record MidiLibraryEntry(
     long SizeBytes,
     DateTimeOffset LastModifiedUtc);
 
+/// <param name="CustomTempo">The song plays at a tempo set in the TEMPO panel, which <paramref name="DurationSeconds"/> follows.</param>
 public sealed record CachedSongEntry(
     RecentSongEntry RecentSong,
     int NoteCount,
-    double DurationSeconds);
+    double DurationSeconds,
+    bool CustomTempo = false);
 
 public static partial class SongCache
 {
@@ -570,7 +574,8 @@ public static partial class SongCache
 
     private static IReadOnlyList<CachedSongEntry> GetCachedSongsCore(
         string applicationDirectory,
-        PackageContext? context = null)
+        PackageContext? context = null,
+        string? tempoMapPath = null)
     {
         context ??= DefaultPackageContext(applicationDirectory);
         string midiRoot = Path.Combine(applicationDirectory, "songs", "midi");
@@ -580,6 +585,7 @@ public static partial class SongCache
                 static entry => entry.LastOpenedUtc,
                 StringComparer.OrdinalIgnoreCase);
         List<CachedSongEntry> cachedSongs = [];
+        IReadOnlyDictionary<string, SongTempoMap> tempoMaps = TempoMapStore.LoadAll(tempoMapPath);
         foreach ((string interpretationPath, OmrEngine packageEngine) in EnumeratePackageEntries(applicationDirectory))
         {
             string relativePath = Path.GetRelativePath(applicationDirectory, interpretationPath);
@@ -590,10 +596,18 @@ public static partial class SongCache
             if (TryLoadRecentCore(candidate, applicationDirectory, out SongLoadResult? loaded, context: context) &&
                 loaded is not null)
             {
+                // Listed at the tempo it plays at, so a song set to its real tempo shows its real length.
+                TempoOverride? tempo = loaded.SourceSha256 is string source
+                    ? SongTempoMaps.Override(tempoMaps.GetValueOrDefault(source), loaded.Performance)
+                    : null;
+                double duration = tempo is null
+                    ? GetTotalDuration(loaded.Notes)
+                    : GetTotalDuration(SongTimeline.BuildNotes(loaded.Performance!, PlaybackTimeline with { Tempo = tempo }));
                 cachedSongs.Add(new CachedSongEntry(
                     candidate with { ManifestRelativePath = loaded.ManifestRelativePath!, DisplayName = loaded.DisplayName },
                     loaded.NoteCount,
-                    GetTotalDuration(loaded.Notes)));
+                    duration,
+                    CustomTempo: tempo is not null));
             }
         }
         // A MIDI cache whose source now has a package is superseded by it and not listed.

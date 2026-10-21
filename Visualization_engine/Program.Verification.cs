@@ -115,7 +115,8 @@ internal static partial class Program
                         expressed.Notes.Select(static note => note.Velocity).Distinct().Count(),
                         Math.Round(expressed.TotalDuration, 3),
                         $"pedal={available.Pedal} dynamics={available.Dynamics} " +
-                        $"articulations={available.Articulations} repeats={available.Repeats}"));
+                        $"articulations={available.Articulations} repeats={available.Repeats}",
+                        EventsHash(session), EventsHash(expressed)));
                 }
                 catch (Exception error)
                 {
@@ -176,7 +177,17 @@ internal static partial class Program
 
     private sealed record LibraryCheck(string Kind, string Path, string Engine, bool Ok, int Notes, double Seconds,
         string? Error, bool? ExpressionOffUnchanged = null, int? ExpressedNotes = null, int? PedalChanges = null,
-        int? DistinctVelocities = null, double? ExpressedSeconds = null, string? Available = null);
+        int? DistinctVelocities = null, double? ExpressedSeconds = null, string? Available = null,
+        string? PlainEventsSha256 = null, string? ExpressedEventsSha256 = null);
+
+    /// <summary>
+    /// Every event a session would send, exactly, so two builds can be compared song by song: equal
+    /// hashes mean the same notes and pedal at the same times.
+    /// </summary>
+    private static string EventsHash(PlaybackSession session) =>
+        Convert.ToHexString(SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(string.Join('\n',
+            session.Events.Select(static item => FormattableString.Invariant(
+                $"{item.Time:R}|{item.KeyIndex}|{item.Velocity}|{item.IsNoteOn}|{item.IsPedal}")))))).ToLowerInvariant();
 
     private static string VerificationHash(string path)
     {
