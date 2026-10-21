@@ -8,7 +8,8 @@ The user then authorized Phase 2 ("approved, start displacement phase 2"), compl
 day. Phase 3 was authorized and scored on 2026-10-17: not accepted, then replanned at the
 user's choice ("go with option 1 then 2") and accepted on a fresh held-out set. The user
 authorized Phase 4 ("push it and start phase 4"); it shipped on 2026-10-18 behind a visible
-switch, off by default. Making it the default waits on the user's review. The predecessor
+switch, off by default. The user made it the default on 2026-10-21
+([timing-fix default plan](2026-10-21-timing-fix-default.md), Phase 1). The predecessor
 [465 integration plan](archive/2026-10-09-homr-465-app-integration.done.md) is archived
 as done. The [handoff](../Research/omr/reports/displacement/handoff.md) records current
 state and the next action.

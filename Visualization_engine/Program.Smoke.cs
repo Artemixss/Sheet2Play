@@ -48,6 +48,8 @@ internal static partial class Program
 			AudioBackend.SfzPiano, null, 1_307_297_224, null, null, salamander);
 		installedPiano = new PianoStatus(@"C:\pianos\salamander", salamander, 1_307_297_224, null);
 		installedSoundFont = new SoundFontStatus(@"C:\soundfonts\YDP-GrandPiano.sf2", 118_398_836, null);
+		// The timing fix as a fresh install has it.
+		timingCorrectionEnabled = true;
 
 		int failures = 0;
 		try

@@ -5,7 +5,8 @@
 after the [displacement plan](MAIN_PLAN.md) shipped its correction behind the off-by-default
 **TIMING FIX** switch. Phase 3 scored the frozen candidate once on 2026-10-18 (gain on
 both engines, one near-correct failure, so not accepted as pre-registered); the user accepted it
-anyway and Phase 4 shipped it the same day, still off by default. The
+anyway and Phase 4 shipped it the same day, still off by default. The user made it the default
+on 2026-10-21 ([timing-fix default plan](2026-10-21-timing-fix-default.md)). The
 [handoff](../Research/omr/reports/timing/handoff.md) records state, evidence and the next action.
 
 ## Why

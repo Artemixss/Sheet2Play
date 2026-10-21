@@ -80,4 +80,6 @@ and no pinned 465 file changed.
 
 ## Next action
 
-None authorized. Making the switch the default still waits on the user's review.
+None authorized. On 2026-10-21 the user made the switch the default, accepting the 6222828
+meter-change cost ([timing-fix default plan](../../../../plans/2026-10-21-timing-fix-default.md),
+Phase 1).

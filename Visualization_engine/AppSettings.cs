@@ -107,8 +107,9 @@ public static class AppSettingsStore
     }
 
     /// <summary>
-    /// Whether HOMR conversions run the timing correction (Bridge/timing_correction.py). Off
-    /// until the user turns it on: it is measured on engraved scores, not yet on their library.
+    /// Whether HOMR conversions run the timing correction (Bridge/timing_correction.py). On
+    /// unless the user switches it off, which is the remedy for a score it hurts, such as one
+    /// with a real meter change.
     /// </summary>
     public static bool LoadTimingCorrection() => LoadTimingCorrectionFromPath(GetSettingsPath());
 
@@ -316,14 +317,15 @@ public static class AppSettingsStore
     }
 
     // The SFZ piano is the user's pick from Phase 4a; without it installed, Create falls back to the
-    // SoundFont piano and says why.
+    // SoundFont piano and says why. The timing fix is on unless a file says it was switched off
+    // (plans/2026-10-21-timing-fix-default.md).
     private sealed record AppSettings(
         OmrEngine OmrEngine,
         int AudioOffsetMilliseconds = DefaultAudioOffsetMilliseconds,
         AudioBackend AudioBackend = AudioBackend.SfzPiano,
         int SynthAudioOffsetMilliseconds = UnsetSynthAudioOffset,
         string? SoundFontPath = null,
-        bool TimingCorrection = false,
+        bool TimingCorrection = true,
         bool ExpressionPedal = true,
         bool ExpressionDynamics = true,
         bool ExpressionArticulations = true,

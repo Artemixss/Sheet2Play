@@ -134,12 +134,13 @@ Onset F1, pitch F1 in brackets:
 
 - **6222828 is a timing-fix fault, not a recognition one:** 480 reads it almost perfectly and the
   fix then anchors a real meter change. It is the same score that failed the timing plan's
-  near-correct guard on 465 (0.995 to 0.952). With the switch off (the default) 480 is fine here.
+  near-correct guard on 465 (0.995 to 0.952). With the switch off, 480 is fine here. The switch
+  has been on by default since 2026-10-21, so such a score needs it turned off.
 - **6785268 is a 480 misreading:** pitch is right but onsets are displaced, so bar lengths or
   voice placement differ from 465's reading of the same pages. Compare 480's and 465's page
   MusicXML bar by bar (`displacement_attribution` and `timing_residual` read both captures).
 
 ## Next action
 
-The flagged follow-up above, when the user asks. Making the timing fix the default still waits
-on the user's review.
+The flagged follow-up above, when the user asks. The user made the timing fix the default on
+2026-10-21 ([timing-fix default plan](../../../../plans/2026-10-21-timing-fix-default.md)).

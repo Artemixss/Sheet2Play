@@ -777,7 +777,8 @@ internal static partial class Program
 		refreshRequested = UiTheme.DrawButton(refreshButton, "Refresh", UiTheme.Muted);
 		UiTheme.DrawText("OMR ENGINE", (int)contentLeft, (int)(174f * scale), Math.Max(12, (int)(14f * scale)), UiTheme.Muted);
 		// The timing fix is a user setting, so it gets a visible switch on the engine row
-		// rather than only a stored preference. It applies to the HOMR engines only.
+		// rather than only a stored preference. It is on by default and applies to the HOMR
+		// engines only; switching it off is the remedy for a score it hurts.
 		Rectangle timingToggle = new Rectangle(contentLeft + contentWidth - 236f * scale, 168f * scale, 236f * scale, 24f * scale);
 		if (DrawTimingToggle(timingToggle, timingCorrectionEnabled, OmrPipeline.SupportsTimingCorrection(selectedEngine), scale))
 		{

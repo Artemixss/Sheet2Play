@@ -3,7 +3,7 @@ using SynthesiaClone;
 namespace Visualization_engine.Tests;
 
 /// <summary>
-/// The timing fix setting: off by default, routed to the correction's own entry script, and
+/// The timing fix setting: on by default, routed to the correction's own entry script, and
 /// never sharing a cache entry with the uncorrected conversion.
 /// </summary>
 public sealed class TimingCorrectionTests
@@ -12,19 +12,27 @@ public sealed class TimingCorrectionTests
     private const string IdentityB = "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb";
 
     [Fact]
-    public void SettingIsOffByDefaultRoundTripsAndOlderFilesLoad()
+    public void SettingIsOnByDefaultRoundTripsAndOlderFilesLoad()
     {
         using TemporaryDirectory temporary = new();
         string path = Path.Combine(temporary.Path, "settings.json");
+        Assert.True(AppSettingsStore.LoadTimingCorrectionFromPath(path));
+        Assert.Contains("\"timing_correction\": true", File.ReadAllText(path));
+        AppSettingsStore.SaveTimingCorrectionToPath(false, path);
+        Assert.False(AppSettingsStore.LoadTimingCorrectionFromPath(path));
+        AppSettingsStore.SaveEngineToPath(OmrEngine.Homr, path);
         Assert.False(AppSettingsStore.LoadTimingCorrectionFromPath(path));
         AppSettingsStore.SaveTimingCorrectionToPath(true, path);
         Assert.True(AppSettingsStore.LoadTimingCorrectionFromPath(path));
-        AppSettingsStore.SaveEngineToPath(OmrEngine.Homr, path);
-        Assert.True(AppSettingsStore.LoadTimingCorrectionFromPath(path));
 
+        // A file written before the setting existed has no field, so it gets the default.
         File.WriteAllText(path, """{"omr_engine":"homr465","audio_offset_milliseconds":55}""");
-        Assert.False(AppSettingsStore.LoadTimingCorrectionFromPath(path));
+        Assert.True(AppSettingsStore.LoadTimingCorrectionFromPath(path));
         Assert.Equal(OmrEngine.Homr465, AppSettingsStore.LoadEngineFromPath(path));
+
+        // One the user switched off stays off.
+        File.WriteAllText(path, """{"omr_engine":"homr480","timing_correction":false}""");
+        Assert.False(AppSettingsStore.LoadTimingCorrectionFromPath(path));
     }
 
     [Fact]

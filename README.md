@@ -49,8 +49,9 @@ MIDI playback timing.
   and **IGNORE** drops a misread one. Any tempo you set yourself replaces them for that song.
   Songs converted earlier get theirs from **READ PRINTED MARKS**, or all at once with
   `dist\Sheet2Play.exe --read-printed-tempo`.
-* **TIMING FIX** (home screen, off by default) re-interprets HOMR's output so one measure's
+* **TIMING FIX** (home screen, on by default) re-interprets HOMR's output so one measure's
   timing error does not shift the rest of the score. Switching it needs no new recognition.
+  Turn it off for a score it hurts, such as one whose meter really changes.
 
 ### 2. OMR bridge (Python)
 
