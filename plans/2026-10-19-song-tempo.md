@@ -6,10 +6,14 @@ until the MusicXML-song plan landed. **Rewritten 2026-10-21** against the merged
 (`af0332b` … `7667005`). That change moved the timeline out of the cached MIDI and exposes bars,
 so the 2026-10-19 draft's `ReadMidi` overlay and `bar_map.py` sidecar are superseded (see
 [Superseded from the 2026-10-19 draft](#superseded-from-the-2026-10-19-draft)). On 2026-10-21
-the user authorized **Phase 1 only** ("refresh the md files first then start phase 1"). It
-shipped the same day and waits on the user's check and commit
-([Phase 1 report](../Research/omr/reports/song-tempo/phase1/REPORT.md),
-[handoff](../Research/omr/reports/song-tempo/handoff.md)). Phases 2 and 3 each need their own request.
+the user authorized **Phase 1** ("refresh the md files first then start phase 1"). It shipped,
+was checked by the user and committed the same day (`9bd66f9`,
+[Phase 1 report](../Research/omr/reports/song-tempo/phase1/REPORT.md)). **Phase 2** (research)
+was requested the same day ("push it and start phase 2") and is **accepted**: the frozen OCR reader
+passed every pre-registered check on the test splits, scored once
+([Phase 2 report](../Research/omr/reports/song-tempo/phase2/REPORT.md),
+[handoff](../Research/omr/reports/song-tempo/handoff.md)). It waits on the user's check and
+commit. Phase 3 needs its own request.
 **Related:** [MusicXML songs](2026-10-19-musicxml-songs.md), whose
 [Fit with the per-song tempo plan](2026-10-19-musicxml-songs.md#fit-with-the-per-song-tempo-plan)
 section is the hand-over this plan builds on.
@@ -163,7 +167,7 @@ drawn with `DrawPanelButton` and closed at every start (the user's collapsible-p
 - `audioOffsetSeconds` is unchanged, the release gate passes, and the user checks it in the
   published exe.
 
-## Phase 2 — Research: can printed tempo marks be read? (dev only, then test once)
+## Phase 2 — Research: can printed tempo marks be read? (accepted 2026-10-21)
 
 *Effort: high.* This is what the user's 2026-10-20 note calls the "tempo tracker". It runs only
 after Phase 1, so that reading has a store and a panel to feed.
@@ -197,6 +201,27 @@ after Phase 1, so that reading has a store and a panel to feed.
 - **Freeze:** pre-register acceptance after dev and dev-b, before test. Proposed thresholds:
   start-tempo exact BPM ≥ 0.95 where a mark is printed, false tempos ≤ 0.02 per score, and bar
   accuracy ≥ 0.9 for mid-score marks. Then score test and test-b once.
+- **Pre-registered rule (written 2026-10-21, before any test-split read).** The judged candidate
+  is **OCR**, because 47 of the 61 library PDFs have no text layer. The text-layer reader is scored
+  and reported but not judged, since it is only a shortcut for PDFs that have one. The rule is
+  judged on test and test-b pooled, with each split shown, by `tempo_read.py verdict` against
+  `freeze.json`. Phase 2 is accepted only if every check passes:
+
+  | Set | Metric | Rule | Why |
+  | --- | --- | --- | --- |
+  | truth | `start_tempo_correct` (BPM **and** beat unit exact, at bar 1) | ≥ 0.95 | Stricter than exact BPM: ♩. = 110 read as ♩ = 110 plays 1.5× too slow |
+  | truth | `mark_recall` | ≥ 0.90 | So a reader that finds only bar 1 cannot pass |
+  | truth | `mid_page_bar_exact` (mid-score marks, bar counted from the top of the mark's page) | ≥ 0.90 | The app would place a mark among HOMR's measures for that page, so a wrong system elsewhere does not move it |
+  | truth | `false_tempos_per_score` | ≤ 0.02 | |
+  | control | `false_tempos_per_score` (unmarked scores) | ≤ 0.02 | `cresc.`, `rit.`, `a tempo` must not become tempos |
+  | truth, control | worker `errors` | = 0 | |
+  | truth, control | `peak_rss_mib` | ≤ 1024 | Phase 3 runs it after OMR on the user's machine |
+  | truth, control | `seconds_per_page` (fresh OCR, no cache) | ≤ 5 | |
+
+  On dev and dev-b, after tuning, OCR stood at: start tempo 1.00 and 0.95, recall 1.00 and 0.97,
+  mid-page bar 0.98 and 0.92, no false tempos, about 186 MiB and 1.4 s per page. The library
+  check (11 PDFs with a MuseScore MIDI) is run once after the test scoring and reported. It is not
+  part of the rule.
 
 ## Phase 3 — Ship detection (only if Phase 2 is accepted)
 

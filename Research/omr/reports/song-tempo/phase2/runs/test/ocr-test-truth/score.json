@@ -1,0 +1,205 @@
+{
+  "split": "test",
+  "set": "truth",
+  "candidate": "ocr",
+  "tempo_read_sha256": "022d782858a298222d6d036ba44394d07280c60deb1967c475cc0e65cba49e77",
+  "tempo_truth_sha256": "0acebaad495a3bdd899ea77e1e91166781f8dd1d2a3b2acb2cb41824629c1f06",
+  "truth_manifest_sha256": "84e50b14047760da6f35af27fde6a7e4b340fa0880721046c09560035ec6f71e",
+  "counts": {
+    "scores": 40,
+    "pages": 131,
+    "truth_marks": 92,
+    "matched": 88,
+    "bpm_exact": 88,
+    "unit_exact": 87,
+    "bar_exact": 85,
+    "mid_marks": 51,
+    "mid_matched": 48,
+    "mid_bar_exact": 45,
+    "start_marks": 41,
+    "start_correct": 40,
+    "start_bpm_exact": 40,
+    "detections_with_bpm": 88,
+    "false_tempos": 0,
+    "word_marks": 64,
+    "word_suggested": 43,
+    "layout_pages_exact": 108,
+    "errors": 0,
+    "seconds": 183.8,
+    "page_bar_exact": 86,
+    "mid_page_bar_exact": 46
+  },
+  "mark_recall": 0.9565,
+  "mark_precision": 1.0,
+  "bpm_exact_of_matched": 1.0,
+  "unit_exact_of_matched": 0.9886,
+  "bar_exact_of_matched": 0.9659,
+  "start_tempo_correct": 0.9756,
+  "start_bpm_exact": 0.9756,
+  "mid_bar_exact": 0.9375,
+  "page_bar_exact_of_matched": 0.9773,
+  "mid_page_bar_exact": 0.9583,
+  "false_tempos_per_score": 0.0,
+  "word_suggestion_recall": 0.6719,
+  "layout_exact_page_fraction": 0.8244,
+  "seconds_per_page": 1.4031,
+  "peak_rss_mib": 187.4,
+  "unit_confusion": {
+    "dotted_half->dotted_half": 2,
+    "dotted_quarter->dotted_quarter": 13,
+    "eighth->eighth": 2,
+    "half->half": 4,
+    "quarter->eighth": 1,
+    "quarter->quarter": 66
+  },
+  "failures": [
+    {
+      "id": "5906774",
+      "mark": {
+        "measure": 78,
+        "page": 2,
+        "system": 1,
+        "system_start": false,
+        "placement": "above",
+        "words": null,
+        "bpm": 70.0,
+        "unit": "quarter",
+        "parentheses": false
+      },
+      "found": {
+        "bpm": 70.0,
+        "unit": "quarter",
+        "unit_source": "glyph",
+        "measure": 77,
+        "text": "d= 70"
+      },
+      "why": "wrong"
+    },
+    {
+      "id": "6181353",
+      "mark": {
+        "measure": 121,
+        "page": 2,
+        "system": 2,
+        "system_start": false,
+        "placement": "above",
+        "words": "Poco meno mosso",
+        "bpm": 51.0,
+        "unit": "half",
+        "parentheses": true
+      },
+      "why": "missed"
+    },
+    {
+      "id": "6766368",
+      "mark": {
+        "measure": 4,
+        "page": 0,
+        "system": 0,
+        "system_start": false,
+        "placement": "above",
+        "words": "Calmando",
+        "bpm": 74.0,
+        "unit": "dotted_quarter",
+        "parentheses": false
+      },
+      "found": {
+        "bpm": 74.0,
+        "unit": "dotted_quarter",
+        "unit_source": "glyph",
+        "measure": 3,
+        "text": "Calmando J. = 74"
+      },
+      "why": "wrong"
+    },
+    {
+      "id": "6877413",
+      "mark": {
+        "measure": 104,
+        "page": 2,
+        "system": 2,
+        "system_start": false,
+        "placement": "above",
+        "words": null,
+        "bpm": 114.0,
+        "unit": "quarter",
+        "parentheses": false
+      },
+      "found": {
+        "bpm": 114.0,
+        "unit": "quarter",
+        "unit_source": "glyph",
+        "measure": 103,
+        "text": "=114"
+      },
+      "why": "wrong"
+    },
+    {
+      "id": "6895220",
+      "mark": {
+        "measure": 34,
+        "page": 1,
+        "system": 2,
+        "system_start": false,
+        "placement": "above",
+        "words": "Più agitato",
+        "bpm": 100.0,
+        "unit": "quarter",
+        "parentheses": true
+      },
+      "found": {
+        "bpm": 100.0,
+        "unit": "eighth",
+        "unit_source": "glyph",
+        "measure": 34,
+        "text": "Più agitato ( = 100)"
+      },
+      "why": "wrong"
+    },
+    {
+      "id": "6902355",
+      "mark": {
+        "measure": 0,
+        "page": 0,
+        "system": 0,
+        "system_start": true,
+        "placement": "above",
+        "words": null,
+        "bpm": 85.0,
+        "unit": "dotted_quarter",
+        "parentheses": false
+      },
+      "why": "missed"
+    },
+    {
+      "id": "6902355",
+      "mark": {
+        "measure": 6,
+        "page": 0,
+        "system": 1,
+        "system_start": false,
+        "placement": "below",
+        "words": "* The time signature in the IMSLP source edition #342985 is shown as  which is very slow",
+        "bpm": 52.0,
+        "unit": "quarter",
+        "parentheses": false
+      },
+      "why": "missed"
+    },
+    {
+      "id": "6902355",
+      "mark": {
+        "measure": 6,
+        "page": 0,
+        "system": 1,
+        "system_start": false,
+        "placement": "below",
+        "words": "* The time signature in the IMSLP source edition #342985 is shown as  which is very slow",
+        "bpm": 52.0,
+        "unit": "quarter",
+        "parentheses": false
+      },
+      "why": "missed"
+    }
+  ]
+}

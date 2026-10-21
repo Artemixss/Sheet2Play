@@ -1,0 +1,136 @@
+{
+  "split": "dev-b",
+  "set": "truth",
+  "candidate": "ocr",
+  "tempo_read_sha256": "8a6e397dcee7cbaca552ba964a6f0c3a678107d29a86b97d07e40c5abfe8e41a",
+  "tempo_truth_sha256": "0acebaad495a3bdd899ea77e1e91166781f8dd1d2a3b2acb2cb41824629c1f06",
+  "truth_manifest_sha256": "84e50b14047760da6f35af27fde6a7e4b340fa0880721046c09560035ec6f71e",
+  "counts": {
+    "scores": 20,
+    "pages": 53,
+    "truth_marks": 34,
+    "matched": 33,
+    "bpm_exact": 32,
+    "unit_exact": 33,
+    "bar_exact": 30,
+    "mid_marks": 14,
+    "mid_matched": 13,
+    "mid_bar_exact": 11,
+    "start_marks": 20,
+    "start_correct": 19,
+    "start_bpm_exact": 19,
+    "detections_with_bpm": 33,
+    "false_tempos": 0,
+    "word_marks": 24,
+    "word_suggested": 22,
+    "layout_pages_exact": 48,
+    "errors": 0,
+    "seconds": 5.6,
+    "page_bar_exact": 31,
+    "mid_page_bar_exact": 12
+  },
+  "mark_recall": 0.9706,
+  "mark_precision": 1.0,
+  "bpm_exact_of_matched": 0.9697,
+  "unit_exact_of_matched": 1.0,
+  "bar_exact_of_matched": 0.9091,
+  "start_tempo_correct": 0.95,
+  "start_bpm_exact": 0.95,
+  "mid_bar_exact": 0.8462,
+  "page_bar_exact_of_matched": 0.9394,
+  "mid_page_bar_exact": 0.9231,
+  "false_tempos_per_score": 0.0,
+  "word_suggestion_recall": 0.9167,
+  "layout_exact_page_fraction": 0.9057,
+  "seconds_per_page": 0.1064,
+  "peak_rss_mib": 165.7,
+  "unit_confusion": {
+    "dotted_half->dotted_half": 1,
+    "dotted_quarter->dotted_quarter": 3,
+    "half->half": 5,
+    "quarter->quarter": 24
+  },
+  "failures": [
+    {
+      "id": "5855622",
+      "mark": {
+        "measure": 17,
+        "page": 0,
+        "system": 4,
+        "system_start": false,
+        "placement": "above",
+        "words": null,
+        "bpm": 163.0,
+        "unit": "quarter",
+        "parentheses": false
+      },
+      "found": {
+        "bpm": 163.0,
+        "unit": "quarter",
+        "unit_source": "glyph",
+        "measure": 16,
+        "text": "√= 163"
+      },
+      "why": "wrong"
+    },
+    {
+      "id": "5855622",
+      "mark": {
+        "measure": 41,
+        "page": 1,
+        "system": 3,
+        "system_start": false,
+        "placement": "above",
+        "words": null,
+        "bpm": 166.0,
+        "unit": "quarter",
+        "parentheses": false
+      },
+      "found": {
+        "bpm": 166.0,
+        "unit": "quarter",
+        "unit_source": "glyph",
+        "measure": 40,
+        "text": "=166"
+      },
+      "why": "wrong"
+    },
+    {
+      "id": "6018965",
+      "mark": {
+        "measure": 0,
+        "page": 0,
+        "system": 0,
+        "system_start": true,
+        "placement": "above",
+        "words": null,
+        "bpm": 41.0,
+        "unit": "quarter",
+        "parentheses": false
+      },
+      "found": {
+        "bpm": 145.0,
+        "unit": "quarter",
+        "unit_source": "glyph",
+        "measure": 7,
+        "text": "Calmando J= 145"
+      },
+      "why": "wrong"
+    },
+    {
+      "id": "6018965",
+      "mark": {
+        "measure": 7,
+        "page": 0,
+        "system": 0,
+        "system_start": false,
+        "placement": "above",
+        "words": "Calmando",
+        "bpm": 145.0,
+        "unit": "quarter",
+        "parentheses": false
+      },
+      "why": "missed"
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "split": "dev-b",
+  "set": "truth",
+  "candidate": "text",
+  "tempo_read_sha256": "493640bb03694cfa0a01a50503c5f95b6a186287039a4dbb11f3fcef794c5748",
+  "tempo_truth_sha256": "0acebaad495a3bdd899ea77e1e91166781f8dd1d2a3b2acb2cb41824629c1f06",
+  "truth_manifest_sha256": "84e50b14047760da6f35af27fde6a7e4b340fa0880721046c09560035ec6f71e",
+  "counts": {
+    "scores": 20,
+    "pages": 53,
+    "truth_marks": 34,
+    "matched": 34,
+    "bpm_exact": 34,
+    "unit_exact": 34,
+    "bar_exact": 32,
+    "mid_marks": 14,
+    "mid_matched": 14,
+    "mid_bar_exact": 12,
+    "start_marks": 20,
+    "start_correct": 20,
+    "start_bpm_exact": 20,
+    "detections_with_bpm": 34,
+    "false_tempos": 0,
+    "word_marks": 24,
+    "word_suggested": 22,
+    "layout_pages_exact": 48,
+    "errors": 0,
+    "seconds": 5.2,
+    "page_bar_exact": 33,
+    "mid_page_bar_exact": 13
+  },
+  "mark_recall": 1.0,
+  "mark_precision": 1.0,
+  "bpm_exact_of_matched": 1.0,
+  "unit_exact_of_matched": 1.0,
+  "bar_exact_of_matched": 0.9412,
+  "start_tempo_correct": 1.0,
+  "start_bpm_exact": 1.0,
+  "mid_bar_exact": 0.8571,
+  "page_bar_exact_of_matched": 0.9706,
+  "mid_page_bar_exact": 0.9286,
+  "false_tempos_per_score": 0.0,
+  "word_suggestion_recall": 0.9167,
+  "layout_exact_page_fraction": 0.9057,
+  "seconds_per_page": 0.0986,
+  "peak_rss_mib": 70.3,
+  "unit_confusion": {
+    "dotted_half->dotted_half": 1,
+    "dotted_quarter->dotted_quarter": 3,
+    "half->half": 5,
+    "quarter->quarter": 25
+  },
+  "failures": [
+    {
+      "id": "5855622",
+      "mark": {
+        "measure": 17,
+        "page": 0,
+        "system": 4,
+        "system_start": false,
+        "placement": "above",
+        "words": null,
+        "bpm": 163.0,
+        "unit": "quarter",
+        "parentheses": false
+      },
+      "found": {
+        "bpm": 163.0,
+        "unit": "quarter",
+        "unit_source": "smufl",
+        "measure": 16,
+        "text": " = 163"
+      },
+      "why": "wrong"
+    },
+    {
+      "id": "5855622",
+      "mark": {
+        "measure": 41,
+        "page": 1,
+        "system": 3,
+        "system_start": false,
+        "placement": "above",
+        "words": null,
+        "bpm": 166.0,
+        "unit": "quarter",
+        "parentheses": false
+      },
+      "found": {
+        "bpm": 166.0,
+        "unit": "quarter",
+        "unit_source": "smufl",
+        "measure": 40,
+        "text": " = 166"
+      },
+      "why": "wrong"
+    }
+  ]
+}

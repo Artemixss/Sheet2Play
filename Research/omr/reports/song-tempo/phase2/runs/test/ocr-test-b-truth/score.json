@@ -1,0 +1,226 @@
+{
+  "split": "test-b",
+  "set": "truth",
+  "candidate": "ocr",
+  "tempo_read_sha256": "022d782858a298222d6d036ba44394d07280c60deb1967c475cc0e65cba49e77",
+  "tempo_truth_sha256": "0acebaad495a3bdd899ea77e1e91166781f8dd1d2a3b2acb2cb41824629c1f06",
+  "truth_manifest_sha256": "84e50b14047760da6f35af27fde6a7e4b340fa0880721046c09560035ec6f71e",
+  "counts": {
+    "scores": 54,
+    "pages": 126,
+    "truth_marks": 126,
+    "matched": 122,
+    "bpm_exact": 122,
+    "unit_exact": 121,
+    "bar_exact": 118,
+    "mid_marks": 72,
+    "mid_matched": 69,
+    "mid_bar_exact": 65,
+    "start_marks": 54,
+    "start_correct": 53,
+    "start_bpm_exact": 53,
+    "detections_with_bpm": 122,
+    "false_tempos": 0,
+    "word_marks": 68,
+    "word_suggested": 37,
+    "layout_pages_exact": 102,
+    "errors": 0,
+    "seconds": 160.3,
+    "page_bar_exact": 121,
+    "mid_page_bar_exact": 68
+  },
+  "mark_recall": 0.9683,
+  "mark_precision": 1.0,
+  "bpm_exact_of_matched": 1.0,
+  "unit_exact_of_matched": 0.9918,
+  "bar_exact_of_matched": 0.9672,
+  "start_tempo_correct": 0.9815,
+  "start_bpm_exact": 0.9815,
+  "mid_bar_exact": 0.942,
+  "page_bar_exact_of_matched": 0.9918,
+  "mid_page_bar_exact": 0.9855,
+  "false_tempos_per_score": 0.0,
+  "word_suggestion_recall": 0.5441,
+  "layout_exact_page_fraction": 0.8095,
+  "seconds_per_page": 1.2719,
+  "peak_rss_mib": 174.7,
+  "unit_confusion": {
+    "dotted_quarter->dotted_quarter": 33,
+    "eighth->eighth": 3,
+    "eighth->quarter": 1,
+    "half->half": 5,
+    "quarter->quarter": 80
+  },
+  "failures": [
+    {
+      "id": "5000446",
+      "mark": {
+        "measure": 15,
+        "page": 0,
+        "system": 1,
+        "system_start": false,
+        "placement": "above",
+        "words": "Poco meno mosso",
+        "bpm": 42.0,
+        "unit": "dotted_quarter",
+        "parentheses": false
+      },
+      "why": "missed"
+    },
+    {
+      "id": "6164267",
+      "mark": {
+        "measure": 59,
+        "page": 1,
+        "system": 3,
+        "system_start": false,
+        "placement": "above",
+        "words": null,
+        "bpm": 187.0,
+        "unit": "quarter",
+        "parentheses": false
+      },
+      "found": {
+        "bpm": 187.0,
+        "unit": "quarter",
+        "unit_source": "glyph",
+        "measure": 60,
+        "text": "√=187"
+      },
+      "why": "wrong"
+    },
+    {
+      "id": "6259403",
+      "mark": {
+        "measure": 29,
+        "page": 1,
+        "system": 0,
+        "system_start": false,
+        "placement": "above",
+        "words": null,
+        "bpm": 116.0,
+        "unit": "quarter",
+        "parentheses": false
+      },
+      "why": "missed"
+    },
+    {
+      "id": "6259403",
+      "mark": {
+        "measure": 44,
+        "page": 1,
+        "system": 4,
+        "system_start": true,
+        "placement": "above",
+        "words": "Più animato",
+        "bpm": 124.0,
+        "unit": "quarter",
+        "parentheses": false
+      },
+      "found": {
+        "bpm": 124.0,
+        "unit": "quarter",
+        "unit_source": "glyph",
+        "measure": 43,
+        "text": "Più animato  = 124"
+      },
+      "why": "wrong"
+    },
+    {
+      "id": "6454809",
+      "mark": {
+        "measure": 66,
+        "page": 2,
+        "system": 1,
+        "system_start": false,
+        "placement": "above",
+        "words": "Meno mosso",
+        "bpm": 77.0,
+        "unit": "eighth",
+        "parentheses": false
+      },
+      "found": {
+        "bpm": 77.0,
+        "unit": "eighth",
+        "unit_source": "glyph",
+        "measure": 65,
+        "text": "Meno mosso  = 77"
+      },
+      "why": "wrong"
+    },
+    {
+      "id": "6484095",
+      "mark": {
+        "measure": 79,
+        "page": 1,
+        "system": 7,
+        "system_start": true,
+        "placement": "above",
+        "words": "Tempo I",
+        "bpm": 71.0,
+        "unit": "quarter",
+        "parentheses": true
+      },
+      "found": {
+        "bpm": 71.0,
+        "unit": "quarter",
+        "unit_source": "glyph",
+        "measure": 78,
+        "text": "Tempo I (J = 71)"
+      },
+      "why": "wrong"
+    },
+    {
+      "id": "6573780",
+      "mark": {
+        "measure": 76,
+        "page": 1,
+        "system": 2,
+        "system_start": false,
+        "placement": "above",
+        "words": null,
+        "bpm": 190.0,
+        "unit": "eighth",
+        "parentheses": false
+      },
+      "found": {
+        "bpm": 190.0,
+        "unit": "quarter",
+        "unit_source": "fallback:no_glyph",
+        "measure": 76,
+        "text": "= 190"
+      },
+      "why": "wrong"
+    },
+    {
+      "id": "6627964",
+      "mark": {
+        "measure": 0,
+        "page": 0,
+        "system": 0,
+        "system_start": true,
+        "placement": "above",
+        "words": null,
+        "bpm": 74.0,
+        "unit": "quarter",
+        "parentheses": false
+      },
+      "why": "missed"
+    },
+    {
+      "id": "6989284",
+      "mark": {
+        "measure": 5,
+        "page": 0,
+        "system": 0,
+        "system_start": false,
+        "placement": "above",
+        "words": "Più animato",
+        "bpm": 89.0,
+        "unit": "dotted_quarter",
+        "parentheses": false
+      },
+      "why": "missed"
+    }
+  ]
+}

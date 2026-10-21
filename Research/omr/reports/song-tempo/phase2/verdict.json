@@ -1,0 +1,442 @@
+{
+  "freeze": {
+    "plan": "2026-10-19-song-tempo",
+    "phase": 2,
+    "frozen_utc": "2026-10-21T11:44:43Z",
+    "tempo_read_sha256": "022d782858a298222d6d036ba44394d07280c60deb1967c475cc0e65cba49e77",
+    "tempo_truth_sha256": "0acebaad495a3bdd899ea77e1e91166781f8dd1d2a3b2acb2cb41824629c1f06",
+    "truth_manifest_sha256": "84e50b14047760da6f35af27fde6a7e4b340fa0880721046c09560035ec6f71e",
+    "development_runs": [
+      "reports/song-tempo/phase2/runs/dev/ocr-dev-b-control",
+      "reports/song-tempo/phase2/runs/dev/ocr-dev-b-truth",
+      "reports/song-tempo/phase2/runs/dev/ocr-dev-control",
+      "reports/song-tempo/phase2/runs/dev/ocr-dev-truth",
+      "reports/song-tempo/phase2/runs/dev/text-dev-b-control",
+      "reports/song-tempo/phase2/runs/dev/text-dev-b-truth",
+      "reports/song-tempo/phase2/runs/dev/text-dev-control",
+      "reports/song-tempo/phase2/runs/dev/text-dev-truth"
+    ],
+    "candidate": "ocr",
+    "rule": {
+      "truth": {
+        "start_tempo_correct": [
+          ">=",
+          0.95
+        ],
+        "mark_recall": [
+          ">=",
+          0.9
+        ],
+        "mid_page_bar_exact": [
+          ">=",
+          0.9
+        ],
+        "false_tempos_per_score": [
+          "<=",
+          0.02
+        ],
+        "errors": [
+          "=",
+          0
+        ],
+        "peak_rss_mib": [
+          "<=",
+          1024
+        ],
+        "seconds_per_page": [
+          "<=",
+          5
+        ]
+      },
+      "control": {
+        "false_tempos_per_score": [
+          "<=",
+          0.02
+        ],
+        "errors": [
+          "=",
+          0
+        ],
+        "peak_rss_mib": [
+          "<=",
+          1024
+        ],
+        "seconds_per_page": [
+          "<=",
+          5
+        ]
+      }
+    }
+  },
+  "sets": {
+    "truth": {
+      "pooled": {
+        "counts": {
+          "scores": 94,
+          "pages": 257,
+          "truth_marks": 218,
+          "matched": 210,
+          "bpm_exact": 210,
+          "unit_exact": 208,
+          "bar_exact": 203,
+          "mid_marks": 123,
+          "mid_matched": 117,
+          "mid_bar_exact": 110,
+          "start_marks": 95,
+          "start_correct": 93,
+          "start_bpm_exact": 93,
+          "detections_with_bpm": 210,
+          "false_tempos": 0,
+          "word_marks": 132,
+          "word_suggested": 80,
+          "layout_pages_exact": 210,
+          "errors": 0,
+          "seconds": 344.1,
+          "page_bar_exact": 207,
+          "mid_page_bar_exact": 114
+        },
+        "mark_recall": 0.9633,
+        "mark_precision": 1.0,
+        "bpm_exact_of_matched": 1.0,
+        "unit_exact_of_matched": 0.9905,
+        "bar_exact_of_matched": 0.9667,
+        "start_tempo_correct": 0.9789,
+        "start_bpm_exact": 0.9789,
+        "mid_bar_exact": 0.9402,
+        "page_bar_exact_of_matched": 0.9857,
+        "mid_page_bar_exact": 0.9744,
+        "false_tempos_per_score": 0.0,
+        "word_suggestion_recall": 0.6061,
+        "layout_exact_page_fraction": 0.8171,
+        "seconds_per_page": 1.3388,
+        "peak_rss_mib": 187.4,
+        "unit_confusion": {
+          "dotted_half->dotted_half": 2,
+          "dotted_quarter->dotted_quarter": 46,
+          "eighth->eighth": 5,
+          "eighth->quarter": 1,
+          "half->half": 9,
+          "quarter->eighth": 1,
+          "quarter->quarter": 146
+        }
+      },
+      "splits": {
+        "reports\\song-tempo\\phase2\\runs\\test\\ocr-test-truth": {
+          "counts": {
+            "scores": 40,
+            "pages": 131,
+            "truth_marks": 92,
+            "matched": 88,
+            "bpm_exact": 88,
+            "unit_exact": 87,
+            "bar_exact": 85,
+            "mid_marks": 51,
+            "mid_matched": 48,
+            "mid_bar_exact": 45,
+            "start_marks": 41,
+            "start_correct": 40,
+            "start_bpm_exact": 40,
+            "detections_with_bpm": 88,
+            "false_tempos": 0,
+            "word_marks": 64,
+            "word_suggested": 43,
+            "layout_pages_exact": 108,
+            "errors": 0,
+            "seconds": 183.8,
+            "page_bar_exact": 86,
+            "mid_page_bar_exact": 46
+          },
+          "mark_recall": 0.9565,
+          "mark_precision": 1.0,
+          "bpm_exact_of_matched": 1.0,
+          "unit_exact_of_matched": 0.9886,
+          "bar_exact_of_matched": 0.9659,
+          "start_tempo_correct": 0.9756,
+          "start_bpm_exact": 0.9756,
+          "mid_bar_exact": 0.9375,
+          "page_bar_exact_of_matched": 0.9773,
+          "mid_page_bar_exact": 0.9583,
+          "false_tempos_per_score": 0.0,
+          "word_suggestion_recall": 0.6719,
+          "layout_exact_page_fraction": 0.8244,
+          "seconds_per_page": 1.4031,
+          "peak_rss_mib": 187.4,
+          "unit_confusion": {
+            "dotted_half->dotted_half": 2,
+            "dotted_quarter->dotted_quarter": 13,
+            "eighth->eighth": 2,
+            "half->half": 4,
+            "quarter->eighth": 1,
+            "quarter->quarter": 66
+          }
+        },
+        "reports\\song-tempo\\phase2\\runs\\test\\ocr-test-b-truth": {
+          "counts": {
+            "scores": 54,
+            "pages": 126,
+            "truth_marks": 126,
+            "matched": 122,
+            "bpm_exact": 122,
+            "unit_exact": 121,
+            "bar_exact": 118,
+            "mid_marks": 72,
+            "mid_matched": 69,
+            "mid_bar_exact": 65,
+            "start_marks": 54,
+            "start_correct": 53,
+            "start_bpm_exact": 53,
+            "detections_with_bpm": 122,
+            "false_tempos": 0,
+            "word_marks": 68,
+            "word_suggested": 37,
+            "layout_pages_exact": 102,
+            "errors": 0,
+            "seconds": 160.3,
+            "page_bar_exact": 121,
+            "mid_page_bar_exact": 68
+          },
+          "mark_recall": 0.9683,
+          "mark_precision": 1.0,
+          "bpm_exact_of_matched": 1.0,
+          "unit_exact_of_matched": 0.9918,
+          "bar_exact_of_matched": 0.9672,
+          "start_tempo_correct": 0.9815,
+          "start_bpm_exact": 0.9815,
+          "mid_bar_exact": 0.942,
+          "page_bar_exact_of_matched": 0.9918,
+          "mid_page_bar_exact": 0.9855,
+          "false_tempos_per_score": 0.0,
+          "word_suggestion_recall": 0.5441,
+          "layout_exact_page_fraction": 0.8095,
+          "seconds_per_page": 1.2719,
+          "peak_rss_mib": 174.7,
+          "unit_confusion": {
+            "dotted_quarter->dotted_quarter": 33,
+            "eighth->eighth": 3,
+            "eighth->quarter": 1,
+            "half->half": 5,
+            "quarter->quarter": 80
+          }
+        }
+      }
+    },
+    "control": {
+      "pooled": {
+        "counts": {
+          "scores": 94,
+          "pages": 256,
+          "truth_marks": 5,
+          "matched": 3,
+          "bpm_exact": 3,
+          "unit_exact": 2,
+          "bar_exact": 3,
+          "mid_marks": 4,
+          "mid_matched": 2,
+          "mid_bar_exact": 2,
+          "start_marks": 1,
+          "start_correct": 1,
+          "start_bpm_exact": 1,
+          "detections_with_bpm": 3,
+          "false_tempos": 0,
+          "word_marks": 109,
+          "word_suggested": 56,
+          "layout_pages_exact": 210,
+          "errors": 0,
+          "seconds": 341.6,
+          "page_bar_exact": 3,
+          "mid_page_bar_exact": 2
+        },
+        "mark_recall": 0.6,
+        "mark_precision": 1.0,
+        "bpm_exact_of_matched": 1.0,
+        "unit_exact_of_matched": 0.6667,
+        "bar_exact_of_matched": 1.0,
+        "start_tempo_correct": 1.0,
+        "start_bpm_exact": 1.0,
+        "mid_bar_exact": 1.0,
+        "page_bar_exact_of_matched": 1.0,
+        "mid_page_bar_exact": 1.0,
+        "false_tempos_per_score": 0.0,
+        "word_suggestion_recall": 0.5138,
+        "layout_exact_page_fraction": 0.8203,
+        "seconds_per_page": 1.3345,
+        "peak_rss_mib": 186.0,
+        "unit_confusion": {
+          "quarter->eighth": 1,
+          "quarter->quarter": 2
+        }
+      },
+      "splits": {
+        "reports\\song-tempo\\phase2\\runs\\test\\ocr-test-control": {
+          "counts": {
+            "scores": 40,
+            "pages": 130,
+            "truth_marks": 4,
+            "matched": 2,
+            "bpm_exact": 2,
+            "unit_exact": 1,
+            "bar_exact": 2,
+            "mid_marks": 4,
+            "mid_matched": 2,
+            "mid_bar_exact": 2,
+            "start_marks": 0,
+            "start_correct": 0,
+            "start_bpm_exact": 0,
+            "detections_with_bpm": 2,
+            "false_tempos": 0,
+            "word_marks": 58,
+            "word_suggested": 38,
+            "layout_pages_exact": 108,
+            "errors": 0,
+            "seconds": 182.8,
+            "page_bar_exact": 2,
+            "mid_page_bar_exact": 2
+          },
+          "mark_recall": 0.5,
+          "mark_precision": 1.0,
+          "bpm_exact_of_matched": 1.0,
+          "unit_exact_of_matched": 0.5,
+          "bar_exact_of_matched": 1.0,
+          "start_tempo_correct": null,
+          "start_bpm_exact": null,
+          "mid_bar_exact": 1.0,
+          "page_bar_exact_of_matched": 1.0,
+          "mid_page_bar_exact": 1.0,
+          "false_tempos_per_score": 0.0,
+          "word_suggestion_recall": 0.6552,
+          "layout_exact_page_fraction": 0.8308,
+          "seconds_per_page": 1.4064,
+          "peak_rss_mib": 186.0,
+          "unit_confusion": {
+            "quarter->eighth": 1,
+            "quarter->quarter": 1
+          }
+        },
+        "reports\\song-tempo\\phase2\\runs\\test\\ocr-test-b-control": {
+          "counts": {
+            "scores": 54,
+            "pages": 126,
+            "truth_marks": 1,
+            "matched": 1,
+            "bpm_exact": 1,
+            "unit_exact": 1,
+            "bar_exact": 1,
+            "mid_marks": 0,
+            "mid_matched": 0,
+            "mid_bar_exact": 0,
+            "start_marks": 1,
+            "start_correct": 1,
+            "start_bpm_exact": 1,
+            "detections_with_bpm": 1,
+            "false_tempos": 0,
+            "word_marks": 51,
+            "word_suggested": 18,
+            "layout_pages_exact": 102,
+            "errors": 0,
+            "seconds": 158.8,
+            "page_bar_exact": 1,
+            "mid_page_bar_exact": 0
+          },
+          "mark_recall": 1.0,
+          "mark_precision": 1.0,
+          "bpm_exact_of_matched": 1.0,
+          "unit_exact_of_matched": 1.0,
+          "bar_exact_of_matched": 1.0,
+          "start_tempo_correct": 1.0,
+          "start_bpm_exact": 1.0,
+          "mid_bar_exact": null,
+          "page_bar_exact_of_matched": 1.0,
+          "mid_page_bar_exact": null,
+          "false_tempos_per_score": 0.0,
+          "word_suggestion_recall": 0.3529,
+          "layout_exact_page_fraction": 0.8095,
+          "seconds_per_page": 1.2602,
+          "peak_rss_mib": 173.8,
+          "unit_confusion": {
+            "quarter->quarter": 1
+          }
+        }
+      }
+    }
+  },
+  "checks": [
+    {
+      "set": "truth",
+      "metric": "start_tempo_correct",
+      "rule": ">= 0.95",
+      "value": 0.9789,
+      "pass": true
+    },
+    {
+      "set": "truth",
+      "metric": "mark_recall",
+      "rule": ">= 0.9",
+      "value": 0.9633,
+      "pass": true
+    },
+    {
+      "set": "truth",
+      "metric": "mid_page_bar_exact",
+      "rule": ">= 0.9",
+      "value": 0.9744,
+      "pass": true
+    },
+    {
+      "set": "truth",
+      "metric": "false_tempos_per_score",
+      "rule": "<= 0.02",
+      "value": 0.0,
+      "pass": true
+    },
+    {
+      "set": "truth",
+      "metric": "errors",
+      "rule": "= 0",
+      "value": 0,
+      "pass": true
+    },
+    {
+      "set": "truth",
+      "metric": "peak_rss_mib",
+      "rule": "<= 1024",
+      "value": 187.4,
+      "pass": true
+    },
+    {
+      "set": "truth",
+      "metric": "seconds_per_page",
+      "rule": "<= 5",
+      "value": 1.3388,
+      "pass": true
+    },
+    {
+      "set": "control",
+      "metric": "false_tempos_per_score",
+      "rule": "<= 0.02",
+      "value": 0.0,
+      "pass": true
+    },
+    {
+      "set": "control",
+      "metric": "errors",
+      "rule": "= 0",
+      "value": 0,
+      "pass": true
+    },
+    {
+      "set": "control",
+      "metric": "peak_rss_mib",
+      "rule": "<= 1024",
+      "value": 186.0,
+      "pass": true
+    },
+    {
+      "set": "control",
+      "metric": "seconds_per_page",
+      "rule": "<= 5",
+      "value": 1.3345,
+      "pass": true
+    }
+  ],
+  "accepted": true
+}
