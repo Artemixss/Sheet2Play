@@ -1,4 +1,0 @@
-interface:
-  display_name: "Writing for Agents"
-  short_description: "Maintain focused Sheet2Play agent guidance"
-  default_prompt: "Use $writing-for-agents to revise the requested Sheet2Play agent guidance and check its links."

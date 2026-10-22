@@ -15,7 +15,7 @@ public sealed record SoundFontStatus(string? Path, long Bytes, string? Problem)
 /// Finds and loads the SoundFont the built-in synthesiser plays.
 /// </summary>
 /// <remarks>
-/// A SoundFont is a runtime asset in the sense <c>CLAUDE.md</c> warns about: invisible to the
+/// A SoundFont is a runtime asset: invisible to the
 /// compiler, so a build succeeds while the app degrades. Two rules follow.
 ///
 /// First, the filename is never hardcoded - the folder is globbed. <c>verify-release.ps1</c>

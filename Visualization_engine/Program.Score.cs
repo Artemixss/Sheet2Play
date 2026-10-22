@@ -5,7 +5,7 @@ using Rectangle = Raylib_cs.Rectangle;
 namespace SynthesiaClone;
 
 /// <summary>
-/// The playback screen's view of the score (<c>plans/2026-10-19-musicxml-songs.md</c>, Phase 5): bar
+/// The playback screen's view of the score: bar
 /// lines, the pedal lane, the song badges, and the EXPORT panel's MIDI, MusicXML and Re-convert
 /// actions beside MP3.
 /// </summary>

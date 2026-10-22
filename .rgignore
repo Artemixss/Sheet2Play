@@ -23,3 +23,11 @@
 /Research/omr/artifacts/
 /Research/omr/out/
 /Research/omr/out_zeus_test/
+
+# Agent docs are gitignored (not published) but must stay searchable.
+!/CLAUDE.md
+!/AGENTS.md
+!/CONTEXT.md
+!/plans/**
+!/.agents/**
+!/docs/agent-checkpoints.md

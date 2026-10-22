@@ -362,7 +362,7 @@ public static partial class SongCache
     }
 
     // A song is named after its source whatever the timing fix: the setting on the home screen
-    // says which conversion plays (plans/2026-10-21-timing-fix-default.md).
+    // says which conversion plays.
     private static SongLoadResult CreateLoadResult(
         List<VisualNote> notes,
         string sourcePath,

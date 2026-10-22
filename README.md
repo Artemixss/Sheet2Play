@@ -239,8 +239,7 @@ README gets slow to load.
 
 HOMR is accurate enough for general sheet music but loses rhythmic precision on dense piano
 arrangements, which is the material this project actually receives. `Research/omr/` holds the
-work aimed at fixing that. It is research tooling, not part of the shipped app. The
-[current research plan](plans/MAIN_PLAN.md) says what is being worked on now.
+work aimed at fixing that. It is research tooling, not part of the shipped app.
 
 ### Datasets
 
@@ -284,11 +283,8 @@ Your sheet music is not in here — see [Where your library lives](#where-your-l
 
 ## Further reading
 
-* [`CONTEXT.md`](CONTEXT.md) — architecture, invariants and known traps. Read this before
-  making changes, especially automated ones.
-* [Current research plan](plans/MAIN_PLAN.md) — workstream, phase status and next action.
-* [Plans index](plans/README.md) — completed and superseded plans with their evidence.
-* [Agent instructions](AGENTS.md) — repository rules for Claude and Codex.
+* [Research harness](Research/omr/README.md) — the OMR evaluation tooling and datasets.
+* [Findings](Research/omr/reports/diagnosis/FINDINGS.md) — where recognition loses timing, measured.
 
 ## Licence
 

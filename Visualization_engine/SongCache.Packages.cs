@@ -7,7 +7,7 @@ namespace SynthesiaClone;
 
 /// <summary>
 /// Song packages: a conversion keeps the MusicXML it read, and the app plays a performance
-/// interpreted from it (<c>plans/2026-10-19-musicxml-songs.md</c>, Phase 2).
+/// interpreted from it.
 /// </summary>
 /// <remarks>
 /// One package per source and engine, in <c>songs/scores/&lt;engine&gt;/&lt;source-sha&gt;[-&lt;profile-sha&gt;]/</c>:

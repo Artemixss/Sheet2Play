@@ -1,8 +1,0 @@
-# 55% of this desktop session's reported 258,400-token context window.
-# This is an absolute trigger, not a hard cap or a percentage that follows every model.
-model_auto_compact_token_limit = 142120
-model_auto_compact_token_limit_scope = "total"
-experimental_compact_prompt_file = "C:/Users/bur4x/Desktop/lecture/big_projects/Sheet2Play/.codex/COMPACTION_PROMPT.md"
-
-[features]
-hooks = true

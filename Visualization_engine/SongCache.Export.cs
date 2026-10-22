@@ -7,7 +7,7 @@ namespace SynthesiaClone;
 
 /// <summary>
 /// What the playback screen's Export MIDI, Export MusicXML and Re-convert buttons need from the
-/// library (<c>plans/2026-10-19-musicxml-songs.md</c>, Phase 5).
+/// library.
 /// </summary>
 public static partial class SongCache
 {

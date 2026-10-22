@@ -317,8 +317,7 @@ public static class AppSettingsStore
     }
 
     // The SFZ piano is the user's pick from Phase 4a; without it installed, Create falls back to the
-    // SoundFont piano and says why. The timing fix is on unless a file says it was switched off
-    // (plans/2026-10-21-timing-fix-default.md).
+    // SoundFont piano and says why. The timing fix is on unless a file says it was switched off.
     private sealed record AppSettings(
         OmrEngine OmrEngine,
         int AudioOffsetMilliseconds = DefaultAudioOffsetMilliseconds,

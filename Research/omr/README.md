@@ -13,24 +13,17 @@ this directory's `.venv`.
 
 ## Read this first
 
-**Plans directory:** [All plans, statuses and handoffs](../../plans/README.md).
-
-**Current execution plan:** [MAIN_PLAN.md](../../plans/MAIN_PLAN.md) owns the
-workstream, phase status and next action. Read its linked handoff before
-execution. Older plans and handoffs below are historical evidence.
-
 **Canonical Stage 4 is complete:** the [evaluation and decision](reports/screening/v1/stage4-evaluation/REPORT.md)
 recommends retaining shipped HOMR and no accuracy-led challenger confirmation now.
 The historical 343-page remainder is partly previously inferred; the review records
 exposure limits and optional runtime estimates. A later confirmation, Stage 5,
 training or production change needs a separate request.
 
-Consult the [historical screening comparison baseline](../../plans/archive/2026-09-26-omr-screening-comparison.superseded.md), the historical
+Consult the historical
 [Phase 1](PHASE1_HANDOFF.md) and [Phase 2](PHASE2_HANDOFF.md) handoffs, and the
 [Phase 2R correction handoff](PHASE2R_CORRECTION_HANDOFF.md) for prior evidence;
 the [original Phase 2R handoff](PHASE2R_HANDOFF.md) remains historical. The old
 full Phase 3 run was interrupted and is superseded by the selected screen.
-[CONTEXT.md](../../CONTEXT.md) covers architecture, and
 [FINDINGS.md](reports/diagnosis/FINDINGS.md) preserves historical measurements.
 This file covers the harness. The following observations are historical diagnostics,
 not a candidate ranking or a replacement for the current plan:
@@ -72,7 +65,7 @@ instructions, and rewriting them would falsify the record.
 
 The `smt_infer.py` / `smt_compat.py` pair is a different superseded evaluation — the Sheet Music
 Transformer, measured and found not to beat HOMR. Kept because the DPI lesson in
-`CONTEXT.md §5` came out of it.
+the research notes came out of it.
 
 ---
 

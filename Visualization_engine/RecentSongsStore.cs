@@ -13,7 +13,7 @@ public static class RecentSongsStore
 {
     private const int MaximumEntries = 10;
     // Songs were once named with this suffix when converted with the timing fix; the setting now
-    // says which conversion plays (plans/2026-10-21-timing-fix-default.md).
+    // says which conversion plays.
     private const string RetiredTimingSuffix = " · timing fix";
     private static readonly object Gate = new();
     private static readonly JsonSerializerOptions JsonOptions = new()

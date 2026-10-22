@@ -1,3 +1,13 @@
+# ---- AI agent instructions and plans: kept on disk, not published ----
+/CLAUDE.md
+/AGENTS.md
+/CONTEXT.md
+/.agents/
+/.codex/
+/.claude/
+/docs/agent-checkpoints.md
+/plans/
+
 # ---- .NET build output ----
 bin/
 obj/
@@ -7,8 +17,6 @@ dist/
 *.sourcelink.json
 
 # ---- Python ----
-# Per-chat Codex continuation state stays local; keep the hook/config sources tracked.
-/.codex/checkpoints/
 __pycache__/
 *.py[cod]
 .venv/
