@@ -1,0 +1,844 @@
+{
+  "freeze": {
+    "plan": "2026-10-19-song-tempo",
+    "phase": 4,
+    "frozen_utc": "2026-10-22T16:27:51Z",
+    "tempo_words_sha256": "60ca1fe1481c0874c4db3a0013e984107453908c4ef86c2d3ef3a616eeffd94d",
+    "reader_freeze_sha256": "868b8b5fc94d3fa34014c88042148a09ba3e8b6c6d7fb937dc7fe5a934d173cb",
+    "development_runs": [
+      "reports/song-tempo/phase2/runs/dev/ocr-dev-truth",
+      "reports/song-tempo/phase2/runs/dev/ocr-dev-b-truth"
+    ],
+    "rule": {
+      "return_precision": [
+        ">=",
+        0.9
+      ],
+      "kind_exact_of_matched": [
+        ">=",
+        0.95
+      ],
+      "page_bar_exact_of_matched": [
+        ">=",
+        0.9
+      ],
+      "return_recall": [
+        ">=",
+        0.6
+      ],
+      "false_per_score": [
+        "<=",
+        0.1
+      ]
+    }
+  },
+  "pooled": {
+    "counts": {
+      "scores": 94,
+      "truth": 96,
+      "truth_words_only": 84,
+      "found": 58,
+      "matched": 52,
+      "matched_words_only": 40,
+      "kind_exact": 52,
+      "page_bar_exact": 50,
+      "false": 6
+    },
+    "return_recall": 0.5417,
+    "return_recall_words_only": 0.4762,
+    "return_precision": 0.8966,
+    "kind_exact_of_matched": 1.0,
+    "page_bar_exact_of_matched": 0.9615,
+    "false_per_score": 0.0638,
+    "failures": [
+      {
+        "id": "5004771",
+        "mark": {
+          "measure": 44,
+          "page": 1,
+          "system": 2,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6166579",
+        "mark": {
+          "measure": 85,
+          "page": 2,
+          "system": 4,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6166579",
+        "mark": {
+          "measure": 199,
+          "page": 5,
+          "system": 6,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6166579",
+        "mark": {
+          "measure": 234,
+          "page": 7,
+          "system": 0,
+          "system_start": true,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6166579",
+        "found": {
+          "page": 2,
+          "system": 5,
+          "measure": 89,
+          "text": "a tempo"
+        },
+        "why": "false"
+      },
+      {
+        "id": "6166579",
+        "found": {
+          "page": 7,
+          "system": 1,
+          "measure": 238,
+          "text": "a tempo"
+        },
+        "why": "false"
+      },
+      {
+        "id": "6230260",
+        "mark": {
+          "measure": 7,
+          "page": 0,
+          "system": 1,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6236155",
+        "mark": {
+          "measure": 5,
+          "page": 0,
+          "system": 1,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6236155",
+        "mark": {
+          "measure": 31,
+          "page": 1,
+          "system": 1,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6477819",
+        "mark": {
+          "measure": 15,
+          "page": 0,
+          "system": 4,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6518082",
+        "mark": {
+          "measure": 19,
+          "page": 0,
+          "system": 2,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6518082",
+        "mark": {
+          "measure": 27,
+          "page": 0,
+          "system": 4,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6518082",
+        "mark": {
+          "measure": 37,
+          "page": 1,
+          "system": 0,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6518134",
+        "mark": {
+          "measure": 28,
+          "page": 0,
+          "system": 4,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6518134",
+        "mark": {
+          "measure": 35,
+          "page": 1,
+          "system": 0,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6518134",
+        "mark": {
+          "measure": 44,
+          "page": 1,
+          "system": 2,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6518134",
+        "mark": {
+          "measure": 59,
+          "page": 1,
+          "system": 4,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6877413",
+        "mark": {
+          "measure": 102,
+          "page": 2,
+          "system": 2,
+          "system_start": true,
+          "placement": "above",
+          "words": "a Tempo.",
+          "bpm": null,
+          "unit": null
+        },
+        "found": {
+          "text": "a Tempo.",
+          "page_measure": 12,
+          "measure": 101
+        },
+        "why": "wrong"
+      },
+      {
+        "id": "6189616",
+        "mark": {
+          "measure": 21,
+          "page": 0,
+          "system": 3,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6189616",
+        "mark": {
+          "measure": 28,
+          "page": 0,
+          "system": 4,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6189616",
+        "mark": {
+          "measure": 36,
+          "page": 1,
+          "system": 1,
+          "system_start": true,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6189644",
+        "mark": {
+          "measure": 30,
+          "page": 0,
+          "system": 3,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6189644",
+        "mark": {
+          "measure": 60,
+          "page": 1,
+          "system": 1,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6202745",
+        "mark": {
+          "measure": 16,
+          "page": 0,
+          "system": 4,
+          "system_start": true,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6202745",
+        "mark": {
+          "measure": 31,
+          "page": 1,
+          "system": 2,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6205441",
+        "mark": {
+          "measure": 81,
+          "page": 2,
+          "system": 0,
+          "system_start": true,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6205716",
+        "mark": {
+          "measure": 54,
+          "page": 1,
+          "system": 2,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6205716",
+        "found": {
+          "page": 1,
+          "system": 3,
+          "measure": 63,
+          "text": "a tempo"
+        },
+        "why": "false"
+      },
+      {
+        "id": "6259403",
+        "mark": {
+          "measure": 32,
+          "page": 1,
+          "system": 1,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6466145",
+        "mark": {
+          "measure": 67,
+          "page": 1,
+          "system": 0,
+          "system_start": false,
+          "placement": "above",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6484095",
+        "mark": {
+          "measure": 79,
+          "page": 1,
+          "system": 7,
+          "system_start": true,
+          "placement": "above",
+          "words": "Tempo I",
+          "bpm": 71.0,
+          "unit": "quarter",
+          "parentheses": true
+        },
+        "found": {
+          "text": "Tempo I (J = 71)",
+          "page_measure": 41,
+          "measure": 78
+        },
+        "why": "wrong"
+      },
+      {
+        "id": "6497657",
+        "mark": {
+          "measure": 24,
+          "page": 0,
+          "system": 4,
+          "system_start": true,
+          "placement": "above",
+          "words": "a Tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6497657",
+        "found": {
+          "page": 0,
+          "system": 2,
+          "measure": 16,
+          "text": "a Tempo I°."
+        },
+        "why": "false"
+      },
+      {
+        "id": "6505652",
+        "mark": {
+          "measure": 14,
+          "page": 0,
+          "system": 2,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6505652",
+        "mark": {
+          "measure": 36,
+          "page": 1,
+          "system": 2,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6505652",
+        "mark": {
+          "measure": 66,
+          "page": 2,
+          "system": 3,
+          "system_start": false,
+          "placement": "above",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6508497",
+        "mark": {
+          "measure": 8,
+          "page": 0,
+          "system": 1,
+          "system_start": true,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6508497",
+        "mark": {
+          "measure": 12,
+          "page": 0,
+          "system": 1,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6508497",
+        "mark": {
+          "measure": 46,
+          "page": 1,
+          "system": 0,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6508497",
+        "mark": {
+          "measure": 50,
+          "page": 1,
+          "system": 0,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6508497",
+        "mark": {
+          "measure": 60,
+          "page": 1,
+          "system": 2,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6573780",
+        "mark": {
+          "measure": 100,
+          "page": 1,
+          "system": 4,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6575466",
+        "mark": {
+          "measure": 20,
+          "page": 1,
+          "system": 0,
+          "system_start": true,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6627964",
+        "mark": {
+          "measure": 67,
+          "page": 1,
+          "system": 0,
+          "system_start": false,
+          "placement": "below",
+          "words": "a Tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6629808",
+        "mark": {
+          "measure": 22,
+          "page": 0,
+          "system": 3,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6629808",
+        "found": {
+          "page": 0,
+          "system": 4,
+          "measure": 27,
+          "text": "a tempo"
+        },
+        "why": "false"
+      },
+      {
+        "id": "6663305",
+        "mark": {
+          "measure": 44,
+          "page": 1,
+          "system": 3,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6663305",
+        "found": {
+          "page": 1,
+          "system": 4,
+          "measure": 47,
+          "text": "a tempo"
+        },
+        "why": "false"
+      },
+      {
+        "id": "6663350",
+        "mark": {
+          "measure": 4,
+          "page": 0,
+          "system": 0,
+          "system_start": false,
+          "placement": "below",
+          "words": "rit.  a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "6663350",
+        "mark": {
+          "measure": 31,
+          "page": 0,
+          "system": 5,
+          "system_start": false,
+          "placement": "below",
+          "words": "a tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "7380386",
+        "mark": {
+          "measure": 27,
+          "page": 0,
+          "system": 2,
+          "system_start": false,
+          "placement": "below",
+          "words": "a Tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      },
+      {
+        "id": "7380386",
+        "mark": {
+          "measure": 79,
+          "page": 1,
+          "system": 1,
+          "system_start": false,
+          "placement": "below",
+          "words": "a Tempo",
+          "bpm": null,
+          "unit": null
+        },
+        "why": "missed"
+      }
+    ]
+  },
+  "splits": {
+    "reports/song-tempo/phase2/runs/test/ocr-test-truth": {
+      "counts": {
+        "scores": 40,
+        "truth": 51,
+        "truth_words_only": 47,
+        "found": 38,
+        "matched": 36,
+        "matched_words_only": 32,
+        "kind_exact": 36,
+        "page_bar_exact": 35,
+        "false": 2
+      },
+      "return_recall": 0.7059,
+      "return_recall_words_only": 0.6809,
+      "return_precision": 0.9474,
+      "kind_exact_of_matched": 1.0,
+      "page_bar_exact_of_matched": 0.9722,
+      "false_per_score": 0.05
+    },
+    "reports/song-tempo/phase2/runs/test/ocr-test-b-truth": {
+      "counts": {
+        "scores": 54,
+        "truth": 45,
+        "truth_words_only": 37,
+        "found": 20,
+        "matched": 16,
+        "matched_words_only": 8,
+        "kind_exact": 16,
+        "page_bar_exact": 15,
+        "false": 4
+      },
+      "return_recall": 0.3556,
+      "return_recall_words_only": 0.2162,
+      "return_precision": 0.8,
+      "kind_exact_of_matched": 1.0,
+      "page_bar_exact_of_matched": 0.9375,
+      "false_per_score": 0.0741
+    }
+  },
+  "checks": [
+    {
+      "metric": "return_precision",
+      "rule": ">= 0.9",
+      "value": 0.8966,
+      "pass": false
+    },
+    {
+      "metric": "kind_exact_of_matched",
+      "rule": ">= 0.95",
+      "value": 1.0,
+      "pass": true
+    },
+    {
+      "metric": "page_bar_exact_of_matched",
+      "rule": ">= 0.9",
+      "value": 0.9615,
+      "pass": true
+    },
+    {
+      "metric": "return_recall",
+      "rule": ">= 0.6",
+      "value": 0.5417,
+      "pass": false
+    },
+    {
+      "metric": "false_per_score",
+      "rule": "<= 0.1",
+      "value": 0.0638,
+      "pass": true
+    }
+  ],
+  "accepted": false
+}

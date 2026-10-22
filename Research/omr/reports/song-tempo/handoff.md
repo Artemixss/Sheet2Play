@@ -12,11 +12,16 @@
   The user then made printed marks play by default. That amendment is **checked and committed**:
   the user's map comes first, then the printed marks; all 61 library PDFs were read once
   (37 print tempo numbers). Release gate 8 of 8.
-- **Phase 4** (tempo words as measured guesses) added to the plan 2026-10-21 ("add tempo words
-  as phase 4"). Not started.
+- **Phase 4** (tempo words) added 2026-10-21 ("add tempo words as phase 4"), started 2026-10-22
+  ("ok proceed with phase 4"), **not accepted** ([report](phase4/REPORT.md)). The user declined the PDMX
+  download and chose OpenScore Lieder ("lets go with number 2 if theres too few pairs we go back with
+  option 1"). Lieder: 222 pairs, 4 words with 10+ (bar: 6), so back to return words. Return words, frozen
+  rule after dev, scored once on test and test-b: precision 0.897 (≥ 0.90) and recall 0.54 (≥ 0.60) failed;
+  kind 1.00 and page bar 0.96 passed. Nothing ships; words stay hints.
 
-**Next authorized action:** none. Phase 4 starts when the user asks; its first step is choosing the
-word-truth corpus. TIMING FIX on by default with no labels runs in a separate session and plan.
+**Next authorized action:** option 2 of the [Phase 4 report](phase4/REPORT.md#4-options-left-not-authorized),
+chosen 2026-10-22 ("go with option 2 and commit the phase 4 research"): a return word in the TEMPO panel
+shows the tempo it names, with a one-click USE that adds that change to the user's map. No auto-play.
 
 ## Phase 3 (requested 2026-10-21, "ok commit and push proceed with phase 3"): committed
 

@@ -1,0 +1,224 @@
+{
+  "scores": 1352,
+  "marks": {
+    "visible words": 3237,
+    "hidden number": 5548,
+    "hidden number words": 2865,
+    "hidden words": 952,
+    "visible number words": 216,
+    "visible number": 23,
+    "visible": 13,
+    "hidden": 3
+  },
+  "pairs": 222,
+  "words_with_10_pairs": 4,
+  "relative_pairs_after_a_number": 18,
+  "enough": false,
+  "rule": {
+    "min_pairs": 150,
+    "min_words": 6,
+    "min_pairs_per_word": 10
+  },
+  "top_pairs": [
+    {
+      "words": "andantino",
+      "pairs": 13,
+      "composers": 6
+    },
+    {
+      "words": "allegro",
+      "pairs": 13,
+      "composers": 8
+    },
+    {
+      "words": "allegretto",
+      "pairs": 11,
+      "composers": 6
+    },
+    {
+      "words": "moderato",
+      "pairs": 10,
+      "composers": 5
+    },
+    {
+      "words": "andante con moto",
+      "pairs": 9,
+      "composers": 5
+    },
+    {
+      "words": "andante",
+      "pairs": 8,
+      "composers": 4
+    },
+    {
+      "words": "allegro moderato",
+      "pairs": 5,
+      "composers": 5
+    },
+    {
+      "words": "lento",
+      "pairs": 4,
+      "composers": 2
+    },
+    {
+      "words": "a tempo deciso",
+      "pairs": 4,
+      "composers": 1
+    },
+    {
+      "words": "allegretto moderato",
+      "pairs": 3,
+      "composers": 3
+    },
+    {
+      "words": "tempo i",
+      "pairs": 3,
+      "composers": 2
+    },
+    {
+      "words": "larghetto",
+      "pairs": 3,
+      "composers": 2
+    },
+    {
+      "words": "langsam",
+      "pairs": 3,
+      "composers": 2
+    },
+    {
+      "words": "moins vite",
+      "pairs": 3,
+      "composers": 1
+    },
+    {
+      "words": "a tempo moins vite",
+      "pairs": 3,
+      "composers": 1
+    },
+    {
+      "words": "andante ma non troppo",
+      "pairs": 2,
+      "composers": 1
+    },
+    {
+      "words": "andante moderato",
+      "pairs": 2,
+      "composers": 2
+    },
+    {
+      "words": "andantino molto",
+      "pairs": 2,
+      "composers": 1
+    },
+    {
+      "words": "a tempo animato",
+      "pairs": 2,
+      "composers": 1
+    },
+    {
+      "words": "andante sostenuto",
+      "pairs": 2,
+      "composers": 2
+    },
+    {
+      "words": "allegretto unicodenotequarterup",
+      "pairs": 2,
+      "composers": 1
+    },
+    {
+      "words": "lento unicodenotequarterup",
+      "pairs": 2,
+      "composers": 1
+    },
+    {
+      "words": "andante grazioso",
+      "pairs": 2,
+      "composers": 2
+    },
+    {
+      "words": "andante metnotequarterup",
+      "pairs": 2,
+      "composers": 1
+    },
+    {
+      "words": "allegro vivace",
+      "pairs": 2,
+      "composers": 2
+    },
+    {
+      "words": "º tempo",
+      "pairs": 2,
+      "composers": 1
+    },
+    {
+      "words": "lento lento",
+      "pairs": 2,
+      "composers": 1
+    },
+    {
+      "words": "più mosso",
+      "pairs": 2,
+      "composers": 1
+    },
+    {
+      "words": "metnotequarterup",
+      "pairs": 2,
+      "composers": 1
+    },
+    {
+      "words": "fliessend",
+      "pairs": 2,
+      "composers": 1
+    }
+  ],
+  "top_relative": [
+    [
+      "moins vite",
+      3
+    ],
+    [
+      "a tempo moins vite",
+      3
+    ],
+    [
+      "a tempo animato",
+      2
+    ],
+    [
+      "più mosso",
+      2
+    ],
+    [
+      "un peu moins vite",
+      1
+    ],
+    [
+      "plus lent",
+      1
+    ],
+    [
+      "etwas bewegter",
+      1
+    ],
+    [
+      "plus vite",
+      1
+    ],
+    [
+      "più lento quasi recit",
+      1
+    ],
+    [
+      "poco più mosso ma tranquillo metnotequarterup",
+      1
+    ],
+    [
+      "un poco più mosso",
+      1
+    ],
+    [
+      "meno mosso",
+      1
+    ]
+  ]
+}
