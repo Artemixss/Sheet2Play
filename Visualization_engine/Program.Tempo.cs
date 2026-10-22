@@ -564,8 +564,10 @@ internal static partial class Program
 	/// Until the user sets a tempo of their own they all play, and show PLAYING. Each has IGNORE,
 	/// which hides it for good and stops it playing, and once the user's own tempo replaces them,
 	/// USE, which takes one into it at its bar (the first bar's sets the start). A word without a
-	/// number ("Andante") is a hint only. A row above them holds USE ALL, READ AGAIN and, once some
-	/// are hidden, SHOW IGNORED.
+	/// number ("Andante") is a hint only, except a return word ("Tempo I", "a tempo"): it shows the
+	/// tempo it names in what plays and offers USE, but never plays by itself, because Phase 4 found
+	/// too many of them misread. A row above them holds USE ALL, READ AGAIN and, once some are
+	/// hidden, SHOW IGNORED.
 	/// </summary>
 	private static void DrawPrintedMarks(SongLoadResult song, SongPerformance performance, SongTempoMap shown,
 		bool changesApply, float bottom, float height, float scale, ref SongTempoMap? edited)
@@ -589,6 +591,7 @@ internal static partial class Program
 		}
 		bool CanUse(PrintedMark mark) => mark.Usable && (mark.Measure == 0 || changesApply);
 		float barLabelWidth = LabelWidth("BAR 0000", textSize) + 20f * scale;
+		IReadOnlySet<int> returnBars = TempoWords.ReturnBars(rows);
 		for (int row = 0; row < visible; row++)
 		{
 			PrintedMark mark = rows[tempoPrintedScroll + row];
@@ -600,9 +603,16 @@ internal static partial class Program
 			DrawTempoLabel(ref x, rowY, height, barLabelWidth, place, mark.Measure is null ? UiTheme.Warning : UiTheme.Text,
 				scale);
 			string? words = mark.Words;
+			SongTempoMap basis = edited ?? shown;
+			PrintedMark? named = TempoWords.Named(mark, basis, returnBars);
 			if (mark.Tempo is not null)
 			{
 				DrawTempoLabel(ref x, rowY, height, 0, words is null ? null : words + "  ", UiTheme.Text, scale, mark.Tempo);
+			}
+			else if (named is not null)
+			{
+				DrawTempoLabel(ref x, rowY, height, 0, $"\"{mark.Source.Words ?? mark.Source.Text}\" · BACK TO ", UiTheme.Text, scale,
+					named.Tempo);
 			}
 			else
 			{
@@ -613,17 +623,21 @@ internal static partial class Program
 			{
 				DrawTempoLabel(ref x, rowY, height, 0, "NOT IN THIS CONVERSION'S PAGES", UiTheme.Warning, scale);
 			}
-			SongTempoMap basis = edited ?? shown;
+			PrintedMark action = named ?? mark;
 			// A playing mark keeps IGNORE: without a tempo of the user's, ignoring it is how a misread mark
 			// stops playing.
-			if (mark.Usable && TempoDetection.InUse(basis, mark))
+			if (action.Usable && TempoDetection.InUse(basis, action))
 			{
-				DrawTempoLabel(ref x, rowY, height, 0, mark.Measure == 0 ? "PLAYING · START" : "PLAYING", UiTheme.Lime, scale);
+				DrawTempoLabel(ref x, rowY, height, 0, action.Measure == 0 ? "PLAYING · START" : "PLAYING", UiTheme.Lime, scale);
 			}
-			else if (mark.Usable && DrawPanelAction(ref x, rowY, height, "USE", UiTheme.Lime, CanUse(mark), scale))
+			else if (named is not null && SongTempoMaps.TempoAt(basis, named.Measure!.Value) == named.Tempo)
+			{
+				DrawTempoLabel(ref x, rowY, height, 0, "SAME TEMPO", UiTheme.Muted, scale);
+			}
+			else if (action.Usable && DrawPanelAction(ref x, rowY, height, "USE", UiTheme.Lime, CanUse(action), scale))
 			{
 				tempoEditor.Cancel();
-				edited = TempoDetection.Use(basis, mark);
+				edited = TempoDetection.Use(basis, action);
 			}
 			if (DrawPanelAction(ref x, rowY, height, "IGNORE", UiTheme.Warning, enabled: true, scale))
 			{

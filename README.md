@@ -47,7 +47,9 @@ MIDI playback timing.
   reads no tempo marks and a PDF otherwise plays at 120. Its button shows the tempo of the bar
   playing now. The tempo marks printed in the PDF
   ("♩ = 110") are read after each conversion and **play by default**; **PRINTED** lists them,
-  and **IGNORE** drops a misread one. Any tempo you set yourself replaces them for that song.
+  and **IGNORE** drops a misread one. A printed "a tempo" or "Tempo I" shows the tempo it goes
+  back to, with **USE** to take it in; it never plays by itself, and words such as "Andante"
+  stay hints. Any tempo you set yourself replaces them for that song.
   Songs converted earlier get theirs from **READ PRINTED MARKS**, or all at once with
   `dist\Sheet2Play.exe --read-printed-tempo`.
 * **TIMING FIX** (home screen, on by default) re-interprets HOMR's output so one measure's

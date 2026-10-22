@@ -19,9 +19,11 @@
   rule after dev, scored once on test and test-b: precision 0.897 (≥ 0.90) and recall 0.54 (≥ 0.60) failed;
   kind 1.00 and page bar 0.96 passed. Nothing ships; words stay hints.
 
-**Next authorized action:** option 2 of the [Phase 4 report](phase4/REPORT.md#4-options-left-not-authorized),
-chosen 2026-10-22 ("go with option 2 and commit the phase 4 research"): a return word in the TEMPO panel
-shows the tempo it names, with a one-click USE that adds that change to the user's map. No auto-play.
+- **Phase 4 option 2** chosen 2026-10-22 ("go with option 2 and commit the phase 4 research"): a return
+  word shows the tempo it names with USE, never playing by itself. **Checked and committed**
+  ([report section 5](phase4/REPORT.md#5-shipped-return-words-as-hints-with-use)); release gate 8 of 8.
+
+**Next authorized action:** none now. When the user has internet access, Phase 4 resumes with the PDMX download ("when i got access to internet we will go with the download option").
 
 ## Phase 3 (requested 2026-10-21, "ok commit and push proceed with phase 3"): committed
 

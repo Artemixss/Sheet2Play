@@ -328,7 +328,7 @@ internal static partial class Program
 
 			// A song without a tempo of the user's whose PDF prints a start tempo, a change and a tempo
 			// word: the printed marks play, the button says so, and the open list shows them PLAYING
-			// with IGNORE, and the word as a hint.
+			// with IGNORE, and the "a tempo" word with the tempo it goes back to and USE.
 			failures += Capture(outputDirectory, "07-playback-tempo-printed", layout, () =>
 			{
 				SongPerformance performance = SmokeScore();

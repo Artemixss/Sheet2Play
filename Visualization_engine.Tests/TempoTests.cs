@@ -370,6 +370,85 @@ public sealed class TempoTests
         Assert.DoesNotContain("ignored", File.ReadAllText(path));
     }
 
+    // --- Return words ------------------------------------------------------------------------
+
+    // The same spellings as Research/omr/tests/test_tempo_words.py, so the app reads them as Phase 4 scored them.
+    [Theory]
+    [InlineData("a tempo", ReturnWord.ATempo)]
+    [InlineData("A tempo", ReturnWord.ATempo)]
+    [InlineData("a Tempo.", ReturnWord.ATempo)]
+    [InlineData("sempre a tempo", ReturnWord.ATempo)]
+    [InlineData("poco rit. a tempo", ReturnWord.ATempo)]
+    [InlineData("a tempo (J = 71)", ReturnWord.ATempo)]
+    [InlineData("a tempo deciso", ReturnWord.ATempo)]
+    [InlineData("Tempo I", ReturnWord.FirstTempo)]
+    [InlineData("Tempo I.", ReturnWord.FirstTempo)]
+    [InlineData("Tempo l", ReturnWord.FirstTempo)]
+    [InlineData("Tempo 1°", ReturnWord.FirstTempo)]
+    [InlineData("a Tempo 1°", ReturnWord.FirstTempo)]
+    [InlineData("1° Tempo", ReturnWord.FirstTempo)]
+    [InlineData("Tempo primo", ReturnWord.FirstTempo)]
+    [InlineData("come prima", ReturnWord.FirstTempo)]
+    [InlineData("Tempo I (J = 44)", ReturnWord.FirstTempo)]
+    [InlineData("a tempo, più lento", null)]
+    [InlineData("a tempo moins vite", null)]
+    [InlineData("Tempo I ma più mosso", null)]
+    [InlineData("Tempo di valse", null)]
+    [InlineData("Tempo rubato", null)]
+    [InlineData("Tempo lento", null)]
+    [InlineData("Andante", null)]
+    [InlineData("", null)]
+    public void AReturnWordIsReadAsPhase4ScoredIt(string text, ReturnWord? kind) =>
+        Assert.Equal(kind, TempoWords.Kind(text));
+
+    [Fact]
+    public void TempoIGoesBackToTheStartAndATempoPastTheLastChangeThatIsNotItselfAReturn()
+    {
+        TempoMark start = new(60, BeatUnit.Quarter);
+        TempoMark faster = new(72, BeatUnit.Quarter);
+        TempoMark slower = new(50, BeatUnit.Quarter);
+        SongTempoMap map = new(start, [new BarTempo(26, 0, faster)], OmrEngine.Homr480, 80, DateTimeOffset.UnixEpoch);
+
+        Assert.Equal(start, TempoWords.Resolve(map, 62, ReturnWord.FirstTempo, new HashSet<int>()));
+        Assert.Equal(start, TempoWords.Resolve(map, 40, ReturnWord.ATempo, new HashSet<int>()));
+        // Nothing changed before it: nothing to go back to.
+        Assert.Null(TempoWords.Resolve(map, 20, ReturnWord.ATempo, new HashSet<int>()));
+        Assert.Null(TempoWords.Resolve(map, 0, ReturnWord.FirstTempo, new HashSet<int>()));
+
+        // After the user took the a tempo at bar 40 in, a later a tempo past a slower bar 50 goes back to
+        // 60, not to the 72 the change at bar 40 replaced.
+        SongTempoMap later = map with
+        {
+            Changes = [new BarTempo(26, 0, faster), new BarTempo(40, 0, start), new BarTempo(50, 0, slower)]
+        };
+        Assert.Equal(start, TempoWords.Resolve(later, 60, ReturnWord.ATempo, new HashSet<int> { 40, 60 }));
+    }
+
+    [Fact]
+    public void AReturnWordShowsTheTempoItNamesForUseButNeverPlaysByItself()
+    {
+        SongPerformance performance = Performance([4, 4, 4, 4, 4]);
+        PrintedMark start = new(Printed(0, 0, 110, "quarter"), 0, new TempoMark(110, BeatUnit.Quarter));
+        PrintedMark change = new(Printed(0, 2, 74, "dotted_quarter", "Calmando"), 2, new TempoMark(74, BeatUnit.DottedQuarter));
+        PrintedMark word = new(Printed(0, 3, null, null, "a tempo"), 3, null);
+        PrintedMark hint = new(Printed(0, 4, null, null, "Andante"), 4, null);
+        IReadOnlyList<PrintedMark> marks = [start, change, word, hint];
+
+        SongTempoMap map = TempoDetection.PrintedMap(marks, new HashSet<string>(), performance, OmrEngine.Homr480)!;
+        Assert.Equal([new BarTempo(2, 0, new TempoMark(74, BeatUnit.DottedQuarter))], map.Changes);
+
+        IReadOnlySet<int> returnBars = TempoWords.ReturnBars(marks);
+        Assert.Equal(new HashSet<int> { 3 }, returnBars);
+        PrintedMark named = TempoWords.Named(word, map, returnBars)!;
+        Assert.Equal(new TempoMark(110, BeatUnit.Quarter), named.Tempo);
+        Assert.Null(TempoWords.Named(hint, map, returnBars));
+        Assert.Null(TempoWords.Named(change, map, returnBars));
+
+        SongTempoMap used = TempoDetection.Use(map, named);
+        Assert.Equal(new BarTempo(3, 0, new TempoMark(110, BeatUnit.Quarter)), used.Changes[^1]);
+        Assert.True(TempoDetection.InUse(used, named));
+    }
+
     private static DetectedMark Printed(int page, int pageMeasure, double? bpm, string? unit, string? words = null) =>
         new(page, 0, pageMeasure, bpm, unit, $"{words} = {bpm}", words, bpm is null ? words : null);
 

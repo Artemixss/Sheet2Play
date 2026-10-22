@@ -2,8 +2,8 @@
 
 **Plan:** [`2026-10-19-song-tempo`](../../../../../plans/2026-10-19-song-tempo.md), Phase 4.
 **Requested:** 2026-10-21 ("add tempo words as phase 4"); started 2026-10-22 ("ok proceed with phase 4").
-**Status:** research finished, **not accepted**. Nothing ships. Words stay hints in the TEMPO panel, as in
-Phase 3.
+**Status:** research finished, **not accepted**: no word plays by default. The user then chose option 2
+([section 5](#5-shipped-return-words-as-hints-with-use)), shipped 2026-10-22, checked by the user and committed. PDMX download deferred until the user has internet access.
 
 ## 1. Corpus for absolute and relative words: too few pairs
 
@@ -78,3 +78,20 @@ nothing new in them by default. Return words matter there only against tempos th
    wrong-system risk is visible. This does not need the failed rule.
 3. **Read text below the staff:** a reader change, so a new frozen reader and fresh truth seeds (the Phase 2
    test splits are now spent for return words too). Larger research.
+
+## 5. Shipped: return words as hints with USE
+
+Chosen 2026-10-22 ("go with option 2 and commit the phase 4 research"). A printed "a tempo" or "Tempo I"
+without a number now shows the tempo it names in what plays, `"a tempo" · BACK TO ♩=110`, with **USE**
+(adds that change at its bar to the user's map) and **IGNORE**. It never plays by itself. When it names the
+tempo already playing it shows SAME TEMPO; when there is nothing to go back to it stays a hint, as do words
+such as "Andante".
+
+- `Visualization_engine/TempoWords.cs`: `Kind` (the same spellings as `return_kind`, tested on the same list
+  in `TempoTests`), `Resolve` ("Tempo I" is the start tempo; "a tempo" is the tempo before the latest change
+  before it, skipping changes at other return words' bars, so taking one in does not make the next go back to
+  the passage it ended), `ReturnBars`, `Named`.
+- `Program.Tempo.cs` `DrawPrintedMarks`: the BACK TO label, USE, SAME TEMPO. "→" is not in the app's font
+  glyph set, hence "BACK TO".
+- Tests: 229 app tests pass (3 new: spellings, resolving, never playing by itself). Release gate 8 of 8.
+  Snapshot from the published exe: [07-playback-tempo-return.png](07-playback-tempo-return.png).
