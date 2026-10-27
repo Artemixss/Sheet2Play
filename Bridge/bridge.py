@@ -289,8 +289,7 @@ def run_native_page(input_path: Path, engine: str) -> Path:
     output = job_root / str(uuid.uuid4())
     receipt = output / "native.json"
     command = [str(resolve_homr_python()), "-B", str(Path(__file__).with_name(launcher)), str(input_path), str(receipt)]
-    result = run_guarded(command, input_path.parent, output, SafetyLimits(max_seconds=1800),
-                         lock_path=job_root / ".worker.lock", reclaim_dead_owner=True)
+    result = run_guarded(command, input_path.parent, output, SafetyLimits(max_seconds=1800), lock_path=job_root / ".worker.lock")
     LOGGER.info("%s receipt=%s status=%s", label, output, result["status"])
     if result["status"] != "complete":
         details = json.loads(receipt.read_text(encoding="utf-8")) if receipt.is_file() else {}

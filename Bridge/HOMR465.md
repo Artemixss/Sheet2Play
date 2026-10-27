@@ -49,9 +49,11 @@ New465 caches use full source and profile SHA-256 values. Existing426 versions a
 retained PDF/images remain available. Use both `SHEET2PLAY_HOME` and an absolute
 `SHEET2PLAY_SETTINGS_PATH` for scratch runs. Native job logs/resource receipts live
 under the selected library's `omr-jobs`; retain failed receipts for diagnosis. Cancelling a
-conversion kills its supervisor before it can release `omr-jobs\.worker.lock`, so the next
-conversion takes the lock over when its owner is dead, wrote no `result.json` and left no live
-`guarded_worker.py`; any other lock still blocks.
+conversion kills the bridge before it releases `omr-jobs\.worker.lock`, so the app removes the
+lock before the next native conversion when its owner is dead and wrote no `result.json`
+(`OmrPipeline.ReleaseAbandonedJobLock`). That lives in the app, not `guarded_execution.py`,
+because editing a pinned Bridge file re-pins both profiles and hides every song converted
+under the old identity.
 
 For a retained HOMR library, the published EXE accepts:
 

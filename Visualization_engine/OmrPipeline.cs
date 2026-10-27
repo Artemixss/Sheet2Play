@@ -147,11 +147,11 @@ public static class OmrPipeline
     public const string HomrModelRevision = "homr-default-models";
     public const string Homr465EngineRevision = "33baa326900faa12702df8c4bdcbea034a3d6a34";
     public const string Homr465ModelRevision = "465-597144cab54c8f6d0f6c9619df5c5312694eadd6-fp16";
-    public const string Homr465ProfileSha256 = "c40d1e2d8bddc87fe23617ae365f1fbd7f7efad1bc84d81ca2ac33fd7787f155";
+    public const string Homr465ProfileSha256 = "c06852f3471e02fee5611f6e5919f1d6d3bde33d19304f683c048faed8fbbd9d";
     // HOMR 480 on upstream main is the default engine since 2026-10-19; 465 is the secondary.
     public const string Homr480EngineRevision = "ab369ac54277afab582afa4725441f7cbba76593";
     public const string Homr480ModelRevision = "480-5eed84636c96eca5ce6d8e2f62580b74e7ed85e8-fp16-encoder-fp32-decoder";
-    public const string Homr480ProfileSha256 = "1659d492facce4ca3a90bb0c225d626f92cab41e7e1052be08482e151e727f9e";
+    public const string Homr480ProfileSha256 = "82dc0b0194215cfc89962d21dbfc8fb713b4c665775e50fd8292ecab225585d6";
     public const string ZeusEngineRevision =
         "df0d842596ccd199882ff958e628d59327ca6cba";
     public const string ZeusModelRevision =
@@ -327,6 +327,10 @@ public static class OmrPipeline
             entryScriptPath = timingCorrection && SupportsTimingCorrection(engine)
                 ? ValidateFilePath(Path.Combine(bridgeDirectory, TimingCorrectionScriptName), "Timing correction script")
                 : validatedBridgePath;
+        }
+        if (IsPinnedNative(engine) && useManagedEngineRuntime)
+        {
+            ReleaseAbandonedJobLock(GetNativeJobDirectory());
         }
         ProcessStartInfo startInfo = CreateStartInfo(
             effectivePythonExecutable,
@@ -717,6 +721,100 @@ public static class OmrPipeline
         }
         catch (Win32Exception)
         {
+        }
+    }
+
+    /// <summary>
+    /// The library's folder for native job receipts and the bridge's one-job lock, found the way
+    /// bridge.py finds it: SHEET2PLAY_HOME, else %LOCALAPPDATA%\Sheet2Play.
+    /// </summary>
+    internal static string GetNativeJobDirectory()
+    {
+        string? home = Environment.GetEnvironmentVariable("SHEET2PLAY_HOME");
+        return Path.Combine(
+            string.IsNullOrEmpty(home)
+                ? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Sheet2Play")
+                : home,
+            "omr-jobs");
+    }
+
+    /// <summary>
+    /// Removes the bridge's job lock when the supervisor that took it is gone without releasing
+    /// it. Cancelling a conversion, or closing the app during one, kills the bridge's process tree
+    /// before its cleanup runs, and every later conversion would then stop on the lock. A dead
+    /// supervisor leaves no OMR work behind: its worker starts only on a message sent after it
+    /// joins a Windows job that closes with the supervisor. A lock kept after the supervisor wrote
+    /// result.json is deliberate, and one that cannot be read names no owner; both stay.
+    /// Lives here rather than in the bridge because the native profiles pin the bridge's files.
+    /// </summary>
+    internal static bool ReleaseAbandonedJobLock(string jobDirectory)
+    {
+        string lockPath = Path.Combine(jobDirectory, ".worker.lock");
+        string text;
+        int ownerId;
+        DateTime lockedUtc;
+        try
+        {
+            text = File.ReadAllText(lockPath);
+            using JsonDocument owner = JsonDocument.Parse(text);
+            ownerId = owner.RootElement.GetProperty("supervisor_pid").GetInt32();
+            string output = owner.RootElement.GetProperty("output").GetString() ?? "";
+            if (output.Length == 0 || File.Exists(Path.Combine(output, "result.json")))
+            {
+                return false;
+            }
+            lockedUtc = File.GetLastWriteTimeUtc(lockPath);
+        }
+        catch (Exception exception) when (exception is IOException or UnauthorizedAccessException or
+            JsonException or KeyNotFoundException or InvalidOperationException or FormatException or ArgumentException)
+        {
+            return false;
+        }
+        if (IsRunningSince(ownerId, lockedUtc))
+        {
+            return false;
+        }
+
+        string releasedPath = $"{lockPath}.{ownerId}.{Environment.ProcessId}.released";
+        try
+        {
+            File.Move(lockPath, releasedPath);
+            if (File.ReadAllText(releasedPath) != text)
+            {
+                // Another conversion released this lock and took a new one between the read and the move.
+                File.Move(releasedPath, lockPath);
+                return false;
+            }
+            File.Delete(releasedPath);
+        }
+        catch (Exception exception) when (exception is IOException or UnauthorizedAccessException)
+        {
+            return false;
+        }
+        Console.Error.WriteLine($"[OMR] Released the job lock left by stopped bridge process {ownerId}.");
+        return true;
+    }
+
+    // Whether the process still runs and is the one that took the lock, rather than a later process
+    // that reused its id. One that cannot be inspected counts as the owner.
+    private static bool IsRunningSince(int processId, DateTime lockedUtc)
+    {
+        try
+        {
+            using Process process = Process.GetProcessById(processId);
+            return process.StartTime.ToUniversalTime() <= lockedUtc;
+        }
+        catch (ArgumentException)
+        {
+            return false;
+        }
+        catch (InvalidOperationException)
+        {
+            return false;
+        }
+        catch (Win32Exception)
+        {
+            return true;
         }
     }
 
