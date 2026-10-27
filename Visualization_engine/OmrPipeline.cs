@@ -147,11 +147,11 @@ public static class OmrPipeline
     public const string HomrModelRevision = "homr-default-models";
     public const string Homr465EngineRevision = "33baa326900faa12702df8c4bdcbea034a3d6a34";
     public const string Homr465ModelRevision = "465-597144cab54c8f6d0f6c9619df5c5312694eadd6-fp16";
-    public const string Homr465ProfileSha256 = "c06852f3471e02fee5611f6e5919f1d6d3bde33d19304f683c048faed8fbbd9d";
+    public const string Homr465ProfileSha256 = "c40d1e2d8bddc87fe23617ae365f1fbd7f7efad1bc84d81ca2ac33fd7787f155";
     // HOMR 480 on upstream main is the default engine since 2026-10-19; 465 is the secondary.
     public const string Homr480EngineRevision = "ab369ac54277afab582afa4725441f7cbba76593";
     public const string Homr480ModelRevision = "480-5eed84636c96eca5ce6d8e2f62580b74e7ed85e8-fp16-encoder-fp32-decoder";
-    public const string Homr480ProfileSha256 = "82dc0b0194215cfc89962d21dbfc8fb713b4c665775e50fd8292ecab225585d6";
+    public const string Homr480ProfileSha256 = "1659d492facce4ca3a90bb0c225d626f92cab41e7e1052be08482e151e727f9e";
     public const string ZeusEngineRevision =
         "df0d842596ccd199882ff958e628d59327ca6cba";
     public const string ZeusModelRevision =

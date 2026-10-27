@@ -2,7 +2,7 @@
   "bridge_files": [
     {
       "path": "bridge.py",
-      "sha256": "6445447bfedbd74bb95c712600fe71d766c6bb8a73c07e5e58ca90a17481a1a9"
+      "sha256": "093a13e192b5591927272064f0467b3c2dfef6945376d9f840997f60d31d09a2"
     },
     {
       "path": "render_pdf.py",
@@ -30,7 +30,7 @@
     },
     {
       "path": "guarded_execution.py",
-      "sha256": "691aed89121967b592eb105412d55746cc8c2018851e093f8ac7463e3b7936ac"
+      "sha256": "229b976391adfbe10b84b1af394440da87b5df0939aad2cb699d5fd230737478"
     },
     {
       "path": "guarded_worker.py",

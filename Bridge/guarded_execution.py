@@ -12,6 +12,8 @@ import sys
 import threading
 import time
 
+import psutil
+
 from execution_safety.execution_resources import WindowsResourceSampler, process_evidence
 from execution_safety.safety_policy import SafetyLimits, admission_reason, blocking_reason
 from execution_safety.windows_job import WindowsJob
@@ -43,8 +45,47 @@ def _output_reader(pipe, destination: Path, errors: list[str]) -> None:
         errors.append(f"worker_log_failure: {error}")
 
 
+def _reclaim_dead_owner(lock: Path) -> dict | None:
+    """Removes a lock left by a supervisor that was killed before its cleanup ran.
+
+    Cancelling a conversion kills the whole bridge process tree, so `finally` never releases
+    the lock. A supervisor that did finish wrote result.json, and one that kept the lock on
+    purpose (unconfirmed job closure) is left alone; so is any lock whose owner is unknown.
+    """
+    try:
+        text = lock.read_text(encoding="utf-8")
+        owner = json.loads(text)
+        pid, owner_output = int(owner["supervisor_pid"]), Path(owner["output"])
+        locked_at = lock.stat().st_mtime
+    except (OSError, ValueError, KeyError, TypeError):
+        return None
+    if (owner_output / "result.json").exists():
+        return None
+    try:
+        # A process created after the lock was written has only reused the owner's PID.
+        if psutil.Process(pid).create_time() <= locked_at:
+            return None
+    except psutil.NoSuchProcess:
+        pass
+    worker = str(HERE / "guarded_worker.py")
+    if any(worker in (process.info["cmdline"] or []) for process in psutil.process_iter(["cmdline"])):
+        return None
+    stale = lock.with_name(f"{lock.name}.{pid}.{os.getpid()}.stale")
+    try:
+        lock.rename(stale)
+    except OSError:
+        return None
+    if stale.read_text(encoding="utf-8") != text:
+        # Another conversion reclaimed the lock and took it between the read and the rename.
+        stale.rename(lock)
+        return None
+    stale.unlink()
+    return owner
+
+
 def run_guarded(command: list[str], cwd: Path, output: Path, limits: SafetyLimits,
-                *, sampler=None, job_factory=WindowsJob, lock_path: Path | None = None) -> dict:
+                *, sampler=None, job_factory=WindowsJob, lock_path: Path | None = None,
+                reclaim_dead_owner: bool = False) -> dict:
     if not command or any(not isinstance(value, str) or not value or "\0" in value for value in command):
         raise ValueError("A nonempty argument list is required")
     if not cwd.is_dir():
@@ -66,7 +107,15 @@ def run_guarded(command: list[str], cwd: Path, output: Path, limits: SafetyLimit
                 "execution_resources.py", "safety_policy.py", "windows_job.py")]
         result["operational_sources"] = {str(path.relative_to(WORKSPACE)):
             hashlib.sha256(path.read_bytes()).hexdigest() for path in sources}
-        with lock.open("x", encoding="utf-8") as stream:
+        try:
+            claimed = lock.open("x", encoding="utf-8")
+        except FileExistsError:
+            reclaimed = _reclaim_dead_owner(lock) if reclaim_dead_owner else None
+            if reclaimed is None:
+                raise
+            result["reclaimed_lock"] = reclaimed
+            claimed = lock.open("x", encoding="utf-8")
+        with claimed as stream:
             lock_owned = True
             json.dump({"supervisor_pid": os.getpid(), "output": str(output)}, stream)
         sample_resources = sampler or WindowsResourceSampler()

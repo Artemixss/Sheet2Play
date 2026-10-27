@@ -48,7 +48,10 @@ pin, fresh qualification and release. Do not edit frozen research configurations
 New465 caches use full source and profile SHA-256 values. Existing426 versions and
 retained PDF/images remain available. Use both `SHEET2PLAY_HOME` and an absolute
 `SHEET2PLAY_SETTINGS_PATH` for scratch runs. Native job logs/resource receipts live
-under the selected library's `omr-jobs`; retain failed receipts for diagnosis.
+under the selected library's `omr-jobs`; retain failed receipts for diagnosis. Cancelling a
+conversion kills its supervisor before it can release `omr-jobs\.worker.lock`, so the next
+conversion takes the lock over when its owner is dead, wrote no `result.json` and left no live
+`guarded_worker.py`; any other lock still blocks.
 
 For a retained HOMR library, the published EXE accepts:
 
