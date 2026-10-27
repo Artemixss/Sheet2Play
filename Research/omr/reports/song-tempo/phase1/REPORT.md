@@ -1,6 +1,6 @@
 # Phase 1 report: per-song tempo map with bar changes
 
-**Plan:** [`2026-10-19-song-tempo`](../../../../../plans/2026-10-19-song-tempo.md), Phase 1, requested
+**Plan:** [`2026-10-19-song-tempo`](../../../../../plans/archive/2026-10-19-song-tempo.done.md), Phase 1, requested
 2026-10-21 ("refresh the md files first then start phase 1").
 **Result: shipped and measured; waiting on the user's check in the published app.** Not committed.
 

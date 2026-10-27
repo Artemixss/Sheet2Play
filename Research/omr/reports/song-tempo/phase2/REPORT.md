@@ -1,6 +1,6 @@
 # Per-song tempo, Phase 2: reading printed tempo marks
 
-**Plan:** [`2026-10-19-song-tempo`](../../../../../plans/2026-10-19-song-tempo.md), Phase 2 (research only).
+**Plan:** [`2026-10-19-song-tempo`](../../../../../plans/archive/2026-10-19-song-tempo.done.md), Phase 2 (research only).
 **Requested:** 2026-10-21 ("push it and start phase 2"). Note-unit tuning ("tune the note unit
 first") and the freeze and test scoring ("ok proceed with the next phase") were requested the same day.
 **Verdict:** **accepted**. The OCR reader passes every pre-registered check on test and test-b,

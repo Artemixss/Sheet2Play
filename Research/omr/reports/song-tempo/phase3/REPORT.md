@@ -1,6 +1,6 @@
 # Per-song tempo, Phase 3: printed tempo marks in the TEMPO panel
 
-**Plan:** [`2026-10-19-song-tempo`](../../../../../plans/2026-10-19-song-tempo.md), Phase 3.
+**Plan:** [`2026-10-19-song-tempo`](../../../../../plans/archive/2026-10-19-song-tempo.done.md), Phase 3.
 **Requested:** 2026-10-21 ("ok commit and push proceed with phase 3"; then "finish the to do lists
 then i will check after that commit and push").
 **Status:** the USE / IGNORE version was checked by the user and committed (`30bcbff`). The user

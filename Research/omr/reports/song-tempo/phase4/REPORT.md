@@ -1,6 +1,6 @@
 # Per-song tempo, Phase 4: tempo words
 
-**Plan:** [`2026-10-19-song-tempo`](../../../../../plans/2026-10-19-song-tempo.md), Phase 4.
+**Plan:** [`2026-10-19-song-tempo`](../../../../../plans/archive/2026-10-19-song-tempo.done.md), Phase 4.
 **Requested:** 2026-10-21 ("add tempo words as phase 4"); started 2026-10-22 ("ok proceed with phase 4").
 **Status:** research finished, **not accepted**: no word plays by default. The user then chose option 2
 ([section 5](#5-shipped-return-words-as-hints-with-use)), shipped 2026-10-22, checked by the user and committed. PDMX download deferred until the user has internet access.

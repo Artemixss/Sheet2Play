@@ -1,6 +1,6 @@
 # Per-song tempo: handoff
 
-**Owning plan:** [`2026-10-19-song-tempo`](../../../../plans/2026-10-19-song-tempo.md)
+**Owning plan:** [`2026-10-19-song-tempo`](../../../../plans/archive/2026-10-19-song-tempo.done.md)
 **Phase status:**
 - **Phase 1** shipped and committed 2026-10-21 (`9bd66f9`, [report](phase1/REPORT.md)). "Beyond
   This Station" with the user's map plays 298.82 s against the MuseScore MIDI's 298.82 s. With no
@@ -56,7 +56,7 @@
     ("it works commit and push") and committed** ([report section 8](phase4/REPORT.md#8-words-play-by-default-a-re-measured-table-and-a-wider-word-list-2026-10-27));
     release gate 8 of 8.
 
-**Next authorized action:** none. Phase 4 is done; the plan can close when the user says so.
+**Next authorized action:** none. The plan is complete and archived (2026-10-27, "close the plan and archive it").
 
 ## Phase 3 (requested 2026-10-21, "ok commit and push proceed with phase 3"): committed
 

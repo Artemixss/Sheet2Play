@@ -36,7 +36,7 @@ batch; xunit 170) Phase 5 was **committed on 2026-10-20** as `ff42206` and `7667
 called the plan done from their side.
 **Next authorized action:** none. The C# engine rework and Phase 6 each need their own request;
 the user wants the rework at the end of the plan, before Phase 6. The per-song tempo plan
-([`2026-10-19-song-tempo`](../../../../plans/2026-10-19-song-tempo.md)) builds on this one.
+([`2026-10-19-song-tempo`](../../../../plans/archive/2026-10-19-song-tempo.done.md)) builds on this one.
 **Phase 3 evidence:** [`phase3/tempo/summary.json`](phase3/tempo/summary.json) (fixture exact
 against MuseScore 4; corpus exact up to the first fermata or "rit."); `--verify-library` with
 expression off identical for all 90 playing songs (local, `phase3/library-after`); xunit 139
