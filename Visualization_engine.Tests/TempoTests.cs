@@ -309,11 +309,13 @@ public sealed class TempoTests
 
         SongTempoMap map = TempoDetection.PrintedMap([start, change, word], new HashSet<string>(), performance, OmrEngine.Homr480)!;
         Assert.Equal(new TempoMark(110, BeatUnit.Quarter), map.Start);
-        Assert.Equal([new BarTempo(2, 0, new TempoMark(74, BeatUnit.DottedQuarter))], map.Changes);
+        // The a tempo after the Calmando goes back to the start's 110.
+        Assert.Equal([new BarTempo(2, 0, new TempoMark(74, BeatUnit.DottedQuarter)), new BarTempo(3, 0, new TempoMark(110, BeatUnit.Quarter))],
+            map.Changes);
         Assert.Equal(4, map.MeasureCount);
         Assert.True(SongTempoMaps.ChangesApply(map, performance));
 
-        // Ignoring the start leaves the change on the 120 default; a word alone plays nothing.
+        // Ignoring the start leaves the change on the 120 default; an a tempo with nothing to go back to plays nothing.
         SongTempoMap withoutStart = TempoDetection.PrintedMap([start, change], new HashSet<string> { start.Source.Key },
             performance, OmrEngine.Homr480)!;
         Assert.Equal(SongTempoMaps.Fallback, withoutStart.Start);
@@ -425,28 +427,92 @@ public sealed class TempoTests
     }
 
     [Fact]
-    public void AReturnWordShowsTheTempoItNamesForUseButNeverPlaysByItself()
+    public void AReturnWordPlaysTheTempoItNamesAndShowsItPlaying()
     {
         SongPerformance performance = Performance([4, 4, 4, 4, 4]);
         PrintedMark start = new(Printed(0, 0, 110, "quarter"), 0, new TempoMark(110, BeatUnit.Quarter));
         PrintedMark change = new(Printed(0, 2, 74, "dotted_quarter", "Calmando"), 2, new TempoMark(74, BeatUnit.DottedQuarter));
         PrintedMark word = new(Printed(0, 3, null, null, "a tempo"), 3, null);
-        PrintedMark hint = new(Printed(0, 4, null, null, "Andante"), 4, null);
+        PrintedMark hint = new(Printed(0, 4, null, null, "Agitato"), 4, null);
         IReadOnlyList<PrintedMark> marks = [start, change, word, hint];
 
         SongTempoMap map = TempoDetection.PrintedMap(marks, new HashSet<string>(), performance, OmrEngine.Homr480)!;
-        Assert.Equal([new BarTempo(2, 0, new TempoMark(74, BeatUnit.DottedQuarter))], map.Changes);
+        Assert.Equal([new BarTempo(2, 0, new TempoMark(74, BeatUnit.DottedQuarter)), new BarTempo(3, 0, new TempoMark(110, BeatUnit.Quarter))],
+            map.Changes);
 
         IReadOnlySet<int> returnBars = TempoWords.ReturnBars(marks);
         Assert.Equal(new HashSet<int> { 3 }, returnBars);
         PrintedMark named = TempoWords.Named(word, map, returnBars)!;
         Assert.Equal(new TempoMark(110, BeatUnit.Quarter), named.Tempo);
+        Assert.True(TempoDetection.InUse(map, named));
+        // A word the table has nothing for stays a hint and plays nothing.
         Assert.Null(TempoWords.Named(hint, map, returnBars));
+        Assert.Null(TempoWords.Guessed(hint, map));
         Assert.Null(TempoWords.Named(change, map, returnBars));
 
-        SongTempoMap used = TempoDetection.Use(map, named);
-        Assert.Equal(new BarTempo(3, 0, new TempoMark(110, BeatUnit.Quarter)), used.Changes[^1]);
-        Assert.True(TempoDetection.InUse(used, named));
+        // Ignored, it plays nothing.
+        SongTempoMap ignored = TempoDetection.PrintedMap(marks, new HashSet<string> { word.Source.Key }, performance, OmrEngine.Homr480)!;
+        Assert.Equal([new BarTempo(2, 0, new TempoMark(74, BeatUnit.DottedQuarter))], ignored.Changes);
+    }
+
+    // --- Word guesses ------------------------------------------------------------------------
+
+    [Theory]
+    [InlineData("Andante", 80.0)]
+    [InlineData("Allegro con brio", 132.0)]
+    [InlineData("Allegro moderato", 96.0)]
+    [InlineData("Andante très expressif", 80.0)]
+    [InlineData("Presto agitato", 184.0)]
+    [InlineData("Più mosso", null)]
+    [InlineData("a tempo", null)]
+    [InlineData("Tempo rubato", null)]
+    [InlineData("Swing", null)]
+    public void AnAbsoluteWordGuessesTheTablesTempo(string text, double? quarterBpm) =>
+        Assert.Equal(quarterBpm, TempoWords.AbsoluteGuess(TempoWords.Normalized(text)));
+
+    [Theory]
+    [InlineData("Più mosso", TempoWords.FasterFactor)]
+    [InlineData("Piu animato con passione", TempoWords.FasterFactor)]
+    [InlineData("poco meno mosso", TempoWords.SlowerFactor)]
+    [InlineData("Slower", TempoWords.SlowerFactor)]
+    [InlineData("Calmando", TempoWords.SlowerFactor)]
+    [InlineData("un poco mosso", null)]
+    [InlineData("Andante", null)]
+    public void ARelativeWordGuessesItsFactor(string text, double? factor) =>
+        Assert.Equal(factor, TempoWords.RelativeFactor(TempoWords.Normalized(text)));
+
+    [Fact]
+    public void AWordGuessPlaysByDefaultInBarOrderButNeverOverANumber()
+    {
+        SongPerformance performance = Performance([4, 4, 4, 4, 4, 4]);
+        PrintedMark opening = new(Printed(0, 0, null, null, "Andante"), 0, null);
+        PrintedMark faster = new(Printed(0, 2, null, null, "Più mosso"), 2, null);
+        PrintedMark change = new(Printed(0, 3, 60, "dotted_quarter", "Calmando"), 3, new TempoMark(60, BeatUnit.DottedQuarter));
+        PrintedMark beside = new(Printed(0, 3, null, null, "Presto"), 3, null);
+        PrintedMark slower = new(Printed(0, 4, null, null, "meno mosso"), 4, null);
+        IReadOnlyList<PrintedMark> marks = [opening, faster, change, beside, slower];
+
+        SongTempoMap map = TempoDetection.PrintedMap(marks, new HashSet<string>(), performance, OmrEngine.Homr480)!;
+        // Andante starts it, più mosso scales Andante, the number wins its bar over the Presto beside it,
+        // and meno mosso scales the number in its own unit.
+        Assert.Equal(new TempoMark(80, BeatUnit.Quarter), map.Start);
+        Assert.Equal([
+            new BarTempo(2, 0, new TempoMark(Math.Round(80 * TempoWords.FasterFactor), BeatUnit.Quarter)),
+            new BarTempo(3, 0, new TempoMark(60, BeatUnit.DottedQuarter)),
+            new BarTempo(4, 0, new TempoMark(Math.Round(60 * TempoWords.SlowerFactor), BeatUnit.DottedQuarter))
+        ], map.Changes);
+
+        // Each word row then shows its guess playing.
+        Assert.True(TempoDetection.InUse(map, TempoWords.Guessed(opening, map)!));
+        Assert.True(TempoDetection.InUse(map, TempoWords.Guessed(faster, map)!));
+        Assert.True(TempoDetection.InUse(map, TempoWords.Guessed(slower, map)!));
+        Assert.Null(TempoWords.Guessed(change, map));
+
+        // Ignoring the opening word starts at 120, and the più mosso scales that instead.
+        SongTempoMap ignored = TempoDetection.PrintedMap(marks, new HashSet<string> { opening.Source.Key }, performance,
+            OmrEngine.Homr480)!;
+        Assert.Equal(SongTempoMaps.Fallback, ignored.Start);
+        Assert.Equal(new TempoMark(Math.Round(120 * TempoWords.FasterFactor), BeatUnit.Quarter), ignored.Changes[0].Tempo);
     }
 
     private static DetectedMark Printed(int page, int pageMeasure, double? bpm, string? unit, string? words = null) =>

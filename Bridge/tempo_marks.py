@@ -55,11 +55,23 @@ OPENING_WORDS = ["Allegro", "Andante", "Moderato", "Adagio", "Lento", "Allegrett
                  "Tempo di valse", "Grave", "Allegro vivace"]
 CHANGE_WORDS = ["Più mosso", "Meno mosso", "Poco più lento", "a tempo", "Tempo I", "Più animato", "Calmando",
                 "Poco meno mosso", "Animato"]
-LEXICON = sorted({word.lower() for word in OPENING_WORDS + CHANGE_WORDS} | {
+FROZEN_LEXICON = sorted({word.lower() for word in OPENING_WORDS + CHANGE_WORDS} | {
     "allegro", "andante", "moderato", "adagio", "lento", "largo", "presto", "vivace", "grave", "maestoso",
     "allegretto", "andantino", "larghetto", "adagietto", "prestissimo", "vivo", "a tempo", "tempo i",
     "più mosso", "meno mosso", "mosso", "animato", "tranquillo", "tempo di", "rubato", "moderato"}, key=len,
     reverse=True)
+# Words beyond the frozen reader's, so every word the TEMPO panel can guess a tempo for or name reaches it
+# (Phase 4's `tempo_word_corpus.ABSOLUTE`, `FASTER` and `SLOWER`, and the return words `TempoWords.Kind`
+# accepts), and "agitato", which marks a section's tempo as often as its character. A word is never a
+# number, so they add word-only marks and leave the frozen reading of printed tempos as it was.
+EXTRA_WORDS = [
+    "agitato", "vivacissimo", "allegrissimo", "slowly", "slow", "moderately", "moderate", "fast", "quickly",
+    "lively", "langsam", "mässig", "massig", "lebhaft", "schnell", "lent", "modéré", "modere", "vif",
+    "piu mosso", "piu animato", "più allegro", "piu allegro", "faster", "plus vite", "schneller",
+    "doppio movimento", "più lento", "piu lento", "meno", "slower", "moins vite", "langsamer",
+    "più tranquillo", "piu tranquillo", "tempo primo", "come prima", "tempo 1"]
+# Longest first, so "più mosso" wins over "mosso"; ties alphabetically, so the same text always gives the same word.
+LEXICON = sorted(set(FROZEN_LEXICON) | set(EXTRA_WORDS), key=lambda word: (-len(word), word))
 # (MusicXML beat unit, dots) to the names the TEMPO panel knows, as `tempo_truth.UNIT_NAMES`.
 UNIT_NAMES = {("quarter", 0): "quarter", ("quarter", 1): "dotted_quarter", ("half", 0): "half",
               ("half", 1): "dotted_half", ("eighth", 0): "eighth"}

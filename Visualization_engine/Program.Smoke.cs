@@ -327,8 +327,9 @@ internal static partial class Program
 			});
 
 			// A song without a tempo of the user's whose PDF prints a start tempo, a change and a tempo
-			// word: the printed marks play, the button says so, and the open list shows them PLAYING
-			// with IGNORE, and the "a tempo" word with the tempo it goes back to and USE.
+			// words: the printed marks play, the button says so, and the open list shows them PLAYING
+			// with IGNORE, the "Più mosso" word with its guess and the "a tempo" word with the tempo it goes
+			// back to playing too.
 			failures += Capture(outputDirectory, "07-playback-tempo-printed", layout, () =>
 			{
 				SongPerformance performance = SmokeScore();
@@ -336,6 +337,7 @@ internal static partial class Program
 				[
 					new PrintedMark(new DetectedMark(0, 0, 0, 110, "quarter", "Andantino J= 110", "Andantino", "andantino"), 0,
 						new TempoMark(110, BeatUnit.Quarter)),
+					new PrintedMark(new DetectedMark(0, 0, 1, null, null, "Più mosso", "Più mosso", "più mosso"), 1, null),
 					new PrintedMark(new DetectedMark(0, 0, 2, 74, "dotted_quarter", "Calmando J. = 74", "Calmando", "calmando"), 2,
 						new TempoMark(74, BeatUnit.DottedQuarter)),
 					new PrintedMark(new DetectedMark(0, 1, 3, null, null, "a tempo", "a tempo", "a tempo"), 3, null)

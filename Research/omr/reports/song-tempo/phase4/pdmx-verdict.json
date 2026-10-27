@@ -1,0 +1,264 @@
+{
+  "freeze": {
+    "plan": "2026-10-19-song-tempo",
+    "phase": 4,
+    "frozen_utc": "2026-10-27T11:34:56Z",
+    "tempo_word_corpus_sha256": "6cadf57d80ae4030f9add132741ea3849e7b47c1f5279764a6f91404e62f1b60",
+    "marks_sha256": "a53ef6be981328ef7653eda478440248827eb82287fa7c60a107a55f551103a3",
+    "split_seed": "song-tempo-phase4-pdmx",
+    "tables": {
+      "absolute": {
+        "adagio": 66.0,
+        "allegretto": 108.0,
+        "allegro": 131.0,
+        "allegro moderato": 98.0,
+        "andante": 80.0,
+        "andantino": 70.0,
+        "fast": 160.0,
+        "largo": 52.0,
+        "lent": 58.0,
+        "lento": 62.0,
+        "moderately": 102.0,
+        "moderato": 108.0,
+        "presto": 180.0,
+        "slow": 72.0,
+        "vivace": 160.0
+      },
+      "absolute_pairs": {
+        "allegretto": 32,
+        "allegro": 152,
+        "moderato": 56,
+        "andante": 92,
+        "adagio": 54,
+        "lento": 26,
+        "fast": 12,
+        "vivace": 22,
+        "allegro moderato": 10,
+        "andantino": 15,
+        "-": 25,
+        "largo": 19,
+        "lent": 19,
+        "slow": 12,
+        "presto": 17,
+        "moderately": 10
+      },
+      "relative": {
+        "slower": 0.932,
+        "faster": 1.137
+      },
+      "relative_pairs": {
+        "slower": 24,
+        "faster": 32
+      }
+    },
+    "rule": {
+      "absolute": {
+        "median_error": [
+          "<=",
+          0.15
+        ],
+        "share_off_by_more_than_40_percent": [
+          "<=",
+          0.1
+        ],
+        "sign_test_p_vs_120": [
+          "<",
+          0.01
+        ]
+      },
+      "relative": {
+        "median_error": [
+          "<=",
+          0.1
+        ],
+        "sign_test_p_vs_no_change": [
+          "<",
+          0.01
+        ]
+      }
+    }
+  },
+  "held_out": {
+    "absolute": {
+      "pairs": 452,
+      "median_error": 0.1667,
+      "baseline_median_error": 0.3333,
+      "share_off_by_more_than_40_percent": 0.1681,
+      "wins": 333,
+      "losses": 112,
+      "sign_test_p_vs_120": 7.771859864911266e-27
+    },
+    "relative": {
+      "pairs": 82,
+      "median_error": 0.0753,
+      "baseline_median_error": 0.1348,
+      "share_off_by_more_than_40_percent": 0.1463,
+      "wins": 69,
+      "losses": 13,
+      "sign_test_p_vs_no_change": 1.1279237471233668e-10
+    },
+    "absolute_by_word": {
+      "allegro": {
+        "pairs": 107,
+        "median_error": 0.1382,
+        "baseline_median_error": 0.1837,
+        "share_off_by_more_than_40_percent": 0.1495,
+        "wins": 67,
+        "losses": 40
+      },
+      "andante": {
+        "pairs": 81,
+        "median_error": 0.1594,
+        "baseline_median_error": 0.5,
+        "share_off_by_more_than_40_percent": 0.1481,
+        "wins": 64,
+        "losses": 10
+      },
+      "moderato": {
+        "pairs": 57,
+        "median_error": 0.2857,
+        "baseline_median_error": 0.3333,
+        "share_off_by_more_than_40_percent": 0.2632,
+        "wins": 45,
+        "losses": 12
+      },
+      "allegretto": {
+        "pairs": 39,
+        "median_error": 0.136,
+        "baseline_median_error": 0.1667,
+        "share_off_by_more_than_40_percent": 0.0256,
+        "wins": 19,
+        "losses": 20
+      },
+      "adagio": {
+        "pairs": 36,
+        "median_error": 0.1348,
+        "baseline_median_error": 0.6667,
+        "share_off_by_more_than_40_percent": 0.1111,
+        "wins": 34,
+        "losses": 2
+      },
+      "presto": {
+        "pairs": 20,
+        "median_error": 0.1339,
+        "baseline_median_error": 0.3478,
+        "share_off_by_more_than_40_percent": 0.2,
+        "wins": 18,
+        "losses": 2
+      },
+      "largo": {
+        "pairs": 17,
+        "median_error": 0.2571,
+        "baseline_median_error": 1.7273,
+        "share_off_by_more_than_40_percent": 0.1765,
+        "wins": 16,
+        "losses": 1
+      },
+      "moderately": {
+        "pairs": 16,
+        "median_error": 0.2732,
+        "baseline_median_error": 0.2913,
+        "share_off_by_more_than_40_percent": 0.25,
+        "wins": 6,
+        "losses": 10
+      },
+      "vivace": {
+        "pairs": 16,
+        "median_error": 0.1111,
+        "baseline_median_error": 0.225,
+        "share_off_by_more_than_40_percent": 0.1875,
+        "wins": 12,
+        "losses": 4
+      },
+      "lento": {
+        "pairs": 15,
+        "median_error": 0.24,
+        "baseline_median_error": 0.8182,
+        "share_off_by_more_than_40_percent": 0.3333,
+        "wins": 12,
+        "losses": 3
+      },
+      "fast": {
+        "pairs": 14,
+        "median_error": 0.2107,
+        "baseline_median_error": 0.359,
+        "share_off_by_more_than_40_percent": 0.1429,
+        "wins": 11,
+        "losses": 3
+      },
+      "slow": {
+        "pairs": 11,
+        "median_error": 0.1429,
+        "baseline_median_error": 0.5789,
+        "share_off_by_more_than_40_percent": 0.1818,
+        "wins": 9,
+        "losses": 2
+      },
+      "andantino": {
+        "pairs": 11,
+        "median_error": 0.1954,
+        "baseline_median_error": 0.4286,
+        "share_off_by_more_than_40_percent": 0.2727,
+        "wins": 9,
+        "losses": 2
+      },
+      "lent": {
+        "pairs": 7,
+        "median_error": 0.16,
+        "baseline_median_error": 1.1429,
+        "share_off_by_more_than_40_percent": 0.2857,
+        "wins": 7,
+        "losses": 0
+      },
+      "allegro moderato": {
+        "pairs": 5,
+        "median_error": 0.1667,
+        "baseline_median_error": 0.3043,
+        "share_off_by_more_than_40_percent": 0.0,
+        "wins": 4,
+        "losses": 1
+      }
+    }
+  },
+  "checks": [
+    {
+      "kind": "absolute",
+      "metric": "median_error",
+      "rule": "<= 0.15",
+      "value": 0.1667,
+      "pass": false
+    },
+    {
+      "kind": "absolute",
+      "metric": "share_off_by_more_than_40_percent",
+      "rule": "<= 0.1",
+      "value": 0.1681,
+      "pass": false
+    },
+    {
+      "kind": "absolute",
+      "metric": "sign_test_p_vs_120",
+      "rule": "< 0.01",
+      "value": 7.771859864911266e-27,
+      "pass": true
+    },
+    {
+      "kind": "relative",
+      "metric": "median_error",
+      "rule": "<= 0.1",
+      "value": 0.0753,
+      "pass": true
+    },
+    {
+      "kind": "relative",
+      "metric": "sign_test_p_vs_no_change",
+      "rule": "< 0.01",
+      "value": 1.1279237471233668e-10,
+      "pass": true
+    }
+  ],
+  "accepted": {
+    "absolute": false,
+    "relative": true
+  }
+}

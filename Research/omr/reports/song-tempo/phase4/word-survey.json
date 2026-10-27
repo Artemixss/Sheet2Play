@@ -1,0 +1,1562 @@
+{
+ "words": {
+  "allegro": {
+   "all": {
+    "n": 264,
+    "median": 132.0,
+    "p10": 96.0,
+    "p25": 119.5,
+    "p75": 160.0,
+    "p90": 192.0
+   },
+   "word_alone": {
+    "n": 114,
+    "median": 132.0,
+    "p10": 105.8,
+    "p25": 120.0,
+    "p75": 146.5,
+    "p90": 160.0
+   },
+   "classical": {
+    "n": 126,
+    "median": 136.5,
+    "p10": 92.0,
+    "p25": 112.0,
+    "p75": 160.0,
+    "p90": 207.5
+   },
+   "simple": {
+    "n": 206,
+    "median": 128.0,
+    "p10": 94.0,
+    "p25": 112.8,
+    "p75": 152.0,
+    "p90": 178.0
+   },
+   "cut": {
+    "n": 28,
+    "median": 168.0,
+    "p10": 129.4,
+    "p25": 144.0,
+    "p75": 216.0,
+    "p90": 276.0
+   },
+   "compound": {
+    "n": 26,
+    "median": 140.0,
+    "p10": 120.0,
+    "p25": 126.5,
+    "p75": 163.8,
+    "p90": 198.0
+   }
+  },
+  "andante": {
+   "all": {
+    "n": 173,
+    "median": 80.0,
+    "p10": 54.0,
+    "p25": 69.0,
+    "p75": 96.0,
+    "p90": 110.0
+   },
+   "word_alone": {
+    "n": 98,
+    "median": 81.5,
+    "p10": 65.7,
+    "p25": 74.2,
+    "p75": 96.0,
+    "p90": 103.7
+   },
+   "classical": {
+    "n": 97,
+    "median": 76.0,
+    "p10": 53.4,
+    "p25": 63.0,
+    "p75": 92.0,
+    "p90": 114.0
+   },
+   "simple": {
+    "n": 137,
+    "median": 80.0,
+    "p10": 55.0,
+    "p25": 68.0,
+    "p75": 92.0,
+    "p90": 100.8
+   },
+   "cut": {
+    "n": 12,
+    "median": 141.0,
+    "p10": 80.8,
+    "p25": 100.0,
+    "p75": 145.5,
+    "p90": 151.8
+   },
+   "compound": {
+    "n": 20,
+    "median": 90.0,
+    "p10": 50.9,
+    "p25": 63.0,
+    "p75": 103.5,
+    "p90": 138.6
+   }
+  },
+  "moderato": {
+   "all": {
+    "n": 113,
+    "median": 100.0,
+    "p10": 69.0,
+    "p25": 80.0,
+    "p75": 120.0,
+    "p90": 152.0
+   },
+   "word_alone": {
+    "n": 78,
+    "median": 100.0,
+    "p10": 74.1,
+    "p25": 82.5,
+    "p75": 120.0,
+    "p90": 150.6
+   },
+   "classical": {
+    "n": 47,
+    "median": 88.0,
+    "p10": 61.2,
+    "p25": 75.5,
+    "p75": 116.0,
+    "p90": 155.2
+   },
+   "simple": {
+    "n": 101,
+    "median": 100.0,
+    "p10": 69.0,
+    "p25": 80.0,
+    "p75": 118.0,
+    "p90": 138.0
+   }
+  },
+  "adagio": {
+   "all": {
+    "n": 90,
+    "median": 69.0,
+    "p10": 42.0,
+    "p25": 58.5,
+    "p75": 77.5,
+    "p90": 88.2
+   },
+   "word_alone": {
+    "n": 60,
+    "median": 72.0,
+    "p10": 42.0,
+    "p25": 60.0,
+    "p75": 80.0,
+    "p90": 88.2
+   },
+   "classical": {
+    "n": 37,
+    "median": 60.0,
+    "p10": 37.2,
+    "p25": 48.0,
+    "p75": 76.0,
+    "p90": 86.4
+   },
+   "simple": {
+    "n": 73,
+    "median": 68.0,
+    "p10": 42.0,
+    "p25": 58.0,
+    "p75": 75.0,
+    "p90": 88.0
+   },
+   "cut": {
+    "n": 9,
+    "median": 108.0,
+    "p10": 65.6,
+    "p25": 76.0,
+    "p75": 120.0,
+    "p90": 122.4
+   }
+  },
+  "allegretto": {
+   "all": {
+    "n": 71,
+    "median": 112.0,
+    "p10": 80.0,
+    "p25": 92.0,
+    "p75": 124.0,
+    "p90": 144.0
+   },
+   "word_alone": {
+    "n": 52,
+    "median": 113.0,
+    "p10": 81.0,
+    "p25": 92.8,
+    "p75": 120.0,
+    "p90": 131.4
+   },
+   "classical": {
+    "n": 38,
+    "median": 104.5,
+    "p10": 78.8,
+    "p25": 90.0,
+    "p75": 124.5,
+    "p90": 145.8
+   },
+   "simple": {
+    "n": 53,
+    "median": 112.0,
+    "p10": 80.8,
+    "p25": 92.0,
+    "p75": 120.0,
+    "p90": 136.0
+   },
+   "compound": {
+    "n": 12,
+    "median": 123.0,
+    "p10": 90.0,
+    "p25": 100.1,
+    "p75": 156.0,
+    "p90": 179.4
+   }
+  },
+  "lento": {
+   "all": {
+    "n": 41,
+    "median": 66.0,
+    "p10": 44.0,
+    "p25": 52.0,
+    "p75": 80.0,
+    "p90": 104.0
+   },
+   "word_alone": {
+    "n": 31,
+    "median": 60.0,
+    "p10": 44.0,
+    "p25": 51.5,
+    "p75": 70.5,
+    "p90": 104.0
+   },
+   "classical": {
+    "n": 24,
+    "median": 62.0,
+    "p10": 44.0,
+    "p25": 48.0,
+    "p75": 80.0,
+    "p90": 99.8
+   },
+   "simple": {
+    "n": 33,
+    "median": 60.0,
+    "p10": 44.0,
+    "p25": 52.0,
+    "p75": 71.0,
+    "p90": 87.2
+   }
+  },
+  "vivace": {
+   "all": {
+    "n": 38,
+    "median": 160.0,
+    "p10": 118.8,
+    "p25": 141.0,
+    "p75": 171.5,
+    "p90": 223.0
+   },
+   "word_alone": {
+    "n": 21,
+    "median": 150.0,
+    "p10": 100.0,
+    "p25": 140.0,
+    "p75": 168.0,
+    "p90": 172.0
+   },
+   "classical": {
+    "n": 21,
+    "median": 160.0,
+    "p10": 100.0,
+    "p25": 126.0,
+    "p75": 184.0,
+    "p90": 230.0
+   },
+   "simple": {
+    "n": 33,
+    "median": 160.0,
+    "p10": 120.0,
+    "p25": 144.0,
+    "p75": 172.0,
+    "p90": 220.0
+   }
+  },
+  "presto": {
+   "all": {
+    "n": 37,
+    "median": 184.0,
+    "p10": 135.6,
+    "p25": 160.0,
+    "p75": 220.0,
+    "p90": 288.0
+   },
+   "word_alone": {
+    "n": 33,
+    "median": 184.0,
+    "p10": 142.0,
+    "p25": 160.0,
+    "p75": 220.0,
+    "p90": 296.0
+   },
+   "classical": {
+    "n": 21,
+    "median": 180.0,
+    "p10": 138.0,
+    "p25": 152.0,
+    "p75": 229.5,
+    "p90": 300.0
+   },
+   "simple": {
+    "n": 27,
+    "median": 180.0,
+    "p10": 139.2,
+    "p25": 156.0,
+    "p75": 196.0,
+    "p90": 262.0
+   }
+  },
+  "largo": {
+   "all": {
+    "n": 36,
+    "median": 50.0,
+    "p10": 36.0,
+    "p25": 40.0,
+    "p75": 57.0,
+    "p90": 72.5
+   },
+   "word_alone": {
+    "n": 22,
+    "median": 51.0,
+    "p10": 40.0,
+    "p25": 44.0,
+    "p75": 68.2,
+    "p90": 74.5
+   },
+   "classical": {
+    "n": 18,
+    "median": 50.0,
+    "p10": 38.8,
+    "p25": 40.0,
+    "p75": 63.5,
+    "p90": 77.8
+   },
+   "simple": {
+    "n": 30,
+    "median": 48.0,
+    "p10": 35.4,
+    "p25": 40.0,
+    "p75": 52.0,
+    "p90": 66.4
+   }
+  },
+  "fast": {
+   "all": {
+    "n": 26,
+    "median": 171.0,
+    "p10": 103.5,
+    "p25": 135.0,
+    "p75": 198.8,
+    "p90": 224.0
+   },
+   "simple": {
+    "n": 16,
+    "median": 160.0,
+    "p10": 93.5,
+    "p25": 131.8,
+    "p75": 183.0,
+    "p90": 206.0
+   }
+  },
+  "andantino": {
+   "all": {
+    "n": 26,
+    "median": 78.0,
+    "p10": 60.0,
+    "p25": 69.0,
+    "p75": 89.5,
+    "p90": 102.0
+   },
+   "word_alone": {
+    "n": 19,
+    "median": 72.0,
+    "p10": 57.6,
+    "p25": 66.0,
+    "p75": 86.5,
+    "p90": 90.0
+   },
+   "classical": {
+    "n": 17,
+    "median": 76.0,
+    "p10": 55.2,
+    "p25": 63.0,
+    "p75": 90.0,
+    "p90": 98.8
+   },
+   "simple": {
+    "n": 22,
+    "median": 74.0,
+    "p10": 60.0,
+    "p25": 69.0,
+    "p75": 89.5,
+    "p90": 91.8
+   }
+  },
+  "moderately": {
+   "all": {
+    "n": 26,
+    "median": 108.5,
+    "p10": 80.0,
+    "p25": 88.5,
+    "p75": 132.0,
+    "p90": 169.5
+   },
+   "word_alone": {
+    "n": 9,
+    "median": 120.0,
+    "p10": 88.8,
+    "p25": 104.0,
+    "p75": 140.0,
+    "p90": 240.0
+   },
+   "simple": {
+    "n": 23,
+    "median": 112.0,
+    "p10": 80.8,
+    "p25": 90.0,
+    "p75": 132.0,
+    "p90": 160.0
+   }
+  },
+  "lent": {
+   "all": {
+    "n": 26,
+    "median": 57.0,
+    "p10": 40.0,
+    "p25": 50.5,
+    "p75": 62.2,
+    "p90": 78.0
+   },
+   "word_alone": {
+    "n": 11,
+    "median": 56.0,
+    "p10": 48.0,
+    "p25": 50.0,
+    "p75": 59.0,
+    "p90": 60.0
+   },
+   "classical": {
+    "n": 17,
+    "median": 56.0,
+    "p10": 28.8,
+    "p25": 48.0,
+    "p75": 60.0,
+    "p90": 68.4
+   },
+   "simple": {
+    "n": 24,
+    "median": 57.0,
+    "p10": 45.2,
+    "p25": 51.5,
+    "p75": 60.8,
+    "p90": 78.8
+   }
+  },
+  "slow": {
+   "all": {
+    "n": 23,
+    "median": 75.0,
+    "p10": 51.0,
+    "p25": 63.8,
+    "p75": 96.0,
+    "p90": 148.0
+   },
+   "simple": {
+    "n": 20,
+    "median": 72.5,
+    "p10": 49.8,
+    "p25": 60.0,
+    "p75": 86.0,
+    "p90": 150.0
+   }
+  },
+  "slowly": {
+   "all": {
+    "n": 12,
+    "median": 84.0,
+    "p10": 60.4,
+    "p25": 70.0,
+    "p75": 91.2,
+    "p90": 117.5
+   },
+   "simple": {
+    "n": 9,
+    "median": 84.0,
+    "p10": 59.2,
+    "p25": 64.0,
+    "p75": 90.0,
+    "p90": 100.0
+   }
+  },
+  "prestissimo": {
+   "all": {
+    "n": 11,
+    "median": 232.0,
+    "p10": 192.0,
+    "p25": 200.0,
+    "p75": 261.0,
+    "p90": 264.0
+   },
+   "word_alone": {
+    "n": 11,
+    "median": 232.0,
+    "p10": 192.0,
+    "p25": 200.0,
+    "p75": 261.0,
+    "p90": 264.0
+   }
+  },
+  "grave": {
+   "all": {
+    "n": 11,
+    "median": 69.0,
+    "p10": 30.0,
+    "p25": 35.0,
+    "p75": 72.5,
+    "p90": 80.0
+   },
+   "simple": {
+    "n": 10,
+    "median": 59.5,
+    "p10": 30.0,
+    "p25": 32.5,
+    "p75": 69.8,
+    "p90": 75.5
+   }
+  },
+  "larghetto": {
+   "all": {
+    "n": 10,
+    "median": 64.0,
+    "p10": 43.5,
+    "p25": 53.2,
+    "p75": 76.5,
+    "p90": 98.0
+   },
+   "word_alone": {
+    "n": 8,
+    "median": 61.0,
+    "p10": 40.5,
+    "p25": 50.2,
+    "p75": 73.5,
+    "p90": 102.0
+   }
+  },
+  "mässig": {
+   "all": {
+    "n": 10,
+    "median": 63.0,
+    "p10": 49.0,
+    "p25": 55.5,
+    "p75": 80.0,
+    "p90": 82.0
+   },
+   "classical": {
+    "n": 10,
+    "median": 63.0,
+    "p10": 49.0,
+    "p25": 55.5,
+    "p75": 80.0,
+    "p90": 82.0
+   },
+   "simple": {
+    "n": 10,
+    "median": 63.0,
+    "p10": 49.0,
+    "p25": 55.5,
+    "p75": 80.0,
+    "p90": 82.0
+   }
+  },
+  "langsam": {
+   "all": {
+    "n": 10,
+    "median": 61.0,
+    "p10": 39.6,
+    "p25": 49.0,
+    "p75": 74.2,
+    "p90": 84.0
+   },
+   "classical": {
+    "n": 9,
+    "median": 60.0,
+    "p10": 39.2,
+    "p25": 48.0,
+    "p75": 75.0,
+    "p90": 88.0
+   },
+   "simple": {
+    "n": 8,
+    "median": 56.0,
+    "p10": 38.8,
+    "p25": 46.0,
+    "p75": 64.5,
+    "p90": 74.4
+   }
+  },
+  "schnell": {
+   "all": {
+    "n": 8,
+    "median": 134.0,
+    "p10": 116.4,
+    "p25": 120.0,
+    "p75": 159.0,
+    "p90": 194.4
+   },
+   "classical": {
+    "n": 8,
+    "median": 134.0,
+    "p10": 116.4,
+    "p25": 120.0,
+    "p75": 159.0,
+    "p90": 194.4
+   }
+  },
+  "moderate": {
+   "all": {
+    "n": 8,
+    "median": 108.0,
+    "p10": 69.9,
+    "p25": 81.0,
+    "p75": 126.5,
+    "p90": 143.6
+   },
+   "simple": {
+    "n": 8,
+    "median": 108.0,
+    "p10": 69.9,
+    "p25": 81.0,
+    "p75": 126.5,
+    "p90": 143.6
+   }
+  }
+ },
+ "phrases": {
+  "-": {
+   "n": 42,
+   "median": 100.0,
+   "p10": 60.9,
+   "p25": 73.0,
+   "p75": 120.0,
+   "p90": 151.8
+  },
+  "maestoso": {
+   "n": 16,
+   "median": 80.0,
+   "p10": 59.0,
+   "p25": 60.0,
+   "p75": 112.5,
+   "p90": 131.0
+  },
+  "allegro moderato": {
+   "n": 15,
+   "median": 96.0,
+   "p10": 81.6,
+   "p25": 91.0,
+   "p75": 114.0,
+   "p90": 122.4
+  },
+  "swing": {
+   "n": 14,
+   "median": 133.0,
+   "p10": 113.2,
+   "p25": 122.5,
+   "p75": 198.0,
+   "p90": 210.0
+  },
+  "andante con moto": {
+   "n": 12,
+   "median": 86.0,
+   "p10": 50.5,
+   "p25": 63.2,
+   "p75": 108.5,
+   "p90": 140.6
+  },
+  "freely": {
+   "n": 11,
+   "median": 80.0,
+   "p10": 55.0,
+   "p25": 63.0,
+   "p75": 95.0,
+   "p90": 112.0
+  },
+  "con moto": {
+   "n": 10,
+   "median": 121.0,
+   "p10": 60.0,
+   "p25": 80.5,
+   "p75": 136.5,
+   "p90": 162.4
+  },
+  "andante moderato": {
+   "n": 9,
+   "median": 72.0,
+   "p10": 60.0,
+   "p25": 63.0,
+   "p75": 88.0,
+   "p90": 118.4
+  },
+  "allegro vivace": {
+   "n": 8,
+   "median": 152.0,
+   "p10": 130.8,
+   "p25": 148.5,
+   "p75": 171.0,
+   "p90": 216.0
+  },
+  "molto allegro": {
+   "n": 8,
+   "median": 194.0,
+   "p10": 116.4,
+   "p25": 153.0,
+   "p75": 196.5,
+   "p90": 198.6
+  }
+ },
+ "modifiers": {
+  "moderato": {
+   "n": 147,
+   "ratio_to_head_median": 0.848,
+   "ratio_n": 37,
+   "phrases": [
+    [
+     "moderato",
+     78
+    ],
+    [
+     "allegro moderato",
+     15
+    ],
+    [
+     "andante moderato",
+     9
+    ],
+    [
+     "moderato maestoso",
+     2
+    ],
+    [
+     "molto moderato",
+     2
+    ],
+    [
+     "moderato assai",
+     2
+    ],
+    [
+     "iii allegro moderato",
+     2
+    ],
+    [
+     "un poco più moderato",
+     2
+    ]
+   ]
+  },
+  "agitato": {
+   "n": 7,
+   "ratio_to_head_median": 0.717,
+   "ratio_n": 1,
+   "phrases": [
+    [
+     "agitato",
+     4
+    ],
+    [
+     "presto agitato",
+     1
+    ],
+    [
+     "agitato -",
+     1
+    ],
+    [
+     "agitato molto a piacere",
+     1
+    ]
+   ]
+  },
+  "vivace": {
+   "n": 55,
+   "ratio_to_head_median": 1.131,
+   "ratio_n": 18,
+   "phrases": [
+    [
+     "vivace",
+     21
+    ],
+    [
+     "allegro vivace",
+     8
+    ],
+    [
+     "molto vivace",
+     6
+    ],
+    [
+     "allegretto vivace",
+     3
+    ],
+    [
+     "allegro assai vivace alla marcia",
+     2
+    ],
+    [
+     "vivace ma non troppo",
+     1
+    ],
+    [
+     "moderato vivace",
+     1
+    ],
+    [
+     "vivace ～",
+     1
+    ]
+   ]
+  },
+  "con moto": {
+   "n": 30,
+   "ratio_to_head_median": 1.038,
+   "ratio_n": 18,
+   "phrases": [
+    [
+     "andante con moto",
+     12
+    ],
+    [
+     "con moto",
+     10
+    ],
+    [
+     "allegro con moto",
+     2
+    ],
+    [
+     "alletgretto con moto",
+     1
+    ],
+    [
+     "andantino con moto",
+     1
+    ],
+    [
+     "con moto moderato",
+     1
+    ],
+    [
+     "vivace con moto",
+     1
+    ],
+    [
+     "allegretto con moto",
+     1
+    ]
+   ]
+  },
+  "molto": {
+   "n": 56,
+   "ratio_to_head_median": 1.1,
+   "ratio_n": 43,
+   "phrases": [
+    [
+     "molto allegro",
+     8
+    ],
+    [
+     "molto vivace",
+     6
+    ],
+    [
+     "allegro molto",
+     5
+    ],
+    [
+     "molto maestoso",
+     4
+    ],
+    [
+     "molto largo",
+     4
+    ],
+    [
+     "molto rit",
+     2
+    ],
+    [
+     "molto moderato",
+     2
+    ],
+    [
+     "lentamente molto cantabile",
+     2
+    ]
+   ]
+  },
+  "cantabile": {
+   "n": 19,
+   "ratio_to_head_median": 0.788,
+   "ratio_n": 13,
+   "phrases": [
+    [
+     "adagio cantabile",
+     4
+    ],
+    [
+     "cantabile",
+     3
+    ],
+    [
+     "lentamente molto cantabile",
+     2
+    ],
+    [
+     "andante cantabile",
+     2
+    ],
+    [
+     "lento e molto cantabile m m",
+     1
+    ],
+    [
+     "moderato cantabile",
+     1
+    ],
+    [
+     "ii andante cantabile",
+     1
+    ],
+    [
+     "moderato e cantabile",
+     1
+    ]
+   ]
+  },
+  "poco": {
+   "n": 24,
+   "ratio_to_head_median": 0.841,
+   "ratio_n": 15,
+   "phrases": [
+    [
+     "poco andante",
+     2
+    ],
+    [
+     "un poco più moderato",
+     2
+    ],
+    [
+     "largo un poco",
+     2
+    ],
+    [
+     "in poco allegro",
+     1
+    ],
+    [
+     "un poco allegro",
+     1
+    ],
+    [
+     "un poco piu moso quasi allegretto",
+     1
+    ],
+    [
+     "poco ritard",
+     1
+    ],
+    [
+     "poco solenne",
+     1
+    ]
+   ]
+  },
+  "sostenuto": {
+   "n": 18,
+   "ratio_to_head_median": 0.75,
+   "ratio_n": 13,
+   "phrases": [
+    [
+     "andante sostenuto",
+     7
+    ],
+    [
+     "sostenuto",
+     3
+    ],
+    [
+     "adagio sostenuto",
+     2
+    ],
+    [
+     "andante molto sostenuto",
+     1
+    ],
+    [
+     "adagio sostenuto m m",
+     1
+    ],
+    [
+     "sostenuto e maestoso",
+     1
+    ],
+    [
+     "un poco sostenuto",
+     1
+    ],
+    [
+     "and te lento sostenuto",
+     1
+    ]
+   ]
+  },
+  "ma non troppo": {
+   "n": 20,
+   "ratio_to_head_median": 0.909,
+   "ratio_n": 20,
+   "phrases": [
+    [
+     "allegro ma non troppo",
+     5
+    ],
+    [
+     "andante ma non troppo",
+     4
+    ],
+    [
+     "let s start allegro ma non troppo",
+     2
+    ],
+    [
+     "adagio ma non troppo",
+     2
+    ],
+    [
+     "allegro ma non troppo -",
+     2
+    ],
+    [
+     "adagio ma non troppo ma divoto",
+     2
+    ],
+    [
+     "vivace ma non troppo",
+     1
+    ],
+    [
+     "allegro ma non troppo un poco maestoso",
+     1
+    ]
+   ]
+  },
+  "non troppo": {
+   "n": 26,
+   "ratio_to_head_median": 0.909,
+   "ratio_n": 26,
+   "phrases": [
+    [
+     "allegro ma non troppo",
+     5
+    ],
+    [
+     "andante ma non troppo",
+     4
+    ],
+    [
+     "allegro non troppo",
+     3
+    ],
+    [
+     "let s start allegro ma non troppo",
+     2
+    ],
+    [
+     "adagio ma non troppo",
+     2
+    ],
+    [
+     "allegro ma non troppo -",
+     2
+    ],
+    [
+     "adagio ma non troppo ma divoto",
+     2
+    ],
+    [
+     "vivace ma non troppo",
+     1
+    ]
+   ]
+  },
+  "maestoso": {
+   "n": 45,
+   "ratio_to_head_median": 0.98,
+   "ratio_n": 21,
+   "phrases": [
+    [
+     "maestoso",
+     16
+    ],
+    [
+     "andante maestoso",
+     5
+    ],
+    [
+     "molto maestoso",
+     4
+    ],
+    [
+     "allegro maestoso",
+     4
+    ],
+    [
+     "moderato maestoso",
+     2
+    ],
+    [
+     "allegro alla breve maestoso con grandezza",
+     1
+    ],
+    [
+     "moderato e maestoso",
+     1
+    ],
+    [
+     "maestoso overworld theme",
+     1
+    ]
+   ]
+  },
+  "con brio": {
+   "n": 13,
+   "ratio_to_head_median": 1.5,
+   "ratio_n": 10,
+   "phrases": [
+    [
+     "allegro con brio",
+     6
+    ],
+    [
+     "con brio",
+     3
+    ],
+    [
+     "allegretto ma con brio",
+     1
+    ],
+    [
+     "allegro di molto e con brio",
+     1
+    ],
+    [
+     "molto allegro di con brio",
+     1
+    ],
+    [
+     "allegro molto e con brio",
+     1
+    ]
+   ]
+  },
+  "assai": {
+   "n": 12,
+   "ratio_to_head_median": 0.879,
+   "ratio_n": 12,
+   "phrases": [
+    [
+     "allegro assai",
+     3
+    ],
+    [
+     "moderato assai",
+     2
+    ],
+    [
+     "allegro assai vivace alla marcia",
+     2
+    ],
+    [
+     "moderato assai presque le double plus lent",
+     1
+    ],
+    [
+     "grave assai",
+     1
+    ],
+    [
+     "adagio assai",
+     1
+    ],
+    [
+     "presto assai",
+     1
+    ],
+    [
+     "allegro assai -",
+     1
+    ]
+   ]
+  },
+  "espressivo": {
+   "n": 7,
+   "ratio_to_head_median": 1.0,
+   "ratio_n": 5,
+   "phrases": [
+    [
+     "adagio espressivo",
+     1
+    ],
+    [
+     "andante espressivo -",
+     1
+    ],
+    [
+     "andante espressivo",
+     1
+    ],
+    [
+     "andante espressivo m m",
+     1
+    ],
+    [
+     "adantino espressivo",
+     1
+    ],
+    [
+     "i moderato espressivo",
+     1
+    ],
+    [
+     "legato espressivo",
+     1
+    ]
+   ]
+  },
+  "grazioso": {
+   "n": 6,
+   "ratio_to_head_median": 1.152,
+   "ratio_n": 5,
+   "phrases": [
+    [
+     "andantino grazioso",
+     2
+    ],
+    [
+     "allegro grazioso",
+     2
+    ],
+    [
+     "moderato grazioso",
+     1
+    ],
+    [
+     "grazioso",
+     1
+    ]
+   ]
+  },
+  "con fuoco": {
+   "n": 12,
+   "ratio_to_head_median": 1.152,
+   "ratio_n": 10,
+   "phrases": [
+    [
+     "allegro con fuoco",
+     4
+    ],
+    [
+     "con fuoco",
+     2
+    ],
+    [
+     "allegro con fuoco m m",
+     2
+    ],
+    [
+     "in tempo allegro con fuoco",
+     2
+    ],
+    [
+     "molto allegro con fuoco",
+     1
+    ],
+    [
+     "allegro molto con fuoco",
+     1
+    ]
+   ]
+  }
+ },
+ "cross_validation": {
+  "absolute": {
+   "A medians": {
+    "n": 996,
+    "median_error": 0.1667,
+    "off_by_more_than_40_percent": 0.1657
+   },
+   "B clamped": {
+    "n": 996,
+    "median_error": 0.16,
+    "off_by_more_than_40_percent": 0.1657
+   },
+   "C reference": {
+    "n": 996,
+    "median_error": 0.1745,
+    "off_by_more_than_40_percent": 0.1888
+   },
+   "D meter": {
+    "n": 996,
+    "median_error": 0.1605,
+    "off_by_more_than_40_percent": 0.1596
+   },
+   "120": {
+    "n": 996,
+    "median_error": 0.3333,
+    "off_by_more_than_40_percent": 0.4237
+   }
+  },
+  "relative": {
+   "class factor": {
+    "n": 138,
+    "median_error": 0.0758,
+    "off_by_more_than_40_percent": 0.1159
+   },
+   "no change": {
+    "n": 138,
+    "median_error": 0.1319,
+    "off_by_more_than_40_percent": 0.1667
+   }
+  },
+  "absolute_by_word": {
+   "allegro": {
+    "A medians": 0.1447,
+    "B clamped": 0.1447,
+    "C reference": 0.15,
+    "D meter": 0.1429,
+    "120": 0.1667,
+    "n": 249
+   },
+   "andante": {
+    "A medians": 0.1667,
+    "B clamped": 0.1667,
+    "C reference": 0.1458,
+    "D meter": 0.1587,
+    "120": 0.5,
+    "n": 168
+   },
+   "moderato": {
+    "A medians": 0.1667,
+    "B clamped": 0.1739,
+    "C reference": 0.2063,
+    "D meter": 0.175,
+    "120": 0.25,
+    "n": 113
+   },
+   "adagio": {
+    "A medians": 0.1667,
+    "B clamped": 0.1379,
+    "C reference": 0.2361,
+    "D meter": 0.1583,
+    "120": 0.7395,
+    "n": 90
+   },
+   "allegretto": {
+    "A medians": 0.16,
+    "B clamped": 0.16,
+    "C reference": 0.16,
+    "D meter": 0.15,
+    "120": 0.2,
+    "n": 71
+   },
+   "lento": {
+    "A medians": 0.2333,
+    "B clamped": 0.1944,
+    "C reference": 0.25,
+    "D meter": 0.25,
+    "120": 0.8182,
+    "n": 41
+   },
+   "vivace": {
+    "A medians": 0.1208,
+    "B clamped": 0.1208,
+    "C reference": 0.1528,
+    "D meter": 0.1208,
+    "120": 0.25,
+    "n": 38
+   },
+   "presto": {
+    "A medians": 0.1786,
+    "B clamped": 0.1786,
+    "C reference": 0.1636,
+    "D meter": 0.1711,
+    "120": 0.3478,
+    "n": 37
+   },
+   "largo": {
+    "A medians": 0.225,
+    "B clamped": 0.225,
+    "C reference": 0.2374,
+    "D meter": 0.225,
+    "120": 1.4,
+    "n": 36
+   },
+   "lent": {
+    "A medians": 0.1383,
+    "B clamped": 0.1383,
+    "C reference": 0.1383,
+    "D meter": 0.1383,
+    "120": 1.1059,
+    "n": 26
+   },
+   "andantino": {
+    "A medians": 0.1594,
+    "B clamped": 0.1366,
+    "C reference": 0.2624,
+    "D meter": 0.1909,
+    "120": 0.5395,
+    "n": 26
+   },
+   "moderately": {
+    "A medians": 0.2023,
+    "B clamped": 0.2023,
+    "C reference": 0.2023,
+    "D meter": 0.2247,
+    "120": 0.2341,
+    "n": 26
+   },
+   "fast": {
+    "A medians": 0.1847,
+    "B clamped": 0.1847,
+    "C reference": 0.1847,
+    "D meter": 0.1711,
+    "120": 0.3333,
+    "n": 26
+   },
+   "slow": {
+    "A medians": 0.25,
+    "B clamped": 0.25,
+    "C reference": 0.25,
+    "D meter": 0.2667,
+    "120": 0.6,
+    "n": 23
+   },
+   "allegro moderato": {
+    "A medians": 0.131,
+    "B clamped": 0.2083,
+    "C reference": 0.2292,
+    "D meter": 0.1304,
+    "120": 0.25,
+    "n": 15
+   },
+   "andante con moto": {
+    "A medians": 0.2593,
+    "B clamped": 0.2593,
+    "C reference": 0.2593,
+    "D meter": 0.2593,
+    "120": 0.3043,
+    "n": 5
+   },
+   "prestissimo": {
+    "A medians": 0.18,
+    "B clamped": 0.0833,
+    "C reference": 0.0625,
+    "D meter": 0.18,
+    "120": 0.4,
+    "n": 3
+   },
+   "grave": {
+    "A medians": 0.7214,
+    "B clamped": 0.381,
+    "C reference": 0.3048,
+    "D meter": 0.7214,
+    "120": 1.8571,
+    "n": 2
+   },
+   "slowly": {
+    "A medians": 0.3125,
+    "B clamped": 0.3125,
+    "C reference": 0.3125,
+    "D meter": 0.3125,
+    "120": 0.875,
+    "n": 1
+   }
+  }
+ },
+ "table_v2": {
+  "absolute": {
+   "adagio": 69.0,
+   "allegretto": 112.0,
+   "allegro": 132.0,
+   "allegro moderato": 96.0,
+   "andante": 80.0,
+   "andante con moto": 86.0,
+   "andantino": 78.0,
+   "fast": 171.0,
+   "grave": 69.0,
+   "langsam": 61.0,
+   "larghetto": 64.0,
+   "largo": 50.0,
+   "lent": 57.0,
+   "lento": 66.0,
+   "moderately": 108.5,
+   "moderato": 100.0,
+   "mässig": 63.0,
+   "prestissimo": 232.0,
+   "presto": 184.0,
+   "slow": 75.0,
+   "slowly": 84.0,
+   "vivace": 160.0
+  },
+  "absolute_pairs": {
+   "allegretto": 71,
+   "moderato": 113,
+   "allegro": 264,
+   "andante": 173,
+   "larghetto": 10,
+   "adagio": 90,
+   "lento": 41,
+   "fast": 26,
+   "prestissimo": 11,
+   "con moto": 10,
+   "largo": 36,
+   "vivace": 38,
+   "allegro moderato": 15,
+   "andantino": 26,
+   "mässig": 10,
+   "langsam": 10,
+   "-": 42,
+   "grave": 11,
+   "slowly": 12,
+   "moderately": 26,
+   "lent": 26,
+   "slow": 23,
+   "andante con moto": 12,
+   "presto": 37,
+   "freely": 11,
+   "maestoso": 16,
+   "swing": 14
+  },
+  "relative": {
+   "slower": 0.898,
+   "faster": 1.137
+  },
+  "relative_pairs": {
+   "slower": 64,
+   "faster": 74
+  }
+ }
+}

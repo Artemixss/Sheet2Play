@@ -49,7 +49,7 @@ public sealed class TempoDetectionException(string message, Exception? inner = n
 /// Reading the tempo marks printed in a song's PDF (Phase 3 of the per-song tempo plan). The bridge's
 /// <c>tempo_marks.py</c> reads them; the result is kept per source PDF in <c>songs/tempo-marks</c>,
 /// valid only for the reader that wrote it, and the TEMPO panel offers each mark with USE and IGNORE.
-/// Nothing here changes what a song plays until the user takes a mark into its tempo map.
+/// Until the user sets a tempo of their own, the marks play (<see cref="PrintedMap"/>).
 /// </summary>
 public static class TempoDetection
 {
@@ -185,8 +185,10 @@ public static class TempoDetection
 
     /// <summary>
     /// What a PDF conversion plays when the user has set no tempo of their own: its printed marks,
-    /// all but the ones the user ignored, each taken in as USE would. A song whose PDF prints a
-    /// change but no starting tempo starts at 120. Null when no mark can be used.
+    /// all but the ones the user ignored, in bar order. A number is taken in as USE would. A word
+    /// printed without one plays the tempo it names or Phase 4 guesses for it
+    /// (<see cref="TempoWords"/>), unless a number is printed at its bar or it would not change the
+    /// tempo. A song whose PDF prints no starting tempo starts at 120. Null when no mark plays.
     /// </summary>
     public static SongTempoMap? PrintedMap(IReadOnlyList<PrintedMark> marks, IReadOnlySet<string> ignored,
         SongPerformance performance, OmrEngine engine)
@@ -194,11 +196,28 @@ public static class TempoDetection
         ArgumentNullException.ThrowIfNull(marks);
         ArgumentNullException.ThrowIfNull(ignored);
         ArgumentNullException.ThrowIfNull(performance);
-        List<PrintedMark> usable = marks.Where(mark => mark.Usable && !ignored.Contains(mark.Source.Key)).ToList();
-        return usable.Count == 0
-            ? null
-            : usable.Aggregate(new SongTempoMap(SongTempoMaps.Fallback, [], engine, performance.Measures.Count,
-                DateTimeOffset.UnixEpoch), Use);
+        List<PrintedMark> shown = marks.Where(mark => !ignored.Contains(mark.Source.Key))
+            .OrderBy(static mark => mark.Measure ?? int.MaxValue).ToList();
+        HashSet<int> numbered = shown.Where(static mark => mark.Usable).Select(static mark => mark.Measure!.Value).ToHashSet();
+        IReadOnlySet<int> returnBars = TempoWords.ReturnBars(shown);
+        SongTempoMap map = new(SongTempoMaps.Fallback, [], engine, performance.Measures.Count, DateTimeOffset.UnixEpoch);
+        bool playing = false;
+        foreach (PrintedMark mark in shown)
+        {
+            if (mark.Usable)
+            {
+                map = Use(map, mark);
+                playing = true;
+            }
+            else if (mark.Measure is int measure && !numbered.Contains(measure) &&
+                     (TempoWords.Named(mark, map, returnBars) ?? TempoWords.Guessed(mark, map)) is PrintedMark word &&
+                     SongTempoMaps.TempoAt(map, measure) != word.Tempo)
+            {
+                map = Use(map, word);
+                playing = true;
+            }
+        }
+        return playing ? map : null;
     }
 
     /// <summary>The printed map for a stored song, read from the store; null without usable marks.</summary>

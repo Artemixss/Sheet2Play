@@ -95,3 +95,116 @@ such as "Andante".
   glyph set, hence "BACK TO".
 - Tests: 229 app tests pass (3 new: spellings, resolving, never playing by itself). Release gate 8 of 8.
   Snapshot from the published exe: [07-playback-tempo-return.png](07-playback-tempo-return.png).
+
+## 6. PDMX: absolute and relative words (resumed 2026-10-27)
+
+"ok i got internet access lets go with the download option". `subset_paths.tar.gz`, `PDMX.csv` and
+`mxl.tar.gz` from Zenodo record 15571083 (CC BY 4.0, Long et al.), MD5s checked, in `data/pdmx/` (local).
+[`tempo_word_corpus.py`](../../../tempo_word_corpus.py) streamed the deduplicated, licence-clean subset:
+77,321 scores, 2 unreadable. Only visible marks of the first part count; a word counts once per score. Scores
+are split by composer (else artist, else title) into dev (34,737) and held-out (42,582).
+
+**Pairs** ([`pdmx-pairs.json`](pdmx-pairs.json), counts only): dev 1,285 pairs with 13 words at 10+, held-out
+1,185 with 13. The bar (150 pairs, 6 words) is met.
+
+**Rule**, written into the handoff before any tempo value was looked at: absolute words, held-out median
+|guess ÷ printed − 1| ≤ 0.15, share off by more than 40% ≤ 0.10, one-sided sign test against 120 p < 0.01;
+relative words (a faster and a slower class, factor on the number printed before), median factor error
+≤ 0.10 and a sign test against no change p < 0.01.
+
+**Dev tuning.** The pre-registered method put each word's tempo in the beat its meter is felt in (6/8 in ♩.);
+on dev that made every measure worse than plain quarter BPM (median 0.167 vs 0.152, off by > 40% 19% vs 17%),
+because many scores print a quarter-note tempo in any meter. The frozen method uses quarter BPM. The
+thresholds were not touched. Dev table ([`pdmx-dev-table.json`](pdmx-dev-table.json)), quarter BPM:
+largo 52, lent 58, lento 62, adagio 66, andantino 70, slow 72, andante 80, allegro moderato 98, moderately
+102, moderato 108, allegretto 108, allegro 131, fast 160, vivace 160, presto 180; faster × 1.137, slower
+× 0.932.
+
+**Verdict** ([`pdmx-freeze.json`](pdmx-freeze.json), [`pdmx-verdict.json`](pdmx-verdict.json), held-out
+scored once):
+
+| Kind | Check | Rule | Held-out |
+| --- | --- | --- | --- |
+| absolute | median error | ≤ 0.15 | **0.167 FAIL** (120 alone: 0.333) |
+| absolute | off by > 40% | ≤ 0.10 | **0.168 FAIL** |
+| absolute | sign test vs 120 | p < 0.01 | 333 wins, 112 losses, PASS |
+| relative | median factor error | ≤ 0.10 | 0.075 PASS (no change: 0.135) |
+| relative | sign test vs no change | p < 0.01 | 69 wins, 13 losses, PASS |
+
+**Absolute words not accepted; relative words accepted.** The absolute guess is about twice as close as 120,
+but one score in six is more than 40% away: the same word is played very differently from score to score.
+
+**Not measured:** where a relative passage ends. It ends at "a tempo" or "Tempo I", which the reader misses
+46% of the time (section 2), so a relative change that played by itself would often never end.
+
+## 7. Shipped: word guesses with USE (2026-10-27)
+
+The user chose, for both kinds, "guess + one-click USE": relative words because the "a tempo" ending their
+passage is missed 46% of the time, absolute words because they missed their rule. A word printed without a
+number shows `"Più mosso" · GUESS ♩=125` (relative: the factor on the tempo before its bar, in that tempo's
+unit) or `"Andante" · GUESS ♩=80` (absolute: the frozen table, in quarters), with USE and IGNORE. Nothing
+plays by itself; what plays is unchanged.
+
+- `Visualization_engine/TempoWords.cs`: `Normalized`, `RelativeFactor`, `AbsoluteGuess`, `Guessed`, with the
+  frozen table, factors and word lists; `tests/test_tempo_word_corpus.py` `AppParityTests` checks them against
+  `pdmx-freeze.json` and `tempo_word_corpus.py`.
+- `Program.Tempo.cs`: the GUESS label beside BACK TO; USE, PLAYING and SAME TEMPO work the same for both.
+- 246 app tests pass (3 new); research tests pass; release gate 8 of 8. Snapshot from the published exe:
+  [07-playback-tempo-guess.png](07-playback-tempo-guess.png) (local; report PNGs are gitignored).
+
+## 8. Words play by default, a re-measured table, and a wider word list (2026-10-27)
+
+**Requests, mid-turn:** "it misses agitato in sergei rachmanivov"; "change the word bpm values correctly ... presto
+agiato is 180 but i think it should be around 160-170 ... investigate thoroughly each word"; "i think word tempo
+things should played as default ... they are working quite nice"; and five PDMX scores with tempo words added to the
+library as `tempo_<song name>`.
+
+**"Agitato" was read but dropped.** OCR read it at 1.00 confidence above bar 14; the frozen reader's word list did
+not contain it, so the line was discarded. `Bridge/tempo_marks.py` keeps the frozen list as `FROZEN_LEXICON` (still
+checked equal to the research reader's) and adds `EXTRA_WORDS`: every word the app can guess for or name (Phase 4's
+absolute, faster and slower lists, "tempo primo", "come prima", "tempo 1") and "agitato". A word is never a number,
+so printed tempos read exactly as before: after re-reading all 61 library PDFs with the new reader (`7745ddf9…`,
+0 failed), every PDF's printed numbers are identical, no word was lost, and three were added ("Agitato" in the
+Rachmaninov Prelude, "poco cresc. ed agitato" in Liebestraum, "Lent et douloureux" in Gymnopédie No. 1). Agitato
+alone has 4 PDMX pairs, too few for a guess, so it shows as a hint.
+
+**Each word re-measured** ([`tempo_word_survey.py`](../../../tempo_word_survey.py),
+[`word-survey.json`](word-survey.json)). With the held-out judgement done, all 2,470 PDMX pairs were used:
+median, middle half and 10–90% per word, the same for scores tagged classical and per meter, and modifier effects.
+Four tables were compared by 5-fold composer cross-validation (996 pairs):
+
+| Table | Median error | Off by > 40% |
+| --- | --- | --- |
+| A: PDMX medians (the frozen method) | 0.167 | 16.6% |
+| B: A clamped to Wikipedia's ranges | 0.160 | 16.6% |
+| C: Wikipedia midpoints | 0.175 | 18.9% |
+| D: a median per meter | 0.161 | 16.0% |
+| 120 | 0.333 | 42.4% |
+
+A, B and D are within noise of each other; the textbook midpoints are worst. The app now uses A on all pairs
+(`table_v2`): grave 69 (11 pairs from 30 to 112, the weakest entry), largo 50, lent 57, langsam 61, mässig 63,
+larghetto 64, lento 66, adagio 69, slow 75, andantino 78, andante 80, slowly 84, andante con moto 86, allegro
+moderato 96, moderato 100, moderately 108.5, allegretto 112, allegro 132, vivace 160, fast 171, presto 184,
+prestissimo 232; faster × 1.137, slower × 0.898 (dev only: × 0.932).
+
+**Presto.** All 37 scores printing "Presto" put the median at ♩ = 184 (middle half 160–220; classical 180), and
+Wikipedia's range is 168–200, so 184 stays. The user's 160–170 sits at the low end, which is where a piece with
+dense sixteenth notes such as the Moonlight finale tends to be played; one number per word cannot know that.
+"Presto agitato" has a single PDMX pair, so it uses Presto's.
+
+**Words play by default** (the user's decision, against the absolute words' failed rule): `TempoDetection.PrintedMap`
+takes the marks in bar order; a number always plays and wins its bar; a word without one plays the tempo it names
+(return words) or its guess (relative: the factor on the tempo before; absolute: the table), unless it would not
+change the tempo. IGNORE stops any of them; the user's own tempo still replaces them all.
+
+**Five tempo PDFs** (CC0 or public domain, solo piano, no metronome numbers), engraved from PDMX MusicXML with
+MuseScore 4 and added to `songs\pdf`: `tempo_Song of the Lark` (Tchaikovsky: Andantino espressivo, un pochettino
+più mosso, a tempo), `tempo_Impromptu passione` (Mussorgsky: Andantino amoroso, a tempo ×2, Meno mosso),
+`tempo_Consolation No. 1` (Liszt: Andante con moto, a tempo), `tempo_Etudes-tableaux Op. 33` (Rachmaninoff:
+Moderato, Tempo I), `tempo_Piece pour piano` (anonymous: Lent, a tempo, Presto ×2). The app's reader finds every
+word in them except the second Presto, and reads a "Slow – Accel." instruction on the last page as "Slow".
+
+**Checks:** 246 app tests pass (the three tests that said words never play now assert that they do); research tests
+pass, including the app parity test against `table_v2`; release gate 8 of 8; snapshot from the published exe:
+[07-playback-tempo-words-playing.png](07-playback-tempo-words-playing.png) (local). Checked by the user and committed
+("it works commit and push").

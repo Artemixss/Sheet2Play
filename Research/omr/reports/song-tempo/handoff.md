@@ -23,7 +23,40 @@
   word shows the tempo it names with USE, never playing by itself. **Checked and committed**
   ([report section 5](phase4/REPORT.md#5-shipped-return-words-as-hints-with-use)); release gate 8 of 8.
 
-**Next authorized action:** none now. When the user has internet access, Phase 4 resumes with the PDMX download ("when i got access to internet we will go with the download option").
+- **Phase 4 resumed** 2026-10-27 ("ok i got internet access lets go with the download option"): absolute
+  and relative tempo words, with PDMX as the word-truth corpus.
+  - Job: download `subset_paths.tar.gz`, `PDMX.csv`, `mxl.tar.gz` from Zenodo record 15571083 (CC BY 4.0)
+    into `Research/omr/data/pdmx/` (gitignored), `curl -C -` (resumable), each checked against the
+    record's MD5. **Done**, all three MD5s match.
+  - Job: `Research/omr/.venv/Scripts/python.exe -I guarded_execution.py --output
+    reports/song-tempo/phase4/jobs/extract --max-seconds 10800 -- <python> -I tempo_word_corpus.py extract
+    --pdmx data/pdmx --out data/pdmx/marks.jsonl.gz`, from `Research/omr`; log `jobs/extract.console.txt`.
+    Not resumable (it streams the archive); on interruption rerun it whole. First run (no time signatures,
+    kept as `jobs/extract-1-no-meter`): 77,321 scores, 2 parse errors. Pair count (`phase4/pdmx-pairs.json`,
+    counts only): dev 1,285 pairs and 13 words with 10+, held-out 1,185 and 13, so the bar is met. Rerun
+    with each mark's time signature, because a word's tempo is per beat (6/8 felt in ♩.).
+  - **Pre-registered 2026-10-27, before any PDMX tempo value was looked at** (`tempo_word_corpus.py`
+    `RULE`, `tables`, `evaluate`): absolute words from a fixed list; a phrase with 10+ dev pairs gets its own
+    entry, otherwise its head word; entry = median dev beat BPM in the meter's beat; guess = that BPM in the
+    song's beat unit. Relative words in a faster and a slower class, factor = median dev ratio to the
+    number printed before. Held-out (composer split), scored once: absolute median |guess/truth − 1| ≤ 0.15,
+    share off by > 40% ≤ 0.10, one-sided sign test against 120 p < 0.01; relative median factor error ≤ 0.10,
+    sign test against no change p < 0.01. Each kind ships only if it passes.
+
+  - **Result** ([report section 6](phase4/REPORT.md#6-pdmx-absolute-and-relative-words-resumed-2026-10-27)):
+    dev tuning switched the table to quarter BPM (thresholds untouched); held-out scored once: absolute
+    words FAIL (median 0.167, 16.8% off by > 40%), relative words PASS (median 0.075, 69 wins to 13).
+
+  - The user chose guess + USE for both kinds (no auto-play). **Shipped, not committed**
+    ([report section 7](phase4/REPORT.md#7-shipped-word-guesses-with-use-2026-10-27)); release gate 8 of 8.
+
+  - Then (user, mid-turn): words **play by default**; "Agitato" added to the reader's word list (library
+    re-read, printed numbers identical in all 61 PDFs); every word re-measured on all PDMX pairs with composer
+    cross-validation, table v2 shipped; five `tempo_*.pdf` scores added to the library. **Checked by the user
+    ("it works commit and push") and committed** ([report section 8](phase4/REPORT.md#8-words-play-by-default-a-re-measured-table-and-a-wider-word-list-2026-10-27));
+    release gate 8 of 8.
+
+**Next authorized action:** none. Phase 4 is done; the plan can close when the user says so.
 
 ## Phase 3 (requested 2026-10-21, "ok commit and push proceed with phase 3"): committed
 

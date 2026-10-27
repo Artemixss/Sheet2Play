@@ -551,7 +551,7 @@ internal static partial class Program
 			}
 			return;
 		}
-		int shownMarks = tempoPrinted.Count(mark => mark.Source.Bpm is not null && !tempoIgnored.Contains(mark.Source.Key));
+		int shownMarks = tempoPrinted.Count(mark => !tempoIgnored.Contains(mark.Source.Key));
 		if (DrawPanelButton(ref x, y, height, shownMarks == 0 ? "PRINTED · NONE" : $"PRINTED · {shownMarks}", UiTheme.Text,
 			tempoPrintedOpen, scale))
 		{
@@ -564,10 +564,10 @@ internal static partial class Program
 	/// Until the user sets a tempo of their own they all play, and show PLAYING. Each has IGNORE,
 	/// which hides it for good and stops it playing, and once the user's own tempo replaces them,
 	/// USE, which takes one into it at its bar (the first bar's sets the start). A word without a
-	/// number ("Andante") is a hint only, except a return word ("Tempo I", "a tempo"): it shows the
-	/// tempo it names in what plays and offers USE, but never plays by itself, because Phase 4 found
-	/// too many of them misread. A row above them holds USE ALL, READ AGAIN and, once some are
-	/// hidden, SHOW IGNORED.
+	/// number shows the tempo it names ("Tempo I" · BACK TO) or Phase 4's table guesses for it
+	/// ("Andante", "più mosso" · GUESS), and plays it like a number until the user sets a tempo of
+	/// their own; a word the table has nothing for ("Agitato") is a hint only. A row above them holds
+	/// USE ALL, READ AGAIN and, once some are hidden, SHOW IGNORED.
 	/// </summary>
 	private static void DrawPrintedMarks(SongLoadResult song, SongPerformance performance, SongTempoMap shown,
 		bool changesApply, float bottom, float height, float scale, ref SongTempoMap? edited)
@@ -605,32 +605,34 @@ internal static partial class Program
 			string? words = mark.Words;
 			SongTempoMap basis = edited ?? shown;
 			PrintedMark? named = TempoWords.Named(mark, basis, returnBars);
+			PrintedMark? guessed = named is null ? TempoWords.Guessed(mark, basis) : null;
 			if (mark.Tempo is not null)
 			{
 				DrawTempoLabel(ref x, rowY, height, 0, words is null ? null : words + "  ", UiTheme.Text, scale, mark.Tempo);
 			}
-			else if (named is not null)
+			else if ((named ?? guessed) is PrintedMark taken)
 			{
-				DrawTempoLabel(ref x, rowY, height, 0, $"\"{mark.Source.Words ?? mark.Source.Text}\" · BACK TO ", UiTheme.Text, scale,
-					named.Tempo);
+				DrawTempoLabel(ref x, rowY, height, 0,
+					$"\"{mark.Source.Words ?? mark.Source.Text}\" · {(named is not null ? "BACK TO" : "GUESS")} ", UiTheme.Text, scale,
+					taken.Tempo);
 			}
 			else
 			{
-				DrawTempoLabel(ref x, rowY, height, 0, mark.Source.Bpm is null ? $"\"{words}\" · NO NUMBER, A HINT ONLY"
+				DrawTempoLabel(ref x, rowY, height, 0, mark.Source.Bpm is null ? $"\"{mark.Source.Words ?? words}\" · NO NUMBER, A HINT ONLY"
 					: $"\"{mark.Source.Text}\" · UNIT NOT READ", UiTheme.Muted, scale);
 			}
 			if (mark.Measure is null && mark.Source.Bpm is not null)
 			{
 				DrawTempoLabel(ref x, rowY, height, 0, "NOT IN THIS CONVERSION'S PAGES", UiTheme.Warning, scale);
 			}
-			PrintedMark action = named ?? mark;
+			PrintedMark action = named ?? guessed ?? mark;
 			// A playing mark keeps IGNORE: without a tempo of the user's, ignoring it is how a misread mark
 			// stops playing.
 			if (action.Usable && TempoDetection.InUse(basis, action))
 			{
 				DrawTempoLabel(ref x, rowY, height, 0, action.Measure == 0 ? "PLAYING · START" : "PLAYING", UiTheme.Lime, scale);
 			}
-			else if (named is not null && SongTempoMaps.TempoAt(basis, named.Measure!.Value) == named.Tempo)
+			else if (action != mark && SongTempoMaps.TempoAt(basis, action.Measure!.Value) == action.Tempo)
 			{
 				DrawTempoLabel(ref x, rowY, height, 0, "SAME TEMPO", UiTheme.Muted, scale);
 			}
@@ -647,7 +649,7 @@ internal static partial class Program
 
 		float headerY = top - rowStep;
 		float header = left;
-		int numbered = tempoPrinted.Count(static mark => mark.Source.Bpm is not null);
+		int numbered = tempoPrinted.Count;
 		// A page whose staves the reader could not find was not read, which is not the same as having no mark.
 		bool blind = tempoPrintedPages > 0 && tempoPrintedBlindPages == tempoPrintedPages;
 		string title = blind ? "NO STAVES FOUND IN THE PDF · MARKS NOT READ"
