@@ -50,8 +50,14 @@ internal static partial class Program
 
 		try
 		{
-			SongLoadResult song = SongCache.LoadOrCreateDetailed(source, OmrEngine.DirectMidi);
-			PlaybackSession session = new(song.Notes);
+			// A converted PDF loads from its cache with the selected engine, so the demo shows the
+			// score's bar lines and pedal lane as the app plays them. Not recorded as recently opened.
+			SongLoadResult song = SongCache.LoadOrCreateDetailed(source, OmrEngines.ToOffered(AppSettingsStore.LoadEngine()), recordRecent: false);
+			ExpressionOptions options = AppSettingsStore.LoadExpression();
+			TempoOverride? tempo = StoredTempo(song);
+			SongPlayback expressive = ExpressionPlayback.ForSong(song, options, tempo);
+			PlaybackSession session = new(expressive.Notes, pedal: expressive.Pedal);
+			RebuildOverlay(song, options, tempo, expressive.Pedal);
 			double start = explicitStart ?? FindDensestStart(session.Notes, seconds);
 			Console.WriteLine($"[DEMO] source    {Path.GetFileName(source)} ({session.Notes.Count} notes)");
 			Console.WriteLine($"[DEMO] window    {start:0.0}s to {start + seconds:0.0}s at {fps} fps");

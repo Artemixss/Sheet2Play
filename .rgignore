@@ -1,5 +1,16 @@
 # Search scope only. Preserve downloaded documentation, source, and licenses on disk.
 # For a dependency investigation, use --no-ignore with its explicit directory.
+
+# Agent docs, plans and Research/ are gitignored (not published) but stay searchable.
+# These come first so the exclusions below still win inside them.
+!/Research/
+!/CLAUDE.md
+!/AGENTS.md
+!/CONTEXT.md
+!/plans/**
+!/.agents/**
+!/docs/agent-checkpoints.md
+
 .git/
 /.codex/checkpoints/
 **/.venv*/
@@ -23,11 +34,3 @@
 /Research/omr/artifacts/
 /Research/omr/out/
 /Research/omr/out_zeus_test/
-
-# Agent docs are gitignored (not published) but must stay searchable.
-!/CLAUDE.md
-!/AGENTS.md
-!/CONTEXT.md
-!/plans/**
-!/.agents/**
-!/docs/agent-checkpoints.md
